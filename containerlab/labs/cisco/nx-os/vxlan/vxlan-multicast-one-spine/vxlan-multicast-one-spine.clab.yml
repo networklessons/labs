@@ -8,7 +8,7 @@ mgmt:
 topology:
   kinds:
     cisco_n9kv:
-      image: vrnetlab/vr-n9kv:10.2.7
+      image: vrnetlab/vr-n9kv:10.4.3
     linux:
       image: networklessons/ubuntu-lab-host:33
   nodes:
@@ -49,5 +49,5 @@ topology:
   links:
     - endpoints: ["spine1:eth1", "leaf1:eth1"]
     - endpoints: ["spine1:eth2", "leaf2:eth1"]
-    - endpoints: ["leaf1:eth3", "s1:eth1"]
-    - endpoints: ["leaf2:eth3", "s2:eth1"]
+    - endpoints: ["leaf1:eth2", "s1:eth1"]
+    - endpoints: ["leaf2:eth2", "s2:eth1"]
