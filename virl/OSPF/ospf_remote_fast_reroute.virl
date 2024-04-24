@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <node name="R1" type="SIMPLE" subtype="CSR1000v" location="596,145">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+mpls ldp discovery targeted-hello accept
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+ip tftp source-interface GigabitEthernet1
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address dhcp
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.12.1 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.15.1 255.255.255.0
+ negotiation auto
+!
+router ospf 1
+ fast-reroute per-prefix enable area 0 prefix-priority low
+ fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+ fast-reroute keep-all-paths
+ network 1.1.1.1 0.0.0.0 area 0
+ network 192.168.12.0 0.0.0.255 area 0
+ network 192.168.15.0 0.0.0.255 area 0
+ mpls ldp autoconfig area 0
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="R2" type="SIMPLE" subtype="CSR1000v" location="438,307">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+mpls ldp discovery targeted-hello accept
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+ip tftp source-interface GigabitEthernet1
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address dhcp
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.12.2 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.23.2 255.255.255.0
+ negotiation auto
+!
+router ospf 1
+ fast-reroute per-prefix enable area 0 prefix-priority low
+ fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+ fast-reroute keep-all-paths
+ network 2.2.2.2 0.0.0.0 area 0
+ network 192.168.12.0 0.0.0.255 area 0
+ network 192.168.23.0 0.0.0.255 area 0
+ mpls ldp autoconfig area 0
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="R3" type="SIMPLE" subtype="CSR1000v" location="436,477">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+mpls ldp discovery targeted-hello accept
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+ip tftp source-interface GigabitEthernet1
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address dhcp
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.34.3 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.23.3 255.255.255.0
+ negotiation auto
+!
+router ospf 1
+ fast-reroute per-prefix enable area 0 prefix-priority low
+ fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+ fast-reroute keep-all-paths
+ network 3.3.3.3 0.0.0.0 area 0
+ network 192.168.23.0 0.0.0.255 area 0
+ network 192.168.34.0 0.0.0.255 area 0
+ mpls ldp autoconfig area 0
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="R4" type="SIMPLE" subtype="CSR1000v" location="748,481">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:14:13 UTC Wed Nov 1 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+mpls ldp discovery targeted-hello accept
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+ip tftp source-interface GigabitEthernet1
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address dhcp
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.34.4 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.45.4 255.255.255.0
+ negotiation auto
+!
+router ospf 1
+ fast-reroute per-prefix enable area 0 prefix-priority low
+ fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+ fast-reroute keep-all-paths
+ network 4.4.4.4 0.0.0.0 area 0
+ network 192.168.34.0 0.0.0.255 area 0
+ network 192.168.45.0 0.0.0.255 area 0
+ mpls ldp autoconfig area 0
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="R5" type="SIMPLE" subtype="CSR1000v" location="740,297">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:14:13 UTC Wed Nov 1 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+mpls ldp discovery targeted-hello accept
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+ip tftp source-interface GigabitEthernet1
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address dhcp
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.15.5 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.45.5 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet4
+ ip address 192.168.56.5 255.255.255.0
+ negotiation auto
+!
+router ospf 1
+ fast-reroute per-prefix enable area 0 prefix-priority low
+ fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+ fast-reroute keep-all-paths
+ network 5.5.5.5 0.0.0.0 area 0
+ network 192.168.15.0 0.0.0.255 area 0
+ network 192.168.45.0 0.0.0.255 area 0
+ network 192.168.56.0 0.0.0.255 area 0
+ mpls ldp autoconfig area 0
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+        <interface id="2" name="GigabitEthernet4"/>
+    </node>
+    <node name="R6" type="SIMPLE" subtype="CSR1000v" location="920,293">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+mpls ldp discovery targeted-hello accept
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+ip tftp source-interface GigabitEthernet1
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 6.6.6.6 255.255.255.255
+!
+interface GigabitEthernet1
+ ip address dhcp
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.56.6 255.255.255.0
+ negotiation auto
+!
+router ospf 1
+ fast-reroute per-prefix enable area 0 prefix-priority low
+ fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+ fast-reroute keep-all-paths
+ network 6.6.6.6 0.0.0.0 area 0
+ network 192.168.56.0 0.0.0.255 area 0
+ mpls ldp autoconfig area 0
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0
+ login
+line vty 1
+ login
+ length 0
+line vty 2 4
+ login
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+    </node>
+    <annotations>
+        <rect x="380" y="107" radius="10" width="597" height="425" fill="80FFFF" stroke-width="3"/>
+        <text x="577" y="293" font-size="18">Area 0</text>
+    </annotations>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[1]" src="/virl:topology/virl:node[5]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[2]" src="/virl:topology/virl:node[4]/virl:interface[2]"/>
+</topology>

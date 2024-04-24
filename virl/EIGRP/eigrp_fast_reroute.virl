@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <node name="R1" type="SIMPLE" subtype="CSR1000v" location="218,368">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 13:33:28 UTC Thu Sep 7 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3202512956
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3202512956
+ revocation-check none
+ rsakeypair TP-self-signed-3202512956
+!
+!
+crypto pki certificate chain TP-self-signed-3202512956
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+username cisco privilege 15 secret 5 $1$lmhp$/Pp6MndxAHsC11B0leyIB0
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.12.1 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.13.1 255.255.255.0
+ delay 2
+ negotiation auto
+!
+!
+router eigrp FRR
+ !
+ address-family ipv4 unicast autonomous-system 1
+  !
+  topology base
+   fast-reroute per-prefix all
+  exit-af-topology
+  network 192.168.12.0
+  network 192.168.13.0
+ exit-address-family
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login
+ transport input none
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="R2" type="SIMPLE" subtype="CSR1000v" location="464,172">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 13:33:28 UTC Thu Sep 7 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3202512956
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3202512956
+ revocation-check none
+ rsakeypair TP-self-signed-3202512956
+!
+!
+crypto pki certificate chain TP-self-signed-3202512956
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+username cisco privilege 15 secret 5 $1$dB.K$YdORpygGJG1IoJFtnDvJT/
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.12.2 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.24.2 255.255.255.0
+ negotiation auto
+!
+!
+router eigrp FRR
+ !
+ address-family ipv4 unicast autonomous-system 1
+  !
+  topology base
+  exit-af-topology
+  network 192.168.12.0
+  network 192.168.24.0
+ exit-address-family
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login
+ transport input none
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="R3" type="SIMPLE" subtype="CSR1000v" location="396,534">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 13:33:28 UTC Thu Sep 7 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3202512956
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3202512956
+ revocation-check none
+ rsakeypair TP-self-signed-3202512956
+!
+!
+crypto pki certificate chain TP-self-signed-3202512956
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+username cisco privilege 15 secret 5 $1$lGsW$w4CqOaNWoF8hTyv3922rY1
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface GigabitEthernet1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.34.3 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.13.3 255.255.255.0
+ negotiation auto
+!
+!
+router eigrp FRR
+ !
+ address-family ipv4 unicast autonomous-system 1
+  !
+  topology base
+  exit-af-topology
+  network 192.168.13.0
+  network 192.168.34.0
+ exit-address-family
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login
+ transport input none
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <node name="R4" type="SIMPLE" subtype="CSR1000v" location="712,346">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 13:33:31 UTC Thu Sep 7 2017
+!
+version 16.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3202512956
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3202512956
+ revocation-check none
+ rsakeypair TP-self-signed-3202512956
+!
+!
+crypto pki certificate chain TP-self-signed-3202512956
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+
+
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 903J6D6TKGE
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+username cisco privilege 15 secret 5 $1$Tch2$OiCSoKMpFYGkG9RDhpsS3/
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+! 
+! 
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+!
+interface GigabitEthernet1
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet2
+ ip address 192.168.34.4 255.255.255.0
+ negotiation auto
+!
+interface GigabitEthernet3
+ ip address 192.168.24.4 255.255.255.0
+ negotiation auto
+!
+!
+router eigrp FRR
+ !
+ address-family ipv4 unicast autonomous-system 1
+  !
+  topology base
+  exit-af-topology
+  network 4.4.4.4 0.0.0.0
+  network 192.168.24.0
+  network 192.168.34.0
+ exit-address-family
+!
+!
+virtual-service csr_mgmt
+!
+ip forward-protocol nd
+no ip http server
+ip http authentication local
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+ !
+ !
+ !
+ !
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login
+ transport input none
+!
+!
+!
+!
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet2"/>
+        <interface id="1" name="GigabitEthernet3"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[2]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
+</topology>

@@ -1,0 +1,495 @@
+lab:
+  description: Imported from ipv6_6rd.virl
+  notes: |-
+    ## Import Progress
+    - processing node /CE1 (iosv)
+    - processing node /CE2 (iosv)
+    - processing node /BR (iosv)
+    - processing node /unmanagedswitch-1 (unmanaged_switch)
+    - link GigabitEthernet0/1.BR -> port1.unmanagedswitch-1
+    - link port2.unmanagedswitch-1 -> GigabitEthernet0/1.CE1
+    - link GigabitEthernet0/1.CE2 -> port3.unmanagedswitch-1
+  timestamp: 1622096971.38278
+  title: ipv6_6rd.virl
+  version: 0.0.4
+nodes:
+  - id: n0
+    label: CE1
+    node_definition: iosv
+    x: 50
+    y: 50
+    configuration: |-
+      !
+      ! Last configuration change at 16:00:18 UTC Tue Feb 27 2018
+      !
+      version 15.6
+      service timestamps debug datetime msec
+      service timestamps log datetime msec
+      no service password-encryption
+      !
+      hostname CE1
+      !
+      boot-start-marker
+      boot-end-marker
+      !
+      !
+      !
+      no aaa new-model
+      ethernet lmi ce
+      !
+      !
+      !
+      mmi polling-interval 60
+      no mmi auto-configure
+      no mmi pvc
+      mmi snmp-timeout 180
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      ip cef
+      ipv6 general-prefix ISP_RD6_PREFIX 6rd Tunnel0
+      ipv6 unicast-routing
+      ipv6 cef
+      !
+      multilink bundle-name authenticated
+      !
+      !
+      !
+      !
+      !
+      redundancy
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      interface Loopback0
+       no ip address
+       ipv6 address ISP_RD6_PREFIX ::10:0:0:0:1/64
+      !
+      interface Tunnel0
+       no ip address
+       no ip redirects
+       ipv6 enable
+       tunnel source GigabitEthernet0/1
+       tunnel mode ipv6ip 6rd
+       tunnel 6rd ipv4 prefix-len 24
+       tunnel 6rd prefix 2001:DB8::/32
+       tunnel 6rd br 192.168.1.3
+      !
+      interface GigabitEthernet0/0
+       ip address 10.255.1.96 255.255.0.0
+       shutdown
+       duplex auto
+       speed auto
+       media-type rj45
+      !
+      interface GigabitEthernet0/1
+       ip address 192.168.1.1 255.255.255.0
+       duplex auto
+       speed auto
+       media-type rj45
+        ! inserted by converter
+        no shutdown
+      !
+      ip forward-protocol nd
+      !
+      !
+      no ip http server
+      no ip http secure-server
+      !
+      ipv6 route 2001:DB8::/32 Tunnel0
+      ipv6 route ::/0 2001:DB8:300::
+      !
+      !
+      !
+      control-plane
+      !
+      !
+      line con 0
+      line aux 0
+      line vty 0 4
+       login
+       transport input none
+      !
+      no scheduler allocate
+      !
+      end
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n1
+    label: CE2
+    node_definition: iosv
+    x: 62
+    y: 284
+    configuration: |-
+      !
+      ! Last configuration change at 16:01:04 UTC Tue Feb 27 2018
+      !
+      version 15.6
+      service timestamps debug datetime msec
+      service timestamps log datetime msec
+      no service password-encryption
+      !
+      hostname CE2
+      !
+      boot-start-marker
+      boot-end-marker
+      !
+      !
+      !
+      no aaa new-model
+      ethernet lmi ce
+      !
+      !
+      !
+      mmi polling-interval 60
+      no mmi auto-configure
+      no mmi pvc
+      mmi snmp-timeout 180
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      ip cef
+      ipv6 general-prefix ISP_RD6_PREFIX 6rd Tunnel0
+      ipv6 unicast-routing
+      ipv6 cef
+      !
+      multilink bundle-name authenticated
+      !
+      !
+      !
+      !
+      !
+      redundancy
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      interface Loopback0
+       no ip address
+       ipv6 address ISP_RD6_PREFIX ::10:0:0:0:1/64
+      !
+      interface Tunnel0
+       no ip address
+       no ip redirects
+       ipv6 enable
+       tunnel source GigabitEthernet0/1
+       tunnel mode ipv6ip 6rd
+       tunnel 6rd ipv4 prefix-len 24
+       tunnel 6rd prefix 2001:DB8::/32
+       tunnel 6rd br 192.168.1.3
+      !
+      interface GigabitEthernet0/0
+       ip address 10.255.1.97 255.255.0.0
+       shutdown
+       duplex auto
+       speed auto
+       media-type rj45
+      !
+      interface GigabitEthernet0/1
+       ip address 192.168.1.2 255.255.255.0
+       duplex auto
+       speed auto
+       media-type rj45
+        ! inserted by converter
+        no shutdown
+      !
+      ip forward-protocol nd
+      !
+      !
+      no ip http server
+      no ip http secure-server
+      !
+      ipv6 route 2001:DB8::/32 Tunnel0
+      ipv6 route ::/0 2001:DB8:300::
+      !
+      !
+      !
+      control-plane
+      !
+      banner exec `
+      **************************************************************************
+      * IOSv - Cisco Systems Confidential                                      *
+      *                                                                        *
+      * Supplemental End User License Restrictions                             *
+      *                                                                        *
+      * This IOSv software is provided AS-IS without warranty of any kind.     *
+      * Under no circumstances may this software be used separate from         *
+      * the Cisco Modeling Labs Software that this software was provided       *
+      *  with, or deployed or used as part of a production environment.        *
+      *                                                                        *
+      * By using the software, you agree to abide by the terms and             *
+      * conditions of the Cisco End User License Agreement at                  *
+      * http://www.cisco.com/go/eula.                                          *
+      *                                                                        *
+      * Unauthorized use or distribution of this software is expressly         *
+      * prohibited.                                                            *
+      **************************************************************************
+      `
+      banner incoming `
+      **************************************************************************
+      * IOSv - Cisco Systems Confidential                                      *
+      *                                                                        *
+      * Supplemental End User License Restrictions                             *
+      *                                                                        *
+      * This IOSv software is provided AS-IS without warranty of any kind.     *
+      * Under no circumstances may this software be used separate from         *
+      * the Cisco Modeling Labs Software that this software was provided       *
+      *  with, or deployed or used as part of a production environment.        *
+      *                                                                        *
+      * By using the software, you agree to abide by the terms and             *
+      * conditions of the Cisco End User License Agreement at                  *
+      * http://www.cisco.com/go/eula.                                          *
+      *                                                                        *
+      * Unauthorized use or distribution of this software is expressly         *
+      * prohibited.                                                            *
+      **************************************************************************
+      `
+      banner login `
+      **************************************************************************
+      * IOSv - Cisco Systems Confidential                                      *
+      *                                                                        *
+      * Supplemental End User License Restrictions                             *
+      *                                                                        *
+      * This IOSv software is provided AS-IS without warranty of any kind.     *
+      * Under no circumstances may this software be used separate from         *
+      * the Cisco Modeling Labs Software that this software was provided       *
+      *  with, or deployed or used as part of a production environment.        *
+      *                                                                        *
+      * By using the software, you agree to abide by the terms and             *
+      * conditions of the Cisco End User License Agreement at                  *
+      * http://www.cisco.com/go/eula.                                          *
+      *                                                                        *
+      * Unauthorized use or distribution of this software is expressly         *
+      * prohibited.                                                            *
+      **************************************************************************
+      `
+      !
+      line con 0
+      line aux 0
+      line vty 0 4
+       login
+       transport input none
+      !
+      no scheduler allocate
+      !
+      end
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n2
+    label: BR
+    node_definition: iosv
+    x: 460
+    y: 136
+    configuration: |-
+      !
+      ! Last configuration change at 16:01:30 UTC Tue Feb 27 2018
+      !
+      version 15.6
+      service timestamps debug datetime msec
+      service timestamps log datetime msec
+      no service password-encryption
+      !
+      hostname BR
+      !
+      boot-start-marker
+      boot-end-marker
+      !
+      !
+      !
+      no aaa new-model
+      ethernet lmi ce
+      !
+      !
+      !
+      mmi polling-interval 60
+      no mmi auto-configure
+      no mmi pvc
+      mmi snmp-timeout 180
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      ip cef
+      ipv6 unicast-routing
+      ipv6 cef
+      !
+      multilink bundle-name authenticated
+      !
+      !
+      !
+      !
+      !
+      redundancy
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      !
+      interface Loopback0
+       no ip address
+       ipv6 address 2001:4860:4860::8888/128
+      !
+      interface Tunnel0
+       no ip address
+       no ip redirects
+       ipv6 enable
+       tunnel source GigabitEthernet0/1
+       tunnel mode ipv6ip 6rd
+       tunnel 6rd ipv4 prefix-len 24
+       tunnel 6rd prefix 2001:DB8::/32
+      !
+      interface GigabitEthernet0/0
+       ip address 10.255.1.95 255.255.0.0
+       shutdown
+       duplex auto
+       speed auto
+       media-type rj45
+      !
+      interface GigabitEthernet0/1
+       ip address 192.168.1.3 255.255.255.0
+       duplex auto
+       speed auto
+       media-type rj45
+        ! inserted by converter
+        no shutdown
+      !
+      ip forward-protocol nd
+      !
+      !
+      no ip http server
+      no ip http secure-server
+      !
+      ipv6 route 2001:DB8::/32 Tunnel0
+      !
+      !
+      !
+      control-plane
+      !
+      !
+      line con 0
+      line aux 0
+      line vty 0 4
+       login
+       transport input none
+      !
+      no scheduler allocate
+      !
+      end
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n3
+    label: unmanagedswitch-1
+    node_definition: unmanaged_switch
+    x: 222
+    y: 154
+    configuration: null
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 1
+        label: port1
+        type: physical
+      - id: i1
+        slot: 2
+        label: port2
+        type: physical
+      - id: i2
+        slot: 3
+        label: port3
+        type: physical
+links:
+  - id: l0
+    i1: i1
+    n1: n2
+    i2: i0
+    n2: n3
+  - id: l1
+    i1: i1
+    n1: n3
+    i2: i1
+    n2: n0
+  - id: l2
+    i1: i1
+    n1: n1
+    i2: i2
+    n2: n3

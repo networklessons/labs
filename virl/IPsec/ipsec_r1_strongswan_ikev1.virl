@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <node name="R1" type="SIMPLE" subtype="IOSv" location="190,205">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 13:58:07 UTC Fri Oct 30 2020
+!
+version 15.7
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname MMMAGAZIJN01
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name networklessons.local
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username admin privilege 15 secret 5 $1$Kc5H$X34q17OxRuj2OpbC3GALY0
+username pietje privilege 15 password 0 pietje
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+crypto isakmp policy 30
+ encr aes
+ hash md5
+ authentication pre-share
+ group 5
+ lifetime 1800
+crypto isakmp key vpntoioneessentials address 10.65.90.100    no-xauth
+crypto isakmp identity hostname
+!
+crypto isakmp peer address 10.65.90.100
+ set aggressive-mode password vpntoioneessentials
+ set aggressive-mode client-endpoint user-fqdn MMMAGAZIJN01.networklessons.local 
+!
+!
+crypto ipsec transform-set COLIJN esp-aes esp-sha-hmac 
+ mode tunnel
+!
+!
+!
+crypto map WINKEL_MAGAZIJN 20 ipsec-isakmp 
+ description VPN_COLIJN
+ set peer 10.65.90.100
+ set security-association lifetime kilobytes disable
+ set security-association lifetime seconds 1800
+ set transform-set COLIJN 
+ match address MAGAZIJN_COLIJN
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.57.90.1 255.255.255.0
+!
+interface Loopback2
+ no ip address
+!
+interface Loopback3
+ no ip address
+!
+interface GigabitEthernet0/0
+ ip address 10.255.6.94 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 172.16.1.159 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ crypto map WINKEL_MAGAZIJN
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 172.16.1.254
+ip route 10.10.18.0 255.255.255.0 10.65.90.100
+ip ssh version 2
+!
+ip access-list extended MAGAZIJN_COLIJN
+ permit ip 10.57.90.0 0.0.0.255 10.10.18.0 0.0.0.255
+!
+ip sla 1
+ icmp-echo 10.10.18.1 source-interface Loopback0
+ frequency 5
+ip sla schedule 1 life forever start-time now
+logging trap debugging
+logging host 10.65.90.10
+logging host 10.65.90.10 transport udp port 5140
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+ exec-timeout 0 0
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+!
+no scheduler allocate
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="flat-1" type="ASSET" subtype="FLAT" location="578,191">
+        <interface id="0" name="link0"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+</topology>

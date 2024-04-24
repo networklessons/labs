@@ -1,0 +1,44 @@
+name: simple
+prefix: ""
+
+mgmt:
+  network: statics
+  ipv4_subnet: 172.100.100.0/24
+
+topology:
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux
+  nodes:
+    pdx-rtr-01:
+      kind: srl
+      mgmt_ipv4: 172.100.100.11
+    pdx-rtr-02:
+      kind: srl
+      mgmt_ipv4: 172.100.100.12
+    pdx-rtr-03:
+      kind: srl
+      mgmt_ipv4: 172.100.100.13
+    ssh:
+      kind: linux
+      image: netreplica/graphite:webssh2
+      mgmt_ipv4: 172.100.100.100
+      env:
+        GRAPHITE_DEFAULT_TYPE: clab
+        GRAPHITE_DEFAULT_TOPO: simple
+        CLAB_SSH_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - .:/htdocs/clab
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'generate_offline_graph.sh'
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["pdx-rtr-01:e1-1", "pdx-rtr-02:e1-1"]
+    - endpoints: ["pdx-rtr-01:e1-2", "pdx-rtr-03:e1-1"]
+    - endpoints: ["pdx-rtr-02:e1-2", "pdx-rtr-03:e1-2"]
+
+

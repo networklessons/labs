@@ -1,0 +1,37 @@
+all:
+  vars:
+    # The generated inventory is assumed to be used from the clab host.
+    # Hence no http proxy should be used. Therefore we make sure the http
+    # module does not attempt using any global http proxy.
+    ansible_httpapi_use_proxy: false
+  children:
+    cisco_n9kv:
+      vars:
+        # ansible_connection: set ansible_connection variable if required
+        ansible_user: admin
+        ansible_password: admin
+      hosts:
+        clab-vvxlan-evpn-ingress-replication-leaf1:
+          ansible_host: 172.100.100.12
+        clab-vvxlan-evpn-ingress-replication-leaf2:
+          ansible_host: 172.100.100.13
+        clab-vvxlan-evpn-ingress-replication-leaf3:
+          ansible_host: 172.100.100.14
+        clab-vvxlan-evpn-ingress-replication-leaf4:
+          ansible_host: 172.100.100.15
+        clab-vvxlan-evpn-ingress-replication-spine1:
+          ansible_host: 172.100.100.10
+        clab-vvxlan-evpn-ingress-replication-spine2:
+          ansible_host: 172.100.100.11
+    linux:
+      hosts:
+        clab-vvxlan-evpn-ingress-replication-graphite:
+          ansible_host: 172.100.100.100
+        clab-vvxlan-evpn-ingress-replication-s1:
+          ansible_host: 172.100.100.16
+        clab-vvxlan-evpn-ingress-replication-s2:
+          ansible_host: 172.100.100.17
+        clab-vvxlan-evpn-ingress-replication-s3:
+          ansible_host: 172.100.100.18
+        clab-vvxlan-evpn-ingress-replication-s4:
+          ansible_host: 172.100.100.19

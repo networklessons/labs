@@ -1,0 +1,213 @@
+name: 3tier
+prefix: null
+mgmt: {}
+settings: null
+topology:
+  kinds:
+    srl:
+      image: ghcr.io/nokia/srlinux
+  nodes:
+    node1-1:
+      kind: srl
+      group: tier-1
+    node1-2:
+      kind: srl
+      group: tier-1
+    node1-3:
+      kind: srl
+      group: tier-1
+    node1-4:
+      kind: srl
+      group: tier-1
+    node1-5:
+      kind: srl
+      group: tier-1
+    node1-6:
+      kind: srl
+      group: tier-1
+    node1-7:
+      kind: srl
+      group: tier-1
+    node1-8:
+      kind: srl
+      group: tier-1
+    node2-1:
+      kind: srl
+      group: tier-2
+    node2-2:
+      kind: srl
+      group: tier-2
+    node2-3:
+      kind: srl
+      group: tier-2
+    node2-4:
+      kind: srl
+      group: tier-2
+    node3-1:
+      kind: srl
+      group: tier-3
+    node3-2:
+      kind: srl
+      group: tier-3
+  links:
+  - endpoints:
+    - node1-1:e1-1
+    - node2-1:e1-1
+    deploymentstate: 0
+  - endpoints:
+    - node1-1:e1-2
+    - node2-2:e1-1
+    deploymentstate: 0
+  - endpoints:
+    - node1-1:e1-3
+    - node2-3:e1-1
+    deploymentstate: 0
+  - endpoints:
+    - node1-1:e1-4
+    - node2-4:e1-1
+    deploymentstate: 0
+  - endpoints:
+    - node1-2:e1-1
+    - node2-1:e1-2
+    deploymentstate: 0
+  - endpoints:
+    - node1-2:e1-2
+    - node2-2:e1-2
+    deploymentstate: 0
+  - endpoints:
+    - node1-2:e1-3
+    - node2-3:e1-2
+    deploymentstate: 0
+  - endpoints:
+    - node1-2:e1-4
+    - node2-4:e1-2
+    deploymentstate: 0
+  - endpoints:
+    - node1-3:e1-1
+    - node2-1:e1-3
+    deploymentstate: 0
+  - endpoints:
+    - node1-3:e1-2
+    - node2-2:e1-3
+    deploymentstate: 0
+  - endpoints:
+    - node1-3:e1-3
+    - node2-3:e1-3
+    deploymentstate: 0
+  - endpoints:
+    - node1-3:e1-4
+    - node2-4:e1-3
+    deploymentstate: 0
+  - endpoints:
+    - node1-4:e1-1
+    - node2-1:e1-4
+    deploymentstate: 0
+  - endpoints:
+    - node1-4:e1-2
+    - node2-2:e1-4
+    deploymentstate: 0
+  - endpoints:
+    - node1-4:e1-3
+    - node2-3:e1-4
+    deploymentstate: 0
+  - endpoints:
+    - node1-4:e1-4
+    - node2-4:e1-4
+    deploymentstate: 0
+  - endpoints:
+    - node1-5:e1-1
+    - node2-1:e1-5
+    deploymentstate: 0
+  - endpoints:
+    - node1-5:e1-2
+    - node2-2:e1-5
+    deploymentstate: 0
+  - endpoints:
+    - node1-5:e1-3
+    - node2-3:e1-5
+    deploymentstate: 0
+  - endpoints:
+    - node1-5:e1-4
+    - node2-4:e1-5
+    deploymentstate: 0
+  - endpoints:
+    - node1-6:e1-1
+    - node2-1:e1-6
+    deploymentstate: 0
+  - endpoints:
+    - node1-6:e1-2
+    - node2-2:e1-6
+    deploymentstate: 0
+  - endpoints:
+    - node1-6:e1-3
+    - node2-3:e1-6
+    deploymentstate: 0
+  - endpoints:
+    - node1-6:e1-4
+    - node2-4:e1-6
+    deploymentstate: 0
+  - endpoints:
+    - node1-7:e1-1
+    - node2-1:e1-7
+    deploymentstate: 0
+  - endpoints:
+    - node1-7:e1-2
+    - node2-2:e1-7
+    deploymentstate: 0
+  - endpoints:
+    - node1-7:e1-3
+    - node2-3:e1-7
+    deploymentstate: 0
+  - endpoints:
+    - node1-7:e1-4
+    - node2-4:e1-7
+    deploymentstate: 0
+  - endpoints:
+    - node1-8:e1-1
+    - node2-1:e1-8
+    deploymentstate: 0
+  - endpoints:
+    - node1-8:e1-2
+    - node2-2:e1-8
+    deploymentstate: 0
+  - endpoints:
+    - node1-8:e1-3
+    - node2-3:e1-8
+    deploymentstate: 0
+  - endpoints:
+    - node1-8:e1-4
+    - node2-4:e1-8
+    deploymentstate: 0
+  - endpoints:
+    - node2-1:e1-9
+    - node3-1:e1-1
+    deploymentstate: 0
+  - endpoints:
+    - node2-1:e1-10
+    - node3-2:e1-1
+    deploymentstate: 0
+  - endpoints:
+    - node2-2:e1-9
+    - node3-1:e1-2
+    deploymentstate: 0
+  - endpoints:
+    - node2-2:e1-10
+    - node3-2:e1-2
+    deploymentstate: 0
+  - endpoints:
+    - node2-3:e1-9
+    - node3-1:e1-3
+    deploymentstate: 0
+  - endpoints:
+    - node2-3:e1-10
+    - node3-2:e1-3
+    deploymentstate: 0
+  - endpoints:
+    - node2-4:e1-9
+    - node3-1:e1-4
+    deploymentstate: 0
+  - endpoints:
+    - node2-4:e1-10
+    - node3-2:e1-4
+    deploymentstate: 0
+debug: false

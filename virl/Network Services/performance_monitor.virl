@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <node name="R1" type="SIMPLE" subtype="IOSv" location="235,219">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 08:39:14 UTC Fri Nov 2 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+flow record type performance-monitor FLOW_RECORD_TCP
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 source prefix
+ match ipv4 destination address
+ match ipv4 destination prefix
+ match transport source-port
+ match transport destination-port
+ collect routing forwarding-status
+ collect ipv4 dscp
+ collect ipv4 ttl
+ collect ipv4 source mask
+ collect ipv4 destination mask
+ collect transport round-trip-time
+ collect transport event packet-loss counter
+ collect interface input
+ collect interface output
+ collect counter bytes
+ collect counter packets
+ collect counter bytes rate
+ collect timestamp interval
+ collect application media bytes counter
+ collect application media packets rate
+ collect application media event
+ collect monitor event
+!
+!
+flow record type performance-monitor FLOW_RECORD_RTP
+ match ipv4 protocol
+ match ipv4 source address
+ match ipv4 source prefix
+ match ipv4 destination address
+ match ipv4 destination prefix
+ match transport source-port
+ match transport destination-port
+ match transport rtp ssrc
+ collect routing forwarding-status
+ collect ipv4 dscp
+ collect ipv4 ttl
+ collect ipv4 source mask
+ collect ipv4 destination mask
+ collect transport packets expected counter
+ collect transport packets lost counter
+ collect transport packets lost rate
+ collect transport event packet-loss counter
+ collect transport rtp jitter mean
+ collect transport rtp jitter minimum
+ collect transport rtp jitter maximum
+ collect interface input
+ collect interface output
+ collect counter bytes
+ collect counter packets
+ collect counter bytes rate
+ collect timestamp interval
+ collect application media bytes counter
+ collect application media bytes rate
+ collect application media packets counter
+ collect application media packets rate
+ collect application media event
+ collect monitor event
+!
+!
+flow exporter NETFLOW_SERVER
+ destination 10.56.100.23
+ source GigabitEthernet0/1
+ output-features
+ transport udp 2055
+ template data timeout 60
+ option exporter-stats
+ option application-table
+!
+!
+flow monitor type performance-monitor FLOW_MONITOR_RTP
+ record FLOW_RECORD_RTP
+ exporter NETFLOW_SERVER
+ cache entries 100
+!
+!
+flow monitor type performance-monitor FLOW_MONITOR_TCP
+ record FLOW_RECORD_TCP
+ exporter NETFLOW_SERVER
+ cache entries 1000
+!
+multilink bundle-name authenticated
+!
+!
+!
+performance monitor context EZPM profile application-statistics
+ exporter destination 10.56.100.253 source GigabitEthernet0/1 
+ traffic-monitor application-stats
+!
+!
+!
+!
+redundancy
+!
+!
+!
+class-map match-all TCP
+ match access-group name TCP_TRAFFIC
+class-map match-all RTP
+ match access-group name UDP_TRAFFIC
+!
+policy-map type performance-monitor PERFORMANCE_MONITOR
+ class TCP
+  flow monitor FLOW_MONITOR_TCP
+ class RTP
+  flow monitor FLOW_MONITOR_RTP
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.182 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 172.16.1.56 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.1.254 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ media-type rj45
+ performance monitor context EZPM 
+ service-policy type performance-monitor input PERFORMANCE_MONITOR
+ service-policy type performance-monitor output PERFORMANCE_MONITOR
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip nat inside source list 1 interface GigabitEthernet0/1 overload
+ip route 0.0.0.0 0.0.0.0 172.16.1.254
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended TCP_TRAFFIC
+ permit tcp any any
+ip access-list extended UDP_TRAFFIC
+ permit udp any any
+!
+ipv6 ioam timestamp
+!
+!
+access-list 1 permit 192.168.1.0 0.0.0.255
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="flat-1" type="ASSET" subtype="FLAT" location="654,268">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="H1" type="SIMPLE" subtype="IOSv" location="218,448">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 08:39:27 UTC Fri Nov 2 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname H1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip routing
+!
+!
+!
+!
+!
+!
+ip name-server 1.1.1.1
+no ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.181 255.255.0.0
+ no ip route-cache
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 192.168.1.1 255.255.255.0
+ no ip route-cache
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip default-gateway 192.168.1.254
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip sla 1
+ udp-jitter 1.2.3.4 16384 num-packets 500 interval 4
+ threshold 0
+ timeout 0
+ frequency 1
+ip sla schedule 1 life forever start-time now
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end
+
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
+</topology>

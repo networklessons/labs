@@ -1,0 +1,18 @@
+# download-config.yml
+---
+- name: Download running configuration from Cisco NX-OS devices
+  hosts: cisco_n9kv
+  gather_facts: no
+  vars:
+    ansible_network_os: nxos
+    ansible_connection: network_cli
+  tasks:
+    - name: Fetch the running config
+      cisco.nxos.nxos_command:
+        commands: show running-config
+      register: running_config
+
+    - name: Save running config to a file
+      copy:
+        content: "{{ running_config.stdout[0] }}"
+        dest: "./{{ inventory_hostname }}_startup-config.cfg"

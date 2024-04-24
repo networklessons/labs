@@ -1,0 +1,48 @@
+name: two-leafs-two-endpoints
+
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  kinds:
+    cisco_n9kv:
+      image: vrnetlab/vr-n9kv:10.2.7
+    cisco_csr1000v:
+      image: vrnetlab/vr-csr:16.12.03
+  nodes:
+    LEAF1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.12
+      #startup-config: ./config/LEAF1/startup-config.cfg
+    LEAF2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.13
+      #startup-config: ./config/LEAF2/startup-config.cfg
+    S1:
+      kind: cisco_csr1000v
+      mgmt-ipv4: 172.100.100.16
+    S2:
+      kind: cisco_csr1000v
+      mgmt-ipv4: 172.100.100.17
+
+    GRAPHITE:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+
+    - endpoints: ["LEAF1:eth1", "LEAF2:eth1"]
+    - endpoints: ["LEAF1:eth2", "S1:eth1"]
+    - endpoints: ["LEAF2:eth2", "S2:eth1"]

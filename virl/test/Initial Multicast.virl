@@ -1,0 +1,1833 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <extensions>
+        <entry key="management_network" type="String">exclusive</entry>
+    </extensions>
+    <node name="SW1" type="SIMPLE" subtype="IOSvL2" location="276,348">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:29:19 UTC Sat Mar 5 2016
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain DWDNS
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-4094 priority 4096
+!
+vlan internal allocation policy ascending
+!
+vlan 5,7-10,13,23,37,45,58,67,79,100,108,146 
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ no login
+line vty 5 15
+ no login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+        <interface id="4" name="GigabitEthernet1/1"/>
+        <interface id="5" name="GigabitEthernet1/2"/>
+        <interface id="6" name="GigabitEthernet1/3"/>
+        <interface id="7" name="GigabitEthernet2/0"/>
+        <interface id="8" name="GigabitEthernet2/1"/>
+        <interface id="9" name="GigabitEthernet2/2"/>
+        <interface id="10" name="GigabitEthernet2/3"/>
+    </node>
+    <node name="SW2" type="SIMPLE" subtype="IOSvL2" location="600,348">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:28:57 UTC Sat Mar 5 2016
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain DWDNS
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 5,7-10,13,23,37,45,58,67,79,100,108,146 
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/3
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet2/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree portfast edge trunk
+ spanning-tree link-type point-to-point
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ no login
+line vty 5 15
+ no login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+        <interface id="4" name="GigabitEthernet1/1"/>
+        <interface id="5" name="GigabitEthernet1/2"/>
+        <interface id="6" name="GigabitEthernet1/3"/>
+        <interface id="7" name="GigabitEthernet2/0"/>
+        <interface id="8" name="GigabitEthernet2/1"/>
+        <interface id="9" name="GigabitEthernet2/2"/>
+        <interface id="10" name="GigabitEthernet2/3"/>
+    </node>
+    <node name="SW3" type="SIMPLE" subtype="IOSvL2" location="276,468">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:30:47 UTC Sat Mar 5 2016
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+        <interface id="4" name="GigabitEthernet1/1"/>
+        <interface id="5" name="GigabitEthernet1/2"/>
+    </node>
+    <node name="SW4" type="SIMPLE" subtype="IOSvL2" location="600,468">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 14:30:52 UTC Sat Mar 5 2016
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain DWDNS
+vtp mode transparent
+!
+!
+!
+no ip domain-lookup
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 5,7-10,13,23,37,45,58,67,79,100,108,146 
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet0/3
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/0
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+interface GigabitEthernet1/2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ media-type rj45
+ speed 1000
+ duplex full
+ no negotiation auto
+ spanning-tree link-type point-to-point
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ no login
+line vty 5 15
+ no login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+        <interface id="4" name="GigabitEthernet1/1"/>
+        <interface id="5" name="GigabitEthernet1/2"/>
+    </node>
+    <node name="R1" type="SIMPLE" subtype="IOSv" location="156,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R1&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:1:1::1/128&#xD;
+ ip address 150.1.1.1 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.13&#xD;
+ encapsulation dot1q 13&#xD;
+ ip address 155.1.13.1 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:13::1/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.100&#xD;
+ encapsulation dot1q 100&#xD;
+ ip address 169.254.100.1 255.255.255.0&#xD;
+ ipv6 address 2001:169:254:100::1/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.146&#xD;
+ encapsulation dot1q 146&#xD;
+ ip address 155.1.146.1 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:146::1/64&#xD;
+!&#xD;
+crypto isakmp policy 10&#xD;
+ encr aes&#xD;
+ authentication pre-share&#xD;
+ group 5&#xD;
+ hash md5&#xD;
+! &#xD;
+crypto isakmp key cisco address 0.0.0.0&#xD;
+!&#xD;
+crypto ipsec transform-set ESP_AES_SHA esp-aes esp-sha-hmac&#xD;
+!&#xD;
+crypto ipsec profile DMVPN_PROFILE&#xD;
+ set transform-set ESP_AES_SHA&#xD;
+!&#xD;
+interface Tunnel0&#xD;
+ ip address 155.1.0.1 255.255.255.0&#xD;
+ ip mtu 1400&#xD;
+ ip nhrp authentication NHRPPASS&#xD;
+ ip nhrp map 155.1.0.5 169.254.100.5&#xD;
+ ip nhrp map multicast 169.254.100.5&#xD;
+ ip nhrp network-id 1 &#xD;
+ ip nhrp holdtime 300&#xD;
+ ip nhrp nhs 155.1.0.5&#xD;
+ ip tcp adjust-mss 1360&#xD;
+ ip ospf network non-broadcast&#xD;
+ ip ospf priority 0&#xD;
+ tunnel source GigabitEthernet0/1.100&#xD;
+ tunnel mode gre multipoint&#xD;
+ tunnel key 150&#xD;
+ tunnel protection ipsec profile DMVPN_PROFILE&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface Tunnel10&#xD;
+ ip address 155.1.15.1 255.255.255.0&#xD;
+ tunnel source GigabitEthernet0/1.100&#xD;
+ tunnel destination 169.254.100.5&#xD;
+ tunnel key 100&#xD;
+!&#xD;
+router ospf 1&#xD;
+ router-id 150.1.1.1&#xD;
+ network 150.1.0.0 0.0.255.255 area 0&#xD;
+ network 155.1.0.0 0.0.255.255 area 0&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R2" type="SIMPLE" subtype="IOSv" location="216,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R2&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:2:2::2/128&#xD;
+ ip address 150.1.2.2 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.23&#xD;
+ encapsulation dot1q 23&#xD;
+ ip address 155.1.23.2 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:23::2/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.210&#xD;
+ encapsulation dot1q 210&#xD;
+ ip address 192.10.1.2 255.255.255.0&#xD;
+ ipv6 address 2001:192:10:1::2/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.100&#xD;
+ encapsulation dot1q 100&#xD;
+ ip address 169.254.100.2 255.255.255.0&#xD;
+ ipv6 address 2001:169:254:100::2/64&#xD;
+!&#xD;
+crypto isakmp policy 10&#xD;
+ encr aes&#xD;
+ authentication pre-share&#xD;
+ group 5&#xD;
+ hash md5&#xD;
+! &#xD;
+crypto isakmp key cisco address 0.0.0.0&#xD;
+!&#xD;
+crypto ipsec transform-set ESP_AES_SHA esp-aes esp-sha-hmac&#xD;
+!&#xD;
+crypto ipsec profile DMVPN_PROFILE&#xD;
+ set transform-set ESP_AES_SHA&#xD;
+!&#xD;
+interface Tunnel0&#xD;
+ ip address 155.1.0.2 255.255.255.0&#xD;
+ ip mtu 1400&#xD;
+ ip nhrp authentication NHRPPASS&#xD;
+ ip nhrp map 155.1.0.5 169.254.100.5&#xD;
+ ip nhrp map multicast 169.254.100.5&#xD;
+ ip nhrp network-id 1 &#xD;
+ ip nhrp holdtime 300&#xD;
+ ip nhrp nhs 155.1.0.5&#xD;
+ ip tcp adjust-mss 1360&#xD;
+ ip ospf network non-broadcast&#xD;
+ ip ospf priority 0&#xD;
+ tunnel source GigabitEthernet0/1.100&#xD;
+ tunnel mode gre multipoint&#xD;
+ tunnel key 150&#xD;
+ tunnel protection ipsec profile DMVPN_PROFILE&#xD;
+ no shutdown&#xD;
+!&#xD;
+router ospf 1&#xD;
+ router-id 150.1.2.2&#xD;
+ network 150.1.0.0 0.0.255.255 area 0&#xD;
+ network 155.1.0.0 0.0.255.255 area 0&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R3" type="SIMPLE" subtype="IOSv" location="276,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R3&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:3:3::3/128&#xD;
+ ip address 150.1.3.3 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.13&#xD;
+ encapsulation dot1q 13&#xD;
+ ip address 155.1.13.3 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:13::3/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.23&#xD;
+ encapsulation dot1q 23&#xD;
+ ip address 155.1.23.3 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:23::3/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.37&#xD;
+ encapsulation dot1q 37&#xD;
+ ip address 155.1.37.3 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:37::3/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.100&#xD;
+ encapsulation dot1q 100&#xD;
+ ip address 169.254.100.3 255.255.255.0&#xD;
+ ipv6 address 2001:169:254:100::3/64&#xD;
+!&#xD;
+crypto isakmp policy 10&#xD;
+ encr aes&#xD;
+ authentication pre-share&#xD;
+ group 5&#xD;
+ hash md5&#xD;
+! &#xD;
+crypto isakmp key cisco address 0.0.0.0&#xD;
+!&#xD;
+crypto ipsec transform-set ESP_AES_SHA esp-aes esp-sha-hmac&#xD;
+!&#xD;
+crypto ipsec profile DMVPN_PROFILE&#xD;
+ set transform-set ESP_AES_SHA&#xD;
+!&#xD;
+interface Tunnel0&#xD;
+ ip address 155.1.0.3 255.255.255.0&#xD;
+ ip mtu 1400&#xD;
+ ip nhrp authentication NHRPPASS&#xD;
+ ip nhrp map 155.1.0.5 169.254.100.5&#xD;
+ ip nhrp map multicast 169.254.100.5&#xD;
+ ip nhrp network-id 1 &#xD;
+ ip nhrp holdtime 300&#xD;
+ ip nhrp nhs 155.1.0.5&#xD;
+ ip tcp adjust-mss 1360&#xD;
+ ip ospf network non-broadcast&#xD;
+ ip ospf priority 0&#xD;
+ tunnel source GigabitEthernet0/1.100&#xD;
+ tunnel mode gre multipoint&#xD;
+ tunnel key 150&#xD;
+ tunnel protection ipsec profile DMVPN_PROFILE&#xD;
+ no shutdown&#xD;
+!&#xD;
+router eigrp 100&#xD;
+ network 150.1.0.0 0.0.255.255&#xD;
+ no auto-summary&#xD;
+ network 155.1.0.0 0.0.255.255&#xD;
+!&#xD;
+!&#xD;
+router ospf 1&#xD;
+ router-id 150.1.3.3&#xD;
+ network 150.1.0.0 0.0.255.255 area 0&#xD;
+ network 155.1.0.0 0.0.255.255 area 0&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R4" type="SIMPLE" subtype="IOSv" location="336,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R4&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:4:4::4/128&#xD;
+ ip address 150.1.4.4 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.45&#xD;
+ encapsulation dot1q 45&#xD;
+ ip address 155.1.45.4 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:45::4/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.100&#xD;
+ encapsulation dot1q 100&#xD;
+ ip address 169.254.100.4 255.255.255.0&#xD;
+ ipv6 address 2001:169:254:100::4/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.146&#xD;
+ encapsulation dot1q 146&#xD;
+ ip address 155.1.146.4 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:146::4/64&#xD;
+!&#xD;
+crypto isakmp policy 10&#xD;
+ encr aes&#xD;
+ authentication pre-share&#xD;
+ group 5&#xD;
+ hash md5&#xD;
+! &#xD;
+crypto isakmp key cisco address 0.0.0.0&#xD;
+!&#xD;
+crypto ipsec transform-set ESP_AES_SHA esp-aes esp-sha-hmac&#xD;
+!&#xD;
+crypto ipsec profile DMVPN_PROFILE&#xD;
+ set transform-set ESP_AES_SHA&#xD;
+!&#xD;
+interface Tunnel0&#xD;
+ ip address 155.1.0.4 255.255.255.0&#xD;
+ ip mtu 1400&#xD;
+ ip nhrp authentication NHRPPASS&#xD;
+ ip nhrp map 155.1.0.5 169.254.100.5&#xD;
+ ip nhrp map multicast 169.254.100.5&#xD;
+ ip nhrp network-id 1 &#xD;
+ ip nhrp holdtime 300&#xD;
+ ip nhrp nhs 155.1.0.5&#xD;
+ ip tcp adjust-mss 1360&#xD;
+ ip ospf network non-broadcast&#xD;
+ ip ospf priority 0&#xD;
+ tunnel source GigabitEthernet0/1.100&#xD;
+ tunnel mode gre multipoint&#xD;
+ tunnel key 150&#xD;
+ tunnel protection ipsec profile DMVPN_PROFILE&#xD;
+ no shutdown&#xD;
+!&#xD;
+router eigrp 100&#xD;
+ network 150.1.0.0&#xD;
+ network 155.1.0.0&#xD;
+ passive-interface Tunnel0&#xD;
+ passive-interface Tunnel10&#xD;
+!&#xD;
+!&#xD;
+router ospf 1&#xD;
+ router-id 150.1.4.4&#xD;
+ network 150.1.0.0 0.0.255.255 area 0&#xD;
+ network 155.1.0.0 0.0.255.255 area 0&#xD;
+ passive-interface GigabitEthernet0/1.146&#xD;
+ passive-interface GigabitEthernet0/1.45&#xD;
+ distance ospf external 171&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R5" type="SIMPLE" subtype="IOSv" location="396,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R5&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:5:5::5/128&#xD;
+ ip address 150.1.5.5 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.5&#xD;
+ encapsulation dot1q 5&#xD;
+ ip address 155.1.5.5 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:5::5/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.45&#xD;
+ encapsulation dot1q 45&#xD;
+ ip address 155.1.45.5 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:45::5/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.58&#xD;
+ encapsulation dot1q 58&#xD;
+ ip address 155.1.58.5 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:58::5/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.100&#xD;
+ encapsulation dot1q 100&#xD;
+ ip address 169.254.100.5 255.255.255.0&#xD;
+ ipv6 address 2001:169:254:100::5/64&#xD;
+!&#xD;
+crypto isakmp policy 10&#xD;
+ encr aes&#xD;
+ authentication pre-share&#xD;
+ group 5&#xD;
+ hash md5&#xD;
+! &#xD;
+crypto isakmp key cisco address 0.0.0.0&#xD;
+!&#xD;
+crypto ipsec transform-set ESP_AES_SHA esp-aes esp-sha-hmac&#xD;
+!&#xD;
+crypto ipsec profile DMVPN_PROFILE&#xD;
+ set transform-set ESP_AES_SHA&#xD;
+!&#xD;
+interface Tunnel0&#xD;
+ ip address 155.1.0.5 255.255.255.0&#xD;
+ ip mtu 1400&#xD;
+ ip nhrp authentication NHRPPASS&#xD;
+ ip nhrp map multicast dynamic&#xD;
+ ip nhrp network-id 1&#xD;
+ ip tcp adjust-mss 1360&#xD;
+ delay 1000&#xD;
+ ip ospf network non-broadcast&#xD;
+ tunnel source GigabitEthernet0/1.100&#xD;
+ tunnel mode gre multipoint&#xD;
+ tunnel key 150&#xD;
+ tunnel protection ipsec profile DMVPN_PROFILE&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface Tunnel10&#xD;
+ ip address 155.1.15.5 255.255.255.0&#xD;
+ ip pim dense-mode&#xD;
+ tunnel source GigabitEthernet0/1.100&#xD;
+ tunnel destination 169.254.100.1&#xD;
+ tunnel key 100&#xD;
+!&#xD;
+router eigrp 100&#xD;
+ network 150.1.0.0&#xD;
+ network 155.1.0.0&#xD;
+ redistribute ospf 1 metric 1 1 1 1 1&#xD;
+ passive-interface Tunnel0&#xD;
+ passive-interface Tunnel10&#xD;
+!&#xD;
+router ospf 1&#xD;
+ router-id 150.1.5.5&#xD;
+ network 150.1.0.0 0.0.255.255 area 0&#xD;
+ network 155.1.0.0 0.0.255.255 area 0&#xD;
+ redistribute eigrp 100 subnets&#xD;
+ distance ospf external 171&#xD;
+ neighbor 155.1.0.1&#xD;
+ neighbor 155.1.0.2&#xD;
+ neighbor 155.1.0.3&#xD;
+ neighbor 155.1.0.4&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R6" type="SIMPLE" subtype="IOSv" location="480,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R6&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:6:6::6/128&#xD;
+ ip address 150.1.6.6 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.67&#xD;
+ encapsulation dot1q 67&#xD;
+ ip address 155.1.67.6 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:67::6/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.146&#xD;
+ encapsulation dot1q 146&#xD;
+ ip address 155.1.146.6 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:146::6/64&#xD;
+!&#xD;
+router eigrp 100&#xD;
+ no auto-summary&#xD;
+ network 150.1.0.0 0.0.255.255&#xD;
+ network 155.1.0.0 0.0.255.255&#xD;
+ redistribute ospf 1 metric 1 1 1 1 1&#xD;
+!&#xD;
+router ospf 1&#xD;
+ router-id 150.1.6.6&#xD;
+ network 155.1.67.6 0.0.0.0 area 0&#xD;
+ redistribute eigrp 100 subnets&#xD;
+ distance ospf external 171&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R7" type="SIMPLE" subtype="IOSv" location="540,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R7&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:7:7::7/128&#xD;
+ ip address 150.1.7.7 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.7&#xD;
+ encapsulation dot1q 7&#xD;
+ ip address 155.1.7.7 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:7::7/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.37&#xD;
+ encapsulation dot1q 37&#xD;
+ ip address 155.1.37.7 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:37::7/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.67&#xD;
+ encapsulation dot1q 67&#xD;
+ ip address 155.1.67.7 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:67::7/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.79&#xD;
+ encapsulation dot1q 79&#xD;
+ ip address 155.1.79.7 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:79::7/64&#xD;
+!&#xD;
+router ospf 1&#xD;
+ router-id 150.1.7.7&#xD;
+ network 155.1.0.0 0.0.255.255 area 0&#xD;
+ network 150.1.0.0 0.0.255.255 area 0&#xD;
+ !&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R8" type="SIMPLE" subtype="IOSv" location="600,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+configure terminal&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+!&#xD;
+hostname R8&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+ip routing&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ipv6 address 2001:150:8:8::8/128&#xD;
+ ip address 150.1.8.8 255.255.255.255&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ cdp enable&#xD;
+ no shutdown&#xD;
+!&#xD;
+interface GigabitEthernet0/1.8&#xD;
+ encapsulation dot1q 8&#xD;
+ ip address 155.1.8.8 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:8::8/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.58&#xD;
+ encapsulation dot1q 58&#xD;
+ ip address 155.1.58.8 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:58::8/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.108&#xD;
+ encapsulation dot1q 108&#xD;
+ ip address 155.1.108.8 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:108::8/64&#xD;
+!&#xD;
+router eigrp 100&#xD;
+ no auto-summary&#xD;
+ network 150.1.0.0 0.0.255.255&#xD;
+ network 155.1.0.0 0.0.255.255&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ logging synchronous&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R9" type="SIMPLE" subtype="IOSv" location="660,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+conf t&#xD;
+version 15.4&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+no platform punt-keepalive disable-kernel-core&#xD;
+platform console serial&#xD;
+!&#xD;
+hostname R9&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+!&#xD;
+subscriber templating&#xD;
+!&#xD;
+multilink bundle-name authenticated&#xD;
+!&#xD;
+!&#xD;
+license udi pid CSR1000V sn 9Y9VCZ8B841&#xD;
+license boot level premium&#xD;
+spanning-tree extend system-id&#xD;
+!&#xD;
+!&#xD;
+redundancy&#xD;
+ mode none&#xD;
+!&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+!&#xD;
+interface Loopback0&#xD;
+ ip address 150.1.9.9 255.255.255.255&#xD;
+ ipv6 address 2001:150:9:9::9/128&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ no ip address&#xD;
+ negotiation auto&#xD;
+ cdp enable&#xD;
+ no shut&#xD;
+!&#xD;
+interface GigabitEthernet0/1.9&#xD;
+ encapsulation dot1Q 9&#xD;
+ ip address 155.1.9.9 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:9::9/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.79&#xD;
+ encapsulation dot1Q 79&#xD;
+ ip address 155.1.79.9 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:79::9/64&#xD;
+!&#xD;
+!&#xD;
+interface GigabitEthernet2&#xD;
+ no ip address&#xD;
+ shutdown&#xD;
+ negotiation auto&#xD;
+!&#xD;
+interface GigabitEthernet3&#xD;
+ no ip address&#xD;
+ shutdown&#xD;
+ negotiation auto&#xD;
+!&#xD;
+router ospf 1&#xD;
+ network 150.1.0.0 0.0.255.255 area 0&#xD;
+ network 155.1.0.0 0.0.255.255 area 0&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+ip forward-protocol nd&#xD;
+!&#xD;
+!&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ privilege level 15&#xD;
+ logging synchronous&#xD;
+ stopbits 1&#xD;
+line aux 0&#xD;
+ stopbits 1&#xD;
+line vty 0 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+!&#xD;
+end
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R10" type="SIMPLE" subtype="IOSv" location="720,228">
+        <extensions>
+            <entry key="config" type="String">!
+version 15.2
+!
+enable&#xD;
+conf t&#xD;
+!&#xD;
+version 15.4&#xD;
+no service timestamps debug uptime&#xD;
+no service timestamps log uptime&#xD;
+no platform punt-keepalive disable-kernel-core&#xD;
+platform console serial&#xD;
+!&#xD;
+hostname R10&#xD;
+!&#xD;
+boot-start-marker&#xD;
+boot-end-marker&#xD;
+!&#xD;
+!&#xD;
+vrf definition AS_254&#xD;
+ rd 100:100&#xD;
+ !&#xD;
+ address-family ipv4&#xD;
+ exit-address-family&#xD;
+ !&#xD;
+ address-family ipv6&#xD;
+ exit-address-family&#xD;
+!&#xD;
+!&#xD;
+no aaa new-model&#xD;
+!&#xD;
+no ip domain lookup&#xD;
+!&#xD;
+ipv6 unicast-routing&#xD;
+!&#xD;
+!&#xD;
+subscriber templating&#xD;
+!&#xD;
+multilink bundle-name authenticated&#xD;
+!&#xD;
+!&#xD;
+license udi pid CSR1000V sn 9Y9VCZ8B841&#xD;
+license boot level premium&#xD;
+spanning-tree extend system-id&#xD;
+!&#xD;
+!&#xD;
+redundancy&#xD;
+ mode none&#xD;
+!&#xD;
+!&#xD;
+cdp run&#xD;
+!&#xD;
+! &#xD;
+interface Loopback0&#xD;
+ ip address 150.1.10.10 255.255.255.255&#xD;
+ ipv6 address 2001:150:10:10::10/128&#xD;
+!&#xD;
+interface GigabitEthernet0/1&#xD;
+ no shut&#xD;
+ no ip address&#xD;
+ negotiation auto&#xD;
+ cdp enable&#xD;
+!&#xD;
+interface GigabitEthernet0/1.10&#xD;
+ encapsulation dot1Q 10&#xD;
+ ip address 155.1.10.10 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:10::10/64&#xD;
+!&#xD;
+interface GigabitEthernet0/1.108&#xD;
+ encapsulation dot1Q 108&#xD;
+ ip address 155.1.108.10 255.255.255.0&#xD;
+ ipv6 address 2001:155:1:108::10/64&#xD;
+!&#xD;
+!&#xD;
+interface GigabitEthernet2&#xD;
+ no ip address&#xD;
+ shutdown&#xD;
+ negotiation auto&#xD;
+!&#xD;
+interface GigabitEthernet3&#xD;
+ no ip address&#xD;
+ shutdown&#xD;
+ negotiation auto&#xD;
+!&#xD;
+router eigrp 100&#xD;
+ no auto-summary&#xD;
+ network 150.1.0.0 0.0.255.255&#xD;
+ network 155.1.0.0 0.0.255.255&#xD;
+!&#xD;
+!&#xD;
+virtual-service csr_mgmt&#xD;
+!&#xD;
+ip forward-protocol nd&#xD;
+!&#xD;
+control-plane&#xD;
+!&#xD;
+!&#xD;
+line con 0&#xD;
+ exec-timeout 0 0&#xD;
+ privilege level 15&#xD;
+ logging synchronous&#xD;
+ stopbits 1&#xD;
+line aux 0&#xD;
+ stopbits 1&#xD;
+line vty 0&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+line vty 1&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+ length 0&#xD;
+line vty 2 4&#xD;
+ privilege level 15&#xD;
+ no login&#xD;
+!&#xD;
+!&#xD;
+end&#xD;
+&#xD;
+
+!
+end
+</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="flat-1" type="ASSET" subtype="FLAT" location="156,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-2" type="ASSET" subtype="FLAT" location="216,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-3" type="ASSET" subtype="FLAT" location="276,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-4" type="ASSET" subtype="FLAT" location="336,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-5" type="ASSET" subtype="FLAT" location="396,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-6" type="ASSET" subtype="FLAT" location="480,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-7" type="ASSET" subtype="FLAT" location="540,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-8" type="ASSET" subtype="FLAT" location="600,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-9" type="ASSET" subtype="FLAT" location="660,132">
+        <interface id="0" name="link0"/>
+    </node>
+    <node name="flat-10" type="ASSET" subtype="FLAT" location="716,131">
+        <interface id="0" name="link0"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[2]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[2]" src="/virl:topology/virl:node[1]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[2]" src="/virl:topology/virl:node[2]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[3]" src="/virl:topology/virl:node[4]/virl:interface[3]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[4]" src="/virl:topology/virl:node[4]/virl:interface[4]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[5]" src="/virl:topology/virl:node[3]/virl:interface[5]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[6]" src="/virl:topology/virl:node[3]/virl:interface[6]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[5]" src="/virl:topology/virl:node[1]/virl:interface[5]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[6]" src="/virl:topology/virl:node[1]/virl:interface[6]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[7]" src="/virl:topology/virl:node[5]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[8]" src="/virl:topology/virl:node[6]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[9]" src="/virl:topology/virl:node[7]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[10]" src="/virl:topology/virl:node[8]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[11]" src="/virl:topology/virl:node[9]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[7]" src="/virl:topology/virl:node[10]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[8]" src="/virl:topology/virl:node[11]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[9]" src="/virl:topology/virl:node[12]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[10]" src="/virl:topology/virl:node[13]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[11]" src="/virl:topology/virl:node[14]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[15]/virl:interface[1]" src="/virl:topology/virl:node[5]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[2]" src="/virl:topology/virl:node[16]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[2]" src="/virl:topology/virl:node[17]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[8]/virl:interface[2]" src="/virl:topology/virl:node[18]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[9]/virl:interface[2]" src="/virl:topology/virl:node[19]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[2]" src="/virl:topology/virl:node[20]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[11]/virl:interface[2]" src="/virl:topology/virl:node[21]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[12]/virl:interface[2]" src="/virl:topology/virl:node[22]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[13]/virl:interface[2]" src="/virl:topology/virl:node[23]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[14]/virl:interface[2]" src="/virl:topology/virl:node[24]/virl:interface[1]"/>
+</topology>

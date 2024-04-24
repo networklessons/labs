@@ -1,0 +1,181 @@
+{
+  "name": "exec-test-ubuntu",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-0d9b3ee75807",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "host1": {
+      "index": "0",
+      "shortname": "host1",
+      "longname": "clab-exec-test-ubuntu-host1",
+      "fqdn": "host1.exec-test-ubuntu.io",
+      "group": "",
+      "labdir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host1",
+      "kind": "linux",
+      "image": "networklessons/ubuntu-network-host:26",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-0d9b3ee75807",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host1",
+        "clab-node-name": "host1",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/exec-test-ubuntu.clab.yml",
+        "containerlab": "exec-test-ubuntu"
+      },
+      "port-bindings": [
+      ]
+    },
+    "host2": {
+      "index": "1",
+      "shortname": "host2",
+      "longname": "clab-exec-test-ubuntu-host2",
+      "fqdn": "host2.exec-test-ubuntu.io",
+      "group": "",
+      "labdir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host2",
+      "kind": "linux",
+      "image": "networklessons/ubuntu-network-host:26",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-0d9b3ee75807",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host2",
+        "clab-node-name": "host2",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/exec-test-ubuntu.clab.yml",
+        "containerlab": "exec-test-ubuntu"
+      },
+      "port-bindings": [
+      ]
+    },
+    "host3": {
+      "index": "2",
+      "shortname": "host3",
+      "longname": "clab-exec-test-ubuntu-host3",
+      "fqdn": "host3.exec-test-ubuntu.io",
+      "group": "",
+      "labdir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host3",
+      "kind": "linux",
+      "image": "networklessons/ubuntu-network-host:26",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-0d9b3ee75807",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host3",
+        "clab-node-name": "host3",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/exec-test-ubuntu.clab.yml",
+        "containerlab": "exec-test-ubuntu"
+      },
+      "port-bindings": [
+      ]
+    },
+    "host4": {
+      "index": "3",
+      "shortname": "host4",
+      "longname": "clab-exec-test-ubuntu-host4",
+      "fqdn": "host4.exec-test-ubuntu.io",
+      "group": "",
+      "labdir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host4",
+      "kind": "linux",
+      "image": "networklessons/ubuntu-network-host:26",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-0d9b3ee75807",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/clab-exec-test-ubuntu/host4",
+        "clab-node-name": "host4",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/ubuntu/labs/containerlab/labs/exec-test-ubuntu/exec-test-ubuntu.clab.yml",
+        "containerlab": "exec-test-ubuntu"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "host1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:01:f4:91",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:4d:d9:1e",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "host2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:90:f2:1f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host3",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:65:be:7f",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "host3",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:b0:73:22",
+        "peer": "z"
+      },
+      "z": {
+        "node": "host4",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:ac:c1:0a",
+        "peer": "a"
+      }
+    }
+  ]
+}

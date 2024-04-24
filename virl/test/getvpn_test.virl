@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <node name="unmanagedswitch-1" type="SIMPLE" subtype="Unmanaged Switch" location="878,324">
+        <interface id="0" name="link1"/>
+        <interface id="1" name="link2"/>
+        <interface id="2" name="link3"/>
+        <interface id="3" name="link4"/>
+    </node>
+    <node name="KS1" type="SIMPLE" subtype="IOSv" location="518,296">
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="GM1" type="SIMPLE" subtype="IOSv" location="1152,174">
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="GM2" type="SIMPLE" subtype="IOSv" location="1144,366">
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="GM3" type="SIMPLE" subtype="IOSv" location="1090,572">
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <annotations/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[3]" src="/virl:topology/virl:node[4]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[1]/virl:interface[4]" src="/virl:topology/virl:node[5]/virl:interface[1]"/>
+</topology>

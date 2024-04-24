@@ -1,0 +1,103 @@
+lab:
+  description: Imported from ipv6_ra_guard.virl
+  notes: |-
+    ## Import Progress
+    - processing node /H1 (iosv)
+    - processing node /R1 (iosv)
+    - processing node /R2 (iosv)
+    - processing node /SW1 (iosvl2)
+    - link GigabitEthernet0/1.R1 -> GigabitEthernet0/1.SW1
+    - link GigabitEthernet0/1.R2 -> GigabitEthernet0/2.SW1
+    - link GigabitEthernet0/3.SW1 -> GigabitEthernet0/1.H1
+  timestamp: 1626768057.0947134
+  title: ipv6_ra_guard.virl
+  version: 0.0.4
+nodes:
+  - id: n0
+    label: H1
+    node_definition: iosv
+    x: 50
+    y: 158
+    configuration: null
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n1
+    label: R1
+    node_definition: iosv
+    x: 474
+    y: 50
+    configuration: null
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n2
+    label: R2
+    node_definition: iosv
+    x: 468
+    y: 328
+    configuration: null
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n3
+    label: SW1
+    node_definition: iosvl2
+    x: 266
+    y: 158
+    configuration: null
+    tags: []
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+      - id: i2
+        slot: 2
+        label: GigabitEthernet0/2
+        type: physical
+      - id: i3
+        slot: 3
+        label: GigabitEthernet0/3
+        type: physical
+links:
+  - id: l0
+    i1: i1
+    n1: n1
+    i2: i1
+    n2: n3
+  - id: l1
+    i1: i1
+    n1: n2
+    i2: i2
+    n2: n3
+  - id: l2
+    i1: i3
+    n1: n3
+    i2: i1
+    n2: n0

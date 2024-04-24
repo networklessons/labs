@@ -1,0 +1,15 @@
+containerlab/images/
+containerlab/vrnetlab/
+*.yaml.bak
+*.yml.bak
+.*.yaml
+containerlab/labs/**/*.key
+containerlab/labs/**/*.pem
+authorized_keys
+containerlab/labs/graphite/2host/clab-2host/authorized_keys
+containerlab/labs/graphite/2host/clab-2host/authorized_keys
+*.swp
+*.qcow2
+*.vmdk
+*.key
+*.pem

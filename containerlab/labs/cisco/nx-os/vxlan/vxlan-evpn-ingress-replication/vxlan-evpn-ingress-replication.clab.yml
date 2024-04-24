@@ -1,0 +1,79 @@
+# topology documentation: http://containerlab.dev/lab-examples/srl-ceos/
+name: vvxlan-evpn-ingress-replication
+
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  kinds:
+    cisco_n9kv:
+      image: vrnetlab/vr-n9kv:10.2.7
+    linux:
+      image: networklessons/ubuntu-network-host:latest
+  nodes:
+    spine1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-vxlan-evpn-ingress-replication-bgp/spine1/config/startup-config.cfg
+    spine2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-vxlan-evpn-ingress-replication-bgp/spine2/config/startup-config.cfg
+    leaf1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-vxlan-evpn-ingress-replication-bgp/leaf1/config/startup-config.cfg
+    leaf2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-vxlan-evpn-ingress-replication-bgp/leaf2/config/startup-config.cfg
+    leaf3:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-vxlan-evpn-ingress-replication-bgp/leaf3/config/startup-config.cfg
+    leaf4:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-vxlan-evpn-ingress-replication-bgp/leaf4/config/startup-config.cfg
+    s1:
+      kind: linux
+      mgmt-ipv4: 172.100.100.16
+    s2:
+      kind: linux
+      mgmt-ipv4: 172.100.100.17
+    s3:
+      kind: linux
+      mgmt-ipv4: 172.100.100.18
+    s4:
+      kind: linux
+      mgmt-ipv4: 172.100.100.19
+
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["spine1:eth1", "leaf1:eth1"]
+    - endpoints: ["spine1:eth2", "leaf2:eth1"]
+    - endpoints: ["spine1:eth3", "leaf3:eth1"]
+    - endpoints: ["spine1:eth4", "leaf4:eth1"]
+    - endpoints: ["spine2:eth1", "leaf1:eth2"]
+    - endpoints: ["spine2:eth2", "leaf2:eth2"]
+    - endpoints: ["spine2:eth3", "leaf3:eth2"]
+    - endpoints: ["spine2:eth4", "leaf4:eth2"]
+    - endpoints: ["leaf1:eth3", "s1:eth1"]
+    - endpoints: ["leaf2:eth3", "s2:eth1"]
+    - endpoints: ["leaf3:eth3", "s3:eth1"]
+    - endpoints: ["leaf4:eth3", "s4:eth1"]

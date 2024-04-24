@@ -1,0 +1,95 @@
+{
+  "name": "srlceos01",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-99f9e9a16e23",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "ceos": {
+      "index": "0",
+      "shortname": "ceos",
+      "longname": "clab-srlceos01-ceos",
+      "fqdn": "ceos.srlceos01.io",
+      "group": "",
+      "labdir": "/home/ubuntu/containerlab/labs/clab-quickstart/clab-srlceos01/ceos",
+      "kind": "arista_ceos",
+      "image": "ceos:4.31.2F",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:3b:a9:73",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-99f9e9a16e23",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/ubuntu/containerlab/labs/clab-quickstart/clab-srlceos01/ceos",
+        "clab-node-name": "ceos",
+        "clab-node-type": "",
+        "clab-topo-file": "/home/ubuntu/containerlab/labs/clab-quickstart/srlceos01.clab.yml",
+        "containerlab": "srlceos01"
+      },
+      "port-bindings": [
+      ]
+    },
+    "srl": {
+      "index": "1",
+      "shortname": "srl",
+      "longname": "clab-srlceos01-srl",
+      "fqdn": "srl.srlceos01.io",
+      "group": "",
+      "labdir": "/home/ubuntu/containerlab/labs/clab-quickstart/clab-srlceos01/srl",
+      "kind": "nokia_srlinux",
+      "image": "ghcr.io/nokia/srlinux",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "1a:ad:01:00:00:00",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-99f9e9a16e23",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_srlinux",
+        "clab-node-lab-dir": "/home/ubuntu/containerlab/labs/clab-quickstart/clab-srlceos01/srl",
+        "clab-node-name": "srl",
+        "clab-node-type": "ixrd2",
+        "clab-topo-file": "/home/ubuntu/containerlab/labs/clab-quickstart/srlceos01.clab.yml",
+        "containerlab": "srlceos01"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "srl",
+        "interface": "e1-1",
+        "mac": "aa:c1:ab:81:88:57",
+        "peer": "z"
+      },
+      "z": {
+        "node": "ceos",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:58:10:ad",
+        "peer": "a"
+      }
+    }
+  ]
+}

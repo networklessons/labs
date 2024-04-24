@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.9/virl.xsd">
+    <node name="R1" type="SIMPLE" subtype="IOSv" location="320,192">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 16:11:52 UTC Mon Mar 14 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.16.0.1 255.255.255.0
+!
+interface Loopback1
+ ip address 172.16.1.1 255.255.255.0
+!
+interface Loopback2
+ ip address 11.11.11.11 255.255.255.0
+ shutdown
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.12.1 255.255.255.0
+ ip summary-address eigrp 1 11.0.0.0 255.0.0.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.13.1 255.255.255.0
+ ip summary-address eigrp 1 11.0.0.0 255.0.0.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 1
+ network 11.0.0.0
+ network 172.16.0.0 0.0.0.255
+ network 172.16.1.0 0.0.0.255
+ network 192.168.12.0
+ network 192.168.13.0
+ passive-interface GigabitEthernet0/2
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R2" type="SIMPLE" subtype="IOSv" location="677,196">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 16:11:34 UTC Mon Mar 14 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.16.2.2 255.255.255.0
+!
+interface Loopback1
+ ip address 172.16.22.2 255.255.255.0
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.24.2 255.255.255.128
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 1
+ metric weights 0 1 1 1 0 0
+ network 172.16.22.0 0.0.0.255
+ network 192.168.21.0
+ network 192.168.24.0
+ redistribute connected metric 4294967295 4294967295 0 255 1
+ offset-list 1 in 261632 GigabitEthernet0/1 
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 11.0.0.0 255.0.0.0 Null0
+!
+!
+!
+access-list 1 permit 192.168.34.0 0.0.0.255
+!
+control-plane
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R3" type="SIMPLE" subtype="IOSv" location="320,466">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 16:11:51 UTC Mon Mar 14 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+key chain EIGRP_SECURE
+ key 1
+  key-string Cisco 
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.16.3.3 255.255.255.0
+!
+interface Loopback1
+ ip address 172.16.33.3 255.255.255.0
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.13.3 255.255.255.0
+ ip access-group LAN_PROTECTION in
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.34.3 255.255.255.0
+ ip authentication mode eigrp 1 md5
+ ip authentication key-chain eigrp 1 EIGRP_SECURE
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 1
+ network 172.16.3.0 0.0.0.255
+ network 172.16.33.0 0.0.0.255
+ network 192.168.13.0
+ network 192.168.34.0
+ auto-summary
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ip access-list extended LAN_PROTECTION
+ permit ip 192.168.31.0 0.0.0.255 host 224.0.0.10
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="R4" type="SIMPLE" subtype="IOSv" location="675,476">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 16:11:52 UTC Mon Mar 14 2016
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+key chain EIGRP_SECURE
+ key 1
+  key-string Cisco
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.16.4.4 255.255.255.0
+!
+interface Loopback1
+ ip address 172.16.44.4 255.255.255.0
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.24.4 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 192.168.34.4 255.255.255.0
+ ip authentication mode eigrp 1 md5
+ ip authentication key-chain eigrp 2 EIGRP_SECURE
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 1
+ distribute-list 2 out GigabitEthernet0/1
+ network 172.16.4.0 0.0.0.255
+ network 192.168.24.0
+ network 192.168.34.0
+ redistribute connected route-map R4_L1
+ auto-summary
+ eigrp router-id 172.16.1.1
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+route-map R4_L1 permit 10
+ match interface Loopback1
+!
+!
+access-list 2 deny   192.168.34.0 0.0.0.255
+access-list 2 permit any
+!
+control-plane
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[2]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
+</topology>
