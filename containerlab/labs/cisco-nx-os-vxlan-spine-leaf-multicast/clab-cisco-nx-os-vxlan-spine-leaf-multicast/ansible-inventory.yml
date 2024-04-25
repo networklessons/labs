@@ -25,6 +25,8 @@ all:
           ansible_host: 172.100.100.11
     linux:
       hosts:
+        clab-cisco-nx-os-vxlan-spine-leaf-multicast-graphite:
+          ansible_host: 172.100.100.100
         clab-cisco-nx-os-vxlan-spine-leaf-multicast-s1:
           ansible_host: 172.100.100.16
         clab-cisco-nx-os-vxlan-spine-leaf-multicast-s2:
@@ -33,5 +35,3 @@ all:
           ansible_host: 172.100.100.18
         clab-cisco-nx-os-vxlan-spine-leaf-multicast-s4:
           ansible_host: 172.100.100.19
-        clab-cisco-nx-os-vxlan-spine-leaf-multicast-ssh:
-          ansible_host: 172.100.100.100
