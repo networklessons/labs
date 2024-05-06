@@ -1,0 +1,79 @@
+# Arista CEOS lab with single spine switch and two leaf switches.
+# Spine switch is the (static) RP.
+
+name: vxlan-frr-multicast-one-spine
+
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  nodes:
+    spine1:
+      kind: linux
+      image: quay.io/frrouting/frr:7.5.0 
+      cmd: /sbin/init
+      binds:
+        - ./clab-vxlan-frr-multicast-one-spine/spine1/frr-daemons.cfg:/etc/frr/daemons
+      #mgmt-ipv4: 172.100.100.10
+      # example binds:
+      # https://github.com/srl-labs/containerlab/blob/main/lab-examples/frr01/frr01.clab.yml
+
+      labels:
+        graph-level: 1
+        graph-icon: switch
+    leaf1:
+      kind: linux
+      image: quay.io/frrouting/frr:7.5.0 
+      cmd: /sbin/init
+      binds:
+        - ./clab-vxlan-frr-multicast-one-spine/leaf1/frr-daemons.cfg:/etc/frr/daemons
+      #mgmt-ipv4: 172.100.100.12
+      labels:
+        graph-level: 2
+        graph-icon: switch
+    leaf2:
+      kind: linux
+      image: quay.io/frrouting/frr:7.5.0 
+      cmd: /sbin/init
+      binds:
+        - ./clab-vxlan-frr-multicast-one-spine/leaf2/frr-daemons.cfg:/etc/frr/daemons
+      #mgmt-ipv4: 172.100.100.13
+      labels:
+        graph-level: 2
+        graph-icon: switch
+    s1:
+      kind: linux
+      image: networklessons/ubuntu-lab-host:61
+      #mgmt-ipv4: 172.100.100.16
+      labels:
+        graph-level: 3
+        graph-icon: server
+    s2:
+      kind: linux
+      image: networklessons/ubuntu-lab-host:61
+      #mgmt-ipv4: 172.100.100.17
+      labels:
+        graph-level: 3
+        graph-icon: server
+
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.103
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8081:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["spine1:eth1", "leaf1:eth1"]
+    - endpoints: ["spine1:eth2", "leaf2:eth1"]
+    - endpoints: ["leaf1:eth2", "s1:eth1"]
+    - endpoints: ["leaf2:eth2", "s2:eth1"]
