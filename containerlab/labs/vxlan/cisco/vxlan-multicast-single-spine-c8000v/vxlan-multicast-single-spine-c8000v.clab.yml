@@ -1,7 +1,7 @@
 # Cisco C8000v VXLAN Multicast lab with single spine switch and two leaf switches.
 # Spine switch is the (static) RP.
 
-name: vxlan-frr-multicast-one-spine
+name: vxlan-multicast-single-spine-c8000v
 
 mgmt:
   network: statics
