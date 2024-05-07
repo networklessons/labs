@@ -15,10 +15,7 @@ topology:
       cmd: /sbin/init
       binds:
         - ./clab-vxlan-frr-multicast-one-spine/spine1/frr-daemons.cfg:/etc/frr/daemons
-      #mgmt-ipv4: 172.100.100.10
-      # example binds:
-      # https://github.com/srl-labs/containerlab/blob/main/lab-examples/frr01/frr01.clab.yml
-
+        - ./clab-vxlan-frr-multicast-one-spine/spine1/frr-config.cfg:/etc/frr/frr.conf
       labels:
         graph-level: 1
         graph-icon: switch
@@ -28,7 +25,7 @@ topology:
       cmd: /sbin/init
       binds:
         - ./clab-vxlan-frr-multicast-one-spine/leaf1/frr-daemons.cfg:/etc/frr/daemons
-      #mgmt-ipv4: 172.100.100.12
+        - ./clab-vxlan-frr-multicast-one-spine/leaf1/frr-config.cfg:/etc/frr/frr.conf
       labels:
         graph-level: 2
         graph-icon: switch
@@ -38,6 +35,7 @@ topology:
       cmd: /sbin/init
       binds:
         - ./clab-vxlan-frr-multicast-one-spine/leaf2/frr-daemons.cfg:/etc/frr/daemons
+        - ./clab-vxlan-frr-multicast-one-spine/leaf2/frr-config.cfg:/etc/frr/frr.conf
       #mgmt-ipv4: 172.100.100.13
       labels:
         graph-level: 2
