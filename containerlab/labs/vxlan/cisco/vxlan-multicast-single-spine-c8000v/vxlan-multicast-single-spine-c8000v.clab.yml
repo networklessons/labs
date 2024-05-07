@@ -46,7 +46,7 @@ topology:
       #mgmt-ipv4: 172.100.100.17
       exec:
       - ip link set dev eth1 address 00:50:c2:53:40:01
-      - ip addr add 172.16.12.1/24 dev eth1
+      - ip addr add 172.16.12.2/24 dev eth1
       labels:
         graph-level: 3
         graph-icon: server
