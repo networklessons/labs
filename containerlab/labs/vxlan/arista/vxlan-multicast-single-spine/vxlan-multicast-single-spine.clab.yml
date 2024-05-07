@@ -12,7 +12,7 @@ topology:
     arista_ceos:
       image: ceos:4.31.2F
     linux:
-      image: networklessons/ubuntu-lab-host:61
+      image: networklessons/lab-node-ubuntu:75
   nodes:
     spine1:
       kind: arista_ceos

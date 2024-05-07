@@ -44,14 +44,14 @@ topology:
         graph-icon: switch
     s1:
       kind: linux
-      image: networklessons/ubuntu-lab-host:61
+      image: networklessons/lab-node-ubuntu:75
       #mgmt-ipv4: 172.100.100.16
       labels:
         graph-level: 3
         graph-icon: server
     s2:
       kind: linux
-      image: networklessons/ubuntu-lab-host:61
+      image: networklessons/lab-node-ubuntu:75
       #mgmt-ipv4: 172.100.100.17
       labels:
         graph-level: 3

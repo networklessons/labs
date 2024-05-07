@@ -14,7 +14,7 @@ topology:
     cisco_n9kv:
       image: vrnetlab/vr-n9kv:10.3.4
     linux:
-      image: networklessons/ubuntu-lab-host:61
+      image: networklessons/lab-node-ubuntu:75
   nodes:
     spine1:
       kind: cisco_n9kv
