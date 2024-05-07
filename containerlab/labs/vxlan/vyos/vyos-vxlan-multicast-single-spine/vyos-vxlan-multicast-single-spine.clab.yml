@@ -1,4 +1,4 @@
-# Arista CEOS lab with single spine switch and two leaf switches.
+# VyOS lab with single spine switch and two leaf switches.
 # Spine switch is the (static) RP.
 
 name: vxlan-vyos-multicast-one-spine
@@ -11,18 +11,18 @@ topology:
   nodes:
     spine1:
       kind: linux
-      image: vyos/image:1.3
+      image: vyos:1.5-2405061453
       cmd: /sbin/init
       binds:
         - /lib/modules:/lib/modules
       #mgmt-ipv4: 172.100.100.10
-      #startup-config: ./clab-vxlan-multicast-one-spine/spine1/config/startup-config.cfg
+
       labels:
         graph-level: 1
         graph-icon: switch
     leaf1:
       kind: linux
-      image: vyos/image:1.3
+      image: vyos:1.5-2405061453
       cmd: /sbin/init
       binds:
         - /lib/modules:/lib/modules
@@ -33,7 +33,7 @@ topology:
         graph-icon: switch
     leaf2:
       kind: linux
-      image: vyos/image:1.3
+      image: vyos:1.5-2405061453
       cmd: /sbin/init
       binds:
         - /lib/modules:/lib/modules
