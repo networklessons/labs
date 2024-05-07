@@ -30,4 +30,4 @@ containerlab/labs/graphite/2host/clab-2host/authorized_keys
 **/flash/boot-config
 **/flash/startup-config
 topology-data.json
-ansible-inventory.yml
+**/ansible-inventory.yml
