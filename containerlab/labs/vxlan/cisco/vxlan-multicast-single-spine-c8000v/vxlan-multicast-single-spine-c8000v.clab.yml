@@ -12,19 +12,21 @@ topology:
     spine1:
       kind: cisco_c8000v
       image: vrnetlab/vr-c8000v:17.13.01a
+      startup-config: ./config/spine1/startup-config.cfg
       labels:
         graph-level: 1
         graph-icon: switch
     leaf1:
       kind: cisco_c8000v
       image: vrnetlab/vr-c8000v:17.13.01a
-      cmd: /sbin/init
+      startup-config: ./config/spine1/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     leaf2:
       kind: cisco_c8000v
       image: vrnetlab/vr-c8000v:17.13.01a
+      startup-config: ./config/spine1/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
@@ -32,6 +34,9 @@ topology:
       kind: linux
       image: networklessons/lab-node-ubuntu:75
       #mgmt-ipv4: 172.100.100.16
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:40:01
+      - ip addr add 172.16.12.1/24 dev eth1
       labels:
         graph-level: 3
         graph-icon: server
@@ -39,6 +44,9 @@ topology:
       kind: linux
       image: networklessons/lab-node-ubuntu:75
       #mgmt-ipv4: 172.100.100.17
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:40:01
+      - ip addr add 172.16.12.1/24 dev eth1
       labels:
         graph-level: 3
         graph-icon: server
@@ -46,14 +54,14 @@ topology:
     graphite:
       kind: linux
       image: netreplica/graphite
-      mgmt-ipv4: 172.100.100.103
+      mgmt-ipv4: 172.100.100.104
       env:
         HOST_CONNECTION: ${SSH_CONNECTION}
       binds:
         - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
         - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
       ports:
-        - 8081:80
+        - 8082:80
       exec:
         - sh -c 'graphite_motd.sh 8080'
       labels:
