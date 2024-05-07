@@ -10,12 +10,12 @@ all:
         clab-vxlan-frr-multicast-one-spine-graphite:
           ansible_host: 172.100.100.103
         clab-vxlan-frr-multicast-one-spine-leaf1:
-          ansible_host: 172.100.100.3
-        clab-vxlan-frr-multicast-one-spine-leaf2:
-          ansible_host: 172.100.100.2
-        clab-vxlan-frr-multicast-one-spine-s1:
-          ansible_host: 172.100.100.5
-        clab-vxlan-frr-multicast-one-spine-s2:
           ansible_host: 172.100.100.6
-        clab-vxlan-frr-multicast-one-spine-spine1:
+        clab-vxlan-frr-multicast-one-spine-leaf2:
+          ansible_host: 172.100.100.5
+        clab-vxlan-frr-multicast-one-spine-s1:
           ansible_host: 172.100.100.4
+        clab-vxlan-frr-multicast-one-spine-s2:
+          ansible_host: 172.100.100.3
+        clab-vxlan-frr-multicast-one-spine-spine1:
+          ansible_host: 172.100.100.2

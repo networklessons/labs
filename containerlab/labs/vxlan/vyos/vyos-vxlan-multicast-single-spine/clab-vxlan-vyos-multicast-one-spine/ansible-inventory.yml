@@ -12,10 +12,10 @@ all:
         clab-vxlan-vyos-multicast-one-spine-leaf1:
           ansible_host: 172.100.100.4
         clab-vxlan-vyos-multicast-one-spine-leaf2:
-          ansible_host: 172.100.100.3
+          ansible_host: 172.100.100.6
         clab-vxlan-vyos-multicast-one-spine-s1:
           ansible_host: 172.100.100.2
         clab-vxlan-vyos-multicast-one-spine-s2:
           ansible_host: 172.100.100.5
         clab-vxlan-vyos-multicast-one-spine-spine1:
-          ansible_host: 172.100.100.6
+          ansible_host: 172.100.100.3
