@@ -1,7 +1,7 @@
-# Cisco NX-OS 10.x 9000v lab with single spine switch and two leaf switches.
+# Cisco NX-OS 9000v lab with single spine switch and two leaf switches.
 # Spine switch is the (static) RP.
 
-name: vxlan-multicast-single-spine-nx-os10
+name: vxlan-multicast-single-spine-nx-os
 
 mgmt:
   network: statics
@@ -10,28 +10,29 @@ mgmt:
 topology:
   kinds:
     cisco_n9kv:
-      image: vrnetlab/vr-n9kv:10.3.4
+      image: vrnetlab/vr-n9kv:9.3.9
+      #image: vrnetlab/vr-n9kv:10.2.7
     linux:
-      image: networklessons/lab-node-ubuntu:75
+      image: networklessons/lab-node-ubuntu:83
   nodes:
     spine1:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.10
-      startup-config: ./clab-vxlan-multicast-single-spine-nx-os10/spine1/config/startup-config.cfg
+      startup-config: ./clab-vxlan-multicast-single-spine-nx-os/spine1/config/startup-config.cfg
       labels:
         graph-level: 1
         graph-icon: switch
     leaf1:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.12
-      startup-config: ./clab-vxlan-multicast-single-spine-nx-os10/leaf1/config/startup-config.cfg
+      startup-config: ./clab-vxlan-multicast-single-spine-nx-os/leaf1/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     leaf2:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.13
-      startup-config: ./clab-vxlan-multicast-single-spine-nx-os10/leaf2/config/startup-config.cfg
+      startup-config: ./clab-vxlan-multicast-single-spine-nx-os/leaf2/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
