@@ -1,3 +1,4 @@
+![](https://github.com/networklessons/labs/blob/main/github-logo-nwl.png)
 <div align="center">
   <!-- GitHub Stars Badge -->
   <a href="https://github.com/networklessons/labs/stargazers">
