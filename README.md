@@ -11,14 +11,19 @@
   <a href="https://networklessons.com/sign-up">
     <img src="https://img.shields.io/badge/Community-Join%20Now-FFC369?logo=community" alt="Join Us" />
   </a>
+  <a href="https://forum.networklessons.com/" alt="Discourse">
+    <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=4BB797&logo=discourse" />
+  </a>
 <p align="center">
-    <a href="https://x.com/networklessons"><img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/X_icon.svg/150px-X_icon.svg.png" alt="x" /></a> &nbsp;
-</p>
-<a href="https://forum.networklessons.com/" alt="Discourse">
-        <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=4BB797&logo=discourse" /></a>
     <a href="https://www.youtube.com/c/networklessons/" alt="YouTube">
-        <img src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=4BB797&logo=youtube" /></a>
+      <img src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=4BB797&logo=youtube" />
+    </a> &nbsp;
+    <a href="https://www.linkedin.com/company/networklessons" alt="LinkedIn">
+      <img src="https://img.shields.io/badge/linkedin-connect-blue.svg?color=4BB797&logo=linkedin" />
+    </a> &nbsp;
+</p>
 </div>
+
 
 # Labs
 
