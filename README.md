@@ -21,8 +21,15 @@
     <a href="https://www.linkedin.com/company/networklessons" alt="LinkedIn">
       <img src="https://img.shields.io/badge/linkedin-connect-blue.svg?color=4BB797&logo=linkedin" />
     </a> &nbsp;
+    <a href="https://facebook.com/networklessons" alt="Facebook">
+      <img src="https://img.shields.io/badge/facebook-like-blue.svg?color=4BB797&logo=facebook" />
+    </a> &nbsp;
+    <a href="https://x.com/networklessons" alt="X">
+      <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/X_icon.svg/150px-X_icon.svg.png" alt="x" />
+    </a>
 </p>
 </div>
+
 
 
 # Labs
