@@ -7,7 +7,8 @@
   <!-- GitHub Stars Badge -->
   <a href="https://github.com/networklessons/labs/stargazers">
     <img src="https://img.shields.io/github/stars/networklessons/labs?color=4BB797&logo=github" alt="Github star" />
-  </a> <br>
+  </a>
+  <br>
   <!-- Website Badge -->
   <a href="https://networklessons.com">
     <img src="https://img.shields.io/badge/Website-networklessons.com-5381B5" alt="Visit Networklessons.com" />
@@ -19,21 +20,25 @@
   <a href="https://forum.networklessons.com/" alt="Discourse">
     <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=4BB797&logo=discourse" />
   </a>
+</div>
+
+<br />
+
 <p align="center">
     <a href="https://www.youtube.com/c/networklessons/" alt="YouTube">
-      <img src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=4BB797&logo=youtube" />
+      <img height="25" src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=4BB797&logo=youtube" />
     </a> &nbsp;
     <a href="https://www.linkedin.com/company/networklessons" alt="LinkedIn">
-      <img src="https://img.shields.io/badge/linkedin-connect-blue.svg?color=4BB797&logo=linkedin" />
+      <img height="25" src="https://img.shields.io/badge/linkedin-connect-blue.svg?color=4BB797&logo=linkedin" />
     </a> &nbsp;
     <a href="https://facebook.com/networklessons" alt="Facebook">
-      <img src="https://img.shields.io/badge/facebook-like-blue.svg?color=4BB797&logo=facebook" />
+      <img height="25" src="https://img.shields.io/badge/facebook-like-blue.svg?color=4BB797&logo=facebook" />
     </a> &nbsp;
     <a href="https://x.com/networklessons" alt="X">
-      <img src="https://img.shields.io/badge/X-follow-black.svg?color=4BB797&logo=x" />
+      <img height="25" src="https://img.shields.io/badge/X-follow-black.svg?color=4BB797&logo=x" />
     </a>
 </p>
-</div>
+
 
 
 # Labs
