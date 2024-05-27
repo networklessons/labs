@@ -11,6 +11,11 @@
   <a href="https://networklessons.com/sign-up">
     <img src="https://img.shields.io/badge/Community-Join%20Now-FFC369?logo=community" alt="Join Us" />
   </a>
+<p align="center">
+    <a href="https://x.com/networklessons"><img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/X_icon.svg/150px-X_icon.svg.png" alt="x" /></a> &nbsp;
+    <a href="https://www.linkedin.com/company/networklessons/"><img height="25" src="https://kestra.io/linkedin.svg" alt="linkedin" /></a> &nbsp;
+<a href="https://www.youtube.com/networklessons"><img height="25" src="https://kestra.io/youtube.svg" alt="youtube" /></a> &nbsp;
+</p>
 </div>
 
 # Labs
