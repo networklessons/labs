@@ -21,9 +21,6 @@
     <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=FFC369&logo=discourse" />
   </a>
 </div>
-
-<br />
-
 <p align="center">
     <a href="https://www.youtube.com/c/networklessons/" alt="YouTube">
       <img src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=4BB797&logo=youtube" />
