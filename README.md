@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://networklessons.com">
-    <img src="https://github.com/networklessons/labs/blob/main/github-logo-nwl.png"  alt="Networking in plain English." />
+    <img src="https://github.com/networklessons/labs/blob/main/github-banner-nwl.png"  alt="Networking in plain English." />
   </a>
 </p>
 <div align="center">
