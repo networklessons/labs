@@ -12,24 +12,23 @@
     <img src="https://img.shields.io/badge/Community-Join%20Now-FFC369?logo=community" alt="Join Us" />
   </a>
   <a href="https://forum.networklessons.com/" alt="Discourse">
-    <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=4BB797&logo=discourse" />
+    <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=FFC369&logo=discourse" />
   </a>
 <p align="center">
     <a href="https://www.youtube.com/c/networklessons/" alt="YouTube">
       <img src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=4BB797&logo=youtube" />
     </a> &nbsp;
-    <a href="https://www.linkedin.com/company/networklessons-com" alt="LinkedIn">
+    <a href="https://www.linkedin.com/company/networklessons" alt="LinkedIn">
       <img src="https://img.shields.io/badge/linkedin-connect-blue.svg?color=4BB797&logo=linkedin" />
     </a> &nbsp;
     <a href="https://facebook.com/networklessons" alt="Facebook">
       <img src="https://img.shields.io/badge/facebook-like-blue.svg?color=4BB797&logo=facebook" />
     </a> &nbsp;
     <a href="https://x.com/networklessons" alt="X">
-      <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/X_icon.svg/150px-X_icon.svg.png" alt="x" />
+      <img src="https://img.shields.io/badge/X-follow-black.svg?color=4BB797&logo=x" />
     </a>
 </p>
 </div>
-
 
 
 # Labs
