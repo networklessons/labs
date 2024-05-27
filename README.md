@@ -18,7 +18,7 @@
     <a href="https://www.youtube.com/c/networklessons/" alt="YouTube">
       <img src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=4BB797&logo=youtube" />
     </a> &nbsp;
-    <a href="https://www.linkedin.com/company/networklessons" alt="LinkedIn">
+    <a href="https://www.linkedin.com/company/networklessons-com" alt="LinkedIn">
       <img src="https://img.shields.io/badge/linkedin-connect-blue.svg?color=4BB797&logo=linkedin" />
     </a> &nbsp;
     <a href="https://facebook.com/networklessons" alt="Facebook">
