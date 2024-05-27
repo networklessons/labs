@@ -16,6 +16,10 @@
     <a href="https://www.linkedin.com/company/networklessons/"><img height="25" src="https://kestra.io/linkedin.svg" alt="linkedin" /></a> &nbsp;
 <a href="https://www.youtube.com/networklessons"><img height="25" src="https://kestra.io/youtube.svg" alt="youtube" /></a> &nbsp;
 </p>
+<a href="https://forum.networklessons.com/" alt="Discourse">
+        <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=0052FF&labelColor=090422&logo=discourse" /></a>
+    <a href="https://www.youtube.com/c/networklessons/" alt="YouTube">
+        <img src="https://img.shields.io/badge/youtube-watch_videos-red.svg?color=0052FF&labelColor=090422&logo=youtube" /></a>
 </div>
 
 # Labs
