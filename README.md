@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/badge/Community-Join%20Now-FFC369?logo=community" alt="Join Us" />
   </a>
   <a href="https://forum.networklessons.com/" alt="Discourse">
-    <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=FFC369&logo=discourse" />
+    <img src="https://img.shields.io/badge/discourse-browse_forum-red.svg?color=4BB797&logo=discourse" />
   </a>
 <p align="center">
     <a href="https://www.youtube.com/c/networklessons/" alt="YouTube">
