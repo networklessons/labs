@@ -1,58 +1,49 @@
-# Cisco NX-OS 9000v lab
-# Single spine switch
-# Two leaf switches
-# Two servers
-# Lab demonstrates VXLAN with Multicast.
-name: vxlan-multicast-one-spine
+# Cisco NX-OS 9000v lab with two leaf switches and two endpoints.
+# Static ingress replication.
+
+name: vxlan-static-ingress-replication-nx-os
 
 mgmt:
   network: statics
-  ipv4_subnet: 172.100.100.0/24
+  ipv4-subnet: 172.100.100.0/24
 
 topology:
   kinds:
     cisco_n9kv:
-      image: vrnetlab/vr-n9kv:10.3.4
+      image: vrnetlab/vr-n9kv:9.3.9
+      #image: vrnetlab/vr-n9kv:10.2.7
     linux:
-      image: networklessons/lab-node-ubuntu:75
+      image: networklessons/lab-node-ubuntu:83
   nodes:
-    spine1:
-      kind: cisco_n9kv
-      mgmt_ipv4: 172.100.100.10
-      #startup-config: ./clab-cisco-nx-os-vxlan-spine-leaf-multicast/spine1/config/startup-config.cfg
-      labels:
-        graph-level: 1
-        graph-icon: switch
     leaf1:
       kind: cisco_n9kv
-      mgmt_ipv4: 172.100.100.12
-      #startup-config: ./clab-cisco-nx-os-vxlan-spine-leaf-multicast/leaf1/config/startup-config.cfg
+      mgmt-ipv4: 172.100.100.12
+      #startup-config: ./clab-vxlan-multicast-single-spine-nx-os/leaf1/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     leaf2:
       kind: cisco_n9kv
-      mgmt_ipv4: 172.100.100.13
-      #startup-config: ./clab-cisco-nx-os-vxlan-spine-leaf-multicast/leaf2/config/startup-config.cfg
+      mgmt-ipv4: 172.100.100.13
+      #startup-config: ./clab-vxlan-multicast-single-spine-nx-os/leaf2/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     s1:
       kind: linux
-      mgmt_ipv4: 172.100.100.16
+      mgmt-ipv4: 172.100.100.16
       exec:
       - ip link set dev eth1 address 00:50:c2:53:40:01
       - ip addr add 172.16.12.1/24 dev eth1
       labels:
         graph-level: 3
         graph-icon: server
-
     s2:
       kind: linux
-      mgmt_ipv4: 172.100.100.17
+      mgmt-ipv4: 172.100.100.17
       exec:
-        - ip link set dev eth1 address 00:50:c2:53:50:01
-        - ip addr add 172.16.12.2/24 dev eth1
+      - ip link set dev eth1 address 00:50:c2:53:50:01
+      - ip addr add 172.16.12.2/24 dev eth1
       labels:
         graph-level: 3
         graph-icon: server
@@ -60,7 +51,7 @@ topology:
     graphite:
       kind: linux
       image: netreplica/graphite
-      mgmt_ipv4: 172.100.100.100
+      mgmt-ipv4: 172.100.100.100
       env:
         HOST_CONNECTION: ${SSH_CONNECTION}
       binds:
@@ -73,7 +64,6 @@ topology:
       labels:
         graph-hide: yes
   links:
-    - endpoints: ["spine1:eth1", "leaf1:eth1"]
-    - endpoints: ["spine1:eth2", "leaf2:eth1"]
+    - endpoints: ["leaf1:eth1", "leaf2:eth1"]
     - endpoints: ["leaf1:eth2", "s1:eth1"]
     - endpoints: ["leaf2:eth2", "s2:eth1"]
