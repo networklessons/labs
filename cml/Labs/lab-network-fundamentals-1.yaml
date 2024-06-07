@@ -24,7 +24,7 @@ annotations:
 nodes:
   - boot_disk_size: null
     configuration: |-
-      Building configuration...
+      Building configuration..
 
       Current configuration : 3215 bytes
       !
