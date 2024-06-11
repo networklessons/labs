@@ -11,6 +11,7 @@ topology:
   kinds:
     cisco_n9kv:
       image: vrnetlab/vr-n9kv:9.3.9
+      enforce-startup-config: true
       #image: vrnetlab/vr-n9kv:10.2.7
     linux:
       image: networklessons/lab-node-ubuntu:83
