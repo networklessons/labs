@@ -146,9 +146,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3547 bytes
+      Current configuration : 3710 bytes
       !
-      ! Last configuration change at 07:20:27 UTC Fri May 31 2024
+      ! Last configuration change at 10:27:44 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -247,11 +247,17 @@ nodes:
        speed auto
        media-type rj45
       !
+      router ospf 1
+       network 1.1.1.1 0.0.0.0 area 0
+       network 20.20.20.0 0.0.0.255 area 0
+       default-information originate always
+      !
       ip forward-protocol nd
       !
       !
       no ip http server
       no ip http secure-server
+      ip route 0.0.0.0 0.0.0.0 203.0.113.2
       ip ssh server algorithm authentication password
       !
       ipv6 ioam timestamp
@@ -260,7 +266,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -269,7 +275,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -278,7 +284,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -334,7 +340,7 @@ nodes:
         slot: 3
         type: physical
   - boot_disk_size: null
-    configuration: ums-36b114b1-ce
+    configuration: ums-4c82d873-a2
     cpu_limit: null
     cpus: null
     data_volume: null
@@ -384,9 +390,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3553 bytes
+      Current configuration : 3728 bytes
       !
-      ! Last configuration change at 07:20:31 UTC Fri May 31 2024
+      ! Last configuration change at 10:28:27 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -466,6 +472,7 @@ nodes:
       interface GigabitEthernet0/1
        description to port1.SW1
        ip address 20.20.20.2 255.255.255.0
+       ip ospf priority 50
        duplex auto
        speed auto
        media-type rj45
@@ -485,6 +492,12 @@ nodes:
        speed auto
        media-type rj45
       !
+      router ospf 1
+       area 51 nssa no-summary
+       network 2.2.2.0 0.0.0.255 area 0
+       network 20.20.20.0 0.0.0.255 area 0
+       network 192.168.2.0 0.0.0.255 area 51
+      !
       ip forward-protocol nd
       !
       !
@@ -498,7 +511,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -507,7 +520,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -516,7 +529,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -575,9 +588,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3553 bytes
+      Current configuration : 3705 bytes
       !
-      ! Last configuration change at 07:19:53 UTC Fri May 31 2024
+      ! Last configuration change at 10:28:32 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -676,6 +689,12 @@ nodes:
        speed auto
        media-type rj45
       !
+      router ospf 1
+       area 51 nssa no-summary
+       network 4.4.4.4 0.0.0.0 area 0
+       network 20.20.20.0 0.0.0.255 area 0
+       network 192.168.1.0 0.0.0.255 area 51
+      !
       ip forward-protocol nd
       !
       !
@@ -689,7 +708,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -698,7 +717,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -707,7 +726,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -766,9 +785,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3593 bytes
+      Current configuration : 3911 bytes
       !
-      ! Last configuration change at 07:20:35 UTC Fri May 31 2024
+      ! Last configuration change at 10:28:28 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -866,11 +885,22 @@ nodes:
        speed auto
        media-type rj45
       !
+      router ospf 1
+       router-id 1.0.0.1
+       area 51 nssa
+       redistribute connected subnets
+       redistribute static subnets
+       network 5.5.5.5 0.0.0.0 area 51
+       network 192.168.1.0 0.0.0.255 area 51
+       network 192.168.2.0 0.0.0.255 area 51
+      !
       ip forward-protocol nd
       !
       !
       no ip http server
       no ip http secure-server
+      ip route 6.6.6.6 255.255.255.255 192.168.20.6
+      ip route 172.16.10.0 255.255.255.0 192.168.20.6
       ip ssh server algorithm authentication password
       !
       ipv6 ioam timestamp
@@ -879,7 +909,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -888,7 +918,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -897,7 +927,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -956,9 +986,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3605 bytes
+      Current configuration : 3646 bytes
       !
-      ! Last configuration change at 07:20:54 UTC Fri May 31 2024
+      ! Last configuration change at 10:28:48 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1066,6 +1096,7 @@ nodes:
       !
       no ip http server
       no ip http secure-server
+      ip route 0.0.0.0 0.0.0.0 192.168.20.5
       ip ssh server algorithm authentication password
       !
       ipv6 ioam timestamp
@@ -1074,7 +1105,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1083,7 +1114,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1092,7 +1123,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1151,9 +1182,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3567 bytes
+      Current configuration : 3944 bytes
       !
-      ! Last configuration change at 07:20:30 UTC Fri May 31 2024
+      ! Last configuration change at 10:28:28 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1233,6 +1264,7 @@ nodes:
       interface GigabitEthernet0/1
        description to port3.SW1
        ip address 20.20.20.3 255.255.255.0
+       ip ospf priority 100
        duplex auto
        speed auto
        media-type rj45
@@ -1247,9 +1279,22 @@ nodes:
       interface GigabitEthernet0/3
        description to port1.SW2
        ip address 192.168.3.3 255.255.255.0
+       ip ospf network point-to-multipoint non-broadcast
+       ip ospf dead-interval 80
+       ip ospf hello-interval 20
        duplex auto
        speed auto
        media-type rj45
+      !
+      router ospf 1
+       area 2 virtual-link 7.7.7.7
+       area 3 stub
+       network 3.3.3.3 0.0.0.0 area 0
+       network 20.20.20.0 0.0.0.255 area 0
+       network 192.168.3.0 0.0.0.255 area 3
+       network 192.168.6.0 0.0.0.255 area 2
+       neighbor 192.168.3.10
+       neighbor 192.168.3.9
       !
       ip forward-protocol nd
       !
@@ -1264,7 +1309,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1273,7 +1318,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1282,7 +1327,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1341,9 +1386,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3577 bytes
+      Current configuration : 3810 bytes
       !
-      ! Last configuration change at 07:19:17 UTC Fri May 31 2024
+      ! Last configuration change at 10:27:23 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1441,6 +1486,14 @@ nodes:
        speed auto
        media-type rj45
       !
+      router ospf 1
+       area 2 virtual-link 3.3.3.3
+       passive-interface GigabitEthernet0/2
+       network 7.7.7.0 0.0.0.255 area 2
+       network 20.20.30.0 0.0.0.255 area 0
+       network 192.168.5.0 0.0.0.255 area 2
+       network 192.168.6.0 0.0.0.255 area 2
+      !
       ip forward-protocol nd
       !
       !
@@ -1454,7 +1507,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1463,7 +1516,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1472,7 +1525,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1531,9 +1584,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3532 bytes
+      Current configuration : 3738 bytes
       !
-      ! Last configuration change at 07:20:46 UTC Fri May 31 2024
+      ! Last configuration change at 10:28:46 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1613,6 +1666,9 @@ nodes:
       interface GigabitEthernet0/1
        description to port2.SW2
        ip address 192.168.3.9 255.255.255.0
+       ip ospf network point-to-multipoint non-broadcast
+       ip ospf dead-interval 80
+       ip ospf hello-interval 20
        duplex auto
        speed auto
        media-type rj45
@@ -1633,6 +1689,11 @@ nodes:
        speed auto
        media-type rj45
       !
+      router ospf 1
+       area 3 stub
+       network 9.9.9.9 0.0.0.0 area 3
+       network 192.168.3.0 0.0.0.255 area 3
+      !
       ip forward-protocol nd
       !
       !
@@ -1646,7 +1707,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1655,7 +1716,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1664,7 +1725,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1723,9 +1784,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3538 bytes
+      Current configuration : 3748 bytes
       !
-      ! Last configuration change at 07:21:01 UTC Fri May 31 2024
+      ! Last configuration change at 10:28:44 UTC Tue Jun 11 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1805,6 +1866,9 @@ nodes:
       interface GigabitEthernet0/1
        description to port3.SW2
        ip address 192.168.3.10 255.255.255.0
+       ip ospf network point-to-multipoint non-broadcast
+       ip ospf dead-interval 80
+       ip ospf hello-interval 20
        duplex auto
        speed auto
        media-type rj45
@@ -1825,6 +1889,11 @@ nodes:
        speed auto
        media-type rj45
       !
+      router ospf 1
+       area 3 stub
+       network 10.10.10.10 0.0.0.0 area 3
+       network 192.168.3.0 0.0.0.255 area 3
+      !
       ip forward-protocol nd
       !
       !
@@ -1838,7 +1907,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^C
+      banner exec ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1847,7 +1916,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^C
+      banner incoming ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1856,7 +1925,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^C
+      banner login ^CC
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -2128,7 +2197,7 @@ nodes:
         slot: 0
         type: physical
   - boot_disk_size: null
-    configuration: ums-c0470c5c-b5
+    configuration: ums-295398e3-87
     cpu_limit: null
     cpus: null
     data_volume: null
