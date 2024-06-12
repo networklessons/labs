@@ -1,5 +1,6 @@
 # Cisco NX-OS 9000v lab with single spine switch and two leaf switches.
-# Spine switch is the (static) RP and BGP RR.
+# Spine switch is the BGP RR.
+# Demonstrates VXLAN MP-BGP EVPN with L3 VNI.
 
 name: vxlan-bgp-evpn-l3-vni
 
