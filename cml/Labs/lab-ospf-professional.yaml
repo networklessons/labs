@@ -146,9 +146,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3710 bytes
+      Current configuration : 3720 bytes
       !
-      ! Last configuration change at 14:34:58 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:43 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -162,8 +162,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$vQeRiE9J9V6AJ7$sPhUMswepuNegqmSPuVD7aU2nza/lf84DjK3ZKonM12
-      enable password cisco
       !
       no aaa new-model
       !
@@ -184,21 +182,18 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
-      no ipv6 cef
+      ipv6 unicast-routing
+      ipv6 cef
       !
       multilink bundle-name authenticated
       !
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$zSKdq.rceAVcON$W8oxU2yMKZzDZnaapTQxjg4YQFvJM.aSADSEmdleL3g
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -214,25 +209,32 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
-       ip address 1.1.1.1 255.255.255.0
+       ip address 1.1.1.1 255.255.255.255
+      !
+      interface Loopback10
+       no ip address
+       ipv6 address 2001:DB8:0:1::1/64
+       ipv6 ospf 1 area 0
       !
       interface GigabitEthernet0/0
-       description to port.Internet
        ip address 203.0.113.1 255.255.255.252
        duplex auto
        speed auto
        media-type rj45
+       ipv6 address 2001:DB8::1/64
       !
       interface GigabitEthernet0/1
-       description to port2.SW1
        ip address 20.20.20.1 255.255.255.0
+       ip ospf authentication message-digest
+       ip ospf message-digest-key 1 md5 my_pass
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf encryption ipsec spi 256 esp aes-cbc 256 FDCEA619E8AA73F517F6EA997D7D782F3EB47B4FA425AA0AD19D73C2A7FBD85B sha1 A5DEC4DD155A695A8B983AACEAA5A97C6AECB6D1
+       ipv6 ospf 1 area 0
       !
       interface GigabitEthernet0/2
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -240,7 +242,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/3
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -258,7 +259,10 @@ nodes:
       no ip http server
       no ip http secure-server
       ip route 0.0.0.0 0.0.0.0 203.0.113.2
-      ip ssh server algorithm authentication password
+      !
+      ipv6 route ::/0 2001:DB8::2
+      ipv6 router ospf 1
+       default-information originate
       !
       ipv6 ioam timestamp
       !
@@ -266,7 +270,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -275,7 +279,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -284,7 +288,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -296,13 +300,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -340,7 +342,7 @@ nodes:
         slot: 3
         type: physical
   - boot_disk_size: null
-    configuration: ums-4c82d873-a2
+    configuration: ums-b2913de2-7f
     cpu_limit: null
     cpus: null
     data_volume: null
@@ -390,9 +392,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3728 bytes
+      Current configuration : 3865 bytes
       !
-      ! Last configuration change at 14:35:41 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:49 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -406,8 +408,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$Ega.aqTUBD1O0N$y505zByQkwzAVFIR0Esjb2E0WU/.viu53M3KdoyWvCw
-      enable password cisco
       !
       no aaa new-model
       !
@@ -428,21 +428,23 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
-      no ipv6 cef
+      ipv6 unicast-routing
+      ipv6 cef
       !
       multilink bundle-name authenticated
       !
       !
       !
+      key chain R2
+       key 1
+        key-string R5_R2_pass
+        cryptographic-algorithm hmac-sha-512
       !
-      username cisco privilege 15 secret 9 $9$d1lwWFzmmqCgR7$k7m9ZQ7T65/pp15RLFVEYmnTCAlBZM1m1OkaykP7MQo
+      !
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -458,11 +460,14 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
-       ip address 2.2.2.2 255.255.255.0
+       ip address 2.2.2.2 255.255.255.255
+      !
+      interface Loopback10
+       no ip address
+       ipv6 address 2001:DB8:0:2::1/64
+       ipv6 ospf 1 area 0
       !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -470,22 +475,29 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to port1.SW1
        ip address 20.20.20.2 255.255.255.0
+       ip ospf authentication message-digest
+       ip ospf message-digest-key 1 md5 my_pass
        ip ospf priority 50
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf encryption ipsec spi 256 esp aes-cbc 256 FDCEA619E8AA73F517F6EA997D7D782F3EB47B4FA425AA0AD19D73C2A7FBD85B sha1 A5DEC4DD155A695A8B983AACEAA5A97C6AECB6D1
+       ipv6 ospf 1 area 0
       !
       interface GigabitEthernet0/2
-       description to GigabitEthernet0/1.R5
        ip address 192.168.2.2 255.255.255.0
+       ip ospf authentication key-chain R2
+       ip ospf ttl-security
+       ip ospf cost 100
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf 1 area 51
       !
       interface GigabitEthernet0/3
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -493,8 +505,8 @@ nodes:
        media-type rj45
       !
       router ospf 1
-       area 51 nssa no-summary
-       network 2.2.2.0 0.0.0.255 area 0
+       area 51 nssa default-information-originate metric 50
+       network 2.2.2.2 0.0.0.0 area 0
        network 20.20.20.0 0.0.0.255 area 0
        network 192.168.2.0 0.0.0.255 area 51
       !
@@ -503,7 +515,8 @@ nodes:
       !
       no ip http server
       no ip http secure-server
-      ip ssh server algorithm authentication password
+      !
+      ipv6 router ospf 1
       !
       ipv6 ioam timestamp
       !
@@ -511,7 +524,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -520,7 +533,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -529,7 +542,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -541,13 +554,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -588,9 +599,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3705 bytes
+      Current configuration : 3786 bytes
       !
-      ! Last configuration change at 14:35:47 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:40 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -604,8 +615,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$O5qLj37KfpiTFN$ssP2GA8MQ.JaNqu0M.R4k0S9syxYHn0ivR2HAHW/NrA
-      enable password cisco
       !
       no aaa new-model
       !
@@ -626,21 +635,18 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
-      no ipv6 cef
+      ipv6 unicast-routing
+      ipv6 cef
       !
       multilink bundle-name authenticated
       !
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$eITuvryJDF6Dtt$dNJiwrrjkoxGVjIv40EteTImiwhgyzHz9h6eb/SupXY
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -656,11 +662,14 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
-       ip address 4.4.4.4 255.255.255.0
+       ip address 4.4.4.4 255.255.255.255
+      !
+      interface Loopback10
+       no ip address
+       ipv6 address 2001:DB8:0:4::1/64
+       ipv6 ospf 1 area 0
       !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -668,21 +677,28 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to port4.SW1
        ip address 20.20.20.4 255.255.255.0
+       ip ospf authentication message-digest
+       ip ospf message-digest-key 1 md5 my_pass
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf encryption ipsec spi 256 esp aes-cbc 256 FDCEA619E8AA73F517F6EA997D7D782F3EB47B4FA425AA0AD19D73C2A7FBD85B sha1 A5DEC4DD155A695A8B983AACEAA5A97C6AECB6D1
+       ipv6 ospf 1 area 0
       !
       interface GigabitEthernet0/2
-       description to GigabitEthernet0/2.R5
        ip address 192.168.1.4 255.255.255.0
+       ip ospf authentication message-digest
+       ip ospf message-digest-key 1 md5 my_pass
+       ip ospf ttl-security
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf 1 area 51
       !
       interface GigabitEthernet0/3
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -690,7 +706,7 @@ nodes:
        media-type rj45
       !
       router ospf 1
-       area 51 nssa no-summary
+       area 51 nssa default-information-originate metric 100
        network 4.4.4.4 0.0.0.0 area 0
        network 20.20.20.0 0.0.0.255 area 0
        network 192.168.1.0 0.0.0.255 area 51
@@ -700,7 +716,8 @@ nodes:
       !
       no ip http server
       no ip http secure-server
-      ip ssh server algorithm authentication password
+      !
+      ipv6 router ospf 1
       !
       ipv6 ioam timestamp
       !
@@ -708,7 +725,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -717,7 +734,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -726,7 +743,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -738,13 +755,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -785,9 +800,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3911 bytes
+      Current configuration : 4175 bytes
       !
-      ! Last configuration change at 14:35:57 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:38 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -801,8 +816,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$sA4V8JdDwQ2LeN$afyTK./ODy/8oRo0BRCP/r9DEJIw9/QJq0CZNRBygR6
-      enable password cisco
       !
       no aaa new-model
       !
@@ -823,21 +836,23 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
-      no ipv6 cef
+      ipv6 unicast-routing
+      ipv6 cef
       !
       multilink bundle-name authenticated
       !
       !
       !
+      key chain R5
+       key 1
+        key-string R5_R2_pass
+        cryptographic-algorithm hmac-sha-512
       !
-      username cisco privilege 15 secret 9 $9$7yWUh4eyn311mt$nG6XZktR/rSqfmcuTaQGQ7eLELlIfZWVUbog08z.VL2
+      !
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -853,11 +868,14 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
        ip address 5.5.5.5 255.255.255.255
       !
+      interface Loopback10
+       no ip address
+       ipv6 address 2001:DB8:0:5::1/64
+       ipv6 ospf 1 area 51
+      !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -865,21 +883,27 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to GigabitEthernet0/2.R2
        ip address 192.168.2.5 255.255.255.0
+       ip ospf authentication key-chain R5
+       ip ospf ttl-security
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf 1 area 51
       !
       interface GigabitEthernet0/2
-       description to GigabitEthernet0/2.R4
        ip address 192.168.1.5 255.255.255.0
+       ip ospf authentication message-digest
+       ip ospf message-digest-key 1 md5 my_pass
+       ip ospf ttl-security
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf 1 area 51
       !
       interface GigabitEthernet0/3
-       description to GigabitEthernet0/1.R6
        ip address 192.168.20.5 255.255.255.0
        duplex auto
        speed auto
@@ -888,7 +912,8 @@ nodes:
       router ospf 1
        router-id 1.0.0.1
        area 51 nssa
-       redistribute connected subnets
+       summary-address 172.16.8.0 255.255.248.0
+       redistribute connected subnets route-map Filter_Connected
        redistribute static subnets
        network 5.5.5.5 0.0.0.0 area 51
        network 192.168.1.0 0.0.0.255 area 51
@@ -901,15 +926,26 @@ nodes:
       no ip http secure-server
       ip route 6.6.6.6 255.255.255.255 192.168.20.6
       ip route 172.16.10.0 255.255.255.0 192.168.20.6
-      ip ssh server algorithm authentication password
+      ip route 172.16.11.0 255.255.255.0 192.168.20.6
+      ip route 172.16.12.0 255.255.255.0 192.168.20.6
+      !
+      ip access-list standard Filter_R5
+       permit 192.168.20.0 0.0.0.255
+      !
+      ipv6 router ospf 1
       !
       ipv6 ioam timestamp
+      !
+      route-map Filter_Connected deny 10
+       match ip address Filter_R5
+      !
+      route-map Filter_Connected permit 20
       !
       !
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -918,7 +954,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -927,7 +963,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -939,13 +975,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -986,9 +1020,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3646 bytes
+      Current configuration : 3270 bytes
       !
-      ! Last configuration change at 14:36:47 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:58 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1002,8 +1036,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$adSB/yC08ZOVL7$Oehh6GcXFiH2hs9hrBInPCdzbb9TBk4vzG4VWHYXgHk
-      enable password cisco
       !
       no aaa new-model
       !
@@ -1024,8 +1056,6 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
       no ipv6 cef
       !
@@ -1034,11 +1064,9 @@ nodes:
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$2p076YCpvRBq0d$3oGSODlo9UmQtqGTXO8b/LjnDaQDwaoSryyfBBVwQ6s
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -1054,14 +1082,18 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
        ip address 6.6.6.6 255.255.255.255
       !
       interface Loopback1
        ip address 172.16.10.6 255.255.255.0
       !
+      interface Loopback2
+       ip address 172.16.11.6 255.255.255.0
+      !
+      interface Loopback3
+       ip address 172.16.12.6 255.255.255.0
+      !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1069,14 +1101,12 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to GigabitEthernet0/3.R5
        ip address 192.168.20.6 255.255.255.0
        duplex auto
        speed auto
        media-type rj45
       !
       interface GigabitEthernet0/2
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1084,7 +1114,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/3
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1097,7 +1126,6 @@ nodes:
       no ip http server
       no ip http secure-server
       ip route 0.0.0.0 0.0.0.0 192.168.20.5
-      ip ssh server algorithm authentication password
       !
       ipv6 ioam timestamp
       !
@@ -1105,7 +1133,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1114,7 +1142,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1123,7 +1151,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1135,13 +1163,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -1182,9 +1208,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3944 bytes
+      Current configuration : 4256 bytes
       !
-      ! Last configuration change at 14:35:27 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:30 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1198,8 +1224,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$bxNGgON90ThcRN$.ODIDp/6pFUA.S5CWGsc.AUdXaow0D79/R5n.0zNHNo
-      enable password cisco
       !
       no aaa new-model
       !
@@ -1220,21 +1244,18 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
-      no ipv6 cef
+      ipv6 unicast-routing
+      ipv6 cef
       !
       multilink bundle-name authenticated
       !
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$aVpbAjfjpUuJdN$1x5M6e5debL6szGNp1MxI5ybgyfBxYcQkbYbF.DoxiU
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -1250,11 +1271,14 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
        ip address 3.3.3.3 255.255.255.255
       !
+      interface Loopback10
+       no ip address
+       ipv6 address 2001:DB8:0:3::1/64
+       ipv6 ospf 1 area 0
+      !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1262,22 +1286,25 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to port3.SW1
        ip address 20.20.20.3 255.255.255.0
+       ip ospf message-digest-key 1 md5 my_pass
        ip ospf priority 100
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf encryption ipsec spi 256 esp aes-cbc 256 FDCEA619E8AA73F517F6EA997D7D782F3EB47B4FA425AA0AD19D73C2A7FBD85B sha1 A5DEC4DD155A695A8B983AACEAA5A97C6AECB6D1
+       ipv6 ospf 1 area 0
       !
       interface GigabitEthernet0/2
-       description to GigabitEthernet0/1.R7
        ip address 192.168.6.3 255.255.255.0
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf 1 area 2
       !
       interface GigabitEthernet0/3
-       description to port1.SW2
        ip address 192.168.3.3 255.255.255.0
        ip ospf network point-to-multipoint non-broadcast
        ip ospf dead-interval 80
@@ -1287,8 +1314,11 @@ nodes:
        media-type rj45
       !
       router ospf 1
-       area 2 virtual-link 7.7.7.7
+       area 0 authentication message-digest
+       area 2 range 192.168.4.0 255.255.252.0
+       area 2 virtual-link 7.7.7.7 message-digest-key 1 md5 my_pass
        area 3 stub
+       area 3 filter-list prefix INTO_Area3 in
        network 3.3.3.3 0.0.0.0 area 0
        network 20.20.20.0 0.0.0.255 area 0
        network 192.168.3.0 0.0.0.255 area 3
@@ -1301,7 +1331,14 @@ nodes:
       !
       no ip http server
       no ip http secure-server
-      ip ssh server algorithm authentication password
+      !
+      !
+      ip prefix-list INTO_Area3 seq 5 deny 1.1.1.1/32
+      ip prefix-list INTO_Area3 seq 10 deny 2.2.2.2/32
+      ip prefix-list INTO_Area3 seq 15 deny 3.3.3.3/32
+      ip prefix-list INTO_Area3 seq 20 deny 4.4.4.4/32
+      ip prefix-list INTO_Area3 seq 25 permit 0.0.0.0/0 le 32
+      ipv6 router ospf 1
       !
       ipv6 ioam timestamp
       !
@@ -1309,7 +1346,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1318,7 +1355,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1327,7 +1364,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1339,13 +1376,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -1386,9 +1421,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3810 bytes
+      Current configuration : 3684 bytes
       !
-      ! Last configuration change at 14:34:36 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:41 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1402,8 +1437,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$BFeKmyL73J0Zf7$tH2GFSt/E8ETnWmA5Kc63sMzoSIK7TB3bWwIhJEljqg
-      enable password cisco
       !
       no aaa new-model
       !
@@ -1424,21 +1457,18 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
-      no ipv6 cef
+      ipv6 unicast-routing
+      ipv6 cef
       !
       multilink bundle-name authenticated
       !
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$yIaibDT0FJuQwN$2byKF7Ewiu9puzv739Vb3OlFy8.LDPE3.CX6al2eZ8o
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -1454,11 +1484,14 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
-       ip address 7.7.7.7 255.255.255.255
+       ip address 7.7.7.7 255.255.255.0
+      !
+      interface Loopback10
+       no ip address
+       ipv6 address 2001:DB8:0:7::1/64
+       ipv6 ospf 1 area 2
       !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1466,30 +1499,35 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to GigabitEthernet0/2.R3
        ip address 192.168.6.7 255.255.255.0
        duplex auto
        speed auto
        media-type rj45
+       ipv6 enable
+       ipv6 ospf 1 area 2
       !
       interface GigabitEthernet0/2
-       description to eth0.H1
        ip address 192.168.5.7 255.255.255.0
        duplex auto
        speed auto
        media-type rj45
+       ipv6 address 2001:DB8:0:A::1/64
+       ipv6 enable
+       ipv6 ospf 1 area 2
       !
       interface GigabitEthernet0/3
-       description to GigabitEthernet0/1.R8
        ip address 20.20.30.7 255.255.255.0
+       ip ospf message-digest-key 1 md5 my_pass
        duplex auto
        speed auto
        media-type rj45
       !
       router ospf 1
-       area 2 virtual-link 3.3.3.3
+       area 0 authentication message-digest
+       area 2 range 192.168.4.0 255.255.252.0
+       area 2 virtual-link 3.3.3.3 message-digest-key 1 md5 my_pass
        passive-interface GigabitEthernet0/2
-       network 7.7.7.0 0.0.0.255 area 2
+       network 7.7.7.7 0.0.0.0 area 2
        network 20.20.30.0 0.0.0.255 area 0
        network 192.168.5.0 0.0.0.255 area 2
        network 192.168.6.0 0.0.0.255 area 2
@@ -1499,7 +1537,8 @@ nodes:
       !
       no ip http server
       no ip http secure-server
-      ip ssh server algorithm authentication password
+      !
+      ipv6 router ospf 1
       !
       ipv6 ioam timestamp
       !
@@ -1507,7 +1546,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1516,7 +1555,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1525,7 +1564,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1537,13 +1576,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -1584,9 +1621,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3738 bytes
+      Current configuration : 3254 bytes
       !
-      ! Last configuration change at 14:36:40 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:55 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1600,8 +1637,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$5Ku9EMWL/rXi1d$SScsNlv.Dq4jJ69Bit/qi6RcgYbBRl4AIVHlmV8qvxI
-      enable password cisco
       !
       no aaa new-model
       !
@@ -1622,8 +1657,6 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
       no ipv6 cef
       !
@@ -1632,11 +1665,9 @@ nodes:
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$0qMUYu0o78OWtd$yU6ia.XW7N.BHpIpAsuJOedl1VO5DZCZEURQkZEnwKQ
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -1652,11 +1683,9 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
        ip address 9.9.9.9 255.255.255.255
       !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1664,7 +1693,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to port2.SW2
        ip address 192.168.3.9 255.255.255.0
        ip ospf network point-to-multipoint non-broadcast
        ip ospf dead-interval 80
@@ -1674,7 +1702,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/2
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1682,7 +1709,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/3
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1699,7 +1725,6 @@ nodes:
       !
       no ip http server
       no ip http secure-server
-      ip ssh server algorithm authentication password
       !
       ipv6 ioam timestamp
       !
@@ -1707,7 +1732,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1716,7 +1741,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1725,7 +1750,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1737,13 +1762,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -1784,9 +1807,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3748 bytes
+      Current configuration : 3342 bytes
       !
-      ! Last configuration change at 14:36:36 UTC Wed Jun 12 2024
+      ! Last configuration change at 09:02:55 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -1800,8 +1823,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$soWXHb0U/wN6I7$zbqoYyWGFIlk2sDgePE7WXQkx3UPqkiajaWK5YsPxx.
-      enable password cisco
       !
       no aaa new-model
       !
@@ -1822,8 +1843,6 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
       no ipv6 cef
       !
@@ -1832,11 +1851,9 @@ nodes:
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$eSJPaz7lVp8Wv7$a4yaa71w6FzE8WvPNxPvL3b47bzLnERj1VFoXqp9lFY
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -1852,11 +1869,9 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
        ip address 10.10.10.10 255.255.255.255
       !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1864,7 +1879,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to port3.SW2
        ip address 192.168.3.10 255.255.255.0
        ip ospf network point-to-multipoint non-broadcast
        ip ospf dead-interval 80
@@ -1874,7 +1888,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/2
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1882,7 +1895,6 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/3
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -1891,15 +1903,18 @@ nodes:
       !
       router ospf 1
        area 3 stub
-       network 10.10.10.10 0.0.0.0 area 3
        network 192.168.3.0 0.0.0.255 area 3
+       distribute-list Filter_route in
       !
       ip forward-protocol nd
       !
       !
       no ip http server
       no ip http secure-server
-      ip ssh server algorithm authentication password
+      !
+      ip access-list standard Filter_route
+       deny   192.168.2.0 0.0.0.255
+       permit any
       !
       ipv6 ioam timestamp
       !
@@ -1907,7 +1922,7 @@ nodes:
       !
       control-plane
       !
-      banner exec ^CC
+      banner exec ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1916,7 +1931,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner incoming ^CC
+      banner incoming ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1925,7 +1940,7 @@ nodes:
       * purposes is expressly prohibited except as otherwise authorized by     *
       * Cisco in writing.                                                      *
       **************************************************************************^C
-      banner login ^CC
+      banner login ^C
       **************************************************************************
       * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
       * education. IOSv is provided as-is and is not supported by Cisco's      *
@@ -1937,13 +1952,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -1984,9 +1997,9 @@ nodes:
     configuration: |-
       Building configuration...
 
-      Current configuration : 3543 bytes
+      Current configuration : 3216 bytes
       !
-      ! Last configuration change at 09:42:54 UTC Tue May 28 2024
+      ! Last configuration change at 09:02:55 UTC Thu Jun 27 2024
       !
       version 15.9
       service timestamps debug datetime msec
@@ -2000,8 +2013,6 @@ nodes:
       !
       !
       no logging console
-      enable secret 9 $9$DNXklns4XFQnMt$24YxRfkILE4eOZ9sDN8bQwkbewT2mSTFTm2ejTVZ34.
-      enable password cisco
       !
       no aaa new-model
       !
@@ -2022,8 +2033,6 @@ nodes:
       !
       !
       !
-      no ip domain lookup
-      ip domain name virl.info
       ip cef
       no ipv6 cef
       !
@@ -2032,11 +2041,9 @@ nodes:
       !
       !
       !
-      username cisco privilege 15 secret 9 $9$v2G0zUAA8FQm6d$kjlYcr0NzvQ6BZPNSpq8HZBLFQET1Yu/S60EpERkCn6
       !
       redundancy
       !
-      no cdp run
       !
       !
       !
@@ -2052,11 +2059,9 @@ nodes:
       !
       !
       interface Loopback0
-       description not connected
        ip address 8.8.8.8 255.255.255.255
       !
       interface GigabitEthernet0/0
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -2064,14 +2069,14 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/1
-       description to GigabitEthernet0/3.R7
        ip address 20.20.30.8 255.255.255.0
+       ip ospf authentication message-digest
+       ip ospf message-digest-key 1 md5 my_pass
        duplex auto
        speed auto
        media-type rj45
       !
       interface GigabitEthernet0/2
-       description not connected
        no ip address
        shutdown
        duplex auto
@@ -2079,19 +2084,21 @@ nodes:
        media-type rj45
       !
       interface GigabitEthernet0/3
-       description not connected
        no ip address
        shutdown
        duplex auto
        speed auto
        media-type rj45
       !
+      router ospf 1
+       network 8.8.8.8 0.0.0.0 area 0
+       network 20.20.30.0 0.0.0.255 area 0
+      !
       ip forward-protocol nd
       !
       !
       no ip http server
       no ip http secure-server
-      ip ssh server algorithm authentication password
       !
       ipv6 ioam timestamp
       !
@@ -2129,13 +2136,11 @@ nodes:
       !
       line con 0
        exec-timeout 0 0
-       password cisco
       line aux 0
       line vty 0 4
        exec-timeout 0 0
-       password cisco
-       login local
-       transport input telnet ssh
+       login
+       transport input none
       !
       no scheduler allocate
       !
@@ -2197,7 +2202,7 @@ nodes:
         slot: 0
         type: physical
   - boot_disk_size: null
-    configuration: ums-295398e3-87
+    configuration: ums-b3c1eb24-cf
     cpu_limit: null
     cpus: null
     data_volume: null
