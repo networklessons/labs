@@ -1,0 +1,839 @@
+annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Thu Aug 22 07:07:48 2024
+      !Time: Thu Aug 22 07:07:48 2024
+
+      version 10.3(1) Bios:version
+      hostname SPINE1
+      vdc SPINE1 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+
+      no password strength-check
+      username admin password 5 $5$JADGDE$ieSeoUFcZZCSfHPexw7eXfgtF9uPbfSWdQTtdELpe57  role network-admin
+      username cisco password 5 $5$GPFAHK$WLKckKmJ7H8A0ezPwP5xYRe3EL7PKUlGwvprRZaP2h9  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      snmp-server user admin network-admin auth md5 480F13F070BB30F59A4A0400AE574643A75A priv aes-128 53347597B773AB7903D1C09437C7F89076CC localizedV2key
+      snmp-server user cisco network-admin auth md5 207A60DC508816BD965A0820B4401709F643 priv aes-128 377351E966984CCAED2E3103AC177F4DBA16 localizedV2key
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+      ip pim rp-address 1.1.1.1 group-list 224.0.0.0/4
+      ip pim ssm range 232.0.0.0/8
+      vlan 1
+
+      vrf context management
+
+      interface Ethernet1/1
+        no switchport
+        mac-address 0050.c253.1001
+        ip address 192.168.12.1/24
+        ip ospf network point-to-point
+        ip router ospf 1 area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/2
+        no switchport
+        mac-address 0050.c253.1002
+        ip address 192.168.13.1/24
+        ip ospf network point-to-point
+        ip router ospf 1 area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/3
+
+      interface Ethernet1/4
+
+      interface Ethernet1/5
+
+      interface Ethernet1/6
+
+      interface Ethernet1/7
+
+      interface Ethernet1/8
+
+      interface Ethernet1/9
+
+      interface Ethernet1/10
+
+      interface Ethernet1/11
+
+      interface Ethernet1/12
+
+      interface Ethernet1/13
+
+      interface Ethernet1/14
+
+      interface Ethernet1/15
+
+      interface Ethernet1/16
+
+      interface Ethernet1/17
+
+      interface Ethernet1/18
+
+      interface Ethernet1/19
+
+      interface Ethernet1/20
+
+      interface Ethernet1/21
+
+      interface Ethernet1/22
+
+      interface Ethernet1/23
+
+      interface Ethernet1/24
+
+      interface Ethernet1/25
+
+      interface Ethernet1/26
+
+      interface Ethernet1/27
+
+      interface Ethernet1/28
+
+      interface Ethernet1/29
+
+      interface Ethernet1/30
+
+      interface Ethernet1/31
+
+      interface Ethernet1/32
+
+      interface Ethernet1/33
+
+      interface Ethernet1/34
+
+      interface Ethernet1/35
+
+      interface Ethernet1/36
+
+      interface Ethernet1/37
+
+      interface Ethernet1/38
+
+      interface Ethernet1/39
+
+      interface Ethernet1/40
+
+      interface Ethernet1/41
+
+      interface Ethernet1/42
+
+      interface Ethernet1/43
+
+      interface Ethernet1/44
+
+      interface Ethernet1/45
+
+      interface Ethernet1/46
+
+      interface Ethernet1/47
+
+      interface Ethernet1/48
+
+      interface Ethernet1/49
+
+      interface Ethernet1/50
+
+      interface Ethernet1/51
+
+      interface Ethernet1/52
+
+      interface Ethernet1/53
+
+      interface Ethernet1/54
+
+      interface Ethernet1/55
+
+      interface Ethernet1/56
+
+      interface Ethernet1/57
+
+      interface Ethernet1/58
+
+      interface Ethernet1/59
+
+      interface Ethernet1/60
+
+      interface Ethernet1/61
+
+      interface Ethernet1/62
+
+      interface Ethernet1/63
+
+      interface Ethernet1/64
+
+      interface mgmt0
+        vrf member management
+
+      interface loopback0
+        ip address 1.1.1.1/32
+        ip router ospf 1 area 0.0.0.0
+        ip pim sparse-mode
+      icam monitor scale
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      router ospf 1
+      router bgp 123
+        log-neighbor-changes
+        neighbor 2.2.2.2
+          remote-as 123
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+            route-reflector-client
+        neighbor 3.3.3.3
+          remote-as 123
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+            route-reflector-client
+
+      no logging console
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: SPINE1
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -40
+    y: -120
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Thu Aug 22 07:07:27 2024
+      !Time: Thu Aug 22 07:07:28 2024
+
+      version 10.3(1) Bios:version
+      hostname LEAF1
+      vdc LEAF1 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature vn-segment-vlan-based
+      feature nv overlay
+
+      no password strength-check
+      username admin password 5 $5$FFBPPJ$poaIqau/exX3dzfFiAVZvqcMnKP3pRkE0K/F9WOChXC  role network-admin
+      username cisco password 5 $5$FPPBGM$hC1dTP.E4owVV1JXt5EC3MtoeR3z5wkzkN5nMFDPHk/  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+      hardware access-list tcam region racl 512
+      hardware access-list tcam region arp-ether 256 double-wide
+      snmp-server user admin network-admin auth md5 00456365301C34E28047A4C7F8251687F60A priv aes-128 4956746E301578FE8E62BF83A64905ABAA0D localizedV2key
+      snmp-server user cisco network-admin auth md5 375767222A176FF4C06CEBF4B5264885BD49 priv aes-128 49662B7B314974F19B6B9A94E346138FF151 localizedV2key
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+      ip pim rp-address 1.1.1.1 group-list 224.0.0.0/4
+      ip pim ssm range 232.0.0.0/8
+      vlan 1,10
+      vlan 10
+        vn-segment 10010
+
+      vrf context management
+
+      interface nve1
+        no shutdown
+        host-reachability protocol bgp
+        source-interface loopback0
+        member vni 10010
+          suppress-arp
+          mcast-group 239.1.1.1
+
+      interface Ethernet1/1
+        no switchport
+        mac-address 0050.c253.2001
+        ip address 192.168.12.2/24
+        ip ospf network point-to-point
+        ip router ospf 1 area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/2
+        switchport access vlan 10
+
+      interface Ethernet1/3
+
+      interface Ethernet1/4
+
+      interface Ethernet1/5
+
+      interface Ethernet1/6
+
+      interface Ethernet1/7
+
+      interface Ethernet1/8
+
+      interface Ethernet1/9
+
+      interface Ethernet1/10
+
+      interface Ethernet1/11
+
+      interface Ethernet1/12
+
+      interface Ethernet1/13
+
+      interface Ethernet1/14
+
+      interface Ethernet1/15
+
+      interface Ethernet1/16
+
+      interface Ethernet1/17
+
+      interface Ethernet1/18
+
+      interface Ethernet1/19
+
+      interface Ethernet1/20
+
+      interface Ethernet1/21
+
+      interface Ethernet1/22
+
+      interface Ethernet1/23
+
+      interface Ethernet1/24
+
+      interface Ethernet1/25
+
+      interface Ethernet1/26
+
+      interface Ethernet1/27
+
+      interface Ethernet1/28
+
+      interface Ethernet1/29
+
+      interface Ethernet1/30
+
+      interface Ethernet1/31
+
+      interface Ethernet1/32
+
+      interface Ethernet1/33
+
+      interface Ethernet1/34
+
+      interface Ethernet1/35
+
+      interface Ethernet1/36
+
+      interface Ethernet1/37
+
+      interface Ethernet1/38
+
+      interface Ethernet1/39
+
+      interface Ethernet1/40
+
+      interface Ethernet1/41
+
+      interface Ethernet1/42
+
+      interface Ethernet1/43
+
+      interface Ethernet1/44
+
+      interface Ethernet1/45
+
+      interface Ethernet1/46
+
+      interface Ethernet1/47
+
+      interface Ethernet1/48
+
+      interface Ethernet1/49
+
+      interface Ethernet1/50
+
+      interface Ethernet1/51
+
+      interface Ethernet1/52
+
+      interface Ethernet1/53
+
+      interface Ethernet1/54
+
+      interface Ethernet1/55
+
+      interface Ethernet1/56
+
+      interface Ethernet1/57
+
+      interface Ethernet1/58
+
+      interface Ethernet1/59
+
+      interface Ethernet1/60
+
+      interface Ethernet1/61
+
+      interface Ethernet1/62
+
+      interface Ethernet1/63
+
+      interface Ethernet1/64
+
+      interface mgmt0
+        vrf member management
+
+      interface loopback0
+        ip address 2.2.2.2/32
+        ip router ospf 1 area 0.0.0.0
+        ip pim sparse-mode
+      icam monitor scale
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      router ospf 1
+      router bgp 123
+        log-neighbor-changes
+        neighbor 1.1.1.1
+          remote-as 123
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+
+      no logging console
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: LEAF1
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: -280
+    y: 80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: |2-
+
+      !Command: show running-config
+      !Running configuration last done at: Thu Aug 22 07:07:39 2024
+      !Time: Thu Aug 22 07:07:40 2024
+
+      version 10.3(1) Bios:version
+      hostname LEAF2
+      vdc LEAF2 id 1
+        limit-resource vlan minimum 16 maximum 4094
+        limit-resource vrf minimum 2 maximum 4096
+        limit-resource port-channel minimum 0 maximum 511
+        limit-resource m4route-mem minimum 58 maximum 58
+        limit-resource m6route-mem minimum 8 maximum 8
+
+      nv overlay evpn
+      feature ospf
+      feature bgp
+      feature pim
+      feature vn-segment-vlan-based
+      feature nv overlay
+
+      no password strength-check
+      username admin password 5 $5$NCDKAJ$9PWpMHEeTiAxfY2ygCGloURanfRPijTFMSyI.y9m6ND  role network-admin
+      username cisco password 5 $5$ICAMKO$Ou29b2Eo/ECCQXU2fjB58uPBo3CxBLFX92QXZ0psGy0  role network-admin
+      username cisco passphrase  lifetime 99999 warntime 14 gracetime 3
+      ip domain-lookup
+      copp profile strict
+      hardware access-list tcam region racl 512
+      hardware access-list tcam region arp-ether 256 double-wide
+      snmp-server user admin network-admin auth md5 207B07F991C05A6B6B6523A76CAE5EE6CDB6 priv aes-128 207E3C9FF60792F0E7FCB863F837CE581E67 localizedV2key
+      snmp-server user cisco network-admin auth md5 523277C2AC883839706300A66DF31C95E8CF priv aes-128 49577988AAFE38697D2A74F038DF649692E6 localizedV2key
+      rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+      rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+      rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+      rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+      rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+
+      ip pim rp-address 1.1.1.1 group-list 224.0.0.0/4
+      ip pim ssm range 232.0.0.0/8
+      vlan 1,10
+      vlan 10
+        vn-segment 10010
+
+      vrf context management
+
+      interface nve1
+        no shutdown
+        host-reachability protocol bgp
+        source-interface loopback0
+        member vni 10010
+          suppress-arp
+          mcast-group 239.1.1.1
+
+      interface Ethernet1/1
+        no switchport
+        mac-address 0050.c253.3001
+        ip address 192.168.13.3/24
+        ip ospf network point-to-point
+        ip router ospf 1 area 0.0.0.0
+        ip pim sparse-mode
+        no shutdown
+
+      interface Ethernet1/2
+        switchport access vlan 10
+
+      interface Ethernet1/3
+
+      interface Ethernet1/4
+
+      interface Ethernet1/5
+
+      interface Ethernet1/6
+
+      interface Ethernet1/7
+
+      interface Ethernet1/8
+
+      interface Ethernet1/9
+
+      interface Ethernet1/10
+
+      interface Ethernet1/11
+
+      interface Ethernet1/12
+
+      interface Ethernet1/13
+
+      interface Ethernet1/14
+
+      interface Ethernet1/15
+
+      interface Ethernet1/16
+
+      interface Ethernet1/17
+
+      interface Ethernet1/18
+
+      interface Ethernet1/19
+
+      interface Ethernet1/20
+
+      interface Ethernet1/21
+
+      interface Ethernet1/22
+
+      interface Ethernet1/23
+
+      interface Ethernet1/24
+
+      interface Ethernet1/25
+
+      interface Ethernet1/26
+
+      interface Ethernet1/27
+
+      interface Ethernet1/28
+
+      interface Ethernet1/29
+
+      interface Ethernet1/30
+
+      interface Ethernet1/31
+
+      interface Ethernet1/32
+
+      interface Ethernet1/33
+
+      interface Ethernet1/34
+
+      interface Ethernet1/35
+
+      interface Ethernet1/36
+
+      interface Ethernet1/37
+
+      interface Ethernet1/38
+
+      interface Ethernet1/39
+
+      interface Ethernet1/40
+
+      interface Ethernet1/41
+
+      interface Ethernet1/42
+
+      interface Ethernet1/43
+
+      interface Ethernet1/44
+
+      interface Ethernet1/45
+
+      interface Ethernet1/46
+
+      interface Ethernet1/47
+
+      interface Ethernet1/48
+
+      interface Ethernet1/49
+
+      interface Ethernet1/50
+
+      interface Ethernet1/51
+
+      interface Ethernet1/52
+
+      interface Ethernet1/53
+
+      interface Ethernet1/54
+
+      interface Ethernet1/55
+
+      interface Ethernet1/56
+
+      interface Ethernet1/57
+
+      interface Ethernet1/58
+
+      interface Ethernet1/59
+
+      interface Ethernet1/60
+
+      interface Ethernet1/61
+
+      interface Ethernet1/62
+
+      interface Ethernet1/63
+
+      interface Ethernet1/64
+
+      interface mgmt0
+        vrf member management
+
+      interface loopback0
+        ip address 3.3.3.3/32
+        ip router ospf 1 area 0.0.0.0
+        ip pim sparse-mode
+      icam monitor scale
+
+      line console
+        exec-timeout 0
+      line vty
+        exec-timeout 0
+      boot nxos bootflash:/nxos64-cs.10.3.1.F.bin
+      router ospf 1
+      router bgp 123
+        log-neighbor-changes
+        neighbor 1.1.1.1
+          remote-as 123
+          update-source loopback0
+          address-family l2vpn evpn
+            send-community
+            send-community extended
+
+      no logging console
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: LEAF2
+    node_definition: nxosv9000
+    ram: null
+    tags: []
+    x: 200
+    y: 80
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: mgmt0
+        slot: 0
+        type: physical
+      - id: i2
+        label: Ethernet1/1
+        slot: 1
+        type: physical
+      - id: i3
+        label: Ethernet1/2
+        slot: 2
+        type: physical
+      - id: i4
+        label: Ethernet1/3
+        slot: 3
+        type: physical
+  - boot_disk_size: null
+    configuration: |-
+      #cloud-config
+      hostname: inserthostname-here
+      manage_etc_hosts: True
+      system_info:
+        default_user:
+          name: cisco
+      password: cisco
+      chpasswd: { expire: False }
+      ssh_pwauth: True
+      ssh_authorized_keys:
+         - your-ssh-pubkey-line-goes-here
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: ubuntu-0
+    node_definition: ubuntu
+    ram: null
+    tags: []
+    x: -400
+    y: 240
+    interfaces:
+      - id: i0
+        label: ens2
+        slot: 0
+        type: physical
+  - boot_disk_size: null
+    configuration: |-
+      #cloud-config
+      hostname: inserthostname-here
+      manage_etc_hosts: True
+      system_info:
+        default_user:
+          name: cisco
+      password: cisco
+      chpasswd: { expire: False }
+      ssh_pwauth: True
+      ssh_authorized_keys:
+         - your-ssh-pubkey-line-goes-here
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: ubuntu-1
+    node_definition: ubuntu
+    ram: null
+    tags: []
+    x: 240
+    y: 240
+    interfaces:
+      - id: i0
+        label: ens2
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: nxos9000-1-Ethernet1/1<->nxos9000-0-Ethernet1/1
+  - id: l1
+    n1: n0
+    n2: n2
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: nxos9000-0-Ethernet1/2<->nxos9000-2-Ethernet1/1
+  - id: l2
+    n1: n3
+    n2: n1
+    i1: i0
+    i2: i3
+    conditioning: {}
+    label: ubuntu-0-ens2<->nxos9000-1-Ethernet1/2
+  - id: l3
+    n1: n2
+    n2: n4
+    i1: i3
+    i2: i0
+    conditioning: {}
+    label: nxos9000-2-Ethernet1/2<->ubuntu-1-ens2
+lab:
+  description: ''
+  notes: ''
+  title: vxlan-bgp-evpn-arp-suppression
+  version: 0.2.1
