@@ -1326,6 +1326,11 @@ nodes:
       interface Loopback0
        ip address 5.5.5.5 255.255.255.255
       !
+      interface Tunnel0
+       ip address 192.168.59.5 255.255.255.0
+       tunnel source 192.168.58.5
+       tunnel destination 192.168.89.9
+      !
       interface GigabitEthernet0/0
        ip address 192.168.35.5 255.255.255.0
        duplex auto
@@ -1380,8 +1385,8 @@ nodes:
       !
       no ip http server
       no ip http secure-server
-      ip route 8.8.8.8 255.255.255.255 192.168.58.8
-      ip route 9.9.9.9 255.255.255.255 192.168.58.8
+      ip route 9.9.9.9 255.255.255.255 192.168.59.9
+      ip route 192.168.89.9 255.255.255.255 192.168.58.8
       !
       !
       ip prefix-list BLOCK-18 seq 5 deny 0.0.0.0/0 ge 18 le 18
@@ -2105,6 +2110,11 @@ nodes:
       interface Loopback0
        ip address 9.9.9.9 255.255.255.255
       !
+      interface Tunnel0
+        ip address 192.168.59.9 255.255.255.0
+        tunnel source 192.168.89.9
+        tunnel destination 192.168.58.5
+      !
       interface GigabitEthernet0/0
        ip address 192.168.89.9 255.255.255.0
        duplex auto
@@ -2145,8 +2155,8 @@ nodes:
       !
       no ip http server
       no ip http secure-server
-      ip route 5.5.5.5 255.255.255.255 192.168.89.8
-      ip route 8.8.8.8 255.255.255.255 192.168.89.8
+      ip route 5.5.5.5 255.255.255.255 192.168.59.5
+      ip route 192.168.58.5 255.255.255.255 192.168.89.8
       !
       ipv6 ioam timestamp
       !
