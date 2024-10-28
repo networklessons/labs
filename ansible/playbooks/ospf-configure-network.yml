@@ -1,0 +1,24 @@
+---
+- name: Configure OSPF on Routers and Show OSPF Neighbors
+  hosts: routers
+  gather_facts: no
+  tasks:
+    - name: Ensure OSPF is configured
+      ios_config:
+        lines:
+          - network 192.168.12.0 0.0.0.255 area 0
+        parents: router ospf 1
+        save_when: changed
+
+    - name: Wait for OSPF neighbor to be FULL
+      ios_command:
+        commands:
+          - show ip ospf neighbor
+      register: ospf_neighbors
+      until: "'FULL' in ospf_neighbors.stdout[0]"
+      retries: 30
+      delay: 10
+
+    - name: Display OSPF neighbors
+      debug:
+        var: ospf_neighbors.stdout_lines
