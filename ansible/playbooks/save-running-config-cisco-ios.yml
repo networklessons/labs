@@ -1,0 +1,24 @@
+# download-config-ios.yml
+---
+- name: Download running configuration from Cisco IOS devices
+  hosts: cisco_ios,cisco_iol
+  gather_facts: no
+  vars:
+    connection: ansible.netcommon.network_cli
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_become: yes
+    ansible_become_method: enable
+    ansible_network_os: cisco.ios.ios
+    ansible_user: admin
+  tasks:
+    - name: Search for MAC address in MAC address table
+      ios_command:
+        commands: 
+          - show running-config
+      register: running_config
+
+    - name: Save running config to a file
+      copy:
+        content: "{{ running_config.stdout[0] }}"
+        dest: "./{{ inventory_hostname }}_running-config.cfg"
