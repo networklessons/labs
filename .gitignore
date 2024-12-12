@@ -34,3 +34,4 @@ topology-data.json
 iouyap.ini
 nvram
 NETMAP
+nvram_*
