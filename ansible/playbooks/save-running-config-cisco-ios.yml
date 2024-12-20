@@ -1,7 +1,7 @@
 # download-config-ios.yml
 ---
 - name: Download running configuration from Cisco IOS devices
-  hosts: cisco_ios,cisco_iol
+  hosts: cisco_ios,cisco_iol,cisco_c8000v
   gather_facts: no
   vars:
     connection: ansible.netcommon.network_cli
