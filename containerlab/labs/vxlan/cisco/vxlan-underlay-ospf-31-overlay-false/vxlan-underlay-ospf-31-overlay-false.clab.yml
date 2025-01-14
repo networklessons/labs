@@ -1,0 +1,127 @@
+# Cisco NX-OS 9000v lab with:
+# - Two spine switches.
+# - Four leaf switches.
+# - Four hosts.
+# VXLAN Underlay with OSPF using /31 P2P interfaces.
+# No overlay configured.
+
+name: vxlan-underlay-ospf-31-overlay-false
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  kinds:
+    cisco_n9kv:
+      image: docker-registry.nwl.lab/vr-n9kv:9.3.9
+    linux:
+      image: networklessons/lab-node-ubuntu:270
+  nodes:
+    spine1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-false/spine1/config/startup-config.cfg
+      labels:
+        graph-level: 1
+        graph-icon: switch
+    spine2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-false/spine2/config/startup-config.cfg
+      labels:
+        graph-level: 1
+        graph-icon: switch
+    leaf1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.31
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-false/leaf1/config/startup-config.cfg
+      labels:
+        graph-level: 2
+        graph-icon: switch
+    leaf2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.32
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-false/leaf2/config/startup-config.cfg
+      labels:
+        graph-level: 2
+        graph-icon: switch
+    leaf3:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.33
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-false/leaf3/config/startup-config.cfg
+      labels:
+        graph-level: 2
+        graph-icon: switch
+    leaf4:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.34
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-false/leaf4/config/startup-config.cfg
+      labels:
+        graph-level: 2
+        graph-icon: switch
+    s1:
+      kind: linux
+      mgmt-ipv4: 172.100.100.51
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:70:01
+      - ip addr add 172.16.1.1/24 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+    s2:
+      kind: linux
+      mgmt-ipv4: 172.100.100.52
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:80:01
+      - ip addr add 172.16.1.2/24 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+    s3:
+      kind: linux
+      mgmt-ipv4: 172.100.100.53
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:90:01
+      - ip addr add 172.16.1.3/24 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+    s4:
+      kind: linux
+      mgmt-ipv4: 172.100.100.54
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:A0:01
+      - ip addr add 172.16.1.4/24 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["spine1:eth1", "leaf1:eth1"]
+    - endpoints: ["spine1:eth2", "leaf2:eth1"]
+    - endpoints: ["spine1:eth3", "leaf3:eth1"]
+    - endpoints: ["spine1:eth4", "leaf4:eth1"]
+
+    - endpoints: ["spine2:eth1", "leaf1:eth2"]
+    - endpoints: ["spine2:eth2", "leaf2:eth2"]
+    - endpoints: ["spine2:eth3", "leaf3:eth2"]
+    - endpoints: ["spine2:eth4", "leaf4:eth2"]
+
+    - endpoints: ["leaf1:eth3", "s1:eth1"]
+    - endpoints: ["leaf2:eth3", "s2:eth1"]
+    - endpoints: ["leaf3:eth3", "s3:eth1"]
+    - endpoints: ["leaf4:eth3", "s4:eth1"]
