@@ -1,0 +1,25 @@
+hostname R2
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+interface Ethernet0/1
+ mac-address 0000.5e7a.987d
+ ip address 192.168.12.2 255.255.255.0
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+router bgp 2
+ bgp log-neighbor-changes
+ neighbor 192.168.12.1 remote-as 1
+ !
+ address-family ipv4
+  network 2.2.2.2 mask 255.255.255.255
+  neighbor 192.168.12.1 activate
+ exit-address-family

@@ -14,11 +14,11 @@ topology:
     iol-1:
       kind: cisco_iol
       mgmt-ipv4: 172.100.100.10
-      startup-config: ./clab-bgp-ebgp-two-routers/iol-1/startup-config.cfg
+      startup-config: ./clab-bgp-ebgp-two-routers/iol-1/startup-config.cfg.partial
     iol-2:
       kind: cisco_iol
       mgmt-ipv4: 172.100.100.11
-      startup-config: ./clab-bgp-ebgp-two-routers/iol-2/startup-config.cfg
+      startup-config: ./clab-bgp-ebgp-two-routers/iol-2/startup-config.cfg.partial
     graphite:
       kind: linux
       image: netreplica/graphite
