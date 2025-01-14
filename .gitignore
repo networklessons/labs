@@ -35,3 +35,4 @@ iouyap.ini
 nvram
 NETMAP
 nvram_*
+boot_config.txt
