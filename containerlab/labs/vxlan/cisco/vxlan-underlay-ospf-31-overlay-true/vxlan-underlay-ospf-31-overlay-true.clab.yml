@@ -3,8 +3,9 @@
 # - Four leaf switches.
 # - Four hosts.
 # VXLAN Underlay with OSPF using /31 P2P interfaces.
+# MP-BGP EVPN Overlay with spine1 as RP.
 
-name: vxlan-underlay-ospf-31-without-overlay
+name: vxlan-underlay-ospf-31-overlay-true
 mgmt:
   network: statics
   ipv4-subnet: 172.100.100.0/24
@@ -13,47 +14,47 @@ topology:
     cisco_n9kv:
       image: docker-registry.nwl.lab/vr-n9kv:9.3.9
     linux:
-      image: networklessons/lab-node-ubuntu:83
+      image: networklessons/lab-node-ubuntu:270
   nodes:
     spine1:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.11
-      startup-config: ./clab-vxlan-underlay-ospf-31-without-overlay/spine1/config/startup-config.cfg
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-true/spine1/config/startup-config.cfg
       labels:
         graph-level: 1
         graph-icon: switch
     spine2:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.12
-      startup-config: ./clab-vxlan-underlay-ospf-31-without-overlay/spine2/config/startup-config.cfg
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-true/spine2/config/startup-config.cfg
       labels:
         graph-level: 1
         graph-icon: switch
     leaf1:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.31
-      startup-config: ./clab-vxlan-underlay-ospf-31-without-overlay/leaf1/config/startup-config.cfg
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-true/leaf1/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     leaf2:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.32
-      startup-config: ./clab-vxlan-underlay-ospf-31-without-overlay/leaf2/config/startup-config.cfg
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-true/leaf2/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     leaf3:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.33
-      startup-config: ./clab-vxlan-underlay-ospf-31-without-overlay/leaf3/config/startup-config.cfg
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-true/leaf3/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     leaf4:
       kind: cisco_n9kv
       mgmt-ipv4: 172.100.100.34
-      startup-config: ./clab-vxlan-underlay-ospf-31-without-overlay/leaf4/config/startup-config.cfg
+      startup-config: ./clab-vxlan-underlay-ospf-31-overlay-true/leaf4/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
