@@ -15,7 +15,7 @@ topology:
       enforce-startup-config: true
       #image: renedocker82/vr-n9kv:10.2.7
     linux:
-      image: networklessons/lab-node-ubuntu:83
+      image: networklessons/lab-node-ubuntu:270
   nodes:
     spine1:
       kind: cisco_n9kv

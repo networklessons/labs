@@ -13,7 +13,7 @@ topology:
       image: vrnetlab/vr-n9kv:9.3.9
       #image: vrnetlab/vr-n9kv:10.2.7
     linux:
-      image: networklessons/lab-node-ubuntu:83
+      image: networklessons/lab-node-ubuntu:270
   nodes:
     leaf1:
       kind: cisco_n9kv
