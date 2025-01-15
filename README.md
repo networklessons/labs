@@ -33,3 +33,11 @@ Contains playbooks you can use to run against network devices.
 ## Containerlab
 
 Contains topologies you can run in Containerlab.
+
+## CML
+
+Contains topologies you can run in Cisco CML.
+
+## VIRL
+
+Contains topologies for Cisco's deprecated VIRL. These can be imported into Cisco CML.
