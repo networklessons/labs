@@ -7,7 +7,7 @@ mgmt:
 topology:
   kinds:
     cisco_iol:
-      image: renedocker82/cisco_iol:17.12.01
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
     R1:
       kind: cisco_iol
