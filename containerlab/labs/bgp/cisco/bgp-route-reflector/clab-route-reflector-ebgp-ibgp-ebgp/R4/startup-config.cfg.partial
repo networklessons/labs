@@ -17,6 +17,7 @@ router ospf 1
 !
 router bgp 234
  bgp router-id 4.4.4.4
- neighbor 192.168.45.5 remote-as 5
  neighbor 3.3.3.3 remote-as 234
  neighbor 3.3.3.3 update-source Loopback0
+ neighbor 3.3.3.3 next-hop-self
+ neighbor 192.168.45.5 remote-as 5

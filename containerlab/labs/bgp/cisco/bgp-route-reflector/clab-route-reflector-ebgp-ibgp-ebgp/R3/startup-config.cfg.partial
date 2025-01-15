@@ -19,9 +19,9 @@ router ospf 1
 router bgp 234
  bgp router-id 3.3.3.3
  neighbor 2.2.2.2 remote-as 234
- neighbor 2.2.2.2 update-source Ethernet0/1
+ neighbor 2.2.2.2 update-source Loopback0
  neighbor 4.4.4.4 remote-as 234
- neighbor 4.4.4.4 update-source Ethernet0/2
+ neighbor 4.4.4.4 update-source Loopback0
  !
  address-family ipv4
   neighbor 2.2.2.2 route-reflector-client
