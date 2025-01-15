@@ -1,0 +1,14 @@
+hostname R5
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.45.5 255.255.255.0
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.255
+!
+router bgp 5
+ bgp router-id 5.5.5.5
+ neighbor 192.168.45.4 remote-as 234
+ network 5.5.5.5 mask 255.255.255.255
+!
