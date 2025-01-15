@@ -1,0 +1,22 @@
+hostname R2
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.12.2 255.255.255.0
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 192.168.23.2 255.255.255.0
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+router ospf 1
+ network 192.168.23.0 0.0.0.255 area 0
+ network 2.2.2.2 0.0.0.0 area 0
+!
+router bgp 234
+ bgp router-id 2.2.2.2
+ neighbor 192.168.12.1 remote-as 1
+ neighbor 3.3.3.3 remote-as 234
+ neighbor 3.3.3.3 update-source Loopback0

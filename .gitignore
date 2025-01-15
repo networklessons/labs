@@ -36,3 +36,4 @@ nvram
 NETMAP
 nvram_*
 boot_config.txt
+startup.cfg
