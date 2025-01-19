@@ -1,0 +1,39 @@
+name: frr-ospf-three-routers
+
+topology:
+  nodes:
+    R1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - R1/daemons:/etc/frr/daemons
+        - R1/frr.conf:/etc/frr/frr.conf
+    R2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - R2/daemons:/etc/frr/daemons
+        - R2/frr.conf:/etc/frr/frr.conf
+    R3:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - R3/daemons:/etc/frr/daemons
+        - R3/frr.conf:/etc/frr/frr.conf
+    H1:
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+    H2:
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+    H3:
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+
+  links:
+    - endpoints: ["R1:eth1", "R2:eth1"]
+    - endpoints: ["R1:eth2", "R3:eth1"]
+    - endpoints: ["R2:eth2", "R3:eth2"]
+    - endpoints: ["H1:eth1", "R1:eth3"]
+    - endpoints: ["H2:eth1", "R2:eth3"]
+    - endpoints: ["H3:eth1", "R3:eth3"]
