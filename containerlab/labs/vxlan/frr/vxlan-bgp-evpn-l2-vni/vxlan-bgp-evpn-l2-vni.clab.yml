@@ -1,0 +1,90 @@
+name: vxlan-bgp-evpn-l2-vni
+
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  nodes:
+    spine1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - clab-vxlan-bgp-evpn-l2-vni/daemons:/etc/frr/daemons
+        - clab-vxlan-bgp-evpn-l2-vni/spine1/frr.conf:/etc/frr/frr.conf
+      labels:
+        graph-level: 1
+    leaf1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - clab-vxlan-bgp-evpn-l2-vni/daemons:/etc/frr/daemons
+        - clab-vxlan-bgp-evpn-l2-vni/leaf1/frr.conf:/etc/frr/frr.conf
+      exec:
+      - ip link add name br10 type bridge stp_state 0
+      - ip addr add 2.2.2.2/32 dev br10
+      - ip link set dev br10 up
+      - ip link add vxlan10010 type vxlan id 10010 dstport 4789 local 2.2.2.2 nolearning
+      - ip link set dev vxlan10010 master br10
+      - ip link set up dev vxlan10010
+      - ip link set dev eth2 master br10
+      - ip link set up dev eth2
+      labels:
+        graph-level: 2
+    leaf2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - clab-vxlan-bgp-evpn-l2-vni/daemons:/etc/frr/daemons
+        - clab-vxlan-bgp-evpn-l2-vni/leaf2/frr.conf:/etc/frr/frr.conf
+      exec:
+      - ip link add name br10 type bridge stp_state 0
+      - ip addr add 3.3.3.3/32 dev br10
+      - ip link set dev br10 up
+      - ip link add vxlan10010 type vxlan id 10010 dstport 4789 local 3.3.3.3 nolearning
+      - ip link set dev vxlan10010 master br10
+      - ip link set up dev vxlan10010
+      - ip link set dev eth2 master br10
+      - ip link set up dev eth2
+      labels:
+        graph-level: 2
+    H1:
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+      mgmt-ipv4: 172.100.100.51
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:40:01
+      - ip addr add 172.16.12.1/24 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+    H2:
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+      mgmt-ipv4: 172.100.100.52
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:50:01
+      - ip addr add 172.16.12.2/24 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["spine1:eth1", "leaf1:eth1"]
+    - endpoints: ["spine1:eth2", "leaf2:eth1"]
+    - endpoints: ["H1:eth1", "leaf1:eth2"]
+    - endpoints: ["H2:eth1", "leaf2:eth2"]
