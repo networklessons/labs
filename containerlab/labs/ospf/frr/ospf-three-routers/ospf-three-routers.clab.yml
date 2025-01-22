@@ -1,0 +1,87 @@
+name: frr-ospf-three-routers
+
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  nodes:
+    R1:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - clab-frr-ospf-three-routers/daemons:/etc/frr/daemons
+        - clab-frr-ospf-three-routers/R1/frr.conf:/etc/frr/frr.conf
+      labels:
+        graph-level: 1
+    R2:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - clab-frr-ospf-three-routers/daemons:/etc/frr/daemons
+        - clab-frr-ospf-three-routers/R2/frr.conf:/etc/frr/frr.conf
+      labels:
+        graph-level: 2
+    R3:
+      kind: linux
+      image: quay.io/frrouting/frr:10.2.1
+      binds:
+        - clab-frr-ospf-three-routers/daemons:/etc/frr/daemons
+        - clab-frr-ospf-three-routers/R3/frr.conf:/etc/frr/frr.conf
+      labels:
+        graph-level: 2
+    H1:
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+      mgmt-ipv4: 172.100.100.51
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:40:01
+      - ip addr add 192.168.1.1/24 dev eth1
+      - ip route add 192.168.0.0/16 via 192.168.1.254 dev eth1
+      labels:
+        graph-level: 0
+        graph-icon: server
+    H2:
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+      mgmt-ipv4: 172.100.100.52
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:50:01
+      - ip addr add 192.168.2.2/24 dev eth1
+      - ip route add 192.168.0.0/16 via 192.168.2.254 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+    H3:      
+      kind: linux
+      image: networklessons/lab-node-ubuntu:269
+      mgmt-ipv4: 172.100.100.53
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:60:01
+      - ip addr add 192.168.3.3/24 dev eth1
+      - ip route add 192.168.0.0/16 via 192.168.3.254 dev eth1
+      labels:
+        graph-level: 3
+        graph-icon: server
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["R1:eth1", "R2:eth1"]
+    - endpoints: ["R1:eth2", "R3:eth1"]
+    - endpoints: ["R2:eth2", "R3:eth2"]
+    - endpoints: ["H1:eth1", "R1:eth3"]
+    - endpoints: ["H2:eth1", "R2:eth3"]
+    - endpoints: ["H3:eth1", "R3:eth3"]
