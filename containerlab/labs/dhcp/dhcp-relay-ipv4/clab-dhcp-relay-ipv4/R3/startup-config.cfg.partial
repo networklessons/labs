@@ -1,0 +1,9 @@
+hostname R3  
+!
+ip dhcp pool MY_POOL
+ network 192.168.12.0 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 192.168.23.3 255.255.255.0
+!
+ip route 192.168.12.0 255.255.255.0 192.168.23.2

@@ -1,0 +1,4 @@
+hostname R1
+!
+interface Ethernet0/1
+ ip address dhcp
