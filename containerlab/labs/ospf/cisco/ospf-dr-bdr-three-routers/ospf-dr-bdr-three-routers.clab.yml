@@ -23,7 +23,7 @@ topology:
       startup-config: ./clab-ospf-dr-bdr-three-routers/R3/startup-config.cfg.partial
     SW1:
       kind: cisco_iol
-      image: vrnetlab/cisco_iol:l2-17.12.01
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
       type: L2
       mgmt-ipv4: 172.100.100.13
       #startup-config: ./clab-ospf-dr-bdr-three-routers/SW1/startup-config.cfg.partial
