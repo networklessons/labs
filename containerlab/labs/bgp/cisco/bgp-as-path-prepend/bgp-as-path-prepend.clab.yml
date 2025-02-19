@@ -1,4 +1,5 @@
-# Cisco IOL lab with BGP (EBGP) and two routers
+# Cisco C8000v lab with BGP (EBGP) and two routers.
+# R1 configured to do AS path prepending.
 
 name: bgp-as-path-prepend
 
