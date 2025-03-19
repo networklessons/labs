@@ -11,36 +11,35 @@ mgmt:
 topology:
   kinds:
     cisco_n9kv:
-      image: docker-registry.nwl.lab/vr-n9kv:9.3.9
+      image: docker-registry.nwl.lab/vr-n9kv:10.4.5
       enforce-startup-config: true
-      #image: docker-registry.nwl.lab/vr-n9kv:10.2.7
     linux:
       image: networklessons/lab-node-ubuntu:270
   nodes:
     spine1:
       kind: cisco_n9kv
-      mgmt-ipv4: 172.100.100.10
+      mgmt-ipv4: 172.100.100.11
       startup-config: ./clab-vxlan-bgp-evpn-l3-vni/spine1/config/startup-config.cfg
       labels:
         graph-level: 1
         graph-icon: switch
     leaf1:
       kind: cisco_n9kv
-      mgmt-ipv4: 172.100.100.12
+      mgmt-ipv4: 172.100.100.31
       startup-config: ./clab-vxlan-bgp-evpn-l3-vni/leaf1/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     leaf2:
       kind: cisco_n9kv
-      mgmt-ipv4: 172.100.100.13
+      mgmt-ipv4: 172.100.100.32
       startup-config: ./clab-vxlan-bgp-evpn-l3-vni/leaf2/config/startup-config.cfg
       labels:
         graph-level: 2
         graph-icon: switch
     s1:
       kind: linux
-      mgmt-ipv4: 172.100.100.16
+      mgmt-ipv4: 172.100.100.51
       exec:
       - ip link set dev eth1 address 00:50:c2:53:40:01
       - ip addr add 172.16.10.1/24 dev eth1
@@ -50,7 +49,7 @@ topology:
         graph-icon: server
     s2:
       kind: linux
-      mgmt-ipv4: 172.100.100.17
+      mgmt-ipv4: 172.100.100.52
       exec:
       - ip link set dev eth1 address 00:50:c2:53:50:01
       - ip addr add 172.16.20.2/24 dev eth1
