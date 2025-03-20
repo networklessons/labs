@@ -11,14 +11,14 @@ topology:
   nodes:
     R1:
       kind: cisco_c8000v
-      image: vrnetlab/cisco_c8000v:17.13.01a
+      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a
       startup-config: ./clab-ospf-network-type-p2p/R1/config/startup-config.cfg
       labels:
         graph-level: 1
         graph-icon: router
     R2:
       kind: cisco_c8000v
-      image: vrnetlab/cisco_c8000v:17.13.01a
+      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a
       startup-config: ./clab-ospf-network-type-p2p/R2/config/startup-config.cfg
       labels:
         graph-level: 1
