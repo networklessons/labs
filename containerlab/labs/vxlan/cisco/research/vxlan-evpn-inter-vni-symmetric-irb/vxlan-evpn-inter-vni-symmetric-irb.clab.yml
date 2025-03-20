@@ -8,7 +8,7 @@ mgmt:
 topology:
   kinds:
     cisco_n9kv:
-      image: vrnetlab/vr-n9kv:10.2.7
+      image: docker-registry.nwl.lab/vr-n9kv:10.4.5
     linux:
       image: networklessons/ubuntu-network-host:latest
   nodes:

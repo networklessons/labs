@@ -12,7 +12,7 @@ topology:
   kinds:
     cisco_n9kv:
       image: docker-registry.nwl.lab/vr-n9kv:9.3.9
-      #image: vrnetlab/vr-n9kv:10.2.7
+      #image: docker-registry.nwl.lab/vr-n9kv:10.4.5
   nodes:
     sw1:
       kind: cisco_n9kv
