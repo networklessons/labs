@@ -1,0 +1,27 @@
+hostname R2
+!
+vrf definition R1_R2
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition R2_R3
+ !
+ address-family ipv4
+ exit-address-family
+!
+interface Ethernet0/1
+ vrf forwarding R1_R2
+ ip address 192.168.12.2 255.255.255.0
+!
+interface Ethernet0/2
+ vrf forwarding R2_R3
+ ip address 192.168.23.2 255.255.255.0
+!
+router ospf 1 vrf R1_R2
+ router-id 2.2.2.2
+ network 192.168.12.0 0.0.0.255 area 0
+!
+router ospf 2 vrf R2_R3
+ router-id 2.2.2.2
+ network 192.168.23.0 0.0.0.255 area 0
