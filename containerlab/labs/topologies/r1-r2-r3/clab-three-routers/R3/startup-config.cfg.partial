@@ -1,0 +1,4 @@
+hostname R3
+!
+interface Ethernet0/1
+ ip address 192.168.23.3 255.255.255.0
