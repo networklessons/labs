@@ -14,11 +14,11 @@ topology:
     r1:
       kind: cisco_iol
       mgmt-ipv4: 172.100.100.11
-      startup-config: ./clab-mpls-ldp-two-routers/r1/startup-config.cfg.partial
+      #startup-config: ./clab-mpls-ldp-two-routers/r1/startup-config.cfg.partial
     r2:
       kind: cisco_iol
       mgmt-ipv4: 172.100.100.12
-      startup-config: ./clab-mpls-ldp-two-routers/r2/startup-config.cfg.partial
+      #startup-config: ./clab-mpls-ldp-two-routers/r2/startup-config.cfg.partial
     graphite:
       kind: linux
       image: netreplica/graphite
