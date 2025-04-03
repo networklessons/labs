@@ -117,7 +117,7 @@ nodes:
 
           Current configuration : 3196 bytes
           !
-          ! Last configuration change at 11:25:58 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:28 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -310,7 +310,7 @@ nodes:
 
           Current configuration : 3122 bytes
           !
-          ! Last configuration change at 11:26:05 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:34 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -499,7 +499,7 @@ nodes:
 
           Current configuration : 3123 bytes
           !
-          ! Last configuration change at 11:26:30 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:49:02 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -685,9 +685,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 4452 bytes
+          Current configuration : 4532 bytes
           !
-          ! Last configuration change at 11:26:22 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:53 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -725,6 +725,11 @@ nodes:
           !
           !
           !
+          !
+          ip vrf CUSTOMER2
+           rd 222:222
+           route-target export 222:222
+           route-target import 222:222
           !
           !
           !
@@ -790,6 +795,7 @@ nodes:
            media-type rj45
           !
           interface GigabitEthernet0/4
+           ip vrf forwarding CUSTOMER2
            ip address 10.2.8.8 255.255.255.0
            duplex auto
            speed auto
@@ -807,7 +813,6 @@ nodes:
           !
           router ospf 1
            passive-interface GigabitEthernet0/3
-           passive-interface GigabitEthernet0/4
            passive-interface GigabitEthernet0/5
            network 8.8.8.8 0.0.0.0 area 0
            network 10.8.9.0 0.0.0.255 area 0
@@ -941,7 +946,7 @@ nodes:
 
           Current configuration : 3439 bytes
           !
-          ! Last configuration change at 11:26:39 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:49:11 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1140,7 +1145,7 @@ nodes:
 
           Current configuration : 3417 bytes
           !
-          ! Last configuration change at 11:26:18 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:48 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1337,9 +1342,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 4625 bytes
+          Current configuration : 4705 bytes
           !
-          ! Last configuration change at 11:26:31 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:49:03 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1377,6 +1382,11 @@ nodes:
           !
           !
           !
+          !
+          ip vrf CUSTOMER2
+           rd 222:222
+           route-target export 222:222
+           route-target import 222:222
           !
           !
           !
@@ -1448,6 +1458,7 @@ nodes:
            media-type rj45
           !
           interface GigabitEthernet0/5
+           ip vrf forwarding CUSTOMER2
            ip address 10.7.12.12 255.255.255.0
            duplex auto
            speed auto
@@ -1466,7 +1477,6 @@ nodes:
           router ospf 1
            passive-interface GigabitEthernet0/2
            passive-interface GigabitEthernet0/3
-           passive-interface GigabitEthernet0/5
            passive-interface GigabitEthernet0/6
            network 10.10.12.0 0.0.0.255 area 0
            network 10.11.12.0 0.0.0.255 area 0
@@ -1605,7 +1615,7 @@ nodes:
 
           Current configuration : 3433 bytes
           !
-          ! Last configuration change at 11:25:36 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:04 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1804,7 +1814,7 @@ nodes:
 
           Current configuration : 3113 bytes
           !
-          ! Last configuration change at 11:27:02 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:49:36 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1993,7 +2003,7 @@ nodes:
 
           Current configuration : 3124 bytes
           !
-          ! Last configuration change at 11:25:39 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:07 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2181,7 +2191,7 @@ nodes:
 
           Current configuration : 3121 bytes
           !
-          ! Last configuration change at 11:26:02 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:32 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2369,7 +2379,7 @@ nodes:
 
           Current configuration : 3195 bytes
           !
-          ! Last configuration change at 11:26:09 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:39 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2562,7 +2572,7 @@ nodes:
 
           Current configuration : 3121 bytes
           !
-          ! Last configuration change at 11:26:12 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:43 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2750,7 +2760,7 @@ nodes:
 
           Current configuration : 3126 bytes
           !
-          ! Last configuration change at 11:26:18 UTC Thu Apr 3 2025
+          ! Last configuration change at 11:48:48 UTC Thu Apr 3 2025
           !
           version 15.9
           service timestamps debug datetime msec
