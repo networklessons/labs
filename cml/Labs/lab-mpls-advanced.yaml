@@ -117,7 +117,7 @@ nodes:
 
           Current configuration : 3196 bytes
           !
-          ! Last configuration change at 23:47:22 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:16:57 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -310,7 +310,7 @@ nodes:
 
           Current configuration : 3122 bytes
           !
-          ! Last configuration change at 23:50:54 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:20:40 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -499,7 +499,7 @@ nodes:
 
           Current configuration : 3259 bytes
           !
-          ! Last configuration change at 23:55:17 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:25:03 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -691,9 +691,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 4962 bytes
+          Current configuration : 5223 bytes
           !
-          ! Last configuration change at 23:55:32 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:25:20 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -823,6 +823,15 @@ nodes:
            speed auto
            media-type rj45
           !
+          !
+          router eigrp 3
+           !
+           address-family ipv4 vrf CUSTOMER3 autonomous-system 3
+            redistribute bgp 1 metric 1 1 1 1 1
+            network 10.3.8.0 0.0.0.255
+           exit-address-family
+           auto-summary
+          !
           router ospf 10 vrf CUSTOMER1
            redistribute bgp 1 subnets
            network 10.1.8.0 0.0.0.255 area 0
@@ -861,6 +870,10 @@ nodes:
            address-family ipv4 vrf CUSTOMER2
             network 88.88.88.88 mask 255.255.255.255
             redistribute ospf 2
+           exit-address-family
+           !
+           address-family ipv4 vrf CUSTOMER3
+            redistribute eigrp 3
            exit-address-family
           !
           ip forward-protocol nd
@@ -971,7 +984,7 @@ nodes:
 
           Current configuration : 3439 bytes
           !
-          ! Last configuration change at 23:57:06 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:26:49 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1170,7 +1183,7 @@ nodes:
 
           Current configuration : 3417 bytes
           !
-          ! Last configuration change at 23:52:51 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:22:34 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1367,9 +1380,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 5128 bytes
+          Current configuration : 5406 bytes
           !
-          ! Last configuration change at 23:56:45 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:26:29 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1506,6 +1519,15 @@ nodes:
            speed auto
            media-type rj45
           !
+          !
+          router eigrp 3
+           !
+           address-family ipv4 vrf CUSTOMER3 autonomous-system 3
+            redistribute bgp 1 metric 1 1 1 1 1
+            network 10.4.12.0 0.0.0.255
+            network 10.5.12.0 0.0.0.255
+           exit-address-family
+          !
           router ospf 10 vrf CUSTOMER1
            redistribute bgp 1 subnets
            network 10.6.12.0 0.0.0.255 area 0
@@ -1544,6 +1566,10 @@ nodes:
            address-family ipv4 vrf CUSTOMER2
             network 122.122.122.122 mask 255.255.255.255
             redistribute ospf 2
+           exit-address-family
+           !
+           address-family ipv4 vrf CUSTOMER3
+            redistribute eigrp 3
            exit-address-family
           !
           ip forward-protocol nd
@@ -1659,7 +1685,7 @@ nodes:
 
           Current configuration : 3433 bytes
           !
-          ! Last configuration change at 23:37:49 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:07:21 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1856,9 +1882,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3113 bytes
+          Current configuration : 3185 bytes
           !
-          ! Last configuration change at 00:07:52 UTC Tue Apr 8 2025
+          ! Last configuration change at 01:37:45 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1949,6 +1975,11 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+          !
+          !
+          router eigrp 3
+           network 3.3.3.3 0.0.0.0
+           network 10.3.8.0 0.0.0.255
           !
           ip forward-protocol nd
           !
@@ -2045,9 +2076,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3124 bytes
+          Current configuration : 3225 bytes
           !
-          ! Last configuration change at 23:38:43 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:08:18 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2137,6 +2168,12 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+          !
+          !
+          router eigrp 3
+           network 4.4.4.4 0.0.0.0
+           network 10.4.5.0 0.0.0.255
+           network 10.4.12.0 0.0.0.255
           !
           ip forward-protocol nd
           !
@@ -2233,9 +2270,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3121 bytes
+          Current configuration : 3222 bytes
           !
-          ! Last configuration change at 23:45:33 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:15:09 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2325,6 +2362,12 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+          !
+          !
+          router eigrp 3
+           network 5.5.5.5 0.0.0.0
+           network 10.4.5.0 0.0.0.255
+           network 10.5.12.0 0.0.0.255
           !
           ip forward-protocol nd
           !
@@ -2423,7 +2466,7 @@ nodes:
 
           Current configuration : 3195 bytes
           !
-          ! Last configuration change at 23:46:14 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:15:53 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2616,7 +2659,7 @@ nodes:
 
           Current configuration : 3258 bytes
           !
-          ! Last configuration change at 23:49:03 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:18:41 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2810,7 +2853,7 @@ nodes:
 
           Current configuration : 3126 bytes
           !
-          ! Last configuration change at 23:52:35 UTC Mon Apr 7 2025
+          ! Last configuration change at 01:22:23 UTC Tue Apr 8 2025
           !
           version 15.9
           service timestamps debug datetime msec
