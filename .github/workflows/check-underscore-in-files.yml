@@ -1,0 +1,33 @@
+name: Check CML Filenames
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-filenames:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Check for underscore in filenames
+        id: filename-check
+        run: |
+          # Find all files in the cml directory and its subdirectories
+          if [ -d "cml" ]; then
+            # Use find to locate files with underscore in the name
+            FILES_WITH_UNDERSCORE=$(find cml -type f -name "*_*" | tr '\n' ' ')
+            
+            if [ -n "$FILES_WITH_UNDERSCORE" ]; then
+              echo "::error::The following files contain underscores in their filenames, which is not allowed:"
+              echo "$FILES_WITH_UNDERSCORE" | tr ' ' '\n' | sed 's/^/- /'
+              exit 1
+            else
+              echo "No files with underscores found in the cml directory. All good!"
+            fi
+          else
+            echo "The cml directory does not exist in this repository."
+          fi
