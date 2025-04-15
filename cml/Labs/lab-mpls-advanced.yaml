@@ -115,9 +115,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3196 bytes
+          Current configuration : 3197 bytes
           !
-          ! Last configuration change at 09:34:21 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:43:18 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -308,9 +308,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3122 bytes
+          Current configuration : 3123 bytes
           !
-          ! Last configuration change at 09:38:58 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:54:35 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -497,9 +497,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3259 bytes
+          Current configuration : 3260 bytes
           !
-          ! Last configuration change at 09:43:17 UTC Tue Apr 8 2025
+          ! Last configuration change at 19:04:47 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -691,9 +691,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 5284 bytes
+          Current configuration : 5311 bytes
           !
-          ! Last configuration change at 09:43:40 UTC Tue Apr 8 2025
+          ! Last configuration change at 19:04:41 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -754,6 +754,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -984,9 +985,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3439 bytes
+          Current configuration : 3466 bytes
           !
-          ! Last configuration change at 09:44:55 UTC Tue Apr 8 2025
+          ! Last configuration change at 19:08:49 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1026,6 +1027,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1183,9 +1185,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3417 bytes
+          Current configuration : 3444 bytes
           !
-          ! Last configuration change at 09:40:37 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:59:04 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1225,6 +1227,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 10.10.10.10 password cisco
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1382,9 +1385,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 5598 bytes
+          Current configuration : 5770 bytes
           !
-          ! Last configuration change at 09:44:28 UTC Tue Apr 8 2025
+          ! Last configuration change at 19:04:55 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1445,6 +1448,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 10.10.10.10 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1571,7 +1575,7 @@ nodes:
            exit-address-family
            !
            address-family ipv4 vrf CUSTOMER3
-            redistribute eigrp 3
+            redistribute eigrp 3 route-map EIGRP_TO_BGP_CUSTOMER3
             neighbor 10.4.12.4 remote-as 3
             neighbor 10.4.12.4 activate
             neighbor 10.4.12.4 as-override
@@ -1587,6 +1591,12 @@ nodes:
           no ip http secure-server
           !
           ipv6 ioam timestamp
+          !
+          route-map EIGRP_TO_BGP_CUSTOMER3 deny 10
+           match tag 3
+          !
+          route-map EIGRP_TO_BGP_CUSTOMER3 permit 20
+           set tag 3
           !
           !
           mpls ldp router-id Loopback0 force
@@ -1691,9 +1701,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3433 bytes
+          Current configuration : 3460 bytes
           !
-          ! Last configuration change at 09:24:25 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:21:24 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1733,6 +1743,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1890,9 +1901,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3389 bytes
+          Current configuration : 3390 bytes
           !
-          ! Last configuration change at 09:56:38 UTC Tue Apr 8 2025
+          ! Last configuration change at 19:34:59 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2092,9 +2103,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3439 bytes
+          Current configuration : 3463 bytes
           !
-          ! Last configuration change at 09:25:32 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:23:30 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2190,6 +2201,7 @@ nodes:
            network 4.4.4.4 0.0.0.0
            network 10.4.5.0 0.0.0.255
            network 10.4.12.0 0.0.0.255
+           distance eigrp 15 170
           !
           router bgp 3
            bgp router-id 4.4.4.4
@@ -2294,9 +2306,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3436 bytes
+          Current configuration : 3460 bytes
           !
-          ! Last configuration change at 09:32:26 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:38:09 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2392,6 +2404,7 @@ nodes:
            network 5.5.5.5 0.0.0.0
            network 10.4.5.0 0.0.0.255
            network 10.5.12.0 0.0.0.255
+           distance eigrp 15 170
           !
           router bgp 3
            bgp router-id 5.5.5.5
@@ -2496,9 +2509,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3195 bytes
+          Current configuration : 3196 bytes
           !
-          ! Last configuration change at 09:33:29 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:42:29 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2689,9 +2702,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3258 bytes
+          Current configuration : 3259 bytes
           !
-          ! Last configuration change at 09:36:18 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:48:18 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2883,9 +2896,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3126 bytes
+          Current configuration : 3127 bytes
           !
-          ! Last configuration change at 09:40:46 UTC Tue Apr 8 2025
+          ! Last configuration change at 18:59:08 UTC Mon Apr 14 2025
           !
           version 15.9
           service timestamps debug datetime msec
