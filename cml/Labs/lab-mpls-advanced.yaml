@@ -117,7 +117,7 @@ nodes:
 
           Current configuration : 3197 bytes
           !
-          ! Last configuration change at 16:46:40 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:37:32 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -310,7 +310,7 @@ nodes:
 
           Current configuration : 3251 bytes
           !
-          ! Last configuration change at 16:58:19 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:49:35 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -504,7 +504,7 @@ nodes:
 
           Current configuration : 3260 bytes
           !
-          ! Last configuration change at 17:09:44 UTC Tue Apr 15 2025
+          ! Last configuration change at 20:02:21 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -696,9 +696,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 6437 bytes
+          Current configuration : 7354 bytes
           !
-          ! Last configuration change at 17:09:33 UTC Tue Apr 15 2025
+          ! Last configuration change at 20:02:10 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -788,6 +788,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
+          mpls traffic-eng tunnels
           no mpls ip propagate-ttl
           !
           !
@@ -817,19 +818,44 @@ nodes:
            ip vrf forwarding CUSTOMER2
            ip address 88.88.88.88 255.255.255.255
           !
+          interface Tunnel1
+           ip unnumbered Loopback0
+           tunnel mode mpls traffic-eng
+           tunnel destination 12.12.12.12
+           tunnel mpls traffic-eng autoroute announce
+           tunnel mpls traffic-eng priority 7 7
+           tunnel mpls traffic-eng bandwidth 750
+           tunnel mpls traffic-eng path-option 1 dynamic
+           no routing dynamic
+          !
+          interface Tunnel2
+           ip unnumbered Loopback0
+           tunnel mode mpls traffic-eng
+           tunnel destination 12.12.12.12
+           tunnel mpls traffic-eng autoroute announce
+           tunnel mpls traffic-eng autoroute metric 1
+           tunnel mpls traffic-eng priority 7 7
+           tunnel mpls traffic-eng bandwidth 1500
+           tunnel mpls traffic-eng path-option 1 explicit name EXCLUDE_P1
+           no routing dynamic
+          !
           interface GigabitEthernet0/0
            ip address 10.8.9.8 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.8.11.8 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            vrf forwarding CUSTOMER1
@@ -883,6 +909,8 @@ nodes:
            network 10.8.13.0 0.0.0.255 area 0
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 8.8.8.8 0.0.0.0 area 0
            network 10.8.9.0 0.0.0.255 area 0
            network 10.8.11.0 0.0.0.255 area 0
@@ -930,6 +958,9 @@ nodes:
           !
           no ip http server
           no ip http secure-server
+          !
+          ip explicit-path name EXCLUDE_P1 enable
+           exclude-address 11.11.11.11
           !
           ip access-list standard CS_L1
            permit 133.133.133.133
@@ -1044,9 +1075,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3466 bytes
+          Current configuration : 3660 bytes
           !
-          ! Last configuration change at 17:14:17 UTC Tue Apr 15 2025
+          ! Last configuration change at 20:07:34 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1086,6 +1117,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
+          mpls traffic-eng tunnels
           no mpls ip propagate-ttl
           !
           !
@@ -1119,14 +1151,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.11.12.11 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            no ip address
@@ -1143,6 +1179,8 @@ nodes:
            media-type rj45
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 10.8.11.0 0.0.0.255 area 0
            network 10.11.12.0 0.0.0.255 area 0
            network 11.11.11.11 0.0.0.0 area 0
@@ -1244,9 +1282,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3444 bytes
+          Current configuration : 3638 bytes
           !
-          ! Last configuration change at 17:03:35 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:55:42 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1286,6 +1324,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 10.10.10.10 password cisco
+          mpls traffic-eng tunnels
           no mpls ip propagate-ttl
           !
           !
@@ -1319,14 +1358,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.9.10.9 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            no ip address
@@ -1343,6 +1386,8 @@ nodes:
            media-type rj45
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 9.9.9.9 0.0.0.0 area 0
            network 10.8.9.0 0.0.0.255 area 0
            network 10.9.10.0 0.0.0.255 area 0
@@ -1444,9 +1489,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 6113 bytes
+          Current configuration : 6307 bytes
           !
-          ! Last configuration change at 17:10:11 UTC Tue Apr 15 2025
+          ! Last configuration change at 20:03:16 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1517,6 +1562,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 10.10.10.10 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
+          mpls traffic-eng tunnels
           no mpls ip propagate-ttl
           !
           !
@@ -1551,14 +1597,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.11.12.12 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            vrf forwarding CUSTOMER3
@@ -1615,6 +1665,8 @@ nodes:
            network 10.7.12.0 0.0.0.255 area 0
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 10.10.12.0 0.0.0.255 area 0
            network 10.11.12.0 0.0.0.255 area 0
            network 12.12.12.12 0.0.0.0 area 0
@@ -1776,9 +1828,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3460 bytes
+          Current configuration : 3654 bytes
           !
-          ! Last configuration change at 16:22:20 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:10:13 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1818,6 +1870,7 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
+          mpls traffic-eng tunnels
           no mpls ip propagate-ttl
           !
           !
@@ -1851,14 +1904,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.10.12.10 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            no ip address
@@ -1875,6 +1932,8 @@ nodes:
            media-type rj45
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 10.9.10.0 0.0.0.255 area 0
            network 10.10.10.10 0.0.0.0 area 0
            network 10.10.12.0 0.0.0.255 area 0
@@ -1978,7 +2037,7 @@ nodes:
 
           Current configuration : 3390 bytes
           !
-          ! Last configuration change at 17:43:02 UTC Tue Apr 15 2025
+          ! Last configuration change at 20:39:28 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2180,7 +2239,7 @@ nodes:
 
           Current configuration : 3463 bytes
           !
-          ! Last configuration change at 16:24:08 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:11:51 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2383,7 +2442,7 @@ nodes:
 
           Current configuration : 3460 bytes
           !
-          ! Last configuration change at 16:40:46 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:30:40 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2586,7 +2645,7 @@ nodes:
 
           Current configuration : 3196 bytes
           !
-          ! Last configuration change at 16:45:02 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:34:50 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2779,7 +2838,7 @@ nodes:
 
           Current configuration : 3259 bytes
           !
-          ! Last configuration change at 16:51:36 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:42:22 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2973,7 +3032,7 @@ nodes:
 
           Current configuration : 3251 bytes
           !
-          ! Last configuration change at 17:03:15 UTC Tue Apr 15 2025
+          ! Last configuration change at 19:54:57 UTC Wed Apr 16 2025
           !
           version 15.9
           service timestamps debug datetime msec
