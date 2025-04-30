@@ -117,7 +117,7 @@ nodes:
 
           Current configuration : 3197 bytes
           !
-          ! Last configuration change at 19:37:32 UTC Wed Apr 16 2025
+          ! Last configuration change at 03:25:28 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -310,7 +310,7 @@ nodes:
 
           Current configuration : 3251 bytes
           !
-          ! Last configuration change at 19:49:35 UTC Wed Apr 16 2025
+          ! Last configuration change at 03:41:51 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -504,7 +504,7 @@ nodes:
 
           Current configuration : 3260 bytes
           !
-          ! Last configuration change at 20:02:21 UTC Wed Apr 16 2025
+          ! Last configuration change at 04:09:27 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -696,9 +696,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 7354 bytes
+          Current configuration : 7401 bytes
           !
-          ! Last configuration change at 20:02:10 UTC Wed Apr 16 2025
+          ! Last configuration change at 04:08:47 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -733,6 +733,15 @@ nodes:
            address-family ipv4
             import map ALLOWIN
             export map SELECTIVE
+           exit-address-family
+          !
+          vrf definition CUSTOMER2
+           rd 222:222
+           route-target export 222:222
+           route-target import 222:222
+           route-target import 111:111
+           !
+           address-family ipv4
            exit-address-family
           !
           vrf definition CUSTOMER3
@@ -773,12 +782,6 @@ nodes:
           !
           !
           !
-          ip vrf CUSTOMER2
-           rd 222:222
-           route-target export 222:222
-           route-target import 222:222
-           route-target import 111:111
-          !
           !
           !
           !
@@ -815,7 +818,7 @@ nodes:
            ip address 8.8.8.8 255.255.255.255
           !
           interface Loopback1
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 88.88.88.88 255.255.255.255
           !
           interface Tunnel1
@@ -872,7 +875,7 @@ nodes:
            media-type rj45
           !
           interface GigabitEthernet0/4
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 10.2.8.8 255.255.255.0
            duplex auto
            speed auto
@@ -899,14 +902,14 @@ nodes:
            network 10.1.8.0 0.0.0.255 area 0
            default-information originate
           !
+          router ospf 3 vrf CENTRALSERVER
+           redistribute bgp 1 subnets
+           network 10.8.13.0 0.0.0.255 area 0
+          !
           router ospf 2 vrf CUSTOMER2
            area 0 sham-link 88.88.88.88 122.122.122.122 cost 10
            redistribute bgp 1 subnets
            network 10.2.8.0 0.0.0.255 area 0
-          !
-          router ospf 3 vrf CENTRALSERVER
-           redistribute bgp 1 subnets
-           network 10.8.13.0 0.0.0.255 area 0
           !
           router ospf 1
            mpls traffic-eng router-id Loopback0
@@ -1077,7 +1080,7 @@ nodes:
 
           Current configuration : 3660 bytes
           !
-          ! Last configuration change at 20:07:34 UTC Wed Apr 16 2025
+          ! Last configuration change at 04:19:57 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1284,7 +1287,7 @@ nodes:
 
           Current configuration : 3638 bytes
           !
-          ! Last configuration change at 19:55:42 UTC Wed Apr 16 2025
+          ! Last configuration change at 03:55:34 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1489,9 +1492,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 6307 bytes
+          Current configuration : 6354 bytes
           !
-          ! Last configuration change at 20:03:16 UTC Wed Apr 16 2025
+          ! Last configuration change at 04:13:41 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1509,6 +1512,14 @@ nodes:
            route-target export 111:111
            route-target import 111:111
            route-target import 555:555
+           !
+           address-family ipv4
+           exit-address-family
+          !
+          vrf definition CUSTOMER2
+           rd 222:222
+           route-target export 222:222
+           route-target import 222:222
            !
            address-family ipv4
            exit-address-family
@@ -1548,11 +1559,6 @@ nodes:
           !
           !
           !
-          ip vrf CUSTOMER2
-           rd 222:222
-           route-target export 222:222
-           route-target import 222:222
-          !
           !
           !
           !
@@ -1589,7 +1595,7 @@ nodes:
            ip address 12.12.12.12 255.255.255.255
           !
           interface Loopback1
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 122.122.122.122 255.255.255.255
           !
           interface GigabitEthernet0/0
@@ -1632,7 +1638,7 @@ nodes:
            media-type rj45
           !
           interface GigabitEthernet0/5
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 10.7.12.12 255.255.255.0
            duplex auto
            speed auto
@@ -1830,7 +1836,7 @@ nodes:
 
           Current configuration : 3654 bytes
           !
-          ! Last configuration change at 19:10:13 UTC Wed Apr 16 2025
+          ! Last configuration change at 02:27:25 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2037,7 +2043,7 @@ nodes:
 
           Current configuration : 3390 bytes
           !
-          ! Last configuration change at 20:39:28 UTC Wed Apr 16 2025
+          ! Last configuration change at 05:24:13 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2239,7 +2245,7 @@ nodes:
 
           Current configuration : 3463 bytes
           !
-          ! Last configuration change at 19:11:51 UTC Wed Apr 16 2025
+          ! Last configuration change at 02:28:04 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2442,7 +2448,7 @@ nodes:
 
           Current configuration : 3460 bytes
           !
-          ! Last configuration change at 19:30:40 UTC Wed Apr 16 2025
+          ! Last configuration change at 03:08:51 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2645,7 +2651,7 @@ nodes:
 
           Current configuration : 3196 bytes
           !
-          ! Last configuration change at 19:34:50 UTC Wed Apr 16 2025
+          ! Last configuration change at 03:13:31 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2838,7 +2844,7 @@ nodes:
 
           Current configuration : 3259 bytes
           !
-          ! Last configuration change at 19:42:22 UTC Wed Apr 16 2025
+          ! Last configuration change at 03:30:34 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -3032,7 +3038,7 @@ nodes:
 
           Current configuration : 3251 bytes
           !
-          ! Last configuration change at 19:54:57 UTC Wed Apr 16 2025
+          ! Last configuration change at 03:53:23 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
