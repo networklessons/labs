@@ -115,9 +115,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3196 bytes
+          Current configuration : 3197 bytes
           !
-          ! Last configuration change at 09:34:21 UTC Tue Apr 8 2025
+          ! Last configuration change at 03:25:28 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -308,9 +308,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3122 bytes
+          Current configuration : 3251 bytes
           !
-          ! Last configuration change at 09:38:58 UTC Tue Apr 8 2025
+          ! Last configuration change at 03:41:51 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -401,6 +401,11 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+          !
+          router ospf 3
+           network 10.8.13.0 0.0.0.255 area 0
+           network 13.13.13.13 0.0.0.0 area 0
+           network 133.133.133.133 0.0.0.0 area 0
           !
           ip forward-protocol nd
           !
@@ -497,9 +502,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3259 bytes
+          Current configuration : 3260 bytes
           !
-          ! Last configuration change at 09:43:17 UTC Tue Apr 8 2025
+          ! Last configuration change at 04:09:27 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -691,9 +696,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 5284 bytes
+          Current configuration : 7401 bytes
           !
-          ! Last configuration change at 09:43:40 UTC Tue Apr 8 2025
+          ! Last configuration change at 04:08:47 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -706,9 +711,34 @@ nodes:
           boot-end-marker
           !
           !
+          vrf definition CENTRALSERVER
+           rd 444:444
+           route-target export 444:444
+           route-target export 123:123
+           route-target import 444:444
+           route-target import 456:456
+           !
+           address-family ipv4
+           exit-address-family
+          !
           vrf definition CUSTOMER1
            rd 111:111
            route-target export 111:111
+           route-target export 456:456
+           route-target import 111:111
+           route-target import 222:222
+           route-target import 123:123
+           route-target import 555:555
+           !
+           address-family ipv4
+            import map ALLOWIN
+            export map SELECTIVE
+           exit-address-family
+          !
+          vrf definition CUSTOMER2
+           rd 222:222
+           route-target export 222:222
+           route-target import 222:222
            route-target import 111:111
            !
            address-family ipv4
@@ -717,7 +747,19 @@ nodes:
           vrf definition CUSTOMER3
            rd 333:333
            route-target export 333:333
+           route-target export 456:456
            route-target import 333:333
+           route-target import 123:123
+           !
+           address-family ipv4
+            import map ALLOWIN
+            export map SELECTIVE
+           exit-address-family
+          !
+          vrf definition INTERNET
+           rd 555:555
+           route-target export 555:555
+           route-target import 555:555
            !
            address-family ipv4
            exit-address-family
@@ -740,11 +782,6 @@ nodes:
           !
           !
           !
-          ip vrf CUSTOMER2
-           rd 222:222
-           route-target export 222:222
-           route-target import 222:222
-          !
           !
           !
           !
@@ -754,6 +791,8 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
+          mpls traffic-eng tunnels
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -779,22 +818,47 @@ nodes:
            ip address 8.8.8.8 255.255.255.255
           !
           interface Loopback1
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 88.88.88.88 255.255.255.255
+          !
+          interface Tunnel1
+           ip unnumbered Loopback0
+           tunnel mode mpls traffic-eng
+           tunnel destination 12.12.12.12
+           tunnel mpls traffic-eng autoroute announce
+           tunnel mpls traffic-eng priority 7 7
+           tunnel mpls traffic-eng bandwidth 750
+           tunnel mpls traffic-eng path-option 1 dynamic
+           no routing dynamic
+          !
+          interface Tunnel2
+           ip unnumbered Loopback0
+           tunnel mode mpls traffic-eng
+           tunnel destination 12.12.12.12
+           tunnel mpls traffic-eng autoroute announce
+           tunnel mpls traffic-eng autoroute metric 1
+           tunnel mpls traffic-eng priority 7 7
+           tunnel mpls traffic-eng bandwidth 1500
+           tunnel mpls traffic-eng path-option 1 explicit name EXCLUDE_P1
+           no routing dynamic
           !
           interface GigabitEthernet0/0
            ip address 10.8.9.8 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.8.11.8 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            vrf forwarding CUSTOMER1
@@ -804,13 +868,14 @@ nodes:
            media-type rj45
           !
           interface GigabitEthernet0/3
+           vrf forwarding CENTRALSERVER
            ip address 10.8.13.8 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
           !
           interface GigabitEthernet0/4
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 10.2.8.8 255.255.255.0
            duplex auto
            speed auto
@@ -835,6 +900,11 @@ nodes:
           router ospf 10 vrf CUSTOMER1
            redistribute bgp 1 subnets
            network 10.1.8.0 0.0.0.255 area 0
+           default-information originate
+          !
+          router ospf 3 vrf CENTRALSERVER
+           redistribute bgp 1 subnets
+           network 10.8.13.0 0.0.0.255 area 0
           !
           router ospf 2 vrf CUSTOMER2
            area 0 sham-link 88.88.88.88 122.122.122.122 cost 10
@@ -842,7 +912,8 @@ nodes:
            network 10.2.8.0 0.0.0.255 area 0
           !
           router ospf 1
-           passive-interface GigabitEthernet0/3
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 8.8.8.8 0.0.0.0 area 0
            network 10.8.9.0 0.0.0.255 area 0
            network 10.8.11.0 0.0.0.255 area 0
@@ -863,6 +934,10 @@ nodes:
             neighbor 12.12.12.12 send-community both
            exit-address-family
            !
+           address-family ipv4 vrf CENTRALSERVER
+            redistribute ospf 3
+           exit-address-family
+           !
            address-family ipv4 vrf CUSTOMER1
             redistribute ospf 10
            exit-address-family
@@ -877,6 +952,9 @@ nodes:
             neighbor 10.3.8.3 remote-as 3
             neighbor 10.3.8.3 activate
            exit-address-family
+           !
+           address-family ipv4 vrf INTERNET
+           exit-address-family
           !
           ip forward-protocol nd
           !
@@ -884,7 +962,23 @@ nodes:
           no ip http server
           no ip http secure-server
           !
+          ip explicit-path name EXCLUDE_P1 enable
+           exclude-address 11.11.11.11
+          !
+          ip access-list standard CS_L1
+           permit 133.133.133.133
+          !
           ipv6 ioam timestamp
+          !
+          route-map SELECTIVE permit 10
+           match ip address CS_L1
+          !
+          route-map SELECTIVE permit 20
+          !
+          route-map ALLOWIN deny 10
+           match ip address CS_L1
+          !
+          route-map ALLOWIN permit 20
           !
           !
           mpls ldp router-id Loopback0 force
@@ -984,9 +1078,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3439 bytes
+          Current configuration : 3660 bytes
           !
-          ! Last configuration change at 09:44:55 UTC Tue Apr 8 2025
+          ! Last configuration change at 04:19:57 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1026,6 +1120,8 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
+          mpls traffic-eng tunnels
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1058,14 +1154,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.11.12.11 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            no ip address
@@ -1082,6 +1182,8 @@ nodes:
            media-type rj45
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 10.8.11.0 0.0.0.255 area 0
            network 10.11.12.0 0.0.0.255 area 0
            network 11.11.11.11 0.0.0.0 area 0
@@ -1183,9 +1285,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3417 bytes
+          Current configuration : 3638 bytes
           !
-          ! Last configuration change at 09:40:37 UTC Tue Apr 8 2025
+          ! Last configuration change at 03:55:34 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1225,6 +1327,8 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 10.10.10.10 password cisco
+          mpls traffic-eng tunnels
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1257,14 +1361,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.9.10.9 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            no ip address
@@ -1281,6 +1389,8 @@ nodes:
            media-type rj45
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 9.9.9.9 0.0.0.0 area 0
            network 10.8.9.0 0.0.0.255 area 0
            network 10.9.10.0 0.0.0.255 area 0
@@ -1382,9 +1492,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 5598 bytes
+          Current configuration : 6354 bytes
           !
-          ! Last configuration change at 09:44:28 UTC Tue Apr 8 2025
+          ! Last configuration change at 04:13:41 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1401,6 +1511,15 @@ nodes:
            rd 111:111
            route-target export 111:111
            route-target import 111:111
+           route-target import 555:555
+           !
+           address-family ipv4
+           exit-address-family
+          !
+          vrf definition CUSTOMER2
+           rd 222:222
+           route-target export 222:222
+           route-target import 222:222
            !
            address-family ipv4
            exit-address-family
@@ -1409,6 +1528,15 @@ nodes:
            rd 333:333
            route-target export 333:333
            route-target import 333:333
+           !
+           address-family ipv4
+           exit-address-family
+          !
+          vrf definition INTERNET
+           rd 555:555
+           route-target export 555:555
+           route-target import 555:555
+           route-target import 111:111
            !
            address-family ipv4
            exit-address-family
@@ -1431,11 +1559,6 @@ nodes:
           !
           !
           !
-          ip vrf CUSTOMER2
-           rd 222:222
-           route-target export 222:222
-           route-target import 222:222
-          !
           !
           !
           !
@@ -1445,6 +1568,8 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 10.10.10.10 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
+          mpls traffic-eng tunnels
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1470,7 +1595,7 @@ nodes:
            ip address 12.12.12.12 255.255.255.255
           !
           interface Loopback1
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 122.122.122.122 255.255.255.255
           !
           interface GigabitEthernet0/0
@@ -1478,14 +1603,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.11.12.12 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            vrf forwarding CUSTOMER3
@@ -1509,13 +1638,14 @@ nodes:
            media-type rj45
           !
           interface GigabitEthernet0/5
-           ip vrf forwarding CUSTOMER2
+           vrf forwarding CUSTOMER2
            ip address 10.7.12.12 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
           !
           interface GigabitEthernet0/6
+           vrf forwarding INTERNET
            ip address 10.12.14.12 255.255.255.0
            duplex auto
            speed auto
@@ -1533,6 +1663,7 @@ nodes:
           router ospf 10 vrf CUSTOMER1
            redistribute bgp 1 subnets
            network 10.6.12.0 0.0.0.255 area 0
+           default-information originate
           !
           router ospf 2 vrf CUSTOMER2
            area 0 sham-link 122.122.122.122 88.88.88.88 cost 10
@@ -1540,7 +1671,8 @@ nodes:
            network 10.7.12.0 0.0.0.255 area 0
           !
           router ospf 1
-           passive-interface GigabitEthernet0/6
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 10.10.12.0 0.0.0.255 area 0
            network 10.11.12.0 0.0.0.255 area 0
            network 12.12.12.12 0.0.0.0 area 0
@@ -1571,13 +1703,18 @@ nodes:
            exit-address-family
            !
            address-family ipv4 vrf CUSTOMER3
-            redistribute eigrp 3
+            redistribute eigrp 3 route-map EIGRP_TO_BGP_CUSTOMER3
             neighbor 10.4.12.4 remote-as 3
             neighbor 10.4.12.4 activate
             neighbor 10.4.12.4 as-override
             neighbor 10.5.12.5 remote-as 3
             neighbor 10.5.12.5 activate
             neighbor 10.5.12.5 as-override
+           exit-address-family
+           !
+           address-family ipv4 vrf INTERNET
+            neighbor 10.12.14.14 remote-as 14
+            neighbor 10.12.14.14 activate
            exit-address-family
           !
           ip forward-protocol nd
@@ -1587,6 +1724,12 @@ nodes:
           no ip http secure-server
           !
           ipv6 ioam timestamp
+          !
+          route-map EIGRP_TO_BGP_CUSTOMER3 deny 10
+           match tag 3
+          !
+          route-map EIGRP_TO_BGP_CUSTOMER3 permit 20
+           set tag 3
           !
           !
           mpls ldp router-id Loopback0 force
@@ -1691,9 +1834,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3433 bytes
+          Current configuration : 3654 bytes
           !
-          ! Last configuration change at 09:24:25 UTC Tue Apr 8 2025
+          ! Last configuration change at 02:27:25 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1733,6 +1876,8 @@ nodes:
           multilink bundle-name authenticated
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
+          mpls traffic-eng tunnels
+          no mpls ip propagate-ttl
           !
           !
           !
@@ -1765,14 +1910,18 @@ nodes:
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/1
            ip address 10.10.12.10 255.255.255.0
            duplex auto
            speed auto
            media-type rj45
+           mpls traffic-eng tunnels
            mpls ip
+           ip rsvp bandwidth 1000000
           !
           interface GigabitEthernet0/2
            no ip address
@@ -1789,6 +1938,8 @@ nodes:
            media-type rj45
           !
           router ospf 1
+           mpls traffic-eng router-id Loopback0
+           mpls traffic-eng area 0
            network 10.9.10.0 0.0.0.255 area 0
            network 10.10.10.10 0.0.0.0 area 0
            network 10.10.12.0 0.0.0.255 area 0
@@ -1890,9 +2041,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3389 bytes
+          Current configuration : 3390 bytes
           !
-          ! Last configuration change at 09:56:38 UTC Tue Apr 8 2025
+          ! Last configuration change at 05:24:13 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2092,9 +2243,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3439 bytes
+          Current configuration : 3463 bytes
           !
-          ! Last configuration change at 09:25:32 UTC Tue Apr 8 2025
+          ! Last configuration change at 02:28:04 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2190,6 +2341,7 @@ nodes:
            network 4.4.4.4 0.0.0.0
            network 10.4.5.0 0.0.0.255
            network 10.4.12.0 0.0.0.255
+           distance eigrp 15 170
           !
           router bgp 3
            bgp router-id 4.4.4.4
@@ -2294,9 +2446,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3436 bytes
+          Current configuration : 3460 bytes
           !
-          ! Last configuration change at 09:32:26 UTC Tue Apr 8 2025
+          ! Last configuration change at 03:08:51 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2392,6 +2544,7 @@ nodes:
            network 5.5.5.5 0.0.0.0
            network 10.4.5.0 0.0.0.255
            network 10.5.12.0 0.0.0.255
+           distance eigrp 15 170
           !
           router bgp 3
            bgp router-id 5.5.5.5
@@ -2496,9 +2649,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3195 bytes
+          Current configuration : 3196 bytes
           !
-          ! Last configuration change at 09:33:29 UTC Tue Apr 8 2025
+          ! Last configuration change at 03:13:31 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2689,9 +2842,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3258 bytes
+          Current configuration : 3259 bytes
           !
-          ! Last configuration change at 09:36:18 UTC Tue Apr 8 2025
+          ! Last configuration change at 03:30:34 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2883,9 +3036,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3126 bytes
+          Current configuration : 3251 bytes
           !
-          ! Last configuration change at 09:40:46 UTC Tue Apr 8 2025
+          ! Last configuration change at 03:53:23 UTC Tue Apr 29 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2977,11 +3130,17 @@ nodes:
            speed auto
            media-type rj45
           !
+          router bgp 14
+           bgp log-neighbor-changes
+           network 0.0.0.0
+           neighbor 10.12.14.12 remote-as 1
+          !
           ip forward-protocol nd
           !
           !
           no ip http server
           no ip http secure-server
+          ip route 0.0.0.0 0.0.0.0 Null0
           !
           ipv6 ioam timestamp
           !
