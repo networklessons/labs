@@ -115,9 +115,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3197 bytes
+          Current configuration : 3196 bytes
           !
-          ! Last configuration change at 03:25:28 UTC Tue Apr 29 2025
+          ! Last configuration change at 19:10:54 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -308,9 +308,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3251 bytes
+          Current configuration : 3250 bytes
           !
-          ! Last configuration change at 03:41:51 UTC Tue Apr 29 2025
+          ! Last configuration change at 19:29:21 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -502,9 +502,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3260 bytes
+          Current configuration : 3259 bytes
           !
-          ! Last configuration change at 04:09:27 UTC Tue Apr 29 2025
+          ! Last configuration change at 20:03:38 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -696,9 +696,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 7401 bytes
+          Current configuration : 7427 bytes
           !
-          ! Last configuration change at 04:08:47 UTC Tue Apr 29 2025
+          ! Last configuration change at 20:02:39 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -789,6 +789,7 @@ nodes:
           no ipv6 cef
           !
           multilink bundle-name authenticated
+          mpls ldp password required
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
           mpls traffic-eng tunnels
@@ -1078,9 +1079,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3660 bytes
+          Current configuration : 3686 bytes
           !
-          ! Last configuration change at 04:19:57 UTC Tue Apr 29 2025
+          ! Last configuration change at 20:16:25 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1118,6 +1119,7 @@ nodes:
           no ipv6 cef
           !
           multilink bundle-name authenticated
+          mpls ldp password required
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
           mpls traffic-eng tunnels
@@ -1285,9 +1287,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3638 bytes
+          Current configuration : 3664 bytes
           !
-          ! Last configuration change at 03:55:34 UTC Tue Apr 29 2025
+          ! Last configuration change at 19:46:18 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1325,6 +1327,7 @@ nodes:
           no ipv6 cef
           !
           multilink bundle-name authenticated
+          mpls ldp password required
           mpls ldp neighbor 8.8.8.8 password cisco
           mpls ldp neighbor 10.10.10.10 password cisco
           mpls traffic-eng tunnels
@@ -1492,9 +1495,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 6354 bytes
+          Current configuration : 6380 bytes
           !
-          ! Last configuration change at 04:13:41 UTC Tue Apr 29 2025
+          ! Last configuration change at 20:09:29 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1566,6 +1569,7 @@ nodes:
           no ipv6 cef
           !
           multilink bundle-name authenticated
+          mpls ldp password required
           mpls ldp neighbor 10.10.10.10 password cisco
           mpls ldp neighbor 11.11.11.11 password cisco
           mpls traffic-eng tunnels
@@ -1834,9 +1838,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3654 bytes
+          Current configuration : 3680 bytes
           !
-          ! Last configuration change at 02:27:25 UTC Tue Apr 29 2025
+          ! Last configuration change at 17:58:26 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -1874,6 +1878,7 @@ nodes:
           no ipv6 cef
           !
           multilink bundle-name authenticated
+          mpls ldp password required
           mpls ldp neighbor 9.9.9.9 password cisco
           mpls ldp neighbor 12.12.12.12 password cisco
           mpls traffic-eng tunnels
@@ -2041,9 +2046,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3390 bytes
+          Current configuration : 3389 bytes
           !
-          ! Last configuration change at 05:24:13 UTC Tue Apr 29 2025
+          ! Last configuration change at 21:35:35 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2243,9 +2248,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3463 bytes
+          Current configuration : 3462 bytes
           !
-          ! Last configuration change at 02:28:04 UTC Tue Apr 29 2025
+          ! Last configuration change at 17:58:48 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2446,9 +2451,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3460 bytes
+          Current configuration : 3459 bytes
           !
-          ! Last configuration change at 03:08:51 UTC Tue Apr 29 2025
+          ! Last configuration change at 18:49:38 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2649,9 +2654,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3196 bytes
+          Current configuration : 3195 bytes
           !
-          ! Last configuration change at 03:13:31 UTC Tue Apr 29 2025
+          ! Last configuration change at 18:54:37 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -2842,9 +2847,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3259 bytes
+          Current configuration : 3258 bytes
           !
-          ! Last configuration change at 03:30:34 UTC Tue Apr 29 2025
+          ! Last configuration change at 19:16:05 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
@@ -3036,9 +3041,9 @@ nodes:
         content: |-
           Building configuration...
 
-          Current configuration : 3251 bytes
+          Current configuration : 3250 bytes
           !
-          ! Last configuration change at 03:53:23 UTC Tue Apr 29 2025
+          ! Last configuration change at 19:43:25 UTC Sun May 4 2025
           !
           version 15.9
           service timestamps debug datetime msec
