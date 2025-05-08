@@ -41,3 +41,4 @@ startup.cfg
 # Allow only pcap files in packet-captures folder
 packet-captures/*
 !packet-captures/*.pcap
+nornir-simple-inventory.yml
