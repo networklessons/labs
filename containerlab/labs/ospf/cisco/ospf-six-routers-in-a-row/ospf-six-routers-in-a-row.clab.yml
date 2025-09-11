@@ -1,0 +1,57 @@
+# OSPF and six routers in a linear topology
+name: ospf-six-routers-in-a-row
+
+mgmt:
+  network: statics
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-six-routers-in-a-row/R1/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-six-routers-in-a-row/R2/startup-config.cfg.partial
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-six-routers-in-a-row/R3/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-six-routers-in-a-row/R4/startup-config.cfg.partial
+    R5:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-ospf-six-routers-in-a-row/R5/startup-config.cfg.partial
+    R6:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.16
+      startup-config: ./clab-ospf-six-routers-in-a-row/R6/startup-config.cfg.partial
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 10.65.97.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["R1:Ethernet0/1","R2:Ethernet0/1"]
+    - endpoints: ["R2:Ethernet0/2","R3:Ethernet0/1"]
+    - endpoints: ["R3:Ethernet0/2","R4:Ethernet0/1"]
+    - endpoints: ["R4:Ethernet0/2","R5:Ethernet0/1"]
+    - endpoints: ["R5:Ethernet0/2","R6:Ethernet0/1"]

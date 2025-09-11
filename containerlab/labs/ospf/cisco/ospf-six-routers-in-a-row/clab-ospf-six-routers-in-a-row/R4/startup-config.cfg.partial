@@ -1,0 +1,21 @@
+hostname R4
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.255
+ no shutdown
+!
+interface Ethernet0/1
+ ip address 192.168.34.4 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/2
+ ip address 192.168.45.4 255.255.255.0
+ no shutdown
+!
+router ospf 1
+ router-id 4.4.4.4
+ network 4.4.4.4 0.0.0.0 area 0
+ network 192.168.34.0 0.0.0.255 area 0
+ network 192.168.45.0 0.0.0.255 area 0
+!
+end
