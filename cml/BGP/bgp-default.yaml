@@ -1,0 +1,11 @@
+annotations: []
+smart_annotations: []
+nodes: []
+links: []
+lab:
+  description: Imported from bgp_default.virl
+  notes: '## Notes from legacy topology import
+
+    '
+  title: bgp_default.virl
+  version: 0.3.0
