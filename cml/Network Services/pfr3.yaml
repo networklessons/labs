@@ -1,0 +1,1232 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |
+          !
+          ! Last configuration change at 07:57:35 UTC Thu Nov 8 2018
+          !
+          version 16.6
+          service config
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          platform qfp utilization monitor load 80
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname H1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          enable secret 5 $1$fPA3$iaLvhWj02QgGDWDYrpN.7/
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          crypto pki trustpoint TP-self-signed-2015134902
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-2015134902
+           revocation-check none
+           rsakeypair TP-self-signed-2015134902
+          !
+          !
+          crypto pki certificate chain TP-self-signed-2015134902
+           certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 9YI1IPHMGT4
+          diagnostic bootup level minimal
+          spanning-tree extend system-id
+          !
+          !
+          !
+          username cisco privilege 15 secret 5 $1$0Xuj$4IKPKmL/sGGKsX5z36c0k/
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet1
+           ip address 10.255.0.244 255.255.0.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+          !
+          interface GigabitEthernet2
+           ip address 192.168.1.100 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          ip http authentication local
+          no ip http secure-server
+          ip http client source-interface GigabitEthernet1
+          ip route 0.0.0.0 0.0.0.0 192.168.1.1
+          !
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          ip sla 1
+           udp-jitter 10.4.4.1 17001 num-packets 20
+           request-data-size 158
+           threshold 500
+           timeout 500
+           frequency 1
+          ip sla schedule 1 life forever start-time now
+          ip sla 2
+           udp-jitter 10.4.4.2 17002 num-packets 20
+           request-data-size 358
+           threshold 500
+           timeout 500
+           frequency 1
+          ip sla schedule 2 life forever start-time now
+          ip sla 3
+           udp-jitter 10.40.40.3 17003 num-packets 20
+           request-data-size 758
+           threshold 500
+           timeout 500
+           frequency 1
+          ip sla schedule 3 life forever start-time now
+          ip sla 4
+           udp-jitter 10.40.40.4 17004 num-packets 20
+           request-data-size 758
+           threshold 500
+           timeout 500
+           frequency 1
+          ip sla schedule 4 life forever start-time now
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: H1
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 50
+    y: 218
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |
+          !
+          ! Last configuration change at 07:57:35 UTC Thu Nov 8 2018
+          !
+          version 16.6
+          service config
+          no service timestamps debug uptime
+          no service timestamps log uptime
+          platform qfp utilization monitor load 80
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname MC
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          enable secret 5 $1$bRQk$U3/gq1LpYFuXy9oKgmjsr.
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          key chain PFR
+           key 1
+            key-string NETWORKLESSONS
+          !
+          crypto pki trustpoint TP-self-signed-2558910152
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-2558910152
+           revocation-check none
+           rsakeypair TP-self-signed-2558910152
+          !
+          !
+          crypto pki certificate chain TP-self-signed-2558910152
+           certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+          !
+          !
+          pfr master
+           logging
+           !
+           border 3.3.3.3 key-chain PFR
+            interface GigabitEthernet3 external
+            interface GigabitEthernet2 internal
+            ! inserted by converter
+            no shutdown
+           !
+           border 2.2.2.2 key-chain PFR
+            interface GigabitEthernet3 external
+            interface GigabitEthernet2 internal
+            ! inserted by converter
+            no shutdown
+           !
+           learn
+            periodic-interval 1
+           backoff 90 180
+           !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 9DNISK04V6D
+          diagnostic bootup level minimal
+          spanning-tree extend system-id
+          !
+          !
+          !
+          username cisco privilege 15 secret 5 $1$p4cj$kUS2gn6iB4x6rm3pL6kK61
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address 10.255.0.246 255.255.0.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+          !
+          interface GigabitEthernet2
+           ip address 192.168.123.1 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           ip address 192.168.1.1 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           network 1.1.1.1 0.0.0.0 area 0
+           network 192.168.1.0 0.0.0.255 area 0
+           network 192.168.123.0 0.0.0.255 area 0
+          !
+          router bgp 1
+           bgp log-neighbor-changes
+           network 192.168.1.0
+           neighbor 2.2.2.2 remote-as 1
+           neighbor 2.2.2.2 update-source Loopback0
+           neighbor 3.3.3.3 remote-as 1
+           neighbor 3.3.3.3 update-source Loopback0
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          ip http authentication local
+          no ip http secure-server
+          ip http client source-interface GigabitEthernet1
+          !
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: MC
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 248
+    y: 212
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |
+          !
+          ! Last configuration change at 07:57:35 UTC Thu Nov 8 2018
+          !
+          version 16.6
+          service config
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          platform qfp utilization monitor load 80
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname BR1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          enable secret 5 $1$3NaL$KA2qLmA7SX5a3.Zb1NTjs1
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          key chain PFR
+           key 1
+            key-string NETWORKLESSONS
+          !
+          crypto pki trustpoint TP-self-signed-3142022352
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-3142022352
+           revocation-check none
+           rsakeypair TP-self-signed-3142022352
+          !
+          !
+          crypto pki certificate chain TP-self-signed-3142022352
+           certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+          !
+          !
+          pfr border
+           local Loopback0
+           master 1.1.1.1 key-chain PFR
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 9QS7VENTEFN
+          diagnostic bootup level minimal
+          spanning-tree extend system-id
+          !
+          !
+          !
+          username cisco privilege 15 secret 5 $1$/UKd$KJ/FTCptTjlRny//IX4mo.
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 2.2.2.2 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address 10.255.0.242 255.255.0.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+          !
+          interface GigabitEthernet2
+           ip address 192.168.123.2 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           bandwidth 128
+           ip address 192.168.24.2 255.255.255.0
+           load-interval 30
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           network 2.2.2.2 0.0.0.0 area 0
+           network 192.168.123.0 0.0.0.255 area 0
+          !
+          router bgp 1
+           bgp log-neighbor-changes
+           network 192.168.1.0
+           network 192.168.123.0
+           neighbor 1.1.1.1 remote-as 1
+           neighbor 1.1.1.1 update-source Loopback0
+           neighbor 1.1.1.1 next-hop-self
+           neighbor 3.3.3.3 remote-as 1
+           neighbor 3.3.3.3 update-source Loopback0
+           neighbor 192.168.24.4 remote-as 2
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          ip http authentication local
+          no ip http secure-server
+          ip http client source-interface GigabitEthernet1
+          !
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: BR1
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 446
+    y: 50
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |
+          !
+          ! Last configuration change at 07:57:35 UTC Thu Nov 8 2018
+          !
+          version 16.6
+          service config
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          platform qfp utilization monitor load 80
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname BR2
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          enable secret 5 $1$Bt7Z$PNlQjpzNfAIBjEAWnTfOo.
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          key chain PFR
+           key 1
+            key-string NETWORKLESSONS
+          !
+          crypto pki trustpoint TP-self-signed-3382627389
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-3382627389
+           revocation-check none
+           rsakeypair TP-self-signed-3382627389
+          !
+          !
+          crypto pki certificate chain TP-self-signed-3382627389
+           certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+          !
+          !
+          pfr border
+           local Loopback0
+           master 1.1.1.1 key-chain PFR
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 9KTHLNYHSEO
+          diagnostic bootup level minimal
+          spanning-tree extend system-id
+          !
+          !
+          !
+          username cisco privilege 15 secret 5 $1$8tUA$vlr3fpvFIxJ5zW9RLHiRw0
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 3.3.3.3 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address 10.255.0.243 255.255.0.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+          !
+          interface GigabitEthernet2
+           ip address 192.168.123.3 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           bandwidth 256
+           ip address 192.168.34.3 255.255.255.0
+           load-interval 30
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           network 3.3.3.3 0.0.0.0 area 0
+           network 192.168.123.0 0.0.0.255 area 0
+          !
+          router bgp 1
+           bgp log-neighbor-changes
+           network 192.168.1.0
+           network 192.168.123.0
+           neighbor 1.1.1.1 remote-as 1
+           neighbor 1.1.1.1 update-source Loopback0
+           neighbor 1.1.1.1 next-hop-self
+           neighbor 2.2.2.2 remote-as 1
+           neighbor 2.2.2.2 update-source Loopback0
+           neighbor 192.168.34.4 remote-as 2
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          ip http authentication local
+          no ip http secure-server
+          ip http client source-interface GigabitEthernet1
+          !
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: BR2
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 460
+    y: 340
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |
+          !
+          ! Last configuration change at 07:57:35 UTC Thu Nov 8 2018
+          !
+          version 16.6
+          service config
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          platform qfp utilization monitor load 80
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname ISP1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          enable secret 5 $1$KnSI$c1XZI7mB6J98cWqPuxxm7.
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          crypto pki trustpoint TP-self-signed-748309842
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-748309842
+           revocation-check none
+           rsakeypair TP-self-signed-748309842
+          !
+          !
+          crypto pki certificate chain TP-self-signed-748309842
+           certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 9NPF4WBTAUU
+          diagnostic bootup level minimal
+          spanning-tree extend system-id
+          !
+          !
+          !
+          username cisco privilege 15 secret 5 $1$YcpH$CJP3i.T/UVB4pqeplRRJ9/
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback1
+           ip address 10.4.4.1 255.255.255.255
+          !
+          interface Loopback2
+           ip address 10.4.4.2 255.255.255.255
+          !
+          interface Loopback3
+           ip address 10.40.40.3 255.255.255.255
+          !
+          interface Loopback4
+           ip address 10.40.40.4 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address 10.255.0.245 255.255.0.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+          !
+          interface GigabitEthernet2
+           ip address 192.168.24.4 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           ip address 192.168.34.4 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          router bgp 2
+           bgp log-neighbor-changes
+           network 10.0.0.0
+           neighbor 192.168.24.2 remote-as 1
+           neighbor 192.168.34.3 remote-as 1
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          ip http authentication local
+          no ip http secure-server
+          ip http client source-interface GigabitEthernet1
+          ip route 10.0.0.0 255.0.0.0 Null0
+          !
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          ip sla responder
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: ISP
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 690
+    y: 176
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: unmanagedswitch-1
+    node_definition: unmanaged_switch
+    parameters: {}
+    ram: null
+    tags: []
+    x: 396
+    y: 192
+    interfaces:
+      - id: i0
+        label: port0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i1
+        label: port1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i2
+        label: port2
+        mac_address: null
+        type: physical
+        slot: 2
+links:
+  - id: l0
+    n1: n1
+    n2: n5
+    i1: i2
+    i2: i0
+    conditioning: {}
+    label: MC-GigabitEthernet2<->unmanagedswitch-1-port0
+  - id: l1
+    n1: n5
+    n2: n2
+    i1: i1
+    i2: i2
+    conditioning: {}
+    label: unmanagedswitch-1-port1<->BR1-GigabitEthernet2
+  - id: l2
+    n1: n5
+    n2: n3
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: unmanagedswitch-1-port2<->BR2-GigabitEthernet2
+  - id: l3
+    n1: n4
+    n2: n2
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: ISP-GigabitEthernet2<->BR1-GigabitEthernet3
+  - id: l4
+    n1: n4
+    n2: n3
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: ISP-GigabitEthernet3<->BR2-GigabitEthernet3
+  - id: l5
+    n1: n1
+    n2: n0
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: MC-GigabitEthernet3<->H1-GigabitEthernet2
+lab:
+  description: Imported from pfr3.virl
+  notes: |-
+    ## Notes from legacy topology import
+    - processing node /H1 (csr1000v)
+    - processing node /MC (csr1000v)
+    - processing node /BR1 (csr1000v)
+    - processing node /BR2 (csr1000v)
+    - processing node /ISP (csr1000v)
+    - processing node /unmanagedswitch-1 (unmanaged_switch)
+    - link i1 -> i0
+    - link i1 -> i1
+    - link i2 -> i1
+    - link i1 -> i2
+    - link i2 -> i2
+    - link i2 -> i1
+  title: pfr3.virl
+  version: 0.3.0
