@@ -1,6 +1,6 @@
-# Three routers connected to a multi-access segment.
+# Hub and spoke topology with R1 as hub, R2/R3 as spokes, R4 in the middle
 
-name: three-routers
+name: ospf-network-type-p2mp
 mgmt:
   network: statics
   ipv4-subnet: 10.65.97.0/24
@@ -12,17 +12,19 @@ topology:
     R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.11
-      #startup-config: ./clab-three-routers/R1/startup-config.cfg.partial
+      startup-config: ./clab-ospf-network-type-p2mp/R1/startup-config.cfg.partial
     R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.12
-      #startup-config: ./clab-three-routers/R2/startup-config.cfg.partial
+      startup-config: ./clab-ospf-network-type-p2mp/R2/startup-config.cfg.partial
     R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.13
-      #startup-config: ./clab-three-routers/R3/startup-config.cfg.partial
-    br-clab:
-      kind: bridge
+      startup-config: ./clab-ospf-network-type-p2mp/R3/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-network-type-p2mp/R4/startup-config.cfg.partial
     graphite:
       kind: linux
       image: netreplica/graphite
@@ -39,6 +41,6 @@ topology:
       labels:
         graph-hide: yes
   links:
-    - endpoints: ["R1:Ethernet0/1", "br-clab:eth1"]
-    - endpoints: ["R2:Ethernet0/1", "br-clab:eth2"]
-    - endpoints: ["R3:Ethernet0/1", "br-clab:eth3"]
+    - endpoints: ["R1:Ethernet0/1", "R4:Ethernet0/1"]
+    - endpoints: ["R4:Ethernet0/2", "R2:Ethernet0/1"]
+    - endpoints: ["R4:Ethernet0/3", "R3:Ethernet0/1"]
