@@ -1,0 +1,1264 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          !
+          ! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+          !
+          version 16.3
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname R1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          mpls ldp discovery targeted-hello accept
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 903J6D6TKGE
+          diagnostic bootup level minimal
+          !
+          spanning-tree extend system-id
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          ip tftp source-interface GigabitEthernet1
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address dhcp
+           shutdown
+           negotiation auto
+          !
+          interface GigabitEthernet2
+           ip address 192.168.12.1 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           ip address 192.168.15.1 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           fast-reroute per-prefix enable area 0 prefix-priority low
+           fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+           fast-reroute keep-all-paths
+           network 1.1.1.1 0.0.0.0 area 0
+           network 192.168.12.0 0.0.0.255 area 0
+           network 192.168.15.0 0.0.0.255 area 0
+           mpls ldp autoconfig area 0
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+           !
+           !
+           !
+           !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 210
+    y: 50
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          !
+          ! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+          !
+          version 16.3
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname R2
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          mpls ldp discovery targeted-hello accept
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 903J6D6TKGE
+          diagnostic bootup level minimal
+          !
+          spanning-tree extend system-id
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          ip tftp source-interface GigabitEthernet1
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 2.2.2.2 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address dhcp
+           shutdown
+           negotiation auto
+          !
+          interface GigabitEthernet2
+           ip address 192.168.12.2 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           ip address 192.168.23.2 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           fast-reroute per-prefix enable area 0 prefix-priority low
+           fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+           fast-reroute keep-all-paths
+           network 2.2.2.2 0.0.0.0 area 0
+           network 192.168.12.0 0.0.0.255 area 0
+           network 192.168.23.0 0.0.0.255 area 0
+           mpls ldp autoconfig area 0
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+           !
+           !
+           !
+           !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R2
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 52
+    y: 212
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          !
+          ! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+          !
+          version 16.3
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname R3
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          mpls ldp discovery targeted-hello accept
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 903J6D6TKGE
+          diagnostic bootup level minimal
+          !
+          spanning-tree extend system-id
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          ip tftp source-interface GigabitEthernet1
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 3.3.3.3 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address dhcp
+           shutdown
+           negotiation auto
+          !
+          interface GigabitEthernet2
+           ip address 192.168.34.3 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           ip address 192.168.23.3 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           fast-reroute per-prefix enable area 0 prefix-priority low
+           fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+           fast-reroute keep-all-paths
+           network 3.3.3.3 0.0.0.0 area 0
+           network 192.168.23.0 0.0.0.255 area 0
+           network 192.168.34.0 0.0.0.255 area 0
+           mpls ldp autoconfig area 0
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+           !
+           !
+           !
+           !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: R3
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 50
+    y: 382
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          !
+          ! Last configuration change at 14:14:13 UTC Wed Nov 1 2017
+          !
+          version 16.3
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname R4
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          mpls ldp discovery targeted-hello accept
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 903J6D6TKGE
+          diagnostic bootup level minimal
+          !
+          spanning-tree extend system-id
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          ip tftp source-interface GigabitEthernet1
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 4.4.4.4 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address dhcp
+           shutdown
+           negotiation auto
+          !
+          interface GigabitEthernet2
+           ip address 192.168.34.4 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           ip address 192.168.45.4 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           fast-reroute per-prefix enable area 0 prefix-priority low
+           fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+           fast-reroute keep-all-paths
+           network 4.4.4.4 0.0.0.0 area 0
+           network 192.168.34.0 0.0.0.255 area 0
+           network 192.168.45.0 0.0.0.255 area 0
+           mpls ldp autoconfig area 0
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+           !
+           !
+           !
+           !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: R4
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 362
+    y: 386
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          !
+          ! Last configuration change at 14:14:13 UTC Wed Nov 1 2017
+          !
+          version 16.3
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname R5
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          mpls ldp discovery targeted-hello accept
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 903J6D6TKGE
+          diagnostic bootup level minimal
+          !
+          spanning-tree extend system-id
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          ip tftp source-interface GigabitEthernet1
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 5.5.5.5 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address dhcp
+           shutdown
+           negotiation auto
+          !
+          interface GigabitEthernet2
+           ip address 192.168.15.5 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet3
+           ip address 192.168.45.5 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet4
+           ip address 192.168.56.5 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           fast-reroute per-prefix enable area 0 prefix-priority low
+           fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+           fast-reroute keep-all-paths
+           network 5.5.5.5 0.0.0.0 area 0
+           network 192.168.15.0 0.0.0.255 area 0
+           network 192.168.45.0 0.0.0.255 area 0
+           network 192.168.56.0 0.0.0.255 area 0
+           mpls ldp autoconfig area 0
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+           !
+           !
+           !
+           !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: R5
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 354
+    y: 202
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet3
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet4
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          !
+          ! Last configuration change at 14:14:12 UTC Wed Nov 1 2017
+          !
+          version 16.3
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname R6
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          mpls ldp discovery targeted-hello accept
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          !
+
+
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 903J6D6TKGE
+          diagnostic bootup level minimal
+          !
+          spanning-tree extend system-id
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          ip tftp source-interface GigabitEthernet1
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface Loopback0
+           ip address 6.6.6.6 255.255.255.255
+          !
+          interface GigabitEthernet1
+           ip address dhcp
+           shutdown
+           negotiation auto
+          !
+          interface GigabitEthernet2
+           ip address 192.168.56.6 255.255.255.0
+           negotiation auto
+            ! inserted by converter
+            no shutdown
+          !
+          router ospf 1
+           fast-reroute per-prefix enable area 0 prefix-priority low
+           fast-reroute per-prefix remote-lfa tunnel mpls-ldp
+           fast-reroute keep-all-paths
+           network 6.6.6.6 0.0.0.0 area 0
+           network 192.168.56.0 0.0.0.255 area 0
+           mpls ldp autoconfig area 0
+          !
+          !
+          virtual-service csr_mgmt
+          !
+          ip forward-protocol nd
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+           !
+           !
+           !
+           !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login
+          line vty 1
+           login
+           length 0
+          line vty 2 4
+           login
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: R6
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 534
+    y: 198
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: R1-GigabitEthernet2<->R2-GigabitEthernet2
+  - id: l1
+    n1: n0
+    n2: n4
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: R1-GigabitEthernet3<->R5-GigabitEthernet2
+  - id: l2
+    n1: n4
+    n2: n5
+    i1: i4
+    i2: i2
+    conditioning: {}
+    label: R5-GigabitEthernet4<->R6-GigabitEthernet2
+  - id: l3
+    n1: n2
+    n2: n3
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: R3-GigabitEthernet2<->R4-GigabitEthernet2
+  - id: l4
+    n1: n2
+    n2: n1
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: R3-GigabitEthernet3<->R2-GigabitEthernet3
+  - id: l5
+    n1: n3
+    n2: n4
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: R4-GigabitEthernet3<->R5-GigabitEthernet3
+lab:
+  description: Imported from ospf_remote_fast_reroute.virl
+  notes: |-
+    ## Notes from legacy topology import
+    - processing node /R1 (csr1000v)
+    - processing node /R2 (csr1000v)
+    - processing node /R3 (csr1000v)
+    - processing node /R4 (csr1000v)
+    - processing node /R5 (csr1000v)
+    - processing node /R6 (csr1000v)
+    - link i1 -> i1
+    - link i2 -> i1
+    - link i3 -> i1
+    - link i1 -> i1
+    - link i2 -> i2
+    - link i2 -> i2
+  title: ospf_remote_fast_reroute.virl
+  version: 0.3.0

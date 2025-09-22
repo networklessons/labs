@@ -1,0 +1,609 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          !
+          ! Last configuration change at 11:40:31 UTC Fri Jun 3 2016
+          !
+          version 15.6
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname R1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          ethernet lmi ce
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           ip address 10.255.4.18 255.255.0.0
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address 192.168.12.1 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          ip route 0.0.0.0 0.0.0.0 192.168.12.2
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner incoming `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner login `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          !
+          line con 0
+          line aux 0
+          line vty 0 4
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: 50
+    y: 54
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          !
+          ! Last configuration change at 11:40:30 UTC Fri Jun 3 2016
+          !
+          version 15.6
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname R2
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          ethernet lmi ce
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          no ipv6 cef
+          !
+
+          parameter-map type urlfpolicy local URL_FILTER
+           block-page message "YOU ARE NOT AUTHORIZED"
+          parameter-map type urlf-glob YOUTUBE
+           pattern youtube.com
+
+          parameter-map type urlf-glob ALLOWED_URLS
+           pattern *
+
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          class-map type inspect match-all TELNET
+           match protocol telnet
+          class-map type inspect match-all ICMP
+           match protocol icmp
+          class-map type inspect match-all HTTP
+           match protocol http
+          class-map type urlfilter match-any BLOCK_YOUTUBE
+           match server-domain urlf-glob YOUTUBE
+          class-map type urlfilter match-any ALLOW
+           match server-domain urlf-glob ALLOWED_URLS
+          !
+          policy-map type inspect urlfilter URL_FILTER
+           parameter type urlfpolicy local URL_FILTER
+           class type urlfilter BLOCK_YOUTUBE
+            reset
+           class type urlfilter ALLOW
+            allow
+          policy-map type inspect WAN-TO-SELF
+           class class-default
+            drop
+          policy-map type inspect WAN-TO-LAN
+           class type inspect TELNET
+            inspect
+           class class-default
+            drop
+          policy-map type inspect LAN-TO-WAN
+           class type inspect ICMP
+            inspect
+           class type inspect HTTP
+            inspect
+            service-policy urlfilter URL_FILTER
+           class class-default
+            pass
+          !
+          zone security LAN
+          zone security WAN
+          zone-pair security LAN-TO-WAN source LAN destination WAN
+           description LAN-TO-WAN TRAFFIC
+           service-policy type inspect LAN-TO-WAN
+          zone-pair security WAN-TO-LAN source WAN destination LAN
+           description WAN-TO-LAN TRAFFIC
+           service-policy type inspect WAN-TO-LAN
+          zone-pair security WAN-TO-SELF source WAN destination self
+           service-policy type inspect WAN-TO-SELF
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           ip address 10.255.4.19 255.255.0.0
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address 192.168.12.2 255.255.255.0
+           zone-member security LAN
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet0/2
+           ip address 192.168.23.2 255.255.255.0
+           zone-member security WAN
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet0/3
+           ip address dhcp
+           zone-member security LAN
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner incoming `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner login `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          !
+          line con 0
+          line aux 0
+          line vty 0 4
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R2
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: 334
+    y: 50
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          !
+          ! Last configuration change at 11:40:39 UTC Fri Jun 3 2016
+          !
+          version 15.6
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname R3
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          ethernet lmi ce
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           ip address 10.255.4.20 255.255.0.0
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address 192.168.23.3 255.255.255.0
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          ip http server
+          no ip http secure-server
+          ip route 0.0.0.0 0.0.0.0 192.168.23.2
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner incoming `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner login `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          !
+          line con 0
+          line aux 0
+          line vty 0 4
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: R3
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: 640
+    y: 53
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: flat-1
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: 343
+    y: 290
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n1
+    n2: n2
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: R2-GigabitEthernet0/2<->R3-GigabitEthernet0/1
+  - id: l1
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: R2-GigabitEthernet0/1<->R1-GigabitEthernet0/1
+  - id: l2
+    n1: n1
+    n2: n3
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: R2-GigabitEthernet0/3<->flat-1-port
+lab:
+  description: Imported from zone_based_firewall_url_filter.virl
+  notes: |-
+    ## Notes from legacy topology import
+    - processing node /R1 (iosv)
+    - processing node /R2 (iosv)
+    - processing node /R3 (iosv)
+    - processing node /flat-1 (external_connector)
+    - link i2 -> i1
+    - link i1 -> i1
+    - link i3 -> i0
+  title: zone_based_firewall_url_filter.virl
+  version: 0.3.0
