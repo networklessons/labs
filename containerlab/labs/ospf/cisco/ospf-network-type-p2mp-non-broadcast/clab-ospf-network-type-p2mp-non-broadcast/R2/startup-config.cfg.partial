@@ -1,0 +1,28 @@
+hostname R2
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+ no shutdown
+!
+interface Ethernet0/1
+ ip address 192.168.24.2 255.255.255.0
+ no shutdown
+!
+interface Tunnel0
+ ip address 172.16.123.2 255.255.255.0
+ ip nhrp map 172.16.123.1 192.168.14.1
+ ip nhrp network-id 1
+ ip nhrp nhs 172.16.123.1
+ ip ospf network point-to-multipoint non-broadcast
+ tunnel source Ethernet0/1
+ tunnel destination 192.168.14.1
+!
+ip route 0.0.0.0 0.0.0.0 192.168.24.4
+!
+router ospf 1
+ router-id 2.2.2.2
+ network 2.2.2.2 0.0.0.0 area 0
+ network 172.16.123.0 0.0.0.255 area 0
+ neighbor 172.16.123.1
+!
+end
