@@ -1,4 +1,4 @@
-hostname R1
+hostname R3
 !
 interface Loopback0
  ip address 3.3.3.3 255.255.255.255
