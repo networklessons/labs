@@ -1,0 +1,13 @@
+hostname R1
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.12.1 255.255.255.0
+ ip ospf network point-to-point
+!
+router ospf 1
+ network 192.168.12.0 0.0.0.255 area 0
+ network 1.1.1.1 0.0.0.0 area 0

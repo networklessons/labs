@@ -5,29 +5,25 @@ name: ospf-network-type-p2p
 
 mgmt:
   network: statics
-  ipv4-subnet: 172.100.100.0/24
+  ipv4-subnet: 10.65.97.0/24
 
 topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
     R1:
-      kind: cisco_c8000v
-      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a
-      startup-config: ./clab-ospf-network-type-p2p/R1/config/startup-config.cfg
-      labels:
-        graph-level: 1
-        graph-icon: router
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-network-type-p2p/R1/startup-config.cfg.partial
     R2:
-      kind: cisco_c8000v
-      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a
-      startup-config: ./clab-ospf-network-type-p2p/R2/config/startup-config.cfg
-      labels:
-        graph-level: 1
-        graph-icon: router
-
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-network-type-p2p/R2/startup-config.cfg.partial
     graphite:
       kind: linux
       image: netreplica/graphite
-      mgmt-ipv4: 172.100.100.104
+      mgmt-ipv4: 10.65.97.100
       env:
         HOST_CONNECTION: ${SSH_CONNECTION}
       binds:
@@ -40,4 +36,4 @@ topology:
       labels:
         graph-hide: yes
   links:
-    - endpoints: ["R1:eth1", "R2:eth1"]
+    - endpoints: ["R1:Ethernet0/1", "R2:Ethernet0/1"]
