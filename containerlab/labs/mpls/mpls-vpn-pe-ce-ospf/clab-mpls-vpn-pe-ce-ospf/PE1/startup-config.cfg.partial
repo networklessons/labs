@@ -1,0 +1,45 @@
+hostname PE1
+!        
+ip cef
+!
+ip vrf CUSTOMER
+ rd 1:1
+ route-target export 1:1
+ route-target import 1:1
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!         
+interface Ethernet0/1
+ ip vrf forwarding CUSTOMER
+ ip address 192.168.12.2 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/2
+ ip address 192.168.23.2 255.255.255.0
+ no shutdown
+!
+router ospf 2 vrf CUSTOMER
+ redistribute bgp 234 subnets
+ network 192.168.12.0 0.0.0.255 area 0
+!
+router ospf 1
+ mpls ldp autoconfig
+ network 2.2.2.2 0.0.0.0 area 0
+ network 192.168.23.0 0.0.0.255 area 0
+!
+router bgp 234
+ bgp log-neighbor-changes
+ neighbor 4.4.4.4 remote-as 234
+ neighbor 4.4.4.4 update-source Loopback0
+ !
+ address-family vpnv4
+  neighbor 4.4.4.4 activate
+  neighbor 4.4.4.4 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf CUSTOMER
+  redistribute ospf 2
+ exit-address-family
+!
+end
