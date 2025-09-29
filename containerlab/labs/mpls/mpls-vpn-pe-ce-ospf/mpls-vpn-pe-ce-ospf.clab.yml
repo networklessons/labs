@@ -10,23 +10,23 @@ topology:
     CE1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.11
-      #startup-config: ./clab-mpls-vpn-pe-ce-ospf/CE1/startup-config.cfg.partial
+      startup-config: ./clab-mpls-vpn-pe-ce-ospf/CE1/startup-config.cfg.partial
     PE1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.12
-      #startup-config: ./clab-mpls-vpn-pe-ce-ospf/PE1/startup-config.cfg.partial
+      startup-config: ./clab-mpls-vpn-pe-ce-ospf/PE1/startup-config.cfg.partial
     P1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.13
-      #startup-config: ./clab-mpls-vpn-pe-ce-ospf/P1/startup-config.cfg.partial
+      startup-config: ./clab-mpls-vpn-pe-ce-ospf/P1/startup-config.cfg.partial
     PE2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.14
-      #startup-config: ./clab-mpls-vpn-pe-ce-ospf/PE2/startup-config.cfg.partial
+      startup-config: ./clab-mpls-vpn-pe-ce-ospf/PE2/startup-config.cfg.partial
     CE2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.15
-      #startup-config: ./clab-mpls-vpn-pe-ce-ospf/CE2/startup-config.cfg.partial
+      startup-config: ./clab-mpls-vpn-pe-ce-ospf/CE2/startup-config.cfg.partial
     graphite:
       kind: linux
       image: netreplica/graphite
