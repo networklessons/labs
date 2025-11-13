@@ -1,0 +1,15 @@
+hostname R2
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.12.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf message-digest-key 1 md5 MYPASS
+ ip ospf authentication message-digest
+!
+router ospf 1
+ network 192.168.12.0 0.0.0.255 area 0
+ network 2.2.2.2 0.0.0.0 area 0
