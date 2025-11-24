@@ -6,13 +6,13 @@ Outputs a list showing:
 - Suggested containerlab folder+file
 """
 
-import os
 from pathlib import Path
 from typing import Set, Dict, List, Tuple
 
-# Base paths
-CML_BASE = Path("/home/runner/work/labs/labs/cml")
-CONTAINERLAB_BASE = Path("/home/runner/work/labs/labs/containerlab/labs")
+# Base paths - relative to script location
+SCRIPT_DIR = Path(__file__).parent
+CML_BASE = SCRIPT_DIR / "cml"
+CONTAINERLAB_BASE = SCRIPT_DIR / "containerlab" / "labs"
 
 
 def normalize_name(name: str) -> str:
@@ -26,10 +26,11 @@ def normalize_name(name: str) -> str:
     return name
 
 
-def get_cml_topologies() -> Dict[str, Tuple[str, str]]:
+def get_cml_topologies() -> Dict[str, List[Tuple[str, str]]]:
     """
     Get all CML topology files.
-    Returns: dict mapping normalized name to (folder, filename)
+    Returns: dict mapping normalized name to list of (folder, filename) tuples
+    Note: Some CML labs have duplicate names in different folders
     """
     topologies = {}
     
@@ -42,7 +43,10 @@ def get_cml_topologies() -> Dict[str, Tuple[str, str]]:
         # Normalize the name for comparison
         normalized = normalize_name(filename)
         
-        topologies[normalized] = (folder, filename)
+        # Handle duplicates by storing in a list
+        if normalized not in topologies:
+            topologies[normalized] = []
+        topologies[normalized].append((folder, filename))
     
     return topologies
 
@@ -92,21 +96,26 @@ def main():
     cml_topologies = get_cml_topologies()
     containerlab_names = get_containerlab_topologies()
     
+    # Calculate total CML files (including duplicates)
+    total_cml_files = sum(len(topology_list) for topology_list in cml_topologies.values())
+    
     # Find CML labs without containerlab equivalents
     missing_in_containerlab = []
     
-    for normalized_name, (folder, filename) in cml_topologies.items():
+    for normalized_name, topology_list in cml_topologies.items():
         if normalized_name not in containerlab_names:
-            cml_path = f"cml/{folder}/{filename}"
-            suggested_clab_path = f"containerlab/{suggest_containerlab_path(folder, filename)}"
-            missing_in_containerlab.append((cml_path, suggested_clab_path))
+            # Handle multiple CML files with the same normalized name
+            for folder, filename in topology_list:
+                cml_path = f"cml/{folder}/{filename}"
+                suggested_clab_path = f"containerlab/{suggest_containerlab_path(folder, filename)}"
+                missing_in_containerlab.append((cml_path, suggested_clab_path))
     
     # Sort by CML path
     missing_in_containerlab.sort(key=lambda x: x[0])
     
     # Print results
     print(f"Found {len(missing_in_containerlab)} CML labs without containerlab equivalents")
-    print(f"(out of {len(cml_topologies)} total CML labs)")
+    print(f"(out of {total_cml_files} total CML lab files)")
     print()
     print("-" * 80)
     print(f"{'CML Topology':<50} {'Suggested Containerlab Path':<50}")
@@ -121,12 +130,12 @@ def main():
     print("=" * 80)
     
     # Also save to a file for easier reference
-    output_file = Path("/home/runner/work/labs/labs/cml_without_containerlab.txt")
+    output_file = SCRIPT_DIR / "cml_without_containerlab.txt"
     with open(output_file, 'w') as f:
         f.write("CML Labs without Containerlab Equivalents\n")
         f.write("=" * 80 + "\n\n")
         f.write(f"Found {len(missing_in_containerlab)} CML labs without containerlab equivalents\n")
-        f.write(f"(out of {len(cml_topologies)} total CML labs)\n\n")
+        f.write(f"(out of {total_cml_files} total CML lab files)\n\n")
         f.write("-" * 80 + "\n")
         f.write(f"{'CML Topology':<50} {'Suggested Containerlab Path':<50}\n")
         f.write("-" * 80 + "\n")

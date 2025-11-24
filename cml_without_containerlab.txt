@@ -1,8 +1,8 @@
 CML Labs without Containerlab Equivalents
 ================================================================================
 
-Found 430 CML labs without containerlab equivalents
-(out of 436 total CML labs)
+Found 432 CML labs without containerlab equivalents
+(out of 438 total CML lab files)
 
 --------------------------------------------------------------------------------
 CML Topology                                       Suggested Containerlab Path                       
@@ -382,6 +382,7 @@ cml/Switching/etherchannel-8021q-tunnel.yaml       containerlab/labs/switching/c
 cml/Switching/etherchannel-static.yaml             containerlab/labs/switching/cisco/etherchannel-static/etherchannel-static.clab.yml
 cml/Switching/h1-sw1-h2.yaml                       containerlab/labs/switching/cisco/h1-sw1-h2/h1-sw1-h2.clab.yml
 cml/Switching/mst-multi-region.yaml                containerlab/labs/switching/cisco/mst-multi-region/mst-multi-region.clab.yml
+cml/Switching/mst-pvst-interoperability.yaml       containerlab/labs/switching/cisco/mst-pvst-interoperability/mst-pvst-interoperability.clab.yml
 cml/Switching/mst-rstp-interoperability.yaml       containerlab/labs/switching/cisco/mst-rstp-interoperability/mst-rstp-interoperability.clab.yml
 cml/Switching/mst-sw1-sw2-sw3.yaml                 containerlab/labs/switching/cisco/mst-sw1-sw2-sw3/mst-sw1-sw2-sw3.clab.yml
 cml/Switching/one-switch-three-routers.yaml        containerlab/labs/switching/cisco/one-switch-three-routers/one-switch-three-routers.clab.yml
@@ -410,6 +411,7 @@ cml/Switching/vtp-version-3.yaml                   containerlab/labs/switching/c
 cml/Templates/asa-r1-r2-r3.yaml                    containerlab/labs/templates/cisco/asa-r1-r2-r3/asa-r1-r2-r3.clab.yml
 cml/Templates/csr1000v-flat1.yaml                  containerlab/labs/templates/cisco/csr1000v-flat1/csr1000v-flat1.clab.yml
 cml/Templates/mpls-vpn-pe-ce.yaml                  containerlab/labs/templates/cisco/mpls-vpn-pe-ce/mpls-vpn-pe-ce.clab.yml
+cml/Templates/ospf-two-routers-single-link.yaml    containerlab/labs/templates/cisco/ospf-two-routers-single-link/ospf-two-routers-single-link.clab.yml
 cml/Templates/r1-asa1-asa2-r2.yaml                 containerlab/labs/templates/cisco/r1-asa1-asa2-r2/r1-asa1-asa2-r2.clab.yml
 cml/Templates/r1-flat.yaml                         containerlab/labs/templates/cisco/r1-flat/r1-flat.clab.yml
 cml/Templates/r1-r2-asa1-sw1-sw2.yaml              containerlab/labs/templates/cisco/r1-r2-asa1-sw1-sw2/r1-r2-asa1-sw1-sw2.clab.yml
@@ -439,5 +441,5 @@ cml/VXLAN/vxlan-one-spine-two-leafs.yaml           containerlab/labs/vxlan/cisco
 cml/VXLAN/vxlan-unicast.yaml                       containerlab/labs/vxlan/cisco/vxlan-unicast/vxlan-unicast.clab.yml
 
 ================================================================================
-Total: 430 labs need containerlab versions
+Total: 432 labs need containerlab versions
 ================================================================================
