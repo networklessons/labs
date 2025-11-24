@@ -1,0 +1,443 @@
+CML Labs without Containerlab Equivalents
+================================================================================
+
+Found 430 CML labs without containerlab equivalents
+(out of 436 total CML labs)
+
+--------------------------------------------------------------------------------
+CML Topology                                       Suggested Containerlab Path                       
+--------------------------------------------------------------------------------
+cml/ASA/asa-failover.virl.yaml                     containerlab/labs/asa/cisco/asa-failover.virl/asa-failover.virl.clab.yml
+cml/ASA/asa-hairpin-internal-server-public-ip.virl.yaml containerlab/labs/asa/cisco/asa-hairpin-internal-server-public-ip.virl/asa-hairpin-internal-server-public-ip.virl.clab.yml
+cml/ASA/asa-hairpin-remote-access-vpn.virl.yaml    containerlab/labs/asa/cisco/asa-hairpin-remote-access-vpn.virl/asa-hairpin-remote-access-vpn.virl.clab.yml
+cml/ASA/asa-multicast.virl.yaml                    containerlab/labs/asa/cisco/asa-multicast.virl/asa-multicast.virl.clab.yml
+cml/ASA/asa-nat-excemption.virl.yaml               containerlab/labs/asa/cisco/asa-nat-excemption.virl/asa-nat-excemption.virl.clab.yml
+cml/ASA/asa-nat-exemption.yaml                     containerlab/labs/asa/cisco/asa-nat-exemption/asa-nat-exemption.clab.yml
+cml/ASA/asa-nat-port-forwarding.virl.yaml          containerlab/labs/asa/cisco/asa-nat-port-forwarding.virl/asa-nat-port-forwarding.virl.clab.yml
+cml/ASA/asa-packet-drops.virl.yaml                 containerlab/labs/asa/cisco/asa-packet-drops.virl/asa-packet-drops.virl.clab.yml
+cml/ASA/asa-packet-drops2.virl.yaml                containerlab/labs/asa/cisco/asa-packet-drops2.virl/asa-packet-drops2.virl.clab.yml
+cml/ASA/asa-pat.virl.yaml                          containerlab/labs/asa/cisco/asa-pat.virl/asa-pat.virl.clab.yml
+cml/ASA/asa-policy-based-routing.virl.yaml         containerlab/labs/asa/cisco/asa-policy-based-routing.virl/asa-policy-based-routing.virl.clab.yml
+cml/ASA/asa-port-range-forwarding.virl.yaml        containerlab/labs/asa/cisco/asa-port-range-forwarding.virl/asa-port-range-forwarding.virl.clab.yml
+cml/ASA/asa-remote-access-ikev1-filter.virl.yaml   containerlab/labs/asa/cisco/asa-remote-access-ikev1-filter.virl/asa-remote-access-ikev1-filter.virl.clab.yml
+cml/ASA/asa-remote-access-ikev1.virl.yaml          containerlab/labs/asa/cisco/asa-remote-access-ikev1.virl/asa-remote-access-ikev1.virl.clab.yml
+cml/ASA/asa-remote-access-ikev2.virl.yaml          containerlab/labs/asa/cisco/asa-remote-access-ikev2.virl/asa-remote-access-ikev2.virl.clab.yml
+cml/ASA/asa-remote-access-native-windows.virl.yaml containerlab/labs/asa/cisco/asa-remote-access-native-windows.virl/asa-remote-access-native-windows.virl.clab.yml
+cml/ASA/asa-site-to-site-ikev1-ipsec-vpn-certificates.virl.yaml containerlab/labs/asa/cisco/asa-site-to-site-ikev1-ipsec-vpn-certificates.virl/asa-site-to-site-ikev1-ipsec-vpn-certificates.virl.clab.yml
+cml/ASA/asa-site-to-site-ikev1-ipsec-vpn-dynamic-peer.virl.yaml containerlab/labs/asa/cisco/asa-site-to-site-ikev1-ipsec-vpn-dynamic-peer.virl/asa-site-to-site-ikev1-ipsec-vpn-dynamic-peer.virl.clab.yml
+cml/ASA/asa-site-to-site-ikev1-ipsec-vpn-dynamic-peers.virl.yaml containerlab/labs/asa/cisco/asa-site-to-site-ikev1-ipsec-vpn-dynamic-peers.virl/asa-site-to-site-ikev1-ipsec-vpn-dynamic-peers.virl.clab.yml
+cml/ASA/asa-site-to-site-ikev1-ipsec-vpn.virl.yaml containerlab/labs/asa/cisco/asa-site-to-site-ikev1-ipsec-vpn.virl/asa-site-to-site-ikev1-ipsec-vpn.virl.clab.yml
+cml/ASA/asa-site-to-site-ikev2-ipsec-hub-spoke.yaml containerlab/labs/asa/cisco/asa-site-to-site-ikev2-ipsec-hub-spoke/asa-site-to-site-ikev2-ipsec-hub-spoke.clab.yml
+cml/ASA/asa-split-tunnel-vpn-nat-internet.virl.yaml containerlab/labs/asa/cisco/asa-split-tunnel-vpn-nat-internet.virl/asa-split-tunnel-vpn-nat-internet.virl.clab.yml
+cml/ASA/asa-static-nat-complete-subnet.virl.yaml   containerlab/labs/asa/cisco/asa-static-nat-complete-subnet.virl/asa-static-nat-complete-subnet.virl.clab.yml
+cml/ASA/asa-transparent-mode.virl.yaml             containerlab/labs/asa/cisco/asa-transparent-mode.virl/asa-transparent-mode.virl.clab.yml
+cml/ASA/r1-asa-flat.virl.yaml                      containerlab/labs/asa/cisco/r1-asa-flat.virl/r1-asa-flat.virl.clab.yml
+cml/ASA/r1-asa1-r2.virl.yaml                       containerlab/labs/asa/cisco/r1-asa1-r2.virl/r1-asa1-r2.virl.clab.yml
+cml/BGP/bgp-4-byte-asn.yaml                        containerlab/labs/bgp/cisco/bgp-4-byte-asn/bgp-4-byte-asn.clab.yml
+cml/BGP/bgp-additional-paths.yaml                  containerlab/labs/bgp/cisco/bgp-additional-paths/bgp-additional-paths.clab.yml
+cml/BGP/bgp-aggregate-as-set.yaml                  containerlab/labs/bgp/cisco/bgp-aggregate-as-set/bgp-aggregate-as-set.clab.yml
+cml/BGP/bgp-aggregation-as-set.yaml                containerlab/labs/bgp/cisco/bgp-aggregation-as-set/bgp-aggregation-as-set.clab.yml
+cml/BGP/bgp-aigp-final-example.yaml                containerlab/labs/bgp/cisco/bgp-aigp-final-example/bgp-aigp-final-example.clab.yml
+cml/BGP/bgp-aigp-med-example.yaml                  containerlab/labs/bgp/cisco/bgp-aigp-med-example/bgp-aigp-med-example.clab.yml
+cml/BGP/bgp-aigp.yaml                              containerlab/labs/bgp/cisco/bgp-aigp/bgp-aigp.clab.yml
+cml/BGP/bgp-attribute-locally-originate.yaml       containerlab/labs/bgp/cisco/bgp-attribute-locally-originate/bgp-attribute-locally-originate.clab.yml
+cml/BGP/bgp-attribute-weight.yaml                  containerlab/labs/bgp/cisco/bgp-attribute-weight/bgp-attribute-weight.clab.yml
+cml/BGP/bgp-ccnp-route-lab.yaml                    containerlab/labs/bgp/cisco/bgp-ccnp-route-lab/bgp-ccnp-route-lab.clab.yml
+cml/BGP/bgp-community-local-as.yaml                containerlab/labs/bgp/cisco/bgp-community-local-as/bgp-community-local-as.clab.yml
+cml/BGP/bgp-community-no-advertise.yaml            containerlab/labs/bgp/cisco/bgp-community-no-advertise/bgp-community-no-advertise.clab.yml
+cml/BGP/bgp-conditional-advertisement.yaml         containerlab/labs/bgp/cisco/bgp-conditional-advertisement/bgp-conditional-advertisement.clab.yml
+cml/BGP/bgp-confederation.yaml                     containerlab/labs/bgp/cisco/bgp-confederation/bgp-confederation.clab.yml
+cml/BGP/bgp-dampening.yaml                         containerlab/labs/bgp/cisco/bgp-dampening/bgp-dampening.clab.yml
+cml/BGP/bgp-default.yaml                           containerlab/labs/bgp/cisco/bgp-default/bgp-default.clab.yml
+cml/BGP/bgp-ebgp-ibgp.yaml                         containerlab/labs/bgp/cisco/bgp-ebgp-ibgp/bgp-ebgp-ibgp.clab.yml
+cml/BGP/bgp-ebgp-multihop.yaml                     containerlab/labs/bgp/cisco/bgp-ebgp-multihop/bgp-ebgp-multihop.clab.yml
+cml/BGP/bgp-ebgp-over-ibgp.yaml                    containerlab/labs/bgp/cisco/bgp-ebgp-over-ibgp/bgp-ebgp-over-ibgp.clab.yml
+cml/BGP/bgp-ebgp-three-ases.yaml                   containerlab/labs/bgp/cisco/bgp-ebgp-three-ases/bgp-ebgp-three-ases.clab.yml
+cml/BGP/bgp-ebp-two-routers.yaml                   containerlab/labs/bgp/cisco/bgp-ebp-two-routers/bgp-ebp-two-routers.clab.yml
+cml/BGP/bgp-ibgp-two-routers.yaml                  containerlab/labs/bgp/cisco/bgp-ibgp-two-routers/bgp-ibgp-two-routers.clab.yml
+cml/BGP/bgp-local-preference.yaml                  containerlab/labs/bgp/cisco/bgp-local-preference/bgp-local-preference.clab.yml
+cml/BGP/bgp-maximum-paths-ebgp-different-as.yaml   containerlab/labs/bgp/cisco/bgp-maximum-paths-ebgp-different-as/bgp-maximum-paths-ebgp-different-as.clab.yml
+cml/BGP/bgp-maximum-paths-ebgp-same-as.yaml        containerlab/labs/bgp/cisco/bgp-maximum-paths-ebgp-same-as/bgp-maximum-paths-ebgp-same-as.clab.yml
+cml/BGP/bgp-maximum-paths-ibgp.yaml                containerlab/labs/bgp/cisco/bgp-maximum-paths-ibgp/bgp-maximum-paths-ibgp.clab.yml
+cml/BGP/bgp-next-hop-tracking.yaml                 containerlab/labs/bgp/cisco/bgp-next-hop-tracking/bgp-next-hop-tracking.clab.yml
+cml/BGP/bgp-next-hop.yaml                          containerlab/labs/bgp/cisco/bgp-next-hop/bgp-next-hop.clab.yml
+cml/BGP/bgp-pic.yaml                               containerlab/labs/bgp/cisco/bgp-pic/bgp-pic.clab.yml
+cml/BGP/bgp-route-leak.yaml                        containerlab/labs/bgp/cisco/bgp-route-leak/bgp-route-leak.clab.yml
+cml/BGP/bgp-route-reflector-ibgp.yaml              containerlab/labs/bgp/cisco/bgp-route-reflector-ibgp/bgp-route-reflector-ibgp.clab.yml
+cml/BGP/bgp-route-refresh.yaml                     containerlab/labs/bgp/cisco/bgp-route-refresh/bgp-route-refresh.clab.yml
+cml/BGP/bgp-rpki.yaml                              containerlab/labs/bgp/cisco/bgp-rpki/bgp-rpki.clab.yml
+cml/BGP/bgp-synchronization.yaml                   containerlab/labs/bgp/cisco/bgp-synchronization/bgp-synchronization.clab.yml
+cml/BGP/how-to-read-bgp-table.yaml                 containerlab/labs/bgp/cisco/how-to-read-bgp-table/how-to-read-bgp-table.clab.yml
+cml/CEF/cef-ecmp.yaml                              containerlab/labs/cef/cisco/cef-ecmp/cef-ecmp.clab.yml
+cml/DMVPN/dmvpn-dual-hub-dual-cloud.yaml           containerlab/labs/dmvpn/cisco/dmvpn-dual-hub-dual-cloud/dmvpn-dual-hub-dual-cloud.clab.yml
+cml/DMVPN/dmvpn-dual-hub-single-cloud.yaml         containerlab/labs/dmvpn/cisco/dmvpn-dual-hub-single-cloud/dmvpn-dual-hub-single-cloud.clab.yml
+cml/DMVPN/dmvpn-eigrp-add-path-support.yaml        containerlab/labs/dmvpn/cisco/dmvpn-eigrp-add-path-support/dmvpn-eigrp-add-path-support.clab.yml
+cml/DMVPN/dmvpn-ipsec.yaml                         containerlab/labs/dmvpn/cisco/dmvpn-ipsec/dmvpn-ipsec.clab.yml
+cml/DMVPN/dmvpn-ipv6-over-ipv4.yaml                containerlab/labs/dmvpn/cisco/dmvpn-ipv6-over-ipv4/dmvpn-ipv6-over-ipv4.clab.yml
+cml/DMVPN/dmvpn-phase-1-ebgp.yaml                  containerlab/labs/dmvpn/cisco/dmvpn-phase-1-ebgp/dmvpn-phase-1-ebgp.clab.yml
+cml/DMVPN/dmvpn-phase-1-eigrp.yaml                 containerlab/labs/dmvpn/cisco/dmvpn-phase-1-eigrp/dmvpn-phase-1-eigrp.clab.yml
+cml/DMVPN/dmvpn-phase-1-ibgp.yaml                  containerlab/labs/dmvpn/cisco/dmvpn-phase-1-ibgp/dmvpn-phase-1-ibgp.clab.yml
+cml/DMVPN/dmvpn-phase-1-ospf.yaml                  containerlab/labs/dmvpn/cisco/dmvpn-phase-1-ospf/dmvpn-phase-1-ospf.clab.yml
+cml/DMVPN/dmvpn-phase-1-rip.yaml                   containerlab/labs/dmvpn/cisco/dmvpn-phase-1-rip/dmvpn-phase-1-rip.clab.yml
+cml/DMVPN/dmvpn-phase-1-rip.yml.yaml               containerlab/labs/dmvpn/cisco/dmvpn-phase-1-rip.yml/dmvpn-phase-1-rip.yml.clab.yml
+cml/DMVPN/dmvpn-phase-1.yaml                       containerlab/labs/dmvpn/cisco/dmvpn-phase-1/dmvpn-phase-1.clab.yml
+cml/DMVPN/dmvpn-phase-2-bgp.yaml                   containerlab/labs/dmvpn/cisco/dmvpn-phase-2-bgp/dmvpn-phase-2-bgp.clab.yml
+cml/DMVPN/dmvpn-phase-2-eigrp.yaml                 containerlab/labs/dmvpn/cisco/dmvpn-phase-2-eigrp/dmvpn-phase-2-eigrp.clab.yml
+cml/DMVPN/dmvpn-phase-2-ospf.yaml                  containerlab/labs/dmvpn/cisco/dmvpn-phase-2-ospf/dmvpn-phase-2-ospf.clab.yml
+cml/DMVPN/dmvpn-phase-2-rip.yaml                   containerlab/labs/dmvpn/cisco/dmvpn-phase-2-rip/dmvpn-phase-2-rip.clab.yml
+cml/DMVPN/dmvpn-phase-2.yaml                       containerlab/labs/dmvpn/cisco/dmvpn-phase-2/dmvpn-phase-2.clab.yml
+cml/DMVPN/dmvpn-phase-3-bgp.yaml                   containerlab/labs/dmvpn/cisco/dmvpn-phase-3-bgp/dmvpn-phase-3-bgp.clab.yml
+cml/DMVPN/dmvpn-phase-3-eigrp.yaml                 containerlab/labs/dmvpn/cisco/dmvpn-phase-3-eigrp/dmvpn-phase-3-eigrp.clab.yml
+cml/DMVPN/dmvpn-phase-3-multicast-pim-sparse.yaml  containerlab/labs/dmvpn/cisco/dmvpn-phase-3-multicast-pim-sparse/dmvpn-phase-3-multicast-pim-sparse.clab.yml
+cml/DMVPN/dmvpn-phase-3-ospf.yaml                  containerlab/labs/dmvpn/cisco/dmvpn-phase-3-ospf/dmvpn-phase-3-ospf.clab.yml
+cml/DMVPN/dmvpn-phase-3-rip.yaml                   containerlab/labs/dmvpn/cisco/dmvpn-phase-3-rip/dmvpn-phase-3-rip.clab.yml
+cml/DMVPN/dmvpn-phase-3.yaml                       containerlab/labs/dmvpn/cisco/dmvpn-phase-3/dmvpn-phase-3.clab.yml
+cml/DMVPN/dmvpn-qos.yaml                           containerlab/labs/dmvpn/cisco/dmvpn-qos/dmvpn-qos.clab.yml
+cml/EIGRP/eigrp-basic.yaml                         containerlab/labs/eigrp/cisco/eigrp-basic/eigrp-basic.clab.yml
+cml/EIGRP/eigrp-default-network.yaml               containerlab/labs/eigrp/cisco/eigrp-default-network/eigrp-default-network.clab.yml
+cml/EIGRP/eigrp-distribute-list-filtering.yaml     containerlab/labs/eigrp/cisco/eigrp-distribute-list-filtering/eigrp-distribute-list-filtering.clab.yml
+cml/EIGRP/eigrp-dual-fsm.yaml                      containerlab/labs/eigrp/cisco/eigrp-dual-fsm/eigrp-dual-fsm.clab.yml
+cml/EIGRP/eigrp-external-path-selection.yaml       containerlab/labs/eigrp/cisco/eigrp-external-path-selection/eigrp-external-path-selection.clab.yml
+cml/EIGRP/eigrp-fast-reroute-interface-disjoint.yaml containerlab/labs/eigrp/cisco/eigrp-fast-reroute-interface-disjoint/eigrp-fast-reroute-interface-disjoint.clab.yml
+cml/EIGRP/eigrp-fast-reroute-srlg-disjoint.yaml    containerlab/labs/eigrp/cisco/eigrp-fast-reroute-srlg-disjoint/eigrp-fast-reroute-srlg-disjoint.clab.yml
+cml/EIGRP/eigrp-fast-reroute.yaml                  containerlab/labs/eigrp/cisco/eigrp-fast-reroute/eigrp-fast-reroute.clab.yml
+cml/EIGRP/eigrp-feasible-successor-rule.yaml       containerlab/labs/eigrp/cisco/eigrp-feasible-successor-rule/eigrp-feasible-successor-rule.clab.yml
+cml/EIGRP/eigrp-feasible-successor.yaml            containerlab/labs/eigrp/cisco/eigrp-feasible-successor/eigrp-feasible-successor.clab.yml
+cml/EIGRP/eigrp-four-routers.yaml                  containerlab/labs/eigrp/cisco/eigrp-four-routers/eigrp-four-routers.clab.yml
+cml/EIGRP/eigrp-graceful-shutdown.yaml             containerlab/labs/eigrp/cisco/eigrp-graceful-shutdown/eigrp-graceful-shutdown.clab.yml
+cml/EIGRP/eigrp-named-mode.yaml                    containerlab/labs/eigrp/cisco/eigrp-named-mode/eigrp-named-mode.clab.yml
+cml/EIGRP/eigrp-over-the-top.yaml                  containerlab/labs/eigrp/cisco/eigrp-over-the-top/eigrp-over-the-top.clab.yml
+cml/EIGRP/eigrp-route-map-filtering.yaml           containerlab/labs/eigrp/cisco/eigrp-route-map-filtering/eigrp-route-map-filtering.clab.yml
+cml/EIGRP/eigrp-sha-authentication.yaml            containerlab/labs/eigrp/cisco/eigrp-sha-authentication/eigrp-sha-authentication.clab.yml
+cml/EIGRP/eigrp-split-horizon-startup-mode.yaml    containerlab/labs/eigrp/cisco/eigrp-split-horizon-startup-mode/eigrp-split-horizon-startup-mode.clab.yml
+cml/EIGRP/eigrp-stub-leak-map.yaml                 containerlab/labs/eigrp/cisco/eigrp-stub-leak-map/eigrp-stub-leak-map.clab.yml
+cml/EIGRP/eigrp-stub.yaml                          containerlab/labs/eigrp/cisco/eigrp-stub/eigrp-stub.clab.yml
+cml/EIGRP/eigrp-summary-leak-map.yaml              containerlab/labs/eigrp/cisco/eigrp-summary-leak-map/eigrp-summary-leak-map.clab.yml
+cml/EIGRP/eigrp-two-routers.yaml                   containerlab/labs/eigrp/cisco/eigrp-two-routers/eigrp-two-routers.clab.yml
+cml/Etherchannel/etherchannel-active-loop-test.yaml containerlab/labs/etherchannel/cisco/etherchannel-active-loop-test/etherchannel-active-loop-test.clab.yml
+cml/Etherchannel/etherchannel-lacp.yaml            containerlab/labs/etherchannel/cisco/etherchannel-lacp/etherchannel-lacp.clab.yml
+cml/Etherchannel/etherchannel-pagp.yaml            containerlab/labs/etherchannel/cisco/etherchannel-pagp/etherchannel-pagp.clab.yml
+cml/IP Routing/bfd.yaml                            containerlab/labs/ip-routing/cisco/bfd/bfd.clab.yml
+cml/IP Routing/cef-polarization.yaml               containerlab/labs/ip-routing/cisco/cef-polarization/cef-polarization.clab.yml
+cml/IP Routing/cisco-easy-virtual-network.yaml     containerlab/labs/ip-routing/cisco/cisco-easy-virtual-network/cisco-easy-virtual-network.clab.yml
+cml/IP Routing/floating-static-route.yaml          containerlab/labs/ip-routing/cisco/floating-static-route/floating-static-route.clab.yml
+cml/IP Routing/gre-tunnel.yaml                     containerlab/labs/ip-routing/cisco/gre-tunnel/gre-tunnel.clab.yml
+cml/IP Routing/l2tpv3.yaml                         containerlab/labs/ip-routing/cisco/l2tpv3/l2tpv3.clab.yml
+cml/IP Routing/longest-prefix-match-routing.yaml   containerlab/labs/ip-routing/cisco/longest-prefix-match-routing/longest-prefix-match-routing.clab.yml
+cml/IP Routing/route-summarization.yaml            containerlab/labs/ip-routing/cisco/route-summarization/route-summarization.clab.yml
+cml/IP Routing/tunnel-key.yaml                     containerlab/labs/ip-routing/cisco/tunnel-key/tunnel-key.clab.yml
+cml/IP Routing/vrf-lite-routing.yaml               containerlab/labs/ip-routing/cisco/vrf-lite-routing/vrf-lite-routing.clab.yml
+cml/IP Services/vrrp-three-switches.yaml           containerlab/labs/ip-services/cisco/vrrp-three-switches/vrrp-three-switches.clab.yml
+cml/IPSec/ipsec-dynamic-vti-hub-spoke.yaml         containerlab/labs/ipsec/cisco/ipsec-dynamic-vti-hub-spoke/ipsec-dynamic-vti-hub-spoke.clab.yml
+cml/IPSec/ipsec-easy-vpn.yaml                      containerlab/labs/ipsec/cisco/ipsec-easy-vpn/ipsec-easy-vpn.clab.yml
+cml/IPSec/ipsec-getvpn-3cGcT3.yaml                 containerlab/labs/ipsec/cisco/ipsec-getvpn-3cGcT3/ipsec-getvpn-3cGcT3.clab.yml
+cml/IPSec/ipsec-getvpn.yaml                        containerlab/labs/ipsec/cisco/ipsec-getvpn/ipsec-getvpn.clab.yml
+cml/IPSec/ipsec-gre-tunnel.yaml                    containerlab/labs/ipsec/cisco/ipsec-gre-tunnel/ipsec-gre-tunnel.clab.yml
+cml/IPSec/ipsec-tunnel-mode-virtual-tunnel-interface.yaml containerlab/labs/ipsec/cisco/ipsec-tunnel-mode-virtual-tunnel-interface/ipsec-tunnel-mode-virtual-tunnel-interface.clab.yml
+cml/IPSec/ipsec-tunnel-mode.yaml                   containerlab/labs/ipsec/cisco/ipsec-tunnel-mode/ipsec-tunnel-mode.clab.yml
+cml/IPv6/ipv6-6rd-rapid-deployment.yaml            containerlab/labs/ipv6/cisco/ipv6-6rd-rapid-deployment/ipv6-6rd-rapid-deployment.clab.yml
+cml/IPv6/ipv6-6rd.yaml                             containerlab/labs/ipv6/cisco/ipv6-6rd/ipv6-6rd.clab.yml
+cml/IPv6/ipv6-access-list.yaml                     containerlab/labs/ipv6/cisco/ipv6-access-list/ipv6-access-list.clab.yml
+cml/IPv6/ipv6-automatic-6to4-tunneling.yaml        containerlab/labs/ipv6/cisco/ipv6-automatic-6to4-tunneling/ipv6-automatic-6to4-tunneling.clab.yml
+cml/IPv6/ipv6-dhcp.yaml                            containerlab/labs/ipv6/cisco/ipv6-dhcp/ipv6-dhcp.clab.yml
+cml/IPv6/ipv6-dhcpv6-server.yaml                   containerlab/labs/ipv6/cisco/ipv6-dhcpv6-server/ipv6-dhcpv6-server.clab.yml
+cml/IPv6/ipv6-eigrp.yaml                           containerlab/labs/ipv6/cisco/ipv6-eigrp/ipv6-eigrp.clab.yml
+cml/IPv6/ipv6-general-prefixes.yaml                containerlab/labs/ipv6/cisco/ipv6-general-prefixes/ipv6-general-prefixes.clab.yml
+cml/IPv6/ipv6-isatap.yaml                          containerlab/labs/ipv6/cisco/ipv6-isatap/ipv6-isatap.clab.yml
+cml/IPv6/ipv6-nd-inspection.yaml                   containerlab/labs/ipv6/cisco/ipv6-nd-inspection/ipv6-nd-inspection.clab.yml
+cml/IPv6/ipv6-nptv6.yaml                           containerlab/labs/ipv6/cisco/ipv6-nptv6/ipv6-nptv6.clab.yml
+cml/IPv6/ipv6-ospf-three-routers.yaml              containerlab/labs/ipv6/cisco/ipv6-ospf-three-routers/ipv6-ospf-three-routers.clab.yml
+cml/IPv6/ipv6-ospfv3-default-route.yaml            containerlab/labs/ipv6/cisco/ipv6-ospfv3-default-route/ipv6-ospfv3-default-route.clab.yml
+cml/IPv6/ipv6-over-ipv4-gre.yaml                   containerlab/labs/ipv6/cisco/ipv6-over-ipv4-gre/ipv6-over-ipv4-gre.clab.yml
+cml/IPv6/ipv6-prefix-delegation.yaml               containerlab/labs/ipv6/cisco/ipv6-prefix-delegation/ipv6-prefix-delegation.clab.yml
+cml/IPv6/ipv6-r1-r2.yaml                           containerlab/labs/ipv6/cisco/ipv6-r1-r2/ipv6-r1-r2.clab.yml
+cml/IPv6/ipv6-ra-guard.yaml                        containerlab/labs/ipv6/cisco/ipv6-ra-guard/ipv6-ra-guard.clab.yml
+cml/IPv6/ipv6-rd.yaml                              containerlab/labs/ipv6/cisco/ipv6-rd/ipv6-rd.clab.yml
+cml/IPv6/ipv6-ripng.yaml                           containerlab/labs/ipv6/cisco/ipv6-ripng/ipv6-ripng.clab.yml
+cml/IPv6/ipv6-router-advertisement.yaml            containerlab/labs/ipv6/cisco/ipv6-router-advertisement/ipv6-router-advertisement.clab.yml
+cml/IPv6/multiprotocol-bgp-ipv4-adjacency-ipv6-prefixes.yaml containerlab/labs/ipv6/cisco/multiprotocol-bgp-ipv4-adjacency-ipv6-prefixes/multiprotocol-bgp-ipv4-adjacency-ipv6-prefixes.clab.yml
+cml/IPv6/ospfv3-prefix-suppression.yaml            containerlab/labs/ipv6/cisco/ospfv3-prefix-suppression/ospfv3-prefix-suppression.clab.yml
+cml/IS-IS/is-is-authentication.yaml                containerlab/labs/is-is/cisco/is-is-authentication/is-is-authentication.clab.yml
+cml/IS-IS/is-is-filtering.yaml                     containerlab/labs/is-is/cisco/is-is-filtering/is-is-filtering.clab.yml
+cml/IS-IS/is-is-point-to-point.yaml                containerlab/labs/is-is/cisco/is-is-point-to-point/is-is-point-to-point.clab.yml
+cml/IS-IS/is-is-pseudonode.yaml                    containerlab/labs/is-is/cisco/is-is-pseudonode/is-is-pseudonode.clab.yml
+cml/IS-IS/is-is-redistribution.yaml                containerlab/labs/is-is/cisco/is-is-redistribution/is-is-redistribution.clab.yml
+cml/IS-IS/is-is-route-leaking.yaml                 containerlab/labs/is-is/cisco/is-is-route-leaking/is-is-route-leaking.clab.yml
+cml/IS-IS/is-is-single-area-four-routers.yaml      containerlab/labs/is-is/cisco/is-is-single-area-four-routers/is-is-single-area-four-routers.clab.yml
+cml/IS-IS/is-is-single-area-two-routers.yaml       containerlab/labs/is-is/cisco/is-is-single-area-two-routers/is-is-single-area-two-routers.clab.yml
+cml/IS-IS/is-is-summarization.yaml                 containerlab/labs/is-is/cisco/is-is-summarization/is-is-summarization.clab.yml
+cml/IS-IS/is-is-two-areas.yaml                     containerlab/labs/is-is/cisco/is-is-two-areas/is-is-two-areas.clab.yml
+cml/LISP/lisp-basic.yaml                           containerlab/labs/lisp/cisco/lisp-basic/lisp-basic.clab.yml
+cml/Labs/lab-bgp-professional.yaml                 containerlab/labs/labs/cisco/lab-bgp-professional/lab-bgp-professional.clab.yml
+cml/Labs/lab-mpls-advanced.yaml                    containerlab/labs/labs/cisco/lab-mpls-advanced/lab-mpls-advanced.clab.yml
+cml/Labs/lab-network-fundamentals-1.yaml           containerlab/labs/labs/cisco/lab-network-fundamentals-1/lab-network-fundamentals-1.clab.yml
+cml/Labs/lab-ospf-professional.yaml                containerlab/labs/labs/cisco/lab-ospf-professional/lab-ospf-professional.clab.yml
+cml/Labs/mpls-advanced-lab-startup-configs.yaml    containerlab/labs/labs/cisco/mpls-advanced-lab-startup-configs/mpls-advanced-lab-startup-configs.clab.yml
+cml/Labs/mpls-advanced-lab.yaml                    containerlab/labs/labs/cisco/mpls-advanced-lab/mpls-advanced-lab.clab.yml
+cml/Labs/mpls-advanced-labv2.yaml                  containerlab/labs/labs/cisco/mpls-advanced-labv2/mpls-advanced-labv2.clab.yml
+cml/MPLS/mpls-6pe.yaml                             containerlab/labs/mpls/cisco/mpls-6pe/mpls-6pe.clab.yml
+cml/MPLS/mpls-6vpe.yaml                            containerlab/labs/mpls/cisco/mpls-6vpe/mpls-6vpe.clab.yml
+cml/MPLS/mpls-introduction.yaml                    containerlab/labs/mpls/cisco/mpls-introduction/mpls-introduction.clab.yml
+cml/MPLS/mpls-ldp.yaml                             containerlab/labs/mpls/cisco/mpls-ldp/mpls-ldp.clab.yml
+cml/MPLS/mpls-pe-gre-tunnel.yaml                   containerlab/labs/mpls/cisco/mpls-pe-gre-tunnel/mpls-pe-gre-tunnel.clab.yml
+cml/MPLS/mpls-te-affinity-attribute.yaml           containerlab/labs/mpls/cisco/mpls-te-affinity-attribute/mpls-te-affinity-attribute.clab.yml
+cml/MPLS/mpls-te-cbts.yaml                         containerlab/labs/mpls/cisco/mpls-te-cbts/mpls-te-cbts.clab.yml
+cml/MPLS/mpls-te-diffserv-aware-ds-te-traditional.yaml containerlab/labs/mpls/cisco/mpls-te-diffserv-aware-ds-te-traditional/mpls-te-diffserv-aware-ds-te-traditional.clab.yml
+cml/MPLS/mpls-te-diffserv-aware-ietf-mode-mam.yaml containerlab/labs/mpls/cisco/mpls-te-diffserv-aware-ietf-mode-mam/mpls-te-diffserv-aware-ietf-mode-mam.clab.yml
+cml/MPLS/mpls-te-diffserv-aware-ietf-mode-rdm.yaml containerlab/labs/mpls/cisco/mpls-te-diffserv-aware-ietf-mode-rdm/mpls-te-diffserv-aware-ietf-mode-rdm.clab.yml
+cml/MPLS/mpls-te-diffserv-aware-ietf-mode.yaml     containerlab/labs/mpls/cisco/mpls-te-diffserv-aware-ietf-mode/mpls-te-diffserv-aware-ietf-mode.clab.yml
+cml/MPLS/mpls-te-frr-rsvp-hello.yaml               containerlab/labs/mpls/cisco/mpls-te-frr-rsvp-hello/mpls-te-frr-rsvp-hello.clab.yml
+cml/MPLS/mpls-te-isis-fast-reroute-link-protection.yaml containerlab/labs/mpls/cisco/mpls-te-isis-fast-reroute-link-protection/mpls-te-isis-fast-reroute-link-protection.clab.yml
+cml/MPLS/mpls-te-isis-fast-reroute-node-protection.yaml containerlab/labs/mpls/cisco/mpls-te-isis-fast-reroute-node-protection/mpls-te-isis-fast-reroute-node-protection.clab.yml
+cml/MPLS/mpls-te-pbts-xr9000v.yaml                 containerlab/labs/mpls/cisco/mpls-te-pbts-xr9000v/mpls-te-pbts-xr9000v.clab.yml
+cml/MPLS/mpls-te-pbts.yaml                         containerlab/labs/mpls/cisco/mpls-te-pbts/mpls-te-pbts.clab.yml
+cml/MPLS/mpls-te-priority.yaml                     containerlab/labs/mpls/cisco/mpls-te-priority/mpls-te-priority.clab.yml
+cml/MPLS/mpls-te-rsvp.yaml                         containerlab/labs/mpls/cisco/mpls-te-rsvp/mpls-te-rsvp.clab.yml
+cml/MPLS/mpls-te-setup-hold-priority.yaml          containerlab/labs/mpls/cisco/mpls-te-setup-hold-priority/mpls-te-setup-hold-priority.clab.yml
+cml/MPLS/mpls-te-static-route.yaml                 containerlab/labs/mpls/cisco/mpls-te-static-route/mpls-te-static-route.clab.yml
+cml/MPLS/mpls-te-te-tunnel-per-vrf.yaml            containerlab/labs/mpls/cisco/mpls-te-te-tunnel-per-vrf/mpls-te-te-tunnel-per-vrf.clab.yml
+cml/MPLS/mpls-vpn-ebgp-allow-as-in.yaml            containerlab/labs/mpls/cisco/mpls-vpn-ebgp-allow-as-in/mpls-vpn-ebgp-allow-as-in.clab.yml
+cml/MPLS/mpls-vpn-ebgp-as-override.yaml            containerlab/labs/mpls/cisco/mpls-vpn-ebgp-as-override/mpls-vpn-ebgp-as-override.clab.yml
+cml/MPLS/mpls-vpn-ebgp.yaml                        containerlab/labs/mpls/cisco/mpls-vpn-ebgp/mpls-vpn-ebgp.clab.yml
+cml/MPLS/mpls-vpn-export-map.yaml                  containerlab/labs/mpls/cisco/mpls-vpn-export-map/mpls-vpn-export-map.clab.yml
+cml/MPLS/mpls-vpn-extranet-route-leaking-default-route-between-vrfs.yaml containerlab/labs/mpls/cisco/mpls-vpn-extranet-route-leaking-default-route-between-vrfs/mpls-vpn-extranet-route-leaking-default-route-between-vrfs.clab.yml
+cml/MPLS/mpls-vpn-extranet-route-leaking-default-route-global.yaml containerlab/labs/mpls/cisco/mpls-vpn-extranet-route-leaking-default-route-global/mpls-vpn-extranet-route-leaking-default-route-global.clab.yml
+cml/MPLS/mpls-vpn-extranet-route-leaking.yaml      containerlab/labs/mpls/cisco/mpls-vpn-extranet-route-leaking/mpls-vpn-extranet-route-leaking.clab.yml
+cml/MPLS/mpls-vpn-import-map.yaml                  containerlab/labs/mpls/cisco/mpls-vpn-import-map/mpls-vpn-import-map.clab.yml
+cml/MPLS/mpls-vpn-large-topology.yaml              containerlab/labs/mpls/cisco/mpls-vpn-large-topology/mpls-vpn-large-topology.clab.yml
+cml/MPLS/mpls-vpn-over-mpls-te.yaml                containerlab/labs/mpls/cisco/mpls-vpn-over-mpls-te/mpls-vpn-over-mpls-te.clab.yml
+cml/MPLS/mpls-vpn-pe-ce-eigrp-soo.yaml             containerlab/labs/mpls/cisco/mpls-vpn-pe-ce-eigrp-soo/mpls-vpn-pe-ce-eigrp-soo.clab.yml
+cml/MPLS/mpls-vpn-pe-ce-ospf-default-route-global.yaml containerlab/labs/mpls/cisco/mpls-vpn-pe-ce-ospf-default-route-global/mpls-vpn-pe-ce-ospf-default-route-global.clab.yml
+cml/MPLS/mpls-vpn-pe-ce-ospf-default-route-vrf.yaml containerlab/labs/mpls/cisco/mpls-vpn-pe-ce-ospf-default-route-vrf/mpls-vpn-pe-ce-ospf-default-route-vrf.clab.yml
+cml/MPLS/mpls-vpn-pe-ce-ospf-sham-link.yaml        containerlab/labs/mpls/cisco/mpls-vpn-pe-ce-ospf-sham-link/mpls-vpn-pe-ce-ospf-sham-link.clab.yml
+cml/MPLS/mpls-vpn-pe-pe-ospf.yaml                  containerlab/labs/mpls/cisco/mpls-vpn-pe-pe-ospf/mpls-vpn-pe-pe-ospf.clab.yml
+cml/MPLS/mpls-vpn-te-autoroute-announce-metric.yaml containerlab/labs/mpls/cisco/mpls-vpn-te-autoroute-announce-metric/mpls-vpn-te-autoroute-announce-metric.clab.yml
+cml/MPLS/mpls-vpn-te-autoroute-announce.yaml       containerlab/labs/mpls/cisco/mpls-vpn-te-autoroute-announce/mpls-vpn-te-autoroute-announce.clab.yml
+cml/MPLS/mpls-vpn-te-autoroute-destination.yaml    containerlab/labs/mpls/cisco/mpls-vpn-te-autoroute-destination/mpls-vpn-te-autoroute-destination.clab.yml
+cml/MPLS/mpls-vpn-te-default-topology.yaml         containerlab/labs/mpls/cisco/mpls-vpn-te-default-topology/mpls-vpn-te-default-topology.clab.yml
+cml/MPLS/mpls-vpn-te-isis-igp-te-metric.yaml       containerlab/labs/mpls/cisco/mpls-vpn-te-isis-igp-te-metric/mpls-vpn-te-isis-igp-te-metric.clab.yml
+cml/MPLS/mpls-vpn-te-isis-path-option-explicit.yaml containerlab/labs/mpls/cisco/mpls-vpn-te-isis-path-option-explicit/mpls-vpn-te-isis-path-option-explicit.clab.yml
+cml/MPLS/mpls-vpn-te-isis-pbr.yaml                 containerlab/labs/mpls/cisco/mpls-vpn-te-isis-pbr/mpls-vpn-te-isis-pbr.clab.yml
+cml/MPLS/mpls-vpn-te-isis.yaml                     containerlab/labs/mpls/cisco/mpls-vpn-te-isis/mpls-vpn-te-isis.clab.yml
+cml/MPLS/mpls-vpn-te-ospf.yaml                     containerlab/labs/mpls/cisco/mpls-vpn-te-ospf/mpls-vpn-te-ospf.clab.yml
+cml/MPLS/vrf-lite-route-leaking-bgp.yaml           containerlab/labs/mpls/cisco/vrf-lite-route-leaking-bgp/vrf-lite-route-leaking-bgp.clab.yml
+cml/MPLS/vrf-lite-route-leaking-static-routes.yaml containerlab/labs/mpls/cisco/vrf-lite-route-leaking-static-routes/vrf-lite-route-leaking-static-routes.clab.yml
+cml/MPLS/vrf-lite.yaml                             containerlab/labs/mpls/cisco/vrf-lite/vrf-lite.clab.yml
+cml/Multicast/igmp-filter.yaml                     containerlab/labs/multicast/cisco/igmp-filter/igmp-filter.clab.yml
+cml/Multicast/igmp-v2.yaml                         containerlab/labs/multicast/cisco/igmp-v2/igmp-v2.clab.yml
+cml/Multicast/igmp-version-2.yaml                  containerlab/labs/multicast/cisco/igmp-version-2/igmp-version-2.clab.yml
+cml/Multicast/multcast-rpf-tunnel-failure.yaml     containerlab/labs/multicast/cisco/multcast-rpf-tunnel-failure/multcast-rpf-tunnel-failure.clab.yml
+cml/Multicast/multicast-anycast-msdp.yaml          containerlab/labs/multicast/cisco/multicast-anycast-msdp/multicast-anycast-msdp.clab.yml
+cml/Multicast/multicast-autorp-spoke-mapping-agent.yaml containerlab/labs/multicast/cisco/multicast-autorp-spoke-mapping-agent/multicast-autorp-spoke-mapping-agent.clab.yml
+cml/Multicast/multicast-dmvpn-phase3.yaml          containerlab/labs/multicast/cisco/multicast-dmvpn-phase3/multicast-dmvpn-phase3.clab.yml
+cml/Multicast/multicast-igmp-proxy-test2.yaml      containerlab/labs/multicast/cisco/multicast-igmp-proxy-test2/multicast-igmp-proxy-test2.clab.yml
+cml/Multicast/multicast-igmp-snooping.yaml         containerlab/labs/multicast/cisco/multicast-igmp-snooping/multicast-igmp-snooping.clab.yml
+cml/Multicast/multicast-igmp-v1.yaml               containerlab/labs/multicast/cisco/multicast-igmp-v1/multicast-igmp-v1.clab.yml
+cml/Multicast/multicast-ip-boundary.yaml           containerlab/labs/multicast/cisco/multicast-ip-boundary/multicast-ip-boundary.clab.yml
+cml/Multicast/multicast-msdp-sa-filter.yaml        containerlab/labs/multicast/cisco/multicast-msdp-sa-filter/multicast-msdp-sa-filter.clab.yml
+cml/Multicast/multicast-pim-accept-register.yaml   containerlab/labs/multicast/cisco/multicast-pim-accept-register/multicast-pim-accept-register.clab.yml
+cml/Multicast/multicast-pim-auto-rp.yaml           containerlab/labs/multicast/cisco/multicast-pim-auto-rp/multicast-pim-auto-rp.clab.yml
+cml/Multicast/multicast-pim-bidir.yaml             containerlab/labs/multicast/cisco/multicast-pim-bidir/multicast-pim-bidir.clab.yml
+cml/Multicast/multicast-pim-bsr.yaml               containerlab/labs/multicast/cisco/multicast-pim-bsr/multicast-pim-bsr.clab.yml
+cml/Multicast/multicast-pim-dense-mode.yaml        containerlab/labs/multicast/cisco/multicast-pim-dense-mode/multicast-pim-dense-mode.clab.yml
+cml/Multicast/multicast-pim-designated-router.yaml containerlab/labs/multicast/cisco/multicast-pim-designated-router/multicast-pim-designated-router.clab.yml
+cml/Multicast/multicast-pim-prune-override.yaml    containerlab/labs/multicast/cisco/multicast-pim-prune-override/multicast-pim-prune-override.clab.yml
+cml/Multicast/multicast-pim-sparse-dense-mode.yaml containerlab/labs/multicast/cisco/multicast-pim-sparse-dense-mode/multicast-pim-sparse-dense-mode.clab.yml
+cml/Multicast/multicast-pim-sparse-mode.yaml       containerlab/labs/multicast/cisco/multicast-pim-sparse-mode/multicast-pim-sparse-mode.clab.yml
+cml/Multicast/multicast-pim-sparse-receiver-behind-router.yaml containerlab/labs/multicast/cisco/multicast-pim-sparse-receiver-behind-router/multicast-pim-sparse-receiver-behind-router.clab.yml
+cml/Multicast/multicast-rpf.yaml                   containerlab/labs/multicast/cisco/multicast-rpf/multicast-rpf.clab.yml
+cml/Multicast/multicast-ssm.yaml                   containerlab/labs/multicast/cisco/multicast-ssm/multicast-ssm.clab.yml
+cml/Multicast/multicast-vrf.yaml                   containerlab/labs/multicast/cisco/multicast-vrf/multicast-vrf.clab.yml
+cml/Network Management/ssh-server-client.yaml      containerlab/labs/network-management/cisco/ssh-server-client/ssh-server-client.clab.yml
+cml/Network Management/telnet-server-client.yaml   containerlab/labs/network-management/cisco/telnet-server-client/telnet-server-client.clab.yml
+cml/Network Services/bidrectional-forwarding-detection.yaml containerlab/labs/network-services/cisco/bidrectional-forwarding-detection/bidrectional-forwarding-detection.clab.yml
+cml/Network Services/dhcp-relay.yaml               containerlab/labs/network-services/cisco/dhcp-relay/dhcp-relay.clab.yml
+cml/Network Services/dhcp-server.yaml              containerlab/labs/network-services/cisco/dhcp-server/dhcp-server.clab.yml
+cml/Network Services/dhcp-static-binding.yaml      containerlab/labs/network-services/cisco/dhcp-static-binding/dhcp-static-binding.clab.yml
+cml/Network Services/erspan.yaml                   containerlab/labs/network-services/cisco/erspan/erspan.clab.yml
+cml/Network Services/fragmentation.yaml            containerlab/labs/network-services/cisco/fragmentation/fragmentation.clab.yml
+cml/Network Services/glbp.yaml                     containerlab/labs/network-services/cisco/glbp/glbp.clab.yml
+cml/Network Services/gre-tunneling.yaml            containerlab/labs/network-services/cisco/gre-tunneling/gre-tunneling.clab.yml
+cml/Network Services/hsrp.yaml                     containerlab/labs/network-services/cisco/hsrp/hsrp.clab.yml
+cml/Network Services/ip-directed-broadcast.yaml    containerlab/labs/network-services/cisco/ip-directed-broadcast/ip-directed-broadcast.clab.yml
+cml/Network Services/ip-sla-icmp-echo-default-routes.yaml containerlab/labs/network-services/cisco/ip-sla-icmp-echo-default-routes/ip-sla-icmp-echo-default-routes.clab.yml
+cml/Network Services/ip-sla-icmp-echo.yaml         containerlab/labs/network-services/cisco/ip-sla-icmp-echo/ip-sla-icmp-echo.clab.yml
+cml/Network Services/nat-alg-dns.yaml              containerlab/labs/network-services/cisco/nat-alg-dns/nat-alg-dns.clab.yml
+cml/Network Services/nat-alg-dns2.yaml             containerlab/labs/network-services/cisco/nat-alg-dns2/nat-alg-dns2.clab.yml
+cml/Network Services/nat-extendable.yaml           containerlab/labs/network-services/cisco/nat-extendable/nat-extendable.clab.yml
+cml/Network Services/nat-inside-destination.yaml   containerlab/labs/network-services/cisco/nat-inside-destination/nat-inside-destination.clab.yml
+cml/Network Services/nat-ip-nat-inside.yaml        containerlab/labs/network-services/cisco/nat-ip-nat-inside/nat-ip-nat-inside.clab.yml
+cml/Network Services/nat-ip-nat-outside.yaml       containerlab/labs/network-services/cisco/nat-ip-nat-outside/nat-ip-nat-outside.clab.yml
+cml/Network Services/nat-multicast.yaml            containerlab/labs/network-services/cisco/nat-multicast/nat-multicast.clab.yml
+cml/Network Services/nat-policy-route-maps-tXAHEA.yaml containerlab/labs/network-services/cisco/nat-policy-route-maps-tXAHEA/nat-policy-route-maps-tXAHEA.clab.yml
+cml/Network Services/nat-policy-route-maps.yaml    containerlab/labs/network-services/cisco/nat-policy-route-maps/nat-policy-route-maps.clab.yml
+cml/Network Services/nat-vasi.yaml                 containerlab/labs/network-services/cisco/nat-vasi/nat-vasi.clab.yml
+cml/Network Services/nat-virtual-interface-nat-dynamic.yaml containerlab/labs/network-services/cisco/nat-virtual-interface-nat-dynamic/nat-virtual-interface-nat-dynamic.clab.yml
+cml/Network Services/nat-virtual-interface-nat-static.yaml containerlab/labs/network-services/cisco/nat-virtual-interface-nat-static/nat-virtual-interface-nat-static.clab.yml
+cml/Network Services/nat-virtual-interface-pat-overload.yaml containerlab/labs/network-services/cisco/nat-virtual-interface-pat-overload/nat-virtual-interface-pat-overload.clab.yml
+cml/Network Services/nat-virtual-interface-pat-static.yaml containerlab/labs/network-services/cisco/nat-virtual-interface-pat-static/nat-virtual-interface-pat-static.clab.yml
+cml/Network Services/ntp-v4.yaml                   containerlab/labs/network-services/cisco/ntp-v4/ntp-v4.clab.yml
+cml/Network Services/otv.yaml                      containerlab/labs/network-services/cisco/otv/otv.clab.yml
+cml/Network Services/performance-monitor.yaml      containerlab/labs/network-services/cisco/performance-monitor/performance-monitor.clab.yml
+cml/Network Services/pfr3.yaml                     containerlab/labs/network-services/cisco/pfr3/pfr3.clab.yml
+cml/Network Services/policy-based-routing.yaml     containerlab/labs/network-services/cisco/policy-based-routing/policy-based-routing.clab.yml
+cml/Network Services/pppoe-server-client-authentication.yaml containerlab/labs/network-services/cisco/pppoe-server-client-authentication/pppoe-server-client-authentication.clab.yml
+cml/Network Services/pppoe-server-two-clients.yaml containerlab/labs/network-services/cisco/pppoe-server-two-clients/pppoe-server-two-clients.clab.yml
+cml/Network Services/pppoe-server.yaml             containerlab/labs/network-services/cisco/pppoe-server/pppoe-server.clab.yml
+cml/Network Services/proxy-arp.yaml                containerlab/labs/network-services/cisco/proxy-arp/proxy-arp.clab.yml
+cml/Network Services/route-map.yaml                containerlab/labs/network-services/cisco/route-map/route-map.clab.yml
+cml/Network Services/telnet.yaml                   containerlab/labs/network-services/cisco/telnet/telnet.clab.yml
+cml/Network Services/traceroute.yaml               containerlab/labs/network-services/cisco/traceroute/traceroute.clab.yml
+cml/Network Services/vrrp.yaml                     containerlab/labs/network-services/cisco/vrrp/vrrp.clab.yml
+cml/OSPF/ospf-6-routers-single-area.yaml           containerlab/labs/ospf/cisco/ospf-6-routers-single-area/ospf-6-routers-single-area.clab.yml
+cml/OSPF/ospf-abr-type-3-lsa-filtering.yaml        containerlab/labs/ospf/cisco/ospf-abr-type-3-lsa-filtering/ospf-abr-type-3-lsa-filtering.clab.yml
+cml/OSPF/ospf-area-summarization.yaml              containerlab/labs/ospf/cisco/ospf-area-summarization/ospf-area-summarization.clab.yml
+cml/OSPF/ospf-capability-transit.yaml              containerlab/labs/ospf/cisco/ospf-capability-transit/ospf-capability-transit.clab.yml
+cml/OSPF/ospf-dr-bdr-election.yaml                 containerlab/labs/ospf/cisco/ospf-dr-bdr-election/ospf-dr-bdr-election.clab.yml
+cml/OSPF/ospf-dr-bdr.yaml                          containerlab/labs/ospf/cisco/ospf-dr-bdr/ospf-dr-bdr.clab.yml
+cml/OSPF/ospf-fast-reroute-Qq1bt2.yaml             containerlab/labs/ospf/cisco/ospf-fast-reroute-Qq1bt2/ospf-fast-reroute-Qq1bt2.clab.yml
+cml/OSPF/ospf-fast-reroute.yaml                    containerlab/labs/ospf/cisco/ospf-fast-reroute/ospf-fast-reroute.clab.yml
+cml/OSPF/ospf-forward-address-filtering.yaml       containerlab/labs/ospf/cisco/ospf-forward-address-filtering/ospf-forward-address-filtering.clab.yml
+cml/OSPF/ospf-forward-address.yaml                 containerlab/labs/ospf/cisco/ospf-forward-address/ospf-forward-address.clab.yml
+cml/OSPF/ospf-four-routers.yaml                    containerlab/labs/ospf/cisco/ospf-four-routers/ospf-four-routers.clab.yml
+cml/OSPF/ospf-graceful-shutdown.yaml               containerlab/labs/ospf/cisco/ospf-graceful-shutdown/ospf-graceful-shutdown.clab.yml
+cml/OSPF/ospf-hmac-sha-authentication.yaml         containerlab/labs/ospf/cisco/ospf-hmac-sha-authentication/ospf-hmac-sha-authentication.clab.yml
+cml/OSPF/ospf-incremental-spf.yaml                 containerlab/labs/ospf/cisco/ospf-incremental-spf/ospf-incremental-spf.clab.yml
+cml/OSPF/ospf-large-network.yaml                   containerlab/labs/ospf/cisco/ospf-large-network/ospf-large-network.clab.yml
+cml/OSPF/ospf-lsa-throttling.yaml                  containerlab/labs/ospf/cisco/ospf-lsa-throttling/ospf-lsa-throttling.clab.yml
+cml/OSPF/ospf-lsa-type-5-filtering.yaml            containerlab/labs/ospf/cisco/ospf-lsa-type-5-filtering/ospf-lsa-type-5-filtering.clab.yml
+cml/OSPF/ospf-multi-area.yaml                      containerlab/labs/ospf/cisco/ospf-multi-area/ospf-multi-area.clab.yml
+cml/OSPF/ospf-nssa.yaml                            containerlab/labs/ospf/cisco/ospf-nssa/ospf-nssa.clab.yml
+cml/OSPF/ospf-path-selection.yaml                  containerlab/labs/ospf/cisco/ospf-path-selection/ospf-path-selection.clab.yml
+cml/OSPF/ospf-prefix-suppression.yaml              containerlab/labs/ospf/cisco/ospf-prefix-suppression/ospf-prefix-suppression.clab.yml
+cml/OSPF/ospf-remote-fast-reroute.yaml             containerlab/labs/ospf/cisco/ospf-remote-fast-reroute/ospf-remote-fast-reroute.clab.yml
+cml/OSPF/ospf-single-area.yaml                     containerlab/labs/ospf/cisco/ospf-single-area/ospf-single-area.clab.yml
+cml/OSPF/ospf-spf-throttling.yaml                  containerlab/labs/ospf/cisco/ospf-spf-throttling/ospf-spf-throttling.clab.yml
+cml/OSPF/ospf-stub-router.yaml                     containerlab/labs/ospf/cisco/ospf-stub-router/ospf-stub-router.clab.yml
+cml/OSPF/ospf-stub.yaml                            containerlab/labs/ospf/cisco/ospf-stub/ospf-stub.clab.yml
+cml/OSPF/ospf-totally-nssa.yaml                    containerlab/labs/ospf/cisco/ospf-totally-nssa/ospf-totally-nssa.clab.yml
+cml/OSPF/ospf-totally-stub.yaml                    containerlab/labs/ospf/cisco/ospf-totally-stub/ospf-totally-stub.clab.yml
+cml/OSPF/ospf-ttl-security-check.yaml              containerlab/labs/ospf/cisco/ospf-ttl-security-check/ospf-ttl-security-check.clab.yml
+cml/OSPF/ospf-two-areas.yaml                       containerlab/labs/ospf/cisco/ospf-two-areas/ospf-two-areas.clab.yml
+cml/OSPF/ospf-two-routers-single-link.yaml         containerlab/labs/ospf/cisco/ospf-two-routers-single-link/ospf-two-routers-single-link.clab.yml
+cml/OSPF/ospf-two-routers.yaml                     containerlab/labs/ospf/cisco/ospf-two-routers/ospf-two-routers.clab.yml
+cml/OSPF/ospf-type-3-filtering-inbound.yaml        containerlab/labs/ospf/cisco/ospf-type-3-filtering-inbound/ospf-type-3-filtering-inbound.clab.yml
+cml/OSPF/ospf-type-3-filtering-outbound.yaml       containerlab/labs/ospf/cisco/ospf-type-3-filtering-outbound/ospf-type-3-filtering-outbound.clab.yml
+cml/OSPF/ospf-v3-ipv4.yaml                         containerlab/labs/ospf/cisco/ospf-v3-ipv4/ospf-v3-ipv4.clab.yml
+cml/OSPF/ospf-virtual-link-authentication-md5.yaml containerlab/labs/ospf/cisco/ospf-virtual-link-authentication-md5/ospf-virtual-link-authentication-md5.clab.yml
+cml/OSPF/ospf-virtual-link-authentication-plain.yaml containerlab/labs/ospf/cisco/ospf-virtual-link-authentication-plain/ospf-virtual-link-authentication-plain.clab.yml
+cml/OSPF/ospf-virtual-link-discontigous-area.yaml  containerlab/labs/ospf/cisco/ospf-virtual-link-discontigous-area/ospf-virtual-link-discontigous-area.clab.yml
+cml/OSPF/ospf-virtual-link-suboptimal-routing.yaml containerlab/labs/ospf/cisco/ospf-virtual-link-suboptimal-routing/ospf-virtual-link-suboptimal-routing.clab.yml
+cml/OSPF/ospf-virtual-link-three-areas.yaml        containerlab/labs/ospf/cisco/ospf-virtual-link-three-areas/ospf-virtual-link-three-areas.clab.yml
+cml/OSPF/ospfv3-esp-encryption.yaml                containerlab/labs/ospf/cisco/ospfv3-esp-encryption/ospfv3-esp-encryption.clab.yml
+cml/OSPF/ospfv3-keychain-authentication.yaml       containerlab/labs/ospf/cisco/ospfv3-keychain-authentication/ospfv3-keychain-authentication.clab.yml
+cml/Programmability/grpc.yaml                      containerlab/labs/programmability/cisco/grpc/grpc.clab.yml
+cml/Programmability/ios-xe-netconf-restconf.yaml   containerlab/labs/programmability/cisco/ios-xe-netconf-restconf/ios-xe-netconf-restconf.clab.yml
+cml/Programmability/ios-xe-rest-api.yaml           containerlab/labs/programmability/cisco/ios-xe-rest-api/ios-xe-rest-api.clab.yml
+cml/Programmability/netconf.yaml                   containerlab/labs/programmability/cisco/netconf/netconf.clab.yml
+cml/Programmability/restconf-r1-bridge.yaml        containerlab/labs/programmability/cisco/restconf-r1-bridge/restconf-r1-bridge.clab.yml
+cml/Programmability/terraform-cisco-ios-xe-router.yaml containerlab/labs/programmability/cisco/terraform-cisco-ios-xe-router/terraform-cisco-ios-xe-router.clab.yml
+cml/Quality of Service/qos-cbwfq.yaml              containerlab/labs/quality-of-service/cisco/qos-cbwfq/qos-cbwfq.clab.yml
+cml/Quality of Service/qos-llq.yaml                containerlab/labs/quality-of-service/cisco/qos-llq/qos-llq.clab.yml
+cml/Quality of Service/qos-police-exceed-drop.yaml containerlab/labs/quality-of-service/cisco/qos-police-exceed-drop/qos-police-exceed-drop.clab.yml
+cml/Quality of Service/qos-rsvp.yaml               containerlab/labs/quality-of-service/cisco/qos-rsvp/qos-rsvp.clab.yml
+cml/Quality of Service/qos-shape-average.yaml      containerlab/labs/quality-of-service/cisco/qos-shape-average/qos-shape-average.clab.yml
+cml/Quality of Service/qos-wred.yaml               containerlab/labs/quality-of-service/cisco/qos-wred/qos-wred.clab.yml
+cml/Quality of Service/rsvp-dsbm.yaml              containerlab/labs/quality-of-service/cisco/rsvp-dsbm/rsvp-dsbm.clab.yml
+cml/RIP/rip-default-route.yaml                     containerlab/labs/rip/cisco/rip-default-route/rip-default-route.clab.yml
+cml/RIP/rip-maximum-paths.yaml                     containerlab/labs/rip/cisco/rip-maximum-paths/rip-maximum-paths.clab.yml
+cml/RIP/rip-offset-list.yaml                       containerlab/labs/rip/cisco/rip-offset-list/rip-offset-list.clab.yml
+cml/RIP/rip-passive-interface.yaml                 containerlab/labs/rip/cisco/rip-passive-interface/rip-passive-interface.clab.yml
+cml/RIP/rip-summarization.yaml                     containerlab/labs/rip/cisco/rip-summarization/rip-summarization.clab.yml
+cml/RIP/rip-summary-loop.yaml                      containerlab/labs/rip/cisco/rip-summary-loop/rip-summary-loop.clab.yml
+cml/RIP/rip-three-routers.yaml                     containerlab/labs/rip/cisco/rip-three-routers/rip-three-routers.clab.yml
+cml/RIP/rip-v2-two-routers.yaml                    containerlab/labs/rip/cisco/rip-v2-two-routers/rip-v2-two-routers.clab.yml
+cml/Redistribution/eigrp-ospf.yaml                 containerlab/labs/redistribution/cisco/eigrp-ospf/eigrp-ospf.clab.yml
+cml/Redistribution/rip-eigrp.yaml                  containerlab/labs/redistribution/cisco/rip-eigrp/rip-eigrp.clab.yml
+cml/Redistribution/troubleshooting-metric-redistribution.yaml containerlab/labs/redistribution/cisco/troubleshooting-metric-redistribution/troubleshooting-metric-redistribution.clab.yml
+cml/Security/access-list-established.yaml          containerlab/labs/security/cisco/access-list-established/access-list-established.clab.yml
+cml/Security/control-plane-policing.yaml           containerlab/labs/security/cisco/control-plane-policing/control-plane-policing.clab.yml
+cml/Security/esp-tunnel-mode-through-zbf.yaml      containerlab/labs/security/cisco/esp-tunnel-mode-through-zbf/esp-tunnel-mode-through-zbf.clab.yml
+cml/Security/flexvpn/flexvpn site-to-site pki authentication.yaml containerlab/labs/security/flexvpn/cisco/flexvpn site-to-site pki authentication/flexvpn site-to-site pki authentication.clab.yml
+cml/Security/flexvpn/flexvpn-hub-and-spoke.yaml    containerlab/labs/security/flexvpn/cisco/flexvpn-hub-and-spoke/flexvpn-hub-and-spoke.clab.yml
+cml/Security/flexvpn/flexvpn-remote-access-anyconnect-ipsec.yaml containerlab/labs/security/flexvpn/cisco/flexvpn-remote-access-anyconnect-ipsec/flexvpn-remote-access-anyconnect-ipsec.clab.yml
+cml/Security/flexvpn/flexvpn-site-to-site smart defaults.yaml containerlab/labs/security/flexvpn/cisco/flexvpn-site-to-site smart defaults/flexvpn-site-to-site smart defaults.clab.yml
+cml/Security/flexvpn/flexvpn-site-to-site without smart defaults.yaml containerlab/labs/security/flexvpn/cisco/flexvpn-site-to-site without smart defaults/flexvpn-site-to-site without smart defaults.clab.yml
+cml/Security/flexvpn/flexvpn-site-to-site-ikev2-routing.yaml containerlab/labs/security/flexvpn/cisco/flexvpn-site-to-site-ikev2-routing/flexvpn-site-to-site-ikev2-routing.clab.yml
+cml/Security/flexvpn/flexvpn-spoke-to-spoke-bgp-pool.yaml containerlab/labs/security/flexvpn/cisco/flexvpn-spoke-to-spoke-bgp-pool/flexvpn-spoke-to-spoke-bgp-pool.clab.yml
+cml/Security/flexvpn/flexvpn-spoke-to-spoke.yaml   containerlab/labs/security/flexvpn/cisco/flexvpn-spoke-to-spoke/flexvpn-spoke-to-spoke.clab.yml
+cml/Security/flexvpn/mpls-over-flexvpn.yaml        containerlab/labs/security/flexvpn/cisco/mpls-over-flexvpn/mpls-over-flexvpn.clab.yml
+cml/Security/ip-source-guard.yaml                  containerlab/labs/security/cisco/ip-source-guard/ip-source-guard.clab.yml
+cml/Security/management-plane-protection.yaml      containerlab/labs/security/cisco/management-plane-protection/management-plane-protection.clab.yml
+cml/Security/port-security.yaml                    containerlab/labs/security/cisco/port-security/port-security.clab.yml
+cml/Security/r1-r2-many-loopbacks.yaml             containerlab/labs/security/cisco/r1-r2-many-loopbacks/r1-r2-many-loopbacks.clab.yml
+cml/Security/r1-r2-prefix-list.yaml                containerlab/labs/security/cisco/r1-r2-prefix-list/r1-r2-prefix-list.clab.yml
+cml/Security/transparent-firewall-cbac.yaml        containerlab/labs/security/cisco/transparent-firewall-cbac/transparent-firewall-cbac.clab.yml
+cml/Security/urpf.yaml                             containerlab/labs/security/cisco/urpf/urpf.clab.yml
+cml/Security/vacl-ip-filter.yaml                   containerlab/labs/security/cisco/vacl-ip-filter/vacl-ip-filter.clab.yml
+cml/Security/zone-based-firewall-transparent-mode.yaml containerlab/labs/security/cisco/zone-based-firewall-transparent-mode/zone-based-firewall-transparent-mode.clab.yml
+cml/Security/zone-based-firewall-url-filter.yaml   containerlab/labs/security/cisco/zone-based-firewall-url-filter/zone-based-firewall-url-filter.clab.yml
+cml/Security/zone-based-firewall.yaml              containerlab/labs/security/cisco/zone-based-firewall/zone-based-firewall.clab.yml
+cml/Switching/etherchannel-8021q-tunnel.yaml       containerlab/labs/switching/cisco/etherchannel-8021q-tunnel/etherchannel-8021q-tunnel.clab.yml
+cml/Switching/etherchannel-static.yaml             containerlab/labs/switching/cisco/etherchannel-static/etherchannel-static.clab.yml
+cml/Switching/h1-sw1-h2.yaml                       containerlab/labs/switching/cisco/h1-sw1-h2/h1-sw1-h2.clab.yml
+cml/Switching/mst-multi-region.yaml                containerlab/labs/switching/cisco/mst-multi-region/mst-multi-region.clab.yml
+cml/Switching/mst-rstp-interoperability.yaml       containerlab/labs/switching/cisco/mst-rstp-interoperability/mst-rstp-interoperability.clab.yml
+cml/Switching/mst-sw1-sw2-sw3.yaml                 containerlab/labs/switching/cisco/mst-sw1-sw2-sw3/mst-sw1-sw2-sw3.clab.yml
+cml/Switching/one-switch-three-routers.yaml        containerlab/labs/switching/cisco/one-switch-three-routers/one-switch-three-routers.clab.yml
+cml/Switching/private-vlan-two-switches.yaml       containerlab/labs/switching/cisco/private-vlan-two-switches/private-vlan-two-switches.clab.yml
+cml/Switching/private-vlan.yaml                    containerlab/labs/switching/cisco/private-vlan/private-vlan.clab.yml
+cml/Switching/pvst-5-switches.yaml                 containerlab/labs/switching/cisco/pvst-5-switches/pvst-5-switches.clab.yml
+cml/Switching/pvst-sw1-sw2-sw3-sw4-sw5.yaml        containerlab/labs/switching/cisco/pvst-sw1-sw2-sw3-sw4-sw5/pvst-sw1-sw2-sw3-sw4-sw5.clab.yml
+cml/Switching/pvst-sw1-sw2-sw3-sw4.yaml            containerlab/labs/switching/cisco/pvst-sw1-sw2-sw3-sw4/pvst-sw1-sw2-sw3-sw4.clab.yml
+cml/Switching/pvst-sw1-sw2-sw3.yaml                containerlab/labs/switching/cisco/pvst-sw1-sw2-sw3/pvst-sw1-sw2-sw3.clab.yml
+cml/Switching/q-in-q-8021q-tunneling.yaml          containerlab/labs/switching/cisco/q-in-q-8021q-tunneling/q-in-q-8021q-tunneling.clab.yml
+cml/Switching/r1-r2-sw1-sw2.yaml                   containerlab/labs/switching/cisco/r1-r2-sw1-sw2/r1-r2-sw1-sw2.clab.yml
+cml/Switching/six-switches.yaml                    containerlab/labs/switching/cisco/six-switches/six-switches.clab.yml
+cml/Switching/spanning-tree/mst-pvst-interoperability.yaml containerlab/labs/switching/spanning-tree/cisco/mst-pvst-interoperability/mst-pvst-interoperability.clab.yml
+cml/Switching/spanning-tree/spanning-tree-mst.yaml containerlab/labs/switching/spanning-tree/cisco/spanning-tree-mst/spanning-tree-mst.clab.yml
+cml/Switching/spanning-tree/spanning-tree-reconvergence.yaml containerlab/labs/switching/spanning-tree/cisco/spanning-tree-reconvergence/spanning-tree-reconvergence.clab.yml
+cml/Switching/spanning-tree/spanning-tree-root-bridge.yaml containerlab/labs/switching/spanning-tree/cisco/spanning-tree-root-bridge/spanning-tree-root-bridge.clab.yml
+cml/Switching/spanning-tree/stp-uplink-fast.yaml   containerlab/labs/switching/spanning-tree/cisco/stp-uplink-fast/stp-uplink-fast.clab.yml
+cml/Switching/stp-backbone-fast.yaml               containerlab/labs/switching/cisco/stp-backbone-fast/stp-backbone-fast.clab.yml
+cml/Switching/stp-bridge-assurance.yaml            containerlab/labs/switching/cisco/stp-bridge-assurance/stp-bridge-assurance.clab.yml
+cml/Switching/stp-dispute.yaml                     containerlab/labs/switching/cisco/stp-dispute/stp-dispute.clab.yml
+cml/Switching/stp-root-guard.yaml                  containerlab/labs/switching/cisco/stp-root-guard/stp-root-guard.clab.yml
+cml/Switching/sw1-sw2.yaml                         containerlab/labs/switching/cisco/sw1-sw2/sw1-sw2.clab.yml
+cml/Switching/two-switches-four-hosts.yaml         containerlab/labs/switching/cisco/two-switches-four-hosts/two-switches-four-hosts.clab.yml
+cml/Switching/vacl.yaml                            containerlab/labs/switching/cisco/vacl/vacl.clab.yml
+cml/Switching/vtp-version-3.yaml                   containerlab/labs/switching/cisco/vtp-version-3/vtp-version-3.clab.yml
+cml/Templates/asa-r1-r2-r3.yaml                    containerlab/labs/templates/cisco/asa-r1-r2-r3/asa-r1-r2-r3.clab.yml
+cml/Templates/csr1000v-flat1.yaml                  containerlab/labs/templates/cisco/csr1000v-flat1/csr1000v-flat1.clab.yml
+cml/Templates/mpls-vpn-pe-ce.yaml                  containerlab/labs/templates/cisco/mpls-vpn-pe-ce/mpls-vpn-pe-ce.clab.yml
+cml/Templates/r1-asa1-asa2-r2.yaml                 containerlab/labs/templates/cisco/r1-asa1-asa2-r2/r1-asa1-asa2-r2.clab.yml
+cml/Templates/r1-flat.yaml                         containerlab/labs/templates/cisco/r1-flat/r1-flat.clab.yml
+cml/Templates/r1-r2-asa1-sw1-sw2.yaml              containerlab/labs/templates/cisco/r1-r2-asa1-sw1-sw2/r1-r2-asa1-sw1-sw2.clab.yml
+cml/Templates/r1-r2-h1-h2.yaml                     containerlab/labs/templates/cisco/r1-r2-h1-h2/r1-r2-h1-h2.clab.yml
+cml/Templates/r1-r2-r3-h1-h2.yaml                  containerlab/labs/templates/cisco/r1-r2-r3-h1-h2/r1-r2-r3-h1-h2.clab.yml
+cml/Templates/r1-r2-r3-r4-square-eigrp.yaml        containerlab/labs/templates/cisco/r1-r2-r3-r4-square-eigrp/r1-r2-r3-r4-square-eigrp.clab.yml
+cml/Templates/r1-r2-r3-r4-square-ospf.yaml         containerlab/labs/templates/cisco/r1-r2-r3-r4-square-ospf/r1-r2-r3-r4-square-ospf.clab.yml
+cml/Templates/r1-r2-r3-straight-ipv6.yaml          containerlab/labs/templates/cisco/r1-r2-r3-straight-ipv6/r1-r2-r3-straight-ipv6.clab.yml
+cml/Templates/r1-r2-r3-straight-ospf-single-area.yaml containerlab/labs/templates/cisco/r1-r2-r3-straight-ospf-single-area/r1-r2-r3-straight-ospf-single-area.clab.yml
+cml/Templates/r1-r2-r3-straight.yaml               containerlab/labs/templates/cisco/r1-r2-r3-straight/r1-r2-r3-straight.clab.yml
+cml/Templates/r1-r2-r3-triangle-eigrp.yaml         containerlab/labs/templates/cisco/r1-r2-r3-triangle-eigrp/r1-r2-r3-triangle-eigrp.clab.yml
+cml/Templates/r1-r2-r3-triangle-ospf.yaml          containerlab/labs/templates/cisco/r1-r2-r3-triangle-ospf/r1-r2-r3-triangle-ospf.clab.yml
+cml/Templates/r1-r2-sw1-asa1.yaml                  containerlab/labs/templates/cisco/r1-r2-sw1-asa1/r1-r2-sw1-asa1.clab.yml
+cml/Templates/r1-r2.yaml                           containerlab/labs/templates/cisco/r1-r2/r1-r2.clab.yml
+cml/Templates/r1-sw1-sw2-r2.yaml                   containerlab/labs/templates/cisco/r1-sw1-sw2-r2/r1-sw1-sw2-r2.clab.yml
+cml/Templates/sw1-sw2-sw3-sw4-square.yaml          containerlab/labs/templates/cisco/sw1-sw2-sw3-sw4-square/sw1-sw2-sw3-sw4-square.clab.yml
+cml/Templates/sw1-sw2-sw3-sw4-sw5-sw6-hierarchical.yaml containerlab/labs/templates/cisco/sw1-sw2-sw3-sw4-sw5-sw6-hierarchical/sw1-sw2-sw3-sw4-sw5-sw6-hierarchical.clab.yml
+cml/Templates/sw1-sw2-sw3-triangle.yaml            containerlab/labs/templates/cisco/sw1-sw2-sw3-triangle/sw1-sw2-sw3-triangle.clab.yml
+cml/Troubleshooting/bgp-troubleshooting-final.yaml containerlab/labs/troubleshooting/cisco/bgp-troubleshooting-final/bgp-troubleshooting-final.clab.yml
+cml/Troubleshooting/bgp-troubleshooting-startup.yaml containerlab/labs/troubleshooting/cisco/bgp-troubleshooting-startup/bgp-troubleshooting-startup.clab.yml
+cml/Troubleshooting/eigrp-troubleshooting.yaml     containerlab/labs/troubleshooting/cisco/eigrp-troubleshooting/eigrp-troubleshooting.clab.yml
+cml/Troubleshooting/ospf-troubleshooting.yaml      containerlab/labs/troubleshooting/cisco/ospf-troubleshooting/ospf-troubleshooting.clab.yml
+cml/VXLAN/vxlan-bgp-evpn-arp-suppression.yaml      containerlab/labs/vxlan/cisco/vxlan-bgp-evpn-arp-suppression/vxlan-bgp-evpn-arp-suppression.clab.yml
+cml/VXLAN/vxlan-l2vpn-bgp-evpn-two-spines-four-leaves.yaml containerlab/labs/vxlan/cisco/vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/vxlan-l2vpn-bgp-evpn-two-spines-four-leaves.clab.yml
+cml/VXLAN/vxlan-multicast-flood-and-learn.yaml     containerlab/labs/vxlan/cisco/vxlan-multicast-flood-and-learn/vxlan-multicast-flood-and-learn.clab.yml
+cml/VXLAN/vxlan-one-spine-two-leafs.yaml           containerlab/labs/vxlan/cisco/vxlan-one-spine-two-leafs/vxlan-one-spine-two-leafs.clab.yml
+cml/VXLAN/vxlan-unicast.yaml                       containerlab/labs/vxlan/cisco/vxlan-unicast/vxlan-unicast.clab.yml
+
+================================================================================
+Total: 430 labs need containerlab versions
+================================================================================
