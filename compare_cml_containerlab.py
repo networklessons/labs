@@ -72,7 +72,8 @@ def suggest_containerlab_path(cml_folder: str, cml_filename: str) -> str:
     Suggest a containerlab path based on CML structure.
     """
     # Get the base filename without extension
-    base_name = cml_filename.replace('.yaml', '').replace('.virl.yaml', '')
+    # Handle .virl.yaml before .yaml to avoid partial replacement
+    base_name = cml_filename.replace('.virl.yaml', '').replace('.yaml', '')
     
     # Convert folder name to lowercase for containerlab path
     # CML uses category folders like "BGP", "OSPF", etc.

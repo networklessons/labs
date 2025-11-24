@@ -58,7 +58,6 @@ Where:
 The script shows:
 - Total number of CML labs found
 - Number of CML labs without containerlab equivalents
-- Percentage of labs that need containerlab versions
 
 ## Example Run
 
