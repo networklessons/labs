@@ -71,8 +71,8 @@ Contains topologies you can run in Cisco CML.
 | IPSec | 7 |
 | IPv6 | 22 |
 | IS-IS | 10 |
-| Labs | 7 |
 | LISP | 1 |
+| Labs | 7 |
 | MPLS | 49 |
 | Multicast | 25 |
 | Network Management | 2 |
