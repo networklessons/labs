@@ -14,6 +14,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -32,5 +34,5 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update lab counts"
-            git push
+            git push origin main
           fi
