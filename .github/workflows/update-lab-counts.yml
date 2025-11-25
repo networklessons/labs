@@ -1,59 +1,36 @@
 name: Update Lab Counts
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs once per day at midnight UTC
-  workflow_dispatch:  # Allow manual trigger
+  push:
+    branches: [main]
+    paths:
+      - 'cml/**'
+      - 'containerlab/**'
+  workflow_dispatch:
 
 jobs:
   update-counts:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Update lab counts
+        run: python .github/scripts/update_lab_counts.py
+
+      - name: Commit and push changes
         run: |
-          # Count CML labs (both .yaml and .yml)
-          CML_TOTAL=$(find cml -name "*.yaml" -o -name "*.yml" | wc -l)
-          
-          # Generate CML stats table
-          CML_STATS="<!-- CML_STATS_START -->\n**Total CML Labs: $CML_TOTAL**\n\n| Category | Labs |\n|----------|------|\n"
-          for dir in cml/*/; do
-            name=$(basename "$dir")
-            count=$(find "$dir" -name "*.yaml" -o -name "*.yml" | wc -l)
-            if [ $count -gt 0 ]; then
-              CML_STATS+="| $name | $count |\n"
-            fi
-          done
-          CML_STATS+="<!-- CML_STATS_END -->"
-          
-          # Count Containerlab labs (both .yaml and .yml)
-          CONTAINERLAB_TOTAL=$(find containerlab -name "*.yaml" -o -name "*.yml" | wc -l)
-          
-          # Generate Containerlab stats table
-          CONTAINERLAB_STATS="<!-- CONTAINERLAB_STATS_START -->\n**Total Containerlab Labs: $CONTAINERLAB_TOTAL**\n\n| Category | Labs |\n|----------|------|\n"
-          for dir in containerlab/labs/*/; do
-            name=$(basename "$dir")
-            count=$(find "$dir" -name "*.yaml" -o -name "*.yml" | wc -l)
-            if [ $count -gt 0 ]; then
-              CONTAINERLAB_STATS+="| $name | $count |\n"
-            fi
-          done
-          CONTAINERLAB_STATS+="<!-- CONTAINERLAB_STATS_END -->"
-          
-          # Update README.md
-          # Replace CML stats
-          sed -i "/<!-- CML_STATS_START -->/,/<!-- CML_STATS_END -->/c\\$(echo -e "$CML_STATS")" README.md
-          
-          # Replace Containerlab stats
-          sed -i "/<!-- CONTAINERLAB_STATS_START -->/,/<!-- CONTAINERLAB_STATS_END -->/c\\$(echo -e "$CONTAINERLAB_STATS")" README.md
-      
-      - name: Commit changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git diff --quiet README.md || (git add README.md && git commit -m "Update lab counts" && git push)
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update lab counts"
+            git push
+          fi
