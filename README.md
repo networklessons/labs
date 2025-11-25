@@ -35,12 +35,12 @@ Contains playbooks you can use to run against network devices.
 Contains topologies you can run in Containerlab.
 
 <!-- CONTAINERLAB_STATS_START -->
-**Total Containerlab Labs: 61**
+**Total Containerlab Labs: 63**
 
 | Category | Labs |
 |----------|------|
 | 3-tier-test | 1 |
-| bgp | 3 |
+| bgp | 5 |
 | dhcp | 1 |
 | eigrp | 1 |
 | graphite | 7 |
