@@ -38,7 +38,9 @@ nvram_*
 boot_config.txt
 startup.cfg
 
-# Allow only pcap files in packet-captures folder
+# Allow only pcap files and README.md in packet-captures folder
 packet-captures/*
 !packet-captures/*.pcap
+!packet-captures/*.pcapng
+!packet-captures/README.md
 nornir-simple-inventory.yml

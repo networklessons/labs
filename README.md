@@ -30,13 +30,64 @@ This repository contains topologies for emulators such as Cisco CML, EVE-NG, and
 
 Contains playbooks you can use to run against network devices.
 
-## Containerlab
+## [Containerlab](containerlab/)
 
 Contains topologies you can run in Containerlab.
 
-## CML
+<!-- CONTAINERLAB_STATS_START -->
+**Total Containerlab Labs: 61**
+
+| Category | Labs |
+|----------|------|
+| 3-tier-test | 1 |
+| bgp | 3 |
+| dhcp | 1 |
+| eigrp | 1 |
+| graphite | 7 |
+| mpls | 2 |
+| ospf | 14 |
+| topologies | 3 |
+| vpc | 1 |
+| vxlan | 28 |
+<!-- CONTAINERLAB_STATS_END -->
+
+## [CML](cml/)
 
 Contains topologies you can run in Cisco CML.
+
+<!-- CML_STATS_START -->
+**Total CML Labs: 438**
+
+| Category | Labs |
+|----------|------|
+| ASA | 26 |
+| BGP | 37 |
+| CEF | 1 |
+| DMVPN | 24 |
+| EIGRP | 21 |
+| Etherchannel | 3 |
+| IP Routing | 10 |
+| IP Services | 1 |
+| IPSec | 7 |
+| IPv6 | 22 |
+| IS-IS | 10 |
+| Labs | 7 |
+| LISP | 1 |
+| MPLS | 49 |
+| Multicast | 25 |
+| Network Management | 2 |
+| Network Services | 39 |
+| OSPF | 43 |
+| Programmability | 6 |
+| Quality of Service | 7 |
+| RIP | 8 |
+| Redistribution | 3 |
+| Security | 23 |
+| Switching | 30 |
+| Templates | 24 |
+| Troubleshooting | 4 |
+| VXLAN | 5 |
+<!-- CML_STATS_END -->
 
 ## VIRL
 
