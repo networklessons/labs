@@ -1,0 +1,59 @@
+# Cisco DMVPN Phase 1 lab with Hub and two Spokes.
+# All routers are connected to a shared L2 segment (Linux bridge) simulating the ISP cloud.
+
+name: dmvpn-phase-1
+
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Hub:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-dmvpn-phase-1/Hub/startup-config.cfg.partial
+      labels:
+        graph-level: 1
+        graph-icon: router
+    Spoke1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-dmvpn-phase-1/Spoke1/startup-config.cfg.partial
+      labels:
+        graph-level: 2
+        graph-icon: router
+    Spoke2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-dmvpn-phase-1/Spoke2/startup-config.cfg.partial
+      labels:
+        graph-level: 2
+        graph-icon: router
+    # Bridge to connect all routers (simulates ISP cloud). Create this manually in Linux:
+    # sudo ip link add name br-clab type bridge
+    # sudo ip link set br-clab up
+    br-clab:
+      kind: bridge
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["Hub:Ethernet0/1", "br-clab:eth1"]
+    - endpoints: ["Spoke1:Ethernet0/1", "br-clab:eth2"]
+    - endpoints: ["Spoke2:Ethernet0/1", "br-clab:eth3"]

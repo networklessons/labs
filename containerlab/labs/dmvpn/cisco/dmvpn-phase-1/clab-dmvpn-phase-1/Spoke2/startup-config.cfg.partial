@@ -1,0 +1,17 @@
+hostname Spoke2
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
+!
+interface Tunnel0
+ ip address 172.16.123.3 255.255.255.0
+ ip nhrp authentication DMVPN
+ ip nhrp map 172.16.123.1 192.168.123.1
+ ip nhrp map multicast 192.168.123.1
+ ip nhrp network-id 1
+ ip nhrp nhs 172.16.123.1
+ tunnel source Ethernet0/1
+ tunnel destination 192.168.123.1
+!
+interface Ethernet0/1
+ ip address 192.168.123.3 255.255.255.0
