@@ -1,0 +1,16 @@
+hostname Hub
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+!
+interface Tunnel0
+ ip address 172.16.123.1 255.255.255.0
+ no ip redirects
+ ip nhrp authentication DMVPN
+ ip nhrp map multicast dynamic
+ ip nhrp network-id 1
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+!
+interface Ethernet0/1
+ ip address 192.168.123.1 255.255.255.0
