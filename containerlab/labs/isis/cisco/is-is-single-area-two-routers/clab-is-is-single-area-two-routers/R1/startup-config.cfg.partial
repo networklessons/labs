@@ -1,0 +1,23 @@
+hostname R1
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.255
+ ip router isis
+!
+interface Ethernet0/1
+ ip address 192.168.12.1 255.255.255.0
+ ip router isis
+ no shutdown
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+router isis
+ net 49.0012.0000.0000.0001.00
+ is-type level-1
+ log-adjacency-changes
