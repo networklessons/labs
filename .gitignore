@@ -45,3 +45,5 @@ packet-captures/*
 !packet-captures/README.md
 nornir-simple-inventory.yml
 *.clab.yml.annotations.json
+.aider*
+.gitignore
