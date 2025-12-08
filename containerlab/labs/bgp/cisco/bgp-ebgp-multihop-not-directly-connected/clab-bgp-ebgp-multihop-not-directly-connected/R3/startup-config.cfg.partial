@@ -1,0 +1,17 @@
+hostname R3
+!
+ip cef
+!
+interface Ethernet0/1
+ ip address 192.168.23.3 255.255.255.0
+ no shutdown
+!
+router bgp 3
+ bgp router-id 3.3.3.3
+ bgp log-neighbor-changes
+ neighbor 192.168.12.1 remote-as 1
+ neighbor 192.168.12.1 ebgp-multihop 10
+!
+ip route 192.168.12.0 255.255.255.0 192.168.23.2
+!
+end
