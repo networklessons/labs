@@ -1,12 +1,6 @@
----
-title: "CCNP TSHOOT Troubleshooting 1"
-slug: "ccnp-tshoot-troubleshooting-1"
-category: "Troubleshooting"
-wordpress_id: 978
----
+# CCNP TSHOOT Troubleshooting 1
 
 ![Network Topology](./topology-ccnp-tshoot-troubleshooting-1.png)
-
 
 ## Scenario:
 
