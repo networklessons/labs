@@ -1,0 +1,135 @@
+hostname DSW1
+!
+no ip domain lookup
+ipv6 unicast-routing
+!
+spanning-tree vlan 10 priority 8192
+spanning-tree vlan 20 priority 16384
+spanning-tree vlan 200 priority 8192
+vtp mode transparent
+!
+vlan 10,20,200
+!
+interface Port-channel1
+ switchport mode trunk
+!
+interface Port-channel3
+ switchport mode trunk
+!
+interface Port-channel5
+ switchport mode trunk
+!
+interface Ethernet0/0
+ no shutdown
+ no switchport
+ ip address 10.1.4.6 255.255.255.252
+ ipv6 address 2026::2:2/122
+ ipv6 rip RIPNG enable
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+!
+interface Ethernet1/0
+ no shutdown
+ switchport mode trunk
+ channel-group 3 mode on
+!
+interface Ethernet1/1
+ no shutdown
+ switchport mode trunk
+ channel-group 3 mode on
+!
+interface Ethernet1/2
+ no shutdown
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface Ethernet1/3
+ no shutdown
+ switchport mode trunk
+ channel-group 1 mode on
+!
+interface Ethernet1/4
+ no shutdown
+ switchport mode trunk
+ channel-group 5 mode on
+!
+interface Ethernet1/5
+ no shutdown
+ switchport mode trunk
+ channel-group 5 mode on
+!
+interface Ethernet1/6
+ no shutdown
+!
+interface Ethernet1/7
+ no shutdown
+!
+interface Ethernet1/8
+ no shutdown
+!
+interface Ethernet1/9
+ no shutdown
+!
+interface Ethernet1/10
+ no shutdown
+!
+interface Ethernet1/11
+ no shutdown
+!
+interface Ethernet1/12
+ no shutdown
+!
+interface Ethernet1/13
+ no shutdown
+!
+interface Ethernet1/14
+ no shutdown
+!
+interface Ethernet1/15
+ no shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ ip address 10.2.1.1 255.255.255.0
+ ipv6 address FE80::C00B:13FF:FEE1:1 link-local
+ ipv6 address 2026::3:1/122
+ ipv6 rip RIPNG enable
+ standby 10 ip 10.2.1.200
+ standby 10 priority 200
+ standby 10 preempt
+!
+interface Vlan20
+ ip address 10.2.2.2 255.255.255.0
+!
+interface Vlan200
+ ip address 192.168.1.129 255.255.255.224
+!
+router eigrp 10
+ network 10.1.4.4 0.0.0.3
+ network 10.2.1.0 0.0.0.255
+ network 10.2.2.0 0.0.0.255
+ network 192.168.1.128 0.0.0.31
+ auto-summary
+!
+ipv6 router rip RIPNG
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line vty 0 4
+ login
+!
+end

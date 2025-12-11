@@ -1,0 +1,31 @@
+hostname Client2
+!
+no ip routing
+!
+no ip domain lookup
+ip domain name lab.local
+!
+interface Ethernet0/0
+ no shutdown
+ ip address dhcp
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+!
+end

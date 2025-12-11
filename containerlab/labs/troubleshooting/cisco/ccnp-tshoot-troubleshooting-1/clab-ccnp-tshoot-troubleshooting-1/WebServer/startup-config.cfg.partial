@@ -1,0 +1,34 @@
+hostname WebServer
+!
+no ip routing
+!
+no ip domain lookup
+ip domain name lab.local
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 209.65.200.241 255.255.255.248
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+!
+ip default-gateway 209.65.200.246
+ip http server
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+!
+end

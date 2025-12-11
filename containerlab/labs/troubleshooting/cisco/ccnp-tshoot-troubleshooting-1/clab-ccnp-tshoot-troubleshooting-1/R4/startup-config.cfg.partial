@@ -1,0 +1,68 @@
+hostname R4
+!
+ip dhcp excluded-address 10.2.1.1 10.2.1.10
+!
+ip dhcp pool VLAN10
+ network 10.2.10.0 255.255.255.0
+ default-router 10.2.1.254
+!
+no ip domain lookup
+ip domain name lab.local
+ipv6 unicast-routing
+!
+interface Tunnel34
+ no shutdown
+ no ip address
+ ipv6 address 2026::34:2/122
+ ipv6 ospf network non-broadcast
+ ipv6 ospf 6 area 34
+ tunnel source Ethernet0/0
+ tunnel destination 10.1.1.9
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 10.1.1.10 255.255.255.252
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 10.1.4.5 255.255.255.252
+ ipv6 address 2026::2:1/122
+ ipv6 rip RIPNG enable
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 10.1.4.9 255.255.255.252
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+!
+router eigrp 10
+ redistribute ospf 1
+ passive-interface Ethernet0/1
+ network 10.1.4.4 0.0.0.3
+ no auto-summary
+!
+router ospf 1
+ log-adjacency-changes
+ area 34 nssa
+ redistribute eigrp 10
+ network 10.1.1.10 0.0.0.0 area 34
+!
+ipv6 router ospf 6
+ log-adjacency-changes
+ redistribute connected metric 1
+ redistribute rip RIPNG metric 1
+!
+ipv6 router rip RIPNG
+ redistribute connected metric 1
+ redistribute ospf 6 metric 1
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+!
+end
