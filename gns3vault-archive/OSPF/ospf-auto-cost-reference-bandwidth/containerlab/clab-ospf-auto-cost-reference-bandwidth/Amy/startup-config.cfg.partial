@@ -45,7 +45,6 @@ archive
 !
 interface Ethernet0/0
  no ip address
- shutdown
  duplex half
  no shutdown
 !
@@ -90,10 +89,5 @@ logging alarm informational
 gatekeeper
  shutdown
 !
-!
-line con 0
- stopbits 1
- stopbits 1
- login
 !
 end

@@ -89,9 +89,4 @@ no ip http secure-server
 !
 !
 !
-line con 0
- exec-timeout 0 0
- logging synchronous
-!
-!
 end

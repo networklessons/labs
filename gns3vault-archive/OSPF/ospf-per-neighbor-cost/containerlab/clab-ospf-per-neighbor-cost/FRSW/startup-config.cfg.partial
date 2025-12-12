@@ -81,8 +81,4 @@ no ip http secure-server
 !
 !
 !
-line con 0
- login
-!
-!
 end

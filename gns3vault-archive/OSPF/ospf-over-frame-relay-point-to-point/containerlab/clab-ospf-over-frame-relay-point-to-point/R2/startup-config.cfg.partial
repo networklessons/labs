@@ -58,7 +58,6 @@ interface Serial0/2
 !
 interface Serial0/3
  no ip address
- shutdown
  serial restart-delay 0
  no shutdown
 !
@@ -78,9 +77,6 @@ no ip http secure-server
 !
 !
 !
-!
-!
-line con 0
 !
 !
 end

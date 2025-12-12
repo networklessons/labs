@@ -46,19 +46,16 @@ interface Serial1/0
 !
 interface Serial1/1
  no ip address
- shutdown
  serial restart-delay 0
  no shutdown
 !
 interface Serial1/2
  no ip address
- shutdown
  serial restart-delay 0
  no shutdown
 !
 interface Serial1/3
  no ip address
- shutdown
  serial restart-delay 0
  no shutdown
 !
@@ -78,11 +75,6 @@ no ip http secure-server
 !
 !
 !
-!
-!
-line con 0
- exec-timeout 0 0
- logging synchronous
 !
 !
 end

@@ -48,7 +48,6 @@ interface Ethernet1/0
 !
 interface Ethernet2/0
  no ip address
- shutdown
  duplex auto
  speed auto
  no shutdown
@@ -69,9 +68,6 @@ no ip http secure-server
 !
 !
 !
-!
-!
-line con 0
 !
 !
 end

@@ -45,13 +45,11 @@ archive
 !
 interface Ethernet0/0
  no ip address
- shutdown
  duplex half
  no shutdown
 !
 interface GigabitEthernet1/0
  ip address 192.168.13.1 255.255.255.0
- shutdown
  negotiation auto
  no shutdown
 !
@@ -68,7 +66,6 @@ interface Ethernet3/0
 !
 interface Ethernet3/1
  no ip address
- shutdown
  duplex auto
  speed auto
  no shutdown
@@ -97,10 +94,5 @@ logging alarm informational
 gatekeeper
  shutdown
 !
-!
-line con 0
- stopbits 1
- stopbits 1
- login
 !
 end
