@@ -1,6 +1,6 @@
 # GNS3Vault Labs
 
-This folder contains networking labs from **gns3vault.com**. Since the website is currently offline, I've made these labs available here to ensure they remain accessible to the networking community.
+This folder contains networking labs from **gns3vault.com**. Since I decided to take the website offline, I've made these labs available here to ensure they remain accessible to the networking community.
 
 ## About
 
