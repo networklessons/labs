@@ -1,0 +1,107 @@
+!
+!
+upgrade fpd auto
+!
+hostname Emily
+!
+!
+logging message-counter syslog
+!
+ip source-route
+ip cef
+!
+!
+!
+!
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+archive
+ log config
+  hidekeys
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no ip address
+ shutdown
+ duplex half
+ no shutdown
+!
+interface Ethernet1/0
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet1/1
+ ip address 192.168.24.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet2/0
+ ip address 192.168.23.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet2/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ no shutdown
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging alarm informational
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+line con 0
+ stopbits 1
+ stopbits 1
+ login
+!
+end

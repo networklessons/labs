@@ -1,0 +1,82 @@
+!
+!
+!
+hostname Evelyn
+!
+!
+!
+!
+!
+ip cef
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Serial0/0
+ ip address 192.168.35.5 255.255.255.0
+ serial restart-delay 0
+ no shutdown
+!
+interface Serial0/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+ no shutdown
+!
+interface Serial0/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+ no shutdown
+!
+interface Serial0/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+ no shutdown
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+!
+end

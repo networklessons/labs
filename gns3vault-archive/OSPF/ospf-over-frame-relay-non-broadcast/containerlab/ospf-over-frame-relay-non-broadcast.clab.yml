@@ -1,0 +1,32 @@
+name: ospf-over-frame-relay-non-broadcast
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R0:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-over-frame-relay-non-broadcast/R0/startup-config.cfg.partial
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-over-frame-relay-non-broadcast/R1/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-over-frame-relay-non-broadcast/R2/startup-config.cfg.partial
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-over-frame-relay-non-broadcast/R3/startup-config.cfg.partial
+  links:
+
+   - endpoints: ['R0:Serial0/0', 'R3:Serial0/0']
+   - endpoints: ['R0:Serial0/1', 'R1:Serial0/0']
+   - endpoints: ['R0:Serial0/2', 'R2:Serial0/0']

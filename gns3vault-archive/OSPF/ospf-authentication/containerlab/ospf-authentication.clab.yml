@@ -1,0 +1,37 @@
+name: ospf-authentication
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Elephant:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-authentication/Elephant/startup-config.cfg.partial
+    Giraffe:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-authentication/Giraffe/startup-config.cfg.partial
+    Gorilla:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-authentication/Gorilla/startup-config.cfg.partial
+    Lion:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-ospf-authentication/Lion/startup-config.cfg.partial
+    SW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-authentication/SW1/startup-config.cfg.partial
+  links:
+
+   - endpoints: ['Elephant:Ethernet0/0', 'Giraffe:Ethernet0/0']
+   - endpoints: ['Giraffe:Ethernet1/0', 'SW1:1']
+   - endpoints: ['Gorilla:Ethernet0/0', 'SW1:2']
+   - endpoints: ['Gorilla:Ethernet1/0', 'Lion:Ethernet0/0']

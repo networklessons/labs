@@ -1,0 +1,78 @@
+!
+!
+hostname HERRING
+!
+!
+!
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Serial0/0
+ no ip address
+ encapsulation frame-relay
+ serial restart-delay 0
+ no shutdown
+!
+interface Serial0/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+ no shutdown
+!
+interface Serial0/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+ no shutdown
+!
+interface Serial0/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+ no shutdown
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+!
+end

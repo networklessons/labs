@@ -1,0 +1,32 @@
+name: ospf-virtual-link
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Beef:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-virtual-link/Beef/startup-config.cfg.partial
+    Chicken:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-virtual-link/Chicken/startup-config.cfg.partial
+    Fish:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-virtual-link/Fish/startup-config.cfg.partial
+    Pork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-virtual-link/Pork/startup-config.cfg.partial
+  links:
+
+   - endpoints: ['Beef:Ethernet0/0', 'Chicken:Ethernet0/0']
+   - endpoints: ['Beef:Ethernet1/0', 'Pork:Ethernet0/0']
+   - endpoints: ['Beef:Ethernet2/0', 'Fish:Ethernet0/0']

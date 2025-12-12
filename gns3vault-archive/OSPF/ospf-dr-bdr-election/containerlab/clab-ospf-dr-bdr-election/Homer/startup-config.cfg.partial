@@ -1,0 +1,71 @@
+!
+!
+!
+hostname Homer
+!
+!
+!
+!
+!
+ip cef
+no ip domain lookup
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Ethernet0/0
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet1/0
+ ip address 192.168.2.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+!
+!
+end

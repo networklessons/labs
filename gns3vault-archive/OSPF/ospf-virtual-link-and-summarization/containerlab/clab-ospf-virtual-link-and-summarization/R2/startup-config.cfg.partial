@@ -1,0 +1,77 @@
+!
+!
+hostname Dewey
+!
+!
+!
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Loopback0
+ no ip address
+ no shutdown
+!
+interface Ethernet0/0
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet1/0
+ ip address 192.168.23.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet2/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ no shutdown
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+!
+end

@@ -1,0 +1,47 @@
+name: ospf-dr-bdr-election
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Bart:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-dr-bdr-election/Bart/startup-config.cfg.partial
+    Homer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-dr-bdr-election/Homer/startup-config.cfg.partial
+    Lisa:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-ospf-dr-bdr-election/Lisa/startup-config.cfg.partial
+    Maggie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.16
+      startup-config: ./clab-ospf-dr-bdr-election/Maggie/startup-config.cfg.partial
+    Marge:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.17
+      startup-config: ./clab-ospf-dr-bdr-election/Marge/startup-config.cfg.partial
+    SW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-dr-bdr-election/SW1/startup-config.cfg.partial
+    SW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-dr-bdr-election/SW2/startup-config.cfg.partial
+  links:
+
+   - endpoints: ['Bart:Ethernet0/0', 'SW1:3']
+   - endpoints: ['Homer:Ethernet0/0', 'SW1:1']
+   - endpoints: ['Homer:Ethernet1/0', 'SW2:1']
+   - endpoints: ['Lisa:Ethernet0/0', 'SW2:3']
+   - endpoints: ['Maggie:Ethernet0/0', 'SW2:2']
+   - endpoints: ['Marge:Ethernet0/0', 'SW1:2']

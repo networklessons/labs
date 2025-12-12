@@ -1,0 +1,37 @@
+name: ospf-suppress-forward-address
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Alan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-suppress-forward-address/Alan/startup-config.cfg.partial
+    Berta:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-suppress-forward-address/Berta/startup-config.cfg.partial
+    Charlie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-suppress-forward-address/Charlie/startup-config.cfg.partial
+    Evelyn:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-suppress-forward-address/Evelyn/startup-config.cfg.partial
+    Jake:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-ospf-suppress-forward-address/Jake/startup-config.cfg.partial
+  links:
+
+   - endpoints: ['Alan:Ethernet0/0', 'Charlie:Ethernet0/0']
+   - endpoints: ['Alan:Ethernet1/0', 'Jake:Ethernet0/0']
+   - endpoints: ['Berta:Ethernet0/0', 'Jake:Ethernet1/0']
+   - endpoints: ['Charlie:Serial1/0', 'Evelyn:Serial0/0']
