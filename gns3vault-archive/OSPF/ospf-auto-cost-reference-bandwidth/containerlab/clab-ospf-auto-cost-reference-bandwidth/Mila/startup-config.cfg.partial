@@ -48,12 +48,12 @@ interface Ethernet0/0
  duplex half
  no shutdown
 !
-interface GigabitEthernet1/0
+interface GigabitEthernet1/1
  ip address 192.168.13.1 255.255.255.0
  negotiation auto
  no shutdown
 !
-interface GigabitEthernet2/0
+interface GigabitEthernet2/1
  ip address 192.168.14.1 255.255.255.0
  negotiation auto
  no shutdown
@@ -64,7 +64,7 @@ interface Ethernet3/0
  speed auto
  no shutdown
 !
-interface Ethernet3/1
+interface Ethernet3/2
  no ip address
  duplex auto
  speed auto
