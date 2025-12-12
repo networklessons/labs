@@ -23,5 +23,5 @@ topology:
       startup-config: ./clab-ospf-nssa-not-so-stubby-area/R3/startup-config.cfg.partial
   links:
 
-   - endpoints: ['R1:Serial0/0', 'R2:Serial0/0']
-   - endpoints: ['R1:Serial0/1', 'R3:Serial0/0']
+   - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
+   - endpoints: ['R1:Ethernet0/2', 'R3:Ethernet0/1']

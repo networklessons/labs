@@ -34,4 +34,4 @@ topology:
    - endpoints: ['Alan:Ethernet0/1', 'Charlie:Ethernet0/1']
    - endpoints: ['Alan:Ethernet1/1', 'Jake:Ethernet0/1']
    - endpoints: ['Berta:Ethernet0/1', 'Jake:Ethernet1/1']
-   - endpoints: ['Charlie:Serial1/0', 'Evelyn:Serial0/0']
+   - endpoints: ['Charlie:Ethernet1/1', 'Evelyn:Ethernet0/1']

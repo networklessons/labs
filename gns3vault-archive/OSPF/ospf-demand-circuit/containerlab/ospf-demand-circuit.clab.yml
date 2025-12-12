@@ -19,4 +19,4 @@ topology:
       startup-config: ./clab-ospf-demand-circuit/Palm/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Coconut:Serial0/0', 'Palm:Serial0/0']
+   - endpoints: ['Coconut:Ethernet0/1', 'Palm:Ethernet0/1']
