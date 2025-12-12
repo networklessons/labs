@@ -1,0 +1,98 @@
+!
+!
+upgrade fpd auto
+!
+hostname Mila
+!
+!
+logging message-counter syslog
+!
+ip source-route
+ip cef
+!
+!
+!
+!
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+archive
+ log config
+  hidekeys
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no ip address
+ duplex half
+ no shutdown
+!
+interface GigabitEthernet1/0
+ ip address 192.168.13.1 255.255.255.0
+ negotiation auto
+ no shutdown
+!
+interface GigabitEthernet2/0
+ ip address 192.168.14.1 255.255.255.0
+ negotiation auto
+ no shutdown
+!
+interface Ethernet3/0
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet3/1
+ no ip address
+ duplex auto
+ speed auto
+ no shutdown
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+!
+logging alarm informational
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+gatekeeper
+ shutdown
+!
+!
+end

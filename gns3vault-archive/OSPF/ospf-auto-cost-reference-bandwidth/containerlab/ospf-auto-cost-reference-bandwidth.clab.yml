@@ -1,0 +1,35 @@
+name: ospf-auto-cost-reference-bandwidth
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Amy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Amy/startup-config.cfg.partial
+    Emily:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Emily/startup-config.cfg.partial
+    Mila:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Mila/startup-config.cfg.partial
+    Selena:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Selena/startup-config.cfg.partial
+  links:
+
+   - endpoints: ['Amy:Ethernet2/1', 'Selena:Ethernet2/2']
+   - endpoints: ['Amy:Ethernet2/2', 'Emily:Ethernet2/1']
+   - endpoints: ['Amy:GigabitEthernet1/0', 'Mila:GigabitEthernet1/0']
+   - endpoints: ['Emily:Ethernet1/1', 'Mila:Ethernet3/1']
+   - endpoints: ['Emily:Ethernet1/2', 'Selena:Ethernet2/1']
+   - endpoints: ['Mila:GigabitEthernet2/0', 'Selena:GigabitEthernet1/0']

@@ -1,0 +1,37 @@
+name: ospf-lsa-type-3-summarization
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Diamond:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-lsa-type-3-summarization/Diamond/startup-config.cfg.partial
+    Fluorite:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-lsa-type-3-summarization/Fluorite/startup-config.cfg.partial
+    Quartz:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-lsa-type-3-summarization/Quartz/startup-config.cfg.partial
+    Talc:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-lsa-type-3-summarization/Talc/startup-config.cfg.partial
+    Topaz:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-ospf-lsa-type-3-summarization/Topaz/startup-config.cfg.partial
+  links:
+
+   - endpoints: ['Diamond:Ethernet0/1', 'Topaz:Ethernet1/1']
+   - endpoints: ['Diamond:Ethernet1/1', 'Quartz:Ethernet0/1']
+   - endpoints: ['Fluorite:Ethernet0/1', 'Quartz:Ethernet1/1']
+   - endpoints: ['Talc:Ethernet0/1', 'Topaz:Ethernet0/1']
