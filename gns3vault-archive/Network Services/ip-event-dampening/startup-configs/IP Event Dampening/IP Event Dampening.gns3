@@ -1,0 +1,218 @@
+{
+    "name": "IP Event Dampening",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Rinse port Serial0/0 to Spray port Serial0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 5,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Spray port FastEthernet1/0 to Sprinkle port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 10,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 9
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Rinse",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Spray on port Serial0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Rinse",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -476.355951805,
+                "y": -84.2253967446
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Spray",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Rinse on port Serial0/0",
+                        "id": 5,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 6,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 7,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Sprinkle on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2006,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Spray",
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -238.768073326,
+                "y": -63.7193000901
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Sprinkle",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Spray on port FastEthernet1/0",
+                        "id": 10,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2007,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Sprinkle",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 19.3259018079,
+                "y": -63.0121933089
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -140.714249456,
+                "y": -69.476659403
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -2.12132034356,
+                "y": -67.9583694396
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -261.62950904,
+                "y": -66.1421356238
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -173.241161391,
+                "y": -64.9289321881
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -383.958982185,
+                "y": -86.2462120247
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -410.82903987,
+                "y": -87.1543289327
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

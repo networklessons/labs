@@ -1,0 +1,341 @@
+{
+    "name": "OSPF Authentication",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -351.43207025,
+                "y": -178.89801564,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 200.0,
+                "width": 229.809703886,
+                "x": -108.187337522,
+                "y": 21.2132034356,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 200.0,
+                "width": 246.981276761,
+                "x": -353.75440072,
+                "y": 21.0121933088,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Elephant port FastEthernet0/0 to Giraffe port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 2,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Giraffe port FastEthernet1/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 7,
+                "id": 2,
+                "source_node_id": 3,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Gorilla port FastEthernet0/0 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 8,
+                "id": 3,
+                "source_node_id": 4,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Gorilla port FastEthernet1/0 to Lion port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 6,
+                "id": 4,
+                "source_node_id": 4,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Elephant",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Giraffe on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2007,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Elephant",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -286.851334446,
+                "y": -137.258405333
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Giraffe",
+                    "x": -53.4827560573,
+                    "y": 4.69848480983
+                },
+                "ports": [
+                    {
+                        "description": "connected to Elephant on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2008,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Giraffe",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -286.851334446,
+                "y": 2.74873734153
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Gorilla",
+                    "x": 7.41421356237,
+                    "y": 37.2253967444
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Lion on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2009,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Gorilla",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -141.187337522,
+                "y": 100.329473145
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Lion",
+                    "x": 15.6213203436,
+                    "y": 37.9325035256
+                },
+                "ports": [
+                    {
+                        "description": "connected to Gorilla on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2010,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Lion",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 33.4680374315,
+                "y": 98.9152595829
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": 12.8786796564,
+                    "y": 28.033008589
+                },
+                "ports": [
+                    {
+                        "description": "connected to Giraffe on port FastEthernet1/0",
+                        "id": 7,
+                        "link_id": 2,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Gorilla on port FastEthernet0/0",
+                        "id": 8,
+                        "link_id": 3,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -288.644227665,
+                "y": 103.501046021
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -294.156420974,
+                "y": 160.333044483
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -320.319371878,
+                "y": -56.5477272148
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -62.2253967444,
+                "y": 158.717820794
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 1",
+                "x": -262.33661582,
+                "y": 191.445742855
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 2",
+                "x": -23.3345237792,
+                "y": 191.244732728
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -161.927452892,
+                "y": 98.9188309204
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -277.185858225,
+                "y": -98.4680374315
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 0",
+                "x": -349.310749906,
+                "y": -90.4888527117
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -79.1959594929,
+                "y": 98.7178207936
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": 12.0208152802,
+                "y": 99.223917448
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -275.771644663,
+                "y": -19.4730880654
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -275.771644663,
+                "y": 43.2584053334
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

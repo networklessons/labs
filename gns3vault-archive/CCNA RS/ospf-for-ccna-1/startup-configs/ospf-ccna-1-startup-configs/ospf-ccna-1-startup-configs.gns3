@@ -1,0 +1,506 @@
+{
+    "name": "ospf-ccna-1-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Bird port FastEthernet0/0 to Dent port FastEthernet0/0",
+                "destination_node_id": 8,
+                "destination_port_id": 9,
+                "id": 1,
+                "source_node_id": 7,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Bird port FastEthernet2/0 to SW2 port 3",
+                "destination_node_id": 2,
+                "destination_port_id": 21,
+                "id": 2,
+                "source_node_id": 7,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from Bird port Serial1/0 to Dent port Serial1/0",
+                "destination_node_id": 8,
+                "destination_port_id": 10,
+                "id": 3,
+                "source_node_id": 7,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Chesler port FastEthernet0/0 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 17,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 7
+            },
+            {
+                "description": "Link from Chesler port FastEthernet1/0 to SW2 port 2",
+                "destination_node_id": 2,
+                "destination_port_id": 20,
+                "id": 5,
+                "source_node_id": 3,
+                "source_port_id": 8
+            },
+            {
+                "description": "Link from Durden port FastEthernet0/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 16,
+                "id": 6,
+                "source_node_id": 4,
+                "source_port_id": 14
+            },
+            {
+                "description": "Link from Paulson port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 18,
+                "id": 7,
+                "source_node_id": 5,
+                "source_port_id": 15
+            },
+            {
+                "description": "Link from SW2 port 1 to Singer port FastEthernet0/0",
+                "destination_node_id": 6,
+                "destination_port_id": 22,
+                "id": 8,
+                "source_node_id": 2,
+                "source_port_id": 19
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 7,
+                "label": {
+                    "text": "Bird",
+                    "x": 14.0,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Dent on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Dent on port Serial1/0",
+                        "id": 2,
+                        "link_id": 3,
+                        "name": "Serial1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial1/2",
+                        "port_number": 2,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 5,
+                        "name": "Serial1/3",
+                        "port_number": 3,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to SW2 on port 3",
+                        "id": 6,
+                        "link_id": 2,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "aux": 2105,
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x604f3e14",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "Bird",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-4T",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i7_startup-config.cfg"
+                },
+                "router_id": 7,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -91.7817459305,
+                "y": 65.5857864376
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Chesler",
+                    "x": -0.298989873223,
+                    "y": -20.7573593129
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 7,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW2 on port 2",
+                        "id": 8,
+                        "link_id": 5,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x604f3e14",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "Chesler",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -124.23906935,
+                "y": -52.1801948466
+            },
+            {
+                "description": "Router c3600",
+                "id": 8,
+                "label": {
+                    "text": "Dent",
+                    "x": 11.7071067812,
+                    "y": 40.7609306503
+                },
+                "ports": [
+                    {
+                        "description": "connected to Bird on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Bird on port Serial1/0",
+                        "id": 10,
+                        "link_id": 3,
+                        "name": "Serial1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 11,
+                        "name": "Serial1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 12,
+                        "name": "Serial1/2",
+                        "port_number": 2,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 13,
+                        "name": "Serial1/3",
+                        "port_number": 3,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2104,
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x604f3e14",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "Dent",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-4T",
+                    "startup_config": "configs\\i8_startup-config.cfg"
+                },
+                "router_id": 8,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 157.211724139,
+                "y": 64.9741340859
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Durden",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 14,
+                        "link_id": 6,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x604f3e14",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "Durden",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -254.996428663,
+                "y": -177.142135624
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Paulson",
+                    "x": 1.41421356237,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 15,
+                        "link_id": 7,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x604f3e14",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "Paulson",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -254.039538519,
+                "y": 62.0365799265
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": -35.9116882454,
+                    "y": 4.69848480983
+                },
+                "ports": [
+                    {
+                        "description": "connected to Durden on port FastEthernet0/0",
+                        "id": 16,
+                        "link_id": 6,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Chesler on port FastEthernet0/0",
+                        "id": 17,
+                        "link_id": 4,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Paulson on port FastEthernet0/0",
+                        "id": 18,
+                        "link_id": 7,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -258.496428663,
+                "y": -48.1715728753
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 2,
+                "label": {
+                    "text": "SW2",
+                    "x": 15.5,
+                    "y": -17.9289321881
+                },
+                "ports": [
+                    {
+                        "description": "connected to Singer on port FastEthernet0/0",
+                        "id": 19,
+                        "link_id": 8,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Chesler on port FastEthernet1/0",
+                        "id": 20,
+                        "link_id": 5,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Bird on port FastEthernet2/0",
+                        "id": 21,
+                        "link_id": 2,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW2"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": 11.1984848098,
+                "y": -45.7071067812
+            },
+            {
+                "description": "Router c3600",
+                "id": 6,
+                "label": {
+                    "text": "Singer",
+                    "x": 2.17157287525,
+                    "y": -22.1715728753
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW2 on port 1",
+                        "id": 22,
+                        "link_id": 8,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x604f3e14",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "Singer",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 158.119841047,
+                "y": -52.2354980122
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0 /24",
+                "x": -10.6066017178,
+                "y": -81.4974746831
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "OSPF Area 0",
+                "x": 132.228968082,
+                "y": -114.731493399
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.123.0 /24",
+                "x": -292.03510063,
+                "y": -90.4888527117
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.56.0 /24",
+                "x": -4.24264068712,
+                "y": 42.4472221514
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.65.0 /24",
+                "x": -3.53553390593,
+                "y": 108.714249456
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "OSPF Area 0",
+                "x": -195.868578389,
+                "y": -221.303607231
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#aaffff",
+                "height": 262.135605693,
+                "width": 326.884343035,
+                "x": -94.9533188058,
+                "y": -114.551298552,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#aaff7f",
+                "height": 367.695526217,
+                "width": 229.809703886,
+                "x": -324.562012565,
+                "y": -219.910208949,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

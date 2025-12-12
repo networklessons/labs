@@ -1,0 +1,250 @@
+{
+    "name": "RIP Summarization",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Apron port FastEthernet0/0 to Ballast port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 4,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Apron port FastEthernet1/0 to Beam port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Apron port FastEthernet2/0 to Brick port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 6,
+                "id": 3,
+                "source_node_id": 1,
+                "source_port_id": 3
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Apron",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Ballast on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Beam on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Brick on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Apron",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -320.0,
+                "y": -251.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Ballast",
+                    "x": -0.0355339059327,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Apron on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Ballast",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -501.707106781,
+                "y": -41.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Beam",
+                    "x": 9.41421356237,
+                    "y": 42.1751442127
+                },
+                "ports": [
+                    {
+                        "description": "connected to Apron on port FastEthernet1/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Beam",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -321.646752982,
+                "y": -41.0294372515
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Brick",
+                    "x": 10.0,
+                    "y": 43.5893577751
+                },
+                "ports": [
+                    {
+                        "description": "connected to Apron on port FastEthernet2/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Brick",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -141.767460581,
+                "y": -41.6827201635
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -441.941738242,
+                "y": -58.5649711575
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -161.927452892,
+                "y": -58.2598846298
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.14.0 /24",
+                "x": -251.022907321,
+                "y": -139.681240867
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -345.775216,
+                "y": -201.400540957
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -313.955410847,
+                "y": -62.3015151902
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -273.650324319,
+                "y": -197.559920524
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -480.125504426,
+                "y": -139.986327395
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -311.126983722,
+                "y": -197.358910397
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0 /24",
+                "x": -354.967604156,
+                "y": -115.43860018
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

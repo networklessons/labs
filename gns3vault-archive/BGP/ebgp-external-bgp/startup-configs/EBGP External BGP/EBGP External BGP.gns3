@@ -1,0 +1,312 @@
+{
+    "name": "EBGP External BGP",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -345.068109219,
+                "y": -236.173664916,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -560.229580827,
+                "y": -235.667568262,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 199.806132548,
+                "width": 200.0,
+                "x": -353.955410847,
+                "y": -4.64466094067,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffaa7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -560.63160108,
+                "y": -6.25988462982,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Cotton port FastEthernet0/0 to Flax port FastEthernet1/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Flax port FastEthernet0/0 to Silk port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Silk port FastEthernet0/0 to Wool port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 6,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 4
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Cotton",
+                    "x": 3.08578643763,
+                    "y": 37.9325035256
+                },
+                "ports": [
+                    {
+                        "description": "connected to Flax on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Cotton",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -518.782358675,
+                "y": 91.1370849898
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Flax",
+                    "x": 19.5,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to Silk on port FastEthernet1/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Cotton on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Flax",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -258.567063199,
+                "y": 92.5512985522
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Silk",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Wool on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Flax on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Silk",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -255.031529293,
+                "y": -169.785317268
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Wool",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Silk on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Wool",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -523.894444303,
+                "y": -169.195959493
+            }
+        ],
+        "notes": [
+            {
+                "color": "#323232",
+                "text": "AS 4",
+                "x": -472.347329833,
+                "y": 164.374675043
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -244.658946291,
+                "y": -130.384776311
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -249.608693759,
+                "y": 71.1406563273
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -484.368145113,
+                "y": -236.152849636
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -265.872149726,
+                "y": -237.060966544
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -289.913780286,
+                "y": -32.908116908
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -275.771644663,
+                "y": -171.903066274
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -420.021428025,
+                "y": 66.2878425849
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -279.307178569,
+                "y": 90.7386360738
+            },
+            {
+                "color": "#323232",
+                "text": "AS 3",
+                "x": -272.943217538,
+                "y": 164.880771697
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -458.91230099,
+                "y": -170.287842585
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -415.778787338,
+                "y": -202.91883092
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -444.063058585,
+                "y": 91.2447327282
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

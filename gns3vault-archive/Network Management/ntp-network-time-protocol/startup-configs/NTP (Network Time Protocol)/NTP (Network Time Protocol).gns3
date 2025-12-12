@@ -1,0 +1,388 @@
+{
+    "name": "NTP (Network Time Protocol)",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Atomic port FastEthernet0/0 to Planck port FastEthernet0/0",
+                "destination_node_id": 6,
+                "destination_port_id": 7,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Atomic port FastEthernet1/0 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 11,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Century port FastEthernet0/0 to Julian port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 5,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Julian port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 12,
+                "id": 4,
+                "source_node_id": 4,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Millenium port FastEthernet0/0 to Planck port FastEthernet2/0",
+                "destination_node_id": 6,
+                "destination_port_id": 9,
+                "id": 5,
+                "source_node_id": 5,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from Planck port FastEthernet1/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 10,
+                "id": 6,
+                "source_node_id": 6,
+                "source_port_id": 8
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Atomic",
+                    "x": 3.29289321881,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to Planck on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2006,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Atomic",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -407.059487248,
+                "y": 54.3675323681
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Century",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Julian on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2008,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Century",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 104.885822331,
+                "y": 53.660425587
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Julian",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 4,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Century on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2007,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Julian",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -118.559920524,
+                "y": 55.7817459305
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Millenium",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Planck on port FastEthernet2/0",
+                        "id": 6,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2009,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Millenium",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -117.852813742,
+                "y": -82.811183182
+            },
+            {
+                "description": "Router c3600",
+                "id": 6,
+                "label": {
+                    "text": "Planck",
+                    "x": 8.74264068712,
+                    "y": -21.4644660941
+                },
+                "ports": [
+                    {
+                        "description": "connected to Atomic on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 8,
+                        "link_id": 6,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Millenium on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 5,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Planck",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -407.059487248,
+                "y": -81.3969696197
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": 8.63603896932,
+                    "y": 28.033008589
+                },
+                "ports": [
+                    {
+                        "description": "connected to Planck on port FastEthernet1/0",
+                        "id": 10,
+                        "link_id": 6,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Atomic on port FastEthernet1/0",
+                        "id": 11,
+                        "link_id": 2,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Julian on port FastEthernet0/0",
+                        "id": 12,
+                        "link_id": 4,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -238.439646201,
+                "y": 61.7817459305
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -142.128463018,
+                "y": 54.87720036
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -372.645273685,
+                "y": 32.6518036156
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -143.542676581,
+                "y": -60.9842353537
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -51.6187950266,
+                "y": 52.5548698897
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.123.0 /24",
+                "x": -300.520382004,
+                "y": 109.622366364
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.15.0 /24",
+                "x": -291.327993849,
+                "y": -61.1923881554
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -340.825468532,
+                "y": 54.3711037056
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -374.059487248,
+                "y": -42.1005050634
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -46.6690475583,
+                "y": 110.8355698
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -441.941738242,
+                "y": -2.70353544372
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": 83.43860018,
+                "y": 52.3538597629
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -347.189429563,
+                "y": -62.405591591
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

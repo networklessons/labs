@@ -1,0 +1,75 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/GNS3/IOS/C3640-JK.BIN
+        idlepc = 0x603e26f0
+        ghostios = True
+        chassis = 3640
+    [[ROUTER Sonic]]
+        model = 3640
+        console = 2007
+        slot0 = NM-1FE-TX
+        f0/0 = Tails f0/0
+        cnfg = configs/Sonic.cfg
+        x = -583.129075763
+        y = -72.2045814642
+    [[ROUTER Tails]]
+        model = 3640
+        console = 2008
+        slot0 = NM-1FE-TX
+        f0/0 = Sonic f0/0
+        slot1 = NM-1FE-TX
+        cnfg = configs/Tails.cfg
+        x = -301.700576851
+        y = -70.7903679019
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = .2
+        x = -327.390439689
+        y = -73.2132034356
+        color = "#0000ff"
+    [[NOTE 2]]
+        text = .1
+        x = -516.895057047
+        y = -74.4264068712
+        color = "#0000ff"
+    [[NOTE 3]]
+        text = 192.168.12.0 /24
+        x = -478.711290863
+        y = -75.6396103068
+        color = "#0000ff"
+    [[NOTE 4]]
+        text = f0/0
+        x = -36.6906058018
+        y = 22.7938882579
+        interface = Tails f0/0
+        color = "#323232"
+    [[NOTE 5]]
+        text = f0/0
+        x = 67.3352667424
+        y = 22.6203253045
+        interface = Sonic f0/0
+        color = "#323232"
+    [[SHAPE 1]]
+        type = ellipse
+        x = -609.72705551
+        y = -111.923881554
+        width = 133.643181644
+        height = 123.632467632
+        fill_color = "#55ff7f"
+        border_style = 2
+        z = -2.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -342.239682094
+        y = -113.844191771
+        width = 133.643181644
+        height = 123.632467632
+        fill_color = "#aaffff"
+        border_style = 2
+        z = -2.0

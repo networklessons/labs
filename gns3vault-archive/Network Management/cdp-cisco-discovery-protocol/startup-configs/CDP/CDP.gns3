@@ -1,0 +1,226 @@
+{
+    "name": "CDP",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Is port FastEthernet0/0 to This port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Is port FastEthernet1/0 to Sparta port FastEthernet1/0",
+                "destination_node_id": 2,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Sparta port FastEthernet0/0 to This port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 6,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 3
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Is",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to This on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Sparta on port FastEthernet1/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Is",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -153.121320344,
+                "y": -111.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Sparta",
+                    "x": 2.87867965644,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to This on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Is on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Sparta",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -290.422835534,
+                "y": 85.7573593129
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "This",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Is on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Sparta on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "This",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -408.535533906,
+                "y": -110.221825407
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -225.567063199,
+                "y": -24.4228355337
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -259.508188695,
+                "y": 66.2949852599
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -163.341666454,
+                "y": -72.6030303803
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -174.655374953,
+                "y": -90.7867965644
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -317.490944753,
+                "y": -91.9030662741
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -275.771644663,
+                "y": 66.4959953866
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -345.068109219,
+                "y": -91.7989898732
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -357.088924499,
+                "y": -74.3223304703
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0 /24",
+                "x": -396.686904246,
+                "y": -25.6360389693
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

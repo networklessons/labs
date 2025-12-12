@@ -1,0 +1,316 @@
+{
+    "name": "BGP Remove Private AS",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#ffaa7f",
+                "height": 125.046681194,
+                "width": 146.25988463,
+                "x": 13.7401153702,
+                "y": 167.182286888,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 125.046681194,
+                "width": 146.25988463,
+                "x": -249.102597104,
+                "y": 168.090403796,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaaaff",
+                "height": 125.046681194,
+                "width": 146.25988463,
+                "x": -114.246212025,
+                "y": 28.5893577751,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 125.046681194,
+                "width": 146.25988463,
+                "x": -115.965512115,
+                "y": -120.208152802,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Caesar port FastEthernet0/0 to Tsar port FastEthernet2/0",
+                "destination_node_id": 4,
+                "destination_port_id": 6,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Emperor port FastEthernet0/0 to Tsar port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Kaiser port FastEthernet0/0 to Tsar port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 5,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 3
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Caesar",
+                    "x": 0.828427124746,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to Tsar on port FastEthernet2/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Caesar",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 59.6309883354,
+                "y": 217.709198822
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Emperor",
+                    "x": 1.03553390593,
+                    "y": -21.4644660941
+                },
+                "ports": [
+                    {
+                        "description": "connected to Tsar on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Emperor",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -73.3517677219,
+                "y": -70.71930009
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Kaiser",
+                    "x": 3.58578643763,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to Tsar on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Kaiser",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -206.241161391,
+                "y": 215.587878479
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Tsar",
+                    "x": 66.7401153702,
+                    "y": 8.23401871577
+                },
+                "ports": [
+                    {
+                        "description": "connected to Emperor on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Kaiser on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Caesar on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 1,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Tsar",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -76.1335136524,
+                "y": 70.6309883354
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": 41.0121933088,
+                "y": 205.088924499
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -108.187337522,
+                "y": 5.67766952966
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -62.2253967444,
+                "y": -29.372583002
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -69.2964645563,
+                "y": 108.818325857
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0 /24",
+                "x": 19.7989898732,
+                "y": 140.333044483
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -98.2878425851,
+                "y": -106.752308679
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -98.2878425851,
+                "y": 45.7817459307
+            },
+            {
+                "color": "#323232",
+                "text": "AS 65503",
+                "x": -213.546247919,
+                "y": 173.060966545
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -41.0121933088,
+                "y": 108.61731573
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -145.663996924,
+                "y": 198.925973595
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -65.0538238692,
+                "y": 51.7436867076
+            },
+            {
+                "color": "#323232",
+                "text": "AS 65504",
+                "x": 54.4472221515,
+                "y": 172.859956418
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -230.516810667,
+                "y": 136.291413922
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

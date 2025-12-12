@@ -1,0 +1,408 @@
+{
+    "name": "multicast-rpf-failure-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Ace port FastEthernet1/0 to Backhand port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 12,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 5
+            },
+            {
+                "description": "Link from Ace port FastEthernet2/0 to LiveMatch port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 16,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from Ace port Serial0/0 to Alley port Serial0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 7,
+                "id": 3,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Alley port FastEthernet1/0 to Backspin port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 15,
+                "id": 4,
+                "source_node_id": 2,
+                "source_port_id": 11
+            },
+            {
+                "description": "Link from Backhand port FastEthernet1/0 to Backspin port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 14,
+                "id": 5,
+                "source_node_id": 3,
+                "source_port_id": 13
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Ace",
+                    "x": 15.7071067812,
+                    "y": -27.8284271248
+                },
+                "ports": [
+                    {
+                        "description": "connected to Alley on port Serial0/0",
+                        "id": 1,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Backhand on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to LiveMatch on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 2,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Ace",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -113.142135623,
+                "y": -239.765981284
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Alley",
+                    "x": 64.2401153703,
+                    "y": 5.40559159109
+                },
+                "ports": [
+                    {
+                        "description": "connected to Ace on port Serial0/0",
+                        "id": 7,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 9,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 10,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Backspin on port FastEthernet1/0",
+                        "id": 11,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Alley",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 11.4436508139,
+                "y": -62.9497474683
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Backhand",
+                    "x": -78.9177849,
+                    "y": 6.81980515346
+                },
+                "ports": [
+                    {
+                        "description": "connected to Ace on port FastEthernet1/0",
+                        "id": 12,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Backspin on port FastEthernet0/0",
+                        "id": 13,
+                        "link_id": 5,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Backhand",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -232.0,
+                "y": -64.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Backspin",
+                    "x": -4.5,
+                    "y": 39.3467170881
+                },
+                "ports": [
+                    {
+                        "description": "connected to Backhand on port FastEthernet1/0",
+                        "id": 14,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Alley on port FastEthernet1/0",
+                        "id": 15,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Backspin",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -120.828427125,
+                "y": 111.038059223
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "LiveMatch",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Ace on port FastEthernet2/0",
+                        "id": 16,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2105,
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "LiveMatch",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -347.059487248,
+                "y": -239.726442765
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -178.190908859,
+                "y": -30.0918830921
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -79.1959594929,
+                "y": -200.504617358
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0/24",
+                "x": -72.8319984623,
+                "y": 27.8908729653
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -9.89949493667,
+                "y": -75.3467170881
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -108.187337522,
+                "y": 89.208152802
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0/24",
+                "x": -260.215295477,
+                "y": -240.303607232
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.35.0/24",
+                "x": -228.395490323,
+                "y": 30.71930009
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -87.6812408673,
+                "y": 89.0071426753
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0/24",
+                "x": -70.7106781188,
+                "y": -135.450793488
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -177.483802078,
+                "y": -82.4177849
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0/24",
+                "x": -224.152849637,
+                "y": -142.521861301
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -282.842712476,
+                "y": -241.010714013
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -135.057395207,
+                "y": -240.102597105
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -101.823376491,
+                "y": -199.998520704
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -8.48528137423,
+                "y": -27.2634559673
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

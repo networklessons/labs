@@ -1,0 +1,185 @@
+{
+    "name": "OSPF Flood-Reduction",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Beach port FastEthernet0/0 to Coconut port FastEthernet1/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Coconut port FastEthernet0/0 to Palm port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Beach",
+                    "x": 6.0,
+                    "y": 41.4680374317
+                },
+                "ports": [
+                    {
+                        "description": "connected to Coconut on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2017,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Beach",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -741.52099475,
+                "y": -24.8284271248
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Coconut",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Palm on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Beach on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2016,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Coconut",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -629.091016542,
+                "y": -188.87720036
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Palm",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Coconut on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2015,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Palm",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -877.99260352,
+                "y": -187.462986798
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -650.538238693,
+                "y": -190.592929113
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -707.106781188,
+                "y": -109.07463915
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -789.131167806,
+                "y": -209.989898733
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -644.881384444,
+                "y": -146.246212025
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -810.344371242,
+                "y": -188.977705424
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -718.420489687,
+                "y": -50.9878066911
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

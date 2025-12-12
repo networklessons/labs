@@ -1,0 +1,121 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = C:\Users\Tommy\AppData\Local\Temp
+    udp = 10000
+    [[3640]]
+        image = c:\Program Files\GNS3\IOS\c3640-jk9s-mz.124-16.bin
+        idlepc = 0x60483634
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R1]]
+        model = 3640
+        console = 2000
+        cnfg = configs\R1.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R2 f0/0
+        x = -389.0
+        y = -52.0
+    [[ROUTER R2]]
+        model = 3640
+        console = 2001
+        cnfg = configs\R2.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R1 f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = R3 f0/0
+        x = -221.0
+        y = -52.0
+    [[ROUTER R3]]
+        model = 3640
+        console = 2002
+        cnfg = configs\R3.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R2 f1/0
+        x = -43.0
+        y = -54.0
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = .3
+        x = -65.0538238692
+        y = -58.6690475583
+    [[NOTE 2]]
+        text = .2
+        x = -154.149278299
+        y = -59.3761543395
+    [[NOTE 3]]
+        text = 192.168.23.0/24
+        x = -147.785317268
+        y = -24.0208152802
+    [[NOTE 4]]
+        text = .2
+        x = -238.29498526
+        y = -58.6690475583
+    [[NOTE 5]]
+        text = .1
+        x = -323.147799002
+        y = -58.6690475583
+    [[NOTE 6]]
+        text = 192.168.12.0/24
+        x = -329.511760033
+        y = -20.4852813742
+    [[NOTE 7]]
+        text = Undertaker
+        x = -81.3172798365
+        y = -77.7609306503
+    [[NOTE 8]]
+        text = Piper
+        x = -205.768073325
+        y = 31.1335136524
+    [[NOTE 9]]
+        text = Hogan
+        x = -376.887914372
+        y = -74.9325035256
+    [[NOTE 10]]
+        text = Area 1
+        x = -108.187337522
+        y = -117.358910397
+    [[NOTE 11]]
+        text = Area 0
+        x = -318.0
+        y = -115.0
+    [[NOTE 12]]
+        text = f0/0
+        x = -6.99747530533
+        y = 22.4494098349
+        interface = R3 f0/0
+    [[NOTE 13]]
+        text = f1/0
+        x = 72.9974753053
+        y = 21.5505901651
+        interface = R2 f1/0
+    [[NOTE 14]]
+        text = f0/0
+        x = -7.0
+        y = 22.0
+        interface = R2 f0/0
+    [[NOTE 15]]
+        text = f0/0
+        x = 73.0
+        y = 22.0
+        interface = R1 f0/0
+    [[SHAPE 1]]
+        type = ellipse
+        x = -183.949747468
+        y = -123.878679656
+        width = 200.0
+        height = 200.0
+        fill_color = "#00aa00"
+        border_style = 2
+        z = -2.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -387.292893219
+        y = -121.292893219
+        width = 200.0
+        height = 200.0
+        fill_color = "#ffff00"
+        border_style = 2
+        z = -2.0

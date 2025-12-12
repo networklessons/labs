@@ -1,0 +1,262 @@
+{
+    "name": "Multipoint One-Way Redistribution",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Abu port FastEthernet0/0 to Ace port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Abu port FastEthernet1/0 to Aggie port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Ace port FastEthernet1/0 to Aggie port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 6,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 4
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Abu",
+                    "x": 14.5,
+                    "y": 39.346717088
+                },
+                "ports": [
+                    {
+                        "description": "connected to Ace on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Aggie on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Abu",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -117.720779386,
+                "y": 187.384776311
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Ace",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Abu on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Aggie on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Ace",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -245.0,
+                "y": 16.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Aggie",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Abu on port FastEthernet1/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Ace on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Aggie",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 32.6309883354,
+                "y": 16.1213203436
+            }
+        ],
+        "notes": [
+            {
+                "color": "#323232",
+                "text": "EIGRP AS 1",
+                "x": 48.0832611207,
+                "y": 257.206673505
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": 11.313708499,
+                "y": 14.5721138324
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -139.300035894,
+                "y": 12.7487373415
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -58.6898628385,
+                "y": 109.927452892
+            },
+            {
+                "color": "#0000ff",
+                "text": "L0: 3.3.3.3 /24",
+                "x": -140.714249456,
+                "y": 246.600071787
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -84.8528137424,
+                "y": 169.532575313
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -181.019335984,
+                "y": 14.2670273048
+            },
+            {
+                "color": "#323232",
+                "text": "OSPF AREA 0",
+                "x": 38.8908729653,
+                "y": -73.5182899632
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -214.960461481,
+                "y": 56.4924240492
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -106.066017178,
+                "y": 169.73358544
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0 /24",
+                "x": -213.546247918,
+                "y": 110.128463018
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": 41.71930009,
+                "y": 54.6761902332
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#aaffff",
+                "height": 124.0,
+                "width": 412.956890143,
+                "x": -268.0,
+                "y": -77.0,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#ffff7f",
+                "height": 241.249783362,
+                "width": 412.450793489,
+                "x": -268.201010127,
+                "y": 46.5426765809,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

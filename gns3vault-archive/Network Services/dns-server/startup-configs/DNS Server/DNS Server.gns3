@@ -1,0 +1,286 @@
+{
+    "name": "DNS Server",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Client1 port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 7,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Client1 port FastEthernet1/0 to Client2 port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 3,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Primary port FastEthernet0/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 5,
+                "id": 3,
+                "source_node_id": 4,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from SW1 port 2 to Secondary port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 8,
+                "id": 4,
+                "source_node_id": 1,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Client1",
+                    "x": 4.20710678119,
+                    "y": 40.7609306503
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Client2 on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2023,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Client1",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -339.884343035,
+                "y": -25.5355339059
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Client2",
+                    "x": 4.70710678119,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Client1 on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2027,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Client2",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -78.9619407771,
+                "y": -25.5355339059
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Primary",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2021,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Primary",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -424.737156777,
+                "y": -227.060966544
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": -38.7401153702,
+                    "y": 3.28427124746
+                },
+                "ports": [
+                    {
+                        "description": "connected to Primary on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Secondary on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Client1 on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 1,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -341.677236254,
+                "y": -126.308657865
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Secondary",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 8,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2022,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Secondary",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -242.303607231,
+                "y": -224.232539419
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -364.867099092,
+                "y": -190.391918986
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -262.33661582,
+                "y": -190.592929113
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -273.650324319,
+                "y": -28.6654762208
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -241.830519166,
+                "y": -30.5857864376
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.123.0 /24",
+                "x": -373.352380466,
+                "y": -69.2756492761
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -328.097546471,
+                "y": -44.4228355337
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -103.237590053,
+                "y": -28.1593795664
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

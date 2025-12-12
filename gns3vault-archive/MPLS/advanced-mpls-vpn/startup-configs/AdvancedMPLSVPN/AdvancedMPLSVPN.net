@@ -1,0 +1,333 @@
+autostart = False
+[localhost:7202]
+    workingdir = /AdvancedMPLSVPN/
+    udp = 10200
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9o3s-mz.124-16.bin
+        idlepc = 0x605050b4
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R12]]
+        model = 3640
+        console = 2011
+        cnfg = Configs/R12.cfg
+        slot0 = NM-4E
+        e0/0 = R5 e1/0
+        e0/2 = R2 e0/2
+        x = 204.129942315
+        y = 84.4055915911
+    [[ROUTER R10]]
+        model = 3640
+        console = 2009
+        cnfg = Configs/R10.cfg
+        slot0 = NM-4E
+        e0/0 = R5 e1/1
+        x = 198.989898733
+        y = -72.2031021683
+    [[ROUTER R11]]
+        model = 3640
+        console = 2010
+        cnfg = Configs/R11.cfg
+        slot0 = NM-4E
+        e0/0 = R5 e0/3
+        x = 195.30151519
+        y = -224.053823869
+    [[ROUTER R9]]
+        model = 3640
+        console = 2008
+        cnfg = Configs/R9.cfg
+        slot0 = NM-4E
+        e0/0 = R3 e0/1
+        x = -458.55486989
+        y = -72.0817818247
+[localhost:7200]
+    workingdir = /AdvancedMPLSVPN/
+    udp = 10000
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9o3s-mz.124-16.bin
+        idlepc = 0x605050b4
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R4]]
+        model = 3640
+        console = 2003
+        cnfg = Configs/R4.cfg
+        slot0 = NM-4E
+        e0/0 = R3 e0/0
+        e0/1 = R5 e0/0
+        x = -111.165476221
+        y = -73.9497474683
+    [[ROUTER R1]]
+        model = 3640
+        console = 2000
+        cnfg = Configs/R1.cfg
+        slot0 = NM-4E
+        e0/0 = R3 e0/2
+        x = -458.736544033
+        y = -222.506096654
+    [[ROUTER R3]]
+        model = 3640
+        console = 2002
+        cnfg = Configs/R3.cfg
+        slot0 = NM-4E
+        e0/0 = R4 e0/0
+        e0/1 = R9 e0/0
+        e0/2 = R1 e0/0
+        e0/3 = R2 e0/0
+        slot1 = NM-4E
+        e1/0 = R6 e0/0
+        x = -260.736544033
+        y = -73.5355339059
+    [[ROUTER R2]]
+        model = 3640
+        console = 2001
+        cnfg = Configs/R2.cfg
+        slot0 = NM-4E
+        e0/0 = R3 e0/3
+        e0/2 = R12 e0/2
+        x = -457.201010127
+        y = 82.162950904
+[localhost:7201]
+    workingdir = /AdvancedMPLSVPN/
+    udp = 10100
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9o3s-mz.124-16.bin
+        idlepc = 0x605050b4
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R5]]
+        model = 3640
+        console = 2004
+        cnfg = Configs/R5.cfg
+        slot0 = NM-4E
+        e0/0 = R4 e0/1
+        e0/1 = R7 e0/1
+        e0/2 = R8 e0/1
+        e0/3 = R11 e0/0
+        slot1 = NM-4E
+        e1/0 = R12 e0/0
+        e1/1 = R10 e0/0
+        x = 48.7989898733
+        y = -72.4142135624
+    [[ROUTER R6]]
+        model = 3640
+        console = 2005
+        cnfg = Configs/R6.cfg
+        slot0 = NM-4E
+        e0/0 = R3 e1/0
+        x = -263.150757595
+        y = -220.129942315
+    [[ROUTER R7]]
+        model = 3640
+        console = 2006
+        cnfg = Configs/R7.cfg
+        slot0 = NM-4E
+        e0/0 = R8 e0/0
+        e0/1 = R5 e0/1
+        x = -115.142135624
+        y = -222.615223689
+    [[ROUTER R8]]
+        model = 3640
+        console = 2007
+        cnfg = Configs/R8.cfg
+        slot0 = NM-4E
+        e0/0 = R7 e0/0
+        e0/1 = R5 e0/2
+        x = 44.2132034356
+        y = -222.908116908
+[GNS3-DATA]
+    workdir = /AdvancedMPLSVPN/
+    m11 = 0.999999999998
+    m22 = 0.999999999998
+    [[NOTE 1]]
+        text = PalmBRANCH
+        x = 179.552777849
+        y = -246.062445841
+        color = "#1a1a1a"
+    [[NOTE 2]]
+        text = MelonHQ
+        x = -462.665476221
+        y = 124.764501988
+        color = "#1a1a1a"
+    [[NOTE 3]]
+        text = RIP
+        x = -524.790367902
+        y = -273.442171518
+        color = "#ff0000"
+    [[NOTE 4]]
+        text = PalmHQ
+        x = -457.62384566
+        y = -244.786796564
+        color = "#1a1a1a"
+    [[NOTE 5]]
+        text = Central Server
+        x = -482.795418536
+        y = -28.3071785689
+        color = "#1a1a1a"
+    [[NOTE 6]]
+        text = CocoBranch2
+        x = 25.4558441228
+        y = -246.052344573
+        color = "#1a1a1a"
+    [[NOTE 7]]
+        text = PE1
+        x = -244.658946291
+        y = -28.9705627485
+        color = "#1a1a1a"
+    [[NOTE 8]]
+        text = EIGRP/BGP
+        x = -323.854905784
+        y = -272.922402258
+        color = "#ff0000"
+    [[NOTE 9]]
+        text = P
+        x = -84.1457069614
+        y = -32.5060966545
+        color = "#1a1a1a"
+    [[NOTE 10]]
+        text = PE2
+        x = 67.8822509941
+        y = -31.7989898733
+        color = "#1a1a1a"
+    [[NOTE 11]]
+        text = EIGRP/BGP
+        x = -130.107647739
+        y = -275.043722602
+        color = "#ff0000"
+    [[NOTE 12]]
+        text = OSPF
+        x = 274.357431101
+        y = -66.4472221515
+        color = "#ff0000"
+    [[NOTE 13]]
+        text = OSPF
+        x = -526.794551985
+        y = -65.7401153703
+        color = "#ff0000"
+    [[NOTE 14]]
+        text = MelonBRANCH
+        x = 182.433549547
+        y = 126.592929113
+        color = "#1a1a1a"
+    [[NOTE 15]]
+        text = AS 3
+        x = -171.277128572
+        y = -275.30151519
+        color = "#ff0000"
+    [[NOTE 16]]
+        text = OSPF Area 0
+        x = -134.857864376
+        y = -122.34314575
+        color = "#ff0000"
+    [[NOTE 17]]
+        text = OSPF
+        x = -523.053823869
+        y = 164.162950904
+        color = "#ff0000"
+    [[NOTE 18]]
+        text = AS 3
+        x = 104.187337522
+        y = -275.473088065
+        color = "#ff0000"
+    [[NOTE 19]]
+        text = AS 1
+        x = -99.9791847198
+        y = 5.88730162772
+        color = "#ff0000"
+    [[NOTE 20]]
+        text = Internet
+        x = 197.504617358
+        y = -28.5290039762
+        color = "#1a1a1a"
+    [[NOTE 21]]
+        text = CocoHQ
+        x = -262.336615821
+        y = -243.93102423
+        color = "#1a1a1a"
+    [[NOTE 22]]
+        text = CocoBranch1
+        x = -130.107647739
+        y = -244.638131011
+        color = "#1a1a1a"
+    [[NOTE 23]]
+        text = OSPF
+        x = 274.526911935
+        y = 164.811183182
+        color = "#ff0000"
+    [[NOTE 24]]
+        text = RIP
+        x = 285.355339059
+        y = -274.383297015
+        color = "#ff0000"
+    [[SHAPE 1]]
+        type = rectangle
+        x = -526.087445204
+        y = 29.8198051535
+        width = 200.0
+        height = 156.270598643
+        fill_color = "#55ff7f"
+        z = -2.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = -130.81475452
+        y = -274.357431101
+        width = 275.064537882
+        height = 147.785317268
+        fill_color = "#aaffff"
+        z = -2.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -326.250000001
+        y = -274.250000001
+        width = 196.031133186
+        height = 147.768723239
+        fill_color = "#aaffff"
+        z = -2.0
+    [[SHAPE 4]]
+        type = rectangle
+        x = -526.501658766
+        y = -125.865007051
+        width = 200.0
+        height = 156.270598643
+        fill_color = "#ffb3d0"
+        z = -2.0
+    [[SHAPE 5]]
+        type = rectangle
+        x = 144.249783362
+        y = -274.357431101
+        width = 176.776695297
+        height = 147.785317268
+        fill_color = "#ffff7f"
+        z = -2.0
+    [[SHAPE 6]]
+        type = rectangle
+        x = -325.976226128
+        y = -126.572113833
+        width = 469.518902709
+        height = 157.684812205
+        fill_color = "#ffaa7f"
+        z = -2.0
+    [[SHAPE 7]]
+        type = rectangle
+        x = -527.044551985
+        y = -274.357431101
+        width = 200.0
+        height = 147.078210487
+        fill_color = "#ffff7f"
+        z = -2.0
+    [[SHAPE 8]]
+        type = rectangle
+        x = 143.542676581
+        y = 28.2842712475
+        width = 176.776695297
+        height = 158.391918986
+        fill_color = "#55ff7f"
+        z = -2.0
+    [[SHAPE 9]]
+        type = rectangle
+        x = 143.542676581
+        y = -125.865007051
+        width = 176.069588516
+        height = 154.85638508
+        fill_color = "#89aa97"
+        z = -2.0

@@ -1,0 +1,336 @@
+{
+    "name": "multicast-pim-dr-election-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Kirk port FastEthernet0/0 to Picard port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Kirk port FastEthernet1/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 5,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Picard port FastEthernet0/0 to Spock port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 9,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from SW1 port 2 to Spock port FastEthernet1/0",
+                "destination_node_id": 5,
+                "destination_port_id": 10,
+                "id": 4,
+                "source_node_id": 1,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from SW1 port 3 to Scotty port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 8,
+                "id": 5,
+                "source_node_id": 1,
+                "source_port_id": 7
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Kirk",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Picard on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Kirk",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 123.43860018,
+                "y": -28.4644660941
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Picard",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Spock on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Kirk on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Picard",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -78.2426406871,
+                "y": -204.292893219
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": 15.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Kirk on port FastEthernet1/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Spock on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Scotty on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 5,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -85.2573593129,
+                "y": -21.7071067812
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Scotty",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 8,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Scotty",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -83.0,
+                "y": 154.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Spock",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Picard on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 10,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Spock",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -282.003571337,
+                "y": -26.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -216.374675043,
+                "y": -23.7279220614
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -74.2462120246,
+                "y": -167.270598642
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.234.0/24",
+                "x": -109.601551084,
+                "y": 66.0746391493
+            },
+            {
+                "color": "#0000ff",
+                "rotate": "41",
+                "text": "192.168.13.0/24",
+                "x": 30.405591591,
+                "y": -148.885822331
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -219.910208949,
+                "y": -39.9913780286
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 103.944696834,
+                "y": -26.5563491861
+            },
+            {
+                "color": "#0000ff",
+                "rotate": "-41",
+                "text": "192.168.12.0/24",
+                "x": -205.060966544,
+                "y": -76.0538238692
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 105.358910397,
+                "y": -39.9913780286
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -41.0121933088,
+                "y": -167.270598642
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -68.5893577751,
+                "y": 135.371103706
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

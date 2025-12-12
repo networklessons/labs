@@ -1,0 +1,312 @@
+{
+    "name": "BGP Max AS Limit",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 134.23906935,
+                "width": 139.895923599,
+                "x": -211.119841048,
+                "y": -99.3969696198,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 134.23906935,
+                "width": 139.895923599,
+                "x": -309.206673506,
+                "y": 58.4888527119,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffaa7f",
+                "height": 134.23906935,
+                "width": 139.895923599,
+                "x": -84.7487373416,
+                "y": 65.8650070515,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 134.23906935,
+                "width": 139.895923599,
+                "x": -408.707719527,
+                "y": -101.823376491,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from NewYork port FastEthernet0/0 to Tilburg port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from NewYork port FastEthernet1/0 to Tokio port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 6,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Shanghai port FastEthernet0/0 to Tilburg port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 3
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "NewYork",
+                    "x": -2.79289321881,
+                    "y": 39.3467170881
+                },
+                "ports": [
+                    {
+                        "description": "connected to Tilburg on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Tokio on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2007,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "NewYork",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -269.880771698,
+                "y": 96.7939392396
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Shanghai",
+                    "x": -2.17157287525,
+                    "y": 42.8822509941
+                },
+                "ports": [
+                    {
+                        "description": "connected to Tilburg on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2009,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Shanghai",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -48.5563491861,
+                "y": 97.5010460208
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Tilburg",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to NewYork on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Shanghai on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2006,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Tilburg",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -180.078210487,
+                "y": -42.5060966545
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Tokio",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to NewYork on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2008,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Tokio",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -370.289934627,
+                "y": -41.0918830921
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -106.066017178,
+                "y": 32.8528137426
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -398.80822459,
+                "y": 31.8406204337
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -257.386868352,
+                "y": 77.4005409574
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -258.801081915,
+                "y": 32.3467170881
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -239.709198823,
+                "y": 77.9066376119
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -140.714249456,
+                "y": -5.2268760406
+            },
+            {
+                "color": "#323232",
+                "text": "AS 3",
+                "x": -160.51323933,
+                "y": -98.6690475584
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -67.8822509941,
+                "y": 81.5462479188
+            },
+            {
+                "color": "#323232",
+                "text": "AS 4",
+                "x": -33.941125497,
+                "y": 174.073159853
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -360.624458406,
+                "y": -96.8528137426
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -315.36962441,
+                "y": -5.83704909604
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -258.093975134,
+                "y": 164.57568517
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -165.462986798,
+                "y": -5.02586591386
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

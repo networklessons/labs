@@ -1,0 +1,150 @@
+{
+    "name": "bgp-ebgp-multihop-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -527.501658765,
+                "y": -152.735064736,
+                "z": -1.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffaaff",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -177.483802078,
+                "y": -151.320851174,
+                "z": -1.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Ping port FastEthernet0/0 to Pong port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 2,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Ping",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Pong on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Ping",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -431.949747468,
+                "y": -73.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Pong",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Ping on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Pong",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -137.707106781,
+                "y": -72.8578643763
+            }
+        ],
+        "notes": [
+            {
+                "color": "#323232",
+                "text": ".2",
+                "x": -161.220346111,
+                "y": -78.8822509939
+            },
+            {
+                "color": "#323232",
+                "text": ".1",
+                "x": -362.745778749,
+                "y": -74.6396103068
+            },
+            {
+                "color": "#323232",
+                "text": "AS200",
+                "x": -101.11626971,
+                "y": -140.400540957
+            },
+            {
+                "color": "#323232",
+                "text": "192.168.12.X /30",
+                "x": -318.905158315,
+                "y": -79.5893577751
+            },
+            {
+                "color": "#323232",
+                "text": "AS 100",
+                "x": -452.548339959,
+                "y": -143.228968082
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

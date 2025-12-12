@@ -1,0 +1,620 @@
+{
+    "name": "ospf-troubleshooting-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 259.0,
+                "width": 200.0,
+                "x": -765.0,
+                "y": -443.0,
+                "z": -2.0
+            },
+            {
+                "border_style": 3,
+                "fill_color": "#ff9ce2",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -380.0,
+                "y": -410.0,
+                "z": -3.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 241.0,
+                "width": 193.0,
+                "x": -564.0,
+                "y": -421.0,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 320.0,
+                "width": 376.0,
+                "x": -850.0,
+                "y": -182.0,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 137.0,
+                "width": 134.0,
+                "x": -896.0,
+                "y": -364.0,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from FR1 port 1 to R1 port Serial0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from FR1 port 2 to R2 port Serial0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 10,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from FR1 port 3 to R3 port Serial0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 15,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from R1 port FastEthernet1/0 to R2 port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 14,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 8
+            },
+            {
+                "description": "Link from R1 port FastEthernet2/0 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 30,
+                "id": 5,
+                "source_node_id": 3,
+                "source_port_id": 9
+            },
+            {
+                "description": "Link from R4 port FastEthernet0/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 29,
+                "id": 6,
+                "source_node_id": 6,
+                "source_port_id": 19
+            },
+            {
+                "description": "Link from R5 port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 31,
+                "id": 7,
+                "source_node_id": 7,
+                "source_port_id": 20
+            },
+            {
+                "description": "Link from R5 port FastEthernet1/0 to R6 port FastEthernet0/0",
+                "destination_node_id": 8,
+                "destination_port_id": 22,
+                "id": 8,
+                "source_node_id": 7,
+                "source_port_id": 21
+            },
+            {
+                "description": "Link from R6 port FastEthernet1/0 to R7 port FastEthernet0/0",
+                "destination_node_id": 9,
+                "destination_port_id": 28,
+                "id": 9,
+                "source_node_id": 8,
+                "source_port_id": 23
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Frame Relay switch",
+                "id": 2,
+                "label": {
+                    "text": "FR1",
+                    "x": 7.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R1 on port Serial0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "1",
+                        "port_number": 1
+                    },
+                    {
+                        "description": "connected to R2 on port Serial0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "2",
+                        "port_number": 2
+                    },
+                    {
+                        "description": "connected to R3 on port Serial0/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "3",
+                        "port_number": 3
+                    }
+                ],
+                "properties": {
+                    "mappings": {
+                        "1:102": "2:201",
+                        "1:103": "3:301"
+                    },
+                    "name": "FR1"
+                },
+                "server_id": 1,
+                "type": "FrameRelaySwitch",
+                "x": -694.5,
+                "y": -26.5
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "R1",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 1",
+                        "id": 4,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 5,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 6,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 7,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R2 on port FastEthernet1/0",
+                        "id": 8,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 9,
+                        "link_id": 5,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603d2978",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R1",
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -695.0,
+                "y": -205.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "R2",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 2",
+                        "id": 10,
+                        "link_id": 2,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 11,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 12,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 13,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R1 on port FastEthernet1/0",
+                        "id": 14,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603d2978",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R2",
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -831.0,
+                "y": -22.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "R3",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 3",
+                        "id": 15,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 16,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 17,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 18,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603d2978",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R3",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -569.0,
+                "y": -16.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 6,
+                "label": {
+                    "text": "R4",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 19,
+                        "link_id": 6,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603d2978",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R4",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -798.0,
+                "y": -323.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 7,
+                "label": {
+                    "text": "R5",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 20,
+                        "link_id": 7,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R6 on port FastEthernet0/0",
+                        "id": 21,
+                        "link_id": 8,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x603d2978",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R5",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i7_startup-config.cfg"
+                },
+                "router_id": 7,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -595.0,
+                "y": -322.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 8,
+                "label": {
+                    "text": "R6",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R5 on port FastEthernet1/0",
+                        "id": 22,
+                        "link_id": 8,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R7 on port FastEthernet0/0",
+                        "id": 23,
+                        "link_id": 9,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 24,
+                        "name": "Serial2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 25,
+                        "name": "Serial2/1",
+                        "port_number": 1,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 26,
+                        "name": "Serial2/2",
+                        "port_number": 2,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 27,
+                        "name": "Serial2/3",
+                        "port_number": 3,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2006,
+                    "idlepc": "0x603d2978",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R6",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-4T",
+                    "startup_config": "configs\\i8_startup-config.cfg"
+                },
+                "router_id": 8,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -405.0,
+                "y": -321.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 9,
+                "label": {
+                    "text": "R7",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R6 on port FastEthernet1/0",
+                        "id": 28,
+                        "link_id": 9,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2007,
+                    "idlepc": "0x603d2978",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R7",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i9_startup-config.cfg"
+                },
+                "router_id": 9,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -283.0,
+                "y": -323.0
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": 15.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R4 on port FastEthernet0/0",
+                        "id": 29,
+                        "link_id": 6,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to R1 on port FastEthernet2/0",
+                        "id": 30,
+                        "link_id": 5,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to R5 on port FastEthernet0/0",
+                        "id": 31,
+                        "link_id": 7,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -700.5,
+                "y": -316.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#1a1a1a",
+                "text": "RIP",
+                "x": -294.0,
+                "y": -403.5
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "Area 51",
+                "x": -702.0,
+                "y": -429.5
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "Area 0",
+                "x": -860.0,
+                "y": -358.5
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "Area 0",
+                "x": -694.0,
+                "y": 96.5
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "NSSA",
+                "x": -498.0,
+                "y": -390.5
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "Area 56",
+                "x": -504.0,
+                "y": -415.5
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

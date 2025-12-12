@@ -1,0 +1,294 @@
+{
+    "name": "BGP Communities No-Export",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Bert port FastEthernet0/0 to Rene port FastEthernet2/0",
+                "destination_node_id": 4,
+                "destination_port_id": 6,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Erik port FastEthernet0/0 to Rene port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Frans port FastEthernet0/0 to Rene port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 5,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 3
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Bert",
+                    "x": 13.8431457505,
+                    "y": 39.3467170881
+                },
+                "ports": [
+                    {
+                        "description": "connected to Rene on port FastEthernet2/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2014,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Bert",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -486.962553523,
+                "y": 62.8528137426
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Erik",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Rene on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2012,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Erik",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -484.134126398,
+                "y": -193.826947829
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Frans",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Rene on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2015,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Frans",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -253.617315731,
+                "y": -69.3761543396
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Rene",
+                    "x": -44.8467170881,
+                    "y": 6.11269837228
+                },
+                "ports": [
+                    {
+                        "description": "connected to Erik on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Frans on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Bert on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 1,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2013,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Rene",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -484.841233179,
+                "y": -69.3761543396
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -402.343758496,
+                "y": -70.1837661842
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -516.895057048,
+                "y": -127.965512115
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -474.468650177,
+                "y": -29.5735931287
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -475.175756958,
+                "y": 43.0573952069
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0 /24",
+                "x": -517.60216383,
+                "y": 2.64823227822
+            },
+            {
+                "color": "#323232",
+                "text": "AS 3",
+                "x": -403.757972058,
+                "y": 26.6898628386
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -273.65032432,
+                "y": -69.1715728752
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -476.589970521,
+                "y": -152.915259583
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -212.132034356,
+                "y": -24.4228355337
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -422.142748369,
+                "y": -68.6654762208
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -400.222438152,
+                "y": -226.960461481
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -473.761543396,
+                "y": -90.1837661842
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#aaffff",
+                "height": 100.0,
+                "width": 172.333044483,
+                "x": -530.330085891,
+                "y": -228.090403796,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#aaff7f",
+                "height": 100.0,
+                "width": 362.745778749,
+                "x": -531.744299453,
+                "y": -101.11626971,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#ffaa7f",
+                "height": 100.0,
+                "width": 172.53405461,
+                "x": -533.158513016,
+                "y": 25.9619407772,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

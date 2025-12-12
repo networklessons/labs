@@ -1,0 +1,64 @@
+autostart = False
+[localhost:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9s-mz.124-16.bin
+        idlepc = 0x603d2918
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R1]]
+        model = 3640
+        console = 2001
+        slot0 = NM-4T
+        s0/0 = R2 s0/0
+        x = -333.0
+        y = -41.0
+    [[ROUTER R2]]
+        model = 3640
+        console = 2002
+        slot0 = NM-4T
+        s0/0 = R1 s0/0
+        s0/1 = R3 s0/0
+        x = -116.0
+        y = -41.0
+    [[ROUTER R3]]
+        model = 3640
+        console = 2003
+        slot0 = NM-4T
+        s0/0 = R2 s0/1
+        x = 104.707106781
+        y = -39.8786796564
+[GNS3-DATA]
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = Ironhide
+        x = 110.308657865
+        y = -66.8614357137
+        rotate = 0
+        color = "#323232"
+    [[NOTE 2]]
+        text = ""
+        x = -167.584307141
+        y = -129.086832458
+        rotate = 0
+        color = "#323232"
+    [[NOTE 3]]
+        text = Bumblebee
+        x = -117.379725677
+        y = -64.7401153702
+        rotate = 0
+        color = "#323232"
+    [[NOTE 4]]
+        text = Optimus
+        x = -331.633080376
+        y = -64.7401153702
+        rotate = 0
+        color = "#323232"
+    [[NOTE 5]]
+        text = ""
+        x = -103.944696834
+        y = -162.320851174
+        rotate = 0
+        color = "#323232"

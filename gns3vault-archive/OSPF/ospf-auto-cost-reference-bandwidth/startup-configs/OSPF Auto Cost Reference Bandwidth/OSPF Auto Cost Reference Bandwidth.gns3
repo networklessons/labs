@@ -1,0 +1,407 @@
+{
+    "name": "OSPF Auto Cost Reference Bandwidth",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Amy port FastEthernet2/0 to Selena port FastEthernet2/1",
+                "destination_node_id": 4,
+                "destination_port_id": 20,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Amy port FastEthernet2/1 to Emily port FastEthernet2/0",
+                "destination_node_id": 2,
+                "destination_port_id": 8,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Amy port GigabitEthernet1/0 to Mila port GigabitEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 12,
+                "id": 3,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Emily port FastEthernet1/0 to Mila port FastEthernet3/0",
+                "destination_node_id": 3,
+                "destination_port_id": 14,
+                "id": 4,
+                "source_node_id": 2,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from Emily port FastEthernet1/1 to Selena port FastEthernet2/0",
+                "destination_node_id": 4,
+                "destination_port_id": 19,
+                "id": 5,
+                "source_node_id": 2,
+                "source_port_id": 7
+            },
+            {
+                "description": "Link from Mila port GigabitEthernet2/0 to Selena port GigabitEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 18,
+                "id": 6,
+                "source_node_id": 3,
+                "source_port_id": 13
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c7200",
+                "id": 1,
+                "label": {
+                    "text": "Amy",
+                    "x": 10.3786796564,
+                    "y": 39.346717088
+                },
+                "ports": [
+                    {
+                        "description": "connected to Mila on port GigabitEthernet1/0",
+                        "id": 1,
+                        "link_id": 3,
+                        "name": "GigabitEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Selena on port FastEthernet2/1",
+                        "id": 2,
+                        "link_id": 1,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    },
+                    {
+                        "description": "connected to Emily on port FastEthernet2/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet2/1",
+                        "port_number": 1,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 5,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2001,
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "Amy",
+                    "slot1": "PA-GE",
+                    "slot2": "PA-2FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C7200",
+                "x": -338.470129473,
+                "y": 32.4472221514
+            },
+            {
+                "description": "Router c7200",
+                "id": 2,
+                "label": {
+                    "text": "Emily",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Mila on port FastEthernet3/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Selena on port FastEthernet2/0",
+                        "id": 7,
+                        "link_id": 5,
+                        "name": "FastEthernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Amy on port FastEthernet2/1",
+                        "id": 8,
+                        "link_id": 2,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 9,
+                        "name": "FastEthernet2/1",
+                        "port_number": 1,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 10,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 11,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2002,
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "Emily",
+                    "slot1": "PA-2FE-TX",
+                    "slot2": "PA-2FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C7200",
+                "x": -245.839141137,
+                "y": -228.475180106
+            },
+            {
+                "description": "Router c7200",
+                "id": 3,
+                "label": {
+                    "text": "Mila",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Amy on port GigabitEthernet1/0",
+                        "id": 12,
+                        "link_id": 3,
+                        "name": "GigabitEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Selena on port GigabitEthernet1/0",
+                        "id": 13,
+                        "link_id": 6,
+                        "name": "GigabitEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    },
+                    {
+                        "description": "connected to Emily on port FastEthernet1/0",
+                        "id": 14,
+                        "link_id": 4,
+                        "name": "FastEthernet3/0",
+                        "port_number": 0,
+                        "slot_number": 3
+                    },
+                    {
+                        "id": 15,
+                        "name": "FastEthernet3/1",
+                        "port_number": 1,
+                        "slot_number": 3
+                    },
+                    {
+                        "id": 16,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 17,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2000,
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "Mila",
+                    "slot1": "PA-GE",
+                    "slot2": "PA-GE",
+                    "slot3": "PA-2FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C7200",
+                "x": -504.882250994,
+                "y": -152.213203436
+            },
+            {
+                "description": "Router c7200",
+                "id": 4,
+                "label": {
+                    "text": "Selena",
+                    "x": 66.3761543395,
+                    "y": 8.23401871577
+                },
+                "ports": [
+                    {
+                        "description": "connected to Mila on port GigabitEthernet2/0",
+                        "id": 18,
+                        "link_id": 6,
+                        "name": "GigabitEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Emily on port FastEthernet1/1",
+                        "id": 19,
+                        "link_id": 5,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    },
+                    {
+                        "description": "connected to Amy on port FastEthernet2/0",
+                        "id": 20,
+                        "link_id": 1,
+                        "name": "FastEthernet2/1",
+                        "port_number": 1,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 21,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 22,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2003,
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "Selena",
+                    "slot1": "PA-GE",
+                    "slot2": "PA-2FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C7200",
+                "x": -57.0416305603,
+                "y": -59.4766594029
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -219.203102168,
+                "y": -0.582215100159
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0 /24",
+                "x": -480.125504426,
+                "y": -55.3345237792
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -439.113311117,
+                "y": -145.338095117
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -255.97265479,
+                "y": -194.627416998
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -288.499566724,
+                "y": 16.9985207036
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0 /24",
+                "x": -166.170093579,
+                "y": -143.112698372
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -213.546247918,
+                "y": -189.171572875
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.14.0 /24",
+                "x": -252.437120884,
+                "y": -85.2340187158
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -323.147799002,
+                "y": 12.9568901432
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -401.636651714,
+                "y": -185.241161391
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -446.184378929,
+                "y": -118.669047558
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -321.026478659,
+                "y": -130.890872965
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -82.0243866176,
+                "y": -72.908116908
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -85.5599205236,
+                "y": -46.9461761308
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

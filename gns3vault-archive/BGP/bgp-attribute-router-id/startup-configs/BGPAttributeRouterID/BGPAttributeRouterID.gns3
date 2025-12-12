@@ -1,0 +1,316 @@
+{
+    "name": "BGPAttributeRouterID",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Barcelona port FastEthernet0/0 to NewDelhi port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Barcelona port FastEthernet1/0 to Sydney port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 7,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from NewDelhi port FastEthernet1/0 to Paris port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Paris port FastEthernet1/0 to Sydney port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 8,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Barcelona",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to NewDelhi on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Sydney on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2023,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Barcelona",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -613.534667354,
+                "y": -156.350288425
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "NewDelhi",
+                    "x": -5.29289321881,
+                    "y": 39.346717088
+                },
+                "ports": [
+                    {
+                        "description": "connected to Barcelona on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Paris on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2024,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "NewDelhi",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -886.477884892,
+                "y": -17.7573593129
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Paris",
+                    "x": 11.0,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to NewDelhi on port FastEthernet1/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Sydney on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2025,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Paris",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -622.72705551,
+                "y": -17.0502525317
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Sydney",
+                    "x": 2.0,
+                    "y": 37.9325035256
+                },
+                "ports": [
+                    {
+                        "description": "connected to Barcelona on port FastEthernet1/0",
+                        "id": 7,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Paris on port FastEthernet1/0",
+                        "id": 8,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2026,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Sydney",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -354.73358544,
+                "y": -18.4644660941
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -523.966124859,
+                "y": -17.1507575951
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -557.200143575,
+                "y": -118.468037432
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -780.64588643,
+                "y": -16.4436508139
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.14.0 /24",
+                "x": -484.368145113,
+                "y": -99.1751442127
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -814.587011927,
+                "y": -21.594408409
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -644.174277661,
+                "y": -19.875108319
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -382.544768622,
+                "y": -18.966991411
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -816.001225489,
+                "y": -97.5599205236
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -557.200143575,
+                "y": -20.0761184457
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -625.082394569,
+                "y": -118.267027305
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#ffaa7f",
+                "height": 100.0,
+                "width": 124.450793489,
+                "x": -391.231060123,
+                "y": -50.405591591,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#aaff7f",
+                "height": 118.994949366,
+                "width": 156.270598642,
+                "x": -659.023520066,
+                "y": -210.91883092,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#ffff7f",
+                "height": 100.0,
+                "width": 131.015764646,
+                "x": -652.860569162,
+                "y": -49.6984848098,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#aaffff",
+                "height": 100.0,
+                "width": 124.450793489,
+                "x": -900.854039232,
+                "y": -52.3259018078,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

@@ -1,0 +1,122 @@
+{
+    "name": "pppoe-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from R1 port FastEthernet0/0 to R2 port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 2,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "R1",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R2 on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603d2918",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R1",
+                    "slot0": "NM-1FE-TX"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -307.0,
+                "y": -60.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "R2",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R1 on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603d2918",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R2",
+                    "slot0": "NM-1FE-TX"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 20.0,
+                "y": -60.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#323232",
+                "rotate": "0",
+                "text": "192.168.12.0 /24",
+                "x": -171.0,
+                "y": -63.0
+            },
+            {
+                "color": "#323232",
+                "rotate": "0",
+                "text": "Poseidon",
+                "x": -307.050252532,
+                "y": -82.5405845398
+            },
+            {
+                "color": "#323232",
+                "rotate": "0",
+                "text": "",
+                "x": -285.0,
+                "y": -222.0
+            },
+            {
+                "color": "#323232",
+                "rotate": "0",
+                "text": "Artemis",
+                "x": 23.5857864376,
+                "y": -83.56139982
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

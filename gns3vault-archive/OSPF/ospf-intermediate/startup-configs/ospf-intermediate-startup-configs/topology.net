@@ -1,0 +1,93 @@
+autostart = False
+[localhost:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9s-mz.124-16.bin
+        idlepc = 0x6059c528
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R4]]
+        model = 3640
+        console = 2003
+        cnfg = OSPF Intermediate_configs/R4.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R3 f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = R2 f1/0
+        x = 4.70710678119
+        y = 116.464466094
+    [[ROUTER R1]]
+        model = 3640
+        console = 2000
+        cnfg = OSPF Intermediate_configs/R1.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R2 f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = R3 f0/0
+        x = -337.0
+        y = -159.0
+    [[ROUTER R2]]
+        model = 3640
+        console = 2001
+        cnfg = OSPF Intermediate_configs/R2.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R1 f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = R4 f1/0
+        x = 4.12132034356
+        y = -159.0
+    [[ROUTER R3]]
+        model = 3640
+        console = 2002
+        cnfg = OSPF Intermediate_configs/R3.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R1 f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = R4 f0/0
+        x = -334.757359313
+        y = 117.585786438
+[GNS3-DATA]
+    configs = OSPF Intermediate_configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = L0: 4.4.4.4
+        x = 71.4177848998
+        y = 157.998520704
+        color = "#323232"
+    [[NOTE 2]]
+        text = L0: 3.3.3.3
+        x = -408.707719526
+        y = 162.241161391
+        color = "#323232"
+    [[NOTE 3]]
+        text = L0: 2.2.2.2
+        x = 66.4680374315
+        y = -187.776695297
+        color = "#323232"
+    [[NOTE 4]]
+        text = L0: 1.1.1.1
+        x = -408.000612745
+        y = -182.119841047
+        color = "#323232"
+    [[NOTE 5]]
+        text = 192.168.13.0 /24
+        x = -426.928932188
+        y = -19.0208152802
+        color = "#323232"
+    [[NOTE 6]]
+        text = 192.168.34.0 /24
+        x = -184.0
+        y = 147.0
+        color = "#323232"
+    [[NOTE 7]]
+        text = 192.168.24.0 /24
+        x = 38.0
+        y = -22.0
+        color = "#323232"
+    [[NOTE 8]]
+        text = 192.168.12.0 /24
+        x = -200.0
+        y = -165.0
+        color = "#323232"

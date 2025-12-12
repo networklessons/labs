@@ -1,0 +1,157 @@
+autostart = False
+[localhost:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9o3s-mz.124-16.bin
+        idlepc = 0x605050b4
+        ghostios = True
+        chassis = 3640
+    [[ROUTER Rutledge]]
+        model = 3640
+        console = 2005
+        cnfg = configs/Rutledge.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Stevens f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = Goodwin f1/0
+        x = -415.544768623
+        y = -106.852813743
+        hx = -2.58578643762
+        hy = -23.5857864376
+    [[ROUTER Goodwin]]
+        model = 3640
+        console = 2006
+        cnfg = configs/Goodwin.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Warren f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = Rutledge f1/0
+        x = -419.080302529
+        y = 34.568542495
+        hx = 3.1568542495
+        hy = 40.0538238693
+    [[ROUTER Stevens]]
+        model = 3640
+        console = 2003
+        cnfg = configs/Stevens.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Warren f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = Rutledge f0/0
+        x = -689.195092943
+        y = -106.145706961
+        hx = 0.707106781188
+        hy = -20.0502525317
+    [[ROUTER Warren]]
+        model = 3640
+        console = 2004
+        cnfg = configs/Warren.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Stevens f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = Goodwin f0/0
+        x = -690.609306505
+        y = 33.1543289327
+        hx = -0.121320343564
+        hy = 37.9325035257
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = BGP AS 34
+        x = -403.050865277
+        y = -159.279220614
+        color = "#1a1a1a"
+    [[NOTE 2]]
+        text = BGP AS 12
+        x = -713.470742219
+        y = -158.371103706
+        color = "#1a1a1a"
+    [[NOTE 3]]
+        text = 192.168.12.0 /24
+        x = -759.432682996
+        y = -24.6238456604
+        color = "#0000ff"
+    [[NOTE 4]]
+        text = 192.168.34.0 /24
+        x = -420.021428026
+        y = -23.7157287525
+        color = "#0000ff"
+    [[NOTE 5]]
+        text = 192.168.24.0 /24
+        x = -584.777308043
+        y = 62.7523086792
+        color = "#0000ff"
+    [[NOTE 6]]
+        text = 192.168.13.0 /24
+        x = -583.36309448
+        y = -109.580735804
+        color = "#0000ff"
+    [[NOTE 7]]
+        text = f1/0
+        x = 33.3999800015
+        y = -20.8264272747
+        interface = Goodwin f1/0
+        color = "#1a1a1a"
+    [[NOTE 8]]
+        text = f0/0
+        x = -32.4556731311
+        y = 23.297254998
+        interface = Goodwin f0/0
+        color = "#1a1a1a"
+    [[NOTE 9]]
+        text = f1/0
+        x = 31.1858064361
+        y = 40.7847967143
+        interface = Rutledge f1/0
+        color = "#1a1a1a"
+    [[NOTE 10]]
+        text = f0/0
+        x = -31.7487373416
+        y = 21.2928932188
+        interface = Rutledge f0/0
+        color = "#1a1a1a"
+    [[NOTE 11]]
+        text = f1/0
+        x = 65.9287611964
+        y = 22.8240653455
+        interface = Warren f1/0
+        color = "#1a1a1a"
+    [[NOTE 12]]
+        text = f0/0
+        x = 33.2010024873
+        y = -17.9994949718
+        interface = Warren f0/0
+        color = "#1a1a1a"
+    [[NOTE 13]]
+        text = f1/0
+        x = 67.3431457505
+        y = 26.2426406871
+        interface = Stevens f1/0
+        color = "#1a1a1a"
+    [[NOTE 14]]
+        text = f0/0
+        x = 32.7989975127
+        y = 40.7862915362
+        interface = Stevens f0/0
+        color = "#1a1a1a"
+    [[SHAPE 1]]
+        type = ellipse
+        x = -771.654508403
+        y = -174.149278299
+        width = 200.0
+        height = 326.683332909
+        fill_color = "#ffff7f"
+        border_style = 2
+        z = -2.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -465.276262022
+        y = -171.119841048
+        width = 210.606601718
+        height = 326.683332909
+        fill_color = "#aaff7f"
+        border_style = 2
+        z = -2.0

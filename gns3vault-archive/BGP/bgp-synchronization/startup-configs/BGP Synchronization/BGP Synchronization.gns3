@@ -1,0 +1,362 @@
+{
+    "name": "BGP Synchronization",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Baldwin port FastEthernet0/0 to Foxx port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 2,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Foxx port FastEthernet1/0 to Mitchell port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 6,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Green port FastEthernet0/0 to Mitchell port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 7,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Green port FastEthernet1/0 to Rollins port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 8,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Baldwin",
+                    "x": 0.707106781187,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Foxx on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Baldwin",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -404.514718626,
+                "y": 203.85638508
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Foxx",
+                    "x": -13.2487373415,
+                    "y": -20.7573593129
+                },
+                "ports": [
+                    {
+                        "description": "connected to Baldwin on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Mitchell on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Foxx",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -402.109739779,
+                "y": 14.7695526217
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Green",
+                    "x": 38.1837661841,
+                    "y": -20.7573593129
+                },
+                "ports": [
+                    {
+                        "description": "connected to Mitchell on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Rollins on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Green",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -119.267027305,
+                "y": 9.11269837221
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Mitchell",
+                    "x": 1.41421356237,
+                    "y": -20.7573593129
+                },
+                "ports": [
+                    {
+                        "description": "connected to Foxx on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Green on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Mitchell",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -263.516810667,
+                "y": -119.580735804
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Rollins",
+                    "x": 5.70710678119,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Green on port FastEthernet1/0",
+                        "id": 8,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Rollins",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -119.974134086,
+                "y": 206.395490323
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -111.015764646,
+                "y": 184.381817718
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -391.737156777,
+                "y": 52.6518036156
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -384.666088965,
+                "y": -46.8492424049
+            },
+            {
+                "color": "#323232",
+                "text": "BGP AS 1",
+                "x": -320.319371878,
+                "y": 242.558441227
+            },
+            {
+                "color": "#323232",
+                "text": "BGP AS 2",
+                "x": -111.015764646,
+                "y": -144.429978209
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -205.768073325,
+                "y": -48.4644660941
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -413.657466994,
+                "y": 123.057395207
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -338.704148188,
+                "y": 0.124891681028
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -226.981276761,
+                "y": -81.594408409
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -141.421356237,
+                "y": -4.72077938642
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -111.015764646,
+                "y": 48.1112190758
+            },
+            {
+                "color": "#323232",
+                "text": "BGP AS 3",
+                "x": -207.182286888,
+                "y": 242.863527755
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -258.093975133,
+                "y": -81.3933982822
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0 /24",
+                "x": -166.170093579,
+                "y": 124.57568517
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -395.979797464,
+                "y": 181.546247918
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#aaffff",
+                "height": 184.048773235,
+                "width": 176.977705423,
+                "x": -209.504617358,
+                "y": 86.7731239592,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#aaff7f",
+                "height": 230.516810667,
+                "width": 382.544768622,
+                "x": -414.364573775,
+                "y": -144.956890143,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#ffaa7f",
+                "height": 183.847763109,
+                "width": 171.119841047,
+                "x": -414.364573775,
+                "y": 86.9741340859,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

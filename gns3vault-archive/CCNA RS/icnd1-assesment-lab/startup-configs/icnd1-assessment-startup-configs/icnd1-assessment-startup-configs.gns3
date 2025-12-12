@@ -1,0 +1,251 @@
+{
+    "name": "icnd1-assessment-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from R1 port Serial0/0 to R3 port Serial0/1",
+                "destination_node_id": 3,
+                "destination_port_id": 10,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from R1 port Serial0/1 to R2 port Serial0/1",
+                "destination_node_id": 2,
+                "destination_port_id": 6,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from R2 port Serial0/0 to R3 port Serial0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 9,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "R1",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R3 on port Serial0/1",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R2 on port Serial0/1",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x6059c528",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R1",
+                    "slot0": "NM-4T"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -188.0,
+                "y": -156.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "R2",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R3 on port Serial0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R1 on port Serial0/1",
+                        "id": 6,
+                        "link_id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 7,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x6059c528",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R2",
+                    "slot0": "NM-4T"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -315.0,
+                "y": 53.5
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "R3",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R2 on port Serial0/0",
+                        "id": 9,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R1 on port Serial0/0",
+                        "id": 10,
+                        "link_id": 1,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 11,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 12,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x6059c528",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R3",
+                    "slot0": "NM-4T"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -53.0,
+                "y": 53.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#1a1a1a",
+                "rotate": "0",
+                "text": "192.168.12.0 / 25",
+                "x": -296.0,
+                "y": -58.5
+            },
+            {
+                "color": "#1a1a1a",
+                "rotate": "0",
+                "text": "KingKong",
+                "x": -57.0,
+                "y": 100.0
+            },
+            {
+                "color": "#1a1a1a",
+                "rotate": "0",
+                "text": "Nessie",
+                "x": -314.0,
+                "y": 100.0
+            },
+            {
+                "color": "#1a1a1a",
+                "rotate": "0",
+                "text": "192.168.13.0 / 28",
+                "x": -153.0,
+                "y": -56.5
+            },
+            {
+                "color": "#1a1a1a",
+                "rotate": "0",
+                "text": "Godzilla",
+                "x": -189.0,
+                "y": -180.5
+            },
+            {
+                "color": "#1a1a1a",
+                "rotate": "0",
+                "text": "",
+                "x": -453.0,
+                "y": -169.5
+            },
+            {
+                "color": "#1a1a1a",
+                "rotate": "0",
+                "text": "192.168.23.0 / 26",
+                "x": -224.0,
+                "y": 93.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

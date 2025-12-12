@@ -1,0 +1,420 @@
+{
+    "name": "BGP Communities Local AS",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Etari port FastEthernet0/0 to MacroZoft port FastEthernet2/0",
+                "destination_node_id": 2,
+                "destination_port_id": 5,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Etari port FastEthernet1/0 to Seega port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 7,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from MacroZoft port FastEthernet0/0 to Wintendo port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 8,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from MacroZoft port FastEthernet1/0 to Zony port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 9,
+                "id": 4,
+                "source_node_id": 2,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Seega port FastEthernet0/0 to Zony port FastEthernet1/0",
+                "destination_node_id": 5,
+                "destination_port_id": 10,
+                "id": 5,
+                "source_node_id": 3,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Etari",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to MacroZoft on port FastEthernet2/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Seega on port FastEthernet1/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Etari",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -91.6898628385,
+                "y": -59.4766594029
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "MacroZoft",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Wintendo on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Zony on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Etari on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 1,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "MacroZoft",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -363.925973595,
+                "y": -60.1837661841
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Seega",
+                    "x": 7.20710678119,
+                    "y": 42.1751442127
+                },
+                "ports": [
+                    {
+                        "description": "connected to Zony on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Etari on port FastEthernet1/0",
+                        "id": 7,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Seega",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -92.3969696197,
+                "y": 67.8025612107
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Wintendo",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to MacroZoft on port FastEthernet0/0",
+                        "id": 8,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Wintendo",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -633.069588515,
+                "y": -61.6482322781
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Zony",
+                    "x": 8.37867965644,
+                    "y": 42.1751442127
+                },
+                "ports": [
+                    {
+                        "description": "connected to MacroZoft on port FastEthernet1/0",
+                        "id": 9,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Seega on port FastEthernet0/0",
+                        "id": 10,
+                        "link_id": 5,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Zony",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -363.925973595,
+                "y": 67.0954544295
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -113.13708499,
+                "y": -58.7659812842
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -299.813275223,
+                "y": 68.1112190758
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -566.39253173,
+                "y": -62.405591591
+            },
+            {
+                "color": "#323232",
+                "text": "AS 20",
+                "x": -50.2045814642,
+                "y": -117.559920524
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -82.0243866176,
+                "y": -17.247691321
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -386.080302528,
+                "y": -61.1923881554
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -113.844191771,
+                "y": 69.3244225114
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -83.43860018,
+                "y": 48.3122292026
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -531.744299452,
+                "y": -60.7903679019
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -332.340187158,
+                "y": -21.2893218813
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -262.33661582,
+                "y": -58.8700576851
+            },
+            {
+                "color": "#323232",
+                "text": "AS 10",
+                "x": -315.369624409,
+                "y": -118.066017178
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -572.756492761,
+                "y": -106.752308679
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.35.0 /24",
+                "x": -127.279220614,
+                "y": 11.6396103068
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -296.277741317,
+                "y": -59.9791847198
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0 /24",
+                "x": -261.629509039,
+                "y": 67.3000358937
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -38.8908729653,
+                "y": -150.793939239
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -330.925973595,
+                "y": 47.099025767
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0 /24",
+                "x": -395.272690683,
+                "y": 10.2253967444
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#aaff7f",
+                "height": 117.67766953,
+                "width": 146.371103706,
+                "x": -676.701189596,
+                "y": -106.773123959,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#ffaa7f",
+                "height": 259.508188695,
+                "width": 132.228968082,
+                "x": -395.272690683,
+                "y": -119.501046021,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#ffaa7f",
+                "height": 261.428498912,
+                "width": 132.228968082,
+                "x": -131.015764646,
+                "y": -119.501046021,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#ffff7f",
+                "height": 304.05591591,
+                "width": 413.657466994,
+                "x": -403.050865276,
+                "y": -152.735064736,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

@@ -1,0 +1,420 @@
+{
+    "name": "multicast-pim-nbma-mode-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Arbuckle port FastEthernet0/0 to Pooky port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 20,
+                "id": 1,
+                "source_node_id": 5,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Arlene port Serial0/0 to FRSW port Serial0/2",
+                "destination_node_id": 1,
+                "destination_port_id": 8,
+                "id": 2,
+                "source_node_id": 6,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from FRSW port Serial0/0 to Odie port Serial0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 11,
+                "id": 3,
+                "source_node_id": 1,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from FRSW port Serial0/1 to Pooky port Serial0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 16,
+                "id": 4,
+                "source_node_id": 1,
+                "source_port_id": 7
+            },
+            {
+                "description": "Link from Garfield port FastEthernet0/0 to Odie port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 15,
+                "id": 5,
+                "source_node_id": 2,
+                "source_port_id": 10
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Arbuckle",
+                    "x": 2.00000000001,
+                    "y": 38.0000000001
+                },
+                "ports": [
+                    {
+                        "description": "connected to Pooky on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2110,
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Arbuckle",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -38.9797974645,
+                "y": 153.090403796
+            },
+            {
+                "description": "Router c3600",
+                "id": 6,
+                "label": {
+                    "text": "Arlene",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FRSW on port Serial0/2",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 5,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2111,
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Arlene",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 49.0437226014,
+                "y": -223.695526217
+            },
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "FRSW",
+                    "x": -49.068542495,
+                    "y": 14.5979797465
+                },
+                "ports": [
+                    {
+                        "description": "connected to Odie on port Serial0/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Pooky on port Serial0/0",
+                        "id": 7,
+                        "link_id": 4,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Arlene on port Serial0/0",
+                        "id": 8,
+                        "link_id": 2,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 9,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2109,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "FRSW",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -46.4558441227,
+                "y": -72.0121933088
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Garfield",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Odie on port FastEthernet1/0",
+                        "id": 10,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2107,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Garfield",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -34.9146468382,
+                "y": -343.589357775
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Odie",
+                    "x": -38.2045814644,
+                    "y": 8.94112549703
+                },
+                "ports": [
+                    {
+                        "description": "connected to FRSW on port Serial0/0",
+                        "id": 11,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 12,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 13,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 14,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Garfield on port FastEthernet0/0",
+                        "id": 15,
+                        "link_id": 5,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2108,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Odie",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -128.60303038,
+                "y": -222.568542495
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Pooky",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FRSW on port Serial0/1",
+                        "id": 16,
+                        "link_id": 4,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 17,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 18,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 19,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Arbuckle on port FastEthernet0/0",
+                        "id": 20,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2106,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Pooky",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 57.2060607607,
+                "y": 35.0035713375
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": 39.5979797464,
+                "y": 26.4766594029
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -96.8736290221,
+                "y": -246.466558135
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -46.6690475581,
+                "y": -311.520382004
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0/24",
+                "x": -17.6776695297,
+                "y": 108.501046021
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.234.0/24",
+                "x": 19.091883092,
+                "y": -64.033008589
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -97.5807358037,
+                "y": -182.826947828
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -5.65685424949,
+                "y": 135.371103706
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0/24",
+                "x": -120.208152802,
+                "y": -276.165042945
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 47.3761543395,
+                "y": -187.069588515
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

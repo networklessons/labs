@@ -1,0 +1,182 @@
+{
+    "name": "Recursive Routing Failure",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Australia port FastEthernet0/0 to China port FastEthernet1/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from China port FastEthernet0/0 to Japan port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Australia",
+                    "x": -4.20710678119,
+                    "y": 42.8822509939
+                },
+                "ports": [
+                    {
+                        "description": "connected to China on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Australia",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -115.731493399,
+                "y": -31.1923881554
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "China",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Japan on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Australia on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "China",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -266.345237792,
+                "y": -198.776695297
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Japan",
+                    "x": -4.29289321881,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to China on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Japan",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -414.213203436,
+                "y": -34.7451660041
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -258.093975133,
+                "y": -161.400540957
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -136.471608769,
+                "y": -48.6654762208
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -232.63813101,
+                "y": -161.601551084
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -207.182286888,
+                "y": -109.074639149
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -354.260497374,
+                "y": -52.2010101268
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -373.352380466,
+                "y": -110.287842585
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

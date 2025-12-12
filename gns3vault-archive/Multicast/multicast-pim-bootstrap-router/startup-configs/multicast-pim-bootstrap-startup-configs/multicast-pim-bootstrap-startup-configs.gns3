@@ -1,0 +1,273 @@
+{
+    "name": "multicast-pim-bootstrap-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from R1 port FastEthernet0/0 to R2 port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 2,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from R2 port FastEthernet1/0 to R3 port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from R3 port FastEthernet1/0 to R4 port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 6,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "R1",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R2 on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603d2918",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R1",
+                    "slot0": "NM-1FE-TX"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -249.0,
+                "y": -231.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "R2",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R1 on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R3 on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603d2918",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R2",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -32.0,
+                "y": -75.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "R3",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R2 on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R4 on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603d2918",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R3",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -240.0,
+                "y": 62.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "R4",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R3 on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603d2918",
+                    "image": "c3640-jk9s-mz.124-16.bin",
+                    "name": "R4",
+                    "slot0": "NM-1FE-TX"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -37.0710678119,
+                "y": 181.431457505
+            }
+        ],
+        "notes": [
+            {
+                "color": "#323232",
+                "text": "Batman",
+                "x": -31.9857146501,
+                "y": 164.016377391
+            },
+            {
+                "color": "#0000ff",
+                "rotate": "-33",
+                "text": "192.168.23.0/24",
+                "x": -161.220346111,
+                "y": 22.941125497
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -33.941125497,
+                "y": -97.9741340859
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -35.3553390593,
+                "y": -33.627416998
+            },
+            {
+                "color": "#323232",
+                "text": "Catwoman",
+                "x": -251.730014102,
+                "y": -251.416305603
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -189.504617358,
+                "y": 103.551298552
+            },
+            {
+                "color": "#323232",
+                "text": "Joker",
+                "x": -17.6776695297,
+                "y": -95.1457069612
+            },
+            {
+                "color": "#323232",
+                "text": "Robin",
+                "x": -229.809703886,
+                "y": 41.3259018078
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -185.261976671,
+                "y": -205.454364826
+            },
+            {
+                "color": "#0000ff",
+                "rotate": "31",
+                "text": "192.168.34.0/24",
+                "x": -144.956890143,
+                "y": 92.9446968344
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -55.8614357137,
+                "y": 184.161471607
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -190.211724139,
+                "y": 42.033008589
+            },
+            {
+                "color": "#0000ff",
+                "rotate": "35",
+                "text": "192.168.12.0/24",
+                "x": -140.714249456,
+                "y": -185.655374953
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

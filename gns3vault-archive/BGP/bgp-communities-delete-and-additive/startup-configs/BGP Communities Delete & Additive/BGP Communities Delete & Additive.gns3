@@ -1,0 +1,229 @@
+{
+    "name": "BGP Communities Delete & Additive",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 136.360389693,
+                "width": 136.360389693,
+                "x": 59.1959594929,
+                "y": -128.894444303,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 136.360389693,
+                "width": 136.360389693,
+                "x": -227.182286888,
+                "y": -126.773123959,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ff5a5a",
+                "height": 136.360389693,
+                "width": 136.360389693,
+                "x": -502.045814642,
+                "y": -128.693434176,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Luigi port FastEthernet0/0 to Toad port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Mario port FastEthernet0/0 to Toad port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 3,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Luigi",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Toad on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Luigi",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 99.2289680819,
+                "y": -84.9325035256
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Mario",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Toad on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Mario",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -477.263455967,
+                "y": -83.5147186258
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Toad",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Mario on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Luigi on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Toad",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -193.513239329,
+                "y": -84.9325035256
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -363.45288553,
+                "y": -82.7106781187
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -217.081781824,
+                "y": -85.2340187158
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 72.8319984622,
+                "y": -86.3431457505
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -456.083873865,
+                "y": -21.8994949366
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -84.1457069612,
+                "y": -85.033008589
+            },
+            {
+                "color": "#323232",
+                "text": "AS 3",
+                "x": 108.894444303,
+                "y": -20.8873016278
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -181.726442765,
+                "y": -17.8578643763
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -124.450793489,
+                "y": -84.0208152802
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -406.586399182,
+                "y": -84.3259018078
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

@@ -1,0 +1,7 @@
+hostname CLIENT
+!
+interface FastEthernet0/13
+ description INTERFACE CONNECTED TO SW1
+ no switchport
+ ip address dhcp
+

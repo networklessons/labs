@@ -1,0 +1,334 @@
+{
+    "name": "Multicast RPF Failure NBMA",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from FR1 port 1 to HUB port Serial0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 4,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from FR1 port 2 to SpokeB port Serial0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 13,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from FR1 port 3 to SpokeA port Serial0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 9,
+                "id": 3,
+                "source_node_id": 1,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Receiver port FastEthernet0/0 to SpokeB port FastEthernet1/0",
+                "destination_node_id": 5,
+                "destination_port_id": 17,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 8
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Frame Relay switch",
+                "id": 1,
+                "label": {
+                    "text": "FR1",
+                    "x": 8.41421356237,
+                    "y": 45.0035713375
+                },
+                "ports": [
+                    {
+                        "description": "connected to HUB on port Serial0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "1",
+                        "port_number": 1
+                    },
+                    {
+                        "description": "connected to SpokeB on port Serial0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "2",
+                        "port_number": 2
+                    },
+                    {
+                        "description": "connected to SpokeA on port Serial0/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "3",
+                        "port_number": 3
+                    }
+                ],
+                "properties": {
+                    "mappings": {
+                        "1:102": "2:201",
+                        "1:103": "3:301"
+                    },
+                    "name": "FR1"
+                },
+                "server_id": 1,
+                "type": "FrameRelaySwitch",
+                "x": -137.929978209,
+                "y": -93.5035713375
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "HUB",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 1",
+                        "id": 4,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 5,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 6,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 7,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "HUB",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -144.393398282,
+                "y": -228.828427125
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Receiver",
+                    "x": -2.08578643763,
+                    "y": 37.2253967444
+                },
+                "ports": [
+                    {
+                        "description": "connected to SpokeB on port FastEthernet1/0",
+                        "id": 8,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Receiver",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -289.679761571,
+                "y": 50.8319984622
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "SpokeA",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 3",
+                        "id": 9,
+                        "link_id": 3,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 10,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 11,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 12,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "SpokeA",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -12.4939033456,
+                "y": -85.6396103068
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "SpokeB",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 2",
+                        "id": 13,
+                        "link_id": 2,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 14,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 15,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 16,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Receiver on port FastEthernet0/0",
+                        "id": 17,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "SpokeB",
+                    "slot0": "NM-4T",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -288.97265479,
+                "y": -82.811183182
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -324.562012565,
+                "y": -11.4939033456
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -132.228968082,
+                "y": -187.563491861
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -220.61731573,
+                "y": -95.3345237792
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -33.2340187158,
+                "y": -83.1126983722
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -277.185858225,
+                "y": -42.5025253169
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -277.892965006,
+                "y": 30.1284630185
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.123.0 /24",
+                "x": -182.433549546,
+                "y": -147.057395207
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

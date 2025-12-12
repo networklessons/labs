@@ -1,0 +1,282 @@
+{
+    "name": "RSVP for Weighted Fair Queueing (WFQ)",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Beast port FastEthernet0/0 to Mystique port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 4,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Magneto port FastEthernet0/0 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 6,
+                "id": 2,
+                "source_node_id": 3,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Mystique port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 7,
+                "id": 3,
+                "source_node_id": 4,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from SW1 port 1 to Xavier port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 8,
+                "id": 4,
+                "source_node_id": 1,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Beast",
+                    "x": 6.08578643763,
+                    "y": 39.346717088
+                },
+                "ports": [
+                    {
+                        "description": "connected to Mystique on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Beast",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 29.2253967444,
+                "y": 32.4472221514
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Magneto",
+                    "x": -3.5,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Magneto",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -252.910208949,
+                "y": 27.4974746831
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Mystique",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Beast on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Mystique",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 30.6396103068,
+                "y": -84.9325035256
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": -39.4472221514,
+                    "y": 3.99137802865
+                },
+                "ports": [
+                    {
+                        "description": "connected to Xavier on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 4,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Magneto on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 2,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Mystique on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 3,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -255.410208949,
+                "y": -78.2253967444
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Xavier",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 8,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Xavier",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -253.440079476,
+                "y": -194.133513652
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 7.77817459305,
+                "y": -61.594408409
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 41.71930009,
+                "y": -45.5319625685
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -217.788888605,
+                "y": -153.11626971
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.123.0 /24",
+                "x": -156.270598642,
+                "y": -85.5391052434
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -217.788888605,
+                "y": 7.19595949289
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -2.82842712475,
+                "y": -17.8578643763
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": 38.8908729653,
+                "y": 12.2497833621
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

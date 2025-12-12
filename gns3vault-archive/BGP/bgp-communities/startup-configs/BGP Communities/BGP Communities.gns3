@@ -1,0 +1,212 @@
+{
+    "name": "BGP Communities",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Amsterdam port FastEthernet0/0 to NewYork port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Hamburg port FastEthernet0/0 to NewYork port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Amsterdam",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to NewYork on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2006,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Amsterdam",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -274.830519166,
+                "y": -164.128463019
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Hamburg",
+                    "x": -2.37867965644,
+                    "y": 39.3467170881
+                },
+                "ports": [
+                    {
+                        "description": "connected to NewYork on port FastEthernet1/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2007,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Hamburg",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -281.194480197,
+                "y": 25.3761543396
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "NewYork",
+                    "x": -14.1066017178,
+                    "y": 38.6396103069
+                },
+                "ports": [
+                    {
+                        "description": "connected to Amsterdam on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Hamburg on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "NewYork",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -564.037192672,
+                "y": -74.3259018079
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -475.175756958,
+                "y": -59.2720779386
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0 /24",
+                "x": -452.54833996,
+                "y": 20.3259018079
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -296.277741318,
+                "y": -154.225396745
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -450.427019617,
+                "y": -143.521861301
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -239.002092042,
+                "y": -61.4974746832
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -475.175756958,
+                "y": -71.7989898733
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -622.253967446,
+                "y": -63.8198051535
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -301.934595567,
+                "y": 4.67261889604
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#aaff7f",
+                "height": 292.742207412,
+                "width": 128.693434176,
+                "x": -321.026478659,
+                "y": -197.282791951,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#aaffff",
+                "height": 123.743686708,
+                "width": 170.613744393,
+                "x": -623.869191135,
+                "y": -110.308657865,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

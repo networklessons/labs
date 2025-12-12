@@ -1,0 +1,545 @@
+{
+    "name": "BGP DMZ Link Bandwidth",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Athens port FastEthernet0/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 9,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Delphi port Ethernet1/0 to Thebes port Ethernet1/0",
+                "destination_node_id": 6,
+                "destination_port_id": 22,
+                "id": 2,
+                "source_node_id": 3,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Delphi port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 11,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Olympia port FastEthernet0/0 to Sparta port FastEthernet1/0",
+                "destination_node_id": 5,
+                "destination_port_id": 13,
+                "id": 4,
+                "source_node_id": 4,
+                "source_port_id": 7
+            },
+            {
+                "description": "Link from Olympia port FastEthernet1/0 to Thebes port FastEthernet2/0",
+                "destination_node_id": 6,
+                "destination_port_id": 26,
+                "id": 5,
+                "source_node_id": 4,
+                "source_port_id": 8
+            },
+            {
+                "description": "Link from SW1 port 2 to Sparta port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 12,
+                "id": 6,
+                "source_node_id": 1,
+                "source_port_id": 10
+            },
+            {
+                "description": "Link from Sparta port Serial2/0 to Thebes port Serial0/0",
+                "destination_node_id": 6,
+                "destination_port_id": 18,
+                "id": 7,
+                "source_node_id": 5,
+                "source_port_id": 14
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Athens",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Athens",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -163.69848481,
+                "y": -170.818325857
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Delphi",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 2,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Thebes on port Ethernet1/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "Ethernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 4,
+                        "name": "Ethernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 5,
+                        "name": "Ethernet1/2",
+                        "port_number": 2,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 6,
+                        "name": "Ethernet1/3",
+                        "port_number": 3,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Delphi",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-4E",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -8.95836943966,
+                "y": -48.8700576851
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Olympia",
+                    "x": -3.53553390594,
+                    "y": 38.6396103069
+                },
+                "ports": [
+                    {
+                        "description": "connected to Sparta on port FastEthernet1/0",
+                        "id": 7,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Thebes on port FastEthernet2/0",
+                        "id": 8,
+                        "link_id": 5,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Olympia",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -321.499566724,
+                "y": 74.8736290229
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": -3.38477631085,
+                    "y": -20.7573593128
+                },
+                "ports": [
+                    {
+                        "description": "connected to Athens on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 1,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Sparta on port FastEthernet0/0",
+                        "id": 10,
+                        "link_id": 6,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Delphi on port FastEthernet0/0",
+                        "id": 11,
+                        "link_id": 3,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -166.31475452,
+                "y": -43.5771644663
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Sparta",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 12,
+                        "link_id": 6,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Olympia on port FastEthernet0/0",
+                        "id": 13,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Thebes on port Serial0/0",
+                        "id": 14,
+                        "link_id": 7,
+                        "name": "Serial2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 15,
+                        "name": "Serial2/1",
+                        "port_number": 1,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 16,
+                        "name": "Serial2/2",
+                        "port_number": 2,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 17,
+                        "name": "Serial2/3",
+                        "port_number": 3,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Sparta",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-4T",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -318.671139599,
+                "y": -48.8700576851
+            },
+            {
+                "description": "Router c3600",
+                "id": 6,
+                "label": {
+                    "text": "Thebes",
+                    "x": 4.62132034356,
+                    "y": 41.4680374317
+                },
+                "ports": [
+                    {
+                        "description": "connected to Sparta on port Serial2/0",
+                        "id": 18,
+                        "link_id": 7,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 19,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 20,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 21,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Delphi on port Ethernet1/0",
+                        "id": 22,
+                        "link_id": 2,
+                        "name": "Ethernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 23,
+                        "name": "Ethernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 24,
+                        "name": "Ethernet1/2",
+                        "port_number": 2,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 25,
+                        "name": "Ethernet1/3",
+                        "port_number": 3,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Olympia on port FastEthernet1/0",
+                        "id": 26,
+                        "link_id": 5,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "aux": 2104,
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Thebes",
+                    "slot0": "NM-4T",
+                    "slot1": "NM-4E",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -9.66547622085,
+                "y": 77.7020561468
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 3.53553390594,
+                "y": -8.25631329208
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -63.6396103069,
+                "y": 52.4579361643
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -224.859956418,
+                "y": -49.372583002
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -289.206673506,
+                "y": 54.4751801069
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -28.9913780287,
+                "y": -26.4400794762
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0 /24",
+                "x": -353.553390594,
+                "y": 18.9116882455
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -153.442171518,
+                "y": -130.287842585
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -245.366053072,
+                "y": -27.9583694396
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -255.265548009,
+                "y": 73.3660530723
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.123.0 /24",
+                "x": -199.404112295,
+                "y": -101.802561211
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -47.3761543396,
+                "y": 78.4198769416
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.35.0 /24",
+                "x": -43.8406204337,
+                "y": 18.7106781188
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0 /24",
+                "x": -198.697005514,
+                "y": 98.6137443931
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -289.206673506,
+                "y": -7.85429303862
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.25.0 /24",
+                "x": -202.23253942,
+                "y": 17.8025612109
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": 1.41421356238,
+                "y": 56.9015869782
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": 29.6984848099,
+                "y": -197.969083452
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": 33.941125497,
+                "y": 157.504617358
+            }
+        ],
+        "rectangles": [
+            {
+                "fill_color": "#aaff7f",
+                "height": 139.501046021,
+                "width": 412.243253433,
+                "x": -336.783837972,
+                "y": 41.5182899634,
+                "z": -2.0
+            },
+            {
+                "fill_color": "#aaffff",
+                "height": 221.324422512,
+                "width": 412.243253433,
+                "x": -335.875721064,
+                "y": -200.818325857,
+                "z": -2.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

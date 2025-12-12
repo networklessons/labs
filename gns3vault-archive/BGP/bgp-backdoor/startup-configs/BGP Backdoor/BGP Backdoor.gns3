@@ -1,0 +1,299 @@
+{
+    "name": "BGP Backdoor",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -197.282791951,
+                "y": -290.620887068,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffaa7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -510.732106143,
+                "y": -278.801081914,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 200.0,
+                "width": 523.259018078,
+                "x": -504.874241767,
+                "y": -36.7695526217,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from R1 port FastEthernet0/0 to R3 port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 6,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from R1 port FastEthernet1/0 to R2 port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from R2 port FastEthernet1/0 to R4 port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 8,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from R3 port FastEthernet0/0 to R4 port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 7,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "R1",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R3 on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R2 on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "R1",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -450.050252532,
+                "y": -216.573593129
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "R2",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R1 on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R4 on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "R2",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -126.878679656,
+                "y": -217.25988463
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "R3",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R4 on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R1 on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "R3",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -448.0,
+                "y": 42.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "R4",
+                    "x": 28.8994949366,
+                    "y": -19.3431457505
+                },
+                "ports": [
+                    {
+                        "description": "connected to R3 on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to R2 on port FastEthernet1/0",
+                        "id": 8,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "R4",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -123.577164466,
+                "y": 38.2010101268
+            }
+        ],
+        "notes": [
+            {
+                "color": "#323232",
+                "text": "192.168.34.X /24",
+                "x": -322.440692221,
+                "y": 64.1665222414
+            },
+            {
+                "color": "#323232",
+                "text": "192.168.13.X /24",
+                "x": -550.836182544,
+                "y": -71.2928932188
+            },
+            {
+                "color": "#323232",
+                "text": "Hearts",
+                "x": -444.770165366,
+                "y": 84.6726188958
+            },
+            {
+                "color": "#323232",
+                "text": "192.168.24.X /24",
+                "x": -88.3883476483,
+                "y": -71.7989898732
+            },
+            {
+                "color": "#323232",
+                "text": "Diamonds",
+                "x": -458.91230099,
+                "y": -239.182286888
+            },
+            {
+                "color": "#323232",
+                "text": "Spades",
+                "x": -126.572113832,
+                "y": -242.91883092
+            },
+            {
+                "color": "#323232",
+                "text": "192.168.12.X /24",
+                "x": -320.319371878,
+                "y": -264.437120884
+            },
+            {
+                "color": "#323232",
+                "text": "Clubs",
+                "x": -113.844191771,
+                "y": 81.3380951166
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

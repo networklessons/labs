@@ -1,0 +1,89 @@
+autostart = False
+[localhost:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/GNS3/IOS/C3640-JK.BIN
+        ram = 192
+        idlepc = 0x60509e98
+        ghostios = True
+        chassis = 3640
+    [[ROUTER KingKong]]
+        model = 3640
+        console = 2002
+        aux = 2101
+        cnfg = /Data/GNS3Vault 1-6-2011/Configs/site2site-ipsec/final configs/KingKong.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Godzilla f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = Nessie f0/0
+        x = -263.0
+        y = -124.0
+    [[ROUTER Nessie]]
+        model = 3640
+        console = 2003
+        aux = 2102
+        cnfg = /Data/GNS3Vault 1-6-2011/Configs/site2site-ipsec/final configs/Nessie.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = KingKong f1/0
+        x = -122.0
+        y = 50.0
+        hx = 10.0
+        hy = 44.5
+    [[ROUTER Godzilla]]
+        model = 3640
+        console = 2001
+        aux = 2100
+        cnfg = /Data/GNS3Vault 1-6-2011/Configs/site2site-ipsec/final configs/Godzilla.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = KingKong f0/0
+        x = -401.0
+        y = 52.0
+[GNS3-DATA]
+    configs = /Data/GNS3Vault 1-6-2011/Configs/site2site-ipsec/final configs
+    m11 = 2.0
+    m22 = 2.0
+    [[NOTE 1]]
+        text = .1
+        x = -340.0
+        y = 29.5
+        color = "#1a1a1a"
+    [[NOTE 2]]
+        text = 192.168.12.0 /24
+        x = -437.5
+        y = -34.0
+        color = "#1a1a1a"
+    [[NOTE 3]]
+        text = .2
+        x = -254.5
+        y = -84.5
+        color = "#1a1a1a"
+    [[NOTE 4]]
+        text = .2
+        x = -229.5
+        y = -84.5
+        color = "#1a1a1a"
+    [[NOTE 5]]
+        text = 192.168.13.0 /24
+        x = -292.0
+        y = 57.5
+        color = "#1a1a1a"
+    [[NOTE 6]]
+        text = 192.168.23.0 /24
+        x = -152.0
+        y = -35.0
+        color = "#1a1a1a"
+    [[NOTE 7]]
+        text = .3
+        x = -142.0
+        y = 29.0
+        color = "#1a1a1a"
+    [[SHAPE 1]]
+        type = rectangle
+        x = -311.5
+        y = 60.5
+        width = 172.0
+        height = 16.5
+        fill_color = "#aaffff"
+        border_style = 3
+        z = -2.0

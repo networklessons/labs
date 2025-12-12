@@ -1,0 +1,229 @@
+{
+    "name": "BGP Conditional Advertisement",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#aaffff",
+                "height": 145.663996924,
+                "width": 147.785317268,
+                "x": -354.260497374,
+                "y": -44.9497474683,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 145.663996924,
+                "width": 147.785317268,
+                "x": -501.033621334,
+                "y": -204.450793489,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 145.663996924,
+                "width": 147.785317268,
+                "x": -186.170093579,
+                "y": -197.885822331,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Pegasus port FastEthernet0/0 to Phoenix port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Pegasus port FastEthernet1/0 to Pixie port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Pegasus",
+                    "x": -0.792893218813,
+                    "y": 36.5182899632
+                },
+                "ports": [
+                    {
+                        "description": "connected to Phoenix on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Pixie on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2010,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Pegasus",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -314.428498912,
+                "y": 16.1837661841
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Phoenix",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Pegasus on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2009,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Phoenix",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -465.749350086,
+                "y": -149.279220614
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Pixie",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Pegasus on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2011,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Pixie",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -150.379725677,
+                "y": -141.501046021
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -196.57568517,
+                "y": -48.2634559673
+            },
+            {
+                "color": "#323232",
+                "text": "AS 3",
+                "x": -135.057395207,
+                "y": -194.433549546
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -496.388960393,
+                "y": -54.4264068712
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -277.892965006,
+                "y": -3.61165235168
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -168.998520704,
+                "y": -118.363961031
+            },
+            {
+                "color": "#323232",
+                "text": "AS 1",
+                "x": -448.305699272,
+                "y": -204.027957955
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -432.042243305,
+                "y": -108.568542495
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -301.227488785,
+                "y": -41.8994949366
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -305.470129473,
+                "y": -4.82485578728
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

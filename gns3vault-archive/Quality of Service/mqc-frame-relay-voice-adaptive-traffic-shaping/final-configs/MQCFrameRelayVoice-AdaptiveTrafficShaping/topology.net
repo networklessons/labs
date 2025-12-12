@@ -1,0 +1,154 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/GNS3/IOS/C3640-JK.BIN
+        ram = 192
+        idlepc = 0x603e2724
+        ghostios = True
+        chassis = 3640
+    [[ROUTER James]]
+        model = 3640
+        console = 2000
+        slot0 = NM-1FE-TX
+        f0/0 = Kos f0/0
+        cnfg = configs/James.cfg
+        x = -287.618795027
+        y = 36.0020920411
+        hx = 6.29289321881
+        hy = 39.346717088
+    [[FRSW FR1]]
+        1:102 = 2:201
+        2:201 = 1:102
+        1 = Kos s1/0
+        2 = Quall s1/0
+        x = -112.474134086
+        y = -131.687337522
+    [[ROUTER Jack]]
+        model = 3640
+        console = 2003
+        slot0 = NM-1FE-TX
+        f0/0 = Quall f0/0
+        cnfg = configs/Jack.cfg
+        x = 69.530483272
+        y = 34.5685424949
+        hx = 17.2426406871
+        hy = 39.346717088
+    [[ROUTER Quall]]
+        model = 3640
+        console = 2008
+        slot0 = NM-1FE-TX
+        f0/0 = Jack f0/0
+        slot1 = NM-4T
+        s1/0 = FR1 2
+        cnfg = configs/Quall.cfg
+        x = 68.1162697097
+        y = -131.601551084
+    [[ROUTER Kos]]
+        model = 3640
+        console = 2006
+        slot0 = NM-1FE-TX
+        f0/0 = James f0/0
+        slot1 = NM-4T
+        s1/0 = FR1 1
+        cnfg = configs/Kos.cfg
+        x = -288.265548008
+        y = -130.187337522
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = .4
+        x = 76.3675323681
+        y = 12.9568901432
+        color = "#0000ff"
+    [[NOTE 2]]
+        text = .3
+        x = 77.0746391493
+        y = -91.4939033456
+        color = "#0000ff"
+    [[NOTE 3]]
+        text = .3
+        x = 48.0832611207
+        y = -106.142135624
+        color = "#0000ff"
+    [[NOTE 4]]
+        text = .2
+        x = -222.738636074
+        y = -110.183766184
+        color = "#0000ff"
+    [[NOTE 5]]
+        text = .2
+        x = -255.265548008
+        y = -90.1837661841
+        color = "#0000ff"
+    [[NOTE 6]]
+        text = .1
+        x = -252.437120884
+        y = 13.9619407771
+        color = "#0000ff"
+    [[NOTE 7]]
+        text = 192.168.34.0 /24
+        x = 36.7695526217
+        y = -45.6360389693
+        color = "#0000ff"
+    [[NOTE 8]]
+        text = 192.168.23.0 /24
+        x = -152.027957955
+        y = -184.027957955
+        color = "#0000ff"
+    [[NOTE 9]]
+        text = 192.168.12.0 /24
+        x = -321.73358544
+        y = -43.1126983722
+        color = "#0000ff"
+    [[NOTE 10]]
+        text = 2
+        x = 65.2646881943
+        y = 19.167613497
+        interface = FR1 2
+        color = "#323232"
+    [[NOTE 11]]
+        text = 1
+        x = -14.2517183146
+        y = 27.9498192143
+        interface = FR1 1
+        color = "#323232"
+    [[NOTE 12]]
+        text = s1/0
+        x = -40.7058136912
+        y = -1.24477796331
+        interface = Quall s1/0
+        color = "#323232"
+    [[NOTE 13]]
+        text = f0/0
+        x = 32.6333064227
+        y = 40.7853480238
+        interface = Quall f0/0
+        color = "#323232"
+    [[NOTE 14]]
+        text = s1/0
+        x = 62.8522233779
+        y = -7.90566333703
+        interface = Kos s1/0
+        color = "#323232"
+    [[NOTE 15]]
+        text = f0/0
+        x = -5.02810090838
+        y = 41.4936004485
+        interface = Kos f0/0
+        color = "#323232"
+    [[NOTE 16]]
+        text = f0/0
+        x = 37.6093342644
+        y = -22.2411921465
+        interface = Jack f0/0
+        color = "#323232"
+    [[NOTE 17]]
+        text = f0/0
+        x = -7.46075180332
+        y = -22.9494445712
+        interface = James f0/0
+        color = "#323232"

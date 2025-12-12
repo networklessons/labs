@@ -1,0 +1,378 @@
+{
+    "name": "unsaved", 
+    "resources_type": "local", 
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Barcelona port FastEthernet1/0 to Venice port FastEthernet1/0", 
+                "destination_node_id": 2, 
+                "destination_port_id": 22, 
+                "destination_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "f1/0", 
+                    "x": 2.055569068859768, 
+                    "y": 47.34644342600933
+                }, 
+                "id": 1, 
+                "source_node_id": 1, 
+                "source_port_id": 20, 
+                "source_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "f1/0", 
+                    "x": 63.94443093114023, 
+                    "y": -3.34644342600933
+                }
+            }, 
+            {
+                "description": "Link from Barcelona port Serial0/0 to Tilburg port Serial1/0", 
+                "destination_node_id": 3, 
+                "destination_port_id": 25, 
+                "destination_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "s1/0", 
+                    "x": 46.86452199693551, 
+                    "y": 59.44368844921436
+                }, 
+                "id": 2, 
+                "source_node_id": 1, 
+                "source_port_id": 10, 
+                "source_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "s0/0", 
+                    "x": -48.8645219969355, 
+                    "y": -2.4436884492143633
+                }
+            }, 
+            {
+                "description": "Link from Boston port FastEthernet1/0 to Venice port FastEthernet0/0", 
+                "destination_node_id": 2, 
+                "destination_port_id": 21, 
+                "destination_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "f0/0", 
+                    "x": -47.582661881639154, 
+                    "y": -7.202804673288497
+                }, 
+                "id": 3, 
+                "source_node_id": 4, 
+                "source_port_id": 23, 
+                "source_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "f1/0", 
+                    "x": 78.58266188163915, 
+                    "y": 32.20280467328848
+                }
+            }, 
+            {
+                "description": "Link from Tilburg port FastEthernet0/0 to Boston port FastEthernet0/0", 
+                "destination_node_id": 4, 
+                "destination_port_id": 24, 
+                "destination_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "f0/0", 
+                    "x": -0.7100745021964983, 
+                    "y": 43.5320894726072
+                }, 
+                "id": 4, 
+                "source_node_id": 3, 
+                "source_port_id": 29, 
+                "source_port_label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "f0/0", 
+                    "x": 66.7100745021965, 
+                    "y": 0.46791052739280303
+                }
+            }
+        ], 
+        "nodes": [
+            {
+                "description": "Router c3600", 
+                "id": 1, 
+                "label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "Barcelona", 
+                    "x": -5.5, 
+                    "y": 57.0
+                }, 
+                "ports": [
+                    {
+                        "description": "connected to Tilburg on port Serial1/0", 
+                        "id": 10, 
+                        "link_id": 2, 
+                        "name": "Serial0/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 0
+                    }, 
+                    {
+                        "id": 11, 
+                        "name": "Serial0/1", 
+                        "port_number": 1, 
+                        "slot_number": 0
+                    }, 
+                    {
+                        "id": 12, 
+                        "name": "Serial0/2", 
+                        "port_number": 2, 
+                        "slot_number": 0
+                    }, 
+                    {
+                        "id": 13, 
+                        "name": "Serial0/3", 
+                        "port_number": 3, 
+                        "slot_number": 0
+                    }, 
+                    {
+                        "description": "connected to Venice on port FastEthernet1/0", 
+                        "id": 20, 
+                        "link_id": 1, 
+                        "name": "FastEthernet1/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 1
+                    }
+                ], 
+                "properties": {
+                    "aux": 2501, 
+                    "console": 2001, 
+                    "disk0": 1, 
+                    "exec_area": 16, 
+                    "idlepc": "0x603d2918", 
+                    "image": "E:/GNS3/IOS/IOS/c3640-jk9s-mz.124-16.image", 
+                    "mac_addr": "cc01.2ac0.0000", 
+                    "name": "Barcelona", 
+                    "nvram": 256, 
+                    "private_config": "configs\\i1_private-config.cfg", 
+                    "slot0": "NM-4T", 
+                    "slot1": "NM-1FE-TX", 
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                }, 
+                "router_id": 1, 
+                "server_id": 1, 
+                "type": "C3600", 
+                "x": -60.0, 
+                "y": 37.0
+            }, 
+            {
+                "description": "Router c3600", 
+                "id": 2, 
+                "label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "Venice", 
+                    "x": 20.5, 
+                    "y": -25.0
+                }, 
+                "ports": [
+                    {
+                        "description": "connected to Boston on port FastEthernet1/0", 
+                        "id": 21, 
+                        "link_id": 3, 
+                        "name": "FastEthernet0/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 0
+                    }, 
+                    {
+                        "description": "connected to Barcelona on port FastEthernet1/0", 
+                        "id": 22, 
+                        "link_id": 1, 
+                        "name": "FastEthernet1/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 1
+                    }
+                ], 
+                "properties": {
+                    "aux": 2502, 
+                    "console": 2002, 
+                    "disk0": 1, 
+                    "exec_area": 16, 
+                    "idlepc": "0x603d2918", 
+                    "image": "E:/GNS3/IOS/IOS/c3640-jk9s-mz.124-16.image", 
+                    "mac_addr": "cc02.1818.0000", 
+                    "name": "Venice", 
+                    "nvram": 256, 
+                    "private_config": "configs\\i2_private-config.cfg", 
+                    "slot0": "NM-1FE-TX", 
+                    "slot1": "NM-1FE-TX", 
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                }, 
+                "router_id": 2, 
+                "server_id": 1, 
+                "type": "C3600", 
+                "x": 139.0, 
+                "y": -126.0
+            }, 
+            {
+                "description": "Router c3600", 
+                "id": 3, 
+                "label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "Tilburg", 
+                    "x": 20.5, 
+                    "y": -25.0
+                }, 
+                "ports": [
+                    {
+                        "description": "connected to Boston on port FastEthernet0/0", 
+                        "id": 29, 
+                        "link_id": 4, 
+                        "name": "FastEthernet0/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 0
+                    }, 
+                    {
+                        "description": "connected to Barcelona on port Serial0/0", 
+                        "id": 25, 
+                        "link_id": 2, 
+                        "name": "Serial1/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 1
+                    }, 
+                    {
+                        "id": 26, 
+                        "name": "Serial1/1", 
+                        "port_number": 1, 
+                        "slot_number": 1
+                    }, 
+                    {
+                        "id": 27, 
+                        "name": "Serial1/2", 
+                        "port_number": 2, 
+                        "slot_number": 1
+                    }, 
+                    {
+                        "id": 28, 
+                        "name": "Serial1/3", 
+                        "port_number": 3, 
+                        "slot_number": 1
+                    }
+                ], 
+                "properties": {
+                    "aux": 2503, 
+                    "console": 2003, 
+                    "disk0": 1, 
+                    "exec_area": 16, 
+                    "idlepc": "0x603d2918", 
+                    "image": "E:/GNS3/IOS/IOS/c3640-jk9s-mz.124-16.image", 
+                    "mac_addr": "cc03.2d34.0000", 
+                    "name": "Tilburg", 
+                    "nvram": 256, 
+                    "private_config": "configs\\i3_private-config.cfg", 
+                    "slot0": "NM-1FE-TX", 
+                    "slot1": "NM-4T", 
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                }, 
+                "router_id": 3, 
+                "server_id": 1, 
+                "type": "C3600", 
+                "x": -250.0, 
+                "y": -113.0
+            }, 
+            {
+                "description": "Router c3600", 
+                "id": 4, 
+                "label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "Boston", 
+                    "x": 20.5, 
+                    "y": -25.0
+                }, 
+                "ports": [
+                    {
+                        "description": "connected to Tilburg on port FastEthernet0/0", 
+                        "id": 24, 
+                        "link_id": 4, 
+                        "name": "FastEthernet0/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 0
+                    }, 
+                    {
+                        "description": "connected to Venice on port FastEthernet0/0", 
+                        "id": 23, 
+                        "link_id": 3, 
+                        "name": "FastEthernet1/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 1
+                    }
+                ], 
+                "properties": {
+                    "aux": 2504, 
+                    "console": 2004, 
+                    "disk0": 1, 
+                    "exec_area": 16, 
+                    "idlepc": "0x603d2918", 
+                    "image": "E:/GNS3/IOS/IOS/c3640-jk9s-mz.124-16.image", 
+                    "mac_addr": "cc04.06b4.0000", 
+                    "name": "Boston", 
+                    "nvram": 256, 
+                    "private_config": "configs\\i4_private-config.cfg", 
+                    "slot0": "NM-1FE-TX", 
+                    "slot1": "NM-1FE-TX", 
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                }, 
+                "router_id": 4, 
+                "server_id": 1, 
+                "type": "C3600", 
+                "x": -59.0, 
+                "y": -267.0
+            }
+        ], 
+        "notes": [
+            {
+                "color": "#0000ff", 
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                "text": "192.168.23.0 /24", 
+                "x": 77.0, 
+                "y": -216.0
+            }, 
+            {
+                "color": "#5500ff", 
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                "text": "192.168.12.0 /24", 
+                "x": -229.0, 
+                "y": -209.0
+            }, 
+            {
+                "color": "#5500ff", 
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                "text": "192.168.14.0 /24", 
+                "x": -254.0, 
+                "y": -21.0
+            }, 
+            {
+                "color": "#0000ff", 
+                "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                "text": "192.168.34.0 /24", 
+                "x": 92.0, 
+                "y": -17.0
+            }
+        ], 
+        "servers": [
+            {
+                "host": "127.0.0.1", 
+                "id": 1, 
+                "local": true, 
+                "port": 8000
+            }
+        ]
+    }, 
+    "type": "topology", 
+    "version": "1.2.1"
+}

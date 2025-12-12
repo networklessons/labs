@@ -1,0 +1,169 @@
+{
+    "name": "untitled", 
+    "resources_type": "local", 
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Godzilla port FastEthernet0/0 to KingKong port FastEthernet0/0", 
+                "destination_node_id": 2, 
+                "destination_port_id": 15, 
+                "id": 1, 
+                "source_node_id": 1, 
+                "source_port_id": 13
+            }, 
+            {
+                "description": "Link from KingKong port FastEthernet1/0 to Nessie port FastEthernet0/0", 
+                "destination_node_id": 3, 
+                "destination_port_id": 16, 
+                "id": 2, 
+                "source_node_id": 2, 
+                "source_port_id": 14
+            }
+        ], 
+        "nodes": [
+            {
+                "description": "Router c3600", 
+                "id": 1, 
+                "label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "Godzilla", 
+                    "x": 20.5, 
+                    "y": -25.0
+                }, 
+                "ports": [
+                    {
+                        "description": "connected to KingKong on port FastEthernet0/0", 
+                        "id": 13, 
+                        "link_id": 1, 
+                        "name": "FastEthernet0/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 0
+                    }
+                ], 
+                "properties": {
+                    "aux": 2501, 
+                    "console": 2001, 
+                    "disk0": 1, 
+                    "exec_area": 16, 
+                    "image": "C3640-JK.image", 
+                    "mac_addr": "cc01.14a4.0000", 
+                    "name": "Godzilla", 
+                    "nvram": 256, 
+                    "private_config": "configs\\i1_private-config.cfg", 
+                    "ram": 256, 
+                    "slot0": "NM-1FE-TX", 
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                }, 
+                "router_id": 1, 
+                "server_id": 1, 
+                "type": "C3600", 
+                "x": -501.0, 
+                "y": -24.0
+            }, 
+            {
+                "description": "Router c3600", 
+                "id": 2, 
+                "label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "KingKong", 
+                    "x": 20.5, 
+                    "y": -25.0
+                }, 
+                "ports": [
+                    {
+                        "description": "connected to Nessie on port FastEthernet0/0", 
+                        "id": 14, 
+                        "link_id": 2, 
+                        "name": "FastEthernet1/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 1
+                    }, 
+                    {
+                        "description": "connected to Godzilla on port FastEthernet0/0", 
+                        "id": 15, 
+                        "link_id": 1, 
+                        "name": "FastEthernet0/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 0
+                    }
+                ], 
+                "properties": {
+                    "aux": 2502, 
+                    "console": 2002, 
+                    "disk0": 1, 
+                    "exec_area": 16, 
+                    "image": "C3640-JK.image", 
+                    "mac_addr": "cc02.1ac4.0000", 
+                    "name": "KingKong", 
+                    "nvram": 256, 
+                    "private_config": "configs\\i2_private-config.cfg", 
+                    "ram": 256, 
+                    "slot0": "NM-1FE-TX", 
+                    "slot1": "NM-1FE-TX", 
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                }, 
+                "router_id": 2, 
+                "server_id": 1, 
+                "type": "C3600", 
+                "x": -206.0, 
+                "y": -247.0
+            }, 
+            {
+                "description": "Router c3600", 
+                "id": 3, 
+                "label": {
+                    "color": "#000000", 
+                    "font": "TypeWriter,10,-1,5,75,0,0,0,0,0", 
+                    "text": "Nessie", 
+                    "x": 20.5, 
+                    "y": -25.0
+                }, 
+                "ports": [
+                    {
+                        "description": "connected to KingKong on port FastEthernet1/0", 
+                        "id": 16, 
+                        "link_id": 2, 
+                        "name": "FastEthernet0/0", 
+                        "nio": "NIO_UDP", 
+                        "port_number": 0, 
+                        "slot_number": 0
+                    }
+                ], 
+                "properties": {
+                    "aux": 2503, 
+                    "console": 2003, 
+                    "disk0": 1, 
+                    "exec_area": 16, 
+                    "image": "C3640-JK.image", 
+                    "mac_addr": "cc03.0eec.0000", 
+                    "name": "Nessie", 
+                    "nvram": 256, 
+                    "private_config": "configs\\i3_private-config.cfg", 
+                    "ram": 256, 
+                    "slot0": "NM-1FE-TX", 
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                }, 
+                "router_id": 3, 
+                "server_id": 1, 
+                "type": "C3600", 
+                "x": 25.0, 
+                "y": -27.0
+            }
+        ], 
+        "servers": [
+            {
+                "host": "127.0.0.1", 
+                "id": 1, 
+                "local": true, 
+                "port": 8000
+            }
+        ]
+    }, 
+    "type": "topology", 
+    "version": "1.2.1"
+}

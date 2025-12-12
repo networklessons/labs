@@ -1,0 +1,16 @@
+{
+    "name": "AAA Command Authorization",
+    "resources_type": "local",
+    "topology": {
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

@@ -1,0 +1,98 @@
+autostart = False
+[localhost:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3725]]
+        image = /Data/IOS Images/c3725-adventerprisek9-mz.124-15.T7.bin
+        ram = 128
+        idlepc = 0x61272f18
+        ghostios = True
+    [[ROUTER R1]]
+        model = 3725
+        console = 2000
+        f0/0 = R2 f0/0
+        cnfg = BasicZoneBasedFirewall_configs/R1.cfg
+        x = -562.296464556
+        y = -34.7071067812
+    [[ROUTER R2]]
+        model = 3725
+        console = 2001
+        f0/0 = R1 f0/0
+        f0/1 = R3 f0/0
+        cnfg = BasicZoneBasedFirewall_configs/R2.cfg
+        x = -288.97265479
+        y = -35.4350288425
+    [[ROUTER R3]]
+        model = 3725
+        console = 2002
+        f0/0 = R2 f0/1
+        cnfg = BasicZoneBasedFirewall_configs/R3.cfg
+        x = -7.54415587728
+        y = -35.4350288425
+[GNS3-DATA]
+    configs = BasicZoneBasedFirewall_configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = .3
+        x = -28.9913780286
+        y = -38.8700576851
+        color = "#0055ff"
+    [[NOTE 2]]
+        text = .2
+        x = -222.031529293
+        y = -36.7487373415
+        color = "#0055ff"
+    [[NOTE 3]]
+        text = .2
+        x = -313.248304066
+        y = -35.3345237792
+        color = "#0055ff"
+    [[NOTE 4]]
+        text = .1
+        x = -498.510280737
+        y = -35.3345237792
+        color = "#0055ff"
+    [[NOTE 5]]
+        text = FIREWALL
+        x = -295.570634536
+        y = -59.3761543395
+        color = "#1a1a1a"
+    [[NOTE 6]]
+        text = Internet
+        x = -11.313708499
+        y = -54.4264068712
+        color = "#1a1a1a"
+    [[NOTE 7]]
+        text = LAN
+        x = -547.300648638
+        y = -55.1335136524
+        color = "#1a1a1a"
+    [[NOTE 8]]
+        text = 192.168.23.0/24
+        x = -176.069588515
+        y = -33.9203102168
+        color = "#0055ff"
+    [[NOTE 9]]
+        text = 192.168.12.0/24
+        x = -453.255446741
+        y = -34.627416998
+        color = "#0055ff"
+    [[SHAPE 1]]
+        type = ellipse
+        x = -223.445742855
+        y = -115.258405333
+        width = 323.854905783
+        height = 200.0
+        fill_color = "#ff7575"
+        border_style = 2
+        z = -2.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -597.505230103
+        y = -116.672618896
+        width = 307.48023074
+        height = 200.0
+        fill_color = "#aaff7f"
+        border_style = 2
+        z = -2.0

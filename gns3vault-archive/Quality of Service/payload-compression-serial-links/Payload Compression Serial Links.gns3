@@ -1,0 +1,351 @@
+{
+    "name": "Payload Compression Serial Links",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Carter port Serial0/0 to Lloyd port Serial0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 11,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Carter port Serial0/1 to Griggs port Serial0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 7,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from FR1 port 1 to Griggs port Serial0/1",
+                "destination_node_id": 3,
+                "destination_port_id": 8,
+                "id": 3,
+                "source_node_id": 1,
+                "source_port_id": 5
+            },
+            {
+                "description": "Link from FR1 port 3 to Wolner port Serial0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 15,
+                "id": 4,
+                "source_node_id": 1,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Carter",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Lloyd on port Serial0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Griggs on port Serial0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Carter",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -240.182286888,
+                "y": -162.007142675
+            },
+            {
+                "description": "Frame Relay switch",
+                "id": 1,
+                "label": {
+                    "text": "FR1",
+                    "x": 7.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Griggs on port Serial0/1",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "1",
+                        "port_number": 1
+                    },
+                    {
+                        "description": "connected to Wolner on port Serial0/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "3",
+                        "port_number": 3
+                    }
+                ],
+                "properties": {
+                    "mappings": {
+                        "1:304": "3:403"
+                    },
+                    "name": "FR1"
+                },
+                "server_id": 1,
+                "type": "FrameRelaySwitch",
+                "x": -364.204148188,
+                "y": 18.9264068712
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Griggs",
+                    "x": 1.75735931288,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Carter on port Serial0/1",
+                        "id": 7,
+                        "link_id": 2,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to FR1 on port 1",
+                        "id": 8,
+                        "link_id": 3,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 9,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 10,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Griggs",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -494.740728115,
+                "y": 20.4264068712
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Lloyd",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Carter on port Serial0/0",
+                        "id": 11,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 12,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 13,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 14,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Lloyd",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -495.526911935,
+                "y": -161.798989873
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Wolner",
+                    "x": 6.03553390593,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 3",
+                        "id": 15,
+                        "link_id": 4,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 16,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 17,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 18,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Wolner",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -238.060966544,
+                "y": 21.8406204336
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -260.215295477,
+                "y": 27.099025767
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -408.000612745,
+                "y": -102.003571337
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -402.343758495,
+                "y": 74.5721138324
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -424.264068712,
+                "y": 15.2792206136
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -267.286363289,
+                "y": -140.388347648
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -427.092495837,
+                "y": -143.722871427
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -265.165042945,
+                "y": -124.325901808
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -427.799602618,
+                "y": 1.33809511662
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -405.17218562,
+                "y": -190.190908859
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

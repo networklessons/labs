@@ -1,0 +1,65 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3725]]
+        image = /Data/GNS3/IOS/C3725-AD.BIN
+        ram = 256
+        idlepc = 0x60bf8ba0
+        ghostios = True
+    [[ROUTER Tiger]]
+        model = 3725
+        console = 2001
+        slot1 = NM-16ESW
+        f1/0 = Bobcat f1/0
+        f1/1 = Panther f1/0
+        cnfg = configs/Tiger.cfg
+        symbol = EtherSwitch router
+        x = -67.21930009
+        y = -75.1187950266
+    [[ROUTER Bobcat]]
+        model = 3725
+        console = 2000
+        slot1 = NM-16ESW
+        f1/0 = Tiger f1/0
+        cnfg = configs/Bobcat.cfg
+        symbol = EtherSwitch router
+        x = -185.5
+        y = -189.5
+    [[ROUTER Panther]]
+        model = 3725
+        console = 2002
+        slot1 = NM-16ESW
+        f1/0 = Tiger f1/1
+        cnfg = configs/Panther.cfg
+        symbol = EtherSwitch router
+        x = -209.347763109
+        y = 57.1101730553
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = f1/0
+        x = 54.7857797004
+        y = -3.74597414917
+        interface = Panther f1/0
+        color = "#323232"
+    [[NOTE 2]]
+        text = f1/1
+        x = -3.78577970044
+        y = 50.7459741492
+        interface = Tiger f1/1
+        color = "#323232"
+    [[NOTE 3]]
+        text = f1/0
+        x = -3.25428714035
+        y = -4.30631171245
+        interface = Tiger f1/0
+        color = "#323232"
+    [[NOTE 4]]
+        text = f1/0
+        x = 54.2542871404
+        y = 51.3063117125
+        interface = Bobcat f1/0
+        color = "#323232"

@@ -1,0 +1,515 @@
+{
+    "name": "EIGRP Neighbor Troubleshooting",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Angie port FastEthernet0/0 to Joey port FastEthernet1/0",
+                "destination_node_id": 5,
+                "destination_port_id": 12,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Angie port FastEthernet1/0 to Mike port FastEthernet0/0",
+                "destination_node_id": 6,
+                "destination_port_id": 17,
+                "id": 2,
+                "source_node_id": 2,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Angie port FastEthernet2/0 to Jack port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 6,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from FR1 port 1 to Joey port Serial2/0",
+                "destination_node_id": 5,
+                "destination_port_id": 13,
+                "id": 4,
+                "source_node_id": 1,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from FR1 port 2 to Janice port Serial0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 7,
+                "id": 5,
+                "source_node_id": 1,
+                "source_port_id": 5
+            },
+            {
+                "description": "Link from Joey port FastEthernet0/0 to Nick port FastEthernet0/0",
+                "destination_node_id": 7,
+                "destination_port_id": 19,
+                "id": 6,
+                "source_node_id": 5,
+                "source_port_id": 11
+            },
+            {
+                "description": "Link from Mike port FastEthernet1/0 to Nick port FastEthernet1/0",
+                "destination_node_id": 7,
+                "destination_port_id": 20,
+                "id": 7,
+                "source_node_id": 6,
+                "source_port_id": 18
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Angie",
+                    "x": 8.0,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Joey on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Mike on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Jack on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "aux": 2104,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x6050465c",
+                    "image": "C3640-JK.BIN",
+                    "name": "Angie",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -134.414213562,
+                "y": -13.686291501
+            },
+            {
+                "description": "Frame Relay switch",
+                "id": 1,
+                "label": {
+                    "text": "FR1",
+                    "x": 405.808224589,
+                    "y": -137.429978209
+                },
+                "ports": [
+                    {
+                        "description": "connected to Joey on port Serial2/0",
+                        "id": 4,
+                        "link_id": 4,
+                        "name": "1",
+                        "port_number": 1
+                    },
+                    {
+                        "description": "connected to Janice on port Serial0/0",
+                        "id": 5,
+                        "link_id": 5,
+                        "name": "2",
+                        "port_number": 2
+                    }
+                ],
+                "properties": {
+                    "mappings": {
+                        "1:206": "2:602"
+                    },
+                    "name": "FR1"
+                },
+                "server_id": 1,
+                "type": "FrameRelaySwitch",
+                "x": 7.50862197135,
+                "y": -175.792893219
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Jack",
+                    "x": 14.4142135624,
+                    "y": 40.0538238692
+                },
+                "ports": [
+                    {
+                        "description": "connected to Angie on port FastEthernet2/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x6050465c",
+                    "image": "C3640-JK.BIN",
+                    "name": "Jack",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 113.861435714,
+                "y": -12.5649711575
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Janice",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 2",
+                        "id": 7,
+                        "link_id": 5,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 9,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 10,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2005,
+                    "idlepc": "0x6050465c",
+                    "image": "C3640-JK.BIN",
+                    "name": "Janice",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 128.552777849,
+                "y": -169.414213562
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Joey",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Nick on port FastEthernet0/0",
+                        "id": 11,
+                        "link_id": 6,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Angie on port FastEthernet0/0",
+                        "id": 12,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to FR1 on port 1",
+                        "id": 13,
+                        "link_id": 4,
+                        "name": "Serial2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 14,
+                        "name": "Serial2/1",
+                        "port_number": 1,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 15,
+                        "name": "Serial2/2",
+                        "port_number": 2,
+                        "slot_number": 2
+                    },
+                    {
+                        "id": 16,
+                        "name": "Serial2/3",
+                        "port_number": 3,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "aux": 2105,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x6050465c",
+                    "image": "C3640-JK.BIN",
+                    "name": "Joey",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-4T",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -133.0,
+                "y": -175.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 6,
+                "label": {
+                    "text": "Mike",
+                    "x": 8.87867965644,
+                    "y": 40.7609306503
+                },
+                "ports": [
+                    {
+                        "description": "connected to Angie on port FastEthernet1/0",
+                        "id": 17,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Nick on port FastEthernet1/0",
+                        "id": 18,
+                        "link_id": 7,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x6050465c",
+                    "image": "C3640-JK.BIN",
+                    "name": "Mike",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -382.225396744,
+                "y": -15.686291501
+            },
+            {
+                "description": "Router c3600",
+                "id": 7,
+                "label": {
+                    "text": "Nick",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Joey on port FastEthernet0/0",
+                        "id": 19,
+                        "link_id": 6,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Mike on port FastEthernet1/0",
+                        "id": 20,
+                        "link_id": 7,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x6050465c",
+                    "image": "C3640-JK.BIN",
+                    "name": "Nick",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i7_startup-config.cfg"
+                },
+                "router_id": 7,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -380.639610307,
+                "y": -175.171572875
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -101.823376491,
+                "y": -33.3101371615
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -316.783837972,
+                "y": -176.956890143
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -100.409162928,
+                "y": -134.932503526
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -318.198051534,
+                "y": -16.8456710674
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -69.2964645563,
+                "y": -186.246212025
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -288.499566724,
+                "y": -17.3517677219
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -155.563491861,
+                "y": -17.9547981022
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -70.0035713375,
+                "y": -14.4192641963
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.26.0 /24",
+                "x": -33.941125497,
+                "y": -204.228968082
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -342.946788875,
+                "y": -134.024386618
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -374.059487248,
+                "y": -37.5527778486
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": 91.9238815543,
+                "y": -13.9131675418
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0 /24",
+                "x": -38.8908729653,
+                "y": -14.0172439427
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -152.735064736,
+                "y": -178.572113832
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0 /24",
+                "x": -167.584307141,
+                "y": -81.6984848098
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -292.03510063,
+                "y": -181.705627485
+            },
+            {
+                "color": "#0000ff",
+                "text": ".6",
+                "x": 108.187337522,
+                "y": -185.338095117
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0 /24",
+                "x": -414.364573775,
+                "y": -82.9116882454
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

@@ -1,0 +1,382 @@
+{
+    "name": "OSPF DR BDR Election",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Bart port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 9,
+                "id": 1,
+                "source_node_id": 3,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Homer port FastEthernet0/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 7,
+                "id": 2,
+                "source_node_id": 4,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Homer port FastEthernet1/0 to SW2 port 1",
+                "destination_node_id": 2,
+                "destination_port_id": 10,
+                "id": 3,
+                "source_node_id": 4,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Lisa port FastEthernet0/0 to SW2 port 3",
+                "destination_node_id": 2,
+                "destination_port_id": 12,
+                "id": 4,
+                "source_node_id": 5,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Maggie port FastEthernet0/0 to SW2 port 2",
+                "destination_node_id": 2,
+                "destination_port_id": 11,
+                "id": 5,
+                "source_node_id": 6,
+                "source_port_id": 5
+            },
+            {
+                "description": "Link from Marge port FastEthernet0/0 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 8,
+                "id": 6,
+                "source_node_id": 7,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Bart",
+                    "x": 18.0857864376,
+                    "y": 43.5893577751
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Bart",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -146.844191771,
+                "y": 78.4091629285
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Homer",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW2 on port 1",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Homer",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 0.607214462436,
+                "y": -55.9289321881
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Lisa",
+                    "x": 20.2071067812,
+                    "y": 43.5893577751
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW2 on port 3",
+                        "id": 4,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2004,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Lisa",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 160.040151264,
+                "y": 76.2878425849
+            },
+            {
+                "description": "Router c3600",
+                "id": 6,
+                "label": {
+                    "text": "Maggie",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW2 on port 2",
+                        "id": 5,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Maggie",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 159.333044483,
+                "y": -188.170093579
+            },
+            {
+                "description": "Router c3600",
+                "id": 7,
+                "label": {
+                    "text": "Marge",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 6,
+                        "link_id": 6,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Marge",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i7_startup-config.cfg"
+                },
+                "router_id": 7,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -147.551298552,
+                "y": -186.048773235
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": -37.3259018078,
+                    "y": 3.28427124746
+                },
+                "ports": [
+                    {
+                        "description": "connected to Homer on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 2,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Marge on port FastEthernet0/0",
+                        "id": 8,
+                        "link_id": 6,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Bart on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 1,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -150.758405333,
+                "y": -49.941125497
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 2,
+                "label": {
+                    "text": "SW2",
+                    "x": 67.8259018078,
+                    "y": -0.958369439657
+                },
+                "ports": [
+                    {
+                        "description": "connected to Homer on port FastEthernet1/0",
+                        "id": 10,
+                        "link_id": 3,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Maggie on port FastEthernet0/0",
+                        "id": 11,
+                        "link_id": 5,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Lisa on port FastEthernet0/0",
+                        "id": 12,
+                        "link_id": 4,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW2"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": 156.125937702,
+                "y": -49.2340187158
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": 166.170093579,
+                "y": 53.9690834521
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -22.627416998,
+                "y": -56.7487373415
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -138.592929113,
+                "y": 55.785317268
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -137.885822331,
+                "y": -145.539105243
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.2.0 /24",
+                "x": 128.693434176,
+                "y": -104.124891681
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.1.0 /24",
+                "x": -184.55486989,
+                "y": -103.923881554
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": 69.2964645563,
+                "y": -56.2426406871
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": 167.584307141,
+                "y": -148.769552622
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

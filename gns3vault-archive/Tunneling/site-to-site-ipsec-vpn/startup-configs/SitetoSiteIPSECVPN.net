@@ -1,0 +1,105 @@
+autostart = False
+[localhost:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9s-mz.124-16.bin
+        idlepc = 0x6059c528
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R1]]
+        model = 3640
+        console = 2001
+        slot0 = NM-1FE-TX
+        f0/0 = R2 f0/0
+        x = -401.0
+        y = 52.0
+    [[ROUTER R2]]
+        model = 3640
+        console = 2002
+        slot0 = NM-1FE-TX
+        f0/0 = R1 f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = R3 f0/0
+        x = -263.0
+        y = -124.0
+    [[ROUTER R3]]
+        model = 3640
+        console = 2003
+        slot0 = NM-1FE-TX
+        f0/0 = R2 f1/0
+        x = -122.0
+        y = 50.0
+[GNS3-DATA]
+    m11 = 2.0
+    m22 = 2.0
+    [[NOTE 1]]
+        text = 192.168.13.0 /24
+        x = -291.0
+        y = 64.0
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 2]]
+        text = 192.168.23.0 /24
+        x = -152.0
+        y = -35.0
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 3]]
+        text = 192.168.12.0 /24
+        x = -437.5
+        y = -34.0
+        rotate = 0
+        color = "#1a1a1a"
+    [[SHAPE 1]]
+        type = rectangle
+        x = -312.5
+        y = 67.0
+        width = 172.0
+        height = 16.5
+        fill_color = "#000000"
+        rotate = 0
+        border_color = "#000000"
+        border_style = 3
+    [[NOTE 4]]
+        text = Nessie
+        x = -118.0
+        y = 95.0
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 5]]
+        text = KingKong
+        x = -267.5
+        y = -148.5
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 6]]
+        text = Godzilla
+        x = -401.5
+        y = 96.0
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 7]]
+        text = .3
+        x = -142.0
+        y = 29.0
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 8]]
+        text = .2
+        x = -229.5
+        y = -84.5
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 9]]
+        text = .2
+        x = -254.5
+        y = -84.5
+        rotate = 0
+        color = "#1a1a1a"
+    [[NOTE 10]]
+        text = .1
+        x = -340.0
+        y = 29.5
+        rotate = 0
+        color = "#1a1a1a"

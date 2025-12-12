@@ -1,0 +1,482 @@
+{
+    "name": "MPLSAtomEoMPLS",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from R1 port FastEthernet1/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 21,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from R2 port FastEthernet1/0 to R3 port FastEthernet1/0",
+                "destination_node_id": 5,
+                "destination_port_id": 9,
+                "id": 2,
+                "source_node_id": 3,
+                "source_port_id": 5
+            },
+            {
+                "description": "Link from R2 port FastEthernet1/1 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 22,
+                "id": 3,
+                "source_node_id": 3,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from R3 port FastEthernet1/1 to R4 port FastEthernet1/0",
+                "destination_node_id": 6,
+                "destination_port_id": 13,
+                "id": 4,
+                "source_node_id": 5,
+                "source_port_id": 10
+            },
+            {
+                "description": "Link from R4 port FastEthernet1/1 to SW2 port 1",
+                "destination_node_id": 4,
+                "destination_port_id": 23,
+                "id": 5,
+                "source_node_id": 6,
+                "source_port_id": 14
+            },
+            {
+                "description": "Link from R5 port FastEthernet1/0 to SW2 port 2",
+                "destination_node_id": 4,
+                "destination_port_id": 24,
+                "id": 6,
+                "source_node_id": 7,
+                "source_port_id": 17
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c7200",
+                "id": 2,
+                "label": {
+                    "text": "R1",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 2,
+                        "name": "FastEthernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2000,
+                    "idlepc": "0x6061aca8",
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "R1",
+                    "slot1": "PA-2FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C7200",
+                "x": -103.739502626,
+                "y": 161.765981284
+            },
+            {
+                "description": "Router c7200",
+                "id": 3,
+                "label": {
+                    "text": "R2",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R3 on port FastEthernet1/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 7,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2001,
+                    "idlepc": "0x6061aca8",
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "R2",
+                    "slot1": "PA-2FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C7200",
+                "x": -282.878679656,
+                "y": -69.7279220614
+            },
+            {
+                "description": "Router c7200",
+                "id": 5,
+                "label": {
+                    "text": "R3",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R2 on port FastEthernet1/0",
+                        "id": 9,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to R4 on port FastEthernet1/0",
+                        "id": 10,
+                        "link_id": 4,
+                        "name": "FastEthernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 11,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 12,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2002,
+                    "idlepc": "0x6061aca8",
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "R3",
+                    "slot1": "PA-2FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C7200",
+                "x": -45.1385642863,
+                "y": -71.313708499
+            },
+            {
+                "description": "Router c7200",
+                "id": 6,
+                "label": {
+                    "text": "R4",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R3 on port FastEthernet1/1",
+                        "id": 13,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to SW2 on port 1",
+                        "id": 14,
+                        "link_id": 5,
+                        "name": "FastEthernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 15,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 16,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2003,
+                    "idlepc": "0x6061aca8",
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "R4",
+                    "slot1": "PA-2FE-TX",
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C7200",
+                "x": 188.015764646,
+                "y": -73.7781745931
+            },
+            {
+                "description": "Router c7200",
+                "id": 7,
+                "label": {
+                    "text": "R5",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW2 on port 2",
+                        "id": 17,
+                        "link_id": 6,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 18,
+                        "name": "FastEthernet1/1",
+                        "port_number": 1,
+                        "slot_number": 1
+                    },
+                    {
+                        "id": 19,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 20,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "console": 2004,
+                    "idlepc": "0x6061aca8",
+                    "image": "c7200-adventerprisek9-mz.124-20.T.bin",
+                    "name": "R5",
+                    "slot1": "PA-2FE-TX",
+                    "startup_config": "configs\\i7_startup-config.cfg"
+                },
+                "router_id": 7,
+                "server_id": 1,
+                "type": "C7200",
+                "x": 40.8227637462,
+                "y": 159.727922061
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": 15.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R1 on port FastEthernet1/0",
+                        "id": 21,
+                        "link_id": 1,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to R2 on port FastEthernet1/1",
+                        "id": 22,
+                        "link_id": 3,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -286.652236891,
+                "y": 64.3589103968
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 4,
+                "label": {
+                    "text": "SW2",
+                    "x": 15.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to R4 on port FastEthernet1/1",
+                        "id": 23,
+                        "link_id": 5,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to R5 on port FastEthernet1/0",
+                        "id": 24,
+                        "link_id": 6,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW2"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": 185.128896294,
+                "y": 76.6223663641
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -217.788888605,
+                "y": -73.5182899632
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": 168.291413922,
+                "y": -75.6396103068
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -197.989898732,
+                "y": -82.0035713375
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "PE2",
+                "x": 204.353859763,
+                "y": -104.630988335
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "PE1",
+                "x": -271.529003976,
+                "y": -96.8528137424
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": 91.9238815543,
+                "y": 135.785317268
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "BananaHQ",
+                "x": -111.722871427,
+                "y": 205.788888605
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "BananaBranch",
+                "x": 20.5060966544,
+                "y": 205.081781824
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "P",
+                "x": -20.5060966544,
+                "y": -97.5599205236
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 16.9705627485,
+                "y": -72.811183182
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -106.066017178,
+                "y": 142.85638508
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -67.1751442127,
+                "y": -74.2253967444
+            },
+            {
+                "color": "#0000ff",
+                "text": "172.16.15.0 /24",
+                "x": -57.2756492761,
+                "y": 123.764501988
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": 36.7695526217,
+                "y": -86.2462120246
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

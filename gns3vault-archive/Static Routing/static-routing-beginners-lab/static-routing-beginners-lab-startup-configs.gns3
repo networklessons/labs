@@ -1,0 +1,160 @@
+{
+    "name": "static-routing-beginners-lab-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from NewYork port Serial0/0 to Washington port Serial0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 5,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from NewYork port Serial0/1 to Washington port Serial0/1",
+                "destination_node_id": 2,
+                "destination_port_id": 6,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "NewYork",
+                    "x": -1.40202025347,
+                    "y": -34.4365081386
+                },
+                "ports": [
+                    {
+                        "description": "connected to Washington on port Serial0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Washington on port Serial0/1",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "NewYork",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -692.0,
+                "y": -89.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Washington",
+                    "x": -17.7792206139,
+                    "y": -28.0517318277
+                },
+                "ports": [
+                    {
+                        "description": "connected to NewYork on port Serial0/0",
+                        "id": 5,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to NewYork on port Serial0/1",
+                        "id": 6,
+                        "link_id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 7,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Washington",
+                    "ram": 192,
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -313.0,
+                "y": -85.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#1a1a1a",
+                "text": "192.168.2.0 /30",
+                "x": -526.0,
+                "y": -40.0
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "192.168.1.0 /30",
+                "x": -525.0,
+                "y": -113.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

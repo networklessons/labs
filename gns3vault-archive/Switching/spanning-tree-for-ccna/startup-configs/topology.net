@@ -1,0 +1,123 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3725]]
+        image = /Data/GNS3/IOS/C3725-AD.BIN
+        ram = 256
+        idlepc = 0x60bf8ba0
+        ghostios = True
+    [[ROUTER Butterfly]]
+        model = 3725
+        console = 2002
+        slot1 = NM-16ESW
+        f1/0 = Ant f1/1
+        f1/1 = Grasshopper f1/0
+        cnfg = configs/Butterfly.cfg
+        symbol = EtherSwitch router
+        x = -541.687950266
+        y = 32.3614357137
+        hx = -8.87867965644
+        hy = 42.8822509939
+    [[ROUTER Grasshopper]]
+        model = 3725
+        console = 2003
+        slot1 = NM-16ESW
+        f1/0 = Butterfly f1/1
+        f1/1 = Bee f1/1
+        f1/3 = Bee f1/3
+        cnfg = configs/Grasshopper.cfg
+        symbol = EtherSwitch router
+        x = -255.309703886
+        y = 31.6543289326
+        hx = -24.0857864376
+        hy = 43.5893577751
+    [[ROUTER Bee]]
+        model = 3725
+        console = 2001
+        slot1 = NM-16ESW
+        f1/1 = Grasshopper f1/1
+        f1/2 = Ant f1/2
+        f1/3 = Grasshopper f1/3
+        cnfg = configs/Bee.cfg
+        symbol = EtherSwitch router
+        x = -256.723917448
+        y = -201.690908859
+        hx = 6.29289321881
+        hy = -22.8786796564
+    [[ROUTER Ant]]
+        model = 3725
+        console = 2000
+        slot1 = NM-16ESW
+        f1/1 = Butterfly f1/0
+        f1/2 = Bee f1/2
+        cnfg = configs/Ant.cfg
+        symbol = EtherSwitch router
+        x = -541.160425587
+        y = -201.985281374
+        hx = 6.37867965644
+        hy = -22.8786796564
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = f1/3
+        x = -12.8760252675
+        y = -23.600635687
+        interface = Grasshopper f1/3
+        color = "#323232"
+    [[NOTE 2]]
+        text = f1/0
+        x = -39.9538933433
+        y = 23.8950424614
+        interface = Grasshopper f1/0
+        color = "#323232"
+    [[NOTE 3]]
+        text = f1/1
+        x = 27.3590149726
+        y = -24.2664258686
+        interface = Grasshopper f1/1
+        color = "#323232"
+    [[NOTE 4]]
+        text = f1/1
+        x = 54.1843407216
+        y = 24.5191711009
+        interface = Butterfly f1/1
+        color = "#323232"
+    [[NOTE 5]]
+        text = f1/0
+        x = -15.4334433458
+        y = -25.6874524473
+        interface = Butterfly f1/0
+        color = "#323232"
+    [[NOTE 6]]
+        text = f1/3
+        x = -13.0982924681
+        y = 46.4984001791
+        interface = Bee f1/3
+        color = "#323232"
+    [[NOTE 7]]
+        text = f1/2
+        x = -39.2435412614
+        y = -9.11855905638
+        interface = Bee f1/2
+        color = "#323232"
+    [[NOTE 8]]
+        text = f1/1
+        x = 30.0049460581
+        y = 45.1034749647
+        interface = Bee f1/1
+        color = "#323232"
+    [[NOTE 9]]
+        text = f1/2
+        x = 53.4843379566
+        y = -9.03576452075
+        interface = Ant f1/2
+        color = "#323232"
+    [[NOTE 10]]
+        text = f1/1
+        x = -12.055409366
+        y = 48.6458218869
+        interface = Ant f1/1
+        color = "#323232"

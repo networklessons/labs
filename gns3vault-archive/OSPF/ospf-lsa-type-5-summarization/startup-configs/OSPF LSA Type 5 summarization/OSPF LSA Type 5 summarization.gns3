@@ -1,0 +1,214 @@
+{
+    "name": "OSPF LSA Type 5 summarization",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -211.424927575,
+                "y": -161.220346111,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -211.424927575,
+                "y": 31.1126983722,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Harry port FastEthernet0/0 to Jack port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Harry port FastEthernet1/0 to Sam port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Harry",
+                    "x": 74.4680374315,
+                    "y": 2.57716446628
+                },
+                "ports": [
+                    {
+                        "description": "connected to Jack on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Sam on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Harry",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -143.308657865,
+                "y": 19.71930009
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Jack",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Harry on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Jack",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -142.845058323,
+                "y": -110.414213562
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Sam",
+                    "x": 11.5857864376,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to Harry on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Sam",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -143.308657865,
+                "y": 205.688383542
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -178.89801564,
+                "y": -37.4558441227
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -132.936074863,
+                "y": 184.277741317
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -131.521861301,
+                "y": 60.7350647363
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -131.521861301,
+                "y": -0.582215100159
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 0",
+                "x": -207.889393669,
+                "y": -76.346717088
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 1",
+                "x": -202.232539419,
+                "y": 139.826947828
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -130.107647738,
+                "y": -70.3847763109
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -178.89801564,
+                "y": 119.320851174
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

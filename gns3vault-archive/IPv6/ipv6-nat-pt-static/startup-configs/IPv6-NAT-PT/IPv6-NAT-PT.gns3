@@ -1,0 +1,411 @@
+{
+    "name": "IPv6-NAT-PT",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Bronze port FastEthernet0/0 to SW1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 10,
+                "id": 1,
+                "source_node_id": 3,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Gold port FastEthernet0/0 to SW2 port 2",
+                "destination_node_id": 2,
+                "destination_port_id": 13,
+                "id": 2,
+                "source_node_id": 4,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from NATPT port FastEthernet0/0 to SW1 port 3",
+                "destination_node_id": 1,
+                "destination_port_id": 11,
+                "id": 3,
+                "source_node_id": 5,
+                "source_port_id": 5
+            },
+            {
+                "description": "Link from NATPT port FastEthernet0/1 to SW2 port 1",
+                "destination_node_id": 2,
+                "destination_port_id": 12,
+                "id": 4,
+                "source_node_id": 5,
+                "source_port_id": 6
+            },
+            {
+                "description": "Link from Platinum port FastEthernet0/0 to SW1 port 1",
+                "destination_node_id": 1,
+                "destination_port_id": 9,
+                "id": 5,
+                "source_node_id": 6,
+                "source_port_id": 7
+            },
+            {
+                "description": "Link from SW2 port 3 to Silver port FastEthernet0/0",
+                "destination_node_id": 7,
+                "destination_port_id": 15,
+                "id": 6,
+                "source_node_id": 2,
+                "source_port_id": 14
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3725",
+                "id": 3,
+                "label": {
+                    "text": "Bronze",
+                    "x": 2.08578643763,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 2",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 2,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2104,
+                    "console": 2001,
+                    "idlepc": "0x60bfcf5c",
+                    "image": "C3725-AD.BIN",
+                    "name": "Bronze",
+                    "ram": 128,
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3725",
+                "x": -328.0,
+                "y": -25.0
+            },
+            {
+                "description": "Router c3725",
+                "id": 4,
+                "label": {
+                    "text": "Gold",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW2 on port 2",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "console": 2003,
+                    "idlepc": "0x60bfcf5c",
+                    "image": "C3725-AD.BIN",
+                    "name": "Gold",
+                    "ram": 128,
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3725",
+                "x": 180.0,
+                "y": -259.0
+            },
+            {
+                "description": "Router c3725",
+                "id": 5,
+                "label": {
+                    "text": "NATPT",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 3",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to SW2 on port 1",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "console": 2002,
+                    "idlepc": "0x60bfcf5c",
+                    "image": "C3725-AD.BIN",
+                    "name": "NATPT",
+                    "ram": 128,
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3725",
+                "x": -76.0,
+                "y": -144.0
+            },
+            {
+                "description": "Router c3725",
+                "id": 6,
+                "label": {
+                    "text": "Platinum",
+                    "x": -0.87867965644,
+                    "y": -20.0502525317
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW1 on port 1",
+                        "id": 7,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "console": 2000,
+                    "idlepc": "0x60bfcf5c",
+                    "image": "C3725-AD.BIN",
+                    "name": "Platinum",
+                    "ram": 128,
+                    "startup_config": "configs\\i6_startup-config.cfg"
+                },
+                "router_id": 6,
+                "server_id": 1,
+                "type": "C3725",
+                "x": -330.0,
+                "y": -255.0
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 1,
+                "label": {
+                    "text": "SW1",
+                    "x": 15.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Platinum on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 5,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Bronze on port FastEthernet0/0",
+                        "id": 10,
+                        "link_id": 1,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to NATPT on port FastEthernet0/0",
+                        "id": 11,
+                        "link_id": 3,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW1"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": -222.5,
+                "y": -139.0
+            },
+            {
+                "description": "Ethernet switch",
+                "id": 2,
+                "label": {
+                    "text": "SW2",
+                    "x": 15.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to NATPT on port FastEthernet0/1",
+                        "id": 12,
+                        "link_id": 4,
+                        "name": "1",
+                        "port_number": 1,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Gold on port FastEthernet0/0",
+                        "id": 13,
+                        "link_id": 2,
+                        "name": "2",
+                        "port_number": 2,
+                        "type": "access",
+                        "vlan": 1
+                    },
+                    {
+                        "description": "connected to Silver on port FastEthernet0/0",
+                        "id": 14,
+                        "link_id": 6,
+                        "name": "3",
+                        "port_number": 3,
+                        "type": "access",
+                        "vlan": 1
+                    }
+                ],
+                "properties": {
+                    "name": "SW2"
+                },
+                "server_id": 1,
+                "type": "EthernetSwitch",
+                "x": 67.5,
+                "y": -138.0
+            },
+            {
+                "description": "Router c3725",
+                "id": 7,
+                "label": {
+                    "text": "Silver",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to SW2 on port 3",
+                        "id": 15,
+                        "link_id": 6,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 16,
+                        "name": "FastEthernet0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "console": 2004,
+                    "idlepc": "0x60bfcf5c",
+                    "image": "C3725-AD.BIN",
+                    "name": "Silver",
+                    "ram": 128,
+                    "startup_config": "configs\\i7_startup-config.cfg"
+                },
+                "router_id": 7,
+                "server_id": 1,
+                "type": "C3725",
+                "x": 179.0,
+                "y": -27.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#ff0000",
+                "text": "SEEN AS: 192.168.123.4",
+                "x": 124.757359313,
+                "y": -307.878679656
+            },
+            {
+                "color": "#00aa00",
+                "text": "SEEN AS: 2001::C0A8:7B02",
+                "x": -402.707106781,
+                "y": 34.9497474683
+            },
+            {
+                "color": "#0000ff",
+                "text": "2001:a:b:c:abc::1",
+                "x": 146.0,
+                "y": -136.0
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.123.0 /24",
+                "x": -366.67766953,
+                "y": -134.292893219
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -98.0,
+                "y": -148.0
+            },
+            {
+                "color": "#ff0000",
+                "text": "SEEN AS: 192.168.123.5",
+                "x": 123.050252532,
+                "y": 30.8284271247
+            },
+            {
+                "color": "#00aa00",
+                "text": "SEEN AS: 2001::C0A8:7B01",
+                "x": -393.585786438,
+                "y": -298.514718626
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -267.0,
+                "y": -38.0
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -268.0,
+                "y": -222.0
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

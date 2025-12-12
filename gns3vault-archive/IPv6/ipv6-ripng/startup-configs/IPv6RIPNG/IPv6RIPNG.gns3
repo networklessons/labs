@@ -1,0 +1,260 @@
+{
+    "name": "IPv6RIPNG",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Borg port FastEthernet0/0 to Vulcan port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 8,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Borg port FastEthernet1/0 to Klingon port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Klingon port FastEthernet1/0 to Romulan port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 6,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Romulan port FastEthernet0/0 to Vulcan port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 7,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Borg",
+                    "x": 11.5,
+                    "y": 39.3467170881
+                },
+                "ports": [
+                    {
+                        "description": "connected to Vulcan on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Klingon on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2110,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Borg",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -411.369011665,
+                "y": 44.1091270347
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Klingon",
+                    "x": 5.74264068713,
+                    "y": 40.0538238693
+                },
+                "ports": [
+                    {
+                        "description": "connected to Borg on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Romulan on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2107,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Klingon",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -231.961940777,
+                "y": 42.5735931288
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Romulan",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Vulcan on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Klingon on port FastEthernet1/0",
+                        "id": 6,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2109,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Romulan",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -232.961940777,
+                "y": -132.393398282
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Vulcan",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Romulan on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Borg on port FastEthernet0/0",
+                        "id": 8,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2108,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Vulcan",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -408.126370977,
+                "y": -134.100505063
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "L0: 2001::4 /128",
+                "x": -166.87720036,
+                "y": 54.4680374315
+            },
+            {
+                "color": "#0000ff",
+                "text": "L0: 2001::1 /128",
+                "x": -533.865619796,
+                "y": -125.844191771
+            },
+            {
+                "color": "#0000ff",
+                "text": "L0: 2001::2 /128",
+                "x": -166.87720036,
+                "y": -125.13708499
+            },
+            {
+                "color": "#0000ff",
+                "text": "L0: 2001::3 /128",
+                "x": -538.108260483,
+                "y": 53.7609306503
+            },
+            {
+                "color": "#1a1a1a",
+                "text": "RIPNG \"GNS3VAULT\"",
+                "x": -366.988419436,
+                "y": -200.090403795
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

@@ -1,0 +1,365 @@
+{
+    "name": "OSPF LSA Type 3 summarization",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 200.0,
+                "width": 360.111219076,
+                "x": -465.276262022,
+                "y": -244.353859763,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffaa7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -220.111219076,
+                "y": -78.6898628386,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -538.815367265,
+                "y": -74.9533188059,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Diamond port FastEthernet0/0 to Topaz port FastEthernet1/0",
+                "destination_node_id": 5,
+                "destination_port_id": 8,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Diamond port FastEthernet1/0 to Quartz port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 4,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Fluorite port FastEthernet0/0 to Quartz port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Talc port FastEthernet0/0 to Topaz port FastEthernet0/0",
+                "destination_node_id": 5,
+                "destination_port_id": 7,
+                "id": 4,
+                "source_node_id": 4,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Diamond",
+                    "x": -6.32842712475,
+                    "y": -20.0502525317
+                },
+                "ports": [
+                    {
+                        "description": "connected to Topaz on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Quartz on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2008,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Diamond",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -318.6711396,
+                "y": -222.111219076
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Fluorite",
+                    "x": 4.74264068713,
+                    "y": 37.9325035257
+                },
+                "ports": [
+                    {
+                        "description": "connected to Quartz on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2016,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Fluorite",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -138.358910397,
+                "y": 47.2964645564
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Quartz",
+                    "x": 61.7756492762,
+                    "y": -8.02943725149
+                },
+                "ports": [
+                    {
+                        "description": "connected to Diamond on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Fluorite on port FastEthernet0/0",
+                        "id": 5,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2011,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Quartz",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -191.391918986,
+                "y": -92.0035713376
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Talc",
+                    "x": 16.4142135624,
+                    "y": 38.6396103069
+                },
+                "ports": [
+                    {
+                        "description": "connected to Topaz on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2010,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Talc",
+                    "slot0": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -490.498087429,
+                "y": 56.4888527119
+            },
+            {
+                "description": "Router c3600",
+                "id": 5,
+                "label": {
+                    "text": "Topaz",
+                    "x": -46.4472221515,
+                    "y": -5.90811690792
+                },
+                "ports": [
+                    {
+                        "description": "connected to Talc on port FastEthernet0/0",
+                        "id": 7,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Diamond on port FastEthernet0/0",
+                        "id": 8,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2009,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Topaz",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i5_startup-config.cfg"
+                },
+                "router_id": 5,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -435.343758496,
+                "y": -89.8822509941
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -436.991990774,
+                "y": -52.6030303802
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -311.834090504,
+                "y": -185.643181645
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -472.347329834,
+                "y": 36.2914139228
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -439.113311118,
+                "y": -152.714249456
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.14.0 /24",
+                "x": -282.842712475,
+                "y": -152.915259583
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -181.726442765,
+                "y": -109.573593129
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 0",
+                "x": -193.747258046,
+                "y": -182.412734266
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -147.785317268,
+                "y": -57.4487014475
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.45.0 /24",
+                "x": -190.21172414,
+                "y": -3.20963209802
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 1",
+                "x": -414.364573776,
+                "y": 51.9446968346
+            },
+            {
+                "color": "#0000ff",
+                "text": ".5",
+                "x": -109.601551084,
+                "y": 25.0817818247
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -283.549819256,
+                "y": -185.844191771
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -403.050865277,
+                "y": -111.798989873
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -499.9244943,
+                "y": -0.887301627724
+            },
+            {
+                "color": "#323232",
+                "text": "AREA 2",
+                "x": -200.818325857,
+                "y": 50.0243866178
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

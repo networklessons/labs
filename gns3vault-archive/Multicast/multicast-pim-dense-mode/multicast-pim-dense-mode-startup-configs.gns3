@@ -1,0 +1,302 @@
+{
+    "name": "multicast-pim-dense-mode-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Amsterdam port FastEthernet0/0 to Eindhoven port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 3,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Amsterdam port FastEthernet1/0 to Tilburg port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 5,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Eindhoven port FastEthernet1/0 to Utrecht port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 8,
+                "id": 3,
+                "source_node_id": 2,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Tilburg port FastEthernet1/0 to Utrecht port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 7,
+                "id": 4,
+                "source_node_id": 3,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Amsterdam",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Eindhoven on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Tilburg on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Amsterdam",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -61.3639610307,
+                "y": -305.292893219
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Eindhoven",
+                    "x": -82.5391052436,
+                    "y": 7.52691193465
+                },
+                "ports": [
+                    {
+                        "description": "connected to Amsterdam on port FastEthernet0/0",
+                        "id": 3,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Utrecht on port FastEthernet1/0",
+                        "id": 4,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2102,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Eindhoven",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -175.0,
+                "y": -127.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Tilburg",
+                    "x": 64.3111831822,
+                    "y": 6.81980515346
+                },
+                "ports": [
+                    {
+                        "description": "connected to Amsterdam on port FastEthernet1/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Utrecht on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 4,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2103,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Tilburg",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 46.0,
+                "y": -126.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Utrecht",
+                    "x": 2.20710678119,
+                    "y": 42.1751442129
+                },
+                "ports": [
+                    {
+                        "description": "connected to Tilburg on port FastEthernet1/0",
+                        "id": 7,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Eindhoven on port FastEthernet1/0",
+                        "id": 8,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Utrecht",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -70.3639610307,
+                "y": 67.6654762208
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -58.6898628386,
+                "y": 43.5634918614
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -51.6187950267,
+                "y": -267.265548009
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -41.0121933089,
+                "y": 43.3624817346
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0/24",
+                "x": -168.998520704,
+                "y": -34.1213203436
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -121.622366364,
+                "y": -87.5563491861
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 34.6482322782,
+                "y": -87.7573593129
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0/24",
+                "x": -14.8492424049,
+                "y": -35.0294372515
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0/24",
+                "x": -190.918830921,
+                "y": -202.21172414
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -31.8198051535,
+                "y": -268.173664917
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0/24",
+                "x": -24.7487373416,
+                "y": -204.53405461
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": 33.941125497,
+                "y": -142.710678119
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -120.208152802,
+                "y": -143.216774773
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

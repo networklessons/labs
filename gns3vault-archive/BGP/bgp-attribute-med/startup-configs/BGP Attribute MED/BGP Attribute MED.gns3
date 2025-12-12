@@ -1,0 +1,364 @@
+{
+    "name": "BGP Attribute MED",
+    "resources_type": "local",
+    "topology": {
+        "ellipses": [
+            {
+                "border_style": 2,
+                "fill_color": "#ffff7f",
+                "height": 354.967604156,
+                "width": 372.645273685,
+                "x": -562.149891043,
+                "y": -208.59650045,
+                "z": -2.0
+            },
+            {
+                "border_style": 2,
+                "fill_color": "#aaff7f",
+                "height": 200.0,
+                "width": 200.0,
+                "x": -134.350288425,
+                "y": -137.17871555,
+                "z": -2.0
+            }
+        ],
+        "links": [
+            {
+                "description": "Link from Cuba port FastEthernet0/0 to Suriname port FastEthernet1/0",
+                "destination_node_id": 4,
+                "destination_port_id": 10,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from Cuba port FastEthernet1/0 to Haiti port FastEthernet1/0",
+                "destination_node_id": 2,
+                "destination_port_id": 5,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 2
+            },
+            {
+                "description": "Link from Cuba port FastEthernet2/0 to Jamaica port FastEthernet1/0",
+                "destination_node_id": 3,
+                "destination_port_id": 8,
+                "id": 3,
+                "source_node_id": 1,
+                "source_port_id": 3
+            },
+            {
+                "description": "Link from Haiti port FastEthernet0/0 to Suriname port FastEthernet0/0",
+                "destination_node_id": 4,
+                "destination_port_id": 9,
+                "id": 4,
+                "source_node_id": 2,
+                "source_port_id": 4
+            },
+            {
+                "description": "Link from Haiti port FastEthernet2/0 to Jamaica port FastEthernet0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 7,
+                "id": 5,
+                "source_node_id": 2,
+                "source_port_id": 6
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Cuba",
+                    "x": 11.0,
+                    "y": 38.6396103068
+                },
+                "ports": [
+                    {
+                        "description": "connected to Suriname on port FastEthernet1/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Haiti on port FastEthernet1/0",
+                        "id": 2,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Jamaica on port FastEthernet1/0",
+                        "id": 3,
+                        "link_id": 3,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Cuba",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i1_startup-config.cfg"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -342.71277016,
+                "y": 57.9030662741
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Haiti",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Suriname on port FastEthernet0/0",
+                        "id": 4,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Cuba on port FastEthernet1/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    },
+                    {
+                        "description": "connected to Jamaica on port FastEthernet0/0",
+                        "id": 6,
+                        "link_id": 5,
+                        "name": "FastEthernet2/0",
+                        "port_number": 0,
+                        "slot_number": 2
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Haiti",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "slot2": "NM-1FE-TX",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -344.834090503,
+                "y": -163.421356237
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Jamaica",
+                    "x": 63.4325035256,
+                    "y": 5.40559159102
+                },
+                "ports": [
+                    {
+                        "description": "connected to Haiti on port FastEthernet2/0",
+                        "id": 7,
+                        "link_id": 5,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Cuba on port FastEthernet2/0",
+                        "id": 8,
+                        "link_id": 3,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2003,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Jamaica",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -93.1040764009,
+                "y": -60.1837661841
+            },
+            {
+                "description": "Router c3600",
+                "id": 4,
+                "label": {
+                    "text": "Suriname",
+                    "x": -75.5035713375,
+                    "y": 6.81980515339
+                },
+                "ports": [
+                    {
+                        "description": "connected to Haiti on port FastEthernet0/0",
+                        "id": 9,
+                        "link_id": 4,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "description": "connected to Cuba on port FastEthernet0/0",
+                        "id": 10,
+                        "link_id": 1,
+                        "name": "FastEthernet1/0",
+                        "port_number": 0,
+                        "slot_number": 1
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Suriname",
+                    "slot0": "NM-1FE-TX",
+                    "slot1": "NM-1FE-TX",
+                    "startup_config": "configs\\i4_startup-config.cfg"
+                },
+                "router_id": 4,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -485.109127035,
+                "y": -56.4142135624
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -424.264068712,
+                "y": -61.1923881554
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.23.0 /24",
+                "x": -378.302127935,
+                "y": -54.8284271247
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -118.793939239,
+                "y": -38.7588386093
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -348.603643125,
+                "y": 33.4629867977
+            },
+            {
+                "color": "#0000ff",
+                "text": ".4",
+                "x": -118.793939239,
+                "y": -56.9426047934
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -290.620887068,
+                "y": -128.970562748
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.13.0 /24",
+                "x": -506.995562111,
+                "y": 29.3172798365
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -283.549819256,
+                "y": 38.0107140124
+            },
+            {
+                "color": "#0000ff",
+                "text": ".3",
+                "x": -314.662517628,
+                "y": 17.7056274848
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.24.0 /24",
+                "x": -220.61731573,
+                "y": -144.936074863
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -315.369624409,
+                "y": -109.67766953
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.34.0 /24",
+                "x": -219.203102168,
+                "y": 57.8025612107
+            },
+            {
+                "color": "#323232",
+                "text": "AS 2",
+                "x": -50.2045814642,
+                "y": -133.622366364
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": -350.724963469,
+                "y": -120.790367902
+            },
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -506.995562111,
+                "y": -117.559920524
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -424.971175493,
+                "y": -33.1091270347
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

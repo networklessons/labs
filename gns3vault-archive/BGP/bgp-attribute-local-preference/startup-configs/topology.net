@@ -1,0 +1,291 @@
+autostart = False
+[localhost:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9o3s-mz.124-16.bin
+        idlepc = 0x605050b4
+        ghostios = True
+        chassis = 3640
+    [[ROUTER Landon]]
+        model = 3640
+        console = 2001
+        cnfg = configs/Landon.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Rodman f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = Hunisker f0/0
+        x = -634.485281374
+        y = 46.2928932188
+        hx = 1.29289321881
+        hy = 39.346717088
+    [[ROUTER Hunisker]]
+        model = 3640
+        console = 2003
+        cnfg = configs/Hunisker.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Landon f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = Franklin f1/0
+        slot2 = NM-1FE-TX
+        f2/0 = Franco f0/0
+        x = -413.242640687
+        y = 45.0
+        hx = -2.37867965644
+        hy = 38.6396103068
+    [[ROUTER Rodman]]
+        model = 3640
+        console = 2000
+        cnfg = configs/Rodman.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Landon f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = Franklin f0/0
+        x = -633.242640687
+        y = -176.0
+    [[ROUTER Franklin]]
+        model = 3640
+        console = 2002
+        cnfg = configs/Franklin.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Rodman f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = Hunisker f1/0
+        slot2 = NM-1FE-TX
+        f2/0 = Jacobs f0/0
+        x = -412.242640687
+        y = -177.0
+[localhost:7201]
+    workingdir = /tmp
+    udp = 10100
+    [[3640]]
+        image = /Data/IOS Images/c3640-jk9o3s-mz.124-16.bin
+        idlepc = 0x605050b4
+        ghostios = True
+        chassis = 3640
+    [[ROUTER Franco]]
+        model = 3640
+        console = 2005
+        cnfg = configs/Franco.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Hunisker f2/0
+        slot1 = NM-1FE-TX
+        f1/0 = Pinto f1/0
+        x = -197.755880016
+        y = 45.1751442127
+        hx = 5.41421356237
+        hy = 38.6396103068
+    [[ROUTER Jacobs]]
+        model = 3640
+        console = 2004
+        cnfg = configs/Jacobs.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Franklin f2/0
+        slot1 = NM-1FE-TX
+        f1/0 = Pinto f0/0
+        x = -197.674098192
+        y = -177.162950904
+    [[ROUTER Pinto]]
+        model = 3640
+        console = 2006
+        cnfg = configs/Pinto.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = Jacobs f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = Franco f1/0
+        x = -197.048773235
+        y = -67.9619407771
+        hx = -44.4472221514
+        hy = 7.52691193458
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = 192.168.67.0 /24
+        x = -296.668434814
+        y = -7.43650813896
+        color = "#0000ff"
+    [[NOTE 2]]
+        text = 192.168.56.0 /24
+        x = -298.789755157
+        y = -124.615223689
+        color = "#0000ff"
+    [[NOTE 3]]
+        text = 192.168.47.0 /24
+        x = -331.316667092
+        y = 41.0487732353
+        color = "#0000ff"
+    [[NOTE 4]]
+        text = 192.168.35.0 /24
+        x = -331.316667092
+        y = -179.367532368
+        color = "#0000ff"
+    [[NOTE 5]]
+        text = AS 3
+        x = -328.804653252
+        y = -98.1629509039
+        color = "#1a1a1a"
+    [[NOTE 6]]
+        text = AS 2
+        x = -330.925973595
+        y = -215.341666454
+        color = "#1a1a1a"
+    [[NOTE 7]]
+        text = AS 4
+        x = -330.218866814
+        y = 13.9619407771
+        color = "#1a1a1a"
+    [[NOTE 8]]
+        text = AS 1
+        x = -669.630121784
+        y = -216.353859763
+        color = "#1a1a1a"
+    [[NOTE 9]]
+        text = 192.168.34.0 /24
+        x = -471.323809767
+        y = -61.7867965644
+        color = "#0000ff"
+    [[NOTE 10]]
+        text = 192.168.12.0 /24
+        x = -665.778174593
+        y = -63.7071067812
+        color = "#0000ff"
+    [[NOTE 11]]
+        text = 192.168.13.0 /24
+        x = -553.242640687
+        y = -182.0
+        color = "#0000ff"
+    [[NOTE 12]]
+        text = 192.168.24.0 /24
+        x = -553.242640687
+        y = 67.6360389693
+        color = "#0000ff"
+    [[NOTE 13]]
+        text = f1/0
+        x = 32.0428981015
+        y = 39.3718017749
+        interface = Pinto f1/0
+        color = "#1a1a1a"
+    [[NOTE 14]]
+        text = f0/0
+        x = 33.4780558946
+        y = -23.6561984403
+        interface = Pinto f0/0
+        color = "#1a1a1a"
+    [[NOTE 15]]
+        text = f1/0
+        x = 33.2499951173
+        y = -19.4134323353
+        interface = Franco f1/0
+        color = "#1a1a1a"
+    [[NOTE 16]]
+        text = f0/0
+        x = -36.6984715975
+        y = 21.2603818656
+        interface = Franco f0/0
+        color = "#1a1a1a"
+    [[NOTE 17]]
+        text = f0/0
+        x = -37.4055800562
+        y = 18.4948434933
+        interface = Jacobs f0/0
+        color = "#1a1a1a"
+    [[NOTE 18]]
+        text = f1/0
+        x = 27.5721966371
+        y = 39.3719271928
+        interface = Jacobs f1/0
+        color = "#1a1a1a"
+    [[NOTE 19]]
+        text = f1/0
+        x = -3.58937426947
+        y = -20.1209145385
+        interface = Hunisker f1/0
+        color = "#1a1a1a"
+    [[NOTE 20]]
+        text = f2/0
+        x = 72.9999867876
+        y = 22.0325113532
+        interface = Hunisker f2/0
+        color = "#1a1a1a"
+    [[NOTE 21]]
+        text = f0/0
+        x = -38.1120153945
+        y = 1.02054375516
+        interface = Hunisker f0/0
+        color = "#1a1a1a"
+    [[NOTE 22]]
+        text = f1/0
+        x = -4.65683775512
+        y = 42.2006043217
+        interface = Franklin f1/0
+        color = "#1a1a1a"
+    [[NOTE 23]]
+        text = f2/0
+        x = 63.1004935286
+        y = 21.2625158196
+        interface = Franklin f2/0
+        color = "#1a1a1a"
+    [[NOTE 24]]
+        text = f0/0
+        x = -36.6980753241
+        y = 22.1809936222
+        interface = Franklin f0/0
+        color = "#1a1a1a"
+    [[NOTE 25]]
+        text = f0/0
+        x = 31.102280376
+        y = -21.534908935
+        interface = Landon f0/0
+        color = "#1a1a1a"
+    [[NOTE 26]]
+        text = f1/0
+        x = 63.8069288669
+        y = 0.553049373651
+        interface = Landon f1/0
+        color = "#1a1a1a"
+    [[NOTE 27]]
+        text = f0/0
+        x = 32.7763992805
+        y = 40.7861715935
+        interface = Rodman f0/0
+        color = "#1a1a1a"
+    [[NOTE 28]]
+        text = f1/0
+        x = 63.8072023588
+        y = 21.8190063778
+        interface = Rodman f1/0
+        color = "#1a1a1a"
+    [[SHAPE 1]]
+        type = rectangle
+        x = -332.340187158
+        y = 14.6482322781
+        width = 213.234018716
+        height = 116.672618896
+        fill_color = "#ffaa7f"
+        z = -2.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = -333.047293939
+        y = -217.788888605
+        width = 214.142135624
+        height = 116.672618896
+        fill_color = "#aaffff"
+        z = -2.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -674.242640687
+        y = -218.0
+        width = 341.195346748
+        height = 350.0
+        fill_color = "#ffff7f"
+        z = -2.0
+    [[SHAPE 4]]
+        type = rectangle
+        x = -352.846283812
+        y = -102.225396744
+        width = 234.246212025
+        height = 116.672618896
+        fill_color = "#aaff7f"
+        z = -3.0

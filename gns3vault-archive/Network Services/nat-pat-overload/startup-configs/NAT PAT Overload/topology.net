@@ -1,0 +1,166 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/GNS3/IOS/C3640-JK.BIN
+        ram = 192
+        idlepc = 0x605050b4
+        ghostios = True
+        chassis = 3640
+    [[ROUTER WWW]]
+        model = 3640
+        console = 2012
+        slot0 = NM-1FE-TX
+        f0/0 = PAT f0/0
+        cnfg = configs/WWW.cfg
+        x = 78.8025612107
+        y = -151.535533906
+    [[ROUTER PAT]]
+        model = 3640
+        console = 2011
+        slot0 = NM-1FE-TX
+        f0/0 = WWW f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = SW1 3
+        cnfg = configs/PAT.cfg
+        x = -179.959848736
+        y = -152.013239329
+    [[ROUTER Alice]]
+        model = 3640
+        console = 2010
+        slot0 = NM-1FE-TX
+        f0/0 = SW1 2
+        slot1 = NM-1FE-TX
+        cnfg = configs/Alice.cfg
+        x = -494.244732728
+        y = -60.4421715175
+    [[ETHSW SW1]]
+        1 = access 1 Emma f0/0
+        2 = access 1 Alice f0/0
+        3 = access 1 PAT f1/0
+        x = -335.741594667
+        y = -146.935028843
+        hx = 21.3639610307
+        hy = -21.4644660941
+    [[ROUTER Emma]]
+        model = 3640
+        console = 2009
+        slot0 = NM-1FE-TX
+        f0/0 = SW1 1
+        cnfg = configs/Emma.cfg
+        x = -486.583873865
+        y = -249.91883092
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = INSIDE
+        x = -236.173664916
+        y = 1.94112549695
+        color = "#323232"
+    [[NOTE 2]]
+        text = OUTSIDE
+        x = 74.2462120246
+        y = 2.14213562373
+        color = "#323232"
+    [[NOTE 3]]
+        text = .2
+        x = -441.23463146
+        y = -85.1299423149
+        color = "#0000ff"
+    [[NOTE 4]]
+        text = .1
+        x = -444.063058585
+        y = -211.501046021
+        color = "#0000ff"
+    [[NOTE 5]]
+        text = .3
+        x = -114.551298552
+        y = -154.024386618
+        color = "#0000ff"
+    [[NOTE 6]]
+        text = 192.168.123.0 /24
+        x = -504.874241767
+        y = -157.663996924
+        color = "#0000ff"
+    [[NOTE 7]]
+        text = .3
+        x = -205.060966544
+        y = -154.530483272
+        color = "#0000ff"
+    [[NOTE 8]]
+        text = .4
+        x = 57.2756492761
+        y = -153.622366364
+        color = "#0000ff"
+    [[NOTE 9]]
+        text = 192.168.34.0 /24
+        x = -83.43860018
+        y = -153.421356237
+        color = "#0000ff"
+    [[NOTE 10]]
+        text = f0/0
+        x = -35.9874620871
+        y = 23.2668031184
+        interface = WWW f0/0
+        color = "#323232"
+    [[NOTE 11]]
+        text = 2
+        x = 3.83080910507
+        y = 26.7990365638
+        interface = SW1 2
+        color = "#323232"
+    [[NOTE 12]]
+        text = 1
+        x = 9.60044022472
+        y = -20.7902639462
+        interface = SW1 1
+        color = "#323232"
+    [[NOTE 13]]
+        text = 3
+        x = 75.3414607482
+        y = 12.4421909203
+        interface = SW1 3
+        color = "#323232"
+    [[NOTE 14]]
+        text = f0/0
+        x = 66.6321230278
+        y = 22.8545172252
+        interface = PAT f0/0
+        color = "#323232"
+    [[NOTE 15]]
+        text = f1/0
+        x = -36.5399455581
+        y = 23.4364887361
+        interface = PAT f1/0
+        color = "#323232"
+    [[NOTE 16]]
+        text = f0/0
+        x = 63.9620841137
+        y = 1.30146849962
+        interface = Alice f0/0
+        color = "#323232"
+    [[NOTE 17]]
+        text = f0/0
+        x = 64.5564140248
+        y = 24.142031668
+        interface = Emma f0/0
+        color = "#323232"
+    [[SHAPE 1]]
+        type = rectangle
+        x = -508.409775673
+        y = -291.529003976
+        width = 346.988419436
+        height = 320.319371878
+        fill_color = "#aaff7f"
+        z = -2.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = -161.927452892
+        y = -292.03510063
+        width = 311.834090503
+        height = 320.319371878
+        fill_color = "#ff4f4f"
+        z = -2.0

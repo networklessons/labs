@@ -1,0 +1,22 @@
+hostname SW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+system mtu routing 1900
+ip subnet-zero
+!
+ip dhcp snooping vlan 1
+no ip dhcp snooping information option
+ip dhcp snooping
+!         
+interface FastEthernet0/13
+ description CLIENT
+ ip dhcp snooping limit rate 10
+!         
+interface FastEthernet0/16
+ description DHCPSERVER
+ ip dhcp snooping trust
+

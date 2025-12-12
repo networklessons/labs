@@ -1,0 +1,122 @@
+{
+    "name": "tclsh-scripting-startup-configs",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Ping port FastEthernet0/0 to Pong port FastEthernet0/0",
+                "destination_node_id": 2,
+                "destination_port_id": 2,
+                "id": 1,
+                "source_node_id": 1,
+                "source_port_id": 1
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 1,
+                "label": {
+                    "text": "Ping",
+                    "x": 9.14300217428,
+                    "y": -23.8284271248
+                },
+                "ports": [
+                    {
+                        "description": "connected to Pong on port FastEthernet0/0",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2100,
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Ping",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX"
+                },
+                "router_id": 1,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -577.0,
+                "y": -58.0
+            },
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Pong",
+                    "x": 7.67853608022,
+                    "y": -26.0746391495
+                },
+                "ports": [
+                    {
+                        "description": "connected to Ping on port FastEthernet0/0",
+                        "id": 2,
+                        "link_id": 1,
+                        "name": "FastEthernet0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "aux": 2101,
+                    "chassis": "3640",
+                    "console": 2002,
+                    "idlepc": "0x603e2724",
+                    "image": "C3640-JK.BIN",
+                    "name": "Pong",
+                    "ram": 192,
+                    "slot0": "NM-1FE-TX"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -374.0,
+                "y": -58.0
+            }
+        ],
+        "notes": [
+            {
+                "color": "#323232",
+                "text": ".1",
+                "x": -512.0,
+                "y": -61.5
+            },
+            {
+                "color": "#323232",
+                "text": "192.168.12.X",
+                "x": -488.0,
+                "y": -86.0
+            },
+            {
+                "color": "#323232",
+                "text": ".2",
+                "x": -393.0,
+                "y": -61.0
+            },
+            {
+                "color": "#323232",
+                "text": "Loopbacks:\n\nL0: 1.1.1.1 /24\nL1: 2.2.2.2 /24\nL2: 3.3.3.3 /24\nL3: 4.4.4.4 /24",
+                "x": -300.520382004,
+                "y": -101.509667992
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

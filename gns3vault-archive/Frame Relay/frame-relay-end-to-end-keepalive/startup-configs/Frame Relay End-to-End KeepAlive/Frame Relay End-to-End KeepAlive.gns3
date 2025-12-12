@@ -1,0 +1,193 @@
+{
+    "name": "Frame Relay End-to-End KeepAlive",
+    "resources_type": "local",
+    "topology": {
+        "links": [
+            {
+                "description": "Link from Emma port Serial0/0 to FR1 port 2",
+                "destination_node_id": 1,
+                "destination_port_id": 6,
+                "id": 1,
+                "source_node_id": 2,
+                "source_port_id": 1
+            },
+            {
+                "description": "Link from FR1 port 1 to Jack port Serial0/0",
+                "destination_node_id": 3,
+                "destination_port_id": 7,
+                "id": 2,
+                "source_node_id": 1,
+                "source_port_id": 5
+            }
+        ],
+        "nodes": [
+            {
+                "description": "Router c3600",
+                "id": 2,
+                "label": {
+                    "text": "Emma",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 2",
+                        "id": 1,
+                        "link_id": 1,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 2,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 3,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 4,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2001,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Emma",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i2_startup-config.cfg"
+                },
+                "router_id": 2,
+                "server_id": 1,
+                "type": "C3600",
+                "x": 146.605122421,
+                "y": -76.4472221514
+            },
+            {
+                "description": "Frame Relay switch",
+                "id": 1,
+                "label": {
+                    "text": "FR1",
+                    "x": 7.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to Jack on port Serial0/0",
+                        "id": 5,
+                        "link_id": 2,
+                        "name": "1",
+                        "port_number": 1
+                    },
+                    {
+                        "description": "connected to Emma on port Serial0/0",
+                        "id": 6,
+                        "link_id": 1,
+                        "name": "2",
+                        "port_number": 2
+                    }
+                ],
+                "properties": {
+                    "mappings": {
+                        "1:102": "2:201"
+                    },
+                    "name": "FR1"
+                },
+                "server_id": 1,
+                "type": "FrameRelaySwitch",
+                "x": -91.5,
+                "y": -84.5
+            },
+            {
+                "description": "Router c3600",
+                "id": 3,
+                "label": {
+                    "text": "Jack",
+                    "x": 19.5,
+                    "y": -25.0
+                },
+                "ports": [
+                    {
+                        "description": "connected to FR1 on port 1",
+                        "id": 7,
+                        "link_id": 2,
+                        "name": "Serial0/0",
+                        "port_number": 0,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 8,
+                        "name": "Serial0/1",
+                        "port_number": 1,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 9,
+                        "name": "Serial0/2",
+                        "port_number": 2,
+                        "slot_number": 0
+                    },
+                    {
+                        "id": 10,
+                        "name": "Serial0/3",
+                        "port_number": 3,
+                        "slot_number": 0
+                    }
+                ],
+                "properties": {
+                    "chassis": "3640",
+                    "console": 2000,
+                    "idlepc": "0x603e26f0",
+                    "image": "C3640-JK.BIN",
+                    "name": "Jack",
+                    "slot0": "NM-4T",
+                    "startup_config": "configs\\i3_startup-config.cfg"
+                },
+                "router_id": 3,
+                "server_id": 1,
+                "type": "C3600",
+                "x": -318.671139599,
+                "y": -83.5182899632
+            }
+        ],
+        "notes": [
+            {
+                "color": "#0000ff",
+                "text": "192.168.12.0 /24",
+                "x": -127.986327395,
+                "y": -132.208152802
+            },
+            {
+                "color": "#0000ff",
+                "text": ".2",
+                "x": 121.622366364,
+                "y": -82.405591591
+            },
+            {
+                "color": "#0000ff",
+                "text": ".1",
+                "x": -251.730014102,
+                "y": -93.5182899632
+            }
+        ],
+        "servers": [
+            {
+                "host": "127.0.0.1",
+                "id": 1,
+                "local": true,
+                "port": 8000
+            }
+        ]
+    },
+    "type": "topology",
+    "version": "1.0"
+}

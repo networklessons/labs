@@ -1,0 +1,92 @@
+autostart = False
+[localhost:7200]
+    workingdir = C:\Users\Tommy\AppData\Local\Temp
+    udp = 10000
+    [[3640]]
+        image = c:\Program Files\GNS3\IOS\c3640-jk9s-mz.124-16.bin
+        idlepc = 0x60483634
+        ghostios = True
+        chassis = 3640
+    [[ROUTER R1]]
+        model = 3640
+        console = 2001
+        aux = 2100
+        cnfg = OSPFTotallyNSSA_configs\R1.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R2 f0/0
+        x = -530.859956418
+        y = -113.083261121
+    [[ROUTER R2]]
+        model = 3640
+        console = 2002
+        aux = 2101
+        cnfg = OSPFTotallyNSSA_configs\R2.cfg
+        slot0 = NM-1FE-TX
+        f0/0 = R1 f0/0
+        x = -336.211724139
+        y = -112.961940777
+[GNS3-DATA]
+    configs = OSPFTotallyNSSA_configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = Hogan
+        x = -525.380338422
+        y = -66.8614357136
+    [[NOTE 2]]
+        text = L0: 1.1.1.1 /24
+        x = -546.593541857
+        y = -44.2340187158
+        color = "#323232"
+    [[NOTE 3]]
+        text = L0: 2.2.2.2 /24
+        x = -94.0452018978
+        y = -62.6187950266
+        color = "#323232"
+    [[NOTE 4]]
+        text = .2
+        x = -357.088924499
+        y = -117.773123959
+        color = "#323232"
+    [[NOTE 5]]
+        text = Undertaker
+        x = -99.7020561473
+        y = -129.793939239
+    [[NOTE 6]]
+        text = 192.168.12.0 /24
+        x = -466.690475583
+        y = -83.1248916811
+        color = "#323232"
+    [[NOTE 7]]
+        text = Area 0
+        x = -431.335136524
+        y = -209.697005513
+        color = "#323232"
+    [[NOTE 8]]
+        text = .1
+        x = -470.226009489
+        y = -127.672618896
+        color = "#323232"
+    [[NOTE 9]]
+        text = Area 1
+        x = -152.027957955
+        y = -206.868578389
+        color = "#323232"
+    [[SHAPE 1]]
+        type = ellipse
+        x = -269.414213562
+        y = -217.081781824
+        width = 285.67766953
+        height = 263.960461481
+        fill_color = "#00ff7f"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -538.108260483
+        y = -217.788888605
+        width = 266.572726577
+        height = 265.839141137
+        fill_color = "#ffaa00"
+        border_style = 2
+        z = -1.0

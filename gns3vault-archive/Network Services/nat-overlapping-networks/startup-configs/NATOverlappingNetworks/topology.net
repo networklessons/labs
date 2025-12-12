@@ -1,0 +1,164 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = /tmp
+    udp = 10000
+    [[3640]]
+        image = /Data/GNS3/IOS/C3640-JK.BIN
+        idlepc = 0x603e26f0
+        ghostios = True
+        chassis = 3640
+    [[3725]]
+        image = /Data/GNS3/IOS/C3725-AD.BIN
+        ram = 128
+        idlepc = 0x614998c8
+        ghostios = True
+    [[ROUTER Kiwi]]
+        model = 3640
+        console = 2013
+        slot0 = NM-1FE-TX
+        f0/0 = Pineapple f1/0
+        slot1 = NM-1FE-TX
+        f1/0 = Apple f0/0
+        cnfg = configs/Kiwi.cfg
+        x = -152.501046021
+        y = -67.9619407771
+        hx = 14.2071067812
+        hy = 41.4680374315
+    [[ROUTER Apple]]
+        model = 3725
+        console = 2014
+        f0/0 = Kiwi f1/0
+        cnfg = configs/Apple.cfg
+        x = -151.793939239
+        y = -191.705627485
+    [[ROUTER Banana]]
+        model = 3640
+        console = 2011
+        slot0 = NM-1FE-TX
+        f0/0 = Pineapple f0/0
+        cnfg = configs/Banana.cfg
+        x = -433.929544933
+        y = -187.462986798
+    [[ROUTER Pineapple]]
+        model = 3640
+        console = 2012
+        slot0 = NM-1FE-TX
+        f0/0 = Banana f0/0
+        slot1 = NM-1FE-TX
+        f1/0 = Kiwi f0/0
+        cnfg = configs/Pineapple.cfg
+        x = -436.050865276
+        y = -66.5477272148
+        hx = -4.17157287525
+        hy = 37.9325035256
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.41421356237
+    m22 = 1.41421356237
+    [[NOTE 1]]
+        text = Fruity
+        x = -193.040151264
+        y = -241.303607231
+        color = "#323232"
+    [[NOTE 2]]
+        text = Juicy
+        x = -377.595021154
+        y = -242.516810667
+        color = "#323232"
+    [[NOTE 3]]
+        text = .1
+        x = -142.8355698
+        y = -148.464466094
+        color = "#0000ff"
+    [[NOTE 4]]
+        text = .4
+        x = -141.421356237
+        y = -88.1593795664
+        color = "#0000ff"
+    [[NOTE 5]]
+        text = .4
+        x = -174.655374953
+        y = -68.1593795664
+        color = "#0000ff"
+    [[NOTE 6]]
+        text = .3
+        x = -402.343758495
+        y = -87.0502525317
+        color = "#0000ff"
+    [[NOTE 7]]
+        text = .3
+        x = -371.231060123
+        y = -68.4644660941
+        color = "#0000ff"
+    [[NOTE 8]]
+        text = .1
+        x = -401.636651714
+        y = -148.166522241
+        color = "#0000ff"
+    [[NOTE 9]]
+        text = 192.168.34.0 /24
+        x = -327.390439689
+        y = -70.1837661841
+        color = "#0000ff"
+    [[NOTE 10]]
+        text = 192.168.1.0 /24
+        x = -173.241161391
+        y = -119.681240867
+        color = "#0000ff"
+    [[NOTE 11]]
+        text = 192.168.1.0 /24
+        x = -467.397582364
+        y = -118.773123959
+        color = "#0000ff"
+    [[NOTE 12]]
+        text = f0/0
+        x = 35.5998594279
+        y = 42.2003570815
+        interface = Apple f0/0
+        color = "#323232"
+    [[NOTE 13]]
+        text = f0/0
+        x = -36.6983363204
+        y = 22.8160982022
+        interface = Kiwi f0/0
+        color = "#323232"
+    [[NOTE 14]]
+        text = f1/0
+        x = 34.6427812593
+        y = -22.9490944231
+        interface = Kiwi f1/0
+        color = "#323232"
+    [[NOTE 15]]
+        text = f1/0
+        x = 67.3429972611
+        y = 20.4767950166
+        interface = Pineapple f1/0
+        color = "#323232"
+    [[NOTE 16]]
+        text = f0/0
+        x = -5.896333331
+        y = -20.115166024
+        interface = Pineapple f0/0
+        color = "#323232"
+    [[NOTE 17]]
+        text = f0/0
+        x = -10.1280532866
+        y = 41.487749026
+        interface = Banana f0/0
+        color = "#323232"
+    [[SHAPE 1]]
+        type = rectangle
+        x = -196.776695297
+        y = -239.203102168
+        width = 171.826947828
+        height = 260.922402258
+        fill_color = "#aaff7f"
+        z = -2.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = -502.045814642
+        y = -243.244732728
+        width = 171.826947828
+        height = 260.922402258
+        fill_color = "#ffff7f"
+        z = -2.0
