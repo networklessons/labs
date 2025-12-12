@@ -1,0 +1,38 @@
+name: bgp-as-path-access-list
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Bakers:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.109
+      startup-config: ./clab-bgp-as-path-access-list/Bakers/startup-config.cfg.partial
+    Barbados:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.180
+      startup-config: ./clab-bgp-as-path-access-list/Barbados/startup-config.cfg.partial
+    Castor:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.162
+      startup-config: ./clab-bgp-as-path-access-list/Castor/startup-config.cfg.partial
+    Coarse:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.195
+      startup-config: ./clab-bgp-as-path-access-list/Coarse/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Bakers:Ethernet0/1
+    - Coarse:Ethernet1/0
+  - endpoints:
+    - Bakers:Ethernet1/0
+    - Castor:Ethernet1/0
+  - endpoints:
+    - Barbados:Ethernet0/1
+    - Castor:Ethernet0/1
+  - endpoints:
+    - Barbados:Ethernet1/0
+    - Coarse:Ethernet0/1

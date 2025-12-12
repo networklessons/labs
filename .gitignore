@@ -47,3 +47,8 @@ nornir-simple-inventory.yml
 *.clab.yml.annotations.json
 .aider*
 .gitignore
+clab_test_labs.py
+lab_errors.txt
+successful_labs.json
+CONVERSION_REPORT.md
+convert_bgp_to_clab.py

@@ -1,0 +1,53 @@
+!
+!
+!
+hostname Diamonds
+!
+!
+!
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/1
+ ip address 192.168.13.1 255.255.255.0
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Ethernet1/0
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+
+!
+end

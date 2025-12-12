@@ -1,0 +1,31 @@
+name: bgp-aggregation-as-set
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Haarlem:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.127
+      startup-config: ./clab-bgp-aggregation-as-set/Haarlem/startup-config.cfg.partial
+    Hoofddorp:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.158
+      startup-config: ./clab-bgp-aggregation-as-set/Hoofddorp/startup-config.cfg.partial
+    Tilburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.237
+      startup-config: ./clab-bgp-aggregation-as-set/Tilburg/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Haarlem:Ethernet0/1
+    - Hoofddorp:Ethernet1/0
+  - endpoints:
+    - Haarlem:Ethernet1/0
+    - Tilburg:Ethernet1/0
+  - endpoints:
+    - Hoofddorp:Ethernet0/1
+    - Tilburg:Ethernet0/1

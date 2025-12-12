@@ -1,0 +1,82 @@
+name: bgp-route-reflectors-and-clusters
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Amsterdam:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/Amsterdam/startup-config.cfg.partial
+    Berlin:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.129
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/Berlin/startup-config.cfg.partial
+    Dusseldorf:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.175
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/Dusseldorf/startup-config.cfg.partial
+    Hamburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.199
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/Hamburg/startup-config.cfg.partial
+    LosAngeles:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.134
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/LosAngeles/startup-config.cfg.partial
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.101
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/NewYork/startup-config.cfg.partial
+    Tilburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.237
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/Tilburg/startup-config.cfg.partial
+    Utrecht:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.213
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/Utrecht/startup-config.cfg.partial
+    Boston:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.205
+      startup-config: ./clab-bgp-route-reflectors-and-clusters/Boston/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Amsterdam:Ethernet0/1
+    - Tilburg:Ethernet0/1
+  - endpoints:
+    - Amsterdam:Ethernet1/0
+    - Utrecht:Ethernet1/0
+  - endpoints:
+    - Berlin:Ethernet0/1
+    - Hamburg:Ethernet0/1
+  - endpoints:
+    - Berlin:Ethernet1/0
+    - Dusseldorf:Ethernet1/0
+  - endpoints:
+    - Boston:Ethernet0/1
+    - NewYork:Ethernet1/0
+  - endpoints:
+    - Boston:Ethernet1/0
+    - LosAngeles:Ethernet1/0
+  - endpoints:
+    - Dusseldorf:Ethernet0/1
+    - Hamburg:Ethernet1/0
+  - endpoints:
+    - Hamburg:Ethernet2/0
+    - Tilburg:Ethernet3/0
+  - endpoints:
+    - Hamburg:Ethernet3/0
+    - NewYork:Ethernet3/0
+  - endpoints:
+    - LosAngeles:Ethernet0/1
+    - NewYork:Ethernet0/1
+  - endpoints:
+    - NewYork:Ethernet2/0
+    - Tilburg:Ethernet2/0
+  - endpoints:
+    - Tilburg:Ethernet1/0
+    - Utrecht:Ethernet0/1

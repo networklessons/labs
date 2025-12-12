@@ -1,0 +1,21 @@
+name: bgp-md5-authentication
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Cake:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.185
+      startup-config: ./clab-bgp-md5-authentication/Cake/startup-config.cfg.partial
+    Piece:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.171
+      startup-config: ./clab-bgp-md5-authentication/Piece/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Cake:Ethernet0/1
+    - Piece:Ethernet0/1

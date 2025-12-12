@@ -1,0 +1,51 @@
+name: bgp-dmz-link-bandwidth
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Athens:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.105
+      startup-config: ./clab-bgp-dmz-link-bandwidth/Athens/startup-config.cfg.partial
+    Delphi:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.152
+      startup-config: ./clab-bgp-dmz-link-bandwidth/Delphi/startup-config.cfg.partial
+    Olympia:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.218
+      startup-config: ./clab-bgp-dmz-link-bandwidth/Olympia/startup-config.cfg.partial
+    Sparta:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.128
+      startup-config: ./clab-bgp-dmz-link-bandwidth/Sparta/startup-config.cfg.partial
+    Thebes:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.211
+      startup-config: ./clab-bgp-dmz-link-bandwidth/Thebes/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Athens:Ethernet0/1
+    - SW1:1
+  - endpoints:
+    - Delphi:Ethernet1/0
+    - Thebes:Ethernet1/0
+  - endpoints:
+    - Delphi:Ethernet0/1
+    - SW1:3
+  - endpoints:
+    - Olympia:Ethernet0/1
+    - Sparta:Ethernet1/0
+  - endpoints:
+    - Olympia:Ethernet1/0
+    - Thebes:Ethernet2/0
+  - endpoints:
+    - SW1:2
+    - Sparta:Ethernet0/1
+  - endpoints:
+    - Sparta:Serial2/0
+    - Thebes:Serial0/0

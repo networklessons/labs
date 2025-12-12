@@ -1,0 +1,28 @@
+name: ibgp-blackhole-routing
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    King:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.191
+      startup-config: ./clab-ibgp-blackhole-routing/King/startup-config.cfg.partial
+    Prince:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.164
+      startup-config: ./clab-ibgp-blackhole-routing/Prince/startup-config.cfg.partial
+    Queen:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.126
+      startup-config: ./clab-ibgp-blackhole-routing/Queen/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - King:Ethernet0/1
+    - Prince:Ethernet0/1
+  - endpoints:
+    - Prince:Ethernet1/0
+    - Queen:Ethernet0/1

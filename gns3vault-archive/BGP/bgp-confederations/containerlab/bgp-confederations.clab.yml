@@ -1,0 +1,58 @@
+name: bgp-confederations
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Crusher:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.179
+      startup-config: ./clab-bgp-confederations/Crusher/startup-config.cfg.partial
+    Data:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.233
+      startup-config: ./clab-bgp-confederations/Data/startup-config.cfg.partial
+    Picard:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.156
+      startup-config: ./clab-bgp-confederations/Picard/startup-config.cfg.partial
+    Riker:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.113
+      startup-config: ./clab-bgp-confederations/Riker/startup-config.cfg.partial
+    Worf:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.198
+      startup-config: ./clab-bgp-confederations/Worf/startup-config.cfg.partial
+    laForge:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.248
+      startup-config: ./clab-bgp-confederations/laForge/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Crusher:Ethernet0/1
+    - Data:Ethernet2/0
+  - endpoints:
+    - Crusher:Ethernet1/0
+    - Worf:Ethernet1/0
+  - endpoints:
+    - Crusher:Ethernet2/0
+    - Riker:Ethernet1/0
+  - endpoints:
+    - Data:Ethernet0/1
+    - Picard:Ethernet1/0
+  - endpoints:
+    - Data:Ethernet1/0
+    - laForge:Ethernet2/0
+  - endpoints:
+    - Picard:Ethernet0/1
+    - laForge:Ethernet0/1
+  - endpoints:
+    - Riker:Ethernet0/1
+    - Worf:Ethernet2/0
+  - endpoints:
+    - Worf:Ethernet0/1
+    - laForge:Ethernet1/0

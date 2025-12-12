@@ -1,0 +1,41 @@
+name: bgp-ibgpebgp-local-preference-med
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Berry:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.168
+      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Berry/startup-config.cfg.partial
+    Cherry:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.188
+      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Cherry/startup-config.cfg.partial
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.132
+      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/ISP/startup-config.cfg.partial
+    Kerry:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.244
+      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Kerry/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Berry:Ethernet0/1
+    - Kerry:Ethernet1/0
+  - endpoints:
+    - Berry:Ethernet1/0
+    - Cherry:Ethernet1/0
+  - endpoints:
+    - Berry:Serial2/0
+    - ISP:Serial0/1
+  - endpoints:
+    - Cherry:Ethernet0/1
+    - Kerry:Ethernet0/1
+  - endpoints:
+    - Cherry:Serial2/0
+    - ISP:Serial0/0

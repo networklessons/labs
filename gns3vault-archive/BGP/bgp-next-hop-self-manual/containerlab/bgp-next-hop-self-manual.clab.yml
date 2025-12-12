@@ -1,0 +1,28 @@
+name: bgp-next-hop-self-manual
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    HanSolo:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.239
+      startup-config: ./clab-bgp-next-hop-self-manual/HanSolo/startup-config.cfg.partial
+    Leia:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-next-hop-self-manual/Leia/startup-config.cfg.partial
+    Luke:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.152
+      startup-config: ./clab-bgp-next-hop-self-manual/Luke/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - HanSolo:Ethernet1/0
+    - Luke:Ethernet0/1
+  - endpoints:
+    - HanSolo:Serial0/0
+    - Leia:Serial0/0

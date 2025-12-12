@@ -1,0 +1,38 @@
+name: bgp-allow-as-in
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Andy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.241
+      startup-config: ./clab-bgp-allow-as-in/Andy/startup-config.cfg.partial
+    Buzz:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.190
+      startup-config: ./clab-bgp-allow-as-in/Buzz/startup-config.cfg.partial
+    Rex:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.215
+      startup-config: ./clab-bgp-allow-as-in/Rex/startup-config.cfg.partial
+    Woody:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.101
+      startup-config: ./clab-bgp-allow-as-in/Woody/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Andy:Ethernet0/1
+    - Rex:Ethernet1/0
+  - endpoints:
+    - Andy:Ethernet1/0
+    - Buzz:Ethernet1/0
+  - endpoints:
+    - Buzz:Ethernet0/1
+    - Woody:Ethernet1/0
+  - endpoints:
+    - Rex:Ethernet0/1
+    - Woody:Ethernet0/1

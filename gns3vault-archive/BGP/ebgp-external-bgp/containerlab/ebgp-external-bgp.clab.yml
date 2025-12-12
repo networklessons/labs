@@ -1,0 +1,35 @@
+name: ebgp-external-bgp
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Cotton:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.149
+      startup-config: ./clab-ebgp-external-bgp/Cotton/startup-config.cfg.partial
+    Flax:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.235
+      startup-config: ./clab-ebgp-external-bgp/Flax/startup-config.cfg.partial
+    Silk:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.231
+      startup-config: ./clab-ebgp-external-bgp/Silk/startup-config.cfg.partial
+    Wool:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.135
+      startup-config: ./clab-ebgp-external-bgp/Wool/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Cotton:Ethernet0/1
+    - Flax:Ethernet1/0
+  - endpoints:
+    - Flax:Ethernet0/1
+    - Silk:Ethernet1/0
+  - endpoints:
+    - Silk:Ethernet0/1
+    - Wool:Ethernet0/1

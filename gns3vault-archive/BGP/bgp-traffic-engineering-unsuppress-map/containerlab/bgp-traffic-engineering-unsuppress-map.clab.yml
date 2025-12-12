@@ -1,0 +1,41 @@
+name: bgp-traffic-engineering-unsuppress-map
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Banshee:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.131
+      startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Banshee/startup-config.cfg.partial
+    Behemoth:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.163
+      startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Behemoth/startup-config.cfg.partial
+    BigFoot:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.218
+      startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/BigFoot/startup-config.cfg.partial
+    Blob:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.176
+      startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Blob/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Banshee:Ethernet0/1
+    - SW1:1
+  - endpoints:
+    - Banshee:Ethernet1/0
+    - Behemoth:Ethernet1/0
+  - endpoints:
+    - Behemoth:Ethernet0/1
+    - BigFoot:Ethernet1/0
+  - endpoints:
+    - Behemoth:Ethernet2/0
+    - Blob:Ethernet0/1
+  - endpoints:
+    - BigFoot:Ethernet0/1
+    - SW1:2

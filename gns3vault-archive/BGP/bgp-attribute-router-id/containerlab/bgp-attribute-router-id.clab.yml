@@ -1,0 +1,38 @@
+name: bgp-attribute-router-id
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Barcelona:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.240
+      startup-config: ./clab-bgp-attribute-router-id/Barcelona/startup-config.cfg.partial
+    NewDelhi:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.202
+      startup-config: ./clab-bgp-attribute-router-id/NewDelhi/startup-config.cfg.partial
+    Paris:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.200
+      startup-config: ./clab-bgp-attribute-router-id/Paris/startup-config.cfg.partial
+    Sydney:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-bgp-attribute-router-id/Sydney/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Barcelona:Ethernet0/1
+    - NewDelhi:Ethernet0/1
+  - endpoints:
+    - Barcelona:Ethernet1/0
+    - Sydney:Ethernet0/1
+  - endpoints:
+    - NewDelhi:Ethernet1/0
+    - Paris:Ethernet0/1
+  - endpoints:
+    - Paris:Ethernet1/0
+    - Sydney:Ethernet1/0

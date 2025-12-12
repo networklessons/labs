@@ -1,0 +1,52 @@
+name: bgp-transit-as
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Aniston:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.178
+      startup-config: ./clab-bgp-transit-as/Aniston/startup-config.cfg.partial
+    Bullock:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.218
+      startup-config: ./clab-bgp-transit-as/Bullock/startup-config.cfg.partial
+    Diaz:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.114
+      startup-config: ./clab-bgp-transit-as/Diaz/startup-config.cfg.partial
+    Parker:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.180
+      startup-config: ./clab-bgp-transit-as/Parker/startup-config.cfg.partial
+    Roberts:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.240
+      startup-config: ./clab-bgp-transit-as/Roberts/startup-config.cfg.partial
+    Witherspoon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.190
+      startup-config: ./clab-bgp-transit-as/Witherspoon/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Aniston:Ethernet0/1
+    - Witherspoon:Ethernet1/0
+  - endpoints:
+    - Aniston:Ethernet1/0
+    - Parker:Ethernet0/1
+  - endpoints:
+    - Bullock:Ethernet0/1
+    - Witherspoon:Ethernet0/1
+  - endpoints:
+    - Diaz:Ethernet0/1
+    - Witherspoon:Ethernet2/0
+  - endpoints:
+    - Diaz:Ethernet1/0
+    - Parker:Ethernet1/0
+  - endpoints:
+    - Parker:Ethernet2/0
+    - Roberts:Ethernet0/1

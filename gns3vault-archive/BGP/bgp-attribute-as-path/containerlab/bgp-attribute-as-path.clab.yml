@@ -1,0 +1,41 @@
+name: bgp-attribute-as-path
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Aluminium:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.202
+      startup-config: ./clab-bgp-attribute-as-path/Aluminium/startup-config.cfg.partial
+    Copper:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.107
+      startup-config: ./clab-bgp-attribute-as-path/Copper/startup-config.cfg.partial
+    Steel:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.220
+      startup-config: ./clab-bgp-attribute-as-path/Steel/startup-config.cfg.partial
+    Zinc:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.235
+      startup-config: ./clab-bgp-attribute-as-path/Zinc/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Aluminium:Ethernet0/1
+    - Copper:Ethernet0/1
+  - endpoints:
+    - Aluminium:Ethernet1/0
+    - Steel:Ethernet0/1
+  - endpoints:
+    - Copper:Ethernet1/0
+    - Steel:Ethernet1/0
+  - endpoints:
+    - Copper:Ethernet2/0
+    - Zinc:Ethernet0/1
+  - endpoints:
+    - Steel:Ethernet2/0
+    - Zinc:Ethernet1/0

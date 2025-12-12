@@ -1,0 +1,21 @@
+name: bgp-fast-fallover
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Kendrick:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.172
+      startup-config: ./clab-bgp-fast-fallover/Kendrick/startup-config.cfg.partial
+    Scott:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.209
+      startup-config: ./clab-bgp-fast-fallover/Scott/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Kendrick:Ethernet0/1
+    - Scott:Ethernet0/1

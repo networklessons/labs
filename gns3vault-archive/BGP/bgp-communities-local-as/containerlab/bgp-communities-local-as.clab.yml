@@ -1,0 +1,45 @@
+name: bgp-communities-local-as
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Etari:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.173
+      startup-config: ./clab-bgp-communities-local-as/Etari/startup-config.cfg.partial
+    MacroZoft:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.247
+      startup-config: ./clab-bgp-communities-local-as/MacroZoft/startup-config.cfg.partial
+    Seega:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.137
+      startup-config: ./clab-bgp-communities-local-as/Seega/startup-config.cfg.partial
+    Wintendo:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.247
+      startup-config: ./clab-bgp-communities-local-as/Wintendo/startup-config.cfg.partial
+    Zony:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.211
+      startup-config: ./clab-bgp-communities-local-as/Zony/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Etari:Ethernet0/1
+    - MacroZoft:Ethernet2/0
+  - endpoints:
+    - Etari:Ethernet1/0
+    - Seega:Ethernet1/0
+  - endpoints:
+    - MacroZoft:Ethernet0/1
+    - Wintendo:Ethernet0/1
+  - endpoints:
+    - MacroZoft:Ethernet1/0
+    - Zony:Ethernet0/1
+  - endpoints:
+    - Seega:Ethernet0/1
+    - Zony:Ethernet1/0

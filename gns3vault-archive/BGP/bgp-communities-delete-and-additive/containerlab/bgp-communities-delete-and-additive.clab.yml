@@ -1,0 +1,28 @@
+name: bgp-communities-delete-and-additive
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Luigi:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.170
+      startup-config: ./clab-bgp-communities-delete-and-additive/Luigi/startup-config.cfg.partial
+    Mario:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.214
+      startup-config: ./clab-bgp-communities-delete-and-additive/Mario/startup-config.cfg.partial
+    Toad:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.241
+      startup-config: ./clab-bgp-communities-delete-and-additive/Toad/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Luigi:Ethernet0/1
+    - Toad:Ethernet1/0
+  - endpoints:
+    - Mario:Ethernet0/1
+    - Toad:Ethernet0/1

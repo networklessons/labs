@@ -1,0 +1,35 @@
+name: bgp-remove-private-as
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Caesar:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.178
+      startup-config: ./clab-bgp-remove-private-as/Caesar/startup-config.cfg.partial
+    Emperor:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.109
+      startup-config: ./clab-bgp-remove-private-as/Emperor/startup-config.cfg.partial
+    Kaiser:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.204
+      startup-config: ./clab-bgp-remove-private-as/Kaiser/startup-config.cfg.partial
+    Tsar:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.159
+      startup-config: ./clab-bgp-remove-private-as/Tsar/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Caesar:Ethernet0/1
+    - Tsar:Ethernet2/0
+  - endpoints:
+    - Emperor:Ethernet0/1
+    - Tsar:Ethernet0/1
+  - endpoints:
+    - Kaiser:Ethernet0/1
+    - Tsar:Ethernet1/0

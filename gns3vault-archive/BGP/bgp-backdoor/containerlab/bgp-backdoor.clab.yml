@@ -1,0 +1,38 @@
+name: bgp-backdoor
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Diamonds:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.247
+      startup-config: ./clab-bgp-backdoor/Diamonds/startup-config.cfg.partial
+    Spades:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.126
+      startup-config: ./clab-bgp-backdoor/Spades/startup-config.cfg.partial
+    Hearts:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.194
+      startup-config: ./clab-bgp-backdoor/Hearts/startup-config.cfg.partial
+    Clubs:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.147
+      startup-config: ./clab-bgp-backdoor/Clubs/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Diamonds:Ethernet0/1
+    - Hearts:Ethernet1/0
+  - endpoints:
+    - Diamonds:Ethernet1/0
+    - Spades:Ethernet0/1
+  - endpoints:
+    - Spades:Ethernet1/0
+    - Clubs:Ethernet1/0
+  - endpoints:
+    - Hearts:Ethernet0/1
+    - Clubs:Ethernet0/1

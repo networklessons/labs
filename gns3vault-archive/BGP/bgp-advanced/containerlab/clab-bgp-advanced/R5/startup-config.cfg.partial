@@ -1,0 +1,75 @@
+!
+!
+hostname R5
+!
+!
+!
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/1
+ ip address 192.168.45.5 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet1/0
+ ip address 192.168.58.5 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet2/0
+ ip address 192.168.56.5 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+end

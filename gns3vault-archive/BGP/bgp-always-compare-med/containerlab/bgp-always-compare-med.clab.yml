@@ -1,0 +1,38 @@
+name: bgp-always-compare-med
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Batman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.192
+      startup-config: ./clab-bgp-always-compare-med/Batman/startup-config.cfg.partial
+    Ironman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.184
+      startup-config: ./clab-bgp-always-compare-med/Ironman/startup-config.cfg.partial
+    Spiderman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.162
+      startup-config: ./clab-bgp-always-compare-med/Spiderman/startup-config.cfg.partial
+    Superman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.243
+      startup-config: ./clab-bgp-always-compare-med/Superman/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Batman:Ethernet1/0
+    - Spiderman:Ethernet2/0
+  - endpoints:
+    - Ironman:Ethernet0/1
+    - Spiderman:Ethernet0/1
+  - endpoints:
+    - Ironman:Ethernet1/0
+    - Superman:Ethernet1/0
+  - endpoints:
+    - Spiderman:Ethernet1/0
+    - Superman:Ethernet0/1

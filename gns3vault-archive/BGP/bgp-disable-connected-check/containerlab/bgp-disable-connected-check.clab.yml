@@ -1,0 +1,24 @@
+name: bgp-disable-connected-check
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Flush:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.240
+      startup-config: ./clab-bgp-disable-connected-check/Flush/startup-config.cfg.partial
+    Straight:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.242
+      startup-config: ./clab-bgp-disable-connected-check/Straight/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Flush:Ethernet0/1
+    - Straight:Ethernet0/1
+  - endpoints:
+    - Flush:Ethernet1/0
+    - Straight:Ethernet1/0

@@ -1,0 +1,41 @@
+name: bgp-attribute-med
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Cuba:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.135
+      startup-config: ./clab-bgp-attribute-med/Cuba/startup-config.cfg.partial
+    Haiti:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.173
+      startup-config: ./clab-bgp-attribute-med/Haiti/startup-config.cfg.partial
+    Jamaica:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.114
+      startup-config: ./clab-bgp-attribute-med/Jamaica/startup-config.cfg.partial
+    Suriname:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.185
+      startup-config: ./clab-bgp-attribute-med/Suriname/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Cuba:Ethernet0/1
+    - Suriname:Ethernet1/0
+  - endpoints:
+    - Cuba:Ethernet1/0
+    - Haiti:Ethernet1/0
+  - endpoints:
+    - Cuba:Ethernet2/0
+    - Jamaica:Ethernet1/0
+  - endpoints:
+    - Haiti:Ethernet0/1
+    - Suriname:Ethernet0/1
+  - endpoints:
+    - Haiti:Ethernet2/0
+    - Jamaica:Ethernet0/1
