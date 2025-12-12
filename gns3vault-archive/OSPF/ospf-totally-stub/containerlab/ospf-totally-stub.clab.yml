@@ -19,4 +19,4 @@ topology:
       startup-config: ./clab-ospf-totally-stub/R2/startup-config.cfg.partial
   links:
 
-   - endpoints: ['R1:Ethernet0/0', 'R2:Ethernet0/0']
+   - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']

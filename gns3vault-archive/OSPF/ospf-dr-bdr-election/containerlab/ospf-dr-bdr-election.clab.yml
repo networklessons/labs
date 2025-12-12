@@ -39,9 +39,9 @@ topology:
       startup-config: ./clab-ospf-dr-bdr-election/SW2/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Bart:Ethernet0/0', 'SW1:3']
-   - endpoints: ['Homer:Ethernet0/0', 'SW1:1']
-   - endpoints: ['Homer:Ethernet1/0', 'SW2:1']
-   - endpoints: ['Lisa:Ethernet0/0', 'SW2:3']
-   - endpoints: ['Maggie:Ethernet0/0', 'SW2:2']
-   - endpoints: ['Marge:Ethernet0/0', 'SW1:2']
+   - endpoints: ['Bart:Ethernet0/1', 'SW1:3']
+   - endpoints: ['Homer:Ethernet0/1', 'SW1:1']
+   - endpoints: ['Homer:Ethernet1/1', 'SW2:1']
+   - endpoints: ['Lisa:Ethernet0/1', 'SW2:3']
+   - endpoints: ['Maggie:Ethernet0/1', 'SW2:2']
+   - endpoints: ['Marge:Ethernet0/1', 'SW1:2']

@@ -27,6 +27,6 @@ topology:
       startup-config: ./clab-ospf-virtual-link/Pork/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Beef:Ethernet0/0', 'Chicken:Ethernet0/0']
-   - endpoints: ['Beef:Ethernet1/0', 'Pork:Ethernet0/0']
-   - endpoints: ['Beef:Ethernet2/0', 'Fish:Ethernet0/0']
+   - endpoints: ['Beef:Ethernet0/1', 'Chicken:Ethernet0/1']
+   - endpoints: ['Beef:Ethernet1/1', 'Pork:Ethernet0/1']
+   - endpoints: ['Beef:Ethernet2/1', 'Fish:Ethernet0/1']

@@ -23,5 +23,5 @@ topology:
       startup-config: ./clab-ospf-flood-reduction/Palm/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Beach:Ethernet0/0', 'Coconut:Ethernet1/0']
-   - endpoints: ['Coconut:Ethernet0/0', 'Palm:Ethernet0/0']
+   - endpoints: ['Beach:Ethernet0/1', 'Coconut:Ethernet1/1']
+   - endpoints: ['Coconut:Ethernet0/1', 'Palm:Ethernet0/1']

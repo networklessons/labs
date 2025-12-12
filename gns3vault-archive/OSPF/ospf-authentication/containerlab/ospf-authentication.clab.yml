@@ -31,7 +31,7 @@ topology:
       startup-config: ./clab-ospf-authentication/SW1/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Elephant:Ethernet0/0', 'Giraffe:Ethernet0/0']
-   - endpoints: ['Giraffe:Ethernet1/0', 'SW1:1']
-   - endpoints: ['Gorilla:Ethernet0/0', 'SW1:2']
-   - endpoints: ['Gorilla:Ethernet1/0', 'Lion:Ethernet0/0']
+   - endpoints: ['Elephant:Ethernet0/1', 'Giraffe:Ethernet0/1']
+   - endpoints: ['Giraffe:Ethernet1/1', 'SW1:1']
+   - endpoints: ['Gorilla:Ethernet0/1', 'SW1:2']
+   - endpoints: ['Gorilla:Ethernet1/1', 'Lion:Ethernet0/1']

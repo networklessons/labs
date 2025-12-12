@@ -27,6 +27,6 @@ topology:
       startup-config: ./clab-ospf-md5-authentication-rotating-key/Twist/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Rotate:Ethernet0/0', 'SW1:3']
-   - endpoints: ['SW1:1', 'Twist:Ethernet0/0']
-   - endpoints: ['SW1:2', 'Turn:Ethernet0/0']
+   - endpoints: ['Rotate:Ethernet0/1', 'SW1:3']
+   - endpoints: ['SW1:1', 'Twist:Ethernet0/1']
+   - endpoints: ['SW1:2', 'Turn:Ethernet0/1']

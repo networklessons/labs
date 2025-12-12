@@ -23,5 +23,5 @@ topology:
       startup-config: ./clab-ospf-lsa-type-5-summarization/Sam/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Harry:Ethernet0/0', 'Jack:Ethernet0/0']
-   - endpoints: ['Harry:Ethernet1/0', 'Sam:Ethernet0/0']
+   - endpoints: ['Harry:Ethernet0/1', 'Jack:Ethernet0/1']
+   - endpoints: ['Harry:Ethernet1/1', 'Sam:Ethernet0/1']
