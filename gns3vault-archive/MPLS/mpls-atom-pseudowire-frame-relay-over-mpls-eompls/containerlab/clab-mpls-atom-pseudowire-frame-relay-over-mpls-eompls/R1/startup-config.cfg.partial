@@ -8,7 +8,7 @@ hostname R1
 !
 ip cef
 !
-interface Ethernet0/1
+interface Ethernet0/2
 
  no ip address
  shutdown

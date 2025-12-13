@@ -12,7 +12,7 @@ interface Loopback0
  ip address 8.8.8.8 255.255.255.0
  no shutdown
 !
-interface Ethernet0/1
+interface Ethernet0/2
 
  ip address 192.168.28.8 255.255.255.0
  speed 100

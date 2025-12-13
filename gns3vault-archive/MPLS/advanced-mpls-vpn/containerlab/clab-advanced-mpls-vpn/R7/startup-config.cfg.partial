@@ -16,7 +16,7 @@ interface Loopback1
  ip address 77.77.77.77 255.255.255.0
  no shutdown
 !
-interface Ethernet0/1
+interface Ethernet0/2
 
  ip address 192.168.78.7 255.255.255.0
  no shutdown
