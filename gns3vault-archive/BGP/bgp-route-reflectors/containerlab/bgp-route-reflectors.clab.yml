@@ -24,8 +24,8 @@ topology:
     - Berry:Ethernet0/1
     - Cherry:Ethernet0/1
   - endpoints:
-    - Berry:Serial1/0
-    - Dairy:Serial0/1
+    - Berry:Ethernet0/2
+    - Dairy:Ethernet0/2
   - endpoints:
-    - Cherry:Serial1/0
-    - Dairy:Serial0/0
+    - Cherry:Ethernet0/2
+    - Dairy:Ethernet0/1

@@ -47,5 +47,5 @@ topology:
     - SW1:2
     - Sparta:Ethernet0/1
   - endpoints:
-    - Sparta:Serial2/0
-    - Thebes:Serial0/0
+    - Sparta:Ethernet0/3
+    - Thebes:Ethernet0/3

@@ -31,11 +31,11 @@ topology:
     - Berry:Ethernet0/2
     - Cherry:Ethernet0/2
   - endpoints:
-    - Berry:Serial2/0
-    - ISP:Serial0/1
+    - Berry:Ethernet0/3
+    - ISP:Ethernet0/2
   - endpoints:
     - Cherry:Ethernet0/1
     - Kerry:Ethernet0/1
   - endpoints:
-    - Cherry:Serial2/0
-    - ISP:Serial0/0
+    - Cherry:Ethernet0/3
+    - ISP:Ethernet0/1

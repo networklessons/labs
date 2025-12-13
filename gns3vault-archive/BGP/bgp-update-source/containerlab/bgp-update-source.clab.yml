@@ -20,5 +20,5 @@ topology:
     - King:Ethernet0/1
     - Kong:Ethernet0/1
   - endpoints:
-    - King:Serial1/0
-    - Kong:Serial1/0
+    - King:Ethernet0/2
+    - Kong:Ethernet0/2
