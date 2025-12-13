@@ -26,13 +26,13 @@ topology:
   links:
   - endpoints:
     - Blossom:Ethernet0/1
-    - Rose:Ethernet1/0
+    - Rose:Ethernet0/2
   - endpoints:
-    - Blossom:Ethernet1/0
-    - Lily:Ethernet1/0
+    - Blossom:Ethernet0/2
+    - Lily:Ethernet0/2
   - endpoints:
     - Lily:Ethernet0/1
     - Tulip:Ethernet0/1
   - endpoints:
     - Rose:Ethernet0/1
-    - Tulip:Ethernet1/0
+    - Tulip:Ethernet0/2

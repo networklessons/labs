@@ -22,7 +22,7 @@ topology:
   links:
   - endpoints:
     - Luigi:Ethernet0/1
-    - Toad:Ethernet1/0
+    - Toad:Ethernet0/2
   - endpoints:
     - Mario:Ethernet0/1
     - Toad:Ethernet0/1

@@ -27,9 +27,9 @@ topology:
       startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Selena/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Amy:Ethernet2/1', 'Selena:Ethernet2/2']
-   - endpoints: ['Amy:Ethernet2/2', 'Emily:Ethernet2/1']
-   - endpoints: ['Amy:GigabitEthernet1/0', 'Mila:GigabitEthernet1/0']
-   - endpoints: ['Emily:Ethernet1/1', 'Mila:Ethernet3/1']
-   - endpoints: ['Emily:Ethernet1/2', 'Selena:Ethernet2/1']
-   - endpoints: ['Mila:GigabitEthernet2/0', 'Selena:GigabitEthernet1/0']
+   - endpoints: ['Amy:Ethernet0/1', 'Selena:Ethernet0/2']
+   - endpoints: ['Amy:Ethernet0/2', 'Emily:Ethernet0/3']
+   - endpoints: ['Amy:GigabitEthernet0/3', 'Mila:GigabitEthernet0/2']
+   - endpoints: ['Emily:Ethernet0/1', 'Mila:Ethernet0/1']
+   - endpoints: ['Emily:Ethernet0/2', 'Selena:Ethernet0/1']
+   - endpoints: ['Mila:GigabitEthernet0/3', 'Selena:GigabitEthernet0/3']

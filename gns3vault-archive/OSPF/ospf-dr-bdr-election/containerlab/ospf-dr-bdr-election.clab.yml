@@ -41,7 +41,7 @@ topology:
 
    - endpoints: ['Bart:Ethernet0/1', 'SW1:3']
    - endpoints: ['Homer:Ethernet0/1', 'SW1:1']
-   - endpoints: ['Homer:Ethernet1/1', 'SW2:1']
+   - endpoints: ['Homer:Ethernet0/2', 'SW2:1']
    - endpoints: ['Lisa:Ethernet0/1', 'SW2:3']
    - endpoints: ['Maggie:Ethernet0/1', 'SW2:2']
    - endpoints: ['Marge:Ethernet0/1', 'SW1:2']

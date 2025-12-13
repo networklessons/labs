@@ -56,38 +56,38 @@ topology:
     - R1:Ethernet0/1
     - R2:Ethernet0/1
   - endpoints:
-    - R1:Ethernet1/0
+    - R1:Ethernet0/2
     - R3:Ethernet0/1
   - endpoints:
     - R10:Ethernet0/1
-    - R11:Ethernet1/0
+    - R11:Ethernet0/2
   - endpoints:
-    - R10:Ethernet1/0
+    - R10:Ethernet0/2
     - R9:Ethernet0/1
   - endpoints:
     - R11:Ethernet0/1
-    - R7:Ethernet1/0
+    - R7:Ethernet0/2
   - endpoints:
-    - R2:Ethernet1/0
+    - R2:Ethernet0/2
     - R4:Ethernet0/1
   - endpoints:
-    - R3:Ethernet1/0
-    - R4:Ethernet1/0
+    - R3:Ethernet0/2
+    - R4:Ethernet0/2
   - endpoints:
-    - R4:Ethernet2/0
+    - R4:Ethernet0/3
     - R5:Ethernet0/1
   - endpoints:
-    - R4:Ethernet3/0
+    - R4:Ethernet0/4
     - R6:Ethernet0/1
   - endpoints:
-    - R5:Ethernet1/0
-    - R8:Ethernet1/0
+    - R5:Ethernet0/2
+    - R8:Ethernet0/2
   - endpoints:
-    - R5:Ethernet2/0
-    - R6:Ethernet2/0
+    - R5:Ethernet0/3
+    - R6:Ethernet0/3
   - endpoints:
-    - R6:Ethernet1/0
+    - R6:Ethernet0/2
     - R7:Ethernet0/1
   - endpoints:
     - R8:Ethernet0/1
-    - R9:Ethernet1/0
+    - R9:Ethernet0/2

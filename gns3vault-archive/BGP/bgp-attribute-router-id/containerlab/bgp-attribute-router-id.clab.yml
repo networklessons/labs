@@ -28,11 +28,11 @@ topology:
     - Barcelona:Ethernet0/1
     - NewDelhi:Ethernet0/1
   - endpoints:
-    - Barcelona:Ethernet1/0
+    - Barcelona:Ethernet0/2
     - Sydney:Ethernet0/1
   - endpoints:
-    - NewDelhi:Ethernet1/0
+    - NewDelhi:Ethernet0/2
     - Paris:Ethernet0/1
   - endpoints:
-    - Paris:Ethernet1/0
-    - Sydney:Ethernet1/0
+    - Paris:Ethernet0/2
+    - Sydney:Ethernet0/2

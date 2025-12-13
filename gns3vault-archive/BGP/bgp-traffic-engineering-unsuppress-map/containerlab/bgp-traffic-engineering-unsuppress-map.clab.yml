@@ -28,13 +28,13 @@ topology:
     - Banshee:Ethernet0/1
     - SW1:1
   - endpoints:
-    - Banshee:Ethernet1/0
-    - Behemoth:Ethernet1/0
+    - Banshee:Ethernet0/2
+    - Behemoth:Ethernet0/2
   - endpoints:
     - Behemoth:Ethernet0/1
-    - BigFoot:Ethernet1/0
+    - BigFoot:Ethernet0/2
   - endpoints:
-    - Behemoth:Ethernet2/0
+    - Behemoth:Ethernet0/3
     - Blob:Ethernet0/1
   - endpoints:
     - BigFoot:Ethernet0/1

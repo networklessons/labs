@@ -21,7 +21,7 @@ topology:
       startup-config: ./clab-bgp-next-hop-self-manual/Luke/startup-config.cfg.partial
   links:
   - endpoints:
-    - HanSolo:Ethernet1/0
+    - HanSolo:Ethernet0/1
     - Luke:Ethernet0/1
   - endpoints:
     - HanSolo:Serial0/0

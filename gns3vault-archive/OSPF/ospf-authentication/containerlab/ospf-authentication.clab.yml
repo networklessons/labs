@@ -32,6 +32,6 @@ topology:
   links:
 
    - endpoints: ['Elephant:Ethernet0/1', 'Giraffe:Ethernet0/1']
-   - endpoints: ['Giraffe:Ethernet1/1', 'SW1:1']
+   - endpoints: ['Giraffe:Ethernet0/2', 'SW1:1']
    - endpoints: ['Gorilla:Ethernet0/1', 'SW1:2']
-   - endpoints: ['Gorilla:Ethernet1/1', 'Lion:Ethernet0/1']
+   - endpoints: ['Gorilla:Ethernet0/2', 'Lion:Ethernet0/1']

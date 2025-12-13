@@ -25,4 +25,4 @@ topology:
     - NewYork:Ethernet0/1
   - endpoints:
     - Hamburg:Ethernet0/1
-    - NewYork:Ethernet1/0
+    - NewYork:Ethernet0/2

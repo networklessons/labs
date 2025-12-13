@@ -26,10 +26,10 @@ topology:
   links:
   - endpoints:
     - Caesar:Ethernet0/1
-    - Tsar:Ethernet2/0
+    - Tsar:Ethernet0/3
   - endpoints:
     - Emperor:Ethernet0/1
     - Tsar:Ethernet0/1
   - endpoints:
     - Kaiser:Ethernet0/1
-    - Tsar:Ethernet1/0
+    - Tsar:Ethernet0/2

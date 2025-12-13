@@ -24,5 +24,5 @@ topology:
   links:
 
    - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
-   - endpoints: ['R1:Ethernet1/1', 'R3:Ethernet0/1']
-   - endpoints: ['R2:Ethernet1/1', 'R3:Ethernet1/1']
+   - endpoints: ['R1:Ethernet0/2', 'R3:Ethernet0/1']
+   - endpoints: ['R2:Ethernet0/2', 'R3:Ethernet0/2']

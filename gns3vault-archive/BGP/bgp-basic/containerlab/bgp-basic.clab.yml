@@ -24,5 +24,5 @@ topology:
     - AMSTERDAM:Ethernet0/1
     - ISP1:Ethernet0/1
   - endpoints:
-    - AMSTERDAM:Ethernet1/0
+    - AMSTERDAM:Ethernet0/2
     - ISP2:Ethernet0/1

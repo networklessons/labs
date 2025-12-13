@@ -26,16 +26,16 @@ topology:
   links:
   - endpoints:
     - Cuba:Ethernet0/1
-    - Suriname:Ethernet1/0
+    - Suriname:Ethernet0/2
   - endpoints:
-    - Cuba:Ethernet1/0
-    - Haiti:Ethernet1/0
+    - Cuba:Ethernet0/2
+    - Haiti:Ethernet0/2
   - endpoints:
-    - Cuba:Ethernet2/0
-    - Jamaica:Ethernet1/0
+    - Cuba:Ethernet0/3
+    - Jamaica:Ethernet0/2
   - endpoints:
     - Haiti:Ethernet0/1
     - Suriname:Ethernet0/1
   - endpoints:
-    - Haiti:Ethernet2/0
+    - Haiti:Ethernet0/3
     - Jamaica:Ethernet0/1
