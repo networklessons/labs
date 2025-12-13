@@ -24,18 +24,8 @@ topology:
       mgmt-ipv4: 10.65.97.176
       startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Blob/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Banshee:Ethernet0/1
-    - SW1:1
-  - endpoints:
-    - Banshee:Ethernet0/2
-    - Behemoth:Ethernet0/2
-  - endpoints:
-    - Behemoth:Ethernet0/1
-    - BigFoot:Ethernet0/2
-  - endpoints:
-    - Behemoth:Ethernet0/3
-    - Blob:Ethernet0/1
-  - endpoints:
-    - BigFoot:Ethernet0/1
-    - SW1:2
+  - endpoints: ["Banshee:Ethernet0/1", "SW1:1"]
+  - endpoints: ["Banshee:Ethernet0/2", "Behemoth:Ethernet0/2"]
+  - endpoints: ["Behemoth:Ethernet0/1", "BigFoot:Ethernet0/2"]
+  - endpoints: ["Behemoth:Ethernet0/3", "Blob:Ethernet0/1"]
+  - endpoints: ["BigFoot:Ethernet0/1", "SW1:2"]

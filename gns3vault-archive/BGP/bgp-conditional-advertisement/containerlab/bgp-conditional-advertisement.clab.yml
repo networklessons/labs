@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.176
       startup-config: ./clab-bgp-conditional-advertisement/Pixie/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Pegasus:Ethernet0/1
-    - Phoenix:Ethernet0/1
-  - endpoints:
-    - Pegasus:Ethernet0/2
-    - Pixie:Ethernet0/1
+  - endpoints: ["Pegasus:Ethernet0/1", "Phoenix:Ethernet0/1"]
+  - endpoints: ["Pegasus:Ethernet0/2", "Pixie:Ethernet0/1"]

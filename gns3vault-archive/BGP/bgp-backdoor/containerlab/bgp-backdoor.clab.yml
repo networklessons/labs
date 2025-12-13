@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.147
       startup-config: ./clab-bgp-backdoor/Clubs/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Diamonds:Ethernet0/1
-    - Hearts:Ethernet0/2
-  - endpoints:
-    - Diamonds:Ethernet0/2
-    - Spades:Ethernet0/1
-  - endpoints:
-    - Spades:Ethernet0/2
-    - Clubs:Ethernet0/2
-  - endpoints:
-    - Hearts:Ethernet0/1
-    - Clubs:Ethernet0/1
+  - endpoints: ["Diamonds:Ethernet0/1", "Hearts:Ethernet0/2"]
+  - endpoints: ["Diamonds:Ethernet0/2", "Spades:Ethernet0/1"]
+  - endpoints: ["Spades:Ethernet0/2", "Clubs:Ethernet0/2"]
+  - endpoints: ["Hearts:Ethernet0/1", "Clubs:Ethernet0/1"]

@@ -16,9 +16,5 @@ topology:
       mgmt-ipv4: 10.65.97.163
       startup-config: ./clab-bgp-update-source/Kong/startup-config.cfg.partial
   links:
-  - endpoints:
-    - King:Ethernet0/1
-    - Kong:Ethernet0/1
-  - endpoints:
-    - King:Ethernet0/2
-    - Kong:Ethernet0/2
+  - endpoints: ["King:Ethernet0/1", "Kong:Ethernet0/1"]
+  - endpoints: ["King:Ethernet0/2", "Kong:Ethernet0/2"]

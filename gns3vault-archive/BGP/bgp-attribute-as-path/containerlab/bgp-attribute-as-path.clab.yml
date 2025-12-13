@@ -24,18 +24,8 @@ topology:
       mgmt-ipv4: 10.65.97.235
       startup-config: ./clab-bgp-attribute-as-path/Zinc/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Aluminium:Ethernet0/1
-    - Copper:Ethernet0/1
-  - endpoints:
-    - Aluminium:Ethernet0/2
-    - Steel:Ethernet0/1
-  - endpoints:
-    - Copper:Ethernet0/2
-    - Steel:Ethernet0/2
-  - endpoints:
-    - Copper:Ethernet0/3
-    - Zinc:Ethernet0/1
-  - endpoints:
-    - Steel:Ethernet0/3
-    - Zinc:Ethernet0/2
+  - endpoints: ["Aluminium:Ethernet0/1", "Copper:Ethernet0/1"]
+  - endpoints: ["Aluminium:Ethernet0/2", "Steel:Ethernet0/1"]
+  - endpoints: ["Copper:Ethernet0/2", "Steel:Ethernet0/2"]
+  - endpoints: ["Copper:Ethernet0/3", "Zinc:Ethernet0/1"]
+  - endpoints: ["Steel:Ethernet0/3", "Zinc:Ethernet0/2"]

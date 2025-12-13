@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.175
       startup-config: ./clab-bgp-ebgp-multihop/Pong/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Ping:Ethernet0/1
-    - Pong:Ethernet0/1
+  - endpoints: ["Ping:Ethernet0/1", "Pong:Ethernet0/1"]

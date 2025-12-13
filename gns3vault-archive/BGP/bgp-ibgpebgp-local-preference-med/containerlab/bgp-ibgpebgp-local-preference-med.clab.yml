@@ -24,18 +24,8 @@ topology:
       mgmt-ipv4: 10.65.97.244
       startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Kerry/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Berry:Ethernet0/1
-    - Kerry:Ethernet0/2
-  - endpoints:
-    - Berry:Ethernet0/2
-    - Cherry:Ethernet0/2
-  - endpoints:
-    - Berry:Ethernet0/3
-    - ISP:Ethernet0/2
-  - endpoints:
-    - Cherry:Ethernet0/1
-    - Kerry:Ethernet0/1
-  - endpoints:
-    - Cherry:Ethernet0/3
-    - ISP:Ethernet0/1
+  - endpoints: ["Berry:Ethernet0/1", "Kerry:Ethernet0/2"]
+  - endpoints: ["Berry:Ethernet0/2", "Cherry:Ethernet0/2"]
+  - endpoints: ["Berry:Ethernet0/3", "ISP:Ethernet0/2"]
+  - endpoints: ["Cherry:Ethernet0/1", "Kerry:Ethernet0/1"]
+  - endpoints: ["Cherry:Ethernet0/3", "ISP:Ethernet0/1"]

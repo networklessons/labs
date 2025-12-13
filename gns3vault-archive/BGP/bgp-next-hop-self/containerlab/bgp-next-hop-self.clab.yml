@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.152
       startup-config: ./clab-bgp-next-hop-self/Luke/startup-config.cfg.partial
   links:
-  - endpoints:
-    - HanSolo:Ethernet0/1
-    - Luke:Ethernet0/1
-  - endpoints:
-    - HanSolo:Ethernet0/2
-    - Leia:Ethernet0/1
+  - endpoints: ["HanSolo:Ethernet0/1", "Luke:Ethernet0/1"]
+  - endpoints: ["HanSolo:Ethernet0/2", "Leia:Ethernet0/1"]

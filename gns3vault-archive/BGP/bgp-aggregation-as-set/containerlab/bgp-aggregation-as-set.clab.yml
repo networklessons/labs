@@ -20,12 +20,6 @@ topology:
       mgmt-ipv4: 10.65.97.237
       startup-config: ./clab-bgp-aggregation-as-set/Tilburg/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Haarlem:Ethernet0/1
-    - Hoofddorp:Ethernet0/2
-  - endpoints:
-    - Haarlem:Ethernet0/2
-    - Tilburg:Ethernet0/2
-  - endpoints:
-    - Hoofddorp:Ethernet0/1
-    - Tilburg:Ethernet0/1
+  - endpoints: ["Haarlem:Ethernet0/1", "Hoofddorp:Ethernet0/2"]
+  - endpoints: ["Haarlem:Ethernet0/2", "Tilburg:Ethernet0/2"]
+  - endpoints: ["Hoofddorp:Ethernet0/1", "Tilburg:Ethernet0/1"]

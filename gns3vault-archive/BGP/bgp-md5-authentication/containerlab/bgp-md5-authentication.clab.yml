@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.171
       startup-config: ./clab-bgp-md5-authentication/Piece/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Cake:Ethernet0/1
-    - Piece:Ethernet0/1
+  - endpoints: ["Cake:Ethernet0/1", "Piece:Ethernet0/1"]
