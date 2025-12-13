@@ -1,0 +1,23 @@
+!
+!
+!
+hostname Jan
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 172.33.3.3 255.255.0.0
+!
+interface Ethernet0/2
+ ip address 172.23.23.3 255.255.255.0
+ serial restart-delay 0
+ no shutdown
+!
+!
+!
+!
+end

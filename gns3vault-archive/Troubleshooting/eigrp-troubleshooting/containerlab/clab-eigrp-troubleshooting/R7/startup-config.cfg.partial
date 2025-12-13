@@ -1,0 +1,21 @@
+!
+!
+!
+hostname R7
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 7.7.7.7 255.255.255.0
+!
+interface Loopback1
+ ip address 172.16.1.1 255.255.255.0
+!
+!
+!
+!
+end

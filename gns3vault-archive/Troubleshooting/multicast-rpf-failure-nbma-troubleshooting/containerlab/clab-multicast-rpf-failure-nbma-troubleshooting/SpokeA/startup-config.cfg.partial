@@ -1,0 +1,26 @@
+!
+!
+!
+hostname SpokeA
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+interface Ethernet0/2
+ ip address 23.23.23.2 255.255.255.0
+ ip pim dense-mode
+ ip ospf cost 500
+ tunnel source 192.168.123.2
+ tunnel destination 192.168.123.3
+ no shutdown
+!
+!
+!
+!
+end

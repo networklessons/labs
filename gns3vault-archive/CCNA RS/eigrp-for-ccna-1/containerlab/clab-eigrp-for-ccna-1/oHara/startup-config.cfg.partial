@@ -1,0 +1,39 @@
+!
+!
+!
+hostname oHara
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ delay 1
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ bandwidth 10
+ ip address 192.168.21.2 255.255.255.0
+ delay 1
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+interface Ethernet0/4
+ ip address 192.168.25.2 255.255.255.0
+ delay 1
+ serial restart-delay 0
+ no shutdown
+!
+!
+!
+!
+end

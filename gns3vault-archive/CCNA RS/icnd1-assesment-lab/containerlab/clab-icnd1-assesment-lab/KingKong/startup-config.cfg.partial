@@ -1,0 +1,26 @@
+!
+!
+!
+hostname KingKong
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.23.3 255.255.255.192
+ serial restart-delay 0
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.13.3 255.255.255.240
+ serial restart-delay 0
+ no cdp enable
+ no shutdown
+!
+!
+!
+!
+end

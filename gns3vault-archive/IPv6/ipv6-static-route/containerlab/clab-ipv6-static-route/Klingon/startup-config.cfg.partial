@@ -1,0 +1,19 @@
+!
+!
+!
+hostname Klingon
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001::4/128
+!
+!
+!
+!
+end

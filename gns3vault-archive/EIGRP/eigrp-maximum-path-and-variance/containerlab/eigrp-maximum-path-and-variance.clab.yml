@@ -1,0 +1,34 @@
+name: eigrp-maximum-path-and-variance
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    SHIRLEY:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-maximum-path-and-variance/SHIRLEY/startup-config.cfg.partial
+    LESLIE:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-maximum-path-and-variance/LESLIE/startup-config.cfg.partial
+    AIRPLANE:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-maximum-path-and-variance/AIRPLANE/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - SHIRLEY:Ethernet0/1
+    - AIRPLANE:Ethernet0/1
+  - endpoints:
+    - LESLIE:Ethernet0/1
+    - AIRPLANE:Ethernet0/2
+  - endpoints:
+    - LESLIE:Ethernet0/2
+    - AIRPLANE:Ethernet0/3
+  - endpoints:
+    - LESLIE:Ethernet0/3
+    - AIRPLANE:Ethernet0/4

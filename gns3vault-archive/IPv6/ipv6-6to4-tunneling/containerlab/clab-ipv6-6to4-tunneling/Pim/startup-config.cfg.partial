@@ -1,0 +1,25 @@
+!
+!
+!
+hostname Pim
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 10.10.10.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001:1::1/64
+!
+!
+!
+!
+end

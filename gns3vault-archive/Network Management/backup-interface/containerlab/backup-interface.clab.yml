@@ -1,0 +1,38 @@
+name: backup-interface
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Venice:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-backup-interface/Venice/startup-config.cfg.partial
+    Boston:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-backup-interface/Boston/startup-config.cfg.partial
+    Barcelona:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-backup-interface/Barcelona/startup-config.cfg.partial
+    Tilburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-backup-interface/Tilburg/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Venice:Ethernet0/1
+    - Boston:Ethernet0/2
+  - endpoints:
+    - Venice:Ethernet0/2
+    - Barcelona:Ethernet0/1
+  - endpoints:
+    - Boston:Ethernet0/1
+    - Tilburg:Ethernet0/1
+  - endpoints:
+    - Barcelona:Ethernet0/2
+    - Tilburg:Ethernet0/2

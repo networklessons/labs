@@ -1,0 +1,24 @@
+name: eigrp-summarization-leak-map
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Bollywood:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-summarization-leak-map/Bollywood/startup-config.cfg.partial
+    Hollywood:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-summarization-leak-map/Hollywood/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Bollywood:Ethernet0/1
+    - Hollywood:Ethernet0/1
+  - endpoints:
+    - Bollywood:Ethernet0/2
+    - Hollywood:Ethernet0/2

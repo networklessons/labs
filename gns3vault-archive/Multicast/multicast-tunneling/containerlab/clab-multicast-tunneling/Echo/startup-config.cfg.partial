@@ -1,0 +1,23 @@
+!
+!
+!
+hostname Echo
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.45.5 255.255.255.0
+ ip pim dense-mode
+ ip igmp join-group 224.1.1.1
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

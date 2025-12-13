@@ -1,0 +1,33 @@
+name: static-pat-port-forwarding
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Mail:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-static-pat-port-forwarding/Mail/startup-config.cfg.partial
+    Internet:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-static-pat-port-forwarding/Internet/startup-config.cfg.partial
+    WWW:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-static-pat-port-forwarding/WWW/startup-config.cfg.partial
+    PAT:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-static-pat-port-forwarding/PAT/startup-config.cfg.partial
+    Rob:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-static-pat-port-forwarding/Rob/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Internet:Ethernet0/1
+    - PAT:Ethernet0/1

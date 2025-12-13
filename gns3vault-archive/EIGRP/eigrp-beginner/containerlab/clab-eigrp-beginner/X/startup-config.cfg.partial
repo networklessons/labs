@@ -1,0 +1,36 @@
+!
+!
+!
+hostname X
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ ip authentication mode eigrp 100 md5
+ ip authentication key-chain eigrp 100 XYZ
+ ip summary-address eigrp 100 172.16.0.0 255.255.0.0 5
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.13.1 255.255.255.0
+ ip authentication mode eigrp 100 md5
+ ip authentication key-chain eigrp 100 XYZ
+ ip summary-address eigrp 100 172.16.0.0 255.255.0.0 5
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 172.16.1.1 255.255.255.0
+!
+!
+!
+!
+end

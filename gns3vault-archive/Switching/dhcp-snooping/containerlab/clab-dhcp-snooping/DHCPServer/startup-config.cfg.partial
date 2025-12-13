@@ -1,0 +1,21 @@
+!
+!
+!
+hostname DHCPServer
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ description PORT CONNECTED TO SW1
+ no switchport
+ ip address 192.168.123.254 255.255.255.0
+ no shutdown
+!
+!
+!
+!
+end

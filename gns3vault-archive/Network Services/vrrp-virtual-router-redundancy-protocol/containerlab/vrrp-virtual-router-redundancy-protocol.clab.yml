@@ -1,0 +1,30 @@
+name: vrrp-virtual-router-redundancy-protocol
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-vrrp-virtual-router-redundancy-protocol/NewYork/startup-config.cfg.partial
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-vrrp-virtual-router-redundancy-protocol/ISP/startup-config.cfg.partial
+    NewJersey:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-vrrp-virtual-router-redundancy-protocol/NewJersey/startup-config.cfg.partial
+    LA:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-vrrp-virtual-router-redundancy-protocol/LA/startup-config.cfg.partial
+    HOST:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-vrrp-virtual-router-redundancy-protocol/HOST/startup-config.cfg.partial
+  links: []

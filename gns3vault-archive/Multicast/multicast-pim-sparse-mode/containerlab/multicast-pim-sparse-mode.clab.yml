@@ -1,0 +1,35 @@
+name: multicast-pim-sparse-mode
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    VideoServer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-multicast-pim-sparse-mode/VideoServer/startup-config.cfg.partial
+    VideoReceiver:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-multicast-pim-sparse-mode/VideoReceiver/startup-config.cfg.partial
+    Pong:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-multicast-pim-sparse-mode/Pong/startup-config.cfg.partial
+    Ping:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-multicast-pim-sparse-mode/Ping/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - VideoServer:Ethernet0/1
+    - Ping:Ethernet0/1
+  - endpoints:
+    - VideoReceiver:Ethernet0/1
+    - Pong:Ethernet0/2
+  - endpoints:
+    - Pong:Ethernet0/1
+    - Ping:Ethernet0/2

@@ -1,0 +1,45 @@
+name: mqc-qos-pre-classify
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Kenton:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-mqc-qos-pre-classify/Kenton/startup-config.cfg.partial
+    Finn:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-mqc-qos-pre-classify/Finn/startup-config.cfg.partial
+    Ricky:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-mqc-qos-pre-classify/Ricky/startup-config.cfg.partial
+    Marvin:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-mqc-qos-pre-classify/Marvin/startup-config.cfg.partial
+    Tallet:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-mqc-qos-pre-classify/Tallet/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Kenton:Ethernet0/1
+    - Tallet:Ethernet0/1
+  - endpoints:
+    - Finn:Ethernet0/1
+    - Marvin:Ethernet0/2
+  - endpoints:
+    - Ricky:Ethernet0/1
+    - Tallet:Ethernet0/2
+  - endpoints:
+    - Ricky:Ethernet0/2
+    - Marvin:Ethernet0/1
+  - endpoints:
+    - Marvin:Ethernet0/3
+    - Tallet:Ethernet0/3

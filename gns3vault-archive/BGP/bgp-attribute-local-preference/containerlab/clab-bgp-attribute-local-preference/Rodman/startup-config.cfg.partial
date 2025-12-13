@@ -1,0 +1,44 @@
+!
+!
+!
+hostname Rodman
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.13.1 255.255.255.0
+ duplex auto
+ speed auto
+ log-adjacency-changes
+ network 0.0.0.0 255.255.255.255 area 0
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 2.2.2.2 remote-as 1
+ neighbor 2.2.2.2 update-source Loopback0
+ neighbor 3.3.3.3 remote-as 1
+ neighbor 3.3.3.3 update-source Loopback0
+ neighbor 4.4.4.4 remote-as 1
+ neighbor 4.4.4.4 update-source Loopback0
+ no auto-summary
+ exec-timeout 0 0
+ logging synchronous
+ login
+ no shutdown
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+!
+!
+!
+!
+end

@@ -1,0 +1,25 @@
+!
+!
+!
+hostname WWW2
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.35.5 255.255.255.0
+ no ip route-cache
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 192.168.123.100 255.255.255.255
+!
+!
+!
+!
+end

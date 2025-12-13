@@ -1,0 +1,23 @@
+!
+!
+!
+hostname R1
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/3
+ ip address 209.65.200.225 255.255.255.252
+ ip nat outside
+ ip virtual-reassembly
+ serial restart-delay 0
+ clock rate 2000000
+ no shutdown
+!
+!
+!
+!
+end

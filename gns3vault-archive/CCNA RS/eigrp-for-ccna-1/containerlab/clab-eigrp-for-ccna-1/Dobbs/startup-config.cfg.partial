@@ -1,0 +1,33 @@
+!
+!
+!
+hostname Dobbs
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.0
+!
+interface Ethernet0/2
+ ip address 192.168.25.5 255.255.255.0
+ ip summary-address eigrp 1 5.5.0.0 255.255.0.0 85
+ delay 1
+ serial restart-delay 0
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.45.5 255.255.255.0
+ ip authentication mode eigrp 1 md5
+ ip authentication key-chain eigrp 1 VAULT
+ delay 1
+ serial restart-delay 0
+ no shutdown
+!
+!
+!
+!
+end

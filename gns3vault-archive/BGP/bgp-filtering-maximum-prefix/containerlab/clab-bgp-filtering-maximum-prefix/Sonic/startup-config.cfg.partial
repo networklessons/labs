@@ -1,0 +1,49 @@
+!
+!
+!
+hostname Sonic
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ no synchronization
+ bgp log-neighbor-changes
+ network 192.168.0.0
+ network 192.168.1.0
+ network 192.168.2.0
+ network 192.168.3.0
+ network 192.168.4.0
+ neighbor 192.168.12.2 remote-as 2
+ neighbor 192.168.12.2 maximum-prefix 8 restart 2
+ no auto-summary
+ exec-timeout 0 0
+ logging synchronous
+ login
+ no shutdown
+!
+interface Loopback0
+ ip address 192.168.0.1 255.255.255.0
+!
+interface Loopback1
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Loopback2
+ ip address 192.168.2.1 255.255.255.0
+!
+interface Loopback3
+ ip address 192.168.3.1 255.255.255.0
+!
+interface Loopback4
+ ip address 192.168.4.1 255.255.255.0
+!
+!
+!
+!
+end

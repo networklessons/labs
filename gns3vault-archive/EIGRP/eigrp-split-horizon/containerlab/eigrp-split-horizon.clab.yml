@@ -1,0 +1,22 @@
+name: eigrp-split-horizon
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    JACK:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-split-horizon/JACK/startup-config.cfg.partial
+    TORI:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-split-horizon/TORI/startup-config.cfg.partial
+    JOE:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-split-horizon/JOE/startup-config.cfg.partial
+  links: []

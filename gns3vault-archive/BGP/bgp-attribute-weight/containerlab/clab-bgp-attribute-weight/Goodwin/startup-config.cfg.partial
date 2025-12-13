@@ -1,0 +1,48 @@
+!
+!
+!
+hostname Goodwin
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.24.4 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.34.4 255.255.255.0
+ duplex auto
+ speed auto
+ no synchronization
+ bgp log-neighbor-changes
+ network 4.4.4.0 mask 255.255.255.0
+ network 44.44.44.0 mask 255.255.255.0
+ network 192.168.24.0
+ network 192.168.34.0
+ neighbor 192.168.24.2 remote-as 12
+ neighbor 192.168.34.3 remote-as 34
+ neighbor 192.168.34.3 route-map HEAVY in
+ no auto-summary
+ match ip address prefix-list RENE
+ set weight 6789
+ exec-timeout 0 0
+ logging synchronous
+ login
+ no shutdown
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.0
+!
+interface Loopback1
+ ip address 44.44.44.44 255.255.255.0
+!
+!
+!
+!
+end

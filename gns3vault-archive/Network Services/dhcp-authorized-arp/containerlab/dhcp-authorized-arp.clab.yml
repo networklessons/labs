@@ -1,0 +1,25 @@
+name: dhcp-authorized-arp
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    DHCP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-dhcp-authorized-arp/DHCP/startup-config.cfg.partial
+    Spoofer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-dhcp-authorized-arp/Spoofer/startup-config.cfg.partial
+    Client:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-dhcp-authorized-arp/Client/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - DHCP:Ethernet0/1
+    - Spoofer:Ethernet0/1

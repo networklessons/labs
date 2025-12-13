@@ -1,0 +1,31 @@
+name: gre-tunnel-basic
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Nessie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-gre-tunnel-basic/Nessie/startup-config.cfg.partial
+    Godzilla:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-gre-tunnel-basic/Godzilla/startup-config.cfg.partial
+    KingKong:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-gre-tunnel-basic/KingKong/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Nessie:Ethernet0/2
+    - Godzilla:Ethernet0/2
+  - endpoints:
+    - Nessie:Ethernet0/1
+    - KingKong:Ethernet0/2
+  - endpoints:
+    - Godzilla:Ethernet0/1
+    - KingKong:Ethernet0/1

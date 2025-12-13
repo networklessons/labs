@@ -1,0 +1,28 @@
+name: eigrp-auto-summarization
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    BROWN:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-auto-summarization/BROWN/startup-config.cfg.partial
+    MCFLY:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-auto-summarization/MCFLY/startup-config.cfg.partial
+    DELOREAN:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-auto-summarization/DELOREAN/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - BROWN:Ethernet0/1
+    - DELOREAN:Ethernet0/2
+  - endpoints:
+    - MCFLY:Ethernet0/1
+    - DELOREAN:Ethernet0/1

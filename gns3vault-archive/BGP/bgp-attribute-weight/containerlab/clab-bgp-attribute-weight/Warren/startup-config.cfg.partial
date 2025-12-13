@@ -1,0 +1,45 @@
+!
+!
+!
+hostname Warren
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.24.2 255.255.255.0
+ duplex auto
+ speed auto
+ no synchronization
+ bgp log-neighbor-changes
+ network 2.2.2.0 mask 255.255.255.0
+ network 22.22.22.0 mask 255.255.255.0
+ network 192.168.12.0
+ network 192.168.24.0
+ neighbor 192.168.12.1 remote-as 12
+ neighbor 192.168.24.4 remote-as 34
+ no auto-summary
+ exec-timeout 0 0
+ logging synchronous
+ login
+ no shutdown
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+interface Loopback1
+ ip address 22.22.22.22 255.255.255.0
+!
+!
+!
+!
+end

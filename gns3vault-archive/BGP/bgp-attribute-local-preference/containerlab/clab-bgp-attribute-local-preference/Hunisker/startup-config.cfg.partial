@@ -1,0 +1,60 @@
+!
+!
+!
+hostname Hunisker
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.24.4 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.34.4 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/4
+ ip address 192.168.47.4 255.255.255.0
+ duplex auto
+ speed auto
+ log-adjacency-changes
+ passive-interface FastEthernet2/0
+ network 0.0.0.0 255.255.255.255 area 0
+ no synchronization
+ bgp log-neighbor-changes
+ redistribute ospf 1
+ neighbor 1.1.1.1 remote-as 1
+ neighbor 1.1.1.1 update-source Loopback0
+ neighbor 2.2.2.2 remote-as 1
+ neighbor 2.2.2.2 update-source Loopback0
+ neighbor 3.3.3.3 remote-as 1
+ neighbor 3.3.3.3 update-source Loopback0
+ neighbor 192.168.47.7 remote-as 4
+ neighbor 192.168.47.7 route-map LOCALPREF in
+ no auto-summary
+ match ip address 1
+ set local-preference 600
+ match as-path 1
+ set local-preference 700
+ match ip address prefix-list AS3
+ set local-preference 800
+ exec-timeout 0 0
+ logging synchronous
+ login
+ no shutdown
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.0
+!
+!
+!
+!
+end

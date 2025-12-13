@@ -1,0 +1,19 @@
+!
+!
+!
+hostname Red
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ ipv6 address FC00::1/128
+!
+!
+!
+!
+end

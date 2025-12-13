@@ -1,0 +1,24 @@
+name: static-routing-beginners-lab
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-static-routing-beginners-lab/NewYork/startup-config.cfg.partial
+    Washington:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-static-routing-beginners-lab/Washington/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - NewYork:Ethernet0/1
+    - Washington:Ethernet0/1
+  - endpoints:
+    - NewYork:Ethernet0/2
+    - Washington:Ethernet0/2

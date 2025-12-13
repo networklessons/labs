@@ -1,0 +1,20 @@
+!
+!
+!
+hostname Vulcan
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001::1/128
+ ipv6 rip GNS3VAULT enable
+!
+!
+!
+!
+end

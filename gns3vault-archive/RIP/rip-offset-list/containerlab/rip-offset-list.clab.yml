@@ -1,0 +1,38 @@
+name: rip-offset-list
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Drill:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-rip-offset-list/Drill/startup-config.cfg.partial
+    Burr:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-rip-offset-list/Burr/startup-config.cfg.partial
+    Grinder:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-rip-offset-list/Grinder/startup-config.cfg.partial
+    Ratchet:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-rip-offset-list/Ratchet/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Drill:Ethernet0/1
+    - Burr:Ethernet0/1
+  - endpoints:
+    - Drill:Ethernet0/2
+    - Ratchet:Ethernet0/2
+  - endpoints:
+    - Burr:Ethernet0/2
+    - Grinder:Ethernet0/1
+  - endpoints:
+    - Grinder:Ethernet0/2
+    - Ratchet:Ethernet0/1

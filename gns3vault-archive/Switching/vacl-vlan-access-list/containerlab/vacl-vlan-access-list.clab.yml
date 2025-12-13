@@ -1,0 +1,22 @@
+name: vacl-vlan-access-list
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    SW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-vacl-vlan-access-list/SW1/startup-config.cfg.partial
+    DNS2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-vacl-vlan-access-list/DNS2/startup-config.cfg.partial
+    DNS1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-vacl-vlan-access-list/DNS1/startup-config.cfg.partial
+  links: []

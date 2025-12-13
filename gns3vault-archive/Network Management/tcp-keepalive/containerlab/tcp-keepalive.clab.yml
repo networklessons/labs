@@ -1,0 +1,35 @@
+name: tcp-keepalive
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Still:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-tcp-keepalive/Still/startup-config.cfg.partial
+    Server:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-tcp-keepalive/Server/startup-config.cfg.partial
+    Terminal:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-tcp-keepalive/Terminal/startup-config.cfg.partial
+    Alive:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-tcp-keepalive/Alive/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Still:Ethernet0/1
+    - Server:Ethernet0/1
+  - endpoints:
+    - Still:Ethernet0/2
+    - Alive:Ethernet0/1
+  - endpoints:
+    - Terminal:Ethernet0/1
+    - Alive:Ethernet0/2

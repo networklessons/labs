@@ -1,0 +1,27 @@
+!
+!
+!
+hostname ISP
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 209.65.200.226 255.255.255.252
+ serial restart-delay 0
+ clock rate 2000000
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 209.65.200.246 255.255.255.248
+ serial restart-delay 0
+ clock rate 2000000
+ no shutdown
+!
+!
+!
+!
+end

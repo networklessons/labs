@@ -1,0 +1,19 @@
+!
+!
+!
+hostname Borg
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001::3/128
+!
+!
+!
+!
+end

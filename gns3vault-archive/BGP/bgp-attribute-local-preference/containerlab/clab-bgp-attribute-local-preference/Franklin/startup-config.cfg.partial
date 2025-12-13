@@ -1,0 +1,55 @@
+!
+!
+!
+hostname Franklin
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.13.3 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.34.3 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/4
+ ip address 192.168.35.3 255.255.255.0
+ duplex auto
+ speed auto
+ log-adjacency-changes
+ passive-interface FastEthernet2/0
+ network 0.0.0.0 255.255.255.255 area 0
+ no synchronization
+ bgp log-neighbor-changes
+ redistribute ospf 1
+ neighbor 1.1.1.1 remote-as 1
+ neighbor 1.1.1.1 update-source Loopback0
+ neighbor 2.2.2.2 remote-as 1
+ neighbor 2.2.2.2 update-source Loopback0
+ neighbor 4.4.4.4 remote-as 1
+ neighbor 4.4.4.4 update-source Loopback0
+ neighbor 192.168.35.5 remote-as 2
+ neighbor 192.168.35.5 route-map LOCALPREF in
+ no auto-summary
+ set local-preference 500
+ exec-timeout 0 0
+ logging synchronous
+ login
+ no shutdown
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+!
+!
+!
+!
+end

@@ -1,0 +1,22 @@
+!
+!
+!
+hostname Harbor
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.13.1 255.255.255.0
+ duplex auto
+ speed auto
+ ipv6 address 2001::1/64
+ no shutdown
+!
+!
+!
+!
+end

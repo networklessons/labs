@@ -1,0 +1,28 @@
+!
+!
+!
+hostname Line
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.34.3 255.255.255.0
+ duplex auto
+ speed auto
+ service-policy output SHAPE
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.23.3 255.255.255.0
+ serial restart-delay 0
+ service-policy output COMPRESS
+ no shutdown
+!
+!
+!
+!
+end

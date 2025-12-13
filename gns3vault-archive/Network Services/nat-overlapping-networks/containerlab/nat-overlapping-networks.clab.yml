@@ -1,0 +1,29 @@
+name: nat-overlapping-networks
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Kiwi:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-nat-overlapping-networks/Kiwi/startup-config.cfg.partial
+    Pineapple:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-nat-overlapping-networks/Pineapple/startup-config.cfg.partial
+    Banana:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-nat-overlapping-networks/Banana/startup-config.cfg.partial
+    Apple:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-nat-overlapping-networks/Apple/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Kiwi:Ethernet0/1
+    - Pineapple:Ethernet0/1

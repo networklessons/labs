@@ -1,0 +1,36 @@
+name: ipv6-tunneling-over-ipv4
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Kiwi:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ipv6-tunneling-over-ipv4/Kiwi/startup-config.cfg.partial
+    Banana:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ipv6-tunneling-over-ipv4/Banana/startup-config.cfg.partial
+    Fruity:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ipv6-tunneling-over-ipv4/Fruity/startup-config.cfg.partial
+    Melon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ipv6-tunneling-over-ipv4/Melon/startup-config.cfg.partial
+    Apple:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-ipv6-tunneling-over-ipv4/Apple/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Banana:Ethernet0/1
+    - Fruity:Ethernet0/1
+  - endpoints:
+    - Fruity:Ethernet0/2
+    - Apple:Ethernet0/1

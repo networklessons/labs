@@ -1,0 +1,53 @@
+!
+!
+!
+hostname FENIX
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ ip summary-address eigrp 123 172.16.0.0 255.255.248.0 5
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.13.1 255.255.255.0
+ ip summary-address eigrp 123 172.16.0.0 255.255.248.0 5
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 172.16.0.1 255.255.255.0
+!
+interface Loopback1
+ ip address 172.16.1.1 255.255.255.0
+!
+interface Loopback2
+ ip address 172.16.2.1 255.255.255.0
+!
+interface Loopback3
+ ip address 172.16.3.1 255.255.255.0
+!
+interface Loopback4
+ ip address 172.16.4.1 255.255.255.0
+!
+interface Loopback5
+ ip address 172.16.5.1 255.255.255.0
+!
+interface Loopback6
+ ip address 172.16.6.1 255.255.255.0
+!
+interface Loopback7
+ ip address 172.16.7.1 255.255.255.0
+!
+!
+!
+!
+end

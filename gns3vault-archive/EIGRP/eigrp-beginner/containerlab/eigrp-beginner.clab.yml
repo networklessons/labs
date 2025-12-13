@@ -1,0 +1,31 @@
+name: eigrp-beginner
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Z:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-beginner/Z/startup-config.cfg.partial
+    X:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-beginner/X/startup-config.cfg.partial
+    Y:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-beginner/Y/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Z:Ethernet0/1
+    - X:Ethernet0/2
+  - endpoints:
+    - Z:Ethernet0/2
+    - Y:Ethernet0/2
+  - endpoints:
+    - X:Ethernet0/1
+    - Y:Ethernet0/1

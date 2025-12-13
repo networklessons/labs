@@ -1,0 +1,35 @@
+name: mqc-class-based-weighted-fair-queueing
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Jack:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-mqc-class-based-weighted-fair-queueing/Jack/startup-config.cfg.partial
+    Line:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-mqc-class-based-weighted-fair-queueing/Line/startup-config.cfg.partial
+    Frank:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-mqc-class-based-weighted-fair-queueing/Frank/startup-config.cfg.partial
+    Prio:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-mqc-class-based-weighted-fair-queueing/Prio/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Jack:Ethernet0/1
+    - Line:Ethernet0/1
+  - endpoints:
+    - Line:Ethernet0/2
+    - Prio:Ethernet0/2
+  - endpoints:
+    - Frank:Ethernet0/1
+    - Prio:Ethernet0/1

@@ -1,0 +1,24 @@
+!
+!
+!
+hostname Smaller
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ ip tcp header-compression passive
+ ip tcp compression-connections 12
+ serial restart-delay 0
+ ip rtp header-compression passive
+ ip rtp compression-connections 12
+ no shutdown
+!
+!
+!
+!
+end

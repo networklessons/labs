@@ -1,0 +1,32 @@
+!
+!
+!
+hostname DSW2
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 10.1.4.10 255.255.255.252
+ speed 100
+ full-duplex
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 10.2.1.2 255.255.255.0
+ ip helper-address 10.1.4.9
+ ipv6 address FE80::C11B:13FF:FEF0:0 link-local
+ ipv6 address 2026::3:2/122
+ ipv6 rip RIPNG enable
+ standby 10 ip 10.2.1.254
+ standby 10 priority 120
+ standby 10 preempt
+ no shutdown
+!
+!
+!
+!
+end

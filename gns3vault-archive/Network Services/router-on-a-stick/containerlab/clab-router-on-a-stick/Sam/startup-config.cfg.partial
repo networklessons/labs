@@ -1,0 +1,25 @@
+!
+!
+!
+hostname Sam
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ encapsulation dot1Q 2
+ ip address 192.168.2.254 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/3
+ encapsulation dot1Q 3
+ ip address 192.168.3.254 255.255.255.0
+ no shutdown
+!
+!
+!
+!
+end

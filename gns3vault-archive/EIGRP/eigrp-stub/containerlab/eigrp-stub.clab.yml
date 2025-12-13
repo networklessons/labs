@@ -1,0 +1,49 @@
+name: eigrp-stub
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Charlie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-stub/Charlie/startup-config.cfg.partial
+    Oliver:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-stub/Oliver/startup-config.cfg.partial
+    Jack:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-stub/Jack/startup-config.cfg.partial
+    Harry:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-eigrp-stub/Harry/startup-config.cfg.partial
+    Thomas:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-eigrp-stub/Thomas/startup-config.cfg.partial
+    Alfie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-eigrp-stub/Alfie/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Charlie:Ethernet0/1
+    - Harry:Ethernet0/2
+  - endpoints:
+    - Oliver:Ethernet0/1
+    - Jack:Ethernet0/1
+  - endpoints:
+    - Oliver:Ethernet0/2
+    - Harry:Ethernet0/1
+  - endpoints:
+    - Oliver:Ethernet0/3
+    - Thomas:Ethernet0/1
+  - endpoints:
+    - Oliver:Ethernet0/4
+    - Alfie:Ethernet0/1

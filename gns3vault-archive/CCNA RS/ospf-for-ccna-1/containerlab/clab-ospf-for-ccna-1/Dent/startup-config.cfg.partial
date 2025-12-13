@@ -1,0 +1,35 @@
+!
+!
+!
+hostname Dent
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.56.6 255.255.255.0
+ ip ospf authentication
+ ip ospf authentication-key VAULT
+ ip ospf cost 10
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 6.6.6.6 255.255.255.0
+!
+interface Ethernet0/3
+ ip address 192.168.65.6 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 GNS3VAULT
+ ip ospf cost 10
+ serial restart-delay 0
+ no shutdown
+!
+!
+!
+!
+end

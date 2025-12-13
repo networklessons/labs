@@ -1,0 +1,28 @@
+!
+!
+!
+hostname Gargamel
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.23.2 255.255.255.0
+ ip directed-broadcast
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

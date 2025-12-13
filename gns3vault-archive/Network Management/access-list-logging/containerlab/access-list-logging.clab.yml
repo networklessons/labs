@@ -1,0 +1,21 @@
+name: access-list-logging
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Scout:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-access-list-logging/Scout/startup-config.cfg.partial
+    Watch:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-access-list-logging/Watch/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Scout:Ethernet0/1
+    - Watch:Ethernet0/1

@@ -1,0 +1,33 @@
+name: proxy-arp
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Ladon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-proxy-arp/Ladon/startup-config.cfg.partial
+    Proxy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-proxy-arp/Proxy/startup-config.cfg.partial
+    Poseidon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-proxy-arp/Poseidon/startup-config.cfg.partial
+    Medusa:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-proxy-arp/Medusa/startup-config.cfg.partial
+    Ceto:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-proxy-arp/Ceto/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Medusa:Ethernet0/1
+    - Ceto:Ethernet0/1

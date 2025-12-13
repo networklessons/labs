@@ -1,0 +1,21 @@
+name: prefix-list-filtering
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Vanilla:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-prefix-list-filtering/Vanilla/startup-config.cfg.partial
+    Mint:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-prefix-list-filtering/Mint/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Vanilla:Ethernet0/1
+    - Mint:Ethernet0/1

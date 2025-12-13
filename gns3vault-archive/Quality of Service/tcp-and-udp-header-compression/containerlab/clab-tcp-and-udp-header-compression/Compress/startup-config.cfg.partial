@@ -1,0 +1,24 @@
+!
+!
+!
+hostname Compress
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ ip tcp header-compression
+ ip tcp compression-connections 12
+ serial restart-delay 0
+ ip rtp header-compression
+ ip rtp compression-connections 12
+ no shutdown
+!
+!
+!
+!
+end

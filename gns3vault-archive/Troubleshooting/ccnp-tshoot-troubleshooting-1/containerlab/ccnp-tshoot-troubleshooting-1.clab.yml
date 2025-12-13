@@ -1,0 +1,86 @@
+name: ccnp-tshoot-troubleshooting-1
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    FTPServer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/FTPServer/startup-config.cfg.partial
+    ASW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/ASW2/startup-config.cfg.partial
+    DSW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/DSW2/startup-config.cfg.partial
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/ISP/startup-config.cfg.partial
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R3/startup-config.cfg.partial
+    Client2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/Client2/startup-config.cfg.partial
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.160
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R1/startup-config.cfg.partial
+    WebServer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.170
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/WebServer/startup-config.cfg.partial
+    DSW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.180
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/DSW1/startup-config.cfg.partial
+    Client1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.190
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/Client1/startup-config.cfg.partial
+    ASW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.200
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/ASW1/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.210
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R2/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.220
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R4/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - DSW2:Ethernet0/1
+    - R4:Ethernet0/2
+  - endpoints:
+    - DSW2:Ethernet0/2
+    - DSW1:Ethernet0/2
+  - endpoints:
+    - ISP:Ethernet0/1
+    - R1:Ethernet0/2
+  - endpoints:
+    - ISP:Ethernet0/2
+    - WebServer:Ethernet0/1
+  - endpoints:
+    - R3:Ethernet0/1
+    - R2:Ethernet0/2
+  - endpoints:
+    - R3:Ethernet0/2
+    - R4:Ethernet0/3
+  - endpoints:
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1
+  - endpoints:
+    - DSW1:Ethernet0/1
+    - R4:Ethernet0/1

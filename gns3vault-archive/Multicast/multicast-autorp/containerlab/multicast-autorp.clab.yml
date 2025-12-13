@@ -1,0 +1,42 @@
+name: multicast-autorp
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Joker:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-multicast-autorp/Joker/startup-config.cfg.partial
+    MrFreeze:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-multicast-autorp/MrFreeze/startup-config.cfg.partial
+    Catwoman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-multicast-autorp/Catwoman/startup-config.cfg.partial
+    Batman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-multicast-autorp/Batman/startup-config.cfg.partial
+    Robin:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-multicast-autorp/Robin/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Joker:Ethernet0/1
+    - Catwoman:Ethernet0/1
+  - endpoints:
+    - Joker:Ethernet0/2
+    - Robin:Ethernet0/1
+  - endpoints:
+    - MrFreeze:Ethernet0/1
+    - Robin:Ethernet0/2
+  - endpoints:
+    - MrFreeze:Ethernet0/2
+    - Batman:Ethernet0/1
