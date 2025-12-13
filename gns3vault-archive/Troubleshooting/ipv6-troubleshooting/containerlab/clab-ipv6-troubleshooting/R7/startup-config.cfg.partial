@@ -1,0 +1,25 @@
+!
+!
+!
+hostname R7
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.67.7 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001:7::7/128
+!
+!
+!
+!
+end

@@ -1,0 +1,18 @@
+!
+!
+!
+hostname MasterMind
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+!
+!
+!
+!
+end

@@ -1,0 +1,21 @@
+name: system-message-logging
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Rene:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-system-message-logging/Rene/startup-config.cfg.partial
+    Erik:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-system-message-logging/Erik/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Rene:Ethernet0/1
+    - Erik:Ethernet0/1

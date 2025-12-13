@@ -1,0 +1,38 @@
+name: expert-redistribution
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Amber:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-expert-redistribution/Amber/startup-config.cfg.partial
+    SweetPea:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-expert-redistribution/SweetPea/startup-config.cfg.partial
+    BlueJones:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-expert-redistribution/BlueJones/startup-config.cfg.partial
+    BabyDoll:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-expert-redistribution/BabyDoll/startup-config.cfg.partial
+    Blondie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-expert-redistribution/Blondie/startup-config.cfg.partial
+    Rocket:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-expert-redistribution/Rocket/startup-config.cfg.partial
+    WiseMan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.160
+      startup-config: ./clab-expert-redistribution/WiseMan/startup-config.cfg.partial
+  links: []

@@ -1,0 +1,36 @@
+name: glbp-troubleshooting
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Brosnan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-glbp-troubleshooting/Brosnan/startup-config.cfg.partial
+    Dalton:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-glbp-troubleshooting/Dalton/startup-config.cfg.partial
+    MoneyPenny:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-glbp-troubleshooting/MoneyPenny/startup-config.cfg.partial
+    Moore:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-glbp-troubleshooting/Moore/startup-config.cfg.partial
+    Connery:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-glbp-troubleshooting/Connery/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Dalton:Ethernet0/1
+    - MoneyPenny:Ethernet0/2
+  - endpoints:
+    - MoneyPenny:Ethernet0/1
+    - Moore:Ethernet0/1

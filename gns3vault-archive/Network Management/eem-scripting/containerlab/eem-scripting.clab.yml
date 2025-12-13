@@ -1,0 +1,28 @@
+name: eem-scripting
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Rick:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eem-scripting/Rick/startup-config.cfg.partial
+    AutoBot:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eem-scripting/AutoBot/startup-config.cfg.partial
+    Rock:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eem-scripting/Rock/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Rick:Ethernet0/1
+    - AutoBot:Ethernet0/1
+  - endpoints:
+    - AutoBot:Ethernet0/2
+    - Rock:Ethernet0/1

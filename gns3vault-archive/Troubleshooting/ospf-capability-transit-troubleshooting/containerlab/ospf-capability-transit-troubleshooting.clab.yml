@@ -1,0 +1,35 @@
+name: ospf-capability-transit-troubleshooting
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Nima:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ospf-capability-transit-troubleshooting/Nima/startup-config.cfg.partial
+    Wilee:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ospf-capability-transit-troubleshooting/Wilee/startup-config.cfg.partial
+    Kyle:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ospf-capability-transit-troubleshooting/Kyle/startup-config.cfg.partial
+    Vanessa:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ospf-capability-transit-troubleshooting/Vanessa/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Nima:Ethernet0/1
+    - Wilee:Ethernet0/1
+  - endpoints:
+    - Nima:Ethernet0/2
+    - Vanessa:Ethernet0/1
+  - endpoints:
+    - Kyle:Ethernet0/1
+    - Vanessa:Ethernet0/2

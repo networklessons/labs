@@ -1,0 +1,21 @@
+name: rmon-alarms-and-events
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Ripley:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-rmon-alarms-and-events/Ripley/startup-config.cfg.partial
+    Bishop:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-rmon-alarms-and-events/Bishop/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Ripley:Ethernet0/1
+    - Bishop:Ethernet0/1

@@ -1,0 +1,25 @@
+!
+!
+!
+hostname Curly
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+interface Ethernet0/2
+ ip address 192.168.123.2 255.255.255.0
+ encapsulation frame-relay
+ serial restart-delay 0
+ no frame-relay inverse-arp
+ no shutdown
+!
+!
+!
+!
+end

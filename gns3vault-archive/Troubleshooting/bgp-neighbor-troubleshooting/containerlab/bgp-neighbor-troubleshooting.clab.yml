@@ -1,0 +1,35 @@
+name: bgp-neighbor-troubleshooting
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Miami:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-neighbor-troubleshooting/Miami/startup-config.cfg.partial
+    Tokyo:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-neighbor-troubleshooting/Tokyo/startup-config.cfg.partial
+    Amsterdam:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-neighbor-troubleshooting/Amsterdam/startup-config.cfg.partial
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-neighbor-troubleshooting/NewYork/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Miami:Ethernet0/1
+    - NewYork:Ethernet0/2
+  - endpoints:
+    - Tokyo:Ethernet0/1
+    - Amsterdam:Ethernet0/1
+  - endpoints:
+    - Amsterdam:Ethernet0/2
+    - NewYork:Ethernet0/1

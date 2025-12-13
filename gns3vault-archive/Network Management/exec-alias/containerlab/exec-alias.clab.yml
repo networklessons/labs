@@ -1,0 +1,28 @@
+name: exec-alias
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Hans:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-exec-alias/Hans/startup-config.cfg.partial
+    Fred:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-exec-alias/Fred/startup-config.cfg.partial
+    Norris:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-exec-alias/Norris/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - Hans:Ethernet0/1
+    - Fred:Ethernet0/2
+  - endpoints:
+    - Fred:Ethernet0/1
+    - Norris:Ethernet0/1

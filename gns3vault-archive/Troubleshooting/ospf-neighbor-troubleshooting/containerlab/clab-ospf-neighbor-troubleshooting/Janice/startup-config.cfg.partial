@@ -1,0 +1,26 @@
+!
+!
+!
+hostname Janice
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.26.6 255.255.255.0
+ encapsulation frame-relay
+ ip ospf authentication
+ ip ospf authentication-key VUALT
+ ip ospf network broadcast
+ serial restart-delay 0
+ frame-relay map ip 192.168.26.2 602
+ no frame-relay inverse-arp
+ no shutdown
+!
+!
+!
+!
+end

@@ -1,0 +1,30 @@
+name: eigrp-hybrid-bandwidth-pacing
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Berlin:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-hybrid-bandwidth-pacing/Berlin/startup-config.cfg.partial
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-hybrid-bandwidth-pacing/NewYork/startup-config.cfg.partial
+    Tilburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-hybrid-bandwidth-pacing/Tilburg/startup-config.cfg.partial
+    Paris:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-eigrp-hybrid-bandwidth-pacing/Paris/startup-config.cfg.partial
+    NewDelhi:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-eigrp-hybrid-bandwidth-pacing/NewDelhi/startup-config.cfg.partial
+  links: []

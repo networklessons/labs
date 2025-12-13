@@ -1,0 +1,35 @@
+name: eigrp-stub-leak-map
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    PAMELA:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-stub-leak-map/PAMELA/startup-config.cfg.partial
+    CARMEN:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-stub-leak-map/CARMEN/startup-config.cfg.partial
+    DAVID:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-stub-leak-map/DAVID/startup-config.cfg.partial
+    YASMINE:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-eigrp-stub-leak-map/YASMINE/startup-config.cfg.partial
+  links:
+  - endpoints:
+    - PAMELA:Ethernet0/1
+    - YASMINE:Ethernet0/3
+  - endpoints:
+    - CARMEN:Ethernet0/1
+    - YASMINE:Ethernet0/1
+  - endpoints:
+    - DAVID:Ethernet0/1
+    - YASMINE:Ethernet0/2
