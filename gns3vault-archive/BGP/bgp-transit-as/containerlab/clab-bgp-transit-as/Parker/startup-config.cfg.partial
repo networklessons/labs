@@ -43,13 +43,13 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
-interface Ethernet1/1
+interface Ethernet0/3
  ip address 192.168.35.5 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-interface Ethernet2/1
+interface Ethernet0/4
  ip address 192.168.56.5 255.255.255.0
  duplex auto
  speed auto

@@ -42,7 +42,7 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
-interface Serial1/1
+interface Serial0/3
  ip address 192.168.23.2 255.255.255.0
  serial restart-delay 0
  no shutdown
