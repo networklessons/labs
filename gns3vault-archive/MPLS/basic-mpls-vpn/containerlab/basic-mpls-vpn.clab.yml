@@ -1,0 +1,34 @@
+name: basic-mpls-vpn
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.10
+      startup-config: ./clab-basic-mpls-vpn/R1/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-basic-mpls-vpn/R2/startup-config.cfg.partial
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-basic-mpls-vpn/R3/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-basic-mpls-vpn/R4/startup-config.cfg.partial
+    R5:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-basic-mpls-vpn/R5/startup-config.cfg.partial
+  links:
+  - endpoints: ["R1:Ethernet0/0", "R2:Ethernet1/0"]
+  - endpoints: ["R2:Ethernet0/0", "R3:Ethernet0/0"]
+  - endpoints: ["R3:Ethernet1/0", "R4:Ethernet1/0"]
+  - endpoints: ["R4:Ethernet0/0", "R5:Ethernet0/0"]

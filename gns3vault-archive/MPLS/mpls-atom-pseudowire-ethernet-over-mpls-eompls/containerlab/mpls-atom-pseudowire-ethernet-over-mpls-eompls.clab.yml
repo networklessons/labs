@@ -1,0 +1,44 @@
+name: mpls-atom-pseudowire-ethernet-over-mpls-eompls
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.10
+      startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/R1/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/R2/startup-config.cfg.partial
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/R3/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/R4/startup-config.cfg.partial
+    R5:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/R5/startup-config.cfg.partial
+    SW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/SW1/startup-config.cfg.partial
+    SW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.16
+      startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/SW2/startup-config.cfg.partial
+  links:
+  - endpoints: ["R1:Ethernet1/0", "SW1:1"]
+  - endpoints: ["R2:Ethernet1/0", "R3:Ethernet1/0"]
+  - endpoints: ["R2:Ethernet1/1", "SW1:2"]
+  - endpoints: ["R3:Ethernet1/1", "R4:Ethernet1/0"]
+  - endpoints: ["R4:Ethernet1/1", "SW2:1"]
+  - endpoints: ["R5:Ethernet1/0", "SW2:2"]

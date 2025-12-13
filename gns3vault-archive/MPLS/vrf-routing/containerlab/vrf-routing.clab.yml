@@ -1,0 +1,19 @@
+name: vrf-routing
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Chekov:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.10
+      startup-config: ./clab-vrf-routing/Chekov/startup-config.cfg.partial
+    Sulu:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-vrf-routing/Sulu/startup-config.cfg.partial
+  links:
+  - endpoints: ["Chekov:Ethernet0/0", "Sulu:Ethernet0/0"]

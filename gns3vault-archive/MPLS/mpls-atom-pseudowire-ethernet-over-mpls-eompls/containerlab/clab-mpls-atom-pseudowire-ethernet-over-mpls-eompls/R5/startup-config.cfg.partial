@@ -1,0 +1,53 @@
+!
+!
+hostname R5
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ no shutdown
+!
+interface FastEthernet0/0
+ no ip address
+ shutdown
+ duplex half
+!
+interface FastEthernet1/0
+ ip address 172.16.15.5 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+end

@@ -1,0 +1,24 @@
+name: frame-mode-mpls
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Figaro:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.10
+      startup-config: ./clab-frame-mode-mpls/Figaro/startup-config.cfg.partial
+    Gepetto:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-frame-mode-mpls/Gepetto/startup-config.cfg.partial
+    Pinoccio:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-frame-mode-mpls/Pinoccio/startup-config.cfg.partial
+  links:
+  - endpoints: ["Gepetto:Ethernet0/0", "Figaro:Ethernet0/0"]
+  - endpoints: ["Figaro:Ethernet1/0", "Pinoccio:Ethernet0/0"]

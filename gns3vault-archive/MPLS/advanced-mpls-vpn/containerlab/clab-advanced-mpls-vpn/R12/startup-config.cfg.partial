@@ -1,0 +1,55 @@
+!
+!
+hostname R12
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 12.12.12.12 255.255.255.0
+ no shutdown
+!
+interface Loopback1
+ ip address 122.122.122.122 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/0
+ ip address 192.168.125.12 255.255.255.0
+ no shutdown
+ half-duplex
+!
+interface Ethernet0/2
+ ip address 192.168.122.12 255.255.255.0
+ half-duplex
+ no shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+ half-duplex
+!
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+end

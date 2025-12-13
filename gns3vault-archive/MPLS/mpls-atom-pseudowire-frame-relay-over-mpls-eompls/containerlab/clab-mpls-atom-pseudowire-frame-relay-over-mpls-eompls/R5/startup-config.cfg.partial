@@ -1,0 +1,83 @@
+!
+!
+hostname R5
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ no shutdown
+!
+interface FastEthernet0/0
+ no ip address
+ shutdown
+ duplex half
+!
+interface Serial1/0
+ ip address 172.16.15.5 255.255.255.0
+ encapsulation frame-relay
+ shutdown
+ serial restart-delay 0
+ frame-relay interface-dlci 501
+!
+interface Serial1/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/4
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/5
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/6
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/7
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+end

@@ -1,0 +1,48 @@
+!
+!
+hostname ArcadeHQ
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+ no shutdown
+!
+interface FastEthernet0/0
+ ip address 192.168.28.2 255.255.255.0
+ speed 100
+ full-duplex
+ no shutdown
+!
+interface FastEthernet0/1
+ no ip address
+ speed 100
+ full-duplex
+ no shutdown
+!
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+end
