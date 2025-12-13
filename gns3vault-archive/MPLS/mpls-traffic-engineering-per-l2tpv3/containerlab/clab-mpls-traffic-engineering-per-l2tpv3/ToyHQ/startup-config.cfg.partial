@@ -12,13 +12,13 @@ interface Loopback0
  ip address 1.1.1.1 255.255.255.0
  no shutdown
 !
-interface FastEthernet0/0
+interface Ethernet0/3
  ip address 192.168.19.1 255.255.255.0
  speed 100
  full-duplex
  no shutdown
 !
-interface FastEthernet0/1
+interface Ethernet0/3
  no ip address
  speed 100
  full-duplex

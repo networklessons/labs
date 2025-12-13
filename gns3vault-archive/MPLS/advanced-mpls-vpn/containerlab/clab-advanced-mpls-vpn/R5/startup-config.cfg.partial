@@ -17,42 +17,42 @@ interface Loopback1
  ip address 55.55.55.55 255.255.255.0
  no shutdown
 !
-interface Ethernet0/0
+interface Ethernet0/4
  ip address 192.168.45.5 255.255.255.0
  no shutdown
  half-duplex
 !
-interface Ethernet0/1
+interface Ethernet0/5
  ip address 192.168.57.5 255.255.255.0
  no shutdown
  half-duplex
 !
-interface Ethernet0/2
+interface Ethernet0/6
  ip address 192.168.58.5 255.255.255.0
  no shutdown
  half-duplex
 !
-interface Ethernet0/3
+interface Ethernet0/7
  ip address 192.168.115.5 255.255.255.0
  no shutdown
  half-duplex
 !
-interface Ethernet1/0
+interface Ethernet0/4
  ip address 192.168.125.5 255.255.255.0
  no shutdown
  half-duplex
 !
-interface Ethernet1/1
+interface Ethernet0/2
  ip address 192.168.105.5 255.255.255.0
  no shutdown
  half-duplex
 !
-interface Ethernet1/2
+interface Ethernet0/8
  no ip address
  shutdown
  half-duplex
 !
-interface Ethernet1/3
+interface Ethernet0/9
  no ip address
  shutdown
  half-duplex

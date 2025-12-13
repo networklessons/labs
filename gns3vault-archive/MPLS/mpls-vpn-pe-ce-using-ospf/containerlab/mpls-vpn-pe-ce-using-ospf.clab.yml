@@ -28,8 +28,8 @@ topology:
       mgmt-ipv4: 10.65.97.14
       startup-config: ./clab-mpls-vpn-pe-ce-using-ospf/R5/startup-config.cfg.partial
   links:
-  - endpoints: ["R1:Ethernet0/0", "R2:Ethernet1/0"]
-  - endpoints: ["R1:Serial1/0", "R5:Serial1/0"]
-  - endpoints: ["R2:Ethernet0/0", "R3:Ethernet0/0"]
-  - endpoints: ["R3:Ethernet1/0", "R4:Ethernet1/0"]
-  - endpoints: ["R4:Ethernet0/0", "R5:Ethernet0/0"]
+  - endpoints: ["R1:Ethernet0/1", "R2:Ethernet0/1"]
+  - endpoints: ["R1:Ethernet0/2", "R5:Ethernet0/1"]
+  - endpoints: ["R2:Ethernet0/2", "R3:Ethernet0/1"]
+  - endpoints: ["R3:Ethernet0/2", "R4:Ethernet0/1"]
+  - endpoints: ["R4:Ethernet0/2", "R5:Ethernet0/2"]

@@ -44,12 +44,12 @@ topology:
       mgmt-ipv4: 10.65.97.18
       startup-config: ./clab-mpls-traffic-engineering-per-vrf/ToyHQ/startup-config.cfg.partial
   links:
-  - endpoints: ["ArcadeBranch:Ethernet0/0", "PE2:Ethernet2/0"]
-  - endpoints: ["ArcadeHQ:Ethernet0/0", "PE1:Ethernet0/1"]
-  - endpoints: ["P1:Ethernet0/0", "PE1:Ethernet1/0"]
-  - endpoints: ["P1:Ethernet0/1", "P2:Ethernet0/0"]
-  - endpoints: ["P2:Ethernet0/1", "PE2:Ethernet0/1"]
-  - endpoints: ["P3:Ethernet0/0", "PE1:Ethernet2/0"]
-  - endpoints: ["P3:Ethernet0/1", "PE2:Ethernet0/0"]
-  - endpoints: ["PE1:Ethernet0/0", "ToyHQ:Ethernet0/0"]
-  - endpoints: ["PE2:Ethernet1/0", "ToyBranch:Ethernet0/0"]
+  - endpoints: ["ArcadeBranch:Ethernet0/1", "PE2:Ethernet0/2"]
+  - endpoints: ["ArcadeHQ:Ethernet0/1", "PE1:Ethernet0/1"]
+  - endpoints: ["P1:Ethernet0/2", "PE1:Ethernet0/2"]
+  - endpoints: ["P1:Ethernet0/2", "P2:Ethernet0/2"]
+  - endpoints: ["P2:Ethernet0/2", "PE2:Ethernet0/2"]
+  - endpoints: ["P3:Ethernet0/2", "PE1:Ethernet0/3"]
+  - endpoints: ["P3:Ethernet0/2", "PE2:Ethernet0/3"]
+  - endpoints: ["PE1:Ethernet0/4", "ToyHQ:Ethernet0/1"]
+  - endpoints: ["PE2:Ethernet0/4", "ToyBranch:Ethernet0/1"]

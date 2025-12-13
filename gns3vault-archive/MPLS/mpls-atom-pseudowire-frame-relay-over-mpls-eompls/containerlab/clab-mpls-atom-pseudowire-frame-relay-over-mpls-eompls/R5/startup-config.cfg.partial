@@ -12,12 +12,12 @@ interface Loopback0
  no ip address
  no shutdown
 !
-interface FastEthernet0/0
+interface Ethernet0/2
  no ip address
  shutdown
  duplex half
 !
-interface Serial1/0
+interface Serial0/2
  ip address 172.16.15.5 255.255.255.0
  encapsulation frame-relay
  shutdown
