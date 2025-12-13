@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ebgp-external-bgp/Silk/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Flax:Ethernet0/1
-    - Silk:Ethernet0/2
-  - endpoints:
-    - Flax:Ethernet0/2
-    - Cotton:Ethernet0/1
-  - endpoints:
-    - Wool:Ethernet0/1
-    - Silk:Ethernet0/1
+  - endpoints: ['Flax:Ethernet0/1', 'Silk:Ethernet0/2']
+  - endpoints: ['Flax:Ethernet0/2', 'Cotton:Ethernet0/1']
+  - endpoints: ['Wool:Ethernet0/1', 'Silk:Ethernet0/1']

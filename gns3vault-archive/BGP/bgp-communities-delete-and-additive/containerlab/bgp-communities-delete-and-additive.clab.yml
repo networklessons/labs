@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-communities-delete-and-additive/Mario/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Luigi:Ethernet0/1
-    - Toad:Ethernet0/2
-  - endpoints:
-    - Toad:Ethernet0/1
-    - Mario:Ethernet0/1
+  - endpoints: ['Luigi:Ethernet0/1', 'Toad:Ethernet0/2']
+  - endpoints: ['Toad:Ethernet0/1', 'Mario:Ethernet0/1']

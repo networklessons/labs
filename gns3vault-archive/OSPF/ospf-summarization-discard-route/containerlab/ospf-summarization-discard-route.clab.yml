@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-summarization-discard-route/Spielburg/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Shapeir:Ethernet0/1
-    - Spielburg:Ethernet0/1
-  - endpoints:
-    - Shapeir:Ethernet0/2
-    - Tarna:Ethernet0/1
+  - endpoints: ['Shapeir:Ethernet0/1', 'Spielburg:Ethernet0/1']
+  - endpoints: ['Shapeir:Ethernet0/2', 'Tarna:Ethernet0/1']

@@ -27,4 +27,16 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-vrrp-troubleshooting/i3_startup-config/startup-config.cfg.partial
-  links: []
+    br-vrrp-troubleshooting-1:
+      kind: bridge
+    br-vrrp-troubleshooting-2:
+      kind: bridge
+  links:
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-1:eth1']
+  - endpoints: ['i6_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth2']
+  - endpoints: ['i5_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth3']
+  - endpoints: ['i7_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth4']
+  - endpoints: ['i6_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth1']
+  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth2']
+  - endpoints: ['i7_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth3']
+  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth4']

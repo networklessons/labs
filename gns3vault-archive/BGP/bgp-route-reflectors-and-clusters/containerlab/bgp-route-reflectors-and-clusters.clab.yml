@@ -44,39 +44,15 @@ topology:
       mgmt-ipv4: 10.65.97.180
       startup-config: ./clab-bgp-route-reflectors-and-clusters/Utrecht/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Berlin:Ethernet0/1
-    - Hamburg:Ethernet0/1
-  - endpoints:
-    - Berlin:Ethernet0/2
-    - Dusseldorf:Ethernet0/2
-  - endpoints:
-    - NewYork:Ethernet0/1
-    - LosAngeles:Ethernet0/1
-  - endpoints:
-    - NewYork:Ethernet0/2
-    - Boston:Ethernet0/1
-  - endpoints:
-    - NewYork:Ethernet0/3
-    - Tilburg:Ethernet0/3
-  - endpoints:
-    - NewYork:Ethernet0/4
-    - Hamburg:Ethernet0/4
-  - endpoints:
-    - LosAngeles:Ethernet0/2
-    - Boston:Ethernet0/2
-  - endpoints:
-    - Hamburg:Ethernet0/2
-    - Dusseldorf:Ethernet0/1
-  - endpoints:
-    - Hamburg:Ethernet0/3
-    - Tilburg:Ethernet0/4
-  - endpoints:
-    - Tilburg:Ethernet0/1
-    - Amsterdam:Ethernet0/1
-  - endpoints:
-    - Tilburg:Ethernet0/2
-    - Utrecht:Ethernet0/1
-  - endpoints:
-    - Amsterdam:Ethernet0/2
-    - Utrecht:Ethernet0/2
+  - endpoints: ['Berlin:Ethernet0/1', 'Hamburg:Ethernet0/1']
+  - endpoints: ['Berlin:Ethernet0/2', 'Dusseldorf:Ethernet0/2']
+  - endpoints: ['NewYork:Ethernet0/1', 'LosAngeles:Ethernet0/1']
+  - endpoints: ['NewYork:Ethernet0/2', 'Boston:Ethernet0/1']
+  - endpoints: ['NewYork:Ethernet0/3', 'Tilburg:Ethernet0/3']
+  - endpoints: ['NewYork:Ethernet0/4', 'Hamburg:Ethernet0/4']
+  - endpoints: ['LosAngeles:Ethernet0/2', 'Boston:Ethernet0/2']
+  - endpoints: ['Hamburg:Ethernet0/2', 'Dusseldorf:Ethernet0/1']
+  - endpoints: ['Hamburg:Ethernet0/3', 'Tilburg:Ethernet0/4']
+  - endpoints: ['Tilburg:Ethernet0/1', 'Amsterdam:Ethernet0/1']
+  - endpoints: ['Tilburg:Ethernet0/2', 'Utrecht:Ethernet0/1']
+  - endpoints: ['Amsterdam:Ethernet0/2', 'Utrecht:Ethernet0/2']

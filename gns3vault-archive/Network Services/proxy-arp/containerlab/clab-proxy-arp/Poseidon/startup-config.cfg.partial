@@ -9,6 +9,13 @@ hostname Poseidon
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 172.16.1.5 255.255.255.0
+ no ip route-cache
+ duplex auto
+ speed auto
+ no shutdown
+!
 !
 !
 !

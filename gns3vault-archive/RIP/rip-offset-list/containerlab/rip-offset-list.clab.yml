@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-rip-offset-list/Ratchet/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Drill:Ethernet0/1
-    - Burr:Ethernet0/1
-  - endpoints:
-    - Drill:Ethernet0/2
-    - Ratchet:Ethernet0/2
-  - endpoints:
-    - Burr:Ethernet0/2
-    - Grinder:Ethernet0/1
-  - endpoints:
-    - Grinder:Ethernet0/2
-    - Ratchet:Ethernet0/1
+  - endpoints: ['Drill:Ethernet0/1', 'Burr:Ethernet0/1']
+  - endpoints: ['Drill:Ethernet0/2', 'Ratchet:Ethernet0/2']
+  - endpoints: ['Burr:Ethernet0/2', 'Grinder:Ethernet0/1']
+  - endpoints: ['Grinder:Ethernet0/2', 'Ratchet:Ethernet0/1']

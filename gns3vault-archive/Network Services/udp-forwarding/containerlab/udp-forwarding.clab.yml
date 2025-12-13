@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-udp-forwarding/Papa/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Gargamel:Ethernet0/1
-    - Smurf:Ethernet0/1
-  - endpoints:
-    - Gargamel:Ethernet0/2
-    - Papa:Ethernet0/1
+  - endpoints: ['Gargamel:Ethernet0/1', 'Smurf:Ethernet0/1']
+  - endpoints: ['Gargamel:Ethernet0/2', 'Papa:Ethernet0/1']

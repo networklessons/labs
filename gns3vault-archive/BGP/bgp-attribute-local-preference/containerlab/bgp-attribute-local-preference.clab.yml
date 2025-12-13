@@ -36,27 +36,11 @@ topology:
       mgmt-ipv4: 10.65.97.160
       startup-config: ./clab-bgp-attribute-local-preference/Franco/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Rodman:Ethernet0/1
-    - Landon:Ethernet0/1
-  - endpoints:
-    - Rodman:Ethernet0/2
-    - Franklin:Ethernet0/1
-  - endpoints:
-    - Hunisker:Ethernet0/1
-    - Landon:Ethernet0/2
-  - endpoints:
-    - Hunisker:Ethernet0/2
-    - Franklin:Ethernet0/2
-  - endpoints:
-    - Hunisker:Ethernet0/3
-    - Franco:Ethernet0/1
-  - endpoints:
-    - Franklin:Ethernet0/3
-    - Jacobs:Ethernet0/1
-  - endpoints:
-    - Pinto:Ethernet0/1
-    - Jacobs:Ethernet0/2
-  - endpoints:
-    - Pinto:Ethernet0/2
-    - Franco:Ethernet0/2
+  - endpoints: ['Rodman:Ethernet0/1', 'Landon:Ethernet0/1']
+  - endpoints: ['Rodman:Ethernet0/2', 'Franklin:Ethernet0/1']
+  - endpoints: ['Hunisker:Ethernet0/1', 'Landon:Ethernet0/2']
+  - endpoints: ['Hunisker:Ethernet0/2', 'Franklin:Ethernet0/2']
+  - endpoints: ['Hunisker:Ethernet0/3', 'Franco:Ethernet0/1']
+  - endpoints: ['Franklin:Ethernet0/3', 'Jacobs:Ethernet0/1']
+  - endpoints: ['Pinto:Ethernet0/1', 'Jacobs:Ethernet0/2']
+  - endpoints: ['Pinto:Ethernet0/2', 'Franco:Ethernet0/2']

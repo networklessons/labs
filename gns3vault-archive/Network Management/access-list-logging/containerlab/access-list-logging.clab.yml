@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-access-list-logging/Watch/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Scout:Ethernet0/1
-    - Watch:Ethernet0/1
+  - endpoints: ['Scout:Ethernet0/1', 'Watch:Ethernet0/1']

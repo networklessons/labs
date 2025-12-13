@@ -9,6 +9,12 @@ hostname Bronze
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.123.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
 !
 !
 !

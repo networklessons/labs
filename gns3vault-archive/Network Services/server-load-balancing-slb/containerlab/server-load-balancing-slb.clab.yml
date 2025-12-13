@@ -27,10 +27,11 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-server-load-balancing-slb/SLB/startup-config.cfg.partial
+    br-server-load-balancing-slb-1:
+      kind: bridge
   links:
-  - endpoints:
-    - WWW1:Ethernet0/1
-    - SLB:Ethernet0/1
-  - endpoints:
-    - WWW2:Ethernet0/1
-    - SLB:Ethernet0/2
+  - endpoints: ['WWW1:Ethernet0/1', 'SLB:Ethernet0/2']
+  - endpoints: ['WWW2:Ethernet0/1', 'SLB:Ethernet0/3']
+  - endpoints: ['Jack:Ethernet0/1', 'br-server-load-balancing-slb-1:eth1']
+  - endpoints: ['James:Ethernet0/1', 'br-server-load-balancing-slb-1:eth2']
+  - endpoints: ['SLB:Ethernet0/1', 'br-server-load-balancing-slb-1:eth3']

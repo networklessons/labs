@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ospf-authentication/Lion/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Gorilla:Ethernet0/1
-    - Giraffe:Ethernet0/2
-  - endpoints:
-    - Gorilla:Ethernet0/2
-    - Lion:Ethernet0/1
-  - endpoints:
-    - Elephant:Ethernet0/1
-    - Giraffe:Ethernet0/1
+  - endpoints: ['Gorilla:Ethernet0/1', 'Giraffe:Ethernet0/2']
+  - endpoints: ['Gorilla:Ethernet0/2', 'Lion:Ethernet0/1']
+  - endpoints: ['Elephant:Ethernet0/1', 'Giraffe:Ethernet0/1']

@@ -28,18 +28,8 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-bgp-communities-local-as/Etari/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Wintendo:Ethernet0/1
-    - MacroZoft:Ethernet0/1
-  - endpoints:
-    - MacroZoft:Ethernet0/2
-    - Zony:Ethernet0/1
-  - endpoints:
-    - MacroZoft:Ethernet0/3
-    - Etari:Ethernet0/1
-  - endpoints:
-    - Zony:Ethernet0/2
-    - Seega:Ethernet0/1
-  - endpoints:
-    - Seega:Ethernet0/2
-    - Etari:Ethernet0/2
+  - endpoints: ['Wintendo:Ethernet0/1', 'MacroZoft:Ethernet0/1']
+  - endpoints: ['MacroZoft:Ethernet0/2', 'Zony:Ethernet0/1']
+  - endpoints: ['MacroZoft:Ethernet0/3', 'Etari:Ethernet0/1']
+  - endpoints: ['Zony:Ethernet0/2', 'Seega:Ethernet0/1']
+  - endpoints: ['Seega:Ethernet0/2', 'Etari:Ethernet0/2']

@@ -20,6 +20,4 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-eigrp-over-frame-relay-with-multipoint-interface/i3_startup-config/startup-config.cfg.partial
   links:
-  - endpoints:
-    - i2_startup-config:Ethernet0/1
-    - i3_startup-config:Ethernet0/1
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i3_startup-config:Ethernet0/1']

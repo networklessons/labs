@@ -15,6 +15,13 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
+interface Ethernet0/3
+ ip address 192.168.12.2 255.255.255.0
+ encapsulation ppp
+ peer default ip address dhcp
+ serial restart-delay 0
+ no shutdown
+!
 !
 !
 !

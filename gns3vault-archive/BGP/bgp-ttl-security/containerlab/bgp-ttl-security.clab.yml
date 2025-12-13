@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-ttl-security/Mario/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Bowser:Ethernet0/1
-    - Luigi:Ethernet0/2
-  - endpoints:
-    - Luigi:Ethernet0/1
-    - Mario:Ethernet0/1
+  - endpoints: ['Bowser:Ethernet0/1', 'Luigi:Ethernet0/2']
+  - endpoints: ['Luigi:Ethernet0/1', 'Mario:Ethernet0/1']

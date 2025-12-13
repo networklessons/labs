@@ -23,4 +23,9 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ospf-per-neighbor-cost/Herring/startup-config.cfg.partial
-  links: []
+    br-ospf-per-neighbor-cost-1:
+      kind: bridge
+  links:
+  - endpoints: ['Barracuda:Ethernet0/1', 'br-ospf-per-neighbor-cost-1:eth1']
+  - endpoints: ['Salmon:Ethernet0/1', 'br-ospf-per-neighbor-cost-1:eth2']
+  - endpoints: ['Herring:Ethernet0/1', 'br-ospf-per-neighbor-cost-1:eth3']

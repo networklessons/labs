@@ -28,15 +28,7 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-auto-rp-listener/Robin/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Joker:Ethernet0/1
-    - Catwoman:Ethernet0/1
-  - endpoints:
-    - Joker:Ethernet0/2
-    - Robin:Ethernet0/1
-  - endpoints:
-    - MrFreeze:Ethernet0/1
-    - Robin:Ethernet0/2
-  - endpoints:
-    - MrFreeze:Ethernet0/2
-    - Batman:Ethernet0/1
+  - endpoints: ['Joker:Ethernet0/1', 'Catwoman:Ethernet0/1']
+  - endpoints: ['Joker:Ethernet0/2', 'Robin:Ethernet0/1']
+  - endpoints: ['MrFreeze:Ethernet0/1', 'Robin:Ethernet0/2']
+  - endpoints: ['MrFreeze:Ethernet0/2', 'Batman:Ethernet0/1']

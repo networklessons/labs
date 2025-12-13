@@ -16,9 +16,5 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-static-routing-beginners-lab/Washington/startup-config.cfg.partial
   links:
-  - endpoints:
-    - NewYork:Ethernet0/1
-    - Washington:Ethernet0/1
-  - endpoints:
-    - NewYork:Ethernet0/2
-    - Washington:Ethernet0/2
+  - endpoints: ['NewYork:Ethernet0/1', 'Washington:Ethernet0/1']
+  - endpoints: ['NewYork:Ethernet0/2', 'Washington:Ethernet0/2']

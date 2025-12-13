@@ -31,10 +31,16 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-ospf-for-ccna-1/Bird/startup-config.cfg.partial
+    br-ospf-for-ccna-1-1:
+      kind: bridge
+    br-ospf-for-ccna-1-2:
+      kind: bridge
   links:
-  - endpoints:
-    - Dent:Ethernet0/1
-    - Bird:Ethernet0/1
-  - endpoints:
-    - Dent:Ethernet0/2
-    - Bird:Ethernet0/2
+  - endpoints: ['Durden:Ethernet0/1', 'br-ospf-for-ccna-1-1:eth1']
+  - endpoints: ['Paulson:Ethernet0/1', 'br-ospf-for-ccna-1-1:eth2']
+  - endpoints: ['Chesler:Ethernet0/1', 'br-ospf-for-ccna-1-1:eth3']
+  - endpoints: ['Dent:Ethernet0/1', 'Bird:Ethernet0/1']
+  - endpoints: ['Dent:Ethernet0/2', 'Bird:Ethernet0/3']
+  - endpoints: ['Chesler:Ethernet0/2', 'br-ospf-for-ccna-1-2:eth1']
+  - endpoints: ['Singer:Ethernet0/1', 'br-ospf-for-ccna-1-2:eth2']
+  - endpoints: ['Bird:Ethernet0/2', 'br-ospf-for-ccna-1-2:eth3']

@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ip-traffic-export/Ditto/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Repo:Ethernet0/1
-    - Ditto:Ethernet0/1
-  - endpoints:
-    - IDS:Ethernet0/1
-    - Ditto:Ethernet0/3
-  - endpoints:
-    - Forge:Ethernet0/1
-    - Ditto:Ethernet0/2
+  - endpoints: ['Repo:Ethernet0/1', 'Ditto:Ethernet0/1']
+  - endpoints: ['IDS:Ethernet0/1', 'Ditto:Ethernet0/3']
+  - endpoints: ['Forge:Ethernet0/1', 'Ditto:Ethernet0/2']

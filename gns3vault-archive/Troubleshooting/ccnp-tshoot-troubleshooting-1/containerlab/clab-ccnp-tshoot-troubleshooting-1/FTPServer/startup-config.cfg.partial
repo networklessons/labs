@@ -9,6 +9,13 @@ hostname FTPServer
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 10.2.2.10 255.255.255.0
+ no ip route-cache
+ speed 100
+ full-duplex
+ no shutdown
+!
 !
 !
 !

@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-aggregation-unsuppress-map/Jim/startup-config.cfg.partial
   links:
-  - endpoints:
-    - John:Ethernet0/1
-    - Jim:Ethernet0/1
+  - endpoints: ['John:Ethernet0/1', 'Jim:Ethernet0/1']

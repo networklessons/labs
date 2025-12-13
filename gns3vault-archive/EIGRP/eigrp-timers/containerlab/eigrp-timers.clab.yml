@@ -20,12 +20,6 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-eigrp-timers/Boston/startup-config.cfg.partial
   links:
-  - endpoints:
-    - NewYork:Ethernet0/1
-    - Boston:Ethernet0/1
-  - endpoints:
-    - NewYork:Ethernet0/2
-    - Philadelphia:Ethernet0/1
-  - endpoints:
-    - Philadelphia:Ethernet0/2
-    - Boston:Ethernet0/2
+  - endpoints: ['NewYork:Ethernet0/1', 'Boston:Ethernet0/1']
+  - endpoints: ['NewYork:Ethernet0/2', 'Philadelphia:Ethernet0/1']
+  - endpoints: ['Philadelphia:Ethernet0/2', 'Boston:Ethernet0/2']

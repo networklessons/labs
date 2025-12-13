@@ -24,6 +24,4 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-dhcp-relay/Frey/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Thor:Ethernet0/1
-    - Odin:Ethernet0/1
+  - endpoints: ['Thor:Ethernet0/1', 'Odin:Ethernet0/1']

@@ -28,9 +28,5 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-ipv6-tunneling-over-ipv4/Apple/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Banana:Ethernet0/1
-    - Fruity:Ethernet0/1
-  - endpoints:
-    - Fruity:Ethernet0/2
-    - Apple:Ethernet0/1
+  - endpoints: ['Banana:Ethernet0/1', 'Fruity:Ethernet0/1']
+  - endpoints: ['Fruity:Ethernet0/2', 'Apple:Ethernet0/1']

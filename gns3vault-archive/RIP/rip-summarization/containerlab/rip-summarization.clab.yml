@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-rip-summarization/Apron/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Beam:Ethernet0/1
-    - Apron:Ethernet0/2
-  - endpoints:
-    - Brick:Ethernet0/1
-    - Apron:Ethernet0/3
-  - endpoints:
-    - Ballast:Ethernet0/1
-    - Apron:Ethernet0/1
+  - endpoints: ['Beam:Ethernet0/1', 'Apron:Ethernet0/2']
+  - endpoints: ['Brick:Ethernet0/1', 'Apron:Ethernet0/3']
+  - endpoints: ['Ballast:Ethernet0/1', 'Apron:Ethernet0/1']

@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-multicast-pim-dense-mode/Eindhoven/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Tilburg:Ethernet0/1
-    - Amsterdam:Ethernet0/2
-  - endpoints:
-    - Tilburg:Ethernet0/2
-    - Utrecht:Ethernet0/1
-  - endpoints:
-    - Amsterdam:Ethernet0/1
-    - Eindhoven:Ethernet0/1
-  - endpoints:
-    - Utrecht:Ethernet0/2
-    - Eindhoven:Ethernet0/2
+  - endpoints: ['Tilburg:Ethernet0/1', 'Amsterdam:Ethernet0/2']
+  - endpoints: ['Tilburg:Ethernet0/2', 'Utrecht:Ethernet0/1']
+  - endpoints: ['Amsterdam:Ethernet0/1', 'Eindhoven:Ethernet0/1']
+  - endpoints: ['Utrecht:Ethernet0/2', 'Eindhoven:Ethernet0/2']

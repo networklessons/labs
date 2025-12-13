@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-vrf-routing/Sulu/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Chekov:Ethernet0/1
-    - Sulu:Ethernet0/1
+  - endpoints: ['Chekov:Ethernet0/1', 'Sulu:Ethernet0/1']

@@ -9,6 +9,20 @@ hostname R1
 !
 ip cef
 !
+interface Ethernet0/2
+ ip vrf forwarding GRAPE
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip vrf forwarding GRAPE
+ ip address 192.168.13.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
 interface Loopback0
  ip address 5.5.5.5 255.255.255.0
 !

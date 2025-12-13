@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-next-hop-self/HanSolo/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Leia:Ethernet0/1
-    - HanSolo:Ethernet0/2
-  - endpoints:
-    - Luke:Ethernet0/1
-    - HanSolo:Ethernet0/1
+  - endpoints: ['Leia:Ethernet0/1', 'HanSolo:Ethernet0/2']
+  - endpoints: ['Luke:Ethernet0/1', 'HanSolo:Ethernet0/1']

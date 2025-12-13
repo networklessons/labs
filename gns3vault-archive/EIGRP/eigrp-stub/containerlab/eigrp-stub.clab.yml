@@ -32,18 +32,8 @@ topology:
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-eigrp-stub/Alfie/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Charlie:Ethernet0/1
-    - Harry:Ethernet0/2
-  - endpoints:
-    - Oliver:Ethernet0/1
-    - Jack:Ethernet0/1
-  - endpoints:
-    - Oliver:Ethernet0/2
-    - Harry:Ethernet0/1
-  - endpoints:
-    - Oliver:Ethernet0/3
-    - Thomas:Ethernet0/1
-  - endpoints:
-    - Oliver:Ethernet0/4
-    - Alfie:Ethernet0/1
+  - endpoints: ['Charlie:Ethernet0/1', 'Harry:Ethernet0/2']
+  - endpoints: ['Oliver:Ethernet0/1', 'Jack:Ethernet0/1']
+  - endpoints: ['Oliver:Ethernet0/2', 'Harry:Ethernet0/1']
+  - endpoints: ['Oliver:Ethernet0/3', 'Thomas:Ethernet0/1']
+  - endpoints: ['Oliver:Ethernet0/4', 'Alfie:Ethernet0/1']

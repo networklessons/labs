@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-soft-reconfiguration/Scorpion/startup-config.cfg.partial
   links:
-  - endpoints:
-    - SubZero:Ethernet0/1
-    - Scorpion:Ethernet0/1
+  - endpoints: ['SubZero:Ethernet0/1', 'Scorpion:Ethernet0/1']

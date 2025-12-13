@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-time-based-access-list/Stem/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Tube:Ethernet0/1
-    - Stem:Ethernet0/1
+  - endpoints: ['Tube:Ethernet0/1', 'Stem:Ethernet0/1']

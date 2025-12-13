@@ -12,6 +12,13 @@ ip cef
 interface Loopback0
  ip address 1.1.1.1 255.255.255.255
 !
+interface Ethernet0/2
+ ip address 192.168.123.3 255.255.255.0
+ encapsulation frame-relay
+ ip ospf network point-to-multipoint
+ serial restart-delay 0
+ no shutdown
+!
 !
 !
 !

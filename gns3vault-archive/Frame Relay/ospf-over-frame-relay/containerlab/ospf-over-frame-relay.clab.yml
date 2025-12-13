@@ -23,7 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ospf-over-frame-relay/R2/startup-config.cfg.partial
+    br-ospf-over-frame-relay-1:
+      kind: bridge
   links:
-  - endpoints:
-    - R1:Ethernet0/1
-    - R2:Ethernet0/1
+  - endpoints: ['R3:Ethernet0/1', 'br-ospf-over-frame-relay-1:eth1']
+  - endpoints: ['R1:Ethernet0/1', 'br-ospf-over-frame-relay-1:eth2']
+  - endpoints: ['R2:Ethernet0/1', 'br-ospf-over-frame-relay-1:eth3']
+  - endpoints: ['R1:Ethernet0/2', 'R2:Ethernet0/2']

@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-remove-private-as/Kaiser/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Caesar:Ethernet0/1
-    - Tsar:Ethernet0/3
-  - endpoints:
-    - Emperor:Ethernet0/1
-    - Tsar:Ethernet0/1
-  - endpoints:
-    - Tsar:Ethernet0/2
-    - Kaiser:Ethernet0/1
+  - endpoints: ['Caesar:Ethernet0/1', 'Tsar:Ethernet0/3']
+  - endpoints: ['Emperor:Ethernet0/1', 'Tsar:Ethernet0/1']
+  - endpoints: ['Tsar:Ethernet0/2', 'Kaiser:Ethernet0/1']

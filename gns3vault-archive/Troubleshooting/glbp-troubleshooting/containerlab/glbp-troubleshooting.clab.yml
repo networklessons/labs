@@ -27,10 +27,12 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-glbp-troubleshooting/i3_startup-config/startup-config.cfg.partial
+    br-glbp-troubleshooting-1:
+      kind: bridge
   links:
-  - endpoints:
-    - i4_startup-config:Ethernet0/1
-    - i6_startup-config:Ethernet0/2
-  - endpoints:
-    - i6_startup-config:Ethernet0/1
-    - i5_startup-config:Ethernet0/1
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'br-glbp-troubleshooting-1:eth1']
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-glbp-troubleshooting-1:eth2']
+  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-glbp-troubleshooting-1:eth3']
+  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-glbp-troubleshooting-1:eth4']
+  - endpoints: ['i4_startup-config:Ethernet0/2', 'i6_startup-config:Ethernet0/2']
+  - endpoints: ['i6_startup-config:Ethernet0/1', 'i5_startup-config:Ethernet0/2']

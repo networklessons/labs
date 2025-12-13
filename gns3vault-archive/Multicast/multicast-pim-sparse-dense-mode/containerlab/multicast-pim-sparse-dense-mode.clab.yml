@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-multicast-pim-sparse-dense-mode/Gibbon/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Drill:Ethernet0/1
-    - Gibbon:Ethernet0/2
-  - endpoints:
-    - Orangutan:Ethernet0/1
-    - Chimpanzee:Ethernet0/1
-  - endpoints:
-    - Chimpanzee:Ethernet0/2
-    - Gibbon:Ethernet0/1
+  - endpoints: ['Drill:Ethernet0/1', 'Gibbon:Ethernet0/2']
+  - endpoints: ['Orangutan:Ethernet0/1', 'Chimpanzee:Ethernet0/1']
+  - endpoints: ['Chimpanzee:Ethernet0/2', 'Gibbon:Ethernet0/1']

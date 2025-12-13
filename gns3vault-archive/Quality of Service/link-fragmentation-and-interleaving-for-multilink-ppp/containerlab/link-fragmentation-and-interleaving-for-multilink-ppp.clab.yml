@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-link-fragmentation-and-interleaving-for-multilink-ppp/Slice/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Chop:Ethernet0/1
-    - Frank:Ethernet0/1
-  - endpoints:
-    - Chop:Ethernet0/2
-    - Slice:Ethernet0/2
-  - endpoints:
-    - Jack:Ethernet0/1
-    - Slice:Ethernet0/1
+  - endpoints: ['Chop:Ethernet0/1', 'Frank:Ethernet0/1']
+  - endpoints: ['Chop:Ethernet0/2', 'Slice:Ethernet0/2']
+  - endpoints: ['Jack:Ethernet0/1', 'Slice:Ethernet0/1']

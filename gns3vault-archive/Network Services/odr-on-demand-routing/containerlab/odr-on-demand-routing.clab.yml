@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-odr-on-demand-routing/Luxemburg/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Brussel:Ethernet0/1
-    - Amsterdam:Ethernet0/1
-  - endpoints:
-    - Amsterdam:Ethernet0/2
-    - Luxemburg:Ethernet0/1
+  - endpoints: ['Brussel:Ethernet0/1', 'Amsterdam:Ethernet0/1']
+  - endpoints: ['Amsterdam:Ethernet0/2', 'Luxemburg:Ethernet0/1']

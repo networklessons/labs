@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ipv6-6to4-tunneling/Pet/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Pam:Ethernet0/1
-    - Pim:Ethernet0/1
-  - endpoints:
-    - Pam:Ethernet0/2
-    - Pet:Ethernet0/1
+  - endpoints: ['Pam:Ethernet0/1', 'Pim:Ethernet0/1']
+  - endpoints: ['Pam:Ethernet0/2', 'Pet:Ethernet0/1']

@@ -32,24 +32,10 @@ topology:
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-rip-to-eigrp-redistribution/Landon/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Rodman:Ethernet0/1
-    - Aranha:Ethernet0/1
-  - endpoints:
-    - Rodman:Ethernet0/2
-    - Charles:Ethernet0/1
-  - endpoints:
-    - Hunsiker:Ethernet0/1
-    - Landon:Ethernet0/3
-  - endpoints:
-    - Hunsiker:Ethernet0/2
-    - Caesar:Ethernet0/2
-  - endpoints:
-    - Caesar:Ethernet0/1
-    - Charles:Ethernet0/3
-  - endpoints:
-    - Aranha:Ethernet0/2
-    - Landon:Ethernet0/1
-  - endpoints:
-    - Charles:Ethernet0/2
-    - Landon:Ethernet0/2
+  - endpoints: ['Rodman:Ethernet0/1', 'Aranha:Ethernet0/1']
+  - endpoints: ['Rodman:Ethernet0/2', 'Charles:Ethernet0/1']
+  - endpoints: ['Hunsiker:Ethernet0/1', 'Landon:Ethernet0/3']
+  - endpoints: ['Hunsiker:Ethernet0/2', 'Caesar:Ethernet0/2']
+  - endpoints: ['Caesar:Ethernet0/1', 'Charles:Ethernet0/3']
+  - endpoints: ['Aranha:Ethernet0/2', 'Landon:Ethernet0/1']
+  - endpoints: ['Charles:Ethernet0/2', 'Landon:Ethernet0/2']

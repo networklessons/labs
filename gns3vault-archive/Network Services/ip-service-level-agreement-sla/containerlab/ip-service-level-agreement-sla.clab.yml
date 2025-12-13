@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ip-service-level-agreement-sla/Lettuce/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Tomato:Ethernet0/1
-    - Cucumber:Ethernet0/2
-  - endpoints:
-    - Tomato:Ethernet0/2
-    - Pickle:Ethernet0/1
-  - endpoints:
-    - Pickle:Ethernet0/2
-    - Lettuce:Ethernet0/2
-  - endpoints:
-    - Cucumber:Ethernet0/1
-    - Lettuce:Ethernet0/1
+  - endpoints: ['Tomato:Ethernet0/1', 'Cucumber:Ethernet0/2']
+  - endpoints: ['Tomato:Ethernet0/2', 'Pickle:Ethernet0/1']
+  - endpoints: ['Pickle:Ethernet0/2', 'Lettuce:Ethernet0/2']
+  - endpoints: ['Cucumber:Ethernet0/1', 'Lettuce:Ethernet0/1']

@@ -28,12 +28,6 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-mpls-atom-pseudowire-frame-relay-over-mpls-eompls/R4/startup-config.cfg.partial
   links:
-  - endpoints:
-    - R3:Ethernet0/1
-    - R2:Ethernet0/1
-  - endpoints:
-    - R3:Ethernet0/2
-    - R4:Ethernet0/1
-  - endpoints:
-    - R1:Ethernet0/1
-    - R5:Ethernet0/1
+  - endpoints: ['R3:Ethernet0/1', 'R2:Ethernet0/1']
+  - endpoints: ['R3:Ethernet0/2', 'R4:Ethernet0/1']
+  - endpoints: ['R1:Ethernet0/1', 'R5:Ethernet0/1']

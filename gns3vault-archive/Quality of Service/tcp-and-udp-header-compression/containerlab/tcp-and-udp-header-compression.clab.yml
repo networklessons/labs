@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-tcp-and-udp-header-compression/Compress/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Smaller:Ethernet0/1
-    - Compress:Ethernet0/1
+  - endpoints: ['Smaller:Ethernet0/1', 'Compress:Ethernet0/1']

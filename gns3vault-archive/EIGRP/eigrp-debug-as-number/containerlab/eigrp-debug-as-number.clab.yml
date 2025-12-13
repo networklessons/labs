@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-eigrp-debug-as-number/i1_startup-config/startup-config.cfg.partial
   links:
-  - endpoints:
-    - i2_startup-config:Ethernet0/1
-    - i1_startup-config:Ethernet0/1
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i1_startup-config:Ethernet0/1']

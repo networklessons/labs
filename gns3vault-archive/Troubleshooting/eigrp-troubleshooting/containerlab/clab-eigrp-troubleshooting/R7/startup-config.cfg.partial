@@ -9,6 +9,12 @@ hostname R7
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.67.7 255.255.255.240
+ duplex auto
+ speed auto
+ no shutdown
+!
 interface Loopback0
  ip address 7.7.7.7 255.255.255.0
 !

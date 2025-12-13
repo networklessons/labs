@@ -28,15 +28,7 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-ospf-suppress-forward-address/i3_startup-config/startup-config.cfg.partial
   links:
-  - endpoints:
-    - i2_startup-config:Ethernet0/1
-    - i5_startup-config:Ethernet0/2
-  - endpoints:
-    - i4_startup-config:Ethernet0/1
-    - i3_startup-config:Ethernet0/2
-  - endpoints:
-    - i1_startup-config:Ethernet0/1
-    - i3_startup-config:Ethernet0/1
-  - endpoints:
-    - i1_startup-config:Ethernet0/2
-    - i5_startup-config:Ethernet0/1
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i5_startup-config:Ethernet0/2']
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'i3_startup-config:Ethernet0/2']
+  - endpoints: ['i1_startup-config:Ethernet0/1', 'i3_startup-config:Ethernet0/1']
+  - endpoints: ['i1_startup-config:Ethernet0/2', 'i5_startup-config:Ethernet0/1']

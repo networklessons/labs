@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-recursive-routing-failure/Australia/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Japan:Ethernet0/1
-    - China:Ethernet0/1
-  - endpoints:
-    - China:Ethernet0/2
-    - Australia:Ethernet0/1
+  - endpoints: ['Japan:Ethernet0/1', 'China:Ethernet0/1']
+  - endpoints: ['China:Ethernet0/2', 'Australia:Ethernet0/1']

@@ -9,6 +9,12 @@ hostname R3
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
 interface Loopback0
  ip address 1.1.1.1 255.255.255.0
 !

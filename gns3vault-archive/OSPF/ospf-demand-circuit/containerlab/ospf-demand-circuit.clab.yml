@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ospf-demand-circuit/Palm/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Coconut:Ethernet0/1
-    - Palm:Ethernet0/1
+  - endpoints: ['Coconut:Ethernet0/1', 'Palm:Ethernet0/1']

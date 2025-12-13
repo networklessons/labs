@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-attribute-weight/Rutledge/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Goodwin:Ethernet0/1
-    - Warren:Ethernet0/2
-  - endpoints:
-    - Goodwin:Ethernet0/2
-    - Rutledge:Ethernet0/2
-  - endpoints:
-    - Warren:Ethernet0/1
-    - Stevens:Ethernet0/1
-  - endpoints:
-    - Stevens:Ethernet0/2
-    - Rutledge:Ethernet0/1
+  - endpoints: ['Goodwin:Ethernet0/1', 'Warren:Ethernet0/2']
+  - endpoints: ['Goodwin:Ethernet0/2', 'Rutledge:Ethernet0/2']
+  - endpoints: ['Warren:Ethernet0/1', 'Stevens:Ethernet0/1']
+  - endpoints: ['Stevens:Ethernet0/2', 'Rutledge:Ethernet0/1']

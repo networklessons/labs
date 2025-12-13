@@ -19,4 +19,9 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-md5-authentication-rotating-key/Rotate/startup-config.cfg.partial
-  links: []
+    br-ospf-md5-authentication-rotating-key-1:
+      kind: bridge
+  links:
+  - endpoints: ['Twist:Ethernet0/1', 'br-ospf-md5-authentication-rotating-key-1:eth1']
+  - endpoints: ['Turn:Ethernet0/1', 'br-ospf-md5-authentication-rotating-key-1:eth2']
+  - endpoints: ['Rotate:Ethernet0/1', 'br-ospf-md5-authentication-rotating-key-1:eth3']

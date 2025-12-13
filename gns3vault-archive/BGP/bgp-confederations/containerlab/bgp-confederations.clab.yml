@@ -32,27 +32,11 @@ topology:
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-bgp-confederations/Data/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Crusher:Ethernet0/1
-    - Data:Ethernet0/3
-  - endpoints:
-    - Crusher:Ethernet0/2
-    - Worf:Ethernet0/2
-  - endpoints:
-    - Crusher:Ethernet0/3
-    - Riker:Ethernet0/2
-  - endpoints:
-    - Riker:Ethernet0/1
-    - Worf:Ethernet0/3
-  - endpoints:
-    - Worf:Ethernet0/1
-    - laForge:Ethernet0/2
-  - endpoints:
-    - Picard:Ethernet0/1
-    - laForge:Ethernet0/1
-  - endpoints:
-    - Picard:Ethernet0/2
-    - Data:Ethernet0/1
-  - endpoints:
-    - laForge:Ethernet0/3
-    - Data:Ethernet0/2
+  - endpoints: ['Crusher:Ethernet0/1', 'Data:Ethernet0/3']
+  - endpoints: ['Crusher:Ethernet0/2', 'Worf:Ethernet0/2']
+  - endpoints: ['Crusher:Ethernet0/3', 'Riker:Ethernet0/2']
+  - endpoints: ['Riker:Ethernet0/1', 'Worf:Ethernet0/3']
+  - endpoints: ['Worf:Ethernet0/1', 'laForge:Ethernet0/2']
+  - endpoints: ['Picard:Ethernet0/1', 'laForge:Ethernet0/1']
+  - endpoints: ['Picard:Ethernet0/2', 'Data:Ethernet0/1']
+  - endpoints: ['laForge:Ethernet0/3', 'Data:Ethernet0/2']

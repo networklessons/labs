@@ -20,12 +20,6 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-icnd2-assessment-lab/HanSolo/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Luke:Ethernet0/1
-    - Chewbacca:Ethernet0/1
-  - endpoints:
-    - Luke:Ethernet0/2
-    - HanSolo:Ethernet0/1
-  - endpoints:
-    - Chewbacca:Ethernet0/2
-    - HanSolo:Ethernet0/2
+  - endpoints: ['Luke:Ethernet0/1', 'Chewbacca:Ethernet0/1']
+  - endpoints: ['Luke:Ethernet0/2', 'HanSolo:Ethernet0/1']
+  - endpoints: ['Chewbacca:Ethernet0/2', 'HanSolo:Ethernet0/2']

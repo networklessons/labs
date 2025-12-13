@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-eigrp-router-id/Spy/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Imposter:Ethernet0/1
-    - Spy:Ethernet0/1
-  - endpoints:
-    - Imposter:Ethernet0/2
-    - CopyCat:Ethernet0/1
+  - endpoints: ['Imposter:Ethernet0/1', 'Spy:Ethernet0/1']
+  - endpoints: ['Imposter:Ethernet0/2', 'CopyCat:Ethernet0/1']

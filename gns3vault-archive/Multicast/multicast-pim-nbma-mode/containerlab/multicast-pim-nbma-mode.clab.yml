@@ -31,10 +31,11 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-multicast-pim-nbma-mode/Arlene/startup-config.cfg.partial
+    br-multicast-pim-nbma-mode-1:
+      kind: bridge
   links:
-  - endpoints:
-    - Pooky:Ethernet0/1
-    - Arbuckle:Ethernet0/1
-  - endpoints:
-    - Odie:Ethernet0/1
-    - Garfield:Ethernet0/1
+  - endpoints: ['Pooky:Ethernet0/2', 'br-multicast-pim-nbma-mode-1:eth1']
+  - endpoints: ['Odie:Ethernet0/2', 'br-multicast-pim-nbma-mode-1:eth2']
+  - endpoints: ['Arlene:Ethernet0/1', 'br-multicast-pim-nbma-mode-1:eth3']
+  - endpoints: ['Pooky:Ethernet0/1', 'Arbuckle:Ethernet0/1']
+  - endpoints: ['Odie:Ethernet0/1', 'Garfield:Ethernet0/1']

@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ios-http-server/Client/startup-config.cfg.partial
   links:
-  - endpoints:
-    - HTTP:Ethernet0/1
-    - Client:Ethernet0/1
+  - endpoints: ['HTTP:Ethernet0/1', 'Client:Ethernet0/1']

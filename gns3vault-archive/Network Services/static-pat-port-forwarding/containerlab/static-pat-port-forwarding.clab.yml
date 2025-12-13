@@ -27,7 +27,11 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-static-pat-port-forwarding/Rob/startup-config.cfg.partial
+    br-static-pat-port-forwarding-1:
+      kind: bridge
   links:
-  - endpoints:
-    - Internet:Ethernet0/1
-    - PAT:Ethernet0/1
+  - endpoints: ['Mail:Ethernet0/1', 'br-static-pat-port-forwarding-1:eth1']
+  - endpoints: ['WWW:Ethernet0/1', 'br-static-pat-port-forwarding-1:eth2']
+  - endpoints: ['PAT:Ethernet0/1', 'br-static-pat-port-forwarding-1:eth3']
+  - endpoints: ['Rob:Ethernet0/1', 'br-static-pat-port-forwarding-1:eth4']
+  - endpoints: ['Internet:Ethernet0/1', 'PAT:Ethernet0/2']

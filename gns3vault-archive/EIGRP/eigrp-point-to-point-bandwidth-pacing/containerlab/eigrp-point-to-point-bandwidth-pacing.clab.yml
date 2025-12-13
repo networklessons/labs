@@ -28,15 +28,7 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/i3_startup-config/startup-config.cfg.partial
   links:
-  - endpoints:
-    - i2_startup-config:Ethernet0/1
-    - i6_startup-config:Ethernet0/2
-  - endpoints:
-    - i4_startup-config:Ethernet0/1
-    - i6_startup-config:Ethernet0/4
-  - endpoints:
-    - i6_startup-config:Ethernet0/1
-    - i3_startup-config:Ethernet0/1
-  - endpoints:
-    - i6_startup-config:Ethernet0/3
-    - i5_startup-config:Ethernet0/1
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i6_startup-config:Ethernet0/2']
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'i6_startup-config:Ethernet0/4']
+  - endpoints: ['i6_startup-config:Ethernet0/1', 'i3_startup-config:Ethernet0/1']
+  - endpoints: ['i6_startup-config:Ethernet0/3', 'i5_startup-config:Ethernet0/1']

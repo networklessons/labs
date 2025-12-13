@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-network-based-application-recognization-nbar/Lazy/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Drowsy:Ethernet0/1
-    - Sluggish:Ethernet0/2
-  - endpoints:
-    - Sluggish:Ethernet0/1
-    - Lazy:Ethernet0/1
+  - endpoints: ['Drowsy:Ethernet0/1', 'Sluggish:Ethernet0/2']
+  - endpoints: ['Sluggish:Ethernet0/1', 'Lazy:Ethernet0/1']

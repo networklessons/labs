@@ -59,28 +59,23 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.220
       startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R4/startup-config.cfg.partial
+    br-ccnp-tshoot-troubleshooting-1-1:
+      kind: bridge
+    br-ccnp-tshoot-troubleshooting-1-2:
+      kind: bridge
   links:
-  - endpoints:
-    - DSW2:Ethernet0/1
-    - R4:Ethernet0/2
-  - endpoints:
-    - DSW2:Ethernet0/2
-    - DSW1:Ethernet0/2
-  - endpoints:
-    - ISP:Ethernet0/1
-    - R1:Ethernet0/2
-  - endpoints:
-    - ISP:Ethernet0/2
-    - Webserver:Ethernet0/1
-  - endpoints:
-    - R3:Ethernet0/1
-    - R2:Ethernet0/2
-  - endpoints:
-    - R3:Ethernet0/2
-    - R4:Ethernet0/3
-  - endpoints:
-    - R1:Ethernet0/1
-    - R2:Ethernet0/1
-  - endpoints:
-    - DSW1:Ethernet0/1
-    - R4:Ethernet0/1
+  - endpoints: ['FTPServer:Ethernet0/1', 'br-ccnp-tshoot-troubleshooting-1-1:eth1']
+  - endpoints: ['DSW2:Ethernet0/3', 'br-ccnp-tshoot-troubleshooting-1-1:eth2']
+  - endpoints: ['DSW1:Ethernet0/3', 'br-ccnp-tshoot-troubleshooting-1-1:eth3']
+  - endpoints: ['ASW2:Ethernet0/1', 'br-ccnp-tshoot-troubleshooting-1-2:eth1']
+  - endpoints: ['DSW2:Ethernet0/4', 'br-ccnp-tshoot-troubleshooting-1-2:eth2']
+  - endpoints: ['DSW1:Ethernet0/4', 'br-ccnp-tshoot-troubleshooting-1-2:eth3']
+  - endpoints: ['ASW1:Ethernet0/1', 'br-ccnp-tshoot-troubleshooting-1-2:eth4']
+  - endpoints: ['DSW2:Ethernet0/1', 'R4:Ethernet0/2']
+  - endpoints: ['DSW2:Ethernet0/2', 'DSW1:Ethernet0/2']
+  - endpoints: ['ISP:Ethernet0/1', 'R1:Ethernet0/2']
+  - endpoints: ['ISP:Ethernet0/2', 'Webserver:Ethernet0/1']
+  - endpoints: ['R3:Ethernet0/1', 'R2:Ethernet0/2']
+  - endpoints: ['R3:Ethernet0/2', 'R4:Ethernet0/3']
+  - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
+  - endpoints: ['DSW1:Ethernet0/1', 'R4:Ethernet0/1']

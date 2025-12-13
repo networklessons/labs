@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-rip-advanced/Wilma/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Fred:Ethernet0/1
-    - Wilma:Ethernet0/1
-  - endpoints:
-    - Fred:Ethernet0/2
-    - Barney:Ethernet0/2
-  - endpoints:
-    - Betty:Ethernet0/2
-    - Wilma:Ethernet0/2
-  - endpoints:
-    - Betty:Ethernet0/1
-    - Barney:Ethernet0/1
+  - endpoints: ['Fred:Ethernet0/1', 'Wilma:Ethernet0/1']
+  - endpoints: ['Fred:Ethernet0/2', 'Barney:Ethernet0/2']
+  - endpoints: ['Betty:Ethernet0/2', 'Wilma:Ethernet0/2']
+  - endpoints: ['Betty:Ethernet0/1', 'Barney:Ethernet0/1']

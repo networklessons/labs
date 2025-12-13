@@ -16,9 +16,5 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-eigrp-summarization-leak-map/Hollywood/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Bollywood:Ethernet0/1
-    - Hollywood:Ethernet0/1
-  - endpoints:
-    - Bollywood:Ethernet0/2
-    - Hollywood:Ethernet0/2
+  - endpoints: ['Bollywood:Ethernet0/1', 'Hollywood:Ethernet0/1']
+  - endpoints: ['Bollywood:Ethernet0/2', 'Hollywood:Ethernet0/2']

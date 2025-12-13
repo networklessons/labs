@@ -24,18 +24,8 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Amy/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Selena:Ethernet0/2
-    - Mila:Ethernet0/3
-  - endpoints:
-    - Selena:Ethernet0/1
-    - Amy:Ethernet0/1
-  - endpoints:
-    - Mila:Ethernet0/2
-    - Amy:Ethernet0/3
-  - endpoints:
-    - Mila:Ethernet0/1
-    - Emily:Ethernet0/1
-  - endpoints:
-    - Emily:Ethernet0/2
-    - Amy:Ethernet0/2
+  - endpoints: ['Selena:Ethernet0/2', 'Mila:Ethernet0/3']
+  - endpoints: ['Selena:Ethernet0/1', 'Amy:Ethernet0/1']
+  - endpoints: ['Mila:Ethernet0/2', 'Amy:Ethernet0/3']
+  - endpoints: ['Mila:Ethernet0/1', 'Emily:Ethernet0/1']
+  - endpoints: ['Emily:Ethernet0/3', 'Amy:Ethernet0/2']

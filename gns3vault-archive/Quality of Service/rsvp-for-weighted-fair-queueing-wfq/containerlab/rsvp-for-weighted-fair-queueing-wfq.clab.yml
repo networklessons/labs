@@ -23,7 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-rsvp-for-weighted-fair-queueing-wfq/i3_startup-config/startup-config.cfg.partial
+    br-rsvp-for-weighted-fair-queueing-wfq-1:
+      kind: bridge
   links:
-  - endpoints:
-    - i2_startup-config:Ethernet0/1
-    - i4_startup-config:Ethernet0/1
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i4_startup-config:Ethernet0/2']
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-rsvp-for-weighted-fair-queueing-wfq-1:eth1']
+  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-rsvp-for-weighted-fair-queueing-wfq-1:eth2']
+  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-rsvp-for-weighted-fair-queueing-wfq-1:eth3']

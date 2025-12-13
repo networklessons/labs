@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-frame-relay-tcp-and-rtp-compression/Compact/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Emma:Ethernet0/1
-    - Decrease:Ethernet0/1
-  - endpoints:
-    - Jack:Ethernet0/1
-    - Compact:Ethernet0/1
-  - endpoints:
-    - Decrease:Ethernet0/2
-    - Compact:Ethernet0/2
-  - endpoints:
-    - Decrease:Ethernet0/3
-    - Compact:Ethernet0/3
+  - endpoints: ['Emma:Ethernet0/1', 'Decrease:Ethernet0/1']
+  - endpoints: ['Jack:Ethernet0/1', 'Compact:Ethernet0/1']
+  - endpoints: ['Decrease:Ethernet0/2', 'Compact:Ethernet0/2']
+  - endpoints: ['Decrease:Ethernet0/3', 'Compact:Ethernet0/3']

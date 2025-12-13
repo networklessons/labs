@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-frame-relay-multipoint-subinterface/Cinderella/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Gretel:Ethernet0/1
-    - Cinderella:Ethernet0/2
-  - endpoints:
-    - Hansel:Ethernet0/1
-    - Cinderella:Ethernet0/1
+  - endpoints: ['Gretel:Ethernet0/1', 'Cinderella:Ethernet0/2']
+  - endpoints: ['Hansel:Ethernet0/1', 'Cinderella:Ethernet0/1']

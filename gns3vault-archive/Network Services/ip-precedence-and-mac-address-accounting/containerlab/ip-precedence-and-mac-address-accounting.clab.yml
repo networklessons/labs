@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ip-precedence-and-mac-address-accounting/Tomb/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Jack:Ethernet0/1
-    - Wodan:Ethernet0/1
-  - endpoints:
-    - Wodan:Ethernet0/2
-    - Tomb:Ethernet0/1
+  - endpoints: ['Jack:Ethernet0/1', 'Wodan:Ethernet0/1']
+  - endpoints: ['Wodan:Ethernet0/2', 'Tomb:Ethernet0/1']

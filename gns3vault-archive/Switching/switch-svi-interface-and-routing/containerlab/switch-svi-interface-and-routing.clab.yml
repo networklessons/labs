@@ -23,7 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-switch-svi-interface-and-routing/DNS2/startup-config.cfg.partial
+    br-switch-svi-interface-and-routing-1:
+      kind: bridge
   links:
-  - endpoints:
-    - WWW1:Ethernet0/1
-    - SW1:Ethernet0/1
+  - endpoints: ['WWW1:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['SW1:Ethernet0/2', 'br-switch-svi-interface-and-routing-1:eth1']
+  - endpoints: ['DNS1:Ethernet0/1', 'br-switch-svi-interface-and-routing-1:eth2']
+  - endpoints: ['DNS2:Ethernet0/1', 'br-switch-svi-interface-and-routing-1:eth3']

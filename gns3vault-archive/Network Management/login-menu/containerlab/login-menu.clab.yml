@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-login-menu/Classroom/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Student:Ethernet0/1
-    - Classroom:Ethernet0/1
+  - endpoints: ['Student:Ethernet0/1', 'Classroom:Ethernet0/1']

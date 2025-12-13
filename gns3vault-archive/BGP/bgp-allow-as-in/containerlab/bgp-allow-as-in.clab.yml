@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-allow-as-in/Andy/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Rex:Ethernet0/1
-    - Woody:Ethernet0/1
-  - endpoints:
-    - Rex:Ethernet0/2
-    - Andy:Ethernet0/1
-  - endpoints:
-    - Woody:Ethernet0/2
-    - Buzz:Ethernet0/1
-  - endpoints:
-    - Buzz:Ethernet0/2
-    - Andy:Ethernet0/2
+  - endpoints: ['Rex:Ethernet0/1', 'Woody:Ethernet0/1']
+  - endpoints: ['Rex:Ethernet0/2', 'Andy:Ethernet0/1']
+  - endpoints: ['Woody:Ethernet0/2', 'Buzz:Ethernet0/1']
+  - endpoints: ['Buzz:Ethernet0/2', 'Andy:Ethernet0/2']

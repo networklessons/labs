@@ -27,13 +27,12 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-ntp-network-time-protocol/Planck/startup-config.cfg.partial
+    br-ntp-network-time-protocol-1:
+      kind: bridge
   links:
-  - endpoints:
-    - Millenium:Ethernet0/1
-    - Planck:Ethernet0/2
-  - endpoints:
-    - Century:Ethernet0/1
-    - Julian:Ethernet0/1
-  - endpoints:
-    - Atomic:Ethernet0/1
-    - Planck:Ethernet0/1
+  - endpoints: ['Millenium:Ethernet0/1', 'Planck:Ethernet0/3']
+  - endpoints: ['Century:Ethernet0/1', 'Julian:Ethernet0/2']
+  - endpoints: ['Atomic:Ethernet0/1', 'Planck:Ethernet0/1']
+  - endpoints: ['Atomic:Ethernet0/2', 'br-ntp-network-time-protocol-1:eth1']
+  - endpoints: ['Julian:Ethernet0/1', 'br-ntp-network-time-protocol-1:eth2']
+  - endpoints: ['Planck:Ethernet0/2', 'br-ntp-network-time-protocol-1:eth3']

@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-attribute-router-id/NewDelhi/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Paris:Ethernet0/1
-    - NewDelhi:Ethernet0/2
-  - endpoints:
-    - Paris:Ethernet0/2
-    - Sydney:Ethernet0/2
-  - endpoints:
-    - Barcelona:Ethernet0/1
-    - NewDelhi:Ethernet0/1
-  - endpoints:
-    - Barcelona:Ethernet0/2
-    - Sydney:Ethernet0/1
+  - endpoints: ['Paris:Ethernet0/1', 'NewDelhi:Ethernet0/2']
+  - endpoints: ['Paris:Ethernet0/2', 'Sydney:Ethernet0/2']
+  - endpoints: ['Barcelona:Ethernet0/1', 'NewDelhi:Ethernet0/1']
+  - endpoints: ['Barcelona:Ethernet0/2', 'Sydney:Ethernet0/1']

@@ -24,9 +24,5 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ospf-over-frame-relay-point-to-point/BARRACUDA/startup-config.cfg.partial
   links:
-  - endpoints:
-    - SALMON:Ethernet0/1
-    - BARRACUDA:Ethernet0/1
-  - endpoints:
-    - HERRING:Ethernet0/1
-    - BARRACUDA:Ethernet0/2
+  - endpoints: ['SALMON:Ethernet0/1', 'BARRACUDA:Ethernet0/1']
+  - endpoints: ['HERRING:Ethernet0/1', 'BARRACUDA:Ethernet0/2']

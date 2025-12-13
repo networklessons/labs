@@ -24,6 +24,4 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-dhcp-snooping/SW1/startup-config.cfg.partial
   links:
-  - endpoints:
-    - ATTACKER:Ethernet0/1
-    - DHCPSERVER:Ethernet0/1
+  - endpoints: ['ATTACKER:Ethernet0/1', 'DHCPSERVER:Ethernet0/1']

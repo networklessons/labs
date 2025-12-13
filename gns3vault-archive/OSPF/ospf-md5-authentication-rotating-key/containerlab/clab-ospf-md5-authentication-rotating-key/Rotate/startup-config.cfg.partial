@@ -9,6 +9,14 @@ hostname Rotate
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.123.3 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 2 md5 VAULT
+ duplex auto
+ speed auto
+ no shutdown
+!
 !
 !
 !

@@ -16,9 +16,5 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ppp-authentication/Grover/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Kermit:Ethernet0/1
-    - Grover:Ethernet0/1
-  - endpoints:
-    - Kermit:Ethernet0/2
-    - Grover:Ethernet0/2
+  - endpoints: ['Kermit:Ethernet0/1', 'Grover:Ethernet0/1']
+  - endpoints: ['Kermit:Ethernet0/2', 'Grover:Ethernet0/2']

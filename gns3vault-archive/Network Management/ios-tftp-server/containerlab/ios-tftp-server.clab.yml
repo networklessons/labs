@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ios-tftp-server/Client/startup-config.cfg.partial
   links:
-  - endpoints:
-    - TFTP:Ethernet0/1
-    - Client:Ethernet0/1
+  - endpoints: ['TFTP:Ethernet0/1', 'Client:Ethernet0/1']

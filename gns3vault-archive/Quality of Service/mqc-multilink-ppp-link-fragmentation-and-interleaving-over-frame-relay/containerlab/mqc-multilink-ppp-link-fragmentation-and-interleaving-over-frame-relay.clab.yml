@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-mqc-multilink-ppp-link-fragmentation-and-interleaving-over-frame-relay/James/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Quall:Ethernet0/1
-    - Jack:Ethernet0/1
-  - endpoints:
-    - Quall:Ethernet0/2
-    - Kos:Ethernet0/2
-  - endpoints:
-    - Kos:Ethernet0/1
-    - James:Ethernet0/1
+  - endpoints: ['Quall:Ethernet0/1', 'Jack:Ethernet0/1']
+  - endpoints: ['Quall:Ethernet0/2', 'Kos:Ethernet0/2']
+  - endpoints: ['Kos:Ethernet0/1', 'James:Ethernet0/1']

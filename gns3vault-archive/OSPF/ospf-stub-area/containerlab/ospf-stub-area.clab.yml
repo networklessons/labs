@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ospf-stub-area/Barik/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Algrim:Ethernet0/1
-    - Barik:Ethernet0/1
+  - endpoints: ['Algrim:Ethernet0/1', 'Barik:Ethernet0/1']

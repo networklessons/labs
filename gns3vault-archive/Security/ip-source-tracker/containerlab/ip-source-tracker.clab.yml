@@ -44,27 +44,11 @@ topology:
       mgmt-ipv4: 10.65.97.180
       startup-config: ./clab-ip-source-tracker/Bashful/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Sleepy:Ethernet0/1
-    - Bashful:Ethernet0/1
-  - endpoints:
-    - Happy:Ethernet0/1
-    - Doc:Ethernet0/1
-  - endpoints:
-    - Happy:Ethernet0/2
-    - Dopey:Ethernet0/1
-  - endpoints:
-    - Happy:Ethernet0/3
-    - Grumpy:Ethernet0/2
-  - endpoints:
-    - Dopey:Ethernet0/2
-    - Attacker:Ethernet0/1
-  - endpoints:
-    - Sneezy:Ethernet0/1
-    - Bashful:Ethernet0/2
-  - endpoints:
-    - Webserver:Ethernet0/1
-    - Grumpy:Ethernet0/3
-  - endpoints:
-    - Grumpy:Ethernet0/1
-    - Bashful:Ethernet0/3
+  - endpoints: ['Sleepy:Ethernet0/1', 'Bashful:Ethernet0/1']
+  - endpoints: ['Happy:Ethernet0/1', 'Doc:Ethernet0/1']
+  - endpoints: ['Happy:Ethernet0/2', 'Dopey:Ethernet0/1']
+  - endpoints: ['Happy:Ethernet0/3', 'Grumpy:Ethernet0/2']
+  - endpoints: ['Dopey:Ethernet0/2', 'Attacker:Ethernet0/1']
+  - endpoints: ['Sneezy:Ethernet0/1', 'Bashful:Ethernet0/2']
+  - endpoints: ['Webserver:Ethernet0/1', 'Grumpy:Ethernet0/3']
+  - endpoints: ['Grumpy:Ethernet0/1', 'Bashful:Ethernet0/3']

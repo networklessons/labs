@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-frame-relay-broadcast-queue/Jack/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Emma:Ethernet0/1
-    - Jack:Ethernet0/1
+  - endpoints: ['Emma:Ethernet0/1', 'Jack:Ethernet0/1']

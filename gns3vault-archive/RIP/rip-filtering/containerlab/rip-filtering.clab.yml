@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-rip-filtering/Cheese/startup-config.cfg.partial
   links:
-  - endpoints:
-    - WoodenShoe:Ethernet0/1
-    - Cheese:Ethernet0/1
-  - endpoints:
-    - WoodenShoe:Ethernet0/2
-    - Tulip:Ethernet0/1
-  - endpoints:
-    - Windmill:Ethernet0/1
-    - Tulip:Ethernet0/2
-  - endpoints:
-    - Windmill:Ethernet0/2
-    - Cheese:Ethernet0/2
+  - endpoints: ['WoodenShoe:Ethernet0/1', 'Cheese:Ethernet0/1']
+  - endpoints: ['WoodenShoe:Ethernet0/2', 'Tulip:Ethernet0/1']
+  - endpoints: ['Windmill:Ethernet0/1', 'Tulip:Ethernet0/2']
+  - endpoints: ['Windmill:Ethernet0/2', 'Cheese:Ethernet0/2']

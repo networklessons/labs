@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-communities-no-export/Erik/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Frans:Ethernet0/1
-    - Rene:Ethernet0/2
-  - endpoints:
-    - Rene:Ethernet0/1
-    - Erik:Ethernet0/1
-  - endpoints:
-    - Rene:Ethernet0/3
-    - Bert:Ethernet0/1
+  - endpoints: ['Frans:Ethernet0/1', 'Rene:Ethernet0/2']
+  - endpoints: ['Rene:Ethernet0/1', 'Erik:Ethernet0/1']
+  - endpoints: ['Rene:Ethernet0/3', 'Bert:Ethernet0/1']

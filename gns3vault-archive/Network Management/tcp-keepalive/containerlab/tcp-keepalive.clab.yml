@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-tcp-keepalive/Alive/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Still:Ethernet0/1
-    - Server:Ethernet0/1
-  - endpoints:
-    - Still:Ethernet0/2
-    - Alive:Ethernet0/1
-  - endpoints:
-    - Terminal:Ethernet0/1
-    - Alive:Ethernet0/2
+  - endpoints: ['Still:Ethernet0/1', 'Server:Ethernet0/1']
+  - endpoints: ['Still:Ethernet0/2', 'Alive:Ethernet0/1']
+  - endpoints: ['Terminal:Ethernet0/1', 'Alive:Ethernet0/2']

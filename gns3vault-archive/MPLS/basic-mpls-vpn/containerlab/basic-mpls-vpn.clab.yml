@@ -28,15 +28,7 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-basic-mpls-vpn/SP3/startup-config.cfg.partial
   links:
-  - endpoints:
-    - HQ:Ethernet0/1
-    - SP1:Ethernet0/2
-  - endpoints:
-    - SP1:Ethernet0/1
-    - SP2:Ethernet0/1
-  - endpoints:
-    - BRANCH:Ethernet0/1
-    - SP3:Ethernet0/1
-  - endpoints:
-    - SP2:Ethernet0/2
-    - SP3:Ethernet0/2
+  - endpoints: ['HQ:Ethernet0/1', 'SP1:Ethernet0/2']
+  - endpoints: ['SP1:Ethernet0/1', 'SP2:Ethernet0/1']
+  - endpoints: ['BRANCH:Ethernet0/1', 'SP3:Ethernet0/1']
+  - endpoints: ['SP2:Ethernet0/2', 'SP3:Ethernet0/2']

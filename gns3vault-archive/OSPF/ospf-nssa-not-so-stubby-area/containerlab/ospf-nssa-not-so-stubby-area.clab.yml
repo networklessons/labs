@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-nssa-not-so-stubby-area/Zeus/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Thor:Ethernet0/1
-    - Wodan:Ethernet0/2
-  - endpoints:
-    - Wodan:Ethernet0/1
-    - Zeus:Ethernet0/1
+  - endpoints: ['Thor:Ethernet0/1', 'Wodan:Ethernet0/2']
+  - endpoints: ['Wodan:Ethernet0/1', 'Zeus:Ethernet0/1']

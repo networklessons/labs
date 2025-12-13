@@ -32,18 +32,8 @@ topology:
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-eigrp-neighbor-troubleshooting/i3_startup-config/startup-config.cfg.partial
   links:
-  - endpoints:
-    - i2_startup-config:Ethernet0/1
-    - i5_startup-config:Ethernet0/1
-  - endpoints:
-    - i2_startup-config:Ethernet0/2
-    - i6_startup-config:Ethernet0/1
-  - endpoints:
-    - i2_startup-config:Ethernet0/3
-    - i3_startup-config:Ethernet0/1
-  - endpoints:
-    - i4_startup-config:Ethernet0/1
-    - i5_startup-config:Ethernet0/2
-  - endpoints:
-    - i6_startup-config:Ethernet0/2
-    - i7_startup-config:Ethernet0/1
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i5_startup-config:Ethernet0/2']
+  - endpoints: ['i2_startup-config:Ethernet0/2', 'i6_startup-config:Ethernet0/1']
+  - endpoints: ['i2_startup-config:Ethernet0/3', 'i3_startup-config:Ethernet0/1']
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'i5_startup-config:Ethernet0/3']
+  - endpoints: ['i6_startup-config:Ethernet0/2', 'i7_startup-config:Ethernet0/2']

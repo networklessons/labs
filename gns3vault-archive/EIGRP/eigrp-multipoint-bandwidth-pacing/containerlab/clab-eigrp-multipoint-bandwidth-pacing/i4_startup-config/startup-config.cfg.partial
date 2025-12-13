@@ -12,6 +12,12 @@ ip cef
 interface Loopback0
  ip address 5.5.5.5 255.255.255.0
 !
+interface Ethernet0/2
+ ip address 192.168.1.5 255.255.255.0
+ encapsulation frame-relay
+ serial restart-delay 0
+ no shutdown
+!
 !
 !
 !

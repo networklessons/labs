@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-payload-compression-serial-links/Carter/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Griggs:Ethernet0/1
-    - Carter:Ethernet0/2
-  - endpoints:
-    - Griggs:Ethernet0/2
-    - Wolner:Ethernet0/1
-  - endpoints:
-    - Lloyd:Ethernet0/1
-    - Carter:Ethernet0/1
+  - endpoints: ['Griggs:Ethernet0/1', 'Carter:Ethernet0/2']
+  - endpoints: ['Griggs:Ethernet0/2', 'Wolner:Ethernet0/1']
+  - endpoints: ['Lloyd:Ethernet0/1', 'Carter:Ethernet0/1']

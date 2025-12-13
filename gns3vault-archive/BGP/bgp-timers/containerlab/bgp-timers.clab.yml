@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-timers/Scott/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Kendrick:Ethernet0/1
-    - Scott:Ethernet0/1
+  - endpoints: ['Kendrick:Ethernet0/1', 'Scott:Ethernet0/1']

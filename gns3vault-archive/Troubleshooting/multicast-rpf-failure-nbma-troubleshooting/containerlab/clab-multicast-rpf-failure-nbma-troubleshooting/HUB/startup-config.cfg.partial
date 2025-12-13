@@ -9,6 +9,14 @@ hostname HUB
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.123.1 255.255.255.0
+ ip pim dense-mode
+ encapsulation frame-relay
+ ip ospf network broadcast
+ serial restart-delay 0
+ no shutdown
+!
 !
 !
 !

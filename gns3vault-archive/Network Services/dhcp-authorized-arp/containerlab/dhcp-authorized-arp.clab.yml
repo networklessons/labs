@@ -20,6 +20,4 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-dhcp-authorized-arp/Client/startup-config.cfg.partial
   links:
-  - endpoints:
-    - DHCP:Ethernet0/1
-    - Spoofer:Ethernet0/1
+  - endpoints: ['DHCP:Ethernet0/1', 'Spoofer:Ethernet0/1']

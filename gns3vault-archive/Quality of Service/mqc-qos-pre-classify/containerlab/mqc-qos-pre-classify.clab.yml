@@ -28,15 +28,7 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-mqc-qos-pre-classify/Tallet/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Kenton:Ethernet0/1
-    - Tallet:Ethernet0/1
-  - endpoints:
-    - Finn:Ethernet0/1
-    - Marvin:Ethernet0/2
-  - endpoints:
-    - Ricky:Ethernet0/1
-    - Tallet:Ethernet0/2
-  - endpoints:
-    - Ricky:Ethernet0/2
-    - Marvin:Ethernet0/1
+  - endpoints: ['Kenton:Ethernet0/1', 'Tallet:Ethernet0/1']
+  - endpoints: ['Finn:Ethernet0/1', 'Marvin:Ethernet0/2']
+  - endpoints: ['Ricky:Ethernet0/1', 'Tallet:Ethernet0/2']
+  - endpoints: ['Ricky:Ethernet0/2', 'Marvin:Ethernet0/1']

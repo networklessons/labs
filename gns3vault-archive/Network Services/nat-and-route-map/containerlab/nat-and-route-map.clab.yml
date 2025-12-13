@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-nat-and-route-map/NAT/startup-config.cfg.partial
   links:
-  - endpoints:
-    - WWW:Ethernet0/1
-    - NAT:Ethernet0/2
-  - endpoints:
-    - Jack:Ethernet0/1
-    - NAT:Ethernet0/1
-  - endpoints:
-    - Partner:Ethernet0/1
-    - NAT:Ethernet0/3
+  - endpoints: ['WWW:Ethernet0/1', 'NAT:Ethernet0/2']
+  - endpoints: ['Jack:Ethernet0/1', 'NAT:Ethernet0/1']
+  - endpoints: ['Partner:Ethernet0/1', 'NAT:Ethernet0/3']

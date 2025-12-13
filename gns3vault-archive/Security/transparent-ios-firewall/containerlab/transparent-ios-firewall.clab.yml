@@ -20,6 +20,4 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-transparent-ios-firewall/Terminal/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Harbor:Ethernet0/1
-    - Terminal:Ethernet0/1
+  - endpoints: ['Harbor:Ethernet0/1', 'Terminal:Ethernet0/1']

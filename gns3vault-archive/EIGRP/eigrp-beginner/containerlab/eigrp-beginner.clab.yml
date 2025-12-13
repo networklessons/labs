@@ -20,12 +20,6 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-eigrp-beginner/R2/startup-config.cfg.partial
   links:
-  - endpoints:
-    - R3:Ethernet0/1
-    - R1:Ethernet0/2
-  - endpoints:
-    - R3:Ethernet0/2
-    - R2:Ethernet0/2
-  - endpoints:
-    - R1:Ethernet0/1
-    - R2:Ethernet0/1
+  - endpoints: ['R3:Ethernet0/1', 'R1:Ethernet0/2']
+  - endpoints: ['R3:Ethernet0/2', 'R2:Ethernet0/2']
+  - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']

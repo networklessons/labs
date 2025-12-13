@@ -27,4 +27,14 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-vrf-lite/R4/startup-config.cfg.partial
-  links: []
+    br-vrf-lite-1:
+      kind: bridge
+    br-vrf-lite-2:
+      kind: bridge
+  links:
+  - endpoints: ['R3:Ethernet0/1', 'br-vrf-lite-1:eth1']
+  - endpoints: ['R1:Ethernet0/1', 'br-vrf-lite-1:eth2']
+  - endpoints: ['R2:Ethernet0/1', 'br-vrf-lite-1:eth3']
+  - endpoints: ['R1:Ethernet0/2', 'br-vrf-lite-2:eth1']
+  - endpoints: ['R5:Ethernet0/1', 'br-vrf-lite-2:eth2']
+  - endpoints: ['R4:Ethernet0/1', 'br-vrf-lite-2:eth3']

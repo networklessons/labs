@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-mqc-single-rate-three-color-policer-example/Prio/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Jack:Ethernet0/1
-    - Line:Ethernet0/1
-  - endpoints:
-    - Line:Ethernet0/2
-    - Prio:Ethernet0/2
-  - endpoints:
-    - Frank:Ethernet0/1
-    - Prio:Ethernet0/1
+  - endpoints: ['Jack:Ethernet0/1', 'Line:Ethernet0/1']
+  - endpoints: ['Line:Ethernet0/2', 'Prio:Ethernet0/2']
+  - endpoints: ['Frank:Ethernet0/1', 'Prio:Ethernet0/1']

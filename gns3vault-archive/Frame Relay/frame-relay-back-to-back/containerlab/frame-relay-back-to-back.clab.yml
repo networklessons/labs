@@ -16,6 +16,4 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-frame-relay-back-to-back/R2/startup-config.cfg.partial
   links:
-  - endpoints:
-    - R1:Ethernet0/1
-    - R2:Ethernet0/1
+  - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']

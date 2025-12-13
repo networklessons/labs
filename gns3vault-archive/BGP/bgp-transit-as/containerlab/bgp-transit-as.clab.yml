@@ -32,21 +32,9 @@ topology:
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-bgp-transit-as/Parker/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Aniston:Ethernet0/1
-    - Witherspoon:Ethernet0/2
-  - endpoints:
-    - Aniston:Ethernet0/2
-    - Parker:Ethernet0/1
-  - endpoints:
-    - Witherspoon:Ethernet0/1
-    - Bullock:Ethernet0/1
-  - endpoints:
-    - Witherspoon:Ethernet0/3
-    - Diaz:Ethernet0/1
-  - endpoints:
-    - Roberts:Ethernet0/1
-    - Parker:Ethernet0/3
-  - endpoints:
-    - Diaz:Ethernet0/2
-    - Parker:Ethernet0/2
+  - endpoints: ['Aniston:Ethernet0/1', 'Witherspoon:Ethernet0/2']
+  - endpoints: ['Aniston:Ethernet0/2', 'Parker:Ethernet0/1']
+  - endpoints: ['Witherspoon:Ethernet0/1', 'Bullock:Ethernet0/1']
+  - endpoints: ['Witherspoon:Ethernet0/3', 'Diaz:Ethernet0/1']
+  - endpoints: ['Roberts:Ethernet0/1', 'Parker:Ethernet0/3']
+  - endpoints: ['Diaz:Ethernet0/2', 'Parker:Ethernet0/2']

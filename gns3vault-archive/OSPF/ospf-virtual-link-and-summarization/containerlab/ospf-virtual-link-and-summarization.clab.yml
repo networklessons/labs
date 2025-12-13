@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-virtual-link-and-summarization/Louie/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Huey:Ethernet0/1
-    - Dewey:Ethernet0/1
-  - endpoints:
-    - Dewey:Ethernet0/2
-    - Louie:Ethernet0/1
+  - endpoints: ['Huey:Ethernet0/1', 'Dewey:Ethernet0/1']
+  - endpoints: ['Dewey:Ethernet0/2', 'Louie:Ethernet0/1']

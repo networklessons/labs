@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-web-cache-communication-protocol-wccp-v1/WebCache/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Internet:Ethernet0/1
-    - Redirector:Ethernet0/1
-  - endpoints:
-    - Redirector:Ethernet0/2
-    - WebCache:Ethernet0/1
-  - endpoints:
-    - Redirector:Ethernet0/3
-    - Client:Ethernet0/1
+  - endpoints: ['Internet:Ethernet0/1', 'Redirector:Ethernet0/1']
+  - endpoints: ['Redirector:Ethernet0/2', 'WebCache:Ethernet0/1']
+  - endpoints: ['Redirector:Ethernet0/3', 'Client:Ethernet0/1']

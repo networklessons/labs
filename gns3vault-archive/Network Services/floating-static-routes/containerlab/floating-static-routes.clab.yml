@@ -16,9 +16,5 @@ topology:
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-floating-static-routes/Drift/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Float:Ethernet0/1
-    - Drift:Ethernet0/1
-  - endpoints:
-    - Float:Ethernet0/2
-    - Drift:Ethernet0/2
+  - endpoints: ['Float:Ethernet0/1', 'Drift:Ethernet0/1']
+  - endpoints: ['Float:Ethernet0/2', 'Drift:Ethernet0/2']

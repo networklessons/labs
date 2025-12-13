@@ -28,15 +28,7 @@ topology:
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-ospf-lsa-type-3-summarization/Diamond/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Topaz:Ethernet0/1
-    - Talc:Ethernet0/1
-  - endpoints:
-    - Topaz:Ethernet0/2
-    - Diamond:Ethernet0/1
-  - endpoints:
-    - Quartz:Ethernet0/1
-    - Diamond:Ethernet0/2
-  - endpoints:
-    - Quartz:Ethernet0/2
-    - Fluorite:Ethernet0/1
+  - endpoints: ['Topaz:Ethernet0/1', 'Talc:Ethernet0/1']
+  - endpoints: ['Topaz:Ethernet0/2', 'Diamond:Ethernet0/1']
+  - endpoints: ['Quartz:Ethernet0/1', 'Diamond:Ethernet0/2']
+  - endpoints: ['Quartz:Ethernet0/2', 'Fluorite:Ethernet0/1']

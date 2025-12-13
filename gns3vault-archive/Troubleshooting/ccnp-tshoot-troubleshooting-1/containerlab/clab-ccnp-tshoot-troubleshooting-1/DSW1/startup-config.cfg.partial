@@ -28,6 +28,14 @@ interface Ethernet0/3
  standby 10 preempt
  no shutdown
 !
+interface Ethernet0/4
+ ip address 10.2.2.2 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/5
+ ip address 192.168.1.129 255.255.255.224
+ no shutdown
+!
 !
 !
 !

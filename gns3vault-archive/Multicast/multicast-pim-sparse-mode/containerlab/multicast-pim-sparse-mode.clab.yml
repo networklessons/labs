@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-multicast-pim-sparse-mode/Ping/startup-config.cfg.partial
   links:
-  - endpoints:
-    - VideoServer:Ethernet0/1
-    - Ping:Ethernet0/1
-  - endpoints:
-    - VideoReceiver:Ethernet0/1
-    - Pong:Ethernet0/2
-  - endpoints:
-    - Pong:Ethernet0/1
-    - Ping:Ethernet0/2
+  - endpoints: ['VideoServer:Ethernet0/1', 'Ping:Ethernet0/1']
+  - endpoints: ['VideoReceiver:Ethernet0/1', 'Pong:Ethernet0/2']
+  - endpoints: ['Pong:Ethernet0/1', 'Ping:Ethernet0/2']
