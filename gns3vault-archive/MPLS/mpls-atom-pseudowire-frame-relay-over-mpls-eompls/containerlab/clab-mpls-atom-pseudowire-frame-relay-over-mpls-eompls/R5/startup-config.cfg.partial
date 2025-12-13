@@ -12,7 +12,7 @@ interface Loopback0
  no ip address
  no shutdown
 !
-interface Ethernet0/2
+interface Ethernet0/1
 
  no ip address
  shutdown

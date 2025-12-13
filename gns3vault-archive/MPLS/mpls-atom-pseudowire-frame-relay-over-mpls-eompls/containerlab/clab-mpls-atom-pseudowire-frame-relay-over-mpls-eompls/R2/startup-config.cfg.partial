@@ -12,20 +12,20 @@ interface Loopback0
  ip address 2.2.2.2 255.255.255.0
  no shutdown
 !
-interface Ethernet0/2
+interface Ethernet0/1
 
  no ip address
  shutdown
  duplex half
 !
-interface Ethernet0/3
+interface Ethernet0/2
 
  ip address 192.168.23.2 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-interface Ethernet0/4
+interface Ethernet0/3
 
  no ip address
  duplex auto

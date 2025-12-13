@@ -8,7 +8,7 @@ hostname R10
 !
 ip cef
 !
-interface Ethernet0/2
+interface Ethernet0/1
 
  ip address 192.168.105.10 255.255.255.0
  no shutdown
