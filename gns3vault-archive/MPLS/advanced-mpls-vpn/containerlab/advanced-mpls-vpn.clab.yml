@@ -1,0 +1,71 @@
+name: advanced-mpls-vpn
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.10
+      startup-config: ./clab-advanced-mpls-vpn/R1/startup-config.cfg.partial
+    R10:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-advanced-mpls-vpn/R10/startup-config.cfg.partial
+    R11:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-advanced-mpls-vpn/R11/startup-config.cfg.partial
+    R12:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-advanced-mpls-vpn/R12/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-advanced-mpls-vpn/R2/startup-config.cfg.partial
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-advanced-mpls-vpn/R3/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.16
+      startup-config: ./clab-advanced-mpls-vpn/R4/startup-config.cfg.partial
+    R5:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.17
+      startup-config: ./clab-advanced-mpls-vpn/R5/startup-config.cfg.partial
+    R6:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.18
+      startup-config: ./clab-advanced-mpls-vpn/R6/startup-config.cfg.partial
+    R7:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.19
+      startup-config: ./clab-advanced-mpls-vpn/R7/startup-config.cfg.partial
+    R8:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.20
+      startup-config: ./clab-advanced-mpls-vpn/R8/startup-config.cfg.partial
+    R9:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.21
+      startup-config: ./clab-advanced-mpls-vpn/R9/startup-config.cfg.partial
+  links:
+  - endpoints: ["R1:Ethernet0/1", "R3:Ethernet0/4"]
+  - endpoints: ["R10:Ethernet0/1", "R5:Ethernet0/5"]
+  - endpoints: ["R11:Ethernet0/1", "R5:Ethernet0/6"]
+  - endpoints: ["R12:Ethernet0/1", "R5:Ethernet0/3"]
+  - endpoints: ["R12:Ethernet0/2", "R2:Ethernet0/1"]
+  - endpoints: ["R2:Ethernet0/2", "R3:Ethernet0/2"]
+  - endpoints: ["R3:Ethernet0/3", "R4:Ethernet0/2"]
+  - endpoints: ["R3:Ethernet0/4", "R9:Ethernet0/1"]
+  - endpoints: ["R3:Ethernet0/5", "R6:Ethernet0/1"]
+  - endpoints: ["R4:Ethernet0/2", "R5:Ethernet0/4"]
+  - endpoints: ["R5:Ethernet0/5", "R7:Ethernet0/1"]
+  - endpoints: ["R5:Ethernet0/6", "R8:Ethernet0/1"]
+  - endpoints: ["R7:Ethernet0/2", "R8:Ethernet0/2"]
