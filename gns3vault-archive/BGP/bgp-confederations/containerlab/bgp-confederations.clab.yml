@@ -9,34 +9,50 @@ topology:
   nodes:
     Crusher:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.179
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-confederations/Crusher/startup-config.cfg.partial
-    Data:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.233
-      startup-config: ./clab-bgp-confederations/Data/startup-config.cfg.partial
-    Picard:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.156
-      startup-config: ./clab-bgp-confederations/Picard/startup-config.cfg.partial
     Riker:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.113
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-confederations/Riker/startup-config.cfg.partial
     Worf:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.198
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-confederations/Worf/startup-config.cfg.partial
+    Picard:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-confederations/Picard/startup-config.cfg.partial
     laForge:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.248
+      mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-bgp-confederations/laForge/startup-config.cfg.partial
+    Data:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-bgp-confederations/Data/startup-config.cfg.partial
   links:
-  - endpoints: ["Crusher:Ethernet0/1", "Data:Ethernet0/3"]
-  - endpoints: ["Crusher:Ethernet0/2", "Worf:Ethernet0/2"]
-  - endpoints: ["Crusher:Ethernet0/3", "Riker:Ethernet0/2"]
-  - endpoints: ["Data:Ethernet0/1", "Picard:Ethernet0/2"]
-  - endpoints: ["Data:Ethernet0/2", "laForge:Ethernet0/3"]
-  - endpoints: ["Picard:Ethernet0/1", "laForge:Ethernet0/1"]
-  - endpoints: ["Riker:Ethernet0/1", "Worf:Ethernet0/3"]
-  - endpoints: ["Worf:Ethernet0/1", "laForge:Ethernet0/2"]
+  - endpoints:
+    - Crusher:Ethernet0/1
+    - Data:Ethernet0/3
+  - endpoints:
+    - Crusher:Ethernet0/2
+    - Worf:Ethernet0/2
+  - endpoints:
+    - Crusher:Ethernet0/3
+    - Riker:Ethernet0/2
+  - endpoints:
+    - Riker:Ethernet0/1
+    - Worf:Ethernet0/3
+  - endpoints:
+    - Worf:Ethernet0/1
+    - laForge:Ethernet0/2
+  - endpoints:
+    - Picard:Ethernet0/1
+    - laForge:Ethernet0/1
+  - endpoints:
+    - Picard:Ethernet0/2
+    - Data:Ethernet0/1
+  - endpoints:
+    - laForge:Ethernet0/3
+    - Data:Ethernet0/2

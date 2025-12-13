@@ -21,9 +21,6 @@ topology:
       startup-config: ./clab-recursive-routing-failure/Australia/startup-config.cfg.partial
   links:
   - endpoints:
-    - Japan:Ethernet0/2
-    - Australia:Ethernet0/2
-  - endpoints:
     - Japan:Ethernet0/1
     - China:Ethernet0/1
   - endpoints:

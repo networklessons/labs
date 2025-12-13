@@ -1,0 +1,23 @@
+!
+!
+!
+hostname INTERNET
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.105.10 255.255.255.0
+ half-duplex
+ no shutdown
+!
+interface Loopback0
+ ip address 123.123.123.123 255.255.255.0
+!
+!
+!
+!
+end

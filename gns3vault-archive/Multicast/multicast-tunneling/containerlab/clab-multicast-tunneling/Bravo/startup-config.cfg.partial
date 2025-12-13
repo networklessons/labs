@@ -23,10 +23,10 @@ interface Ethernet0/3
  speed auto
  no shutdown
 !
-interface Ethernet0/4
+interface Tunnel0
  ip address 192.168.24.2 255.255.255.0
  ip pim dense-mode
- tunnel source FastEthernet1/0
+ tunnel source Ethernet0/3
  tunnel destination 192.168.34.4
  no shutdown
 !

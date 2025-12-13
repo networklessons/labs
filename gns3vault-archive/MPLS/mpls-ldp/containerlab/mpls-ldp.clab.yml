@@ -7,24 +7,32 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    R1:
+    P3:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.10
-      startup-config: ./clab-mpls-ldp/R1/startup-config.cfg.partial
-    R2:
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-mpls-ldp/P3/startup-config.cfg.partial
+    P1:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-mpls-ldp/R2/startup-config.cfg.partial
-    R3:
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-mpls-ldp/P1/startup-config.cfg.partial
+    P2:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-mpls-ldp/R3/startup-config.cfg.partial
-    R4:
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-mpls-ldp/P2/startup-config.cfg.partial
+    P4:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
-      startup-config: ./clab-mpls-ldp/R4/startup-config.cfg.partial
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-mpls-ldp/P4/startup-config.cfg.partial
   links:
-  - endpoints: ["R1:Ethernet0/1", "R2:Ethernet0/1"]
-  - endpoints: ["R1:Ethernet0/2", "R3:Ethernet0/1"]
-  - endpoints: ["R2:Ethernet0/2", "R4:Ethernet0/1"]
-  - endpoints: ["R3:Ethernet0/2", "R4:Ethernet0/2"]
+  - endpoints:
+    - P3:Ethernet0/1
+    - P1:Ethernet0/2
+  - endpoints:
+    - P3:Ethernet0/2
+    - P4:Ethernet0/2
+  - endpoints:
+    - P1:Ethernet0/1
+    - P2:Ethernet0/1
+  - endpoints:
+    - P2:Ethernet0/2
+    - P4:Ethernet0/1

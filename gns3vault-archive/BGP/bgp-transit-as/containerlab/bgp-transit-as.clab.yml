@@ -9,32 +9,44 @@ topology:
   nodes:
     Aniston:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.178
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-transit-as/Aniston/startup-config.cfg.partial
-    Bullock:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.218
-      startup-config: ./clab-bgp-transit-as/Bullock/startup-config.cfg.partial
-    Diaz:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.114
-      startup-config: ./clab-bgp-transit-as/Diaz/startup-config.cfg.partial
-    Parker:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.180
-      startup-config: ./clab-bgp-transit-as/Parker/startup-config.cfg.partial
-    Roberts:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.240
-      startup-config: ./clab-bgp-transit-as/Roberts/startup-config.cfg.partial
     Witherspoon:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.190
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-transit-as/Witherspoon/startup-config.cfg.partial
+    Roberts:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-transit-as/Roberts/startup-config.cfg.partial
+    Diaz:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-transit-as/Diaz/startup-config.cfg.partial
+    Bullock:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-bgp-transit-as/Bullock/startup-config.cfg.partial
+    Parker:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-bgp-transit-as/Parker/startup-config.cfg.partial
   links:
-  - endpoints: ["Aniston:Ethernet0/1", "Witherspoon:Ethernet0/2"]
-  - endpoints: ["Aniston:Ethernet0/2", "Parker:Ethernet0/1"]
-  - endpoints: ["Bullock:Ethernet0/1", "Witherspoon:Ethernet0/1"]
-  - endpoints: ["Diaz:Ethernet0/1", "Witherspoon:Ethernet0/3"]
-  - endpoints: ["Diaz:Ethernet0/2", "Parker:Ethernet0/2"]
-  - endpoints: ["Parker:Ethernet0/3", "Roberts:Ethernet0/1"]
+  - endpoints:
+    - Aniston:Ethernet0/1
+    - Witherspoon:Ethernet0/2
+  - endpoints:
+    - Aniston:Ethernet0/2
+    - Parker:Ethernet0/1
+  - endpoints:
+    - Witherspoon:Ethernet0/1
+    - Bullock:Ethernet0/1
+  - endpoints:
+    - Witherspoon:Ethernet0/3
+    - Diaz:Ethernet0/1
+  - endpoints:
+    - Roberts:Ethernet0/1
+    - Parker:Ethernet0/3
+  - endpoints:
+    - Diaz:Ethernet0/2
+    - Parker:Ethernet0/2

@@ -16,7 +16,7 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
-interface Ethernet0/3
+interface Tunnel23
  ip address 23.23.23.3 255.255.255.0
  ip pim dense-mode
  ip ospf cost 500

@@ -8,51 +8,6 @@ hostname Rotate
 !
 !
 ip cef
-no ip domain lookup
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
-interface Ethernet0/0
- ip address 192.168.123.3 255.255.255.0
- duplex auto
- speed auto
- no shutdown
-!
-no ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

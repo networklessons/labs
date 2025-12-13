@@ -8,34 +8,6 @@ hostname Pegasus
 !
 !
 ip cef
-no ip domain lookup
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
-interface Loopback0
- ip address 2.2.2.2 255.255.255.0
- no shutdown
 !
 interface Ethernet0/2
  ip address 192.168.12.2 255.255.255.0
@@ -49,22 +21,8 @@ interface Ethernet0/3
  speed auto
  no shutdown
 !
-no ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
 !
 !
 !

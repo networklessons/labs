@@ -1,9 +1,7 @@
 name: ospf-flood-reduction
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
@@ -11,17 +9,20 @@ topology:
   nodes:
     Beach:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ospf-flood-reduction/Beach/startup-config.cfg.partial
     Coconut:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ospf-flood-reduction/Coconut/startup-config.cfg.partial
     Palm:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-flood-reduction/Palm/startup-config.cfg.partial
   links:
-
-   - endpoints: ['Beach:Ethernet0/1', 'Coconut:Ethernet0/2']
-   - endpoints: ['Coconut:Ethernet0/1', 'Palm:Ethernet0/1']
+  - endpoints:
+    - Beach:Ethernet0/1
+    - Coconut:Ethernet0/2
+  - endpoints:
+    - Coconut:Ethernet0/1
+    - Palm:Ethernet0/1

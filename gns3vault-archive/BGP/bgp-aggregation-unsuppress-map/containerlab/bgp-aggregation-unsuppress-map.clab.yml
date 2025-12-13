@@ -7,13 +7,15 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Jim:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.224
-      startup-config: ./clab-bgp-aggregation-unsuppress-map/Jim/startup-config.cfg.partial
     John:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.174
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-aggregation-unsuppress-map/John/startup-config.cfg.partial
+    Jim:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-aggregation-unsuppress-map/Jim/startup-config.cfg.partial
   links:
-  - endpoints: ["Jim:Ethernet0/1", "John:Ethernet0/1"]
+  - endpoints:
+    - John:Ethernet0/1
+    - Jim:Ethernet0/1

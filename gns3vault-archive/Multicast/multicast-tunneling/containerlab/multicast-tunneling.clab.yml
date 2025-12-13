@@ -29,9 +29,6 @@ topology:
       startup-config: ./clab-multicast-tunneling/Delta/startup-config.cfg.partial
   links:
   - endpoints:
-    - Bravo:Ethernet0/3
-    - Delta:Ethernet0/3
-  - endpoints:
     - Bravo:Ethernet0/1
     - Alpha:Ethernet0/1
   - endpoints:

@@ -7,28 +7,24 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    R1:
+    MelonHQ:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.10
-      startup-config: ./clab-vrf-lite/R1/startup-config.cfg.partial
-    R2:
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-vrf-lite/MelonHQ/startup-config.cfg.partial
+    ISP:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-vrf-lite/R2/startup-config.cfg.partial
-    R3:
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-vrf-lite/ISP/startup-config.cfg.partial
+    MelonBranch:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-vrf-lite/R3/startup-config.cfg.partial
-    R4:
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-vrf-lite/MelonBranch/startup-config.cfg.partial
+    GrapeHQ:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
-      startup-config: ./clab-vrf-lite/R4/startup-config.cfg.partial
-    R5:
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-vrf-lite/GrapeHQ/startup-config.cfg.partial
+    GrapeBranch:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.14
-      startup-config: ./clab-vrf-lite/R5/startup-config.cfg.partial
-  links:
-  - endpoints: ["R1:Ethernet0/1", "R2:Ethernet0/1"]
-  - endpoints: ["R1:Ethernet0/2", "R3:Ethernet0/1"]
-  - endpoints: ["R1:Ethernet0/3", "R4:Ethernet0/1"]
-  - endpoints: ["R1:Ethernet0/4", "R5:Ethernet0/1"]
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-vrf-lite/GrapeBranch/startup-config.cfg.partial
+  links: []

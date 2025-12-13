@@ -1,5 +1,6 @@
 !
 !
+!
 hostname P1
 !
 !
@@ -8,41 +9,20 @@ hostname P1
 !
 ip cef
 !
-interface Loopback0
- ip address 4.4.4.4 255.255.255.0
- no shutdown
-!
-interface Ethernet0/3
-
+interface Ethernet0/2
  ip address 192.168.34.4 255.255.255.0
  speed 100
  full-duplex
  no shutdown
 !
-interface Ethernet0/4
-
+interface Ethernet0/3
  ip address 192.168.45.4 255.255.255.0
  speed 100
  full-duplex
  no shutdown
 !
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.0
 !
 !
 !

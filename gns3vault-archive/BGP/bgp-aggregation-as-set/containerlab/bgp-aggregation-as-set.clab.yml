@@ -7,19 +7,25 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Haarlem:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.127
-      startup-config: ./clab-bgp-aggregation-as-set/Haarlem/startup-config.cfg.partial
-    Hoofddorp:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.158
-      startup-config: ./clab-bgp-aggregation-as-set/Hoofddorp/startup-config.cfg.partial
     Tilburg:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.237
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-aggregation-as-set/Tilburg/startup-config.cfg.partial
+    Hoofddorp:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-aggregation-as-set/Hoofddorp/startup-config.cfg.partial
+    Haarlem:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-aggregation-as-set/Haarlem/startup-config.cfg.partial
   links:
-  - endpoints: ["Haarlem:Ethernet0/1", "Hoofddorp:Ethernet0/2"]
-  - endpoints: ["Haarlem:Ethernet0/2", "Tilburg:Ethernet0/2"]
-  - endpoints: ["Hoofddorp:Ethernet0/1", "Tilburg:Ethernet0/1"]
+  - endpoints:
+    - Tilburg:Ethernet0/1
+    - Hoofddorp:Ethernet0/1
+  - endpoints:
+    - Tilburg:Ethernet0/2
+    - Haarlem:Ethernet0/2
+  - endpoints:
+    - Hoofddorp:Ethernet0/2
+    - Haarlem:Ethernet0/1

@@ -1,93 +1,26 @@
 !
 !
-upgrade fpd auto
 !
 hostname Selena
 !
 !
-logging message-counter syslog
 !
-ip source-route
+!
+!
 ip cef
 !
-!
-!
-!
-no ipv6 cef
-!
-multilink bundle-name authenticated
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-archive
- log config
-  hidekeys
-! 
-!
-!
-!
-!
-!
-!
-!
-!
-interface Ethernet0/0
- no ip address
- duplex half
- no shutdown
-!
-interface GigabitEthernet0/4
- ip address 192.168.14.4 255.255.255.0
- negotiation auto
- no shutdown
-!
-interface Ethernet2/0
+interface Ethernet0/2
  ip address 192.168.34.4 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-interface Ethernet0/2
- no ip address
- duplex auto
- speed auto
+interface Ethernet0/3
+ ip address 192.168.14.4 255.255.255.0
+ negotiation auto
  no shutdown
 !
-ip forward-protocol nd
-no ip http server
-no ip http secure-server
 !
-!
-!
-logging alarm informational
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-gatekeeper
- shutdown
 !
 !
 end

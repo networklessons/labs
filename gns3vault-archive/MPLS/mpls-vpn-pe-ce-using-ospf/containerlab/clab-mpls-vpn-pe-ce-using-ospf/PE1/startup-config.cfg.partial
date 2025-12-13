@@ -1,0 +1,37 @@
+!
+!
+!
+hostname PE1
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.23.2 255.255.255.0
+ duplex auto
+ speed auto
+ mpls ip
+ no shutdown
+!
+interface Ethernet0/3
+ ip vrf forwarding CUSTOMER
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Loopback1
+ ip vrf forwarding CUSTOMER
+ ip address 22.22.22.22 255.255.255.255
+!
+!
+!
+!
+end

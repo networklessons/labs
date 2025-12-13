@@ -7,24 +7,32 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
+    Spiderman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-always-compare-med/Spiderman/startup-config.cfg.partial
     Batman:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.192
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-always-compare-med/Batman/startup-config.cfg.partial
     Ironman:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.184
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-always-compare-med/Ironman/startup-config.cfg.partial
-    Spiderman:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.162
-      startup-config: ./clab-bgp-always-compare-med/Spiderman/startup-config.cfg.partial
     Superman:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.243
+      mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-always-compare-med/Superman/startup-config.cfg.partial
   links:
-  - endpoints: ["Batman:Ethernet0/1", "Spiderman:Ethernet0/3"]
-  - endpoints: ["Ironman:Ethernet0/1", "Spiderman:Ethernet0/1"]
-  - endpoints: ["Ironman:Ethernet0/2", "Superman:Ethernet0/2"]
-  - endpoints: ["Spiderman:Ethernet0/2", "Superman:Ethernet0/1"]
+  - endpoints:
+    - Spiderman:Ethernet0/1
+    - Ironman:Ethernet0/1
+  - endpoints:
+    - Spiderman:Ethernet0/2
+    - Superman:Ethernet0/1
+  - endpoints:
+    - Spiderman:Ethernet0/3
+    - Batman:Ethernet0/1
+  - endpoints:
+    - Ironman:Ethernet0/2
+    - Superman:Ethernet0/2

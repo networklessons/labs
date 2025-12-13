@@ -25,8 +25,5 @@ topology:
       startup-config: ./clab-multicast-rpf-failure-nbma-troubleshooting/SpokeA/startup-config.cfg.partial
   links:
   - endpoints:
-    - SpokeB:Ethernet0/2
-    - SpokeA:Ethernet0/1
-  - endpoints:
     - SpokeB:Ethernet0/1
     - Receiver:Ethernet0/1

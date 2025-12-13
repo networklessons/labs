@@ -22,7 +22,7 @@ interface Ethernet0/3
  service-policy output PRIORITY
  no shutdown
 !
-interface Ethernet0/4
+interface Tunnel1
  ip address 192.168.24.2 255.255.255.0
  ip ospf cost 500
  qos pre-classify

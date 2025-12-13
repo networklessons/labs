@@ -1,5 +1,6 @@
 !
 !
+!
 hostname King
 !
 !
@@ -8,50 +9,20 @@ hostname King
 !
 ip cef
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
 interface Ethernet0/2
  ip address 192.168.12.1 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-ip http server
-no ip http secure-server
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Tunnel1
+ ip address 192.168.13.1 255.255.255.0
+ tunnel source Ethernet0/2
+ tunnel destination 192.168.23.3
+ no shutdown
 !
 !
 !

@@ -7,24 +7,32 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Bakers:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.109
-      startup-config: ./clab-bgp-as-path-access-list/Bakers/startup-config.cfg.partial
     Barbados:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.180
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-as-path-access-list/Barbados/startup-config.cfg.partial
-    Castor:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.162
-      startup-config: ./clab-bgp-as-path-access-list/Castor/startup-config.cfg.partial
     Coarse:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.195
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-as-path-access-list/Coarse/startup-config.cfg.partial
+    Bakers:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-as-path-access-list/Bakers/startup-config.cfg.partial
+    Castor:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-as-path-access-list/Castor/startup-config.cfg.partial
   links:
-  - endpoints: ["Bakers:Ethernet0/1", "Coarse:Ethernet0/2"]
-  - endpoints: ["Bakers:Ethernet0/2", "Castor:Ethernet0/2"]
-  - endpoints: ["Barbados:Ethernet0/1", "Castor:Ethernet0/1"]
-  - endpoints: ["Barbados:Ethernet0/2", "Coarse:Ethernet0/1"]
+  - endpoints:
+    - Barbados:Ethernet0/1
+    - Castor:Ethernet0/1
+  - endpoints:
+    - Barbados:Ethernet0/2
+    - Coarse:Ethernet0/1
+  - endpoints:
+    - Coarse:Ethernet0/2
+    - Bakers:Ethernet0/1
+  - endpoints:
+    - Bakers:Ethernet0/2
+    - Castor:Ethernet0/2

@@ -40,6 +40,3 @@ topology:
   - endpoints:
     - Ricky:Ethernet0/2
     - Marvin:Ethernet0/1
-  - endpoints:
-    - Marvin:Ethernet0/3
-    - Tallet:Ethernet0/3

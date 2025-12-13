@@ -9,29 +9,6 @@ hostname Bakers
 !
 ip cef
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
 interface Ethernet0/2
  ip address 192.168.34.3 255.255.255.0
  duplex auto
@@ -43,31 +20,6 @@ interface Ethernet0/3
  duplex auto
  speed auto
  no shutdown
-!
-interface Loopback0
- no shutdown
-ip address 3.3.3.3 255.255.255.0
-!
-interface Loopback1
- no shutdown
-ip address 33.33.33.33 255.255.255.0
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

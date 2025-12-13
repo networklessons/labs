@@ -7,23 +7,29 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Bit:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.145
-      startup-config: ./clab-bgp-peer-group/Bit/startup-config.cfg.partial
-    Byte:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.174
-      startup-config: ./clab-bgp-peer-group/Byte/startup-config.cfg.partial
     Nibble:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.167
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-peer-group/Nibble/startup-config.cfg.partial
     Octet:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.115
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-peer-group/Octet/startup-config.cfg.partial
+    Byte:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-peer-group/Byte/startup-config.cfg.partial
+    Bit:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-peer-group/Bit/startup-config.cfg.partial
   links:
-  - endpoints: ["Bit:Ethernet0/1", "Byte:Ethernet0/1"]
-  - endpoints: ["Bit:Ethernet0/2", "Octet:Ethernet0/1"]
-  - endpoints: ["Bit:Ethernet0/3", "Nibble:Ethernet0/1"]
+  - endpoints:
+    - Nibble:Ethernet0/1
+    - Bit:Ethernet0/3
+  - endpoints:
+    - Octet:Ethernet0/1
+    - Bit:Ethernet0/2
+  - endpoints:
+    - Byte:Ethernet0/1
+    - Bit:Ethernet0/1

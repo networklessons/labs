@@ -15,7 +15,7 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
-interface Ethernet0/3
+interface Tunnel0
  ip address 192.168.13.1 255.255.255.0
  tunnel source 192.168.12.1
  tunnel destination 192.168.23.3

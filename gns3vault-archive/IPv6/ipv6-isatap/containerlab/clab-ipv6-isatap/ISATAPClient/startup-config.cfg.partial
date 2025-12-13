@@ -15,6 +15,15 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
+interface Tunnel0
+ no ip address
+ ipv6 address autoconfig
+ ipv6 enable
+ tunnel source Ethernet0/2
+ tunnel destination 1.1.1.1
+ tunnel mode ipv6ip
+ no shutdown
+!
 !
 !
 !

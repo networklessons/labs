@@ -9,6 +9,15 @@ hostname R3
 !
 ip cef
 !
+interface Tunnel34
+ no ip address
+ ipv6 address FE80::C333:13FF:FEC3:0 link-local
+ ipv6 address 2026::34:1/122
+ ipv6 ospf 6 area 34
+ tunnel source Ethernet0/3
+ tunnel destination 10.1.1.10
+ no shutdown
+!
 !
 !
 !

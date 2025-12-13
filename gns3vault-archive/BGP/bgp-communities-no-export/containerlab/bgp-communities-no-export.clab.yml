@@ -7,23 +7,29 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Bert:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.135
-      startup-config: ./clab-bgp-communities-no-export/Bert/startup-config.cfg.partial
-    Erik:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.160
-      startup-config: ./clab-bgp-communities-no-export/Erik/startup-config.cfg.partial
     Frans:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.198
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-communities-no-export/Frans/startup-config.cfg.partial
     Rene:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.209
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-communities-no-export/Rene/startup-config.cfg.partial
+    Bert:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-communities-no-export/Bert/startup-config.cfg.partial
+    Erik:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-communities-no-export/Erik/startup-config.cfg.partial
   links:
-  - endpoints: ["Bert:Ethernet0/1", "Rene:Ethernet0/3"]
-  - endpoints: ["Erik:Ethernet0/1", "Rene:Ethernet0/1"]
-  - endpoints: ["Frans:Ethernet0/1", "Rene:Ethernet0/2"]
+  - endpoints:
+    - Frans:Ethernet0/1
+    - Rene:Ethernet0/2
+  - endpoints:
+    - Rene:Ethernet0/1
+    - Erik:Ethernet0/1
+  - endpoints:
+    - Rene:Ethernet0/3
+    - Bert:Ethernet0/1

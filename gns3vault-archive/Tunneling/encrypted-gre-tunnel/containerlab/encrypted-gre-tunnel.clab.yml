@@ -21,9 +21,6 @@ topology:
       startup-config: ./clab-encrypted-gre-tunnel/KingKong/startup-config.cfg.partial
   links:
   - endpoints:
-    - Nessie:Ethernet0/2
-    - Godzilla:Ethernet0/2
-  - endpoints:
     - Nessie:Ethernet0/1
     - KingKong:Ethernet0/2
   - endpoints:

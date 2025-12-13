@@ -20,6 +20,14 @@ interface Loopback0
  ipv6 address 2001:5::5/128
  ipv6 ospf 1 area 0
 !
+interface Tunnel0
+ no ip address
+ no ip redirects
+ ipv6 address 2002:C0A8:3805::5/64
+ tunnel source Ethernet0/2
+ tunnel mode ipv6ip 6to4
+ no shutdown
+!
 !
 !
 !

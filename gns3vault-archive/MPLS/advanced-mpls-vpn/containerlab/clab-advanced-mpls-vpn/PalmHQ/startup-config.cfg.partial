@@ -1,0 +1,23 @@
+!
+!
+!
+hostname PalmHQ
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.13.1 255.255.255.0
+ half-duplex
+ no shutdown
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+!
+!
+!
+!
+end

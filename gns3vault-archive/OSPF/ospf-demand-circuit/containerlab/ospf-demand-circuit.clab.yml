@@ -1,9 +1,7 @@
 name: ospf-demand-circuit
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
@@ -11,12 +9,13 @@ topology:
   nodes:
     Coconut:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ospf-demand-circuit/Coconut/startup-config.cfg.partial
     Palm:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ospf-demand-circuit/Palm/startup-config.cfg.partial
   links:
-
-   - endpoints: ['Coconut:Ethernet0/1', 'Palm:Ethernet0/1']
+  - endpoints:
+    - Coconut:Ethernet0/1
+    - Palm:Ethernet0/1

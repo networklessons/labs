@@ -7,25 +7,35 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Aluminium:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.202
-      startup-config: ./clab-bgp-attribute-as-path/Aluminium/startup-config.cfg.partial
-    Copper:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.107
-      startup-config: ./clab-bgp-attribute-as-path/Copper/startup-config.cfg.partial
-    Steel:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.220
-      startup-config: ./clab-bgp-attribute-as-path/Steel/startup-config.cfg.partial
     Zinc:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.235
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-attribute-as-path/Zinc/startup-config.cfg.partial
+    Copper:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-attribute-as-path/Copper/startup-config.cfg.partial
+    Aluminium:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-attribute-as-path/Aluminium/startup-config.cfg.partial
+    Steel:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-attribute-as-path/Steel/startup-config.cfg.partial
   links:
-  - endpoints: ["Aluminium:Ethernet0/1", "Copper:Ethernet0/1"]
-  - endpoints: ["Aluminium:Ethernet0/2", "Steel:Ethernet0/1"]
-  - endpoints: ["Copper:Ethernet0/2", "Steel:Ethernet0/2"]
-  - endpoints: ["Copper:Ethernet0/3", "Zinc:Ethernet0/1"]
-  - endpoints: ["Steel:Ethernet0/3", "Zinc:Ethernet0/2"]
+  - endpoints:
+    - Zinc:Ethernet0/1
+    - Copper:Ethernet0/3
+  - endpoints:
+    - Zinc:Ethernet0/2
+    - Steel:Ethernet0/3
+  - endpoints:
+    - Copper:Ethernet0/1
+    - Aluminium:Ethernet0/1
+  - endpoints:
+    - Copper:Ethernet0/2
+    - Steel:Ethernet0/2
+  - endpoints:
+    - Aluminium:Ethernet0/2
+    - Steel:Ethernet0/1

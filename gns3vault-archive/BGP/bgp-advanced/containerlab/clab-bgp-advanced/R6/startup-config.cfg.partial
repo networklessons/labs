@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R6
 !
 !
@@ -7,32 +8,6 @@ hostname R6
 !
 !
 ip cef
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
-interface Loopback0
- ip address 6.6.6.6 255.255.255.0
- no shutdown
 !
 interface Ethernet0/2
  ip address 192.168.46.6 255.255.255.0
@@ -52,22 +27,8 @@ interface Ethernet0/4
  speed auto
  no shutdown
 !
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback0
+ ip address 6.6.6.6 255.255.255.0
 !
 !
 !

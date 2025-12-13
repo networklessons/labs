@@ -19,18 +19,6 @@ interface Ethernet0/3
  ip address 192.168.67.6 255.255.255.0
  duplex auto
  speed auto
- no synchronization
- bgp log-neighbor-changes
- network 6.6.6.0 mask 255.255.255.0
- network 66.66.66.0 mask 255.255.255.0
- network 192.168.56.0
- network 192.168.67.0
- neighbor 192.168.56.5 remote-as 2
- neighbor 192.168.67.7 remote-as 4
- no auto-summary
- exec-timeout 0 0
- logging synchronous
- login
  no shutdown
 !
 interface Loopback0

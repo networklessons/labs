@@ -9,23 +9,33 @@ topology:
   nodes:
     Berry:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.168
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Berry/startup-config.cfg.partial
-    Cherry:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.188
-      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Cherry/startup-config.cfg.partial
-    ISP:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.132
-      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/ISP/startup-config.cfg.partial
     Kerry:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.244
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Kerry/startup-config.cfg.partial
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/ISP/startup-config.cfg.partial
+    Cherry:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-ibgpebgp-local-preference-med/Cherry/startup-config.cfg.partial
   links:
-  - endpoints: ["Berry:Ethernet0/1", "Kerry:Ethernet0/2"]
-  - endpoints: ["Berry:Ethernet0/2", "Cherry:Ethernet0/2"]
-  - endpoints: ["Berry:Ethernet0/3", "ISP:Ethernet0/2"]
-  - endpoints: ["Cherry:Ethernet0/1", "Kerry:Ethernet0/1"]
-  - endpoints: ["Cherry:Ethernet0/3", "ISP:Ethernet0/1"]
+  - endpoints:
+    - Berry:Ethernet0/1
+    - Kerry:Ethernet0/2
+  - endpoints:
+    - Berry:Ethernet0/2
+    - Cherry:Ethernet0/2
+  - endpoints:
+    - Berry:Ethernet0/3
+    - ISP:Ethernet0/2
+  - endpoints:
+    - Kerry:Ethernet0/1
+    - Cherry:Ethernet0/1
+  - endpoints:
+    - ISP:Ethernet0/1
+    - Cherry:Ethernet0/3

@@ -8,57 +8,20 @@ hostname Coconut
 !
 !
 ip cef
-no ip domain lookup
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
-interface Ethernet0/0
+interface Ethernet0/2
  ip address 192.168.12.2 255.255.255.0
+ ip ospf flood-reduction
  duplex auto
  speed auto
  no shutdown
 !
-interface Ethernet1/0
+interface Ethernet0/3
  ip address 192.168.23.2 255.255.255.0
+ ip ospf flood-reduction
  duplex auto
  speed auto
  no shutdown
-!
-no ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

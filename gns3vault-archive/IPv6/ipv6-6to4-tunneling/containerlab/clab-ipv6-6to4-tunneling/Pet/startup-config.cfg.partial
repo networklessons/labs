@@ -19,6 +19,14 @@ interface Loopback0
  no ip address
  ipv6 address 2001:3::3/64
 !
+interface Tunnel0
+ no ip address
+ no ip redirects
+ ipv6 address 2002:A14:1403::3/64
+ tunnel source Ethernet0/2
+ tunnel mode ipv6ip 6to4
+ no shutdown
+!
 !
 !
 !

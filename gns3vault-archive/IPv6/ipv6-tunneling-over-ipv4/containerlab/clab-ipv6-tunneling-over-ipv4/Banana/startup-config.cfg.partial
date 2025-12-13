@@ -15,6 +15,15 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
+interface Tunnel0
+ no ip address
+ ipv6 address 3000::1/64
+ ipv6 rip TAG enable
+ tunnel source Ethernet0/2
+ tunnel destination 192.168.34.4
+ tunnel mode ipv6ip
+ no shutdown
+!
 !
 !
 !

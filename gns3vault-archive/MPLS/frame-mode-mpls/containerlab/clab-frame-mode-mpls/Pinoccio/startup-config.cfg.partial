@@ -1,5 +1,6 @@
 !
 !
+!
 hostname Pinoccio
 !
 !
@@ -8,39 +9,15 @@ hostname Pinoccio
 !
 ip cef
 !
-interface Loopback0
- ip address 3.3.3.3 255.255.255.0
- no shutdown
-!
 interface Ethernet0/2
-
  ip address 192.168.23.3 255.255.255.0
  duplex auto
  speed auto
  mpls ip
  no shutdown
 !
-router eigrp 100
- network 0.0.0.0
- no auto-summary
-!
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
 !
 !
 !

@@ -23,6 +23,15 @@ interface Ethernet0/3
  full-duplex
  no shutdown
 !
+interface Tunnel34
+ no ip address
+ ipv6 address 2026::34:2/122
+ ipv6 ospf network point-to-point
+ ipv6 ospf 6 area 34
+ tunnel source Ethernet0/4
+ tunnel destination 10.1.1.9
+ no shutdown
+!
 !
 !
 !
