@@ -7,15 +7,15 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Student:
+    i2_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-banners/Student/startup-config.cfg.partial
-    Classroom:
+      startup-config: ./clab-banners/i2_startup-config/startup-config.cfg.partial
+    i1_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-banners/Classroom/startup-config.cfg.partial
+      startup-config: ./clab-banners/i1_startup-config/startup-config.cfg.partial
   links:
   - endpoints:
-    - Student:Ethernet0/1
-    - Classroom:Ethernet0/1
+    - i2_startup-config:Ethernet0/1
+    - i1_startup-config:Ethernet0/1

@@ -7,15 +7,15 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Algrim:
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-ospf-totally-stub/Algrim/startup-config.cfg.partial
-    Barik:
+      startup-config: ./clab-ospf-totally-stub/R1/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-ospf-totally-stub/Barik/startup-config.cfg.partial
+      startup-config: ./clab-ospf-totally-stub/R2/startup-config.cfg.partial
   links:
   - endpoints:
-    - Algrim:Ethernet0/1
-    - Barik:Ethernet0/1
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1

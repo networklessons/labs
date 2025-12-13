@@ -7,15 +7,15 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Vanilla:
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-prefix-list-filtering/Vanilla/startup-config.cfg.partial
-    Mint:
+      startup-config: ./clab-prefix-list-filtering/R1/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-prefix-list-filtering/Mint/startup-config.cfg.partial
+      startup-config: ./clab-prefix-list-filtering/R2/startup-config.cfg.partial
   links:
   - endpoints:
-    - Vanilla:Ethernet0/1
-    - Mint:Ethernet0/1
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1

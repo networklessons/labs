@@ -7,12 +7,12 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Poseidon:
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-ppp-over-ethernet-pppoe/Poseidon/startup-config.cfg.partial
-    Artemis:
+      startup-config: ./clab-ppp-over-ethernet-pppoe/R1/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-ppp-over-ethernet-pppoe/Artemis/startup-config.cfg.partial
+      startup-config: ./clab-ppp-over-ethernet-pppoe/R2/startup-config.cfg.partial
   links: []

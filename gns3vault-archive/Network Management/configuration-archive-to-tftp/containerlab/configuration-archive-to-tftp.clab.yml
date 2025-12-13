@@ -7,8 +7,8 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Safety:
+    i1_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-configuration-archive-to-tftp/Safety/startup-config.cfg.partial
+      startup-config: ./clab-configuration-archive-to-tftp/i1_startup-config/startup-config.cfg.partial
   links: []

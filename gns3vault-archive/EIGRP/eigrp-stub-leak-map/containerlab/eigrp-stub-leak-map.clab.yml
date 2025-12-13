@@ -7,29 +7,29 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    PAMELA:
+    i2_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-eigrp-stub-leak-map/PAMELA/startup-config.cfg.partial
-    CARMEN:
+      startup-config: ./clab-eigrp-stub-leak-map/i2_startup-config/startup-config.cfg.partial
+    i4_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-eigrp-stub-leak-map/CARMEN/startup-config.cfg.partial
-    DAVID:
+      startup-config: ./clab-eigrp-stub-leak-map/i4_startup-config/startup-config.cfg.partial
+    i1_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-eigrp-stub-leak-map/DAVID/startup-config.cfg.partial
-    YASMINE:
+      startup-config: ./clab-eigrp-stub-leak-map/i1_startup-config/startup-config.cfg.partial
+    i3_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-eigrp-stub-leak-map/YASMINE/startup-config.cfg.partial
+      startup-config: ./clab-eigrp-stub-leak-map/i3_startup-config/startup-config.cfg.partial
   links:
   - endpoints:
-    - PAMELA:Ethernet0/1
-    - YASMINE:Ethernet0/3
+    - i2_startup-config:Ethernet0/1
+    - i3_startup-config:Ethernet0/3
   - endpoints:
-    - CARMEN:Ethernet0/1
-    - YASMINE:Ethernet0/1
+    - i4_startup-config:Ethernet0/1
+    - i3_startup-config:Ethernet0/1
   - endpoints:
-    - DAVID:Ethernet0/1
-    - YASMINE:Ethernet0/2
+    - i1_startup-config:Ethernet0/1
+    - i3_startup-config:Ethernet0/2

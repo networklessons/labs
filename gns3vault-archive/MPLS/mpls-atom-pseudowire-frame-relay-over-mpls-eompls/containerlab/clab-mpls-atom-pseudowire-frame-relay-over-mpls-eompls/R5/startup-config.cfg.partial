@@ -1,0 +1,25 @@
+!
+!
+!
+hostname R5
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+!
+interface Ethernet0/2
+ ip address 172.16.15.5 255.255.255.0
+ encapsulation frame-relay
+ serial restart-delay 0
+ frame-relay interface-dlci 501
+ no shutdown
+!
+!
+!
+!
+end

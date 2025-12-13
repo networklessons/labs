@@ -7,43 +7,43 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Angie:
+    i2_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-ospf-neighbor-troubleshooting/Angie/startup-config.cfg.partial
-    Janice:
+      startup-config: ./clab-ospf-neighbor-troubleshooting/i2_startup-config/startup-config.cfg.partial
+    i4_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-ospf-neighbor-troubleshooting/Janice/startup-config.cfg.partial
-    Mike:
+      startup-config: ./clab-ospf-neighbor-troubleshooting/i4_startup-config/startup-config.cfg.partial
+    i6_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-ospf-neighbor-troubleshooting/Mike/startup-config.cfg.partial
-    Joey:
+      startup-config: ./clab-ospf-neighbor-troubleshooting/i6_startup-config/startup-config.cfg.partial
+    i5_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-ospf-neighbor-troubleshooting/Joey/startup-config.cfg.partial
-    Nick:
+      startup-config: ./clab-ospf-neighbor-troubleshooting/i5_startup-config/startup-config.cfg.partial
+    i7_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-ospf-neighbor-troubleshooting/Nick/startup-config.cfg.partial
-    Jack:
+      startup-config: ./clab-ospf-neighbor-troubleshooting/i7_startup-config/startup-config.cfg.partial
+    i3_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.150
-      startup-config: ./clab-ospf-neighbor-troubleshooting/Jack/startup-config.cfg.partial
+      startup-config: ./clab-ospf-neighbor-troubleshooting/i3_startup-config/startup-config.cfg.partial
   links:
   - endpoints:
-    - Angie:Ethernet0/1
-    - Mike:Ethernet0/1
+    - i2_startup-config:Ethernet0/1
+    - i6_startup-config:Ethernet0/1
   - endpoints:
-    - Angie:Ethernet0/2
-    - Jack:Ethernet0/1
+    - i2_startup-config:Ethernet0/2
+    - i3_startup-config:Ethernet0/1
   - endpoints:
-    - Janice:Ethernet0/1
-    - Joey:Ethernet0/2
+    - i4_startup-config:Ethernet0/1
+    - i5_startup-config:Ethernet0/2
   - endpoints:
-    - Mike:Ethernet0/2
-    - Nick:Ethernet0/2
+    - i6_startup-config:Ethernet0/2
+    - i7_startup-config:Ethernet0/2
   - endpoints:
-    - Joey:Ethernet0/1
-    - Nick:Ethernet0/1
+    - i5_startup-config:Ethernet0/1
+    - i7_startup-config:Ethernet0/1

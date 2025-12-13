@@ -1,0 +1,22 @@
+!
+!
+!
+hostname ATTACKER
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ description PORT CONNECTED TO SW1
+ ip address 192.168.123.253 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

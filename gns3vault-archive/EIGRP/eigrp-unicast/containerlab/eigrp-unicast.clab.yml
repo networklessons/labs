@@ -7,19 +7,19 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    FRSW:
+    R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-eigrp-unicast/FRSW/startup-config.cfg.partial
-    Zebra:
+      startup-config: ./clab-eigrp-unicast/R3/startup-config.cfg.partial
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-eigrp-unicast/Zebra/startup-config.cfg.partial
-    Hippo:
+      startup-config: ./clab-eigrp-unicast/R1/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-eigrp-unicast/Hippo/startup-config.cfg.partial
+      startup-config: ./clab-eigrp-unicast/R2/startup-config.cfg.partial
   links:
   - endpoints:
-    - Zebra:Ethernet0/1
-    - Hippo:Ethernet0/1
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1

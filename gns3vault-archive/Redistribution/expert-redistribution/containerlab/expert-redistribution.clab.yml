@@ -7,32 +7,32 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Amber:
+    i9_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-expert-redistribution/Amber/startup-config.cfg.partial
-    SweetPea:
+      startup-config: ./clab-expert-redistribution/i9_startup-config/startup-config.cfg.partial
+    i6_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-expert-redistribution/SweetPea/startup-config.cfg.partial
-    BlueJones:
+      startup-config: ./clab-expert-redistribution/i6_startup-config/startup-config.cfg.partial
+    i10_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-expert-redistribution/BlueJones/startup-config.cfg.partial
-    BabyDoll:
+      startup-config: ./clab-expert-redistribution/i10_startup-config/startup-config.cfg.partial
+    i5_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-expert-redistribution/BabyDoll/startup-config.cfg.partial
-    Blondie:
+      startup-config: ./clab-expert-redistribution/i5_startup-config/startup-config.cfg.partial
+    i8_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-expert-redistribution/Blondie/startup-config.cfg.partial
-    Rocket:
+      startup-config: ./clab-expert-redistribution/i8_startup-config/startup-config.cfg.partial
+    i7_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.150
-      startup-config: ./clab-expert-redistribution/Rocket/startup-config.cfg.partial
-    WiseMan:
+      startup-config: ./clab-expert-redistribution/i7_startup-config/startup-config.cfg.partial
+    i11_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.160
-      startup-config: ./clab-expert-redistribution/WiseMan/startup-config.cfg.partial
+      startup-config: ./clab-expert-redistribution/i11_startup-config/startup-config.cfg.partial
   links: []

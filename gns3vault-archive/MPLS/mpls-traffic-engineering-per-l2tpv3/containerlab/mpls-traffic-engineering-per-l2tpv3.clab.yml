@@ -7,61 +7,61 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    ArcadeBranch:
+    i9_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/ArcadeBranch/startup-config.cfg.partial
-    P1:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i9_startup-config/startup-config.cfg.partial
+    i2_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/P1/startup-config.cfg.partial
-    ToyHQ:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i2_startup-config/startup-config.cfg.partial
+    i4_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/ToyHQ/startup-config.cfg.partial
-    P3:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i4_startup-config/startup-config.cfg.partial
+    i6_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/P3/startup-config.cfg.partial
-    ArcadeHQ:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i6_startup-config/startup-config.cfg.partial
+    i1_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/ArcadeHQ/startup-config.cfg.partial
-    P2:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i1_startup-config/startup-config.cfg.partial
+    i5_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.150
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/P2/startup-config.cfg.partial
-    ToyBranch:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i5_startup-config/startup-config.cfg.partial
+    i8_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.160
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/ToyBranch/startup-config.cfg.partial
-    PE2:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i8_startup-config/startup-config.cfg.partial
+    i7_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.170
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/PE2/startup-config.cfg.partial
-    PE1:
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i7_startup-config/startup-config.cfg.partial
+    i3_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.180
-      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/PE1/startup-config.cfg.partial
+      startup-config: ./clab-mpls-traffic-engineering-per-l2tpv3/i3_startup-config/startup-config.cfg.partial
   links:
   - endpoints:
-    - ArcadeBranch:Ethernet0/1
-    - ArcadeHQ:Ethernet0/1
+    - i9_startup-config:Ethernet0/1
+    - i1_startup-config:Ethernet0/1
   - endpoints:
-    - P1:Ethernet0/1
-    - PE1:Ethernet0/1
+    - i2_startup-config:Ethernet0/1
+    - i3_startup-config:Ethernet0/1
   - endpoints:
-    - P1:Ethernet0/2
-    - P2:Ethernet0/1
+    - i2_startup-config:Ethernet0/2
+    - i5_startup-config:Ethernet0/1
   - endpoints:
-    - ToyHQ:Ethernet0/1
-    - ToyBranch:Ethernet0/1
+    - i4_startup-config:Ethernet0/1
+    - i8_startup-config:Ethernet0/1
   - endpoints:
-    - P3:Ethernet0/1
-    - PE1:Ethernet0/2
+    - i6_startup-config:Ethernet0/1
+    - i3_startup-config:Ethernet0/2
   - endpoints:
-    - P3:Ethernet0/2
-    - PE2:Ethernet0/1
+    - i6_startup-config:Ethernet0/2
+    - i7_startup-config:Ethernet0/1
   - endpoints:
-    - P2:Ethernet0/2
-    - PE2:Ethernet0/2
+    - i5_startup-config:Ethernet0/2
+    - i7_startup-config:Ethernet0/2

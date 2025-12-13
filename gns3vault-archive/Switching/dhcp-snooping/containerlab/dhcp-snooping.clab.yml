@@ -7,23 +7,23 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Attacker:
+    ATTACKER:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-dhcp-snooping/Attacker/startup-config.cfg.partial
+      startup-config: ./clab-dhcp-snooping/ATTACKER/startup-config.cfg.partial
     CLIENT:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-dhcp-snooping/CLIENT/startup-config.cfg.partial
-    DHCPServer:
+    DHCPSERVER:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-dhcp-snooping/DHCPServer/startup-config.cfg.partial
+      startup-config: ./clab-dhcp-snooping/DHCPSERVER/startup-config.cfg.partial
     SW1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-dhcp-snooping/SW1/startup-config.cfg.partial
   links:
   - endpoints:
-    - Attacker:Ethernet0/1
-    - DHCPServer:Ethernet0/1
+    - ATTACKER:Ethernet0/1
+    - DHCPSERVER:Ethernet0/1

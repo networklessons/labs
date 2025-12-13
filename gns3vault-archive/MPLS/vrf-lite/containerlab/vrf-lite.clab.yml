@@ -7,24 +7,24 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    MelonHQ:
+    R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-vrf-lite/MelonHQ/startup-config.cfg.partial
-    ISP:
+      startup-config: ./clab-vrf-lite/R3/startup-config.cfg.partial
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-vrf-lite/ISP/startup-config.cfg.partial
-    MelonBranch:
+      startup-config: ./clab-vrf-lite/R1/startup-config.cfg.partial
+    R5:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-vrf-lite/MelonBranch/startup-config.cfg.partial
-    GrapeHQ:
+      startup-config: ./clab-vrf-lite/R5/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-vrf-lite/GrapeHQ/startup-config.cfg.partial
-    GrapeBranch:
+      startup-config: ./clab-vrf-lite/R2/startup-config.cfg.partial
+    R4:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-vrf-lite/GrapeBranch/startup-config.cfg.partial
+      startup-config: ./clab-vrf-lite/R4/startup-config.cfg.partial
   links: []

@@ -1,0 +1,19 @@
+!
+!
+!
+hostname i6_startup-config
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+ ip ospf network point-to-point
+!
+!
+!
+!
+end

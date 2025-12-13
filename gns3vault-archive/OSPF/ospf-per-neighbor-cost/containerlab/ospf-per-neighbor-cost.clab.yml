@@ -7,20 +7,20 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    BARRACUDA:
+    Barracuda:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-ospf-per-neighbor-cost/BARRACUDA/startup-config.cfg.partial
-    SALMON:
+      startup-config: ./clab-ospf-per-neighbor-cost/Barracuda/startup-config.cfg.partial
+    Salmon:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-ospf-per-neighbor-cost/SALMON/startup-config.cfg.partial
+      startup-config: ./clab-ospf-per-neighbor-cost/Salmon/startup-config.cfg.partial
     FRSW:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-per-neighbor-cost/FRSW/startup-config.cfg.partial
-    HERRING:
+    Herring:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-ospf-per-neighbor-cost/HERRING/startup-config.cfg.partial
+      startup-config: ./clab-ospf-per-neighbor-cost/Herring/startup-config.cfg.partial
   links: []

@@ -7,36 +7,36 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    P:
+    R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/P/startup-config.cfg.partial
-    HQ:
+      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/R3/startup-config.cfg.partial
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/HQ/startup-config.cfg.partial
-    Branch:
+      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/R1/startup-config.cfg.partial
+    R5:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/Branch/startup-config.cfg.partial
-    PE1:
+      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/R5/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/PE1/startup-config.cfg.partial
-    PE2:
+      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/R2/startup-config.cfg.partial
+    R4:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/PE2/startup-config.cfg.partial
+      startup-config: ./clab-mpls-vpn-pe-ce-using-rip/R4/startup-config.cfg.partial
   links:
   - endpoints:
-    - P:Ethernet0/1
-    - PE1:Ethernet0/1
+    - R3:Ethernet0/1
+    - R2:Ethernet0/1
   - endpoints:
-    - P:Ethernet0/2
-    - PE2:Ethernet0/2
+    - R3:Ethernet0/2
+    - R4:Ethernet0/2
   - endpoints:
-    - HQ:Ethernet0/1
-    - PE1:Ethernet0/2
+    - R1:Ethernet0/1
+    - R2:Ethernet0/2
   - endpoints:
-    - Branch:Ethernet0/1
-    - PE2:Ethernet0/1
+    - R5:Ethernet0/1
+    - R4:Ethernet0/1

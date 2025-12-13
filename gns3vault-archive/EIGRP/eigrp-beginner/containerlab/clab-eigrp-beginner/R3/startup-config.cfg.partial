@@ -1,0 +1,35 @@
+!
+!
+!
+hostname R3
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.13.3 255.255.255.0
+ ip authentication mode eigrp 100 md5
+ ip authentication key-chain eigrp 100 XYZ
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ bandwidth 10
+ ip address 192.168.23.3 255.255.255.0
+ ip authentication mode eigrp 100 md5
+ ip authentication key-chain eigrp 100 XYZ
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 172.16.3.3 255.255.255.0
+!
+!
+!
+!
+end

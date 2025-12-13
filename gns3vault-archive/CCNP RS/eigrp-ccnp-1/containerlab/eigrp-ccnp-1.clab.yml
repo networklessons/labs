@@ -7,50 +7,50 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Alder:
+    i2_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-eigrp-ccnp-1/Alder/startup-config.cfg.partial
-    Lyptus:
+      startup-config: ./clab-eigrp-ccnp-1/i2_startup-config/startup-config.cfg.partial
+    i4_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-eigrp-ccnp-1/Lyptus/startup-config.cfg.partial
-    Oak:
+      startup-config: ./clab-eigrp-ccnp-1/i4_startup-config/startup-config.cfg.partial
+    i6_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-eigrp-ccnp-1/Oak/startup-config.cfg.partial
-    Maple:
+      startup-config: ./clab-eigrp-ccnp-1/i6_startup-config/startup-config.cfg.partial
+    i5_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-eigrp-ccnp-1/Maple/startup-config.cfg.partial
-    Walnut:
+      startup-config: ./clab-eigrp-ccnp-1/i5_startup-config/startup-config.cfg.partial
+    i8_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-eigrp-ccnp-1/Walnut/startup-config.cfg.partial
-    Pine:
+      startup-config: ./clab-eigrp-ccnp-1/i8_startup-config/startup-config.cfg.partial
+    i7_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.150
-      startup-config: ./clab-eigrp-ccnp-1/Pine/startup-config.cfg.partial
-    Cherry:
+      startup-config: ./clab-eigrp-ccnp-1/i7_startup-config/startup-config.cfg.partial
+    i3_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.160
-      startup-config: ./clab-eigrp-ccnp-1/Cherry/startup-config.cfg.partial
+      startup-config: ./clab-eigrp-ccnp-1/i3_startup-config/startup-config.cfg.partial
   links:
   - endpoints:
-    - Alder:Ethernet0/1
-    - Cherry:Ethernet0/1
+    - i2_startup-config:Ethernet0/1
+    - i3_startup-config:Ethernet0/1
   - endpoints:
-    - Alder:Ethernet0/2
-    - Maple:Ethernet0/2
+    - i2_startup-config:Ethernet0/2
+    - i5_startup-config:Ethernet0/2
   - endpoints:
-    - Lyptus:Ethernet0/1
-    - Walnut:Ethernet0/4
+    - i4_startup-config:Ethernet0/1
+    - i8_startup-config:Ethernet0/4
   - endpoints:
-    - Lyptus:Ethernet0/2
-    - Walnut:Ethernet0/3
+    - i4_startup-config:Ethernet0/2
+    - i8_startup-config:Ethernet0/3
   - endpoints:
-    - Maple:Ethernet0/1
-    - Walnut:Ethernet0/2
+    - i5_startup-config:Ethernet0/1
+    - i8_startup-config:Ethernet0/2
   - endpoints:
-    - Walnut:Ethernet0/1
-    - Cherry:Ethernet0/2
+    - i8_startup-config:Ethernet0/1
+    - i3_startup-config:Ethernet0/2

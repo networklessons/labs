@@ -7,29 +7,29 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Robin:
+    R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-multicast-pim-bootstrap-router/Robin/startup-config.cfg.partial
-    Catwoman:
+      startup-config: ./clab-multicast-pim-bootstrap-router/R3/startup-config.cfg.partial
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-multicast-pim-bootstrap-router/Catwoman/startup-config.cfg.partial
-    Joker:
+      startup-config: ./clab-multicast-pim-bootstrap-router/R1/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-multicast-pim-bootstrap-router/Joker/startup-config.cfg.partial
-    Batman:
+      startup-config: ./clab-multicast-pim-bootstrap-router/R2/startup-config.cfg.partial
+    R4:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-multicast-pim-bootstrap-router/Batman/startup-config.cfg.partial
+      startup-config: ./clab-multicast-pim-bootstrap-router/R4/startup-config.cfg.partial
   links:
   - endpoints:
-    - Robin:Ethernet0/1
-    - Joker:Ethernet0/2
+    - R3:Ethernet0/1
+    - R2:Ethernet0/2
   - endpoints:
-    - Robin:Ethernet0/2
-    - Batman:Ethernet0/1
+    - R3:Ethernet0/2
+    - R4:Ethernet0/1
   - endpoints:
-    - Catwoman:Ethernet0/1
-    - Joker:Ethernet0/1
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1

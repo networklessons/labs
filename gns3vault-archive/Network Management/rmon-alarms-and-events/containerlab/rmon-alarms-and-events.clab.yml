@@ -7,15 +7,15 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Ripley:
+    i2_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-rmon-alarms-and-events/Ripley/startup-config.cfg.partial
-    Bishop:
+      startup-config: ./clab-rmon-alarms-and-events/i2_startup-config/startup-config.cfg.partial
+    i1_startup-config:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-rmon-alarms-and-events/Bishop/startup-config.cfg.partial
+      startup-config: ./clab-rmon-alarms-and-events/i1_startup-config/startup-config.cfg.partial
   links:
   - endpoints:
-    - Ripley:Ethernet0/1
-    - Bishop:Ethernet0/1
+    - i2_startup-config:Ethernet0/1
+    - i1_startup-config:Ethernet0/1

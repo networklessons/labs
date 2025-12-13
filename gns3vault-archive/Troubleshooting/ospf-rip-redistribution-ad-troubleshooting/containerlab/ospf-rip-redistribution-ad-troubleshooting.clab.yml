@@ -7,39 +7,39 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Melbourne:
+    R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/Melbourne/startup-config.cfg.partial
-    Perth:
+      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/R3/startup-config.cfg.partial
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/Perth/startup-config.cfg.partial
-    Darwin:
+      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/R1/startup-config.cfg.partial
+    R5:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/Darwin/startup-config.cfg.partial
-    Sydney:
+      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/R5/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/Sydney/startup-config.cfg.partial
-    Adelaide:
+      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/R2/startup-config.cfg.partial
+    R4:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/Adelaide/startup-config.cfg.partial
+      startup-config: ./clab-ospf-rip-redistribution-ad-troubleshooting/R4/startup-config.cfg.partial
   links:
   - endpoints:
-    - Melbourne:Ethernet0/1
-    - Perth:Ethernet0/2
+    - R3:Ethernet0/1
+    - R1:Ethernet0/2
   - endpoints:
-    - Melbourne:Ethernet0/2
-    - Darwin:Ethernet0/1
+    - R3:Ethernet0/2
+    - R5:Ethernet0/1
   - endpoints:
-    - Perth:Ethernet0/1
-    - Sydney:Ethernet0/1
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1
   - endpoints:
-    - Darwin:Ethernet0/2
-    - Adelaide:Ethernet0/2
+    - R5:Ethernet0/2
+    - R4:Ethernet0/2
   - endpoints:
-    - Sydney:Ethernet0/2
-    - Adelaide:Ethernet0/1
+    - R2:Ethernet0/2
+    - R4:Ethernet0/1

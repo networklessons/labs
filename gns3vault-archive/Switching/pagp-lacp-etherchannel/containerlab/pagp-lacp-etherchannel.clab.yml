@@ -7,16 +7,24 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
+    SW2~:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-pagp-lacp-etherchannel/SW2~/startup-config.cfg.partial
+    SW1~:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-pagp-lacp-etherchannel/SW1~/startup-config.cfg.partial
     SW2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-pagp-lacp-etherchannel/SW2/startup-config.cfg.partial
-    SW1:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-pagp-lacp-etherchannel/SW1/startup-config.cfg.partial
     SW3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-pagp-lacp-etherchannel/SW3/startup-config.cfg.partial
+    SW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-pagp-lacp-etherchannel/SW1/startup-config.cfg.partial
   links: []

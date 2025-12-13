@@ -35,10 +35,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.160
       startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R1/startup-config.cfg.partial
-    WebServer:
+    Webserver:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.170
-      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/WebServer/startup-config.cfg.partial
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/Webserver/startup-config.cfg.partial
     DSW1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.180
@@ -71,7 +71,7 @@ topology:
     - R1:Ethernet0/2
   - endpoints:
     - ISP:Ethernet0/2
-    - WebServer:Ethernet0/1
+    - Webserver:Ethernet0/1
   - endpoints:
     - R3:Ethernet0/1
     - R2:Ethernet0/2

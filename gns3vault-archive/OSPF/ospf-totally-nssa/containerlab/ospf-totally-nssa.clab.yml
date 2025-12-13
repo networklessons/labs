@@ -7,22 +7,22 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Undertaker:
+    R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-ospf-totally-nssa/Undertaker/startup-config.cfg.partial
-    Hogan:
+      startup-config: ./clab-ospf-totally-nssa/R3/startup-config.cfg.partial
+    R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-ospf-totally-nssa/Hogan/startup-config.cfg.partial
-    Piper:
+      startup-config: ./clab-ospf-totally-nssa/R1/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-ospf-totally-nssa/Piper/startup-config.cfg.partial
+      startup-config: ./clab-ospf-totally-nssa/R2/startup-config.cfg.partial
   links:
   - endpoints:
-    - Undertaker:Ethernet0/1
-    - Piper:Ethernet0/2
+    - R3:Ethernet0/1
+    - R2:Ethernet0/2
   - endpoints:
-    - Hogan:Ethernet0/1
-    - Piper:Ethernet0/1
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1
