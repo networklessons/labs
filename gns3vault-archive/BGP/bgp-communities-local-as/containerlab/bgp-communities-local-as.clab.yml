@@ -30,16 +30,16 @@ topology:
   links:
   - endpoints:
     - Etari:Ethernet0/1
-    - MacroZoft:Ethernet2/0
+    - MacroZoft:Ethernet0/3
   - endpoints:
-    - Etari:Ethernet1/0
-    - Seega:Ethernet1/0
+    - Etari:Ethernet0/2
+    - Seega:Ethernet0/2
   - endpoints:
     - MacroZoft:Ethernet0/1
     - Wintendo:Ethernet0/1
   - endpoints:
-    - MacroZoft:Ethernet1/0
+    - MacroZoft:Ethernet0/2
     - Zony:Ethernet0/1
   - endpoints:
     - Seega:Ethernet0/1
-    - Zony:Ethernet1/0
+    - Zony:Ethernet0/2

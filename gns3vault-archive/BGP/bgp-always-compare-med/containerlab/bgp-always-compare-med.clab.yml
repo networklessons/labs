@@ -25,14 +25,14 @@ topology:
       startup-config: ./clab-bgp-always-compare-med/Superman/startup-config.cfg.partial
   links:
   - endpoints:
-    - Batman:Ethernet1/0
-    - Spiderman:Ethernet2/0
+    - Batman:Ethernet0/1
+    - Spiderman:Ethernet0/3
   - endpoints:
     - Ironman:Ethernet0/1
     - Spiderman:Ethernet0/1
   - endpoints:
-    - Ironman:Ethernet1/0
-    - Superman:Ethernet1/0
+    - Ironman:Ethernet0/2
+    - Superman:Ethernet0/2
   - endpoints:
-    - Spiderman:Ethernet1/0
+    - Spiderman:Ethernet0/2
     - Superman:Ethernet0/1

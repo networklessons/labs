@@ -20,5 +20,5 @@ topology:
     - Flush:Ethernet0/1
     - Straight:Ethernet0/1
   - endpoints:
-    - Flush:Ethernet1/0
-    - Straight:Ethernet1/0
+    - Flush:Ethernet0/2
+    - Straight:Ethernet0/2

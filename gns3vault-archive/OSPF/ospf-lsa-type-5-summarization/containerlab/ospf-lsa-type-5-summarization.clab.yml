@@ -24,4 +24,4 @@ topology:
   links:
 
    - endpoints: ['Harry:Ethernet0/1', 'Jack:Ethernet0/1']
-   - endpoints: ['Harry:Ethernet1/1', 'Sam:Ethernet0/1']
+   - endpoints: ['Harry:Ethernet0/2', 'Sam:Ethernet0/1']

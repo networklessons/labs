@@ -28,8 +28,8 @@ topology:
     - NewYork:Ethernet0/1
     - Tilburg:Ethernet0/1
   - endpoints:
-    - NewYork:Ethernet1/0
+    - NewYork:Ethernet0/2
     - Tokio:Ethernet0/1
   - endpoints:
     - Shanghai:Ethernet0/1
-    - Tilburg:Ethernet1/0
+    - Tilburg:Ethernet0/2

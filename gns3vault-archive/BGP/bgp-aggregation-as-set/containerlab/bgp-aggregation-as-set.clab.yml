@@ -22,10 +22,10 @@ topology:
   links:
   - endpoints:
     - Haarlem:Ethernet0/1
-    - Hoofddorp:Ethernet1/0
+    - Hoofddorp:Ethernet0/2
   - endpoints:
-    - Haarlem:Ethernet1/0
-    - Tilburg:Ethernet1/0
+    - Haarlem:Ethernet0/2
+    - Tilburg:Ethernet0/2
   - endpoints:
     - Hoofddorp:Ethernet0/1
     - Tilburg:Ethernet0/1

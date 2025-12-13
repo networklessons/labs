@@ -48,35 +48,35 @@ topology:
     - Amsterdam:Ethernet0/1
     - Tilburg:Ethernet0/1
   - endpoints:
-    - Amsterdam:Ethernet1/0
-    - Utrecht:Ethernet1/0
+    - Amsterdam:Ethernet0/2
+    - Utrecht:Ethernet0/2
   - endpoints:
     - Berlin:Ethernet0/1
     - Hamburg:Ethernet0/1
   - endpoints:
-    - Berlin:Ethernet1/0
-    - Dusseldorf:Ethernet1/0
+    - Berlin:Ethernet0/2
+    - Dusseldorf:Ethernet0/2
   - endpoints:
     - Boston:Ethernet0/1
-    - NewYork:Ethernet1/0
+    - NewYork:Ethernet0/2
   - endpoints:
-    - Boston:Ethernet1/0
-    - LosAngeles:Ethernet1/0
+    - Boston:Ethernet0/2
+    - LosAngeles:Ethernet0/2
   - endpoints:
     - Dusseldorf:Ethernet0/1
-    - Hamburg:Ethernet1/0
+    - Hamburg:Ethernet0/2
   - endpoints:
-    - Hamburg:Ethernet2/0
-    - Tilburg:Ethernet3/0
+    - Hamburg:Ethernet0/3
+    - Tilburg:Ethernet0/4
   - endpoints:
-    - Hamburg:Ethernet3/0
-    - NewYork:Ethernet3/0
+    - Hamburg:Ethernet0/4
+    - NewYork:Ethernet0/4
   - endpoints:
     - LosAngeles:Ethernet0/1
     - NewYork:Ethernet0/1
   - endpoints:
-    - NewYork:Ethernet2/0
-    - Tilburg:Ethernet2/0
+    - NewYork:Ethernet0/3
+    - Tilburg:Ethernet0/3
   - endpoints:
-    - Tilburg:Ethernet1/0
+    - Tilburg:Ethernet0/2
     - Utrecht:Ethernet0/1

@@ -28,14 +28,14 @@ topology:
     - Aluminium:Ethernet0/1
     - Copper:Ethernet0/1
   - endpoints:
-    - Aluminium:Ethernet1/0
+    - Aluminium:Ethernet0/2
     - Steel:Ethernet0/1
   - endpoints:
-    - Copper:Ethernet1/0
-    - Steel:Ethernet1/0
+    - Copper:Ethernet0/2
+    - Steel:Ethernet0/2
   - endpoints:
-    - Copper:Ethernet2/0
+    - Copper:Ethernet0/3
     - Zinc:Ethernet0/1
   - endpoints:
-    - Steel:Ethernet2/0
-    - Zinc:Ethernet1/0
+    - Steel:Ethernet0/3
+    - Zinc:Ethernet0/2

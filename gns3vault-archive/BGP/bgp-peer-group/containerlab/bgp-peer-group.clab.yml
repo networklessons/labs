@@ -28,8 +28,8 @@ topology:
     - Bit:Ethernet0/1
     - Byte:Ethernet0/1
   - endpoints:
-    - Bit:Ethernet1/0
+    - Bit:Ethernet0/2
     - Octet:Ethernet0/1
   - endpoints:
-    - Bit:Ethernet2/0
+    - Bit:Ethernet0/3
     - Nibble:Ethernet0/1

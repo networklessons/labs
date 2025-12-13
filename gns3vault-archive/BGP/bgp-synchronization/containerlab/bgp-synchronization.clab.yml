@@ -32,11 +32,11 @@ topology:
     - Baldwin:Ethernet0/1
     - Foxx:Ethernet0/1
   - endpoints:
-    - Foxx:Ethernet1/0
+    - Foxx:Ethernet0/2
     - Mitchell:Ethernet0/1
   - endpoints:
     - Green:Ethernet0/1
-    - Mitchell:Ethernet1/0
+    - Mitchell:Ethernet0/2
   - endpoints:
-    - Green:Ethernet1/0
+    - Green:Ethernet0/2
     - Rollins:Ethernet0/1

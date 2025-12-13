@@ -26,13 +26,13 @@ topology:
   links:
   - endpoints:
     - Bakers:Ethernet0/1
-    - Coarse:Ethernet1/0
+    - Coarse:Ethernet0/2
   - endpoints:
-    - Bakers:Ethernet1/0
-    - Castor:Ethernet1/0
+    - Bakers:Ethernet0/2
+    - Castor:Ethernet0/2
   - endpoints:
     - Barbados:Ethernet0/1
     - Castor:Ethernet0/1
   - endpoints:
-    - Barbados:Ethernet1/0
+    - Barbados:Ethernet0/2
     - Coarse:Ethernet0/1

@@ -43,7 +43,7 @@ interface Ethernet1/0
  ip address 192.168.35.3 255.255.255.0
  no shutdown
 !
-interface Ethernet1/1
+interface Ethernet0/3
  no ip address
  no shutdown
 !

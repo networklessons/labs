@@ -31,7 +31,7 @@ topology:
       startup-config: ./clab-ospf-lsa-type-3-summarization/Topaz/startup-config.cfg.partial
   links:
 
-   - endpoints: ['Diamond:Ethernet0/1', 'Topaz:Ethernet1/1']
-   - endpoints: ['Diamond:Ethernet1/1', 'Quartz:Ethernet0/1']
-   - endpoints: ['Fluorite:Ethernet0/1', 'Quartz:Ethernet1/1']
+   - endpoints: ['Diamond:Ethernet0/1', 'Topaz:Ethernet0/2']
+   - endpoints: ['Diamond:Ethernet0/2', 'Quartz:Ethernet0/1']
+   - endpoints: ['Fluorite:Ethernet0/1', 'Quartz:Ethernet0/2']
    - endpoints: ['Talc:Ethernet0/1', 'Topaz:Ethernet0/1']

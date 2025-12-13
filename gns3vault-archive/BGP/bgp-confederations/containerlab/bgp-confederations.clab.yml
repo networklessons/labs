@@ -34,25 +34,25 @@ topology:
   links:
   - endpoints:
     - Crusher:Ethernet0/1
-    - Data:Ethernet2/0
+    - Data:Ethernet0/3
   - endpoints:
-    - Crusher:Ethernet1/0
-    - Worf:Ethernet1/0
+    - Crusher:Ethernet0/2
+    - Worf:Ethernet0/2
   - endpoints:
-    - Crusher:Ethernet2/0
-    - Riker:Ethernet1/0
+    - Crusher:Ethernet0/3
+    - Riker:Ethernet0/2
   - endpoints:
     - Data:Ethernet0/1
-    - Picard:Ethernet1/0
+    - Picard:Ethernet0/2
   - endpoints:
-    - Data:Ethernet1/0
-    - laForge:Ethernet2/0
+    - Data:Ethernet0/2
+    - laForge:Ethernet0/3
   - endpoints:
     - Picard:Ethernet0/1
     - laForge:Ethernet0/1
   - endpoints:
     - Riker:Ethernet0/1
-    - Worf:Ethernet2/0
+    - Worf:Ethernet0/3
   - endpoints:
     - Worf:Ethernet0/1
-    - laForge:Ethernet1/0
+    - laForge:Ethernet0/2

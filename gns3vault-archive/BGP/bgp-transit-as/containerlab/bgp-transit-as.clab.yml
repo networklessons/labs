@@ -34,19 +34,19 @@ topology:
   links:
   - endpoints:
     - Aniston:Ethernet0/1
-    - Witherspoon:Ethernet1/0
+    - Witherspoon:Ethernet0/2
   - endpoints:
-    - Aniston:Ethernet1/0
+    - Aniston:Ethernet0/2
     - Parker:Ethernet0/1
   - endpoints:
     - Bullock:Ethernet0/1
     - Witherspoon:Ethernet0/1
   - endpoints:
     - Diaz:Ethernet0/1
-    - Witherspoon:Ethernet2/0
+    - Witherspoon:Ethernet0/3
   - endpoints:
-    - Diaz:Ethernet1/0
-    - Parker:Ethernet1/0
+    - Diaz:Ethernet0/2
+    - Parker:Ethernet0/2
   - endpoints:
-    - Parker:Ethernet2/0
+    - Parker:Ethernet0/3
     - Roberts:Ethernet0/1

@@ -26,13 +26,13 @@ topology:
   links:
   - endpoints:
     - Andy:Ethernet0/1
-    - Rex:Ethernet1/0
+    - Rex:Ethernet0/2
   - endpoints:
-    - Andy:Ethernet1/0
-    - Buzz:Ethernet1/0
+    - Andy:Ethernet0/2
+    - Buzz:Ethernet0/2
   - endpoints:
     - Buzz:Ethernet0/1
-    - Woody:Ethernet1/0
+    - Woody:Ethernet0/2
   - endpoints:
     - Rex:Ethernet0/1
     - Woody:Ethernet0/1

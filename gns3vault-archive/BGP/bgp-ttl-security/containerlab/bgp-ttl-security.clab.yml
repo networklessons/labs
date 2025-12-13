@@ -22,7 +22,7 @@ topology:
   links:
   - endpoints:
     - Bowser:Ethernet0/1
-    - Luigi:Ethernet1/0
+    - Luigi:Ethernet0/2
   - endpoints:
     - Luigi:Ethernet0/1
     - Mario:Ethernet0/1

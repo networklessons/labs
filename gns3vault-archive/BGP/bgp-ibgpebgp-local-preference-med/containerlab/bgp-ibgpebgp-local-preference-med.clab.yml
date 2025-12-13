@@ -26,10 +26,10 @@ topology:
   links:
   - endpoints:
     - Berry:Ethernet0/1
-    - Kerry:Ethernet1/0
+    - Kerry:Ethernet0/2
   - endpoints:
-    - Berry:Ethernet1/0
-    - Cherry:Ethernet1/0
+    - Berry:Ethernet0/2
+    - Cherry:Ethernet0/2
   - endpoints:
     - Berry:Serial2/0
     - ISP:Serial0/1

@@ -32,17 +32,17 @@ topology:
     - Athens:Ethernet0/1
     - SW1:1
   - endpoints:
-    - Delphi:Ethernet1/0
-    - Thebes:Ethernet1/0
+    - Delphi:Ethernet0/2
+    - Thebes:Ethernet0/1
   - endpoints:
     - Delphi:Ethernet0/1
     - SW1:3
   - endpoints:
     - Olympia:Ethernet0/1
-    - Sparta:Ethernet1/0
+    - Sparta:Ethernet0/2
   - endpoints:
-    - Olympia:Ethernet1/0
-    - Thebes:Ethernet2/0
+    - Olympia:Ethernet0/2
+    - Thebes:Ethernet0/2
   - endpoints:
     - SW1:2
     - Sparta:Ethernet0/1
