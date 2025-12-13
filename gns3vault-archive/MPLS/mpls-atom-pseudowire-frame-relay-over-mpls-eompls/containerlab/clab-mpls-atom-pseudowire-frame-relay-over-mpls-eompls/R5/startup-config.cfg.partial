@@ -13,48 +13,57 @@ interface Loopback0
  no shutdown
 !
 interface Ethernet0/2
+
  no ip address
  shutdown
  duplex half
 !
-interface Serial0/2
+interface Serial0/3
+
  ip address 172.16.15.5 255.255.255.0
  encapsulation frame-relay
  shutdown
  serial restart-delay 0
  frame-relay interface-dlci 501
 !
-interface Serial1/1
+interface Serial0/4
+
  no ip address
  shutdown
  serial restart-delay 0
 !
-interface Serial1/2
+interface Serial0/5
+
  no ip address
  shutdown
  serial restart-delay 0
 !
-interface Serial1/3
+interface Serial0/6
+
  no ip address
  shutdown
  serial restart-delay 0
 !
-interface Serial1/4
+interface Serial0/7
+
  no ip address
  shutdown
  serial restart-delay 0
 !
-interface Serial1/5
+interface Serial0/8
+
  no ip address
  shutdown
  serial restart-delay 0
 !
-interface Serial1/6
+interface Serial0/9
+
  no ip address
  shutdown
  serial restart-delay 0
 !
-interface Serial1/7
+interface Serial0/10
+
  no ip address
  shutdown
  serial restart-delay 0

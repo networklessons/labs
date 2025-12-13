@@ -15,7 +15,8 @@ interface Loopback0
 interface Loopback1
  no shutdown
 !
-interface Ethernet0/4
+interface Ethernet0/2
+
  ip address 192.168.115.11 255.255.255.0
  no shutdown
  half-duplex

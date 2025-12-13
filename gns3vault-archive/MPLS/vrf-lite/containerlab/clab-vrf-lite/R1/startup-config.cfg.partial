@@ -13,24 +13,28 @@ interface Loopback0
  no shutdown
 !
 interface Ethernet0/2
+
  no ip address
  duplex auto
  speed auto
  no shutdown
 !
 interface Ethernet0/3
+
  no ip address
  duplex auto
  speed auto
  no shutdown
 !
 interface Ethernet0/4
+
  no ip address
  duplex auto
  speed auto
  no shutdown
 !
 interface Ethernet0/5
+
  no ip address
  duplex auto
  speed auto

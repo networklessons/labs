@@ -13,6 +13,7 @@ interface Loopback0
  no shutdown
 !
 interface Ethernet0/2
+
  ip address 192.168.23.3 255.255.255.0
  duplex auto
  speed auto

@@ -12,12 +12,14 @@ interface Loopback0
  no ip address
  no shutdown
 !
-interface Ethernet0/4
+interface Ethernet0/2
+
  no ip address
  shutdown
  duplex half
 !
 interface Ethernet0/3
+
  ip address 172.16.15.5 255.255.255.0
  duplex auto
  speed auto
