@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.126
       startup-config: ./clab-ibgp-blackhole-routing/Queen/startup-config.cfg.partial
   links:
-  - endpoints:
-    - King:Ethernet0/1
-    - Prince:Ethernet0/1
-  - endpoints:
-    - Prince:Ethernet0/2
-    - Queen:Ethernet0/1
+  - endpoints: ["King:Ethernet0/1", "Prince:Ethernet0/1"]
+  - endpoints: ["Prince:Ethernet0/2", "Queen:Ethernet0/1"]

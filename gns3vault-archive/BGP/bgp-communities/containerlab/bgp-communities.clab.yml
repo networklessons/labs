@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.101
       startup-config: ./clab-bgp-communities/NewYork/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Amsterdam:Ethernet0/1
-    - NewYork:Ethernet0/1
-  - endpoints:
-    - Hamburg:Ethernet0/1
-    - NewYork:Ethernet0/2
+  - endpoints: ["Amsterdam:Ethernet0/1", "NewYork:Ethernet0/1"]
+  - endpoints: ["Hamburg:Ethernet0/1", "NewYork:Ethernet0/2"]

@@ -16,9 +16,5 @@ topology:
       mgmt-ipv4: 10.65.97.242
       startup-config: ./clab-bgp-disable-connected-check/Straight/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Flush:Ethernet0/1
-    - Straight:Ethernet0/1
-  - endpoints:
-    - Flush:Ethernet0/2
-    - Straight:Ethernet0/2
+  - endpoints: ["Flush:Ethernet0/1", "Straight:Ethernet0/1"]
+  - endpoints: ["Flush:Ethernet0/2", "Straight:Ethernet0/2"]

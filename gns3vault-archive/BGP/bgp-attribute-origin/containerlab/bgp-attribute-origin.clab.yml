@@ -20,9 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.227
       startup-config: ./clab-bgp-attribute-origin/Lonergan/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Claiborne:Ethernet0/1
-    - Colorado:Ethernet0/2
-  - endpoints:
-    - Colorado:Ethernet0/1
-    - Lonergan:Ethernet0/1
+  - endpoints: ["Claiborne:Ethernet0/1", "Colorado:Ethernet0/2"]
+  - endpoints: ["Colorado:Ethernet0/1", "Lonergan:Ethernet0/1"]

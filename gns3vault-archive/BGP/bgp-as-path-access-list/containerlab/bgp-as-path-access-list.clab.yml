@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.195
       startup-config: ./clab-bgp-as-path-access-list/Coarse/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Bakers:Ethernet0/1
-    - Coarse:Ethernet0/2
-  - endpoints:
-    - Bakers:Ethernet0/2
-    - Castor:Ethernet0/2
-  - endpoints:
-    - Barbados:Ethernet0/1
-    - Castor:Ethernet0/1
-  - endpoints:
-    - Barbados:Ethernet0/2
-    - Coarse:Ethernet0/1
+  - endpoints: ["Bakers:Ethernet0/1", "Coarse:Ethernet0/2"]
+  - endpoints: ["Bakers:Ethernet0/2", "Castor:Ethernet0/2"]
+  - endpoints: ["Barbados:Ethernet0/1", "Castor:Ethernet0/1"]
+  - endpoints: ["Barbados:Ethernet0/2", "Coarse:Ethernet0/1"]

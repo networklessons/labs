@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.243
       startup-config: ./clab-bgp-always-compare-med/Superman/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Batman:Ethernet0/1
-    - Spiderman:Ethernet0/3
-  - endpoints:
-    - Ironman:Ethernet0/1
-    - Spiderman:Ethernet0/1
-  - endpoints:
-    - Ironman:Ethernet0/2
-    - Superman:Ethernet0/2
-  - endpoints:
-    - Spiderman:Ethernet0/2
-    - Superman:Ethernet0/1
+  - endpoints: ["Batman:Ethernet0/1", "Spiderman:Ethernet0/3"]
+  - endpoints: ["Ironman:Ethernet0/1", "Spiderman:Ethernet0/1"]
+  - endpoints: ["Ironman:Ethernet0/2", "Superman:Ethernet0/2"]
+  - endpoints: ["Spiderman:Ethernet0/2", "Superman:Ethernet0/1"]

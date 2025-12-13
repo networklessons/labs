@@ -24,18 +24,8 @@ topology:
       mgmt-ipv4: 10.65.97.185
       startup-config: ./clab-bgp-attribute-med/Suriname/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Cuba:Ethernet0/1
-    - Suriname:Ethernet0/2
-  - endpoints:
-    - Cuba:Ethernet0/2
-    - Haiti:Ethernet0/2
-  - endpoints:
-    - Cuba:Ethernet0/3
-    - Jamaica:Ethernet0/2
-  - endpoints:
-    - Haiti:Ethernet0/1
-    - Suriname:Ethernet0/1
-  - endpoints:
-    - Haiti:Ethernet0/3
-    - Jamaica:Ethernet0/1
+  - endpoints: ["Cuba:Ethernet0/1", "Suriname:Ethernet0/2"]
+  - endpoints: ["Cuba:Ethernet0/2", "Haiti:Ethernet0/2"]
+  - endpoints: ["Cuba:Ethernet0/3", "Jamaica:Ethernet0/2"]
+  - endpoints: ["Haiti:Ethernet0/1", "Suriname:Ethernet0/1"]
+  - endpoints: ["Haiti:Ethernet0/3", "Jamaica:Ethernet0/1"]

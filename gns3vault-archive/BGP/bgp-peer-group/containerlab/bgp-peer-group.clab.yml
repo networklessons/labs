@@ -24,12 +24,6 @@ topology:
       mgmt-ipv4: 10.65.97.115
       startup-config: ./clab-bgp-peer-group/Octet/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Bit:Ethernet0/1
-    - Byte:Ethernet0/1
-  - endpoints:
-    - Bit:Ethernet0/2
-    - Octet:Ethernet0/1
-  - endpoints:
-    - Bit:Ethernet0/3
-    - Nibble:Ethernet0/1
+  - endpoints: ["Bit:Ethernet0/1", "Byte:Ethernet0/1"]
+  - endpoints: ["Bit:Ethernet0/2", "Octet:Ethernet0/1"]
+  - endpoints: ["Bit:Ethernet0/3", "Nibble:Ethernet0/1"]

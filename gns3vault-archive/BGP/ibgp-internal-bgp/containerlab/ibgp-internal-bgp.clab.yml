@@ -24,15 +24,7 @@ topology:
       mgmt-ipv4: 10.65.97.137
       startup-config: ./clab-ibgp-internal-bgp/Tulip/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Blossom:Ethernet0/1
-    - Rose:Ethernet0/2
-  - endpoints:
-    - Blossom:Ethernet0/2
-    - Lily:Ethernet0/2
-  - endpoints:
-    - Lily:Ethernet0/1
-    - Tulip:Ethernet0/1
-  - endpoints:
-    - Rose:Ethernet0/1
-    - Tulip:Ethernet0/2
+  - endpoints: ["Blossom:Ethernet0/1", "Rose:Ethernet0/2"]
+  - endpoints: ["Blossom:Ethernet0/2", "Lily:Ethernet0/2"]
+  - endpoints: ["Lily:Ethernet0/1", "Tulip:Ethernet0/1"]
+  - endpoints: ["Rose:Ethernet0/1", "Tulip:Ethernet0/2"]

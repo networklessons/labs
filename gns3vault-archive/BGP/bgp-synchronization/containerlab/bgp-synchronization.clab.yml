@@ -28,15 +28,7 @@ topology:
       mgmt-ipv4: 10.65.97.197
       startup-config: ./clab-bgp-synchronization/Rollins/startup-config.cfg.partial
   links:
-  - endpoints:
-    - Baldwin:Ethernet0/1
-    - Foxx:Ethernet0/1
-  - endpoints:
-    - Foxx:Ethernet0/2
-    - Mitchell:Ethernet0/1
-  - endpoints:
-    - Green:Ethernet0/1
-    - Mitchell:Ethernet0/2
-  - endpoints:
-    - Green:Ethernet0/2
-    - Rollins:Ethernet0/1
+  - endpoints: ["Baldwin:Ethernet0/1", "Foxx:Ethernet0/1"]
+  - endpoints: ["Foxx:Ethernet0/2", "Mitchell:Ethernet0/1"]
+  - endpoints: ["Green:Ethernet0/1", "Mitchell:Ethernet0/2"]
+  - endpoints: ["Green:Ethernet0/2", "Rollins:Ethernet0/1"]
