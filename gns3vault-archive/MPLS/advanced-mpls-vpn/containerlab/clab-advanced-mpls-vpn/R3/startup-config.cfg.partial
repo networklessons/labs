@@ -31,16 +31,6 @@ interface Ethernet0/5
  no shutdown
  half-duplex
 !
-interface Ethernet0/6
- ip address 192.168.23.3 255.255.255.0
- no shutdown
- half-duplex
-!
-interface Ethernet0/6
- ip address 192.168.36.3 255.255.255.0
- no shut
- half-duplex
-!
 interface Ethernet0/7
  no ip address
  half-duplex

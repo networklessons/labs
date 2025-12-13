@@ -21,22 +21,6 @@ interface Ethernet0/3
  no shutdown
  half-duplex
 !
-interface Ethernet0/3
- ip address 192.168.57.7 255.255.255.0
- no shutdown
- half-duplex
-!
-interface Ethernet0/3
- no ip address
- shutdown
- half-duplex
-!
-interface Ethernet0/3
- no ip address
- shutdown
- half-duplex
-!
-!
 ip http server
 no ip http secure-server
 !

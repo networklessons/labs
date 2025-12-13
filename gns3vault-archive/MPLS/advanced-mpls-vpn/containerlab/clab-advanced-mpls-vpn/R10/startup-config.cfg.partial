@@ -13,22 +13,6 @@ interface Ethernet0/4
  no shutdown
  half-duplex
 !
-interface Ethernet0/4
- no ip address
- half-duplex
- no shutdown
-!
-interface Ethernet0/4
- no ip address
- shutdown
- half-duplex
-!
-interface Ethernet0/4
- no ip address
- shutdown
- half-duplex
-!
-!
 ip http server
 no ip http secure-server
 !

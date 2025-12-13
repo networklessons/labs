@@ -19,13 +19,6 @@ interface Ethernet0/3
  speed auto
  no shutdown
 !
-interface Ethernet0/4
- no ip address
- shutdown
- duplex auto
- speed auto
-!
-!
 ip http server
 no ip http secure-server
 !

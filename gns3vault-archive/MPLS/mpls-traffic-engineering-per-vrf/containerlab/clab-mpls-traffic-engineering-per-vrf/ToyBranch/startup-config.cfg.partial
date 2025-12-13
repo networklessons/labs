@@ -18,13 +18,6 @@ interface Ethernet0/3
  full-duplex
  no shutdown
 !
-interface Ethernet0/3
- no ip address
- speed 100
- full-duplex
- no shutdown
-!
-!
 ip http server
 no ip http secure-server
 !
