@@ -1,0 +1,68 @@
+name: pfr3
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    H1:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-pfr3/H1/startup-config.cfg
+    MC:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-pfr3/MC/startup-config.cfg
+    BR1:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-pfr3/BR1/startup-config.cfg
+    BR2:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-pfr3/BR2/startup-config.cfg
+    ISP:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-pfr3/ISP/startup-config.cfg
+    unmanagedswitch-1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - MC:GigabitEthernet2
+    - unmanagedswitch-1:port0
+  - endpoints:
+    - unmanagedswitch-1:port1
+    - BR1:GigabitEthernet2
+  - endpoints:
+    - unmanagedswitch-1:port2
+    - BR2:GigabitEthernet2
+  - endpoints:
+    - ISP:GigabitEthernet2
+    - BR1:GigabitEthernet3
+  - endpoints:
+    - ISP:GigabitEthernet3
+    - BR2:GigabitEthernet3
+  - endpoints:
+    - MC:GigabitEthernet3
+    - H1:GigabitEthernet2
+  kinds:
+    cisco_c8000v:
+      image: docker-registry.nwl.lab/vr-c8000v:17.09.01a
+    cisco_iol:
+      image: docker-registry.nwl.lab/iol-l2:latest

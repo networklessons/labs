@@ -1,0 +1,57 @@
+name: mpls-vpn-export-map
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    CE1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-mpls-vpn-export-map/CE1/startup-config.cfg
+    PE1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-mpls-vpn-export-map/PE1/startup-config.cfg
+    P:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-mpls-vpn-export-map/P/startup-config.cfg
+    PE2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-mpls-vpn-export-map/PE2/startup-config.cfg
+    CE2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-mpls-vpn-export-map/CE2/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - PE1:Ethernet0/1
+    - CE1:Ethernet0/1
+  - endpoints:
+    - PE2:Ethernet0/1
+    - CE2:Ethernet0/1
+  - endpoints:
+    - PE1:Ethernet0/2
+    - P:Ethernet0/1
+  - endpoints:
+    - P:Ethernet0/2
+    - PE2:Ethernet0/2
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

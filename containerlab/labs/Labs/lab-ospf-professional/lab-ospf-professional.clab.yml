@@ -1,0 +1,127 @@
+name: lab-ospf-professional
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-lab-ospf-professional/R1/startup-config.cfg
+    SW1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-lab-ospf-professional/SW1/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-lab-ospf-professional/R2/startup-config.cfg
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-lab-ospf-professional/R4/startup-config.cfg
+    R5:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-lab-ospf-professional/R5/startup-config.cfg
+    R6:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-lab-ospf-professional/R6/startup-config.cfg
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+      startup-config: ./clab-lab-ospf-professional/R3/startup-config.cfg
+    R7:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.17
+      startup-config: ./clab-lab-ospf-professional/R7/startup-config.cfg
+    R9:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.18
+      startup-config: ./clab-lab-ospf-professional/R9/startup-config.cfg
+    R10:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.19
+      startup-config: ./clab-lab-ospf-professional/R10/startup-config.cfg
+    R8:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.20
+      startup-config: ./clab-lab-ospf-professional/R8/startup-config.cfg
+    H1:
+      kind: linux
+      mgmt-ipv4: 172.100.100.21
+      startup-config: ./clab-lab-ospf-professional/H1/startup-config.cfg
+    SW2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.22
+      startup-config: ./clab-lab-ospf-professional/SW2/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    Internet:
+      kind: linux
+      mgmt-ipv4: 172.100.100.23
+      startup-config: ./clab-lab-ospf-professional/Internet/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - R2:Ethernet0/1
+    - SW1:port1
+  - endpoints:
+    - R4:Ethernet0/1
+    - SW1:port4
+  - endpoints:
+    - R1:Ethernet0/1
+    - SW1:port2
+  - endpoints:
+    - R3:Ethernet0/1
+    - SW1:port3
+  - endpoints:
+    - R4:Ethernet0/2
+    - R5:Ethernet0/2
+  - endpoints:
+    - R5:Ethernet0/1
+    - R2:Ethernet0/2
+  - endpoints:
+    - R5:Ethernet0/3
+    - R6:Ethernet0/1
+  - endpoints:
+    - R3:Ethernet0/2
+    - R7:Ethernet0/1
+  - endpoints:
+    - R7:Ethernet0/2
+    - H1:eth0
+  - endpoints:
+    - SW2:port1
+    - R3:Ethernet0/3
+  - endpoints:
+    - R9:Ethernet0/1
+    - SW2:port2
+  - endpoints:
+    - R10:Ethernet0/1
+    - SW2:port3
+  - endpoints:
+    - R7:Ethernet0/3
+    - R8:Ethernet0/1
+  - endpoints:
+    - Internet:eth0
+    - R1:Ethernet0/0
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+    linux:
+      image: networklessons/ubuntu-network-host:latest

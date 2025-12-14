@@ -1,0 +1,40 @@
+name: qos-wred
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - R1:Ethernet0/1
+    - R2:Ethernet0/1
+  - endpoints:
+    - R3:Ethernet0/1
+    - R2:Ethernet0/2
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

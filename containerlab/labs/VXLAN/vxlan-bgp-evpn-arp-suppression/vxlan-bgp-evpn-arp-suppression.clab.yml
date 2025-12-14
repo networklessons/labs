@@ -1,0 +1,59 @@
+name: vxlan-bgp-evpn-arp-suppression
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    SPINE1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-vxlan-bgp-evpn-arp-suppression/SPINE1/startup-config.cfg
+    LEAF1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-vxlan-bgp-evpn-arp-suppression/LEAF1/startup-config.cfg
+    LEAF2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-vxlan-bgp-evpn-arp-suppression/LEAF2/startup-config.cfg
+    ubuntu-0:
+      kind: linux
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-vxlan-bgp-evpn-arp-suppression/ubuntu-0/startup-config.cfg
+    ubuntu-1:
+      kind: linux
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-vxlan-bgp-evpn-arp-suppression/ubuntu-1/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - LEAF1:Ethernet1/1
+    - SPINE1:Ethernet1/1
+  - endpoints:
+    - SPINE1:Ethernet1/2
+    - LEAF2:Ethernet1/1
+  - endpoints:
+    - ubuntu-0:ens2
+    - LEAF1:Ethernet1/2
+  - endpoints:
+    - LEAF2:Ethernet1/2
+    - ubuntu-1:ens2
+  kinds:
+    cisco_n9kv:
+      image: docker-registry.nwl.lab/vr-n9kv:9.3.9
+    linux:
+      image: networklessons/ubuntu-network-host:latest

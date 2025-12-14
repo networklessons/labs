@@ -1,0 +1,36 @@
+name: stp-root-guard
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    SW1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-stp-root-guard/SW1/startup-config.cfg
+    SW2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-stp-root-guard/SW2/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - SW1:Ethernet0/1
+    - SW2:Ethernet0/1
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/iol-l2:latest

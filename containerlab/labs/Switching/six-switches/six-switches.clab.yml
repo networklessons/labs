@@ -1,0 +1,79 @@
+name: six-switches
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    C1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-six-switches/C1/startup-config.cfg
+    C2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-six-switches/C2/startup-config.cfg
+    D1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-six-switches/D1/startup-config.cfg
+    D2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-six-switches/D2/startup-config.cfg
+    A1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-six-switches/A1/startup-config.cfg
+    A2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-six-switches/A2/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - C1:Ethernet0/1
+    - C2:Ethernet0/1
+  - endpoints:
+    - C1:Ethernet0/2
+    - D1:Ethernet0/1
+  - endpoints:
+    - C2:Ethernet0/2
+    - D2:Ethernet0/1
+  - endpoints:
+    - C1:Ethernet0/3
+    - D2:Ethernet0/2
+  - endpoints:
+    - C2:Ethernet0/3
+    - D1:Ethernet0/2
+  - endpoints:
+    - D1:Ethernet0/3
+    - A1:Ethernet0/1
+  - endpoints:
+    - D2:Ethernet0/3
+    - A2:Ethernet0/1
+  - endpoints:
+    - D1:Ethernet1/0
+    - D2:Ethernet1/0
+  - endpoints:
+    - A1:Ethernet0/2
+    - D2:Ethernet1/1
+  - endpoints:
+    - A2:Ethernet0/2
+    - D1:Ethernet1/1
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/iol-l2:latest

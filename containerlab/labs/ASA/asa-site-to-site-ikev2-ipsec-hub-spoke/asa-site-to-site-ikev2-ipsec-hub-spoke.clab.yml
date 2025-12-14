@@ -1,0 +1,75 @@
+name: asa-site-to-site-ikev2-ipsec-hub-spoke
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    ASA1:
+      kind: cisco_asav
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-asa-site-to-site-ikev2-ipsec-hub-spoke/ASA1/startup-config.cfg
+    ASA2:
+      kind: cisco_asav
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-asa-site-to-site-ikev2-ipsec-hub-spoke/ASA2/startup-config.cfg
+    ASA3:
+      kind: cisco_asav
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-asa-site-to-site-ikev2-ipsec-hub-spoke/ASA3/startup-config.cfg
+    unmanaged-switch-0:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-asa-site-to-site-ikev2-ipsec-hub-spoke/R1/startup-config.cfg
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-asa-site-to-site-ikev2-ipsec-hub-spoke/R2/startup-config.cfg
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+      startup-config: ./clab-asa-site-to-site-ikev2-ipsec-hub-spoke/R3/startup-config.cfg
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - ASA1:GigabitEthernet0/0
+    - R1:Ethernet0/0
+  - endpoints:
+    - ASA2:GigabitEthernet0/0
+    - R2:Ethernet0/0
+  - endpoints:
+    - ASA3:GigabitEthernet0/0
+    - R3:Ethernet0/0
+  - endpoints:
+    - ASA1:GigabitEthernet0/1
+    - unmanaged-switch-0:port0
+  - endpoints:
+    - unmanaged-switch-0:port1
+    - ASA2:GigabitEthernet0/1
+  - endpoints:
+    - unmanaged-switch-0:port2
+    - ASA3:GigabitEthernet0/1
+  kinds:
+    cisco_asav:
+      image: docker-registry.nwl.lab/vr-asav:9.18.2
+    cisco_iol:
+      image: docker-registry.nwl.lab/iol-l2:latest

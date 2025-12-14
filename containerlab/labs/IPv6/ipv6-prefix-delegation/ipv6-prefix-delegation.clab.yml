@@ -1,0 +1,92 @@
+name: ipv6-prefix-delegation
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-ipv6-prefix-delegation/ISP/startup-config.cfg
+    Cust1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-ipv6-prefix-delegation/Cust1/startup-config.cfg
+    H1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-ipv6-prefix-delegation/H1/startup-config.cfg
+    unmanagedswitch-1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      image: docker-registry.nwl.lab/iol-l2:latest
+    unmanagedswitch-2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      image: docker-registry.nwl.lab/iol-l2:latest
+    unmanagedswitch-3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+      image: docker-registry.nwl.lab/iol-l2:latest
+    Cust2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+      startup-config: ./clab-ipv6-prefix-delegation/Cust2/startup-config.cfg
+    H2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.17
+      startup-config: ./clab-ipv6-prefix-delegation/H2/startup-config.cfg
+    H3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.18
+      startup-config: ./clab-ipv6-prefix-delegation/H3/startup-config.cfg
+    H4:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.19
+      startup-config: ./clab-ipv6-prefix-delegation/H4/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - ISP:Ethernet0/1
+    - unmanagedswitch-1:port0
+  - endpoints:
+    - unmanagedswitch-1:port1
+    - Cust1:Ethernet0/1
+  - endpoints:
+    - unmanagedswitch-1:port2
+    - Cust2:Ethernet0/1
+  - endpoints:
+    - Cust1:Ethernet0/2
+    - unmanagedswitch-2:port0
+  - endpoints:
+    - unmanagedswitch-2:port1
+    - H1:Ethernet0/1
+  - endpoints:
+    - unmanagedswitch-2:port2
+    - H2:Ethernet0/1
+  - endpoints:
+    - Cust2:Ethernet0/2
+    - unmanagedswitch-3:port0
+  - endpoints:
+    - unmanagedswitch-3:port1
+    - H3:Ethernet0/1
+  - endpoints:
+    - unmanagedswitch-3:port2
+    - H4:Ethernet0/1
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

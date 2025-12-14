@@ -1,0 +1,58 @@
+name: otv
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    R1:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-otv/R1/startup-config.cfg
+    R2:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-otv/R2/startup-config.cfg
+    R3:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-otv/R3/startup-config.cfg
+    S1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+    S2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-otv/S2/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - R1:GigabitEthernet2
+    - R2:GigabitEthernet2
+  - endpoints:
+    - R2:GigabitEthernet3
+    - R3:GigabitEthernet2
+  - endpoints:
+    - R1:GigabitEthernet3
+    - S1:Ethernet0/1
+  - endpoints:
+    - R3:GigabitEthernet3
+    - S2:Ethernet0/1
+  kinds:
+    cisco_c8000v:
+      image: docker-registry.nwl.lab/vr-c8000v:17.09.01a
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

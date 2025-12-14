@@ -1,0 +1,66 @@
+name: bgp-rpki
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    unmanaged-switch-0:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-bgp-rpki/unmanaged-switch-0/startup-config.cfg
+    R1:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-bgp-rpki/R1/startup-config.cfg
+    R2:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-bgp-rpki/R2/startup-config.cfg
+    R3:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-bgp-rpki/R3/startup-config.cfg
+    R4:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-bgp-rpki/R4/startup-config.cfg
+    R5:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-bgp-rpki/R5/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - R1:GigabitEthernet1
+    - unmanaged-switch-0:port1
+  - endpoints:
+    - R3:GigabitEthernet1
+    - unmanaged-switch-0:port0
+  - endpoints:
+    - R1:GigabitEthernet2
+    - R2:GigabitEthernet1
+  - endpoints:
+    - R4:GigabitEthernet1
+    - unmanaged-switch-0:port2
+  - endpoints:
+    - R5:GigabitEthernet1
+    - unmanaged-switch-0:port3
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/iol-l2:latest
+    cisco_c8000v:
+      image: docker-registry.nwl.lab/vr-c8000v:17.09.01a
