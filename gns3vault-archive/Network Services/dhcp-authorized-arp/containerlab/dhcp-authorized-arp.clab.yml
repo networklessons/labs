@@ -22,6 +22,6 @@ topology:
     br-dhcp-authorized-arp-1:
       kind: bridge
   links:
-  - endpoints: ['Client:Ethernet0/0', 'br-dhcp-authorized-arp-1:eth1']
-  - endpoints: ['DHCP:Ethernet0/0', 'br-dhcp-authorized-arp-1:eth2']
-  - endpoints: ['Spoofer:Ethernet0/0', 'br-dhcp-authorized-arp-1:eth3']
+  - endpoints: ['Client:Ethernet0/1', 'br-dhcp-authorized-arp-1:eth1']
+  - endpoints: ['DHCP:Ethernet0/1', 'br-dhcp-authorized-arp-1:eth2']
+  - endpoints: ['Spoofer:Ethernet0/1', 'br-dhcp-authorized-arp-1:eth3']

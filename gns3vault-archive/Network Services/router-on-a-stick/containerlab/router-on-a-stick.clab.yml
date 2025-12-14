@@ -22,6 +22,6 @@ topology:
     br-router-on-a-stick-1:
       kind: bridge
   links:
-  - endpoints: ['Hadley:Ethernet0/0', 'br-router-on-a-stick-1:eth1']
-  - endpoints: ['John:Ethernet0/0', 'br-router-on-a-stick-1:eth2']
-  - endpoints: ['Sam:Ethernet0/0', 'br-router-on-a-stick-1:eth3']
+  - endpoints: ['Hadley:Ethernet0/1', 'br-router-on-a-stick-1:eth1']
+  - endpoints: ['John:Ethernet0/1', 'br-router-on-a-stick-1:eth2']
+  - endpoints: ['Sam:Ethernet0/1', 'br-router-on-a-stick-1:eth3']

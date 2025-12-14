@@ -34,7 +34,7 @@ topology:
   links:
   - endpoints: ['R3:Ethernet0/1', 'R2:Ethernet0/1']
   - endpoints: ['R3:Ethernet0/2', 'R4:Ethernet0/1']
-  - endpoints: ['R1:Ethernet1/0', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-1:eth1']
-  - endpoints: ['R2:Ethernet1/1', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-1:eth2']
-  - endpoints: ['R4:Ethernet1/1', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-2:eth1']
-  - endpoints: ['R5:Ethernet1/0', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-2:eth2']
+  - endpoints: ['R1:Ethernet1/1', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-1:eth1']
+  - endpoints: ['R2:Ethernet1/2', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-1:eth2']
+  - endpoints: ['R4:Ethernet1/2', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-2:eth1']
+  - endpoints: ['R5:Ethernet1/1', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-2:eth2']

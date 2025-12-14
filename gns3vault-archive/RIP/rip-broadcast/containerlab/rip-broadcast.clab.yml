@@ -18,5 +18,5 @@ topology:
     br-rip-broadcast-1:
       kind: bridge
   links:
-  - endpoints: ['Vault:Ethernet0/0', 'br-rip-broadcast-1:eth1']
-  - endpoints: ['Safe:Ethernet0/0', 'br-rip-broadcast-1:eth2']
+  - endpoints: ['Vault:Ethernet0/1', 'br-rip-broadcast-1:eth1']
+  - endpoints: ['Safe:Ethernet0/1', 'br-rip-broadcast-1:eth2']
