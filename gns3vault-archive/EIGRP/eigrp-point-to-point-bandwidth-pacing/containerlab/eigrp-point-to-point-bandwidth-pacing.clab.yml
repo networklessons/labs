@@ -7,28 +7,36 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    i2_startup-config:
+    Berlin:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/i2_startup-config/startup-config.cfg.partial
-    i4_startup-config:
+      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/Berlin/startup-config.cfg.partial
+    NewYork:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/i4_startup-config/startup-config.cfg.partial
-    i6_startup-config:
+      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/NewYork/startup-config.cfg.partial
+    Tilburg:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/i6_startup-config/startup-config.cfg.partial
-    i5_startup-config:
+      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/Tilburg/startup-config.cfg.partial
+    Paris:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/i5_startup-config/startup-config.cfg.partial
-    i3_startup-config:
+      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/Paris/startup-config.cfg.partial
+    NewDelhi:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/i3_startup-config/startup-config.cfg.partial
+      startup-config: ./clab-eigrp-point-to-point-bandwidth-pacing/NewDelhi/startup-config.cfg.partial
   links:
-  - endpoints: ['i2_startup-config:Ethernet0/1', 'i6_startup-config:Ethernet0/2']
-  - endpoints: ['i4_startup-config:Ethernet0/1', 'i6_startup-config:Ethernet0/4']
-  - endpoints: ['i6_startup-config:Ethernet0/1', 'i3_startup-config:Ethernet0/1']
-  - endpoints: ['i6_startup-config:Ethernet0/3', 'i5_startup-config:Ethernet0/1']
+  - endpoints:
+    - Berlin:Ethernet0/1
+    - Tilburg:Ethernet0/2
+  - endpoints:
+    - NewYork:Ethernet0/1
+    - Tilburg:Ethernet0/4
+  - endpoints:
+    - Tilburg:Ethernet0/1
+    - NewDelhi:Ethernet0/1
+  - endpoints:
+    - Tilburg:Ethernet0/3
+    - Paris:Ethernet0/1

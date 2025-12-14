@@ -1,0 +1,20 @@
+!
+!
+!
+hostname R4
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001:4::4/128
+ ipv6 ospf 1 area 0
+!
+!
+!
+!
+end
