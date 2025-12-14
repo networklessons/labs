@@ -37,25 +37,21 @@ interface Loopback0
  ip address 5.5.5.5 255.255.255.0
  no shutdown
 !
-interface Serial0/4
+interface Ethernet0/1
  ip address 192.168.25.5 255.255.255.0
- serial restart-delay 0
  no shutdown
 !
 interface Serial0/1
  no ip address
  shutdown
- serial restart-delay 0
 !
 interface Serial0/2
  no ip address
  shutdown
- serial restart-delay 0
 !
 interface Serial0/3
  no ip address
  shutdown
- serial restart-delay 0
 !
 interface Ethernet0/2
  ip address 192.168.35.5 255.255.255.0

@@ -12,36 +12,32 @@ interface Loopback0
  ip address 1.1.1.1 255.255.255.0
  no shutdown
 !
-interface Ethernet0/2
+interface Ethernet0/1
 
  ip address 192.168.12.1 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-interface Serial0/3
+interface Ethernet0/2
 
  ip address 192.168.15.1 255.255.255.0
  shutdown
- serial restart-delay 0
 !
 interface Serial0/4
 
  no ip address
  shutdown
- serial restart-delay 0
 !
 interface Serial0/5
 
  no ip address
  shutdown
- serial restart-delay 0
 !
 interface Serial0/6
 
  no ip address
  shutdown
- serial restart-delay 0
 !
 !
 ip http server
