@@ -31,6 +31,6 @@ topology:
       kind: bridge
   links:
   - endpoints: ['Ladon:Ethernet0/1', 'br-proxy-arp-1:eth1']
-  - endpoints: ['Proxy:Ethernet0/2', 'br-proxy-arp-1:eth2']
+  - endpoints: ['Proxy:Ethernet0/1', 'br-proxy-arp-1:eth2']
   - endpoints: ['Poseidon:Ethernet0/1', 'br-proxy-arp-1:eth3']
   - endpoints: ['Medusa:Ethernet0/1', 'Ceto:Ethernet0/1']

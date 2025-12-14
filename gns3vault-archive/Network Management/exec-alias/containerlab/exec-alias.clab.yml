@@ -20,5 +20,5 @@ topology:
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-exec-alias/i3_startup-config/startup-config.cfg.partial
   links:
-  - endpoints: ['i2_startup-config:Ethernet0/2', 'i1_startup-config:Ethernet0/2']
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i1_startup-config:Ethernet0/2']
   - endpoints: ['i1_startup-config:Ethernet0/1', 'i3_startup-config:Ethernet0/1']
