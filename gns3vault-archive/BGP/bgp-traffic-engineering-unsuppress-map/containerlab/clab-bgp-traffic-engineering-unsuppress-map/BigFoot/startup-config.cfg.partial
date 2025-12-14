@@ -33,13 +33,13 @@ no ip domain lookup
 !
 !
 !
-interface Ethernet0/1
+interface Ethernet0/2
  ip address 192.168.34.4 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-interface Ethernet0/2
+interface Ethernet0/3
  ip address 192.168.24.4 255.255.255.0
  duplex auto
  speed auto

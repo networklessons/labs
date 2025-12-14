@@ -64,7 +64,7 @@ interface Loopback7
  ip address 10.10.7.1 255.255.255.0
  no shutdown
 !
-interface Ethernet0/1
+interface Ethernet0/0
  ip address 192.168.45.5 255.255.255.0
  duplex auto
  speed auto

@@ -18,7 +18,7 @@ interface Ethernet0/2
  shutdown
  duplex half
 !
-interface Ethernet0/1
+interface Ethernet0/3
 
  ip address 192.168.34.4 255.255.255.0
  duplex auto

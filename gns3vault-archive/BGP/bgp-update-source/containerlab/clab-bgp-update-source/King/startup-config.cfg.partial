@@ -32,27 +32,31 @@ ip cef
 !
 !
 !
-interface Ethernet0/1
+interface Ethernet0/2
  ip address 192.168.122.1 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-interface Ethernet0/2
+interface Serial0/3
  ip address 192.168.112.1 255.255.255.0
+ serial restart-delay 0
  no shutdown
 !
 interface Serial1/1
  no ip address
  shutdown
+ serial restart-delay 0
 !
 interface Serial1/2
  no ip address
  shutdown
+ serial restart-delay 0
 !
 interface Serial1/3
  no ip address
  shutdown
+ serial restart-delay 0
 !
 ip http server
 no ip http secure-server
