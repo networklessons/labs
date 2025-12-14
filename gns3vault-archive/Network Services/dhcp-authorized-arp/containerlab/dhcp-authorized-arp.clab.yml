@@ -19,5 +19,9 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-dhcp-authorized-arp/Client/startup-config.cfg.partial
+    br-dhcp-authorized-arp-1:
+      kind: bridge
   links:
-  - endpoints: ['DHCP:Ethernet0/1', 'Spoofer:Ethernet0/1']
+  - endpoints: ['Client:Ethernet0/0', 'br-dhcp-authorized-arp-1:eth1']
+  - endpoints: ['DHCP:Ethernet0/0', 'br-dhcp-authorized-arp-1:eth2']
+  - endpoints: ['Spoofer:Ethernet0/0', 'br-dhcp-authorized-arp-1:eth3']

@@ -15,5 +15,8 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-rip-broadcast/Vault/startup-config.cfg.partial
+    br-rip-broadcast-1:
+      kind: bridge
   links:
-  - endpoints: ['Safe:Ethernet0/1', 'Vault:Ethernet0/1']
+  - endpoints: ['Vault:Ethernet0/0', 'br-rip-broadcast-1:eth1']
+  - endpoints: ['Safe:Ethernet0/0', 'br-rip-broadcast-1:eth2']

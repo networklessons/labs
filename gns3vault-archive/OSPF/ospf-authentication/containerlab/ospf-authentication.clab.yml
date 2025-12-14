@@ -23,7 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ospf-authentication/Lion/startup-config.cfg.partial
+    br-ospf-authentication-1:
+      kind: bridge
   links:
-  - endpoints: ['Gorilla:Ethernet0/1', 'Giraffe:Ethernet0/2']
+  - endpoints: ['Giraffe:Ethernet1/0', 'br-ospf-authentication-1:eth1']
+  - endpoints: ['Gorilla:Ethernet0/0', 'br-ospf-authentication-1:eth2']
   - endpoints: ['Gorilla:Ethernet0/2', 'Lion:Ethernet0/1']
   - endpoints: ['Elephant:Ethernet0/1', 'Giraffe:Ethernet0/1']

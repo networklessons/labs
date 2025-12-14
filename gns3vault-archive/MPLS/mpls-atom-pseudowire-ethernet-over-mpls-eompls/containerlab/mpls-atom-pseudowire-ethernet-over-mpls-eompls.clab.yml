@@ -27,7 +27,14 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-mpls-atom-pseudowire-ethernet-over-mpls-eompls/R4/startup-config.cfg.partial
+    br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-1:
+      kind: bridge
+    br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-2:
+      kind: bridge
   links:
   - endpoints: ['R3:Ethernet0/1', 'R2:Ethernet0/1']
   - endpoints: ['R3:Ethernet0/2', 'R4:Ethernet0/1']
-  - endpoints: ['R1:Ethernet0/1', 'R5:Ethernet0/1']
+  - endpoints: ['R1:Ethernet1/0', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-1:eth1']
+  - endpoints: ['R2:Ethernet1/1', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-1:eth2']
+  - endpoints: ['R4:Ethernet1/1', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-2:eth1']
+  - endpoints: ['R5:Ethernet1/0', 'br-mpls-atom-pseudowire-ethernet-over-mpls-eompls-2:eth2']
