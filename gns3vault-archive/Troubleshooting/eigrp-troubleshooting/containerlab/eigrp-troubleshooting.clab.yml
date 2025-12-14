@@ -50,5 +50,5 @@ topology:
   - endpoints: ['R1:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth1']
   - endpoints: ['R5:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth2']
   - endpoints: ['R4:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth3']
-  - endpoints: ['R6:Ethernet0/2', 'R4:Ethernet0/2']
+  - endpoints: ['R6:Ethernet0/1', 'R4:Ethernet0/2']
   - endpoints: ['R5:Ethernet0/2', 'R8:Ethernet0/1']
