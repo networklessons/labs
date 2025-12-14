@@ -1,0 +1,28 @@
+!
+!
+!
+hostname Proxy
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 172.16.0.3 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 172.16.1.3 255.255.255.0
+ no ip proxy-arp
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

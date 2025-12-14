@@ -1,0 +1,33 @@
+name: icmp-router-discovery-protocol-irdp
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Tomato:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-icmp-router-discovery-protocol-irdp/Tomato/startup-config.cfg.partial
+    Broccoli:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-icmp-router-discovery-protocol-irdp/Broccoli/startup-config.cfg.partial
+    Potato:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-icmp-router-discovery-protocol-irdp/Potato/startup-config.cfg.partial
+    Mustard:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-icmp-router-discovery-protocol-irdp/Mustard/startup-config.cfg.partial
+    br-icmp-router-discovery-protocol-irdp-1:
+      kind: bridge
+  links:
+  - endpoints: ['Tomato:Ethernet0/1', 'br-icmp-router-discovery-protocol-irdp-1:eth1']
+  - endpoints: ['Broccoli:Ethernet0/1', 'br-icmp-router-discovery-protocol-irdp-1:eth2']
+  - endpoints: ['Potato:Ethernet0/1', 'br-icmp-router-discovery-protocol-irdp-1:eth3']
+  - endpoints: ['Tomato:Ethernet0/2', 'Mustard:Ethernet0/2']
+  - endpoints: ['Potato:Ethernet0/2', 'Mustard:Ethernet0/1']

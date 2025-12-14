@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R2
 !
 !
@@ -8,36 +9,22 @@ hostname R2
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.23.2 255.255.255.0
+ half-duplex
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.122.2 255.255.255.0
+ ip ospf cost 100
+ half-duplex
+ no shutdown
+!
 interface Loopback0
  ip address 2.2.2.2 255.255.255.0
- no shutdown
 !
 interface Loopback1
  ip address 22.22.22.22 255.255.255.0
- no shutdown
-!
-interface Ethernet0/2
-
- ip address 192.168.23.2 255.255.255.0
- no shutdown
- half-duplex
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

@@ -7,13 +7,13 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Sonic:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.212
-      startup-config: ./clab-bgp-local-as/Sonic/startup-config.cfg.partial
     Tails:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.104
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-local-as/Tails/startup-config.cfg.partial
+    Sonic:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-local-as/Sonic/startup-config.cfg.partial
   links:
-  - endpoints: ["Sonic:Ethernet0/1", "Tails:Ethernet0/1"]
+  - endpoints: ['Tails:Ethernet0/1', 'Sonic:Ethernet0/1']

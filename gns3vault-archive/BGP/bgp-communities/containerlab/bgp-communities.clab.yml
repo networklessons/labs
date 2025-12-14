@@ -7,18 +7,18 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Amsterdam:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-bgp-communities/Amsterdam/startup-config.cfg.partial
-    Hamburg:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.199
-      startup-config: ./clab-bgp-communities/Hamburg/startup-config.cfg.partial
     NewYork:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.101
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-communities/NewYork/startup-config.cfg.partial
+    Hamburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-communities/Hamburg/startup-config.cfg.partial
+    Amsterdam:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-communities/Amsterdam/startup-config.cfg.partial
   links:
-  - endpoints: ["Amsterdam:Ethernet0/1", "NewYork:Ethernet0/1"]
-  - endpoints: ["Hamburg:Ethernet0/1", "NewYork:Ethernet0/2"]
+  - endpoints: ['NewYork:Ethernet0/1', 'Amsterdam:Ethernet0/1']
+  - endpoints: ['NewYork:Ethernet0/2', 'Hamburg:Ethernet0/1']

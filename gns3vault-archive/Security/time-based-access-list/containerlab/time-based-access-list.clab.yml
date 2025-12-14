@@ -1,0 +1,19 @@
+name: time-based-access-list
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Tube:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-time-based-access-list/Tube/startup-config.cfg.partial
+    Stem:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-time-based-access-list/Stem/startup-config.cfg.partial
+  links:
+  - endpoints: ['Tube:Ethernet0/1', 'Stem:Ethernet0/1']

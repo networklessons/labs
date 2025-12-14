@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R3
 !
 !
@@ -8,45 +9,23 @@ hostname R3
 !
 ip cef
 !
-interface Loopback0
- ip address 3.3.3.3 255.255.255.255
- no shutdown
-!
 interface Ethernet0/2
-
  ip address 192.168.13.3 255.255.255.0
  duplex auto
  speed auto
+ mpls ip
  no shutdown
 !
 interface Ethernet0/3
-
  ip address 192.168.34.3 255.255.255.0
- shutdown
  duplex auto
  speed auto
+ mpls ldp discovery transport-address interface
+ mpls ip
+ no shutdown
 !
-router ospf 1
- log-adjacency-changes
- network 0.0.0.0 255.255.255.255 area 0
-!
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
 !
 !
 !

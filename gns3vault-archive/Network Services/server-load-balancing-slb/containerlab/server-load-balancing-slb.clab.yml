@@ -1,0 +1,37 @@
+name: server-load-balancing-slb
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    WWW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-server-load-balancing-slb/WWW1/startup-config.cfg.partial
+    WWW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-server-load-balancing-slb/WWW2/startup-config.cfg.partial
+    Jack:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-server-load-balancing-slb/Jack/startup-config.cfg.partial
+    James:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-server-load-balancing-slb/James/startup-config.cfg.partial
+    SLB:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-server-load-balancing-slb/SLB/startup-config.cfg.partial
+    br-server-load-balancing-slb-1:
+      kind: bridge
+  links:
+  - endpoints: ['WWW1:Ethernet0/1', 'SLB:Ethernet0/2']
+  - endpoints: ['WWW2:Ethernet0/1', 'SLB:Ethernet0/3']
+  - endpoints: ['Jack:Ethernet0/1', 'br-server-load-balancing-slb-1:eth1']
+  - endpoints: ['James:Ethernet0/1', 'br-server-load-balancing-slb-1:eth2']
+  - endpoints: ['SLB:Ethernet0/1', 'br-server-load-balancing-slb-1:eth3']

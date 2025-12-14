@@ -1,0 +1,35 @@
+name: eigrp-variance-traffic-engineering
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Jermaine:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-variance-traffic-engineering/Jermaine/startup-config.cfg.partial
+    Marlon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-variance-traffic-engineering/Marlon/startup-config.cfg.partial
+    Jackie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-variance-traffic-engineering/Jackie/startup-config.cfg.partial
+    Tito:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-eigrp-variance-traffic-engineering/Tito/startup-config.cfg.partial
+    Michael:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-eigrp-variance-traffic-engineering/Michael/startup-config.cfg.partial
+  links:
+  - endpoints: ['Jermaine:Ethernet0/1', 'Jackie:Ethernet0/1']
+  - endpoints: ['Jermaine:Ethernet0/2', 'Tito:Ethernet0/1']
+  - endpoints: ['Marlon:Ethernet0/1', 'Jackie:Ethernet0/2']
+  - endpoints: ['Marlon:Ethernet0/2', 'Tito:Ethernet0/2']
+  - endpoints: ['Jackie:Ethernet0/3', 'Michael:Ethernet0/1']

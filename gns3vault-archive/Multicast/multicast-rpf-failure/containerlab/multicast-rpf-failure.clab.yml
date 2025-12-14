@@ -1,0 +1,35 @@
+name: multicast-rpf-failure
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Backhand:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-multicast-rpf-failure/Backhand/startup-config.cfg.partial
+    LiveMatch:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-multicast-rpf-failure/LiveMatch/startup-config.cfg.partial
+    Backspin:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-multicast-rpf-failure/Backspin/startup-config.cfg.partial
+    Ace:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-multicast-rpf-failure/Ace/startup-config.cfg.partial
+    Alley:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-multicast-rpf-failure/Alley/startup-config.cfg.partial
+  links:
+  - endpoints: ['Backhand:Ethernet0/1', 'Ace:Ethernet0/1']
+  - endpoints: ['Backhand:Ethernet0/2', 'Backspin:Ethernet0/1']
+  - endpoints: ['LiveMatch:Ethernet0/1', 'Ace:Ethernet0/2']
+  - endpoints: ['Backspin:Ethernet0/2', 'Alley:Ethernet0/1']
+  - endpoints: ['Ace:Ethernet0/3', 'Alley:Ethernet0/2']

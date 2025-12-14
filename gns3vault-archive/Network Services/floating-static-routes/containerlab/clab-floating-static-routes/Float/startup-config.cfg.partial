@@ -1,0 +1,26 @@
+!
+!
+!
+hostname Float
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.21.1 255.255.255.0
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Ethernet0/3
+ ip address 192.168.12.1 255.255.255.0
+ serial restart-delay 0
+ no shutdown
+!
+!
+!
+!
+end

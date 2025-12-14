@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R5
 !
 !
@@ -8,74 +9,51 @@ hostname R5
 !
 ip cef
 !
-interface Loopback0
- ip address 5.5.5.5 255.255.255.0
- ip ospf network point-to-point
+interface Ethernet0/2
+ ip address 192.168.45.5 255.255.255.0
+ half-duplex
+ mpls ip
  no shutdown
 !
-interface Loopback1
- ip address 55.55.55.55 255.255.255.0
+interface Ethernet0/3
+ ip vrf forwarding COCO
+ ip vrf sitemap SOO
+ ip address 192.168.57.5 255.255.255.0
+ half-duplex
  no shutdown
 !
 interface Ethernet0/4
-
- ip address 192.168.45.5 255.255.255.0
- no shutdown
+ ip vrf forwarding COCO
+ ip vrf sitemap SOO
+ ip address 192.168.58.5 255.255.255.0
  half-duplex
+ no shutdown
 !
 interface Ethernet0/5
-
- ip address 192.168.57.5 255.255.255.0
- no shutdown
+ ip vrf forwarding PALM
+ ip address 192.168.115.5 255.255.255.0
  half-duplex
+ no shutdown
 !
 interface Ethernet0/6
-
- ip address 192.168.58.5 255.255.255.0
- no shutdown
+ ip vrf forwarding MELON
+ ip address 192.168.125.5 255.255.255.0
  half-duplex
+ no shutdown
 !
 interface Ethernet0/7
-
- ip address 192.168.115.5 255.255.255.0
- no shutdown
- half-duplex
-!
-interface Ethernet0/8
-
+ ip vrf forwarding INTERNET
  ip address 192.168.105.5 255.255.255.0
+ half-duplex
  no shutdown
- half-duplex
 !
-interface Ethernet0/9
-
- no ip address
- shutdown
- half-duplex
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.0
+ ip ospf network point-to-point
 !
-interface Ethernet0/10
-
- no ip address
- shutdown
- half-duplex
-!
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback1
+ ip vrf forwarding MELON
+ ip address 55.55.55.55 255.255.255.255
 !
 !
 !

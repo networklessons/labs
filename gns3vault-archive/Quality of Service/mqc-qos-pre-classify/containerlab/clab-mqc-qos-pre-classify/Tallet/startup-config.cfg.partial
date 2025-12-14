@@ -1,0 +1,36 @@
+!
+!
+!
+hostname Tallet
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.23.2 255.255.255.0
+ duplex auto
+ speed auto
+ service-policy output PRIORITY
+ no shutdown
+!
+interface Tunnel1
+ ip address 192.168.24.2 255.255.255.0
+ ip ospf cost 500
+ qos pre-classify
+ tunnel source 192.168.23.2
+ tunnel destination 192.168.34.4
+ no shutdown
+!
+!
+!
+!
+end

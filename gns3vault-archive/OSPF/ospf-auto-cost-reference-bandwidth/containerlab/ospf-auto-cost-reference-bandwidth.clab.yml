@@ -1,35 +1,31 @@
 name: ospf-auto-cost-reference-bandwidth
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Amy:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Amy/startup-config.cfg.partial
-    Emily:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Emily/startup-config.cfg.partial
-    Mila:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
-      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Mila/startup-config.cfg.partial
     Selena:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.14
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Selena/startup-config.cfg.partial
+    Mila:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Mila/startup-config.cfg.partial
+    Emily:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Emily/startup-config.cfg.partial
+    Amy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ospf-auto-cost-reference-bandwidth/Amy/startup-config.cfg.partial
   links:
-
-   - endpoints: ['Amy:Ethernet0/1', 'Selena:Ethernet0/2']
-   - endpoints: ['Amy:Ethernet0/2', 'Emily:Ethernet0/3']
-   - endpoints: ['Amy:GigabitEthernet0/3', 'Mila:GigabitEthernet0/2']
-   - endpoints: ['Emily:Ethernet0/1', 'Mila:Ethernet0/1']
-   - endpoints: ['Emily:Ethernet0/2', 'Selena:Ethernet0/1']
-   - endpoints: ['Mila:GigabitEthernet0/3', 'Selena:GigabitEthernet0/3']
+  - endpoints: ['Selena:Ethernet0/2', 'Mila:Ethernet0/3']
+  - endpoints: ['Selena:Ethernet0/1', 'Amy:Ethernet0/1']
+  - endpoints: ['Mila:Ethernet0/2', 'Amy:Ethernet0/3']
+  - endpoints: ['Mila:Ethernet0/1', 'Emily:Ethernet0/1']
+  - endpoints: ['Emily:Ethernet0/3', 'Amy:Ethernet0/2']

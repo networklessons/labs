@@ -1,9 +1,7 @@
 name: ospf-summarization-discard-route
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
@@ -11,17 +9,16 @@ topology:
   nodes:
     Shapeir:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ospf-summarization-discard-route/Shapeir/startup-config.cfg.partial
-    Spielburg:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-ospf-summarization-discard-route/Spielburg/startup-config.cfg.partial
     Tarna:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ospf-summarization-discard-route/Tarna/startup-config.cfg.partial
+    Spielburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ospf-summarization-discard-route/Spielburg/startup-config.cfg.partial
   links:
-
-   - endpoints: ['Shapeir:Ethernet0/1', 'Spielburg:Ethernet0/1']
-   - endpoints: ['Shapeir:Ethernet0/2', 'Tarna:Ethernet0/1']
+  - endpoints: ['Shapeir:Ethernet0/1', 'Spielburg:Ethernet0/1']
+  - endpoints: ['Shapeir:Ethernet0/2', 'Tarna:Ethernet0/1']

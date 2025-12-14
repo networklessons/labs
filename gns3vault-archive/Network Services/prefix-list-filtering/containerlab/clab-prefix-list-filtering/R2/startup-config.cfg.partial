@@ -1,0 +1,102 @@
+!
+!
+!
+hostname R2
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 1.0.0.1 255.255.255.255
+!
+interface Loopback1
+ ip address 1.0.1.1 255.255.255.255
+!
+interface Loopback10
+ ip address 1.0.5.1 255.255.255.252
+!
+interface Loopback11
+ ip address 1.0.6.1 255.255.255.252
+!
+interface Loopback12
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Loopback13
+ ip address 192.168.2.1 255.255.255.0
+!
+interface Loopback14
+ ip address 192.168.3.1 255.255.255.0
+!
+interface Loopback15
+ ip address 192.168.4.1 255.255.255.0
+!
+interface Loopback16
+ ip address 192.168.5.1 255.255.255.128
+!
+interface Loopback17
+ ip address 192.168.6.1 255.255.255.192
+!
+interface Loopback18
+ ip address 192.168.7.1 255.255.255.224
+!
+interface Loopback19
+ ip address 192.168.8.1 255.255.255.240
+!
+interface Loopback2
+ ip address 1.0.2.1 255.255.255.255
+!
+interface Loopback20
+ ip address 192.168.9.1 255.255.255.248
+!
+interface Loopback21
+ ip address 2.0.0.1 255.255.255.0
+!
+interface Loopback22
+ ip address 2.0.1.1 255.255.255.0
+!
+interface Loopback23
+ ip address 2.0.2.1 255.255.255.128
+!
+interface Loopback24
+ ip address 2.0.3.1 255.255.255.192
+!
+interface Loopback25
+ ip address 2.128.0.1 255.255.128.0
+!
+interface Loopback26
+ ip address 2.192.0.1 255.255.192.0
+!
+interface Loopback3
+ ip address 1.0.3.1 255.255.255.255
+!
+interface Loopback4
+ ip address 172.16.1.1 255.255.255.0
+!
+interface Loopback5
+ ip address 172.16.2.1 255.255.255.0
+!
+interface Loopback6
+ ip address 172.16.3.1 255.255.255.0
+!
+interface Loopback7
+ ip address 172.16.4.1 255.255.255.0
+!
+interface Loopback8
+ ip address 172.16.5.1 255.255.255.0
+!
+interface Loopback9
+ ip address 1.0.4.1 255.255.255.252
+!
+!
+!
+!
+end

@@ -8,51 +8,15 @@ hostname Twist
 !
 !
 ip cef
-no ip domain lookup
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
-interface Ethernet0/0
+interface Ethernet0/2
  ip address 192.168.123.1 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 PASSWORD
+ ip ospf message-digest-key 2 md5 VAULT
  duplex auto
  speed auto
  no shutdown
-!
-no ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

@@ -1,0 +1,54 @@
+name: eigrp-troubleshooting
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-troubleshooting/R3/startup-config.cfg.partial
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-troubleshooting/R1/startup-config.cfg.partial
+    R6:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-troubleshooting/R6/startup-config.cfg.partial
+    R5:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-eigrp-troubleshooting/R5/startup-config.cfg.partial
+    R8:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-eigrp-troubleshooting/R8/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-eigrp-troubleshooting/R2/startup-config.cfg.partial
+    R7:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.160
+      startup-config: ./clab-eigrp-troubleshooting/R7/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.170
+      startup-config: ./clab-eigrp-troubleshooting/R4/startup-config.cfg.partial
+    br-eigrp-troubleshooting-1:
+      kind: bridge
+    br-eigrp-troubleshooting-2:
+      kind: bridge
+  links:
+  - endpoints: ['R3:Ethernet0/1', 'br-eigrp-troubleshooting-1:eth1']
+  - endpoints: ['R1:Ethernet0/2', 'br-eigrp-troubleshooting-1:eth2']
+  - endpoints: ['R2:Ethernet0/1', 'br-eigrp-troubleshooting-1:eth3']
+  - endpoints: ['R1:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth1']
+  - endpoints: ['R5:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth2']
+  - endpoints: ['R4:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth3']
+  - endpoints: ['R6:Ethernet0/2', 'R4:Ethernet0/2']
+  - endpoints: ['R5:Ethernet0/2', 'R8:Ethernet0/1']

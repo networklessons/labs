@@ -1,9 +1,7 @@
 name: ospf-totally-stub
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
@@ -11,12 +9,11 @@ topology:
   nodes:
     R1:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ospf-totally-stub/R1/startup-config.cfg.partial
     R2:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ospf-totally-stub/R2/startup-config.cfg.partial
   links:
-
-   - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
+  - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']

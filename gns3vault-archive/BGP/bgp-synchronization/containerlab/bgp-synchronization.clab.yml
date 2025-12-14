@@ -9,26 +9,26 @@ topology:
   nodes:
     Baldwin:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.131
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-synchronization/Baldwin/startup-config.cfg.partial
-    Foxx:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.208
-      startup-config: ./clab-bgp-synchronization/Foxx/startup-config.cfg.partial
-    Green:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.168
-      startup-config: ./clab-bgp-synchronization/Green/startup-config.cfg.partial
-    Mitchell:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.179
-      startup-config: ./clab-bgp-synchronization/Mitchell/startup-config.cfg.partial
     Rollins:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.197
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-synchronization/Rollins/startup-config.cfg.partial
+    Foxx:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-synchronization/Foxx/startup-config.cfg.partial
+    Mitchell:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-synchronization/Mitchell/startup-config.cfg.partial
+    Green:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-bgp-synchronization/Green/startup-config.cfg.partial
   links:
-  - endpoints: ["Baldwin:Ethernet0/1", "Foxx:Ethernet0/1"]
-  - endpoints: ["Foxx:Ethernet0/2", "Mitchell:Ethernet0/1"]
-  - endpoints: ["Green:Ethernet0/1", "Mitchell:Ethernet0/2"]
-  - endpoints: ["Green:Ethernet0/2", "Rollins:Ethernet0/1"]
+  - endpoints: ['Baldwin:Ethernet0/1', 'Foxx:Ethernet0/1']
+  - endpoints: ['Rollins:Ethernet0/1', 'Green:Ethernet0/2']
+  - endpoints: ['Foxx:Ethernet0/2', 'Mitchell:Ethernet0/1']
+  - endpoints: ['Mitchell:Ethernet0/2', 'Green:Ethernet0/1']

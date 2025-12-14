@@ -1,0 +1,24 @@
+name: ip-event-dampening
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Sprinkle:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ip-event-dampening/Sprinkle/startup-config.cfg.partial
+    Spray:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ip-event-dampening/Spray/startup-config.cfg.partial
+    Rinse:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ip-event-dampening/Rinse/startup-config.cfg.partial
+  links:
+  - endpoints: ['Sprinkle:Ethernet0/1', 'Spray:Ethernet0/1']
+  - endpoints: ['Spray:Ethernet0/2', 'Rinse:Ethernet0/1']

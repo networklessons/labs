@@ -1,0 +1,30 @@
+name: multicast-pim-dense-mode
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Tilburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-multicast-pim-dense-mode/Tilburg/startup-config.cfg.partial
+    Amsterdam:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-multicast-pim-dense-mode/Amsterdam/startup-config.cfg.partial
+    Utrecht:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-multicast-pim-dense-mode/Utrecht/startup-config.cfg.partial
+    Eindhoven:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-multicast-pim-dense-mode/Eindhoven/startup-config.cfg.partial
+  links:
+  - endpoints: ['Tilburg:Ethernet0/1', 'Amsterdam:Ethernet0/2']
+  - endpoints: ['Tilburg:Ethernet0/2', 'Utrecht:Ethernet0/1']
+  - endpoints: ['Amsterdam:Ethernet0/1', 'Eindhoven:Ethernet0/1']
+  - endpoints: ['Utrecht:Ethernet0/2', 'Eindhoven:Ethernet0/2']

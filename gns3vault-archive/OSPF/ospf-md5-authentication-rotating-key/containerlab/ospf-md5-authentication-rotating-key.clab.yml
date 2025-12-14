@@ -1,32 +1,27 @@
 name: ospf-md5-authentication-rotating-key
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Rotate:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-ospf-md5-authentication-rotating-key/Rotate/startup-config.cfg.partial
-    SW1:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-ospf-md5-authentication-rotating-key/SW1/startup-config.cfg.partial
-    Turn:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
-      startup-config: ./clab-ospf-md5-authentication-rotating-key/Turn/startup-config.cfg.partial
     Twist:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.14
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ospf-md5-authentication-rotating-key/Twist/startup-config.cfg.partial
+    Turn:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ospf-md5-authentication-rotating-key/Turn/startup-config.cfg.partial
+    Rotate:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ospf-md5-authentication-rotating-key/Rotate/startup-config.cfg.partial
+    br-ospf-md5-authentication-rotating-key-1:
+      kind: bridge
   links:
-
-   - endpoints: ['Rotate:Ethernet0/1', 'SW1:3']
-   - endpoints: ['SW1:1', 'Twist:Ethernet0/1']
-   - endpoints: ['SW1:2', 'Turn:Ethernet0/1']
+  - endpoints: ['Twist:Ethernet0/1', 'br-ospf-md5-authentication-rotating-key-1:eth1']
+  - endpoints: ['Turn:Ethernet0/1', 'br-ospf-md5-authentication-rotating-key-1:eth2']
+  - endpoints: ['Rotate:Ethernet0/1', 'br-ospf-md5-authentication-rotating-key-1:eth3']

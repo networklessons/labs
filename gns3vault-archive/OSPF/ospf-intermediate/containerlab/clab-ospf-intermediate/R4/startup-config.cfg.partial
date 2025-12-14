@@ -1,0 +1,48 @@
+!
+!
+!
+hostname R4
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.34.4 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 SAFE
+ ip ospf priority 200
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.24.4 255.255.255.0
+ ip ospf authentication
+ ip ospf authentication-key VAULT
+ ip ospf dead-interval 60
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Loopback0
+ ip address 4.4.4.4 255.255.255.0
+!
+interface Loopback10
+ ip address 172.16.0.1 255.255.255.0
+!
+interface Loopback11
+ ip address 172.16.1.1 255.255.255.0
+!
+interface Loopback12
+ ip address 172.16.2.1 255.255.255.0
+!
+interface Loopback13
+ ip address 172.16.3.1 255.255.255.0
+!
+!
+!
+!
+end

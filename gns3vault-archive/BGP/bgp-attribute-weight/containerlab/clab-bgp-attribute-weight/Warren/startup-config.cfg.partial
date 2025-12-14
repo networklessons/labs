@@ -1,0 +1,33 @@
+!
+!
+!
+hostname Warren
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.24.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+interface Loopback1
+ ip address 22.22.22.22 255.255.255.0
+!
+!
+!
+!
+end

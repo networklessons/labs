@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R12
 !
 !
@@ -8,42 +9,22 @@ hostname R12
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.125.12 255.255.255.0
+ half-duplex
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.122.12 255.255.255.0
+ ip ospf cost 100
+ half-duplex
+ no shutdown
+!
 interface Loopback0
  ip address 12.12.12.12 255.255.255.0
- no shutdown
 !
 interface Loopback1
  ip address 122.122.122.122 255.255.255.0
- no shutdown
-!
-interface Ethernet0/2
-
- ip address 192.168.125.12 255.255.255.0
- no shutdown
- half-duplex
-!
-interface Ethernet0/3
-
- ip address 192.168.122.12 255.255.255.0
- half-duplex
- no shutdown
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

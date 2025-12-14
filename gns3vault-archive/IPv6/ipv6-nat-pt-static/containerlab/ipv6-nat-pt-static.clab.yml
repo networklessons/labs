@@ -1,0 +1,35 @@
+name: ipv6-nat-pt-static
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Platinum:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ipv6-nat-pt-static/Platinum/startup-config.cfg.partial
+    Gold:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ipv6-nat-pt-static/Gold/startup-config.cfg.partial
+    Silver:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ipv6-nat-pt-static/Silver/startup-config.cfg.partial
+    Bronze:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ipv6-nat-pt-static/Bronze/startup-config.cfg.partial
+    NATPT:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-ipv6-nat-pt-static/NATPT/startup-config.cfg.partial
+    br-ipv6-nat-pt-static-1:
+      kind: bridge
+  links:
+  - endpoints: ['Platinum:Ethernet0/1', 'br-ipv6-nat-pt-static-1:eth1']
+  - endpoints: ['Bronze:Ethernet0/1', 'br-ipv6-nat-pt-static-1:eth2']
+  - endpoints: ['NATPT:Ethernet0/1', 'br-ipv6-nat-pt-static-1:eth3']

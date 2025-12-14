@@ -1,0 +1,40 @@
+!
+!
+!
+hostname SpokeB
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.34.3 255.255.255.0
+ ip pim dense-mode
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.123.3 255.255.255.0
+ ip pim dense-mode
+ encapsulation frame-relay
+ ip ospf network broadcast
+ ip ospf priority 0
+ serial restart-delay 0
+ frame-relay map ip 192.168.123.2 201 broadcast
+ no shutdown
+!
+interface Tunnel23
+ ip address 23.23.23.3 255.255.255.0
+ ip pim dense-mode
+ ip ospf cost 500
+ tunnel source 192.168.123.3
+ tunnel destination 192.168.123.2
+ no shutdown
+!
+!
+!
+!
+end

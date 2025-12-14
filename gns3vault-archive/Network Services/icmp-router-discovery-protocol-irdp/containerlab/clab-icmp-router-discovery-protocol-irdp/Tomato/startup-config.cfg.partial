@@ -1,0 +1,32 @@
+!
+!
+!
+hostname Tomato
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.123.3 255.255.255.0
+ ip irdp
+ ip irdp maxadvertinterval 4
+ ip irdp minadvertinterval 3
+ ip irdp holdtime 12
+ ip irdp address 192.168.123.3 200
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.34.3 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

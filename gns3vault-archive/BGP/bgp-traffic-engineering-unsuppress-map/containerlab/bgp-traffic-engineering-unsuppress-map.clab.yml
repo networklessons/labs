@@ -7,25 +7,24 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
+    Blob:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Blob/startup-config.cfg.partial
     Banshee:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.131
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Banshee/startup-config.cfg.partial
     Behemoth:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.163
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Behemoth/startup-config.cfg.partial
     BigFoot:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.218
+      mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/BigFoot/startup-config.cfg.partial
-    Blob:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.176
-      startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/Blob/startup-config.cfg.partial
   links:
-  - endpoints: ["Banshee:Ethernet0/1", "SW1:1"]
-  - endpoints: ["Banshee:Ethernet0/2", "Behemoth:Ethernet0/2"]
-  - endpoints: ["Behemoth:Ethernet0/1", "BigFoot:Ethernet0/2"]
-  - endpoints: ["Behemoth:Ethernet0/3", "Blob:Ethernet0/1"]
-  - endpoints: ["BigFoot:Ethernet0/1", "SW1:2"]
+  - endpoints: ['Blob:Ethernet0/1', 'Behemoth:Ethernet0/3']
+  - endpoints: ['Banshee:Ethernet0/1', 'BigFoot:Ethernet0/1']
+  - endpoints: ['Banshee:Ethernet0/2', 'Behemoth:Ethernet0/2']
+  - endpoints: ['Behemoth:Ethernet0/1', 'BigFoot:Ethernet0/2']

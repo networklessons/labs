@@ -7,29 +7,29 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Etari:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.173
-      startup-config: ./clab-bgp-communities-local-as/Etari/startup-config.cfg.partial
-    MacroZoft:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.247
-      startup-config: ./clab-bgp-communities-local-as/MacroZoft/startup-config.cfg.partial
-    Seega:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.137
-      startup-config: ./clab-bgp-communities-local-as/Seega/startup-config.cfg.partial
     Wintendo:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.247
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-communities-local-as/Wintendo/startup-config.cfg.partial
+    MacroZoft:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-communities-local-as/MacroZoft/startup-config.cfg.partial
     Zony:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.211
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-communities-local-as/Zony/startup-config.cfg.partial
+    Seega:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-communities-local-as/Seega/startup-config.cfg.partial
+    Etari:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-bgp-communities-local-as/Etari/startup-config.cfg.partial
   links:
-  - endpoints: ["Etari:Ethernet0/1", "MacroZoft:Ethernet0/3"]
-  - endpoints: ["Etari:Ethernet0/2", "Seega:Ethernet0/2"]
-  - endpoints: ["MacroZoft:Ethernet0/1", "Wintendo:Ethernet0/1"]
-  - endpoints: ["MacroZoft:Ethernet0/2", "Zony:Ethernet0/1"]
-  - endpoints: ["Seega:Ethernet0/1", "Zony:Ethernet0/2"]
+  - endpoints: ['Wintendo:Ethernet0/1', 'MacroZoft:Ethernet0/1']
+  - endpoints: ['MacroZoft:Ethernet0/2', 'Zony:Ethernet0/1']
+  - endpoints: ['MacroZoft:Ethernet0/3', 'Etari:Ethernet0/1']
+  - endpoints: ['Zony:Ethernet0/2', 'Seega:Ethernet0/1']
+  - endpoints: ['Seega:Ethernet0/2', 'Etari:Ethernet0/2']

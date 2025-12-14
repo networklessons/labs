@@ -7,25 +7,25 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
+    Jamaica:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-attribute-med/Jamaica/startup-config.cfg.partial
     Cuba:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.135
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-attribute-med/Cuba/startup-config.cfg.partial
     Haiti:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.173
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-attribute-med/Haiti/startup-config.cfg.partial
-    Jamaica:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.114
-      startup-config: ./clab-bgp-attribute-med/Jamaica/startup-config.cfg.partial
     Suriname:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.185
+      mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-attribute-med/Suriname/startup-config.cfg.partial
   links:
-  - endpoints: ["Cuba:Ethernet0/1", "Suriname:Ethernet0/2"]
-  - endpoints: ["Cuba:Ethernet0/2", "Haiti:Ethernet0/2"]
-  - endpoints: ["Cuba:Ethernet0/3", "Jamaica:Ethernet0/2"]
-  - endpoints: ["Haiti:Ethernet0/1", "Suriname:Ethernet0/1"]
-  - endpoints: ["Haiti:Ethernet0/3", "Jamaica:Ethernet0/1"]
+  - endpoints: ['Jamaica:Ethernet0/1', 'Haiti:Ethernet0/3']
+  - endpoints: ['Jamaica:Ethernet0/2', 'Cuba:Ethernet0/3']
+  - endpoints: ['Cuba:Ethernet0/1', 'Suriname:Ethernet0/2']
+  - endpoints: ['Cuba:Ethernet0/2', 'Haiti:Ethernet0/2']
+  - endpoints: ['Haiti:Ethernet0/1', 'Suriname:Ethernet0/1']

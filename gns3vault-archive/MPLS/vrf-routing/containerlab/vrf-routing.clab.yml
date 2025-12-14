@@ -9,11 +9,11 @@ topology:
   nodes:
     Chekov:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.10
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-vrf-routing/Chekov/startup-config.cfg.partial
     Sulu:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-vrf-routing/Sulu/startup-config.cfg.partial
   links:
-  - endpoints: ["Chekov:Ethernet0/1", "Sulu:Ethernet0/1"]
+  - endpoints: ['Chekov:Ethernet0/1', 'Sulu:Ethernet0/1']

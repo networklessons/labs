@@ -1,0 +1,19 @@
+!
+!
+!
+hostname ASW2
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.1.132 255.255.255.224
+ no shutdown
+!
+!
+!
+!
+end

@@ -1,0 +1,22 @@
+!
+!
+!
+hostname R3
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 7.7.7.3 254.0.0.0
+ no ip route-cache
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

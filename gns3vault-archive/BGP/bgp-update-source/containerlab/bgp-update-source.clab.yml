@@ -7,14 +7,14 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    King:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.191
-      startup-config: ./clab-bgp-update-source/King/startup-config.cfg.partial
     Kong:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.163
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-update-source/Kong/startup-config.cfg.partial
+    King:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-update-source/King/startup-config.cfg.partial
   links:
-  - endpoints: ["King:Ethernet0/1", "Kong:Ethernet0/1"]
-  - endpoints: ["King:Ethernet0/2", "Kong:Ethernet0/2"]
+  - endpoints: ['Kong:Ethernet0/1', 'King:Ethernet0/1']
+  - endpoints: ['Kong:Ethernet0/2', 'King:Ethernet0/2']

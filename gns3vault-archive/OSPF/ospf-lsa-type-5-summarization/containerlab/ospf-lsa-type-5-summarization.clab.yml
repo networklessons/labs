@@ -1,27 +1,24 @@
 name: ospf-lsa-type-5-summarization
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Harry:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-ospf-lsa-type-5-summarization/Harry/startup-config.cfg.partial
     Jack:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ospf-lsa-type-5-summarization/Jack/startup-config.cfg.partial
+    Harry:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ospf-lsa-type-5-summarization/Harry/startup-config.cfg.partial
     Sam:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-lsa-type-5-summarization/Sam/startup-config.cfg.partial
   links:
-
-   - endpoints: ['Harry:Ethernet0/1', 'Jack:Ethernet0/1']
-   - endpoints: ['Harry:Ethernet0/2', 'Sam:Ethernet0/1']
+  - endpoints: ['Jack:Ethernet0/1', 'Harry:Ethernet0/1']
+  - endpoints: ['Harry:Ethernet0/2', 'Sam:Ethernet0/1']

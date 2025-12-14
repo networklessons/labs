@@ -1,0 +1,43 @@
+!
+!
+!
+hostname R1
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ ip ospf cost 5000
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.145.1 255.255.255.0
+ ip ospf network broadcast
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+!
+interface Ethernet0/4
+ ip address 192.168.123.1 255.255.255.0
+ encapsulation frame-relay
+ ip ospf network broadcast
+ ip ospf priority 10
+ serial restart-delay 0
+ frame-relay map ip 192.168.123.2 102 broadcast
+ frame-relay map ip 192.168.123.3 103 broadcast
+ no frame-relay inverse-arp
+ no shutdown
+!
+!
+!
+!
+end

@@ -1,0 +1,34 @@
+name: multicast-tunneling
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Bravo:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-multicast-tunneling/Bravo/startup-config.cfg.partial
+    Charlie:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-multicast-tunneling/Charlie/startup-config.cfg.partial
+    Echo:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-multicast-tunneling/Echo/startup-config.cfg.partial
+    Alpha:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-multicast-tunneling/Alpha/startup-config.cfg.partial
+    Delta:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-multicast-tunneling/Delta/startup-config.cfg.partial
+  links:
+  - endpoints: ['Bravo:Ethernet0/1', 'Alpha:Ethernet0/1']
+  - endpoints: ['Bravo:Ethernet0/2', 'Charlie:Ethernet0/1']
+  - endpoints: ['Charlie:Ethernet0/2', 'Delta:Ethernet0/1']
+  - endpoints: ['Echo:Ethernet0/1', 'Delta:Ethernet0/2']

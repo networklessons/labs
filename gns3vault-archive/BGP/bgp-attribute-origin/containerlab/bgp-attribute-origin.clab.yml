@@ -7,18 +7,18 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Claiborne:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.133
-      startup-config: ./clab-bgp-attribute-origin/Claiborne/startup-config.cfg.partial
     Colorado:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.108
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-attribute-origin/Colorado/startup-config.cfg.partial
     Lonergan:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.227
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-attribute-origin/Lonergan/startup-config.cfg.partial
+    Claiborne:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-attribute-origin/Claiborne/startup-config.cfg.partial
   links:
-  - endpoints: ["Claiborne:Ethernet0/1", "Colorado:Ethernet0/2"]
-  - endpoints: ["Colorado:Ethernet0/1", "Lonergan:Ethernet0/1"]
+  - endpoints: ['Colorado:Ethernet0/1', 'Lonergan:Ethernet0/1']
+  - endpoints: ['Colorado:Ethernet0/2', 'Claiborne:Ethernet0/1']

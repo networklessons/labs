@@ -1,0 +1,27 @@
+!
+!
+!
+hostname Nessie
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.23.3 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+!
+interface Loopback1
+ ip address 33.33.33.33 255.255.255.0
+!
+!
+!
+!
+end

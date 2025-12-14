@@ -1,0 +1,42 @@
+name: vrrp-troubleshooting
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    i4_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-vrrp-troubleshooting/i4_startup-config/startup-config.cfg.partial
+    i6_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-vrrp-troubleshooting/i6_startup-config/startup-config.cfg.partial
+    i5_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-vrrp-troubleshooting/i5_startup-config/startup-config.cfg.partial
+    i7_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-vrrp-troubleshooting/i7_startup-config/startup-config.cfg.partial
+    i3_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-vrrp-troubleshooting/i3_startup-config/startup-config.cfg.partial
+    br-vrrp-troubleshooting-1:
+      kind: bridge
+    br-vrrp-troubleshooting-2:
+      kind: bridge
+  links:
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-1:eth1']
+  - endpoints: ['i6_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth2']
+  - endpoints: ['i5_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth3']
+  - endpoints: ['i7_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth4']
+  - endpoints: ['i6_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth1']
+  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth2']
+  - endpoints: ['i7_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth3']
+  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth4']

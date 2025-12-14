@@ -1,0 +1,33 @@
+name: multicast-pim-dr-election
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Picard:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-multicast-pim-dr-election/Picard/startup-config.cfg.partial
+    Spock:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-multicast-pim-dr-election/Spock/startup-config.cfg.partial
+    Kirk:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-multicast-pim-dr-election/Kirk/startup-config.cfg.partial
+    Scotty:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-multicast-pim-dr-election/Scotty/startup-config.cfg.partial
+    br-multicast-pim-dr-election-1:
+      kind: bridge
+  links:
+  - endpoints: ['Picard:Ethernet0/1', 'Spock:Ethernet0/1']
+  - endpoints: ['Picard:Ethernet0/2', 'Kirk:Ethernet0/1']
+  - endpoints: ['Spock:Ethernet0/2', 'br-multicast-pim-dr-election-1:eth1']
+  - endpoints: ['Kirk:Ethernet0/2', 'br-multicast-pim-dr-election-1:eth2']
+  - endpoints: ['Scotty:Ethernet0/1', 'br-multicast-pim-dr-election-1:eth3']

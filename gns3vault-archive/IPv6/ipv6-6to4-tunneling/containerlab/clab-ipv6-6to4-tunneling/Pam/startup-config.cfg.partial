@@ -1,0 +1,27 @@
+!
+!
+!
+hostname Pam
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 10.10.10.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 10.20.20.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

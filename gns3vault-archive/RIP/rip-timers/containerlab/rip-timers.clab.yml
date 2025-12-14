@@ -1,0 +1,25 @@
+name: rip-timers
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Hammer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-rip-timers/Hammer/startup-config.cfg.partial
+    Wrench:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-rip-timers/Wrench/startup-config.cfg.partial
+    Axe:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-rip-timers/Axe/startup-config.cfg.partial
+  links:
+  - endpoints: ['Hammer:Ethernet0/1', 'Axe:Ethernet0/1']
+  - endpoints: ['Hammer:Ethernet0/2', 'Wrench:Ethernet0/1']
+  - endpoints: ['Wrench:Ethernet0/2', 'Axe:Ethernet0/2']

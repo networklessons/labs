@@ -1,5 +1,6 @@
 !
 !
+!
 hostname Chekov
 !
 !
@@ -8,38 +9,26 @@ hostname Chekov
 !
 ip cef
 !
-interface Loopback0
- ip address 2.2.2.2 255.255.255.0
- no shutdown
-!
-interface Loopback1
- ip address 22.22.22.22 255.255.255.0
- no shutdown
-!
 interface Ethernet0/2
-
  ip address 192.168.12.2 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
+interface Loopback0
+ ip vrf forwarding CHEKOV
+ ip address 2.2.2.2 255.255.255.0
 !
-ip http server
-no ip http secure-server
+interface Loopback1
+ ip vrf forwarding CHEKOV
+ ip address 22.22.22.22 255.255.255.0
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Tunnel1
+ ip vrf forwarding CHEKOV
+ ip address 192.168.21.2 255.255.255.0
+ tunnel source Ethernet0/2
+ tunnel destination 192.168.12.1
+ no shutdown
 !
 !
 !

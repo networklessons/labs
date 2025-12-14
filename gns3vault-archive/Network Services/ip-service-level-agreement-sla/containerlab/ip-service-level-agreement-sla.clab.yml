@@ -1,0 +1,30 @@
+name: ip-service-level-agreement-sla
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Tomato:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ip-service-level-agreement-sla/Tomato/startup-config.cfg.partial
+    Pickle:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ip-service-level-agreement-sla/Pickle/startup-config.cfg.partial
+    Cucumber:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ip-service-level-agreement-sla/Cucumber/startup-config.cfg.partial
+    Lettuce:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ip-service-level-agreement-sla/Lettuce/startup-config.cfg.partial
+  links:
+  - endpoints: ['Tomato:Ethernet0/1', 'Cucumber:Ethernet0/2']
+  - endpoints: ['Tomato:Ethernet0/2', 'Pickle:Ethernet0/1']
+  - endpoints: ['Pickle:Ethernet0/2', 'Lettuce:Ethernet0/2']
+  - endpoints: ['Cucumber:Ethernet0/1', 'Lettuce:Ethernet0/1']

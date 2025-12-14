@@ -1,0 +1,22 @@
+!
+!
+!
+hostname R1
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ ip pim dense-mode
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

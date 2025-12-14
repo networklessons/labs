@@ -1,0 +1,24 @@
+name: odr-on-demand-routing
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Brussel:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-odr-on-demand-routing/Brussel/startup-config.cfg.partial
+    Amsterdam:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-odr-on-demand-routing/Amsterdam/startup-config.cfg.partial
+    Luxemburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-odr-on-demand-routing/Luxemburg/startup-config.cfg.partial
+  links:
+  - endpoints: ['Brussel:Ethernet0/1', 'Amsterdam:Ethernet0/1']
+  - endpoints: ['Amsterdam:Ethernet0/2', 'Luxemburg:Ethernet0/1']

@@ -9,75 +9,19 @@ hostname Cherry
 !
 ip cef
 !
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ shutdown
+ duplex auto
+ speed auto
 !
 interface Loopback0
  ip address 1.1.1.1 255.255.255.0
- no shutdown
 !
-interface Ethernet0/2
- ip address 192.168.12.1 255.255.255.0
- duplex auto
- speed auto
- no shutdown
-!
-interface Serial0/3
+interface Ethernet0/3
  ip address 192.168.13.1 255.255.255.0
  serial restart-delay 0
  no shutdown
-!
-interface Serial1/1
- no ip address
- shutdown
- serial restart-delay 0
-!
-interface Serial1/2
- no ip address
- shutdown
- serial restart-delay 0
-!
-interface Serial1/3
- no ip address
- shutdown
- serial restart-delay 0
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

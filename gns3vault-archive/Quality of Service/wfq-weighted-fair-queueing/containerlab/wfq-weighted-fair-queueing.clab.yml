@@ -1,0 +1,23 @@
+name: wfq-weighted-fair-queueing
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Silver:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-wfq-weighted-fair-queueing/Silver/startup-config.cfg.partial
+    Ada:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-wfq-weighted-fair-queueing/Ada/startup-config.cfg.partial
+    Rae:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-wfq-weighted-fair-queueing/Rae/startup-config.cfg.partial
+  links:
+  - endpoints: ['Silver:Ethernet0/1', 'Rae:Ethernet0/2']

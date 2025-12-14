@@ -8,34 +8,6 @@ hostname Sparta
 !
 !
 ip cef
-no ip domain lookup
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-! 
-!
-!
-!
-!
-interface Loopback0
- ip address 2.2.2.2 255.255.255.0
- no shutdown
 !
 interface Ethernet0/2
  ip address 192.168.123.2 255.255.255.0
@@ -49,42 +21,13 @@ interface Ethernet0/3
  speed auto
  no shutdown
 !
-interface Serial0/4
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+interface Ethernet0/4
  ip address 192.168.25.2 255.255.255.0
  serial restart-delay 0
  no shutdown
-!
-interface Serial2/1
- no ip address
- shutdown
- serial restart-delay 0
-!
-interface Serial2/2
- no ip address
- shutdown
- serial restart-delay 0
-!
-interface Serial2/3
- no ip address
- shutdown
- serial restart-delay 0
-!
-no ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

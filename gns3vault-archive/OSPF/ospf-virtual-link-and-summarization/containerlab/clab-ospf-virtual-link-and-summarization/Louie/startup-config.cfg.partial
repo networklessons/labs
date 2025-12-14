@@ -1,0 +1,33 @@
+!
+!
+!
+hostname Louie
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.23.3 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback10
+ ip address 172.16.0.1 255.255.255.0
+!
+interface Loopback11
+ ip address 172.16.1.1 255.255.255.0
+!
+interface Loopback12
+ ip address 172.16.2.1 255.255.255.0
+!
+interface Loopback13
+ ip address 172.16.3.1 255.255.255.0
+!
+!
+!
+!
+end

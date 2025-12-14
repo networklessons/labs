@@ -1,0 +1,26 @@
+name: ipv6-ospfv3
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Borg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ipv6-ospfv3/Borg/startup-config.cfg.partial
+    Romulan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ipv6-ospfv3/Romulan/startup-config.cfg.partial
+    Vulcan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ipv6-ospfv3/Vulcan/startup-config.cfg.partial
+    Klingon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ipv6-ospfv3/Klingon/startup-config.cfg.partial
+  links: []

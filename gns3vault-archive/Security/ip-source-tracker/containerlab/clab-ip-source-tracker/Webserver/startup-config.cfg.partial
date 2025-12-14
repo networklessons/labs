@@ -1,0 +1,21 @@
+!
+!
+!
+hostname Webserver
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.89.9 255.255.255.0
+ speed 100
+ full-duplex
+ no shutdown
+!
+!
+!
+!
+end

@@ -1,0 +1,28 @@
+!
+!
+!
+hostname R8
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.58.8 255.255.255.0
+ ip access-group 100 in
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 8.8.8.8 255.255.255.0
+!
+interface Loopback1
+ ip address 88.88.88.88 255.255.255.0
+!
+!
+!
+!
+end

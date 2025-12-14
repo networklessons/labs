@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R2
 !
 !
@@ -8,41 +9,23 @@ hostname R2
 !
 ip cef
 !
-interface Loopback0
- ip address 2.2.2.2 255.255.255.0
- no shutdown
-!
 interface Ethernet0/2
-
  ip address 192.168.23.2 255.255.255.0
  duplex auto
  speed auto
+ mpls ip
  no shutdown
 !
 interface Ethernet0/3
-
+ ip vrf forwarding CUSTOMER
  ip address 192.168.12.2 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+ ip ospf network point-to-point
 !
 !
 !

@@ -9,21 +9,21 @@ topology:
   nodes:
     NewYork:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.101
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-max-as-limit/NewYork/startup-config.cfg.partial
+    Tokio:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-max-as-limit/Tokio/startup-config.cfg.partial
     Shanghai:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.229
+      mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-bgp-max-as-limit/Shanghai/startup-config.cfg.partial
     Tilburg:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.237
+      mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-max-as-limit/Tilburg/startup-config.cfg.partial
-    Tokio:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.145
-      startup-config: ./clab-bgp-max-as-limit/Tokio/startup-config.cfg.partial
   links:
-  - endpoints: ["NewYork:Ethernet0/1", "Tilburg:Ethernet0/1"]
-  - endpoints: ["NewYork:Ethernet0/2", "Tokio:Ethernet0/1"]
-  - endpoints: ["Shanghai:Ethernet0/1", "Tilburg:Ethernet0/2"]
+  - endpoints: ['NewYork:Ethernet0/1', 'Tilburg:Ethernet0/1']
+  - endpoints: ['NewYork:Ethernet0/2', 'Tokio:Ethernet0/1']
+  - endpoints: ['Shanghai:Ethernet0/1', 'Tilburg:Ethernet0/2']

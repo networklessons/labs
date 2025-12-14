@@ -7,61 +7,61 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    R11:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.21
-      startup-config: ./clab-bgp-advanced/R11/startup-config.cfg.partial
-    R9:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.19
-      startup-config: ./clab-bgp-advanced/R9/startup-config.cfg.partial
-    R1:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-bgp-advanced/R1/startup-config.cfg.partial
-    R2:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-bgp-advanced/R2/startup-config.cfg.partial
     R3:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-advanced/R3/startup-config.cfg.partial
-    R4:
+    R1:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.14
-      startup-config: ./clab-bgp-advanced/R4/startup-config.cfg.partial
-    R5:
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-advanced/R1/startup-config.cfg.partial
+    R9:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.15
-      startup-config: ./clab-bgp-advanced/R5/startup-config.cfg.partial
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-advanced/R9/startup-config.cfg.partial
     R6:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.16
+      mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-advanced/R6/startup-config.cfg.partial
-    R7:
+    R5:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.17
-      startup-config: ./clab-bgp-advanced/R7/startup-config.cfg.partial
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-bgp-advanced/R5/startup-config.cfg.partial
     R8:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.18
+      mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-bgp-advanced/R8/startup-config.cfg.partial
+    R11:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.160
+      startup-config: ./clab-bgp-advanced/R11/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.170
+      startup-config: ./clab-bgp-advanced/R2/startup-config.cfg.partial
+    R7:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.180
+      startup-config: ./clab-bgp-advanced/R7/startup-config.cfg.partial
     R10:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.20
+      mgmt-ipv4: 10.65.97.190
       startup-config: ./clab-bgp-advanced/R10/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.200
+      startup-config: ./clab-bgp-advanced/R4/startup-config.cfg.partial
   links:
-  - endpoints: ["R1:Ethernet0/1", "R2:Ethernet0/1"]
-  - endpoints: ["R1:Ethernet0/2", "R3:Ethernet0/1"]
-  - endpoints: ["R10:Ethernet0/1", "R11:Ethernet0/2"]
-  - endpoints: ["R10:Ethernet0/2", "R9:Ethernet0/1"]
-  - endpoints: ["R11:Ethernet0/1", "R7:Ethernet0/2"]
-  - endpoints: ["R2:Ethernet0/2", "R4:Ethernet0/1"]
-  - endpoints: ["R3:Ethernet0/2", "R4:Ethernet0/2"]
-  - endpoints: ["R4:Ethernet0/3", "R5:Ethernet0/1"]
-  - endpoints: ["R4:Ethernet0/4", "R6:Ethernet0/1"]
-  - endpoints: ["R5:Ethernet0/2", "R8:Ethernet0/2"]
-  - endpoints: ["R5:Ethernet0/3", "R6:Ethernet0/3"]
-  - endpoints: ["R6:Ethernet0/2", "R7:Ethernet0/1"]
-  - endpoints: ["R8:Ethernet0/1", "R9:Ethernet0/2"]
+  - endpoints: ['R3:Ethernet0/1', 'R1:Ethernet0/2']
+  - endpoints: ['R3:Ethernet0/2', 'R4:Ethernet0/2']
+  - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
+  - endpoints: ['R9:Ethernet0/1', 'R10:Ethernet0/2']
+  - endpoints: ['R9:Ethernet0/2', 'R8:Ethernet0/1']
+  - endpoints: ['R6:Ethernet0/1', 'R4:Ethernet0/4']
+  - endpoints: ['R6:Ethernet0/2', 'R7:Ethernet0/1']
+  - endpoints: ['R6:Ethernet0/3', 'R5:Ethernet0/3']
+  - endpoints: ['R5:Ethernet0/1', 'R4:Ethernet0/3']
+  - endpoints: ['R5:Ethernet0/2', 'R8:Ethernet0/2']
+  - endpoints: ['R11:Ethernet0/1', 'R7:Ethernet0/2']
+  - endpoints: ['R11:Ethernet0/2', 'R10:Ethernet0/1']
+  - endpoints: ['R2:Ethernet0/2', 'R4:Ethernet0/1']

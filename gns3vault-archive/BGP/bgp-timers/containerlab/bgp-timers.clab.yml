@@ -9,11 +9,11 @@ topology:
   nodes:
     Kendrick:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.172
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-timers/Kendrick/startup-config.cfg.partial
     Scott:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.209
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-timers/Scott/startup-config.cfg.partial
   links:
-  - endpoints: ["Kendrick:Ethernet0/1", "Scott:Ethernet0/1"]
+  - endpoints: ['Kendrick:Ethernet0/1', 'Scott:Ethernet0/1']

@@ -1,0 +1,30 @@
+!
+!
+!
+hostname Spock
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ ip pim sparse-mode
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.234.2 255.255.255.0
+ ip pim dr-priority 200
+ ip pim sparse-mode
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

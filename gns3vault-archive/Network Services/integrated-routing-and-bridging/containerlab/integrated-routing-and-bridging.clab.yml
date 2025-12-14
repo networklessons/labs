@@ -1,0 +1,27 @@
+name: integrated-routing-and-bridging
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Thor:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-integrated-routing-and-bridging/Thor/startup-config.cfg.partial
+    Wodan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-integrated-routing-and-bridging/Wodan/startup-config.cfg.partial
+    Zeus:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-integrated-routing-and-bridging/Zeus/startup-config.cfg.partial
+    br-integrated-routing-and-bridging-1:
+      kind: bridge
+  links:
+  - endpoints: ['Thor:Ethernet0/1', 'br-integrated-routing-and-bridging-1:eth1']
+  - endpoints: ['Wodan:Ethernet0/1', 'br-integrated-routing-and-bridging-1:eth2']
+  - endpoints: ['Zeus:Ethernet0/1', 'br-integrated-routing-and-bridging-1:eth3']

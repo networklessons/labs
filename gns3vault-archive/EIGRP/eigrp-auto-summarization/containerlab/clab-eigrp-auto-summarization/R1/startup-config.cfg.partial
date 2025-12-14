@@ -1,0 +1,25 @@
+!
+!
+!
+hostname R1
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.1 255.255.255.0
+ ip summary-address eigrp 123 172.16.1.0 255.255.255.0 5
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 172.16.1.1 255.255.255.0
+!
+!
+!
+!
+end

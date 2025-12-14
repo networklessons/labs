@@ -1,0 +1,29 @@
+!
+!
+!
+hostname R2-show-run-2017-10-26-13-11-54-clean
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ bandwidth 100
+ ip address 192.168.12.2 255.255.255.0
+ ip authentication mode eigrp 1 md5
+ ip authentication key-chain eigrp 1 CISCO
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.24.2 255.255.255.0
+ no shutdown
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+!
+!
+!
+!
+end

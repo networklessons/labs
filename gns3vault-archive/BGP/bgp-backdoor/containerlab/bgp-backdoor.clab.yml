@@ -7,24 +7,24 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Diamonds:
+    R3:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.247
-      startup-config: ./clab-bgp-backdoor/Diamonds/startup-config.cfg.partial
-    Spades:
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-backdoor/R3/startup-config.cfg.partial
+    R1:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.126
-      startup-config: ./clab-bgp-backdoor/Spades/startup-config.cfg.partial
-    Hearts:
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-backdoor/R1/startup-config.cfg.partial
+    R2:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.194
-      startup-config: ./clab-bgp-backdoor/Hearts/startup-config.cfg.partial
-    Clubs:
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-backdoor/R2/startup-config.cfg.partial
+    R4:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.147
-      startup-config: ./clab-bgp-backdoor/Clubs/startup-config.cfg.partial
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-backdoor/R4/startup-config.cfg.partial
   links:
-  - endpoints: ["Diamonds:Ethernet0/1", "Hearts:Ethernet0/2"]
-  - endpoints: ["Diamonds:Ethernet0/2", "Spades:Ethernet0/1"]
-  - endpoints: ["Spades:Ethernet0/2", "Clubs:Ethernet0/2"]
-  - endpoints: ["Hearts:Ethernet0/1", "Clubs:Ethernet0/1"]
+  - endpoints: ['R3:Ethernet0/1', 'R4:Ethernet0/1']
+  - endpoints: ['R3:Ethernet0/2', 'R1:Ethernet0/2']
+  - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
+  - endpoints: ['R2:Ethernet0/2', 'R4:Ethernet0/2']

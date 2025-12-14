@@ -1,0 +1,34 @@
+!
+!
+!
+hostname i6_startup-config
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.56.5 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001:5::5/128
+ ipv6 ospf 1 area 0
+!
+interface Tunnel0
+ no ip address
+ no ip redirects
+ ipv6 address 2002:C0A8:3805::5/64
+ tunnel source Ethernet0/2
+ tunnel mode ipv6ip 6to4
+ no shutdown
+!
+!
+!
+!
+end

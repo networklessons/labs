@@ -1,0 +1,39 @@
+name: eigrp-neighbor-troubleshooting
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    i2_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-neighbor-troubleshooting/i2_startup-config/startup-config.cfg.partial
+    i4_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-neighbor-troubleshooting/i4_startup-config/startup-config.cfg.partial
+    i6_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-neighbor-troubleshooting/i6_startup-config/startup-config.cfg.partial
+    i5_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-eigrp-neighbor-troubleshooting/i5_startup-config/startup-config.cfg.partial
+    i7_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-eigrp-neighbor-troubleshooting/i7_startup-config/startup-config.cfg.partial
+    i3_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-eigrp-neighbor-troubleshooting/i3_startup-config/startup-config.cfg.partial
+  links:
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i5_startup-config:Ethernet0/2']
+  - endpoints: ['i2_startup-config:Ethernet0/2', 'i6_startup-config:Ethernet0/1']
+  - endpoints: ['i2_startup-config:Ethernet0/3', 'i3_startup-config:Ethernet0/1']
+  - endpoints: ['i4_startup-config:Ethernet0/1', 'i5_startup-config:Ethernet0/3']
+  - endpoints: ['i6_startup-config:Ethernet0/2', 'i7_startup-config:Ethernet0/2']

@@ -1,0 +1,46 @@
+name: bgp-attribute-local-preference
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Rodman:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-attribute-local-preference/Rodman/startup-config.cfg.partial
+    Hunisker:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-attribute-local-preference/Hunisker/startup-config.cfg.partial
+    Franklin:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-attribute-local-preference/Franklin/startup-config.cfg.partial
+    Pinto:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-bgp-attribute-local-preference/Pinto/startup-config.cfg.partial
+    Landon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-bgp-attribute-local-preference/Landon/startup-config.cfg.partial
+    Jacobs:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-bgp-attribute-local-preference/Jacobs/startup-config.cfg.partial
+    Franco:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.160
+      startup-config: ./clab-bgp-attribute-local-preference/Franco/startup-config.cfg.partial
+  links:
+  - endpoints: ['Rodman:Ethernet0/1', 'Landon:Ethernet0/1']
+  - endpoints: ['Rodman:Ethernet0/2', 'Franklin:Ethernet0/1']
+  - endpoints: ['Hunisker:Ethernet0/1', 'Landon:Ethernet0/2']
+  - endpoints: ['Hunisker:Ethernet0/2', 'Franklin:Ethernet0/2']
+  - endpoints: ['Hunisker:Ethernet0/3', 'Franco:Ethernet0/1']
+  - endpoints: ['Franklin:Ethernet0/3', 'Jacobs:Ethernet0/1']
+  - endpoints: ['Pinto:Ethernet0/1', 'Jacobs:Ethernet0/2']
+  - endpoints: ['Pinto:Ethernet0/2', 'Franco:Ethernet0/2']

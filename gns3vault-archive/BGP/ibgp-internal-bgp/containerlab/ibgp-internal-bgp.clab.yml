@@ -9,22 +9,22 @@ topology:
   nodes:
     Blossom:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.150
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-ibgp-internal-bgp/Blossom/startup-config.cfg.partial
-    Lily:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.212
-      startup-config: ./clab-ibgp-internal-bgp/Lily/startup-config.cfg.partial
     Rose:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.229
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-ibgp-internal-bgp/Rose/startup-config.cfg.partial
+    Lily:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ibgp-internal-bgp/Lily/startup-config.cfg.partial
     Tulip:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.137
+      mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ibgp-internal-bgp/Tulip/startup-config.cfg.partial
   links:
-  - endpoints: ["Blossom:Ethernet0/1", "Rose:Ethernet0/2"]
-  - endpoints: ["Blossom:Ethernet0/2", "Lily:Ethernet0/2"]
-  - endpoints: ["Lily:Ethernet0/1", "Tulip:Ethernet0/1"]
-  - endpoints: ["Rose:Ethernet0/1", "Tulip:Ethernet0/2"]
+  - endpoints: ['Blossom:Ethernet0/1', 'Rose:Ethernet0/2']
+  - endpoints: ['Blossom:Ethernet0/2', 'Lily:Ethernet0/2']
+  - endpoints: ['Rose:Ethernet0/1', 'Tulip:Ethernet0/2']
+  - endpoints: ['Lily:Ethernet0/1', 'Tulip:Ethernet0/1']

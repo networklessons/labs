@@ -1,0 +1,24 @@
+name: dynamic-access-list-lock-and-key
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Bulldog:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-dynamic-access-list-lock-and-key/Bulldog/startup-config.cfg.partial
+    Chihuahua:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-dynamic-access-list-lock-and-key/Chihuahua/startup-config.cfg.partial
+    ProtectMe:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-dynamic-access-list-lock-and-key/ProtectMe/startup-config.cfg.partial
+  links:
+  - endpoints: ['Bulldog:Ethernet0/1', 'Chihuahua:Ethernet0/1']
+  - endpoints: ['Bulldog:Ethernet0/2', 'ProtectMe:Ethernet0/1']

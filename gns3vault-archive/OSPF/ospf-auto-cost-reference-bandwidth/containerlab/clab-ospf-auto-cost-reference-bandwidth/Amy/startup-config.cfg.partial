@@ -1,93 +1,32 @@
 !
 !
-upgrade fpd auto
 !
 hostname Amy
 !
 !
-logging message-counter syslog
 !
-ip source-route
+!
+!
 ip cef
 !
-!
-!
-!
-no ipv6 cef
-!
-multilink bundle-name authenticated
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-archive
- log config
-  hidekeys
-! 
-!
-!
-!
-!
-!
-!
-!
-!
-interface Ethernet0/0
- no ip address
- duplex half
- no shutdown
-!
-interface GigabitEthernet0/4
- ip address 192.168.13.3 255.255.255.0
- negotiation auto
- no shutdown
-!
-interface Ethernet2/0
+interface Ethernet0/2
  ip address 192.168.34.3 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-interface Ethernet0/2
+interface Ethernet0/3
  ip address 192.168.23.3 255.255.255.0
  duplex auto
  speed auto
  no shutdown
 !
-ip forward-protocol nd
-no ip http server
-no ip http secure-server
+interface Ethernet0/4
+ ip address 192.168.13.3 255.255.255.0
+ negotiation auto
+ no shutdown
 !
 !
-!
-logging alarm informational
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-gatekeeper
- shutdown
 !
 !
 end

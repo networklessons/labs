@@ -1,0 +1,37 @@
+name: nat-tcp-load-balancing
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    WWW3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-nat-tcp-load-balancing/WWW3/startup-config.cfg.partial
+    WWW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-nat-tcp-load-balancing/WWW1/startup-config.cfg.partial
+    WWW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-nat-tcp-load-balancing/WWW2/startup-config.cfg.partial
+    Host:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-nat-tcp-load-balancing/Host/startup-config.cfg.partial
+    NAT:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-nat-tcp-load-balancing/NAT/startup-config.cfg.partial
+    br-nat-tcp-load-balancing-1:
+      kind: bridge
+  links:
+  - endpoints: ['WWW3:Ethernet0/1', 'br-nat-tcp-load-balancing-1:eth1']
+  - endpoints: ['WWW1:Ethernet0/1', 'br-nat-tcp-load-balancing-1:eth2']
+  - endpoints: ['WWW2:Ethernet0/1', 'br-nat-tcp-load-balancing-1:eth3']
+  - endpoints: ['NAT:Ethernet0/1', 'br-nat-tcp-load-balancing-1:eth4']
+  - endpoints: ['Host:Ethernet0/1', 'NAT:Ethernet0/2']

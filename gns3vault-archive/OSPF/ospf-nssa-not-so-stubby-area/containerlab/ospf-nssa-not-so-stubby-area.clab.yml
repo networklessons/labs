@@ -1,27 +1,24 @@
 name: ospf-nssa-not-so-stubby-area
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    R1:
+    Thor:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-ospf-nssa-not-so-stubby-area/R1/startup-config.cfg.partial
-    R2:
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ospf-nssa-not-so-stubby-area/Thor/startup-config.cfg.partial
+    Wodan:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-ospf-nssa-not-so-stubby-area/R2/startup-config.cfg.partial
-    R3:
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ospf-nssa-not-so-stubby-area/Wodan/startup-config.cfg.partial
+    Zeus:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.13
-      startup-config: ./clab-ospf-nssa-not-so-stubby-area/R3/startup-config.cfg.partial
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ospf-nssa-not-so-stubby-area/Zeus/startup-config.cfg.partial
   links:
-
-   - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
-   - endpoints: ['R1:Ethernet0/2', 'R3:Ethernet0/1']
+  - endpoints: ['Thor:Ethernet0/1', 'Wodan:Ethernet0/2']
+  - endpoints: ['Wodan:Ethernet0/1', 'Zeus:Ethernet0/1']

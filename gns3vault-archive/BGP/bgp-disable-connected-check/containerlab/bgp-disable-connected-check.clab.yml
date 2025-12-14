@@ -7,14 +7,14 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Flush:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.240
-      startup-config: ./clab-bgp-disable-connected-check/Flush/startup-config.cfg.partial
     Straight:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.242
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-disable-connected-check/Straight/startup-config.cfg.partial
+    Flush:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-disable-connected-check/Flush/startup-config.cfg.partial
   links:
-  - endpoints: ["Flush:Ethernet0/1", "Straight:Ethernet0/1"]
-  - endpoints: ["Flush:Ethernet0/2", "Straight:Ethernet0/2"]
+  - endpoints: ['Straight:Ethernet0/1', 'Flush:Ethernet0/1']
+  - endpoints: ['Straight:Ethernet0/2', 'Flush:Ethernet0/2']

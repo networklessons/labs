@@ -7,13 +7,13 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Ping:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.118
-      startup-config: ./clab-bgp-ebgp-multihop/Ping/startup-config.cfg.partial
     Pong:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.175
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-ebgp-multihop/Pong/startup-config.cfg.partial
+    Ping:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-ebgp-multihop/Ping/startup-config.cfg.partial
   links:
-  - endpoints: ["Ping:Ethernet0/1", "Pong:Ethernet0/1"]
+  - endpoints: ['Pong:Ethernet0/1', 'Ping:Ethernet0/1']

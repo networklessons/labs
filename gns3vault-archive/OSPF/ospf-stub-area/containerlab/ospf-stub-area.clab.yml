@@ -1,22 +1,19 @@
 name: ospf-stub-area
-
 mgmt:
   network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
-
 topology:
   kinds:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    R1:
+    Algrim:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-ospf-stub-area/R1/startup-config.cfg.partial
-    R2:
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ospf-stub-area/Algrim/startup-config.cfg.partial
+    Barik:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-ospf-stub-area/R2/startup-config.cfg.partial
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ospf-stub-area/Barik/startup-config.cfg.partial
   links:
-
-   - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
+  - endpoints: ['Algrim:Ethernet0/1', 'Barik:Ethernet0/1']

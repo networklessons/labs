@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R9
 !
 !
@@ -8,36 +9,16 @@ hostname R9
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 192.168.39.9 255.255.255.0
+ half-duplex
+ no shutdown
+!
 interface Loopback0
  ip address 9.9.9.9 255.255.255.0
- no shutdown
 !
 interface Loopback1
  ip address 99.99.99.99 255.255.255.0
- no shutdown
-!
-interface Ethernet0/2
-
- ip address 192.168.39.9 255.255.255.0
- no shutdown
- half-duplex
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
 !
 !
 !

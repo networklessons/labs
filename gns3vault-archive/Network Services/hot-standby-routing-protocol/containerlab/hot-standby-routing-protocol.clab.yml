@@ -1,0 +1,42 @@
+name: hot-standby-routing-protocol
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-hot-standby-routing-protocol/NewYork/startup-config.cfg.partial
+    Host:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-hot-standby-routing-protocol/Host/startup-config.cfg.partial
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-hot-standby-routing-protocol/ISP/startup-config.cfg.partial
+    NewJersey:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-hot-standby-routing-protocol/NewJersey/startup-config.cfg.partial
+    LA:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-hot-standby-routing-protocol/LA/startup-config.cfg.partial
+    br-hot-standby-routing-protocol-1:
+      kind: bridge
+    br-hot-standby-routing-protocol-2:
+      kind: bridge
+  links:
+  - endpoints: ['NewYork:Ethernet0/1', 'br-hot-standby-routing-protocol-1:eth1']
+  - endpoints: ['Host:Ethernet0/1', 'br-hot-standby-routing-protocol-1:eth2']
+  - endpoints: ['NewJersey:Ethernet0/1', 'br-hot-standby-routing-protocol-1:eth3']
+  - endpoints: ['LA:Ethernet0/1', 'br-hot-standby-routing-protocol-1:eth4']
+  - endpoints: ['NewYork:Ethernet0/2', 'br-hot-standby-routing-protocol-2:eth1']
+  - endpoints: ['ISP:Ethernet0/1', 'br-hot-standby-routing-protocol-2:eth2']
+  - endpoints: ['NewJersey:Ethernet0/2', 'br-hot-standby-routing-protocol-2:eth3']
+  - endpoints: ['LA:Ethernet0/2', 'br-hot-standby-routing-protocol-2:eth4']

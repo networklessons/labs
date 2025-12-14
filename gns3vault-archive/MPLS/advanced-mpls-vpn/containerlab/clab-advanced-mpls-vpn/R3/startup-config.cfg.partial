@@ -1,5 +1,6 @@
 !
 !
+!
 hostname R3
 !
 !
@@ -8,67 +9,44 @@ hostname R3
 !
 ip cef
 !
-interface Loopback0
- ip address 3.3.3.3 255.255.255.0
- no shutdown
-!
-interface Loopback1
- ip address 33.33.33.33 255.255.255.0
+interface Ethernet0/2
+ ip address 192.168.34.3 255.255.255.0
+ half-duplex
+ mpls ip
  no shutdown
 !
 interface Ethernet0/3
-
- ip address 192.168.34.3 255.255.255.0
- no shutdown
+ ip vrf forwarding CENTRALSERVER
+ ip address 192.168.39.3 255.255.255.0
  half-duplex
+ no shutdown
 !
 interface Ethernet0/4
-
- ip address 192.168.39.3 255.255.255.0
- no shutdown
+ ip vrf forwarding PALM
+ ip address 192.168.13.3 255.255.255.0
  half-duplex
+ no shutdown
 !
 interface Ethernet0/5
-
- ip address 192.168.13.3 255.255.255.0
- no shutdown
+ ip vrf forwarding MELON
+ ip address 192.168.23.3 255.255.255.0
  half-duplex
+ no shutdown
 !
 interface Ethernet0/6
-
- no ip address
+ ip vrf forwarding COCO
+ ip vrf sitemap SOO
+ ip address 192.168.36.3 255.255.255.0
  half-duplex
  no shutdown
 !
-interface Ethernet0/7
-
- no ip address
- shutdown
- half-duplex
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+ ip ospf network point-to-point
 !
-interface Ethernet0/8
-
- no ip address
- shutdown
- half-duplex
-!
-!
-ip http server
-no ip http secure-server
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
-!
+interface Loopback1
+ ip vrf forwarding MELON
+ ip address 33.33.33.33 255.255.255.255
 !
 !
 !

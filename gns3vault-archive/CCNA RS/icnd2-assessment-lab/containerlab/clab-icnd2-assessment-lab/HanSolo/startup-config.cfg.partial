@@ -1,0 +1,43 @@
+!
+!
+!
+hostname HanSolo
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+!
+interface Loopback1
+ ip address 172.16.2.1 255.255.255.0
+!
+interface Ethernet0/2
+ ip address 192.168.23.3 255.255.255.0
+ encapsulation ppp
+ ip ospf authentication
+ ip ospf authentication-key VAULT
+ ip ospf message-digest-key 1 md5 VAULT
+ ip ospf hello-interval 6
+ serial restart-delay 0
+ ppp authentication chap
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.13.3 255.255.255.0
+ ip authentication mode eigrp 1 md5
+ ip authentication key-chain eigrp 1 VAULT
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 VAULT
+ ip ospf cost 500
+ ip ospf hello-interval 6
+ serial restart-delay 0
+ no shutdown
+!
+!
+!
+!
+end

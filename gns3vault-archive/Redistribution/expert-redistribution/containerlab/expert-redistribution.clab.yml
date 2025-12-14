@@ -1,0 +1,58 @@
+name: expert-redistribution
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    i9_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-expert-redistribution/i9_startup-config/startup-config.cfg.partial
+    i6_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-expert-redistribution/i6_startup-config/startup-config.cfg.partial
+    i10_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-expert-redistribution/i10_startup-config/startup-config.cfg.partial
+    i5_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-expert-redistribution/i5_startup-config/startup-config.cfg.partial
+    i8_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-expert-redistribution/i8_startup-config/startup-config.cfg.partial
+    i7_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-expert-redistribution/i7_startup-config/startup-config.cfg.partial
+    i11_startup-config:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.160
+      startup-config: ./clab-expert-redistribution/i11_startup-config/startup-config.cfg.partial
+    br-expert-redistribution-1:
+      kind: bridge
+    br-expert-redistribution-2:
+      kind: bridge
+    br-expert-redistribution-3:
+      kind: bridge
+    br-expert-redistribution-4:
+      kind: bridge
+  links:
+  - endpoints: ['i9_startup-config:Ethernet0/1', 'br-expert-redistribution-1:eth1']
+  - endpoints: ['i10_startup-config:Ethernet0/1', 'br-expert-redistribution-1:eth2']
+  - endpoints: ['i7_startup-config:Ethernet0/2', 'br-expert-redistribution-1:eth3']
+  - endpoints: ['i9_startup-config:Ethernet0/2', 'br-expert-redistribution-2:eth1']
+  - endpoints: ['i8_startup-config:Ethernet0/1', 'br-expert-redistribution-2:eth2']
+  - endpoints: ['i11_startup-config:Ethernet0/1', 'br-expert-redistribution-2:eth3']
+  - endpoints: ['i6_startup-config:Ethernet0/1', 'br-expert-redistribution-3:eth1']
+  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-expert-redistribution-3:eth2']
+  - endpoints: ['i7_startup-config:Ethernet0/1', 'br-expert-redistribution-3:eth3']
+  - endpoints: ['i6_startup-config:Ethernet0/2', 'br-expert-redistribution-4:eth1']
+  - endpoints: ['i8_startup-config:Ethernet0/2', 'br-expert-redistribution-4:eth2']
+  - endpoints: ['i7_startup-config:Ethernet0/3', 'br-expert-redistribution-4:eth3']

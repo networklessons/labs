@@ -1,0 +1,54 @@
+name: ip-source-tracker
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Sleepy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ip-source-tracker/Sleepy/startup-config.cfg.partial
+    Happy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ip-source-tracker/Happy/startup-config.cfg.partial
+    Doc:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ip-source-tracker/Doc/startup-config.cfg.partial
+    Dopey:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-ip-source-tracker/Dopey/startup-config.cfg.partial
+    Sneezy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-ip-source-tracker/Sneezy/startup-config.cfg.partial
+    Attacker:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.150
+      startup-config: ./clab-ip-source-tracker/Attacker/startup-config.cfg.partial
+    Webserver:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.160
+      startup-config: ./clab-ip-source-tracker/Webserver/startup-config.cfg.partial
+    Grumpy:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.170
+      startup-config: ./clab-ip-source-tracker/Grumpy/startup-config.cfg.partial
+    Bashful:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.180
+      startup-config: ./clab-ip-source-tracker/Bashful/startup-config.cfg.partial
+  links:
+  - endpoints: ['Sleepy:Ethernet0/1', 'Bashful:Ethernet0/1']
+  - endpoints: ['Happy:Ethernet0/1', 'Doc:Ethernet0/1']
+  - endpoints: ['Happy:Ethernet0/2', 'Dopey:Ethernet0/1']
+  - endpoints: ['Happy:Ethernet0/3', 'Grumpy:Ethernet0/2']
+  - endpoints: ['Dopey:Ethernet0/2', 'Attacker:Ethernet0/1']
+  - endpoints: ['Sneezy:Ethernet0/1', 'Bashful:Ethernet0/2']
+  - endpoints: ['Webserver:Ethernet0/1', 'Grumpy:Ethernet0/3']
+  - endpoints: ['Grumpy:Ethernet0/1', 'Bashful:Ethernet0/3']

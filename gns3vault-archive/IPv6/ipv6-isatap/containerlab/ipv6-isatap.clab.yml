@@ -1,0 +1,24 @@
+name: ipv6-isatap
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    ISATAPClient:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-ipv6-isatap/ISATAPClient/startup-config.cfg.partial
+    MiddleMan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-ipv6-isatap/MiddleMan/startup-config.cfg.partial
+    ISATAPRouter:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-ipv6-isatap/ISATAPRouter/startup-config.cfg.partial
+  links:
+  - endpoints: ['ISATAPClient:Ethernet0/1', 'MiddleMan:Ethernet0/2']
+  - endpoints: ['MiddleMan:Ethernet0/1', 'ISATAPRouter:Ethernet0/1']

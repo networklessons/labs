@@ -1,0 +1,24 @@
+name: reflexive-access-list
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Catch:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-reflexive-access-list/Catch/startup-config.cfg.partial
+    Mirror:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-reflexive-access-list/Mirror/startup-config.cfg.partial
+    Flash:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-reflexive-access-list/Flash/startup-config.cfg.partial
+  links:
+  - endpoints: ['Catch:Ethernet0/1', 'Mirror:Ethernet0/1']
+  - endpoints: ['Mirror:Ethernet0/2', 'Flash:Ethernet0/1']

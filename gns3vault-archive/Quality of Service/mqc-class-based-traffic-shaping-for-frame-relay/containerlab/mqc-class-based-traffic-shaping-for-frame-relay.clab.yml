@@ -1,0 +1,29 @@
+name: mqc-class-based-traffic-shaping-for-frame-relay
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Quall:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-mqc-class-based-traffic-shaping-for-frame-relay/Quall/startup-config.cfg.partial
+    Jack:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-mqc-class-based-traffic-shaping-for-frame-relay/Jack/startup-config.cfg.partial
+    Kos:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-mqc-class-based-traffic-shaping-for-frame-relay/Kos/startup-config.cfg.partial
+    James:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-mqc-class-based-traffic-shaping-for-frame-relay/James/startup-config.cfg.partial
+  links:
+  - endpoints: ['Quall:Ethernet0/1', 'Jack:Ethernet0/1']
+  - endpoints: ['Quall:Ethernet0/2', 'Kos:Ethernet0/2']
+  - endpoints: ['Kos:Ethernet0/1', 'James:Ethernet0/1']

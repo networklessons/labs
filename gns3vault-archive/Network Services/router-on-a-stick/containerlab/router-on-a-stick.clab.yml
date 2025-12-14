@@ -1,0 +1,24 @@
+name: router-on-a-stick
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Hadley:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-router-on-a-stick/Hadley/startup-config.cfg.partial
+    Sam:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-router-on-a-stick/Sam/startup-config.cfg.partial
+    John:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-router-on-a-stick/John/startup-config.cfg.partial
+  links:
+  - endpoints: ['Hadley:Ethernet0/1', 'Sam:Ethernet0/2']
+  - endpoints: ['Sam:Ethernet0/1', 'John:Ethernet0/1']

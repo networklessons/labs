@@ -1,0 +1,39 @@
+!
+!
+!
+hostname Bird
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.56.5 255.255.255.0
+ ip ospf authentication
+ ip ospf authentication-key VAULT
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.45.5 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 5.5.5.5 255.255.255.0
+!
+interface Ethernet0/4
+ ip address 192.168.65.5 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 GNS3VAULT
+ serial restart-delay 0
+ no shutdown
+!
+!
+!
+!
+end

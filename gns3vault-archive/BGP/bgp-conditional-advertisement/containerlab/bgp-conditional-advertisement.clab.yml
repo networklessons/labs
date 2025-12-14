@@ -7,18 +7,18 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    Pegasus:
+    i2_startup-config:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.197
-      startup-config: ./clab-bgp-conditional-advertisement/Pegasus/startup-config.cfg.partial
-    Phoenix:
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-bgp-conditional-advertisement/i2_startup-config/startup-config.cfg.partial
+    i1_startup-config:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.163
-      startup-config: ./clab-bgp-conditional-advertisement/Phoenix/startup-config.cfg.partial
-    Pixie:
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-bgp-conditional-advertisement/i1_startup-config/startup-config.cfg.partial
+    i3_startup-config:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.176
-      startup-config: ./clab-bgp-conditional-advertisement/Pixie/startup-config.cfg.partial
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-conditional-advertisement/i3_startup-config/startup-config.cfg.partial
   links:
-  - endpoints: ["Pegasus:Ethernet0/1", "Phoenix:Ethernet0/1"]
-  - endpoints: ["Pegasus:Ethernet0/2", "Pixie:Ethernet0/1"]
+  - endpoints: ['i2_startup-config:Ethernet0/1', 'i1_startup-config:Ethernet0/1']
+  - endpoints: ['i1_startup-config:Ethernet0/2', 'i3_startup-config:Ethernet0/1']

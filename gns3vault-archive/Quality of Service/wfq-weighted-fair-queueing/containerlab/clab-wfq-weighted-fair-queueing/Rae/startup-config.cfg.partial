@@ -1,0 +1,30 @@
+!
+!
+!
+hostname Rae
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ serial restart-delay 0
+ no shutdown
+!
+interface Ethernet0/3
+ bandwidth 64
+ ip address 192.168.23.2 255.255.255.0
+ tx-ring-limit 1
+ tx-queue-limit 1
+ serial restart-delay 0
+ fair-queue 16 128 4
+ hold-queue 128 out
+ no shutdown
+!
+!
+!
+!
+end

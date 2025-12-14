@@ -1,0 +1,32 @@
+name: nat-pat-overload
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    WWW:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-nat-pat-overload/WWW/startup-config.cfg.partial
+    Emma:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-nat-pat-overload/Emma/startup-config.cfg.partial
+    PAT:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-nat-pat-overload/PAT/startup-config.cfg.partial
+    Alice:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-nat-pat-overload/Alice/startup-config.cfg.partial
+    br-nat-pat-overload-1:
+      kind: bridge
+  links:
+  - endpoints: ['WWW:Ethernet0/1', 'PAT:Ethernet0/1']
+  - endpoints: ['Emma:Ethernet0/1', 'br-nat-pat-overload-1:eth1']
+  - endpoints: ['PAT:Ethernet0/2', 'br-nat-pat-overload-1:eth2']
+  - endpoints: ['Alice:Ethernet0/1', 'br-nat-pat-overload-1:eth3']

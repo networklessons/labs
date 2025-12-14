@@ -9,16 +9,16 @@ topology:
   nodes:
     Luigi:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.170
+      mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-bgp-communities-delete-and-additive/Luigi/startup-config.cfg.partial
-    Mario:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.214
-      startup-config: ./clab-bgp-communities-delete-and-additive/Mario/startup-config.cfg.partial
     Toad:
       kind: cisco_iol
-      mgmt-ipv4: 10.65.97.241
+      mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-bgp-communities-delete-and-additive/Toad/startup-config.cfg.partial
+    Mario:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-bgp-communities-delete-and-additive/Mario/startup-config.cfg.partial
   links:
-  - endpoints: ["Luigi:Ethernet0/1", "Toad:Ethernet0/2"]
-  - endpoints: ["Mario:Ethernet0/1", "Toad:Ethernet0/1"]
+  - endpoints: ['Luigi:Ethernet0/1', 'Toad:Ethernet0/2']
+  - endpoints: ['Toad:Ethernet0/1', 'Mario:Ethernet0/1']

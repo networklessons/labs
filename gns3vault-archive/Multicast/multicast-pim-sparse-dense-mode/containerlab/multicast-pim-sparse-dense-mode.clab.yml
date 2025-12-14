@@ -1,0 +1,29 @@
+name: multicast-pim-sparse-dense-mode
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    Drill:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-multicast-pim-sparse-dense-mode/Drill/startup-config.cfg.partial
+    Orangutan:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-multicast-pim-sparse-dense-mode/Orangutan/startup-config.cfg.partial
+    Chimpanzee:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-multicast-pim-sparse-dense-mode/Chimpanzee/startup-config.cfg.partial
+    Gibbon:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-multicast-pim-sparse-dense-mode/Gibbon/startup-config.cfg.partial
+  links:
+  - endpoints: ['Drill:Ethernet0/1', 'Gibbon:Ethernet0/2']
+  - endpoints: ['Orangutan:Ethernet0/1', 'Chimpanzee:Ethernet0/1']
+  - endpoints: ['Chimpanzee:Ethernet0/2', 'Gibbon:Ethernet0/1']

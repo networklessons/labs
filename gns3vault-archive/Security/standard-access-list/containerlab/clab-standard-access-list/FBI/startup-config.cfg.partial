@@ -1,0 +1,38 @@
+!
+!
+!
+hostname FBI
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.12.2 255.255.255.0
+ ip access-group 1 in
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.23.2 255.255.255.0
+ ip access-group 1 in
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.254.0
+!
+interface Loopback1
+ ip address 22.22.22.22 255.255.255.252
+!
+interface Loopback2
+ ip address 222.222.222.222 255.255.248.0
+!
+!
+!
+!
+end

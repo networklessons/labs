@@ -1,0 +1,35 @@
+!
+!
+!
+hostname Barcelona
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ bandwidth 100
+ ip address 192.168.13.3 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 Safe
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.23.3 255.255.255.0
+ ip ospf hello-interval 5
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+ ip ospf network point-to-point
+!
+!
+!
+!
+end
