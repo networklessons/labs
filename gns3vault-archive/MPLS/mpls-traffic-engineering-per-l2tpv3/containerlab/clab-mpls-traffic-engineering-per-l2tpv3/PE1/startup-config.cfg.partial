@@ -1,0 +1,64 @@
+!
+!
+hostname PE1
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.0
+ no shutdown
+!
+interface Ethernet0/2
+
+ no ip address
+ speed 100
+ full-duplex
+ no shutdown
+!
+interface Ethernet0/3
+
+ no ip address
+ speed 100
+ full-duplex
+ no shutdown
+!
+interface Ethernet0/4
+
+ ip address 192.168.34.3 255.255.255.0
+ speed 100
+ full-duplex
+ no shutdown
+!
+interface Ethernet0/5
+
+ ip address 192.168.36.3 255.255.255.0
+ speed 100
+ full-duplex
+ no shutdown
+!
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+end
