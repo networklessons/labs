@@ -7,36 +7,52 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    i4_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-hsrp-troubleshooting/i4_startup-config/startup-config.cfg.partial
-    i6_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-hsrp-troubleshooting/i6_startup-config/startup-config.cfg.partial
-    i5_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-hsrp-troubleshooting/i5_startup-config/startup-config.cfg.partial
-    i7_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-hsrp-troubleshooting/i7_startup-config/startup-config.cfg.partial
-    i3_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-hsrp-troubleshooting/i3_startup-config/startup-config.cfg.partial
     br-hsrp-troubleshooting-1:
       kind: bridge
     br-hsrp-troubleshooting-2:
       kind: bridge
+    LA:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-hsrp-troubleshooting/LA/startup-config.cfg.partial
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-hsrp-troubleshooting/NewYork/startup-config.cfg.partial
+    NewJersey:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-hsrp-troubleshooting/NewJersey/startup-config.cfg.partial
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-hsrp-troubleshooting/ISP/startup-config.cfg.partial
+    Host:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-hsrp-troubleshooting/Host/startup-config.cfg.partial
   links:
-  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-hsrp-troubleshooting-1:eth1']
-  - endpoints: ['i6_startup-config:Ethernet0/1', 'br-hsrp-troubleshooting-1:eth2']
-  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-hsrp-troubleshooting-1:eth3']
-  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-hsrp-troubleshooting-1:eth4']
-  - endpoints: ['i4_startup-config:Ethernet0/2', 'br-hsrp-troubleshooting-2:eth1']
-  - endpoints: ['i6_startup-config:Ethernet0/2', 'br-hsrp-troubleshooting-2:eth2']
-  - endpoints: ['i5_startup-config:Ethernet0/2', 'br-hsrp-troubleshooting-2:eth3']
-  - endpoints: ['i7_startup-config:Ethernet0/1', 'br-hsrp-troubleshooting-2:eth4']
+  - endpoints:
+    - LA:Ethernet0/1
+    - br-hsrp-troubleshooting-1:eth1
+  - endpoints:
+    - NewYork:Ethernet0/1
+    - br-hsrp-troubleshooting-1:eth2
+  - endpoints:
+    - NewJersey:Ethernet0/1
+    - br-hsrp-troubleshooting-1:eth3
+  - endpoints:
+    - Host:Ethernet0/1
+    - br-hsrp-troubleshooting-1:eth4
+  - endpoints:
+    - LA:Ethernet0/2
+    - br-hsrp-troubleshooting-2:eth1
+  - endpoints:
+    - NewYork:Ethernet0/2
+    - br-hsrp-troubleshooting-2:eth2
+  - endpoints:
+    - NewJersey:Ethernet0/2
+    - br-hsrp-troubleshooting-2:eth3
+  - endpoints:
+    - ISP:Ethernet0/1
+    - br-hsrp-troubleshooting-2:eth4

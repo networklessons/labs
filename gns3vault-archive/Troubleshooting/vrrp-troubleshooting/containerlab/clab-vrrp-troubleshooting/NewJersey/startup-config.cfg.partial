@@ -1,0 +1,33 @@
+!
+!
+!
+hostname NewJersey
+!
+!
+!
+!
+!
+ip cef
+!
+interface Ethernet0/2
+ ip address 192.168.1.2 255.255.255.0
+ ip access-group MULTICAST in
+ duplex auto
+ speed auto
+ vrrp 1 ip 192.168.1.254
+ vrrp 1 timers advertise 8
+ vrrp 1 priority 225
+ vrrp 1 authentication md5 key-string vault
+ vrrp 1 track 1
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 192.168.2.2 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
+!
+!
+!
+end

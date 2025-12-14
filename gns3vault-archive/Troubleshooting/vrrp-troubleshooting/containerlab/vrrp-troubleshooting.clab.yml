@@ -7,36 +7,52 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    i4_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-vrrp-troubleshooting/i4_startup-config/startup-config.cfg.partial
-    i6_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-vrrp-troubleshooting/i6_startup-config/startup-config.cfg.partial
-    i5_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-vrrp-troubleshooting/i5_startup-config/startup-config.cfg.partial
-    i7_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-vrrp-troubleshooting/i7_startup-config/startup-config.cfg.partial
-    i3_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-vrrp-troubleshooting/i3_startup-config/startup-config.cfg.partial
     br-vrrp-troubleshooting-1:
       kind: bridge
     br-vrrp-troubleshooting-2:
       kind: bridge
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-vrrp-troubleshooting/ISP/startup-config.cfg.partial
+    NewJersey:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-vrrp-troubleshooting/NewJersey/startup-config.cfg.partial
+    LA:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-vrrp-troubleshooting/LA/startup-config.cfg.partial
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-vrrp-troubleshooting/NewYork/startup-config.cfg.partial
+    HOST:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-vrrp-troubleshooting/HOST/startup-config.cfg.partial
   links:
-  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-1:eth1']
-  - endpoints: ['i6_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth2']
-  - endpoints: ['i5_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth3']
-  - endpoints: ['i7_startup-config:Ethernet0/2', 'br-vrrp-troubleshooting-1:eth4']
-  - endpoints: ['i6_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth1']
-  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth2']
-  - endpoints: ['i7_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth3']
-  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-vrrp-troubleshooting-2:eth4']
+  - endpoints:
+    - ISP:Ethernet0/1
+    - br-vrrp-troubleshooting-1:eth1
+  - endpoints:
+    - NewJersey:Ethernet0/2
+    - br-vrrp-troubleshooting-1:eth2
+  - endpoints:
+    - LA:Ethernet0/2
+    - br-vrrp-troubleshooting-1:eth3
+  - endpoints:
+    - NewYork:Ethernet0/2
+    - br-vrrp-troubleshooting-1:eth4
+  - endpoints:
+    - NewJersey:Ethernet0/1
+    - br-vrrp-troubleshooting-2:eth1
+  - endpoints:
+    - LA:Ethernet0/1
+    - br-vrrp-troubleshooting-2:eth2
+  - endpoints:
+    - NewYork:Ethernet0/1
+    - br-vrrp-troubleshooting-2:eth3
+  - endpoints:
+    - HOST:Ethernet0/1
+    - br-vrrp-troubleshooting-2:eth4

@@ -7,31 +7,41 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    i2_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/i2_startup-config/startup-config.cfg.partial
-    i4_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/i4_startup-config/startup-config.cfg.partial
-    i6_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/i6_startup-config/startup-config.cfg.partial
-    i5_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/i5_startup-config/startup-config.cfg.partial
-    i3_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.140
-      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/i3_startup-config/startup-config.cfg.partial
     br-eigrp-multipoint-bandwidth-pacing-1:
       kind: bridge
+    Berlin:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/Berlin/startup-config.cfg.partial
+    NewYork:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/NewYork/startup-config.cfg.partial
+    Tilburg:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/Tilburg/startup-config.cfg.partial
+    Paris:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/Paris/startup-config.cfg.partial
+    NewDelhi:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.140
+      startup-config: ./clab-eigrp-multipoint-bandwidth-pacing/NewDelhi/startup-config.cfg.partial
   links:
-  - endpoints: ['i2_startup-config:Ethernet0/1', 'br-eigrp-multipoint-bandwidth-pacing-1:eth1']
-  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-eigrp-multipoint-bandwidth-pacing-1:eth2']
-  - endpoints: ['i6_startup-config:Ethernet0/1', 'br-eigrp-multipoint-bandwidth-pacing-1:eth3']
-  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-eigrp-multipoint-bandwidth-pacing-1:eth4']
-  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-eigrp-multipoint-bandwidth-pacing-1:eth5']
+  - endpoints:
+    - Berlin:Ethernet0/1
+    - br-eigrp-multipoint-bandwidth-pacing-1:eth1
+  - endpoints:
+    - NewYork:Ethernet0/1
+    - br-eigrp-multipoint-bandwidth-pacing-1:eth2
+  - endpoints:
+    - Tilburg:Ethernet0/1
+    - br-eigrp-multipoint-bandwidth-pacing-1:eth3
+  - endpoints:
+    - Paris:Ethernet0/1
+    - br-eigrp-multipoint-bandwidth-pacing-1:eth4
+  - endpoints:
+    - NewDelhi:Ethernet0/1
+    - br-eigrp-multipoint-bandwidth-pacing-1:eth5

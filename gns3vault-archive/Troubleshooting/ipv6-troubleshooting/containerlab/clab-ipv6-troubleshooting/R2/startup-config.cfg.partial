@@ -1,0 +1,19 @@
+!
+!
+!
+hostname R2
+!
+!
+!
+!
+!
+ip cef
+!
+interface Loopback0
+ no ip address
+ ipv6 address 2001:2::2/128
+!
+!
+!
+!
+end

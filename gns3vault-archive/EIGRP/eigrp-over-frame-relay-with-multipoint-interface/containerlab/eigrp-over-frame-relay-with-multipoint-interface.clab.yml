@@ -7,17 +7,19 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    i2_startup-config:
+    Curly:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-eigrp-over-frame-relay-with-multipoint-interface/i2_startup-config/startup-config.cfg.partial
-    i4_startup-config:
+      startup-config: ./clab-eigrp-over-frame-relay-with-multipoint-interface/Curly/startup-config.cfg.partial
+    Moe:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-eigrp-over-frame-relay-with-multipoint-interface/i4_startup-config/startup-config.cfg.partial
-    i3_startup-config:
+      startup-config: ./clab-eigrp-over-frame-relay-with-multipoint-interface/Moe/startup-config.cfg.partial
+    Larry:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-eigrp-over-frame-relay-with-multipoint-interface/i3_startup-config/startup-config.cfg.partial
+      startup-config: ./clab-eigrp-over-frame-relay-with-multipoint-interface/Larry/startup-config.cfg.partial
   links:
-  - endpoints: ['i2_startup-config:Ethernet0/1', 'i3_startup-config:Ethernet0/1']
+  - endpoints:
+    - Curly:Ethernet0/1
+    - Larry:Ethernet0/1

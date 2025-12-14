@@ -7,26 +7,34 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    i2_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/i2_startup-config/startup-config.cfg.partial
-    i4_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/i4_startup-config/startup-config.cfg.partial
-    i5_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/i5_startup-config/startup-config.cfg.partial
-    i3_startup-config:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/i3_startup-config/startup-config.cfg.partial
     br-rsvp-subnetwork-bandwidth-manager-sbm-1:
       kind: bridge
+    Beast:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.100
+      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/Beast/startup-config.cfg.partial
+    Mystique:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.110
+      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/Mystique/startup-config.cfg.partial
+    Xavier:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.120
+      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/Xavier/startup-config.cfg.partial
+    Magneto:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.130
+      startup-config: ./clab-rsvp-subnetwork-bandwidth-manager-sbm/Magneto/startup-config.cfg.partial
   links:
-  - endpoints: ['i2_startup-config:Ethernet0/1', 'i4_startup-config:Ethernet0/2']
-  - endpoints: ['i4_startup-config:Ethernet0/1', 'br-rsvp-subnetwork-bandwidth-manager-sbm-1:eth1']
-  - endpoints: ['i5_startup-config:Ethernet0/1', 'br-rsvp-subnetwork-bandwidth-manager-sbm-1:eth2']
-  - endpoints: ['i3_startup-config:Ethernet0/1', 'br-rsvp-subnetwork-bandwidth-manager-sbm-1:eth3']
+  - endpoints:
+    - Beast:Ethernet0/1
+    - Mystique:Ethernet0/2
+  - endpoints:
+    - Mystique:Ethernet0/1
+    - br-rsvp-subnetwork-bandwidth-manager-sbm-1:eth1
+  - endpoints:
+    - Xavier:Ethernet0/1
+    - br-rsvp-subnetwork-bandwidth-manager-sbm-1:eth2
+  - endpoints:
+    - Magneto:Ethernet0/1
+    - br-rsvp-subnetwork-bandwidth-manager-sbm-1:eth3
