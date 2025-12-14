@@ -48,10 +48,6 @@ interface Serial0/1
  no ip address
  shutdown
 !
-interface Ethernet0/1
- no ip address
- shutdown
-!
 interface Serial0/3
  no ip address
  shutdown
