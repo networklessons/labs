@@ -1,0 +1,83 @@
+!
+!
+!
+hostname Leia
+!
+!
+!
+!
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.0
+ no shutdown
+!
+interface Loopback1
+ ip address 33.33.33.33 255.255.255.0
+ no shutdown
+!
+interface Serial0/2
+ ip address 192.168.13.3 255.255.255.0
+ serial restart-delay 0
+ no shutdown
+!
+interface Serial0/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial0/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial0/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+end
