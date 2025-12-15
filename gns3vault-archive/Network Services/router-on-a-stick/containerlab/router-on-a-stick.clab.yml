@@ -19,9 +19,9 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-router-on-a-stick/John/startup-config.cfg.partial
-    br-router-on-a-stick-1:
+    bridge-clab1:
       kind: bridge
   links:
-  - endpoints: ['Hadley:Ethernet0/1', 'br-router-on-a-stick-1:eth1']
-  - endpoints: ['John:Ethernet0/1', 'br-router-on-a-stick-1:eth2']
-  - endpoints: ['Sam:Ethernet0/1', 'br-router-on-a-stick-1:eth3']
+  - endpoints: ['Hadley:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['John:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['Sam:Ethernet0/1', 'bridge-clab1:eth3']

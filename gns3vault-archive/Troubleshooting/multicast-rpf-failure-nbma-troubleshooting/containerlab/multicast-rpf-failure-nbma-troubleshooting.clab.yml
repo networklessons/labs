@@ -23,10 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-multicast-rpf-failure-nbma-troubleshooting/SpokeA/startup-config.cfg.partial
-    br-multicast-rpf-failure-nbma-troubleshooting-1:
+    bridge-clab1:
       kind: bridge
   links:
-  - endpoints: ['SpokeB:Ethernet0/2', 'br-multicast-rpf-failure-nbma-troubleshooting-1:eth1']
-  - endpoints: ['HUB:Ethernet0/1', 'br-multicast-rpf-failure-nbma-troubleshooting-1:eth2']
-  - endpoints: ['SpokeA:Ethernet0/1', 'br-multicast-rpf-failure-nbma-troubleshooting-1:eth3']
+  - endpoints: ['SpokeB:Ethernet0/2', 'bridge-clab1:eth1']
+  - endpoints: ['HUB:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['SpokeA:Ethernet0/1', 'bridge-clab1:eth3']
   - endpoints: ['SpokeB:Ethernet0/1', 'Receiver:Ethernet0/1']

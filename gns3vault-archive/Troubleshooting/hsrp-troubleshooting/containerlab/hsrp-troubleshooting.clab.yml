@@ -7,9 +7,9 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    br-hsrp-troubleshooting-1:
+    bridge-clab1:
       kind: bridge
-    br-hsrp-troubleshooting-2:
+    bridge-clab2:
       kind: bridge
     LA:
       kind: cisco_iol
@@ -34,25 +34,25 @@ topology:
   links:
   - endpoints:
     - LA:Ethernet0/1
-    - br-hsrp-troubleshooting-1:eth1
+    - bridge-clab1:eth1
   - endpoints:
     - NewYork:Ethernet0/1
-    - br-hsrp-troubleshooting-1:eth2
+    - bridge-clab1:eth2
   - endpoints:
     - NewJersey:Ethernet0/1
-    - br-hsrp-troubleshooting-1:eth3
+    - bridge-clab1:eth3
   - endpoints:
     - Host:Ethernet0/1
-    - br-hsrp-troubleshooting-1:eth4
+    - bridge-clab1:eth4
   - endpoints:
     - LA:Ethernet0/2
-    - br-hsrp-troubleshooting-2:eth1
+    - bridge-clab2:eth1
   - endpoints:
     - NewYork:Ethernet0/2
-    - br-hsrp-troubleshooting-2:eth2
+    - bridge-clab2:eth2
   - endpoints:
     - NewJersey:Ethernet0/2
-    - br-hsrp-troubleshooting-2:eth3
+    - bridge-clab2:eth3
   - endpoints:
     - ISP:Ethernet0/1
-    - br-hsrp-troubleshooting-2:eth4
+    - bridge-clab2:eth4

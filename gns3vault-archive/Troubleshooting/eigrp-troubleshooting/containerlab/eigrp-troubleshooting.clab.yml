@@ -39,16 +39,16 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.170
       startup-config: ./clab-eigrp-troubleshooting/R4/startup-config.cfg.partial
-    br-eigrp-troubleshooting-1:
+    bridge-clab1:
       kind: bridge
-    br-eigrp-troubleshooting-2:
+    bridge-clab2:
       kind: bridge
   links:
-  - endpoints: ['R3:Ethernet0/1', 'br-eigrp-troubleshooting-1:eth1']
-  - endpoints: ['R1:Ethernet0/2', 'br-eigrp-troubleshooting-1:eth2']
-  - endpoints: ['R2:Ethernet0/1', 'br-eigrp-troubleshooting-1:eth3']
-  - endpoints: ['R1:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth1']
-  - endpoints: ['R5:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth2']
-  - endpoints: ['R4:Ethernet0/1', 'br-eigrp-troubleshooting-2:eth3']
+  - endpoints: ['R3:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['R1:Ethernet0/2', 'bridge-clab1:eth2']
+  - endpoints: ['R2:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['R1:Ethernet0/1', 'bridge-clab2:eth1']
+  - endpoints: ['R5:Ethernet0/1', 'bridge-clab2:eth2']
+  - endpoints: ['R4:Ethernet0/1', 'bridge-clab2:eth3']
   - endpoints: ['R6:Ethernet0/1', 'R4:Ethernet0/2']
   - endpoints: ['R5:Ethernet0/2', 'R8:Ethernet0/1']

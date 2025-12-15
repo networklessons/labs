@@ -23,10 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-frame-relay-basics/R2/startup-config.cfg.partial
-    br-frame-relay-basics-1:
+    bridge-clab1:
       kind: bridge
   links:
-  - endpoints: ['R3:Ethernet0/1', 'br-frame-relay-basics-1:eth1']
-  - endpoints: ['R1:Ethernet0/1', 'br-frame-relay-basics-1:eth2']
-  - endpoints: ['R2:Ethernet0/1', 'br-frame-relay-basics-1:eth3']
+  - endpoints: ['R3:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['R1:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['R2:Ethernet0/1', 'bridge-clab1:eth3']
   - endpoints: ['R1:Ethernet0/2', 'R2:Ethernet0/2']

@@ -23,10 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-nat-pat-overload/Alice/startup-config.cfg.partial
-    br-nat-pat-overload-1:
+    bridge-clab1:
       kind: bridge
   links:
   - endpoints: ['WWW:Ethernet0/1', 'PAT:Ethernet0/1']
-  - endpoints: ['Emma:Ethernet0/1', 'br-nat-pat-overload-1:eth1']
-  - endpoints: ['PAT:Ethernet0/2', 'br-nat-pat-overload-1:eth2']
-  - endpoints: ['Alice:Ethernet0/1', 'br-nat-pat-overload-1:eth3']
+  - endpoints: ['Emma:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['PAT:Ethernet0/2', 'bridge-clab1:eth2']
+  - endpoints: ['Alice:Ethernet0/1', 'bridge-clab1:eth3']

@@ -23,11 +23,11 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-icmp-router-discovery-protocol-irdp/Mustard/startup-config.cfg.partial
-    br-icmp-router-discovery-protocol-irdp-1:
+    bridge-clab1:
       kind: bridge
   links:
-  - endpoints: ['Tomato:Ethernet0/1', 'br-icmp-router-discovery-protocol-irdp-1:eth1']
-  - endpoints: ['Broccoli:Ethernet0/1', 'br-icmp-router-discovery-protocol-irdp-1:eth2']
-  - endpoints: ['Potato:Ethernet0/1', 'br-icmp-router-discovery-protocol-irdp-1:eth3']
+  - endpoints: ['Tomato:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['Broccoli:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['Potato:Ethernet0/1', 'bridge-clab1:eth3']
   - endpoints: ['Tomato:Ethernet0/2', 'Mustard:Ethernet0/2']
   - endpoints: ['Potato:Ethernet0/2', 'Mustard:Ethernet0/1']

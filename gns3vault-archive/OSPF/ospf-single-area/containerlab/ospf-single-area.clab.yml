@@ -19,10 +19,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-single-area/Amsterdam/startup-config.cfg.partial
-    br-ospf-single-area-1:
+    bridge-clab1:
       kind: bridge
   links:
   - endpoints: ['HongKong:Ethernet0/1', 'Amsterdam:Ethernet0/1']
-  - endpoints: ['HongKong:Ethernet0/2', 'br-ospf-single-area-1:eth1']
-  - endpoints: ['Barcelona:Ethernet0/1', 'br-ospf-single-area-1:eth2']
-  - endpoints: ['Amsterdam:Ethernet0/2', 'br-ospf-single-area-1:eth3']
+  - endpoints: ['HongKong:Ethernet0/2', 'bridge-clab1:eth1']
+  - endpoints: ['Barcelona:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['Amsterdam:Ethernet0/2', 'bridge-clab1:eth3']

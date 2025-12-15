@@ -7,13 +7,13 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    br-expert-redistribution-1:
+    bridge-clab1:
       kind: bridge
-    br-expert-redistribution-2:
+    bridge-clab2:
       kind: bridge
-    br-expert-redistribution-3:
+    bridge-clab3:
       kind: bridge
-    br-expert-redistribution-4:
+    bridge-clab4:
       kind: bridge
     Amber:
       kind: cisco_iol
@@ -46,37 +46,37 @@ topology:
   links:
   - endpoints:
     - Amber:Ethernet0/1
-    - br-expert-redistribution-1:eth1
+    - bridge-clab1:eth1
   - endpoints:
     - BlueJones:Ethernet0/1
-    - br-expert-redistribution-1:eth2
+    - bridge-clab1:eth2
   - endpoints:
     - Rocket:Ethernet0/2
-    - br-expert-redistribution-1:eth3
+    - bridge-clab1:eth3
   - endpoints:
     - Amber:Ethernet0/2
-    - br-expert-redistribution-2:eth1
+    - bridge-clab2:eth1
   - endpoints:
     - Blondie:Ethernet0/1
-    - br-expert-redistribution-2:eth2
+    - bridge-clab2:eth2
   - endpoints:
     - WiseMan:Ethernet0/1
-    - br-expert-redistribution-2:eth3
+    - bridge-clab2:eth3
   - endpoints:
     - SweetPea:Ethernet0/1
-    - br-expert-redistribution-3:eth1
+    - bridge-clab3:eth1
   - endpoints:
     - BabyDoll:Ethernet0/1
-    - br-expert-redistribution-3:eth2
+    - bridge-clab3:eth2
   - endpoints:
     - Rocket:Ethernet0/1
-    - br-expert-redistribution-3:eth3
+    - bridge-clab3:eth3
   - endpoints:
     - SweetPea:Ethernet0/2
-    - br-expert-redistribution-4:eth1
+    - bridge-clab4:eth1
   - endpoints:
     - Blondie:Ethernet0/2
-    - br-expert-redistribution-4:eth2
+    - bridge-clab4:eth2
   - endpoints:
     - Rocket:Ethernet0/3
-    - br-expert-redistribution-4:eth3
+    - bridge-clab4:eth3
