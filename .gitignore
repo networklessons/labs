@@ -56,3 +56,6 @@ ansible-inventory.yml
 L1OpenConfig.json
 **/flash/.config-repo-ar/
 flash/
+deployment_log.txt
+failed_labs.txt
+successful_labs.txt
