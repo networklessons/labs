@@ -27,12 +27,15 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-eigrp-for-ccna-1/Dobbs/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.150
   links:
-  - endpoints: ['Corleone:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['Bates:Ethernet0/3', 'bridge-clab1:eth2']
-  - endpoints: ['Bond:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['Corleone:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['Bates:Ethernet0/3', 'SW1:Ethernet0/2']
+  - endpoints: ['Bond:Ethernet0/1', 'SW1:Ethernet0/3']
   - endpoints: ['Corleone:Ethernet0/2', 'Dobbs:Ethernet0/2']
   - endpoints: ['Bates:Ethernet0/1', 'oHara:Ethernet0/1']
   - endpoints: ['Bates:Ethernet0/2', 'oHara:Ethernet0/2']

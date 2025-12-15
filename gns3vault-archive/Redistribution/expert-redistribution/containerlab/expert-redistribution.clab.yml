@@ -7,14 +7,26 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    bridge-clab1:
-      kind: bridge
-    bridge-clab2:
-      kind: bridge
-    bridge-clab3:
-      kind: bridge
-    bridge-clab4:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.170
+    SW2:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.180
+    SW3:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.190
+    SW4:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.200
     Amber:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
@@ -46,37 +58,37 @@ topology:
   links:
   - endpoints:
     - Amber:Ethernet0/1
-    - bridge-clab1:eth1
+    - SW1:Ethernet0/1
   - endpoints:
     - BlueJones:Ethernet0/1
-    - bridge-clab1:eth2
+    - SW1:Ethernet0/2
   - endpoints:
     - Rocket:Ethernet0/2
-    - bridge-clab1:eth3
+    - SW1:Ethernet0/3
   - endpoints:
     - Amber:Ethernet0/2
-    - bridge-clab2:eth1
+    - SW2:Ethernet0/1
   - endpoints:
     - Blondie:Ethernet0/1
-    - bridge-clab2:eth2
+    - SW2:Ethernet0/2
   - endpoints:
     - WiseMan:Ethernet0/1
-    - bridge-clab2:eth3
+    - SW2:Ethernet0/3
   - endpoints:
     - SweetPea:Ethernet0/1
-    - bridge-clab3:eth1
+    - SW3:Ethernet0/1
   - endpoints:
     - BabyDoll:Ethernet0/1
-    - bridge-clab3:eth2
+    - SW3:Ethernet0/2
   - endpoints:
     - Rocket:Ethernet0/1
-    - bridge-clab3:eth3
+    - SW3:Ethernet0/3
   - endpoints:
     - SweetPea:Ethernet0/2
-    - bridge-clab4:eth1
+    - SW4:Ethernet0/1
   - endpoints:
     - Blondie:Ethernet0/2
-    - bridge-clab4:eth2
+    - SW4:Ethernet0/2
   - endpoints:
     - Rocket:Ethernet0/3
-    - bridge-clab4:eth3
+    - SW4:Ethernet0/3

@@ -31,16 +31,22 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.150
       startup-config: ./clab-ospf-for-ccna-1/Bird/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
-    bridge-clab2:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.160
+    SW2:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.170
   links:
-  - endpoints: ['Durden:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['Paulson:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['Chesler:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['Durden:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['Paulson:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['Chesler:Ethernet0/1', 'SW1:Ethernet0/3']
   - endpoints: ['Dent:Ethernet0/1', 'Bird:Ethernet0/1']
   - endpoints: ['Dent:Ethernet0/2', 'Bird:Ethernet0/3']
-  - endpoints: ['Chesler:Ethernet0/2', 'bridge-clab2:eth1']
-  - endpoints: ['Singer:Ethernet0/1', 'bridge-clab2:eth2']
-  - endpoints: ['Bird:Ethernet0/2', 'bridge-clab2:eth3']
+  - endpoints: ['Chesler:Ethernet0/2', 'SW2:Ethernet0/1']
+  - endpoints: ['Singer:Ethernet0/1', 'SW2:Ethernet0/2']
+  - endpoints: ['Bird:Ethernet0/2', 'SW2:Ethernet0/3']

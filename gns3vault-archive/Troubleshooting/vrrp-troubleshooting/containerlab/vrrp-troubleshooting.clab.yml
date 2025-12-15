@@ -7,10 +7,16 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    bridge-clab1:
-      kind: bridge
-    bridge-clab2:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.150
+    SW2:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.160
     ISP:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
@@ -34,25 +40,25 @@ topology:
   links:
   - endpoints:
     - ISP:Ethernet0/1
-    - bridge-clab1:eth1
+    - SW1:Ethernet0/1
   - endpoints:
     - NewJersey:Ethernet0/2
-    - bridge-clab1:eth2
+    - SW1:Ethernet0/2
   - endpoints:
     - LA:Ethernet0/2
-    - bridge-clab1:eth3
+    - SW1:Ethernet0/3
   - endpoints:
     - NewYork:Ethernet0/2
-    - bridge-clab1:eth4
+    - SW1:Ethernet0/4
   - endpoints:
     - NewJersey:Ethernet0/1
-    - bridge-clab2:eth1
+    - SW2:Ethernet0/1
   - endpoints:
     - LA:Ethernet0/1
-    - bridge-clab2:eth2
+    - SW2:Ethernet0/2
   - endpoints:
     - NewYork:Ethernet0/1
-    - bridge-clab2:eth3
+    - SW2:Ethernet0/3
   - endpoints:
     - HOST:Ethernet0/1
-    - bridge-clab2:eth4
+    - SW2:Ethernet0/4

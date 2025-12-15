@@ -27,11 +27,14 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-nat-tcp-load-balancing/NAT/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.150
   links:
-  - endpoints: ['WWW3:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['WWW1:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['WWW2:Ethernet0/1', 'bridge-clab1:eth3']
-  - endpoints: ['NAT:Ethernet0/1', 'bridge-clab1:eth4']
+  - endpoints: ['WWW3:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['WWW1:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['WWW2:Ethernet0/1', 'SW1:Ethernet0/3']
+  - endpoints: ['NAT:Ethernet0/1', 'SW1:Ethernet0/4']
   - endpoints: ['Host:Ethernet0/1', 'NAT:Ethernet0/2']
