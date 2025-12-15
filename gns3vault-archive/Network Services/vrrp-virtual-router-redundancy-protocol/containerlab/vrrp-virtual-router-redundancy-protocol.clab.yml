@@ -27,16 +27,16 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-vrrp-virtual-router-redundancy-protocol/HOST/startup-config.cfg.partial
-    br-vrrp-virtual-router-redundancy-protocol-1:
+    bridge-clab1:
       kind: bridge
-    br-vrrp-virtual-router-redundancy-protocol-2:
+    bridge-clab2:
       kind: bridge
   links:
-  - endpoints: ['NewYork:Ethernet0/1', 'br-vrrp-virtual-router-redundancy-protocol-1:eth1']
-  - endpoints: ['NewJersey:Ethernet0/1', 'br-vrrp-virtual-router-redundancy-protocol-1:eth2']
-  - endpoints: ['LA:Ethernet0/1', 'br-vrrp-virtual-router-redundancy-protocol-1:eth3']
-  - endpoints: ['HOST:Ethernet0/1', 'br-vrrp-virtual-router-redundancy-protocol-1:eth4']
-  - endpoints: ['NewYork:Ethernet0/2', 'br-vrrp-virtual-router-redundancy-protocol-2:eth1']
-  - endpoints: ['ISP:Ethernet0/1', 'br-vrrp-virtual-router-redundancy-protocol-2:eth2']
-  - endpoints: ['NewJersey:Ethernet0/2', 'br-vrrp-virtual-router-redundancy-protocol-2:eth3']
-  - endpoints: ['LA:Ethernet0/2', 'br-vrrp-virtual-router-redundancy-protocol-2:eth4']
+  - endpoints: ['NewYork:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['NewJersey:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['LA:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['HOST:Ethernet0/1', 'bridge-clab1:eth4']
+  - endpoints: ['NewYork:Ethernet0/2', 'bridge-clab2:eth1']
+  - endpoints: ['ISP:Ethernet0/1', 'bridge-clab2:eth2']
+  - endpoints: ['NewJersey:Ethernet0/2', 'bridge-clab2:eth3']
+  - endpoints: ['LA:Ethernet0/2', 'bridge-clab2:eth4']

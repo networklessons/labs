@@ -23,9 +23,9 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-vacl-vlan-access-list/DNS2/startup-config.cfg.partial
-    br-vacl-vlan-access-list-1:
+    bridge-clab1:
       kind: bridge
   links:
-  - endpoints: ['DNS1:Ethernet0/1', 'br-vacl-vlan-access-list-1:eth1']
-  - endpoints: ['DNS1~:Ethernet0/1', 'br-vacl-vlan-access-list-1:eth2']
-  - endpoints: ['DNS2:Ethernet0/1', 'br-vacl-vlan-access-list-1:eth3']
+  - endpoints: ['DNS1:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['DNS1~:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['DNS2:Ethernet0/1', 'bridge-clab1:eth3']

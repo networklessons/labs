@@ -7,7 +7,7 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    br-eigrp-multipoint-bandwidth-pacing-1:
+    bridge-clab1:
       kind: bridge
     Berlin:
       kind: cisco_iol
@@ -32,16 +32,16 @@ topology:
   links:
   - endpoints:
     - Berlin:Ethernet0/1
-    - br-eigrp-multipoint-bandwidth-pacing-1:eth1
+    - bridge-clab1:eth1
   - endpoints:
     - NewYork:Ethernet0/1
-    - br-eigrp-multipoint-bandwidth-pacing-1:eth2
+    - bridge-clab1:eth2
   - endpoints:
     - Tilburg:Ethernet0/1
-    - br-eigrp-multipoint-bandwidth-pacing-1:eth3
+    - bridge-clab1:eth3
   - endpoints:
     - Paris:Ethernet0/1
-    - br-eigrp-multipoint-bandwidth-pacing-1:eth4
+    - bridge-clab1:eth4
   - endpoints:
     - NewDelhi:Ethernet0/1
-    - br-eigrp-multipoint-bandwidth-pacing-1:eth5
+    - bridge-clab1:eth5

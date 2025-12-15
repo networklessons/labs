@@ -27,12 +27,12 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-bgp-dmz-link-bandwidth/Athens/startup-config.cfg.partial
-    br-bgp-dmz-link-bandwidth-1:
+    bridge-clab1:
       kind: bridge
   links:
-  - endpoints: ['Delphi:Ethernet0/2', 'br-bgp-dmz-link-bandwidth-1:eth1']
-  - endpoints: ['Sparta:Ethernet0/1', 'br-bgp-dmz-link-bandwidth-1:eth2']
-  - endpoints: ['Athens:Ethernet0/1', 'br-bgp-dmz-link-bandwidth-1:eth3']
+  - endpoints: ['Delphi:Ethernet0/2', 'bridge-clab1:eth1']
+  - endpoints: ['Sparta:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['Athens:Ethernet0/1', 'bridge-clab1:eth3']
   - endpoints: ['Delphi:Ethernet0/1', 'Thebes:Ethernet0/1']
   - endpoints: ['Olympia:Ethernet0/1', 'Sparta:Ethernet0/2']
   - endpoints: ['Olympia:Ethernet0/2', 'Thebes:Ethernet0/2']
