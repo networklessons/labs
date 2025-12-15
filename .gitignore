@@ -54,3 +54,5 @@ CONVERSION_REPORT.md
 convert_bgp_to_clab.py
 ansible-inventory.yml
 L1OpenConfig.json
+**/flash/.config-repo-ar/
+flash/
