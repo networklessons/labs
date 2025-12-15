@@ -24,7 +24,7 @@ topology:
     SW1:
       kind: cisco_iol
       image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
-      type: L2
+      type: l2
       mgmt-ipv4: 172.100.100.13
       #startup-config: ./clab-ospf-dr-bdr-three-routers/SW1/startup-config.cfg.partial
     graphite:
