@@ -23,13 +23,13 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-switch-svi-interface-and-routing/DNS2/startup-config.cfg.partial
-    SW1:
+    SW2:
       kind: cisco_iol
       image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
       type: l2
       mgmt-ipv4: 10.65.97.140
   links:
   - endpoints: ['WWW1:Ethernet0/1', 'SW1:Ethernet0/1']
-  - endpoints: ['SW1:Ethernet0/2', 'SW1:Ethernet0/1']
-  - endpoints: ['DNS1:Ethernet0/1', 'SW1:Ethernet0/2']
-  - endpoints: ['DNS2:Ethernet0/1', 'SW1:Ethernet0/3']
+  - endpoints: ['SW1:Ethernet0/2', 'SW2:Ethernet0/1']
+  - endpoints: ['DNS1:Ethernet0/1', 'SW2:Ethernet0/2']
+  - endpoints: ['DNS2:Ethernet0/1', 'SW2:Ethernet0/3']
