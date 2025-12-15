@@ -4,7 +4,7 @@
 name: ospf-network-type-p2p
 
 mgmt:
-  network: statics
+  network: mgmt-ipv4
   ipv4-subnet: 10.65.97.0/24
 
 topology:

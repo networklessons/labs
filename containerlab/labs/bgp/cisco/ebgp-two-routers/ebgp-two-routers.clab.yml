@@ -3,7 +3,7 @@
 name: ebgp-two-routers
 
 mgmt:
-  network: statics
+  network: clab-mgmt
   ipv4-subnet: 10.65.97.0/24
 
 topology:

@@ -10,7 +10,7 @@ mgmt:
 topology:
   kinds:
     arista_ceos:
-      image: ceos:4.31.2F
+      image: ceos:4.35.0F
     linux:
       image: networklessons/lab-node-ubuntu:75
   nodes:
