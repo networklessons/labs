@@ -27,9 +27,9 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-ipv6-nat-pt-static/NATPT/startup-config.cfg.partial
-    br-ipv6-nat-pt-static-1:
+    bridge-clab1:
       kind: bridge
   links:
-  - endpoints: ['Platinum:Ethernet0/1', 'br-ipv6-nat-pt-static-1:eth1']
-  - endpoints: ['Bronze:Ethernet0/1', 'br-ipv6-nat-pt-static-1:eth2']
-  - endpoints: ['NATPT:Ethernet0/1', 'br-ipv6-nat-pt-static-1:eth3']
+  - endpoints: ['Platinum:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['Bronze:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['NATPT:Ethernet0/1', 'bridge-clab1:eth3']

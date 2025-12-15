@@ -23,11 +23,11 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-nat-overlapping-networks/Apple/startup-config.cfg.partial
-    br-nat-overlapping-networks-1:
+    bridge-clab1:
       kind: bridge
   links:
   - endpoints: ['Kiwi:Ethernet0/1', 'Pineapple:Ethernet0/2']
-  - endpoints: ['Kiwi:Ethernet0/2', 'br-nat-overlapping-networks-1:eth1']
-  - endpoints: ['Pineapple:Ethernet0/1', 'br-nat-overlapping-networks-1:eth2']
-  - endpoints: ['Banana:Ethernet0/1', 'br-nat-overlapping-networks-1:eth3']
-  - endpoints: ['Apple:Ethernet0/1', 'br-nat-overlapping-networks-1:eth4']
+  - endpoints: ['Kiwi:Ethernet0/2', 'bridge-clab1:eth1']
+  - endpoints: ['Pineapple:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['Banana:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['Apple:Ethernet0/1', 'bridge-clab1:eth4']

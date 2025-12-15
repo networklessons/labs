@@ -27,14 +27,14 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-ospf-dr-bdr-election/Maggie/startup-config.cfg.partial
-    br-ospf-dr-bdr-election-1:
+    bridge-clab1:
       kind: bridge
-    br-ospf-dr-bdr-election-2:
+    bridge-clab2:
       kind: bridge
   links:
-  - endpoints: ['Lisa:Ethernet0/1', 'br-ospf-dr-bdr-election-1:eth1']
-  - endpoints: ['Homer:Ethernet0/2', 'br-ospf-dr-bdr-election-1:eth2']
-  - endpoints: ['Maggie:Ethernet0/1', 'br-ospf-dr-bdr-election-1:eth3']
-  - endpoints: ['Marge:Ethernet0/1', 'br-ospf-dr-bdr-election-2:eth1']
-  - endpoints: ['Bart:Ethernet0/1', 'br-ospf-dr-bdr-election-2:eth2']
-  - endpoints: ['Homer:Ethernet0/1', 'br-ospf-dr-bdr-election-2:eth3']
+  - endpoints: ['Lisa:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['Homer:Ethernet0/2', 'bridge-clab1:eth2']
+  - endpoints: ['Maggie:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['Marge:Ethernet0/1', 'bridge-clab2:eth1']
+  - endpoints: ['Bart:Ethernet0/1', 'bridge-clab2:eth2']
+  - endpoints: ['Homer:Ethernet0/1', 'bridge-clab2:eth3']

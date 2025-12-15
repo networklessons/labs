@@ -23,10 +23,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-nat-port-forwarding/NAT/startup-config.cfg.partial
-    br-nat-port-forwarding-1:
+    bridge-clab1:
       kind: bridge
   links:
   - endpoints: ['Host:Ethernet0/1', 'NAT:Ethernet0/2']
-  - endpoints: ['SSH:Ethernet0/1', 'br-nat-port-forwarding-1:eth1']
-  - endpoints: ['Web:Ethernet0/1', 'br-nat-port-forwarding-1:eth2']
-  - endpoints: ['NAT:Ethernet0/1', 'br-nat-port-forwarding-1:eth3']
+  - endpoints: ['SSH:Ethernet0/1', 'bridge-clab1:eth1']
+  - endpoints: ['Web:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['NAT:Ethernet0/1', 'bridge-clab1:eth3']
