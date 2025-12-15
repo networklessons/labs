@@ -52,3 +52,5 @@ lab_errors.txt
 successful_labs.json
 CONVERSION_REPORT.md
 convert_bgp_to_clab.py
+ansible-inventory.yml
+L1OpenConfig.json
