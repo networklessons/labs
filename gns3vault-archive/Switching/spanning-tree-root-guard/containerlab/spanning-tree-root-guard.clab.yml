@@ -5,10 +5,11 @@ mgmt:
 topology:
   kinds:
     cisco_iol:
-      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
   nodes:
     SW1:
       kind: cisco_iol
+      type: l2
       mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-spanning-tree-root-guard/SW1/startup-config.cfg.partial
   links: []

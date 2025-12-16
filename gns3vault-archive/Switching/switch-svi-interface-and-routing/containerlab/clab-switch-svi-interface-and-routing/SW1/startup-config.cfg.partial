@@ -9,6 +9,11 @@ hostname SW1
 !
 ip cef
 !
+interface Ethernet0/0
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+!
 interface Ethernet0/2
  no switchport
  ip address 192.168.20.254 255.255.255.0
