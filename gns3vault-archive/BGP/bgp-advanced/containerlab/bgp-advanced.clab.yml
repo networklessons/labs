@@ -57,7 +57,7 @@ topology:
   - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
   - endpoints: ['R9:Ethernet0/1', 'R10:Ethernet0/2']
   - endpoints: ['R9:Ethernet0/2', 'R8:Ethernet0/1']
-  - endpoints: ['R6:Ethernet0/1', 'R4:Ethernet0/4']
+  - endpoints: ['R6:Ethernet0/1', 'R4:Ethernet1/0']
   - endpoints: ['R6:Ethernet0/2', 'R7:Ethernet0/1']
   - endpoints: ['R6:Ethernet0/3', 'R5:Ethernet0/3']
   - endpoints: ['R5:Ethernet0/1', 'R4:Ethernet0/3']

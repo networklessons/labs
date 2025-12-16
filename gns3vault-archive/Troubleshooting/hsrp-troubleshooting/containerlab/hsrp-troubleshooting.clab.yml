@@ -49,7 +49,7 @@ topology:
     - SW1:Ethernet0/3
   - endpoints:
     - Host:Ethernet0/1
-    - SW1:Ethernet0/4
+    - SW1:Ethernet1/0
   - endpoints:
     - LA:Ethernet0/2
     - SW2:Ethernet0/1
@@ -61,4 +61,4 @@ topology:
     - SW2:Ethernet0/3
   - endpoints:
     - ISP:Ethernet0/1
-    - SW2:Ethernet0/4
+    - SW2:Ethernet1/0

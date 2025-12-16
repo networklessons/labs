@@ -7,7 +7,7 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    SW1~:
+    SW1A:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-spanning-tree-bpdu-guard/SW1~/startup-config.cfg.partial
@@ -21,7 +21,7 @@ topology:
       type: l2
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-spanning-tree-bpdu-guard/SW1/startup-config.cfg.partial
-    Neo~:
+    NeoA:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-spanning-tree-bpdu-guard/Neo~/startup-config.cfg.partial
