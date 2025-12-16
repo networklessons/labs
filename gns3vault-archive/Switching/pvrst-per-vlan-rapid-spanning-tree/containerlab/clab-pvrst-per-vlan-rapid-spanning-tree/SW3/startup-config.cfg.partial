@@ -9,6 +9,11 @@ hostname SW3
 !
 ip cef
 !
+interface Ethernet0/0
+ no cdp enable
+ no lldp transmit
+ no lldp receive
+!
 !
 !
 !

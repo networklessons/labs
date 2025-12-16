@@ -13,6 +13,8 @@ topology:
       startup-config: ./clab-switch-svi-interface-and-routing/WWW1/startup-config.cfg.partial
     SW1:
       kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-switch-svi-interface-and-routing/SW1/startup-config.cfg.partial
     DNS1:
