@@ -23,11 +23,14 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-bgp-traffic-engineering-unsuppress-map/BigFoot/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.140
   links:
   - endpoints: ['Blob:Ethernet0/1', 'Behemoth:Ethernet0/3']
-  - endpoints: ['Banshee:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['BigFoot:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['Banshee:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['BigFoot:Ethernet0/1', 'SW1:Ethernet0/2']
   - endpoints: ['Banshee:Ethernet0/2', 'Behemoth:Ethernet0/2']
   - endpoints: ['Behemoth:Ethernet0/1', 'BigFoot:Ethernet0/2']

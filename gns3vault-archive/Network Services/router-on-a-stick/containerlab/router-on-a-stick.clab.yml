@@ -19,9 +19,12 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-router-on-a-stick/John/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.130
   links:
-  - endpoints: ['Hadley:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['John:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['Sam:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['Hadley:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['John:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['Sam:Ethernet0/1', 'SW1:Ethernet0/3']

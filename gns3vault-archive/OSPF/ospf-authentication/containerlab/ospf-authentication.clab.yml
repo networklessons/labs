@@ -23,10 +23,13 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-ospf-authentication/Lion/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.140
   links:
-  - endpoints: ['Giraffe:Ethernet1/1', 'bridge-clab1:eth1']
-  - endpoints: ['Gorilla:Ethernet0/1', 'bridge-clab1:eth2']
+  - endpoints: ['Giraffe:Ethernet1/1', 'SW1:Ethernet0/1']
+  - endpoints: ['Gorilla:Ethernet0/1', 'SW1:Ethernet0/2']
   - endpoints: ['Gorilla:Ethernet0/2', 'Lion:Ethernet0/1']
   - endpoints: ['Elephant:Ethernet0/1', 'Giraffe:Ethernet0/1']

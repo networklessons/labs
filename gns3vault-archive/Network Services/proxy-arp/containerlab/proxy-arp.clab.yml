@@ -27,10 +27,13 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.140
       startup-config: ./clab-proxy-arp/Ceto/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.150
   links:
-  - endpoints: ['Ladon:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['Proxy:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['Poseidon:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['Ladon:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['Proxy:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['Poseidon:Ethernet0/1', 'SW1:Ethernet0/3']
   - endpoints: ['Medusa:Ethernet0/1', 'Ceto:Ethernet0/1']

@@ -23,10 +23,13 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-multicast-rpf-failure-nbma-troubleshooting/SpokeA/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.140
   links:
-  - endpoints: ['SpokeB:Ethernet0/2', 'bridge-clab1:eth1']
-  - endpoints: ['HUB:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['SpokeA:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['SpokeB:Ethernet0/2', 'SW1:Ethernet0/1']
+  - endpoints: ['HUB:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['SpokeA:Ethernet0/1', 'SW1:Ethernet0/3']
   - endpoints: ['SpokeB:Ethernet0/1', 'Receiver:Ethernet0/1']

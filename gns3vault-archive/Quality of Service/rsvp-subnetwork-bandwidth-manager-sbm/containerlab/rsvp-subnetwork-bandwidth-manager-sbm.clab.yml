@@ -7,8 +7,11 @@ topology:
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.140
     Beast:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
@@ -31,10 +34,10 @@ topology:
     - Mystique:Ethernet0/2
   - endpoints:
     - Mystique:Ethernet0/1
-    - bridge-clab1:eth1
+    - SW1:Ethernet0/1
   - endpoints:
     - Xavier:Ethernet0/1
-    - bridge-clab1:eth2
+    - SW1:Ethernet0/2
   - endpoints:
     - Magneto:Ethernet0/1
-    - bridge-clab1:eth3
+    - SW1:Ethernet0/3
