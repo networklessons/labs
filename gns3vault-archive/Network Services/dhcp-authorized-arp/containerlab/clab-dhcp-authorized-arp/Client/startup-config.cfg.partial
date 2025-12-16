@@ -9,6 +9,12 @@ hostname Client
 !
 ip cef
 !
+interface Ethernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ no shutdown
+!
 !
 !
 !

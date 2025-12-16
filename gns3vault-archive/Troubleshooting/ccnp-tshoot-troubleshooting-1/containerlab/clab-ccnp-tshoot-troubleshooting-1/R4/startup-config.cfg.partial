@@ -23,6 +23,12 @@ interface Ethernet0/3
  full-duplex
  no shutdown
 !
+interface Ethernet0/4
+ ip address 10.1.1.10 255.255.255.252
+ duplex auto
+ speed auto
+ no shutdown
+!
 interface Tunnel34
  no ip address
  ipv6 address 2026::34:2/122

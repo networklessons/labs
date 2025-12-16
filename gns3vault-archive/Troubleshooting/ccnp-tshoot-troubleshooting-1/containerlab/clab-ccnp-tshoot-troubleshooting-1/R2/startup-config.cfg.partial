@@ -9,6 +9,20 @@ hostname R2
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 10.1.1.2 255.255.255.252
+ ipv6 address 2026::12:2/122
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 10.1.1.5 255.255.255.252
+ ipv6 address 2026::1:1/122
+ duplex auto
+ speed auto
+ no shutdown
+!
 !
 !
 !

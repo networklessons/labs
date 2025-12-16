@@ -30,7 +30,7 @@ interface Ethernet0/4
  ip address 10.2.2.1 255.255.255.0
  no shutdown
 !
-interface Ethernet0/5
+interface Ethernet1/1
  ip address 192.168.1.130 255.255.255.224
  no shutdown
 !
