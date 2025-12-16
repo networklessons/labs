@@ -15,6 +15,12 @@ interface Ethernet0/2
  speed auto
  no shutdown
 !
+interface Ethernet1/2
+ no ip address
+ duplex auto
+ speed auto
+ no shutdown
+!
 interface Loopback0
  no ip address
 !

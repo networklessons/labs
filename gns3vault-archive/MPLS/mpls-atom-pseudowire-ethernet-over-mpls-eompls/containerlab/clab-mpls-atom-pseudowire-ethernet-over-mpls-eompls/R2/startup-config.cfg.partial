@@ -16,6 +16,12 @@ interface Ethernet0/2
  mpls ip
  no shutdown
 !
+interface Ethernet1/3
+ no ip address
+ duplex auto
+ speed auto
+ no shutdown
+!
 interface Loopback0
  ip address 2.2.2.2 255.255.255.0
  ip ospf network point-to-point
