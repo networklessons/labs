@@ -17,10 +17,10 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-vacl-vlan-access-list/DNS1/startup-config.cfg.partial
-    DNS1~:
+    DNS1A:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-vacl-vlan-access-list/DNS1~/startup-config.cfg.partial
+      startup-config: ./clab-vacl-vlan-access-list/DNS1A/startup-config.cfg.partial
     DNS2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
@@ -32,5 +32,5 @@ topology:
       mgmt-ipv4: 10.65.97.140
   links:
   - endpoints: ['DNS1:Ethernet0/1', 'SW2:Ethernet0/1']
-  - endpoints: ['DNS1~:Ethernet0/1', 'SW2:Ethernet0/2']
+  - endpoints: ['DNS1A:Ethernet0/1', 'SW2:Ethernet0/2']
   - endpoints: ['DNS2:Ethernet0/1', 'SW2:Ethernet0/3']
