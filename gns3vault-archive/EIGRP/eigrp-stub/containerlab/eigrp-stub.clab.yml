@@ -36,4 +36,4 @@ topology:
   - endpoints: ['Oliver:Ethernet0/1', 'Jack:Ethernet0/1']
   - endpoints: ['Oliver:Ethernet0/2', 'Harry:Ethernet0/1']
   - endpoints: ['Oliver:Ethernet0/3', 'Thomas:Ethernet0/1']
-  - endpoints: ['Oliver:Ethernet0/4', 'Alfie:Ethernet0/1']
+  - endpoints: ['Oliver:Ethernet1/0', 'Alfie:Ethernet0/1']

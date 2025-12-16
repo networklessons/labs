@@ -33,7 +33,7 @@ topology:
     - Tilburg:Ethernet0/2
   - endpoints:
     - NewYork:Ethernet0/1
-    - Tilburg:Ethernet0/4
+    - Tilburg:Ethernet1/0
   - endpoints:
     - Tilburg:Ethernet0/1
     - NewDelhi:Ethernet0/1

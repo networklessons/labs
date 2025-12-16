@@ -17,8 +17,8 @@ topology:
       type: l2
       mgmt-ipv4: 10.65.97.110
       startup-config: ./clab-spanning-tree-bpdu-filter/SW1/startup-config.cfg.partial
-    Neo~:
+    NeoA:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
-      startup-config: ./clab-spanning-tree-bpdu-filter/Neo~/startup-config.cfg.partial
+      startup-config: ./clab-spanning-tree-bpdu-filter/NeoA/startup-config.cfg.partial
   links: []

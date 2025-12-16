@@ -44,7 +44,7 @@ topology:
     - Maple:Ethernet0/2
   - endpoints:
     - Lyptus:Ethernet0/1
-    - Walnut:Ethernet0/4
+    - Walnut:Ethernet1/0
   - endpoints:
     - Lyptus:Ethernet0/2
     - Walnut:Ethernet0/3
