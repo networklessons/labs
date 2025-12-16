@@ -10,7 +10,7 @@ topology:
     SW1A:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-spanning-tree-bpdu-guard/SW1~/startup-config.cfg.partial
+      startup-config: ./clab-spanning-tree-bpdu-guard/SW1A/startup-config.cfg.partial
     Neo:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
@@ -24,5 +24,5 @@ topology:
     NeoA:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
-      startup-config: ./clab-spanning-tree-bpdu-guard/Neo~/startup-config.cfg.partial
+      startup-config: ./clab-spanning-tree-bpdu-guard/NeoA/startup-config.cfg.partial
   links: []

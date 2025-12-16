@@ -10,11 +10,11 @@ topology:
     SW2A:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.100
-      startup-config: ./clab-pagp-lacp-etherchannel/SW2~/startup-config.cfg.partial
+      startup-config: ./clab-pagp-lacp-etherchannel/SW2A/startup-config.cfg.partial
     SW1A:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.110
-      startup-config: ./clab-pagp-lacp-etherchannel/SW1~/startup-config.cfg.partial
+      startup-config: ./clab-pagp-lacp-etherchannel/SW1A/startup-config.cfg.partial
     SW2:
       kind: cisco_iol
       image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
