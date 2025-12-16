@@ -35,17 +35,23 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.160
       startup-config: ./clab-ospf-troubleshooting/R4/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
-    bridge-clab2:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.170
+    SW2:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.180
   links:
-  - endpoints: ['R3:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['R1:Ethernet0/3', 'bridge-clab1:eth2']
-  - endpoints: ['R2:Ethernet0/2', 'bridge-clab1:eth3']
+  - endpoints: ['R3:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['R1:Ethernet0/3', 'SW1:Ethernet0/2']
+  - endpoints: ['R2:Ethernet0/2', 'SW1:Ethernet0/3']
   - endpoints: ['R1:Ethernet0/1', 'R2:Ethernet0/1']
-  - endpoints: ['R1:Ethernet0/2', 'bridge-clab2:eth1']
-  - endpoints: ['R5:Ethernet0/1', 'bridge-clab2:eth2']
-  - endpoints: ['R4:Ethernet0/1', 'bridge-clab2:eth3']
+  - endpoints: ['R1:Ethernet0/2', 'SW2:Ethernet0/1']
+  - endpoints: ['R5:Ethernet0/1', 'SW2:Ethernet0/2']
+  - endpoints: ['R4:Ethernet0/1', 'SW2:Ethernet0/3']
   - endpoints: ['R6:Ethernet0/1', 'R5:Ethernet0/2']
   - endpoints: ['R6:Ethernet0/2', 'R7:Ethernet0/1']

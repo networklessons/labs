@@ -9,6 +9,8 @@ topology:
   nodes:
     SW1:
       kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
       mgmt-ipv4: 10.65.97.100
       startup-config: ./clab-vacl-vlan-access-list/SW1/startup-config.cfg.partial
     DNS1:
@@ -23,9 +25,12 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-vacl-vlan-access-list/DNS2/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW2:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.140
   links:
-  - endpoints: ['DNS1:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['DNS1~:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['DNS2:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['DNS1:Ethernet0/1', 'SW2:Ethernet0/1']
+  - endpoints: ['DNS1~:Ethernet0/1', 'SW2:Ethernet0/2']
+  - endpoints: ['DNS2:Ethernet0/1', 'SW2:Ethernet0/3']

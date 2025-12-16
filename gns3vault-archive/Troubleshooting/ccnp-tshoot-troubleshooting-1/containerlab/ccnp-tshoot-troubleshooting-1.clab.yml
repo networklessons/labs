@@ -59,18 +59,24 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.220
       startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R4/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
-    bridge-clab2:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.230
+    SW2:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.240
   links:
-  - endpoints: ['FTPServer:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['DSW2:Ethernet0/3', 'bridge-clab1:eth2']
-  - endpoints: ['DSW1:Ethernet0/3', 'bridge-clab1:eth3']
-  - endpoints: ['ASW2:Ethernet0/1', 'bridge-clab2:eth1']
-  - endpoints: ['DSW2:Ethernet0/4', 'bridge-clab2:eth2']
-  - endpoints: ['DSW1:Ethernet0/4', 'bridge-clab2:eth3']
-  - endpoints: ['ASW1:Ethernet0/1', 'bridge-clab2:eth4']
+  - endpoints: ['FTPServer:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['DSW2:Ethernet0/3', 'SW1:Ethernet0/2']
+  - endpoints: ['DSW1:Ethernet0/3', 'SW1:Ethernet0/3']
+  - endpoints: ['ASW2:Ethernet0/1', 'SW2:Ethernet0/1']
+  - endpoints: ['DSW2:Ethernet0/4', 'SW2:Ethernet0/2']
+  - endpoints: ['DSW1:Ethernet0/4', 'SW2:Ethernet0/3']
+  - endpoints: ['ASW1:Ethernet0/1', 'SW2:Ethernet0/4']
   - endpoints: ['DSW2:Ethernet0/1', 'R4:Ethernet0/2']
   - endpoints: ['DSW2:Ethernet0/2', 'DSW1:Ethernet0/2']
   - endpoints: ['ISP:Ethernet0/1', 'R1:Ethernet0/2']

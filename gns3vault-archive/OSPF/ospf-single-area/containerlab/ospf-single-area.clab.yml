@@ -19,10 +19,13 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.120
       startup-config: ./clab-ospf-single-area/Amsterdam/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.130
   links:
   - endpoints: ['HongKong:Ethernet0/1', 'Amsterdam:Ethernet0/1']
-  - endpoints: ['HongKong:Ethernet0/2', 'bridge-clab1:eth1']
-  - endpoints: ['Barcelona:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['Amsterdam:Ethernet0/2', 'bridge-clab1:eth3']
+  - endpoints: ['HongKong:Ethernet0/2', 'SW1:Ethernet0/1']
+  - endpoints: ['Barcelona:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['Amsterdam:Ethernet0/2', 'SW1:Ethernet0/3']

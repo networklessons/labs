@@ -23,10 +23,13 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-nat-port-forwarding/NAT/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.140
   links:
   - endpoints: ['Host:Ethernet0/1', 'NAT:Ethernet0/2']
-  - endpoints: ['SSH:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['Web:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['NAT:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['SSH:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['Web:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['NAT:Ethernet0/1', 'SW1:Ethernet0/3']

@@ -23,10 +23,13 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.130
       startup-config: ./clab-dns-server/Primary/startup-config.cfg.partial
-    bridge-clab1:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.140
   links:
-  - endpoints: ['Secondary:Ethernet0/1', 'bridge-clab1:eth1']
-  - endpoints: ['Client1:Ethernet0/1', 'bridge-clab1:eth2']
-  - endpoints: ['Primary:Ethernet0/1', 'bridge-clab1:eth3']
+  - endpoints: ['Secondary:Ethernet0/1', 'SW1:Ethernet0/1']
+  - endpoints: ['Client1:Ethernet0/1', 'SW1:Ethernet0/2']
+  - endpoints: ['Primary:Ethernet0/1', 'SW1:Ethernet0/3']
   - endpoints: ['Client2:Ethernet0/1', 'Client1:Ethernet0/2']
