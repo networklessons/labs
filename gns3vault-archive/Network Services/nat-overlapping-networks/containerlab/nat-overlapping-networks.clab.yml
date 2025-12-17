@@ -33,4 +33,4 @@ topology:
   - endpoints: ['Kiwi:Ethernet0/2', 'SW1:Ethernet0/1']
   - endpoints: ['Pineapple:Ethernet0/1', 'SW1:Ethernet0/2']
   - endpoints: ['Banana:Ethernet0/1', 'SW1:Ethernet0/3']
-  - endpoints: ['Apple:Ethernet0/1', 'SW1:Ethernet0/4']
+  - endpoints: ['Apple:Ethernet0/1', 'SW1:Ethernet1/0']
