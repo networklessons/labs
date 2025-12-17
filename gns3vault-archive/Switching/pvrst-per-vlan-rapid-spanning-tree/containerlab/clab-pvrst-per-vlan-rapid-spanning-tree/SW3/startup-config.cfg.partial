@@ -14,6 +14,12 @@ interface Ethernet0/0
  no lldp transmit
  no lldp receive
 !
+interface Ethernet0/2
+ no shutdown
+!
+interface Ethernet0/3
+ no shutdown
+!
 !
 !
 !

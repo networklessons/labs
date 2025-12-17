@@ -27,7 +27,7 @@ interface Ethernet0/4
  speed auto
  no shutdown
 !
-interface Ethernet0/5
+interface Ethernet1/1
  ip address 192.168.46.4 255.255.255.0
  duplex auto
  speed auto

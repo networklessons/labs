@@ -27,6 +27,12 @@ interface Ethernet0/3
 interface Loopback0
  ip address 1.1.1.1 255.255.255.0
 !
+interface Ethernet0/4
+ ip address 192.168.134.1 255.255.255.0
+ duplex auto
+ speed auto
+ no shutdown
+!
 !
 !
 !

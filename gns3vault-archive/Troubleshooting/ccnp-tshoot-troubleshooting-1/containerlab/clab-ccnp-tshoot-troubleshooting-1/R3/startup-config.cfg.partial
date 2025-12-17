@@ -9,6 +9,19 @@ hostname R3
 !
 ip cef
 !
+interface Ethernet0/2
+ ip address 10.1.1.6 255.255.255.252
+ ipv6 address 2026::1:2/122
+ duplex auto
+ speed auto
+ no shutdown
+!
+interface Ethernet0/3
+ ip address 10.1.1.9 255.255.255.252
+ duplex auto
+ speed auto
+ no shutdown
+!
 interface Tunnel34
  no ip address
  ipv6 address FE80::C333:13FF:FEC3:0 link-local
