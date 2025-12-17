@@ -36,5 +36,5 @@ topology:
   - endpoints: ['WWW3:Ethernet0/1', 'SW1:Ethernet0/1']
   - endpoints: ['WWW1:Ethernet0/1', 'SW1:Ethernet0/2']
   - endpoints: ['WWW2:Ethernet0/1', 'SW1:Ethernet0/3']
-  - endpoints: ['NAT:Ethernet0/1', 'SW1:Ethernet0/4']
+  - endpoints: ['NAT:Ethernet0/1', 'SW1:Ethernet1/0']
   - endpoints: ['Host:Ethernet0/1', 'NAT:Ethernet0/2']

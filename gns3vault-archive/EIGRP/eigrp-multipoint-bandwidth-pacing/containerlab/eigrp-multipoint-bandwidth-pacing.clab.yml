@@ -44,7 +44,7 @@ topology:
     - SW1:Ethernet0/3
   - endpoints:
     - Paris:Ethernet0/1
-    - SW1:Ethernet0/4
+    - SW1:Ethernet1/0
   - endpoints:
     - NewDelhi:Ethernet0/1
-    - SW1:Ethernet0/5
+    - SW1:Ethernet1/1

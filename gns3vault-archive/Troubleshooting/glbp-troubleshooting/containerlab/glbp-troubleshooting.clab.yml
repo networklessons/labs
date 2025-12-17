@@ -44,7 +44,7 @@ topology:
     - SW1:Ethernet0/3
   - endpoints:
     - Connery:Ethernet0/1
-    - SW1:Ethernet0/4
+    - SW1:Ethernet1/0
   - endpoints:
     - Dalton:Ethernet0/2
     - MoneyPenny:Ethernet0/2

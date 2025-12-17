@@ -36,5 +36,5 @@ topology:
   - endpoints: ['Mail:Ethernet0/1', 'SW1:Ethernet0/1']
   - endpoints: ['WWW:Ethernet0/1', 'SW1:Ethernet0/2']
   - endpoints: ['PAT:Ethernet0/1', 'SW1:Ethernet0/3']
-  - endpoints: ['Rob:Ethernet0/1', 'SW1:Ethernet0/4']
+  - endpoints: ['Rob:Ethernet0/1', 'SW1:Ethernet1/0']
   - endpoints: ['Internet:Ethernet0/1', 'PAT:Ethernet0/2']
