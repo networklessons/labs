@@ -1,0 +1,122 @@
+name: lab-network-fundamentals-1
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    H1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-lab-network-fundamentals-1/H1/startup-config.cfg
+    H2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-lab-network-fundamentals-1/H2/startup-config.cfg
+    CSW1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-lab-network-fundamentals-1/CSW1/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    CSW2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-lab-network-fundamentals-1/CSW2/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    DSW1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-lab-network-fundamentals-1/DSW1/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    DSW2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-lab-network-fundamentals-1/DSW2/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    ASW1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+      startup-config: ./clab-lab-network-fundamentals-1/ASW1/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    ASW2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.17
+      startup-config: ./clab-lab-network-fundamentals-1/ASW2/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.18
+      startup-config: ./clab-lab-network-fundamentals-1/R1/startup-config.cfg
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.19
+      startup-config: ./clab-lab-network-fundamentals-1/ISP/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - CSW1:Ethernet0/0
+    - CSW2:Ethernet0/0
+  - endpoints:
+    - CSW1:Ethernet0/1
+    - CSW2:Ethernet0/1
+  - endpoints:
+    - CSW1:Ethernet0/2
+    - DSW1:Ethernet0/0
+  - endpoints:
+    - CSW2:Ethernet0/2
+    - DSW2:Ethernet0/0
+  - endpoints:
+    - DSW1:Ethernet0/1
+    - CSW2:Ethernet0/3
+  - endpoints:
+    - DSW2:Ethernet0/1
+    - CSW1:Ethernet0/3
+  - endpoints:
+    - H1:Ethernet0/0
+    - ASW1:Ethernet1/0
+  - endpoints:
+    - H2:Ethernet0/0
+    - ASW2:Ethernet1/0
+  - endpoints:
+    - CSW1:Ethernet1/0
+    - R1:Ethernet0/0
+  - endpoints:
+    - CSW2:Ethernet1/0
+    - R1:Ethernet0/1
+  - endpoints:
+    - R1:Ethernet0/2
+    - ISP:Ethernet0/0
+  - endpoints:
+    - DSW1:Ethernet0/2
+    - DSW2:Ethernet0/2
+  - endpoints:
+    - DSW1:Ethernet0/3
+    - DSW2:Ethernet0/3
+  - endpoints:
+    - ASW1:Ethernet0/0
+    - DSW1:Ethernet1/0
+  - endpoints:
+    - ASW2:Ethernet0/0
+    - DSW2:Ethernet1/0
+  - endpoints:
+    - ASW1:Ethernet0/1
+    - DSW2:Ethernet1/1
+  - endpoints:
+    - ASW2:Ethernet0/1
+    - DSW1:Ethernet1/1
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
