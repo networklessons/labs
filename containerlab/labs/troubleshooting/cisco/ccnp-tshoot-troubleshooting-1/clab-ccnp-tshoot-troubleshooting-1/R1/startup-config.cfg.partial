@@ -1,0 +1,58 @@
+hostname R1
+!
+no ip domain lookup
+ip domain name lab.local
+ipv6 unicast-routing
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 10.1.1.1 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly
+ ipv6 address 2026::12:1/122
+ ipv6 ospf 6 area 12
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 209.65.200.225 255.255.255.252
+ ip nat outside
+ ip virtual-reassembly
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+!
+router ospf 1
+ log-adjacency-changes
+ redistribute bgp 65001 subnets
+ passive-interface Ethernet0/2
+ network 10.1.1.1 0.0.0.0 area 12
+ network 209.65.200.224 0.0.0.3 area 12
+!
+router bgp 65001
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 209.65.200.226 remote-as 65002
+ no auto-summary
+!
+ip nat pool TSHOOT 209.65.200.225 209.65.200.225 netmask 255.255.255.252
+ip nat inside source list 1 pool TSHOOT overload
+!
+access-list 1 permit 10.0.0.0 0.255.255.255
+access-list 1 permit 192.168.0.0 0.0.255.255
+!
+ipv6 router ospf 6
+ log-adjacency-changes
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+!
+end

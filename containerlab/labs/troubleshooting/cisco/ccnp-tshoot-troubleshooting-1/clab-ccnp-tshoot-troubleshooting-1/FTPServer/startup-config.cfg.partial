@@ -1,0 +1,33 @@
+hostname FTPServer
+!
+no ip routing
+!
+no ip domain lookup
+ip domain name lab.local
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 10.2.2.10 255.255.255.0
+!
+interface Ethernet0/1
+ no shutdown
+ no ip address
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+!
+ip default-gateway 10.2.2.1
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+!
+end

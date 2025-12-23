@@ -1,0 +1,142 @@
+# CCNP TSHOOT Troubleshooting Lab 1
+# Converted from GNS3 topology to Containerlab
+# This is a pre-configured troubleshooting scenario
+
+name: ccnp-tshoot-troubleshooting-1
+
+mgmt:
+  network: statics
+  ipv4-subnet: 10.65.98.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    # Routers
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.11
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R1/startup-config.cfg.partial
+    
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.12
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R2/startup-config.cfg.partial
+    
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.13
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R3/startup-config.cfg.partial
+    
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.14
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/R4/startup-config.cfg.partial
+    
+    ISP:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.15
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/ISP/startup-config.cfg.partial
+    
+    # Distribution Layer Switches (L3)
+    DSW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.21
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/DSW1/startup-config.cfg.partial
+    
+    DSW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.22
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/DSW2/startup-config.cfg.partial
+    
+    # Access Layer Switches (L2)
+    ASW1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.31
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/ASW1/startup-config.cfg.partial
+    
+    ASW2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.32
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/ASW2/startup-config.cfg.partial
+    
+    # Clients and Servers
+    Client1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.41
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/Client1/startup-config.cfg.partial
+    
+    Client2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.42
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/Client2/startup-config.cfg.partial
+    
+    FTPServer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.43
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/FTPServer/startup-config.cfg.partial
+    
+    WebServer:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.98.44
+      startup-config: ./clab-ccnp-tshoot-troubleshooting-1/WebServer/startup-config.cfg.partial
+
+  links:
+    # Core Router Links (replacing Frame Relay)
+    # R1 <-> R2 (was Serial0/0.12 frame-relay)
+    - endpoints: ["R1:Ethernet0/0", "R2:Ethernet0/0"]
+    
+    # R2 <-> R3 (was Serial0/0.23 frame-relay)
+    - endpoints: ["R2:Ethernet0/1", "R3:Ethernet0/0"]
+    
+    # R3 <-> R4 (was Serial0/0.34 frame-relay)
+    - endpoints: ["R3:Ethernet0/1", "R4:Ethernet0/0"]
+    
+    # R1 <-> ISP (was Serial0/1)
+    - endpoints: ["R1:Ethernet0/2", "ISP:Ethernet0/0"]
+    
+    # ISP <-> WebServer (was Serial0/0)
+    - endpoints: ["ISP:Ethernet0/1", "WebServer:Ethernet0/0"]
+    
+    # Router to Distribution Switch Links
+    # R4 <-> DSW1 (was FastEthernet1/0 <-> FastEthernet0/0)
+    - endpoints: ["R4:Ethernet0/1", "DSW1:Ethernet0/0"]
+    
+    # R4 <-> DSW2 (was FastEthernet2/0 <-> FastEthernet0/0)
+    - endpoints: ["R4:Ethernet0/2", "DSW2:Ethernet0/0"]
+    
+    # Distribution Switch Links (Port-channel 3)
+    # DSW1 <-> DSW2 (was FastEthernet1/4-5 <-> FastEthernet1/4-5)
+    - endpoints: ["DSW1:Ethernet1/0", "DSW2:Ethernet1/0"]
+    - endpoints: ["DSW1:Ethernet1/1", "DSW2:Ethernet1/1"]
+    
+    # Distribution to Access Switch Links (Port-channel 1)
+    # DSW1 <-> ASW1 (was FastEthernet1/2-3 <-> FastEthernet1/2-3)
+    - endpoints: ["DSW1:Ethernet1/2", "ASW1:Ethernet1/0"]
+    - endpoints: ["DSW1:Ethernet1/3", "ASW1:Ethernet1/1"]
+    
+    # Distribution to Access Switch Links (Port-channel 5)
+    # DSW1 <-> ASW2 (was FastEthernet1/8-9 <-> FastEthernet1/8-9)
+    - endpoints: ["DSW1:Ethernet1/4", "ASW2:Ethernet1/0"]
+    - endpoints: ["DSW1:Ethernet1/5", "ASW2:Ethernet1/1"]
+    
+    # Distribution to Access Switch Links (Port-channel 4)
+    # DSW2 <-> ASW2 (was FastEthernet1/6-7 <-> FastEthernet1/6-7)
+    - endpoints: ["DSW2:Ethernet1/2", "ASW2:Ethernet1/2"]
+    - endpoints: ["DSW2:Ethernet1/3", "ASW2:Ethernet1/3"]
+    
+    # Distribution to Access Switch Links (Port-channel 2)
+    # DSW2 <-> ASW1 (was FastEthernet1/10-11 <-> FastEthernet1/10-11)
+    - endpoints: ["DSW2:Ethernet1/4", "ASW1:Ethernet1/2"]
+    - endpoints: ["DSW2:Ethernet1/5", "ASW1:Ethernet1/3"]
+    
+    # Access to Client/Server Links
+    # ASW1 <-> Client1 (was FastEthernet1/5)
+    - endpoints: ["ASW1:Ethernet1/4", "Client1:Ethernet0/0"]
+    
+    # ASW1 <-> FTPServer (was FastEthernet1/4)
+    - endpoints: ["ASW1:Ethernet1/5", "FTPServer:Ethernet0/0"]
+    
+    # ASW2 <-> Client2 (was FastEthernet1/4)
+    - endpoints: ["ASW2:Ethernet1/4", "Client2:Ethernet0/0"]
