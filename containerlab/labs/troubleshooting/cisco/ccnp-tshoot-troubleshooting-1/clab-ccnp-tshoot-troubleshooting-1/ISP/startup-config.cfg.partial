@@ -1,0 +1,37 @@
+hostname ISP
+!
+no ip domain lookup
+ip domain name lab.local
+ipv6 unicast-routing
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 209.65.200.226 255.255.255.252
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 209.65.200.246 255.255.255.248
+ ipv6 address 2001:DB8:CAFE:1::1/64
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+!
+router bgp 65002
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 209.65.200.225 remote-as 65001
+ no auto-summary
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+!
+end
