@@ -35,7 +35,7 @@ Contains playbooks you can use to run against network devices.
 Contains topologies you can run in Containerlab.
 
 <!-- CONTAINERLAB_STATS_START -->
-**Total Containerlab Labs: 66**
+**Total Containerlab Labs: 59**
 
 | Category | Labs |
 |----------|------|
@@ -43,7 +43,6 @@ Contains topologies you can run in Containerlab.
 | bgp | 7 |
 | dhcp | 1 |
 | eigrp | 1 |
-| graphite | 7 |
 | isis | 1 |
 | mpls | 2 |
 | ospf | 14 |
