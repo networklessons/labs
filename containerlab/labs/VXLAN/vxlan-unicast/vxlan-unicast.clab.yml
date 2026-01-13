@@ -1,0 +1,57 @@
+name: vxlan-unicast
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    H1:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-vxlan-unicast/H1/startup-config.cfg
+    VTEP1:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-vxlan-unicast/VTEP1/startup-config.cfg
+    CORE:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-vxlan-unicast/CORE/startup-config.cfg
+    VTEP2:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-vxlan-unicast/VTEP2/startup-config.cfg
+    H2:
+      kind: cisco_c8000v
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-vxlan-unicast/H2/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - H1:GigabitEthernet2
+    - VTEP1:GigabitEthernet2
+  - endpoints:
+    - H2:GigabitEthernet2
+    - VTEP2:GigabitEthernet2
+  - endpoints:
+    - VTEP1:GigabitEthernet3
+    - CORE:GigabitEthernet2
+  - endpoints:
+    - VTEP2:GigabitEthernet3
+    - CORE:GigabitEthernet3
+  kinds:
+    cisco_c8000v:
+      image: docker-registry.nwl.lab/vr-c8000v:17.09.01a

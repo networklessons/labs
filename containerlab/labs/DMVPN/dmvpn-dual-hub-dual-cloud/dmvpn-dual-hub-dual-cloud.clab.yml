@@ -1,0 +1,87 @@
+name: dmvpn-dual-hub-dual-cloud
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/R1/startup-config.cfg
+    Hub1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/Hub1/startup-config.cfg
+    Hub2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/Hub2/startup-config.cfg
+    Spoke1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/Spoke1/startup-config.cfg
+    Spoke2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/Spoke2/startup-config.cfg
+    unmanagedswitch-1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/unmanagedswitch-1/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    ISP1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/ISP1/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    ISP2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.17
+      startup-config: ./clab-dmvpn-dual-hub-dual-cloud/ISP2/startup-config.cfg
+      image: docker-registry.nwl.lab/iol-l2:latest
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - Hub1:Ethernet0/1
+    - ISP1:port1
+  - endpoints:
+    - Spoke1:Ethernet0/1
+    - ISP1:port3
+  - endpoints:
+    - Spoke2:Ethernet0/1
+    - ISP1:port4
+  - endpoints:
+    - Spoke1:Ethernet0/2
+    - ISP2:port3
+  - endpoints:
+    - Spoke2:Ethernet0/2
+    - ISP2:port4
+  - endpoints:
+    - Hub1:Ethernet0/3
+    - unmanagedswitch-1:port1
+  - endpoints:
+    - Hub2:Ethernet0/3
+    - unmanagedswitch-1:port2
+  - endpoints:
+    - R1:Ethernet0/1
+    - unmanagedswitch-1:port3
+  - endpoints:
+    - Hub2:Ethernet0/1
+    - ISP2:port1
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

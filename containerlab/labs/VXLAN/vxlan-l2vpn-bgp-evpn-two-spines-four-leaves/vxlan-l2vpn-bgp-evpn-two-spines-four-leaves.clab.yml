@@ -1,0 +1,103 @@
+name: vxlan-l2vpn-bgp-evpn-two-spines-four-leaves
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    SPINE1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/SPINE1/startup-config.cfg
+    SPINE2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/SPINE2/startup-config.cfg
+    LEAF1:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/LEAF1/startup-config.cfg
+    LEAF2:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/LEAF2/startup-config.cfg
+    LEAF3:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/LEAF3/startup-config.cfg
+    LEAF4:
+      kind: cisco_n9kv
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/LEAF4/startup-config.cfg
+    S1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/S1/startup-config.cfg
+    S2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.17
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/S2/startup-config.cfg
+    S3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.18
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/S3/startup-config.cfg
+    S4:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.19
+      startup-config: ./clab-vxlan-l2vpn-bgp-evpn-two-spines-four-leaves/S4/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - SPINE1:Ethernet1/1
+    - LEAF1:Ethernet1/1
+  - endpoints:
+    - SPINE1:Ethernet1/2
+    - LEAF2:Ethernet1/1
+  - endpoints:
+    - SPINE1:Ethernet1/3
+    - LEAF3:Ethernet1/1
+  - endpoints:
+    - SPINE1:Ethernet1/4
+    - LEAF4:Ethernet1/1
+  - endpoints:
+    - SPINE2:Ethernet1/1
+    - LEAF1:Ethernet1/2
+  - endpoints:
+    - SPINE2:Ethernet1/2
+    - LEAF2:Ethernet1/2
+  - endpoints:
+    - SPINE2:Ethernet1/3
+    - LEAF3:Ethernet1/2
+  - endpoints:
+    - SPINE2:Ethernet1/4
+    - LEAF4:Ethernet1/2
+  - endpoints:
+    - LEAF1:Ethernet1/3
+    - S1:Ethernet0/0
+  - endpoints:
+    - LEAF2:Ethernet1/3
+    - S2:Ethernet0/0
+  - endpoints:
+    - LEAF3:Ethernet1/3
+    - S3:Ethernet0/0
+  - endpoints:
+    - LEAF4:Ethernet1/3
+    - S4:Ethernet0/0
+  kinds:
+    cisco_n9kv:
+      image: docker-registry.nwl.lab/vr-n9kv:9.3.9
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

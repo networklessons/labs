@@ -1,0 +1,81 @@
+name: mpls-te-te-tunnel-per-vrf
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    CE1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/CE1/startup-config.cfg
+    CE2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/CE2/startup-config.cfg
+    PE1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/PE1/startup-config.cfg
+    P1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/P1/startup-config.cfg
+    P2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/P2/startup-config.cfg
+    PE2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/PE2/startup-config.cfg
+    CE3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/CE3/startup-config.cfg
+    CE4:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.17
+      startup-config: ./clab-mpls-te-te-tunnel-per-vrf/CE4/startup-config.cfg
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - PE1:Ethernet0/0
+    - P1:Ethernet0/0
+  - endpoints:
+    - PE1:Ethernet0/1
+    - P2:Ethernet0/0
+  - endpoints:
+    - P1:Ethernet0/1
+    - PE2:Ethernet0/0
+  - endpoints:
+    - P2:Ethernet0/1
+    - PE2:Ethernet0/1
+  - endpoints:
+    - PE1:Ethernet0/2
+    - CE1:Ethernet0/0
+  - endpoints:
+    - PE1:Ethernet0/3
+    - CE2:Ethernet0/0
+  - endpoints:
+    - PE2:Ethernet0/2
+    - CE3:Ethernet0/0
+  - endpoints:
+    - PE2:Ethernet0/3
+    - CE4:Ethernet0/0
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

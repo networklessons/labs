@@ -1,0 +1,50 @@
+name: dmvpn-phase-3-ospf
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    Hub:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+      startup-config: ./clab-dmvpn-phase-3-ospf/Hub/startup-config.cfg
+    Spoke1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+      startup-config: ./clab-dmvpn-phase-3-ospf/Spoke1/startup-config.cfg
+    Spoke2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+      startup-config: ./clab-dmvpn-phase-3-ospf/Spoke2/startup-config.cfg
+    unmanagedswitch-1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+      image: docker-registry.nwl.lab/iol-l2:latest
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - Hub:Ethernet0/1
+    - unmanagedswitch-1:port0
+  - endpoints:
+    - Spoke1:Ethernet0/1
+    - unmanagedswitch-1:port1
+  - endpoints:
+    - Spoke2:Ethernet0/1
+    - unmanagedswitch-1:port2
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01

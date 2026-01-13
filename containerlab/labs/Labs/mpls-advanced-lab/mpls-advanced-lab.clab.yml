@@ -1,0 +1,115 @@
+name: mpls-advanced-lab
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+topology:
+  nodes:
+    CE1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.10
+    CS:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.11
+    CE2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.12
+    PE1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.13
+    P3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.14
+    P1:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.15
+    PE2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.16
+    P2:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.17
+    CE3:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.18
+    CE4:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.19
+    CE5:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.20
+    CE6:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.21
+    CE7:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.22
+    INTERNET:
+      kind: cisco_iol
+      mgmt-ipv4: 172.100.100.23
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 172.100.100.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+      - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+      - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+      - 8080:80
+      exec:
+      - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: 'yes'
+  links:
+  - endpoints:
+    - PE1:Ethernet0/0
+    - P1:Ethernet0/0
+  - endpoints:
+    - PE1:Ethernet0/1
+    - P3:Ethernet0/0
+  - endpoints:
+    - P1:Ethernet0/1
+    - P2:Ethernet0/0
+  - endpoints:
+    - PE2:Ethernet0/0
+    - P2:Ethernet0/1
+  - endpoints:
+    - PE2:Ethernet0/1
+    - P3:Ethernet0/1
+  - endpoints:
+    - PE1:Ethernet0/2
+    - CE1:Ethernet0/0
+  - endpoints:
+    - PE1:Ethernet0/3
+    - CS:Ethernet0/0
+  - endpoints:
+    - PE1:Ethernet0/4
+    - CE2:Ethernet0/0
+  - endpoints:
+    - PE1:Ethernet0/5
+    - CE3:Ethernet0/0
+  - endpoints:
+    - PE2:Ethernet0/2
+    - CE4:Ethernet0/0
+  - endpoints:
+    - PE2:Ethernet0/3
+    - CE5:Ethernet0/0
+  - endpoints:
+    - PE2:Ethernet0/4
+    - CE6:Ethernet0/0
+  - endpoints:
+    - PE2:Ethernet0/5
+    - CE7:Ethernet0/0
+  - endpoints:
+    - CE4:Ethernet0/1
+    - CE5:Ethernet0/1
+  - endpoints:
+    - INTERNET:Ethernet0/0
+    - PE2:Ethernet0/6
+  - endpoints:
+    - CE2:Ethernet0/1
+    - CE7:Ethernet0/1
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
