@@ -1,0 +1,49 @@
+# SDN Lab
+
+name: sdn-opendaylight
+
+mgmt:
+  network: statics
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  kinds:
+    cisco_n9kv:
+      image: docker-registry.nwl.lab/vr-n9kv:10.4.5
+    linux:
+      image: networklessons/lab-node-ubuntu:270
+  nodes:
+    controller:
+      kind: linux
+      image: networklessons/opendaylight:0.5.0-Boron
+      mgmt-ipv4: 172.100.100.10
+      ports:
+      - "8181:8181"
+      - "6633:6633"
+      - "6653:6653"
+      - "8101:8101"
+    sdn-spine1:
+      kind: ovs-bridge
+    sdn-leaf1:
+      kind: ovs-bridge
+    sdn-leaf2:
+      kind: ovs-bridge
+    s1:
+      kind: linux
+      mgmt-ipv4: 172.100.100.51
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:40:01
+      - ip addr add 172.16.12.1/24 dev eth1
+    s2:
+      kind: linux
+      mgmt-ipv4: 172.100.100.52
+      exec:
+      - ip link set dev eth1 address 00:50:c2:53:50:01
+      - ip addr add 172.16.12.2/24 dev eth1
+  links:
+    # Spine-to-Leaf links (controller-facing)
+    - endpoints: ["sdn-spine1:odl-s1l1", "sdn-leaf1:odl-l1s1"]
+    - endpoints: ["sdn-spine1:odl-s1l2", "sdn-leaf2:odl-l2s1"]
+    # Leaf-to-Server links (access ports)
+    - endpoints: ["sdn-leaf1:odl-l1h1", "s1:eth1"]
+    - endpoints: ["sdn-leaf2:odl-l2h1", "s2:eth1"]
