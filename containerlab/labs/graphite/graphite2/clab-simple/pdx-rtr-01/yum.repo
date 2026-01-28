@@ -1,5 +1,0 @@
-[srlinux]
-name=SR Linux NDK apps
-baseurl=https://yum.fury.io/srlinux/
-enabled=1
-gpgcheck=0
