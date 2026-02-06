@@ -1,0 +1,23 @@
+hostname R1
+!
+interface Loopback0
+ ip address 1.1.1.1 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 192.168.12.1 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 MY_KEY
+ ip ospf dead-interval 15
+ ip ospf hello-interval 5
+!
+interface Ethernet0/2
+ ip address 192.168.13.1 255.255.255.0
+ ip ospf cost 1
+!
+router ospf 1
+ router-id 1.1.1.1
+ network 1.1.1.1 0.0.0.0 area 0
+ network 192.168.12.0 0.0.0.255 area 0
+ network 192.168.13.0 0.0.0.255 area 0
+!
+end
