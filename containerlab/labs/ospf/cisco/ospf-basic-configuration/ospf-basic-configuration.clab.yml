@@ -12,15 +12,15 @@ topology:
     R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.11
-      #startup-config: ./clab-ospf-basic-configuration/R1/startup-config.cfg.partial
+      startup-config: ./clab-ospf-basic-configuration/R1/startup-config.cfg.partial
     R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.12
-      #startup-config: ./clab-ospf-basic-configuration/R2/startup-config.cfg.partial
+      startup-config: ./clab-ospf-basic-configuration/R2/startup-config.cfg.partial
     R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.13
-      #startup-config: ./clab-ospf-basic-configuration/R3/startup-config.cfg.partial
+      startup-config: ./clab-ospf-basic-configuration/R3/startup-config.cfg.partial
     graphite:
       kind: linux
       image: netreplica/graphite
