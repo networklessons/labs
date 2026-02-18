@@ -1,4 +1,4 @@
-# Three routers connected to Linux Bridge.
+# Three routers connected to IOL L2 Switch.
 
 name: ospf-network-type-broadcast
 mgmt:
@@ -21,11 +21,11 @@ topology:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.13
       startup-config: ./clab-ospf-network-type-broadcast/R3/startup-config.cfg.partial
-    # Bridge to connect all routers. Create this manually in Linux:
-    # sudo ip link add name br-clab type bridge
-    # sudo ip link set br-clab up
-    br-clab:
-      kind: bridge
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.150
     graphite:
       kind: linux
       image: netreplica/graphite
@@ -42,6 +42,6 @@ topology:
       labels:
         graph-hide: yes
   links:
-    - endpoints: ["R1:Ethernet0/1", "br-clab:eth1"]
-    - endpoints: ["R2:Ethernet0/1", "br-clab:eth2"]
-    - endpoints: ["R3:Ethernet0/1", "br-clab:eth3"]
+    - endpoints: ["R1:Ethernet0/1", "SW1:Ethernet0/1"]
+    - endpoints: ["R2:Ethernet0/1", "SW1:Ethernet0/2"]
+    - endpoints: ["R3:Ethernet0/1", "SW1:Ethernet0/3"]
