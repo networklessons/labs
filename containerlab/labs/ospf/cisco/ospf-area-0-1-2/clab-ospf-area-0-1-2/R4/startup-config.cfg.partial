@@ -1,0 +1,10 @@
+hostname R4
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.34.4 255.255.255.0
+ ip ospf network point-to-point
+!
+router ospf 1
+ router-id 4.4.4.4
+ network 192.168.34.0 0.0.0.255 area 2
