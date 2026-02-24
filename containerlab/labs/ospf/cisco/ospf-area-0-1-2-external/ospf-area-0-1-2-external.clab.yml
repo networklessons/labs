@@ -1,0 +1,50 @@
+# Cisco IOL OSPF lab with multiple areas and external route redistribution
+# R1 in area 1, R2 in area 1+0 (ABR), R3 in area 0+2 (ABR), R4 in area 2
+# R1 redistributes 11.11.11.11/32 into OSPF via route-map CONNECTED_TO_OSPF
+
+name: ospf-area-0-1-2-external
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-ospf-area-0-1-2-external/R1/startup-config.cfg.partial
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-ospf-area-0-1-2-external/R2/startup-config.cfg.partial
+    R3:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.13
+      startup-config: ./clab-ospf-area-0-1-2-external/R3/startup-config.cfg.partial
+    R4:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.14
+      startup-config: ./clab-ospf-area-0-1-2-external/R4/startup-config.cfg.partial
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      mgmt-ipv4: 10.65.97.100
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8082:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
+  links:
+    - endpoints: ["R1:Ethernet0/1", "R2:Ethernet0/1"]
+    - endpoints: ["R2:Ethernet0/2", "R3:Ethernet0/1"]
+    - endpoints: ["R3:Ethernet0/2", "R4:Ethernet0/1"]
