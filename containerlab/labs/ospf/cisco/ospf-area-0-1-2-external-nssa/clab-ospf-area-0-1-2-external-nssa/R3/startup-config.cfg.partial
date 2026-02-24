@@ -1,0 +1,16 @@
+hostname R3
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.23.3 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 192.168.34.3 255.255.255.0
+ ip ospf network point-to-point
+!
+router ospf 1
+ router-id 3.3.3.3
+ network 192.168.23.0 0.0.0.255 area 0
+ network 192.168.34.0 0.0.0.255 area 2

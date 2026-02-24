@@ -1,0 +1,17 @@
+hostname R2
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.12.2 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Ethernet0/2
+ no shutdown
+ ip address 192.168.23.2 255.255.255.0
+ ip ospf network point-to-point
+!
+router ospf 1
+ router-id 2.2.2.2
+ area 1 nssa
+ network 192.168.12.0 0.0.0.255 area 1
+ network 192.168.23.0 0.0.0.255 area 0
