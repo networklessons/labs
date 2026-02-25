@@ -10,7 +10,7 @@ mgmt:
 topology:
   kinds:
     cisco_c8000v:
-      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a
+      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a:17.13.01a
   nodes:
     r1:
       kind: cisco_c8000v
