@@ -63,21 +63,6 @@ topology:
       labels:
         graph-level: 3
         graph-icon: server
-    graphite:
-      kind: linux
-      image: netreplica/graphite
-      mgmt-ipv4: 172.100.100.100
-      env:
-        HOST_CONNECTION: ${SSH_CONNECTION}
-      binds:
-        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
-        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
-      ports:
-        - 8080:80
-      exec:
-        - sh -c 'graphite_motd.sh 8080'
-      labels:
-        graph-hide: yes
   links:
     - endpoints: ["R1:eth1", "R2:eth1"]
     - endpoints: ["R1:eth2", "R3:eth1"]
