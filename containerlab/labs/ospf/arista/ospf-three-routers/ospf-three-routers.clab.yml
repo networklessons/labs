@@ -1,0 +1,41 @@
+# Arista CEOS OSPF lab with three routers in a linear topology.
+# R1 -- R2 -- R3
+# 192.168.12.0/24 between R1-R2, 192.168.23.0/24 between R2-R3.
+# Each router has a loopback x.x.x.x/32 where x = router number.
+
+name: arista-ospf-three-routers
+
+mgmt:
+  network: clab-mgmt
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.35.0F
+  nodes:
+    R1:
+      kind: arista_ceos
+      startup-config: ./clab-arista-ospf-three-routers/R1/config/startup-config.cfg
+      mgmt-ipv4: 10.65.97.11
+      labels:
+        graph-level: 1
+        graph-icon: router
+    R2:
+      kind: arista_ceos
+      startup-config: ./clab-arista-ospf-three-routers/R2/config/startup-config.cfg
+      mgmt-ipv4: 10.65.97.12
+      labels:
+        graph-level: 2
+        graph-icon: router
+    R3:
+      kind: arista_ceos
+      startup-config: ./clab-arista-ospf-three-routers/R3/config/startup-config.cfg
+      mgmt-ipv4: 10.65.97.13
+      labels:
+        graph-level: 3
+        graph-icon: router
+
+  links:
+    - endpoints: ["R1:eth1", "R2:eth1"]
+    - endpoints: ["R2:eth2", "R3:eth1"]

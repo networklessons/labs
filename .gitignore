@@ -60,3 +60,4 @@ deployment_log.txt
 failed_labs.txt
 successful_labs.txt
 *.pyc
+*.crt
