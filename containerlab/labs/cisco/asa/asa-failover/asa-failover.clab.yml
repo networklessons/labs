@@ -19,12 +19,7 @@ topology:
     R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-asa-failover/R1/startup-config.cfg.partial
-
-    R2:
-      kind: cisco_iol
-      mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-asa-failover/R2/startup-config.cfg.partial
+      #startup-config: ./clab-asa-failover/R1/startup-config.cfg.partial
 
     SW1:
       kind: cisco_iol
@@ -32,21 +27,15 @@ topology:
       type: l2
       mgmt-ipv4: 10.65.97.13
 
-    SW2:
-      kind: cisco_iol
-      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
-      type: l2
-      mgmt-ipv4: 10.65.97.14
-
     ASA1:
       kind: cisco_asav
       mgmt-ipv4: 10.65.97.15
-      startup-config: ./clab-asa-failover/ASA1/startup-config.cfg
+      startup-config: ./clab-asa-failover/ASA1/config/startup-config.cfg
 
     ASA2:
       kind: cisco_asav
       mgmt-ipv4: 10.65.97.16
-      startup-config: ./clab-asa-failover/ASA2/startup-config.cfg
+      startup-config: ./clab-asa-failover/ASA2/config/startup-config.cfg
 
   links:
     - endpoints: ["ASA1:eth1", "SW1:eth1"]
