@@ -1,0 +1,58 @@
+# ASA Failover Topology.
+# This topology demonstrates ASA failover configuration with two ASA devices
+# connected to separate L2 switches, with routers simulating inside and outside networks
+
+name: asa-failover
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+    cisco_asav:
+      image: vrnetlab/cisco_asav:9-23-1
+
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      startup-config: ./clab-asa-failover/R1/startup-config.cfg.partial
+
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      startup-config: ./clab-asa-failover/R2/startup-config.cfg.partial
+
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.13
+
+    SW2:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.14
+
+    ASA1:
+      kind: cisco_asav
+      mgmt-ipv4: 10.65.97.15
+      startup-config: ./clab-asa-failover/ASA1/startup-config.cfg
+
+    ASA2:
+      kind: cisco_asav
+      mgmt-ipv4: 10.65.97.16
+      startup-config: ./clab-asa-failover/ASA2/startup-config.cfg
+
+  links:
+    - endpoints: ["ASA1:eth1", "SW1:eth1"]
+    - endpoints: ["ASA2:eth1", "SW1:eth2"]
+    - endpoints: ["R1:eth1", "SW1:eth3"]
+    - endpoints: ["ASA1:eth2", "SW2:eth1"]
+    - endpoints: ["ASA2:eth2", "SW2:eth2"]
+    - endpoints: ["R2:eth1", "SW2:eth3"]
+    - endpoints: ["ASA1:eth3", "ASA2:eth3"]
