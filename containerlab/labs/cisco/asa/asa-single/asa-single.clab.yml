@@ -1,0 +1,37 @@
+# ASA Single Device Topology.
+# This topology demonstrates a simple ASA configuration with:
+# R1 on the INSIDE network.
+# R2 on the OUTSIDE network.
+
+name: asa-single
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+    cisco_asav:
+      image: vrnetlab/cisco_asav:9-23-1
+
+  nodes:
+    R1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.11
+      #startup-config: ./clab-asa-single/R1/startup-config.cfg.partial
+
+    R2:
+      kind: cisco_iol
+      mgmt-ipv4: 10.65.97.12
+      #startup-config: ./clab-asa-single/R2/startup-config.cfg.partial
+
+    ASA1:
+      kind: cisco_asav
+      mgmt-ipv4: 10.65.97.15
+      #startup-config: ./clab-asa-single/ASA1/config/startup-config.cfg
+
+  links:
+    - endpoints: ["R1:eth1", "ASA1:eth1"]
+    - endpoints: ["ASA1:eth2", "R2:eth1"]
