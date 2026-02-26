@@ -30,12 +30,10 @@ topology:
     ASA1:
       kind: cisco_asav
       mgmt-ipv4: 10.65.97.15
-      startup-config: ./clab-asa-failover/ASA1/config/startup-config.cfg
 
     ASA2:
       kind: cisco_asav
       mgmt-ipv4: 10.65.97.16
-      startup-config: ./clab-asa-failover/ASA2/config/startup-config.cfg
 
   links:
     - endpoints: ["ASA1:eth1", "SW1:eth1"]
