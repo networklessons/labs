@@ -19,7 +19,7 @@ topology:
     R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.11
-      #startup-config: ./clab-asa-failover/R1/startup-config.cfg.partial
+      startup-config: ./clab-asa-failover/R1/startup-config.cfg.partial
 
     SW1:
       kind: cisco_iol
@@ -41,7 +41,4 @@ topology:
     - endpoints: ["ASA1:eth1", "SW1:eth1"]
     - endpoints: ["ASA2:eth1", "SW1:eth2"]
     - endpoints: ["R1:eth1", "SW1:eth3"]
-    - endpoints: ["ASA1:eth2", "SW2:eth1"]
-    - endpoints: ["ASA2:eth2", "SW2:eth2"]
-    - endpoints: ["R2:eth1", "SW2:eth3"]
-    - endpoints: ["ASA1:eth3", "ASA2:eth3"]
+    - endpoints: ["ASA1:eth2", "ASA2:eth2"]
