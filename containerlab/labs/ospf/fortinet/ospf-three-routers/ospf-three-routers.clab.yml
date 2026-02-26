@@ -1,0 +1,36 @@
+# Fortinet FortiGate OSPF lab with three routers in a linear topology.
+# R1 -- R2 -- R3
+# 192.168.12.0/24 between R1-R2, 192.168.23.0/24 between R2-R3.
+# Each router has a loopback x.x.x.x/32 where x = router number.
+# OSPF graceful restart is enabled on all routers.
+
+name: fortinet-ospf-three-routers
+
+mgmt:
+  network: clab-mgmt
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  defaults:
+    kind: fortinet_fortigate
+    image: vrnetlab/vr-fortios:7.2.13
+  nodes:
+    R1:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:7.2.13
+      #startup-config: ./configs/R1.conf
+      mgmt-ipv4: 10.65.97.11
+    R2:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:7.2.13
+      #startup-config: ./configs/R2.conf
+      mgmt-ipv4: 10.65.97.12
+    R3:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:7.2.13
+      #startup-config: ./configs/R3.conf
+      mgmt-ipv4: 10.65.97.13
+
+  links:
+    - endpoints: ["R1:eth1", "R2:eth1"]
+    - endpoints: ["R2:eth2", "R3:eth1"]
