@@ -35,7 +35,7 @@ Contains playbooks you can use to run against network devices.
 Contains topologies you can run in Containerlab.
 
 <!-- CONTAINERLAB_STATS_START -->
-**Total Containerlab Labs: 66**
+**Total Containerlab Labs: 67**
 
 | Category | Labs |
 |----------|------|
@@ -45,7 +45,7 @@ Contains topologies you can run in Containerlab.
 | eigrp | 1 |
 | isis | 1 |
 | mpls | 2 |
-| ospf | 19 |
+| ospf | 20 |
 | sdn | 2 |
 | topologies | 3 |
 | vpc | 1 |
