@@ -1,6 +1,6 @@
 # ASA Failover Topology.
 # This topology demonstrates ASA failover configuration with two ASA devices
-# connected to separate L2 switches, with routers simulating inside and outside networks
+# connected to separate L2 switch and a router.
 
 name: asa-failover
 
@@ -30,10 +30,14 @@ topology:
     ASA1:
       kind: cisco_asav
       mgmt-ipv4: 10.65.97.15
+      # Disabled at startup because it got stuck when applying.
+      #startup-config: ./clab-asa-failover/R1/startup-config-asa1.cfg
 
     ASA2:
       kind: cisco_asav
       mgmt-ipv4: 10.65.97.16
+      # Disabled at startup because it got stuck when applying.
+      #startup-config: ./clab-asa-failover/R1/startup-config-asa2.cfg
 
   links:
     - endpoints: ["ASA1:eth1", "SW1:eth1"]
