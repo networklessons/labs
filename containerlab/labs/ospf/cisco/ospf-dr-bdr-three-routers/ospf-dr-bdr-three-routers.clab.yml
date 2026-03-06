@@ -1,4 +1,4 @@
-# OSPF with three routers and one switch to test DR/BDR election.
+# OSPF with three routers and one switch to check DR/BDR election.
 
 name: ospf-dr-bdr-three-routers
 mgmt:
