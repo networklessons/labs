@@ -1,0 +1,19 @@
+hostname R2
+!
+interface Ethernet0/1
+ description R2-to-R1
+ ip address 192.168.12.2 255.255.255.0
+ ip ospf network point-to-point
+ no shutdown
+!
+interface Ethernet0/2
+ description R2-to-R3
+ ip address 192.168.23.2 255.255.255.0
+ ip ospf network point-to-point
+ no shutdown
+!
+router ospf 1
+ router-id 2.2.2.2
+ network 192.168.12.2 0.0.0.0 area 1
+ network 192.168.23.2 0.0.0.0 area 2
+ area 1 virtual-link 1.1.1.1
