@@ -4,7 +4,7 @@ interface Loopback0
  ip address 3.3.3.3 255.255.255.255
 !
 interface Ethernet0/1
- ip address 10.65.97.131 255.255.255.128
+ ip address 192.168.123.3 255.255.255.0
  no shutdown
 !
 end

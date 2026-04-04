@@ -2,7 +2,7 @@
 # R1, R2, H1 connected to SW1.
 # R1, R2, R3 connected to SW2.
 
-name: hsrp
+name: hsrp-basic-ip-only
 mgmt:
   network: statics
   ipv4-subnet: 10.65.97.0/24
@@ -14,19 +14,19 @@ topology:
     R1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-hsrp/R1/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-basic-ip-only/R1/startup-config.cfg.partial
     R2:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-hsrp/R2/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-basic-ip-only/R2/startup-config.cfg.partial
     R3:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.13
-      startup-config: ./clab-hsrp/R3/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-basic-ip-only/R3/startup-config.cfg.partial
     H1:
       kind: cisco_iol
       mgmt-ipv4: 10.65.97.14
-      startup-config: ./clab-hsrp/H1/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-basic-ip-only/H1/startup-config.cfg.partial
     SW1:
       kind: cisco_iol
       image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
