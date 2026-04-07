@@ -1,0 +1,8 @@
+hostname H1
+!
+interface Ethernet0/1
+ ip address 192.168.12.100 255.255.255.0
+ no shutdown
+!
+ip route 0.0.0.0 0.0.0.0 192.168.12.254
+end
