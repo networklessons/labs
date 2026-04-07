@@ -2,14 +2,14 @@ hostname R1
 !
 interface Ethernet0/1
  ip address 192.168.12.1 255.255.255.0
- no shutdown
-!
-interface Ethernet0/2
- ip address 192.168.123.1 255.255.255.0
  standby version 2
  standby 1 ip 192.168.12.254
  standby 1 priority 150
  standby 1 name HSRP_GATEWAY
+ no shutdown
+!
+interface Ethernet0/2
+ ip address 192.168.123.1 255.255.255.0
  no shutdown
 !
 router ospf 1
