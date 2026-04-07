@@ -44,9 +44,9 @@ Contains topologies you can run in Containerlab.
 | cisco | 2 |
 | dhcp | 1 |
 | eigrp | 1 |
+| ip-services | 1 |
 | isis | 1 |
 | mpls | 2 |
-| network-services | 1 |
 | ospf | 22 |
 | sdn | 2 |
 | topologies | 3 |
