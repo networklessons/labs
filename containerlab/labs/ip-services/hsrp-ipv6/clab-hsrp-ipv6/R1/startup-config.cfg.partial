@@ -4,17 +4,18 @@ ipv6 unicast-routing
 ipv6 cef
 !
 interface Ethernet0/1
+ no shutdown
+ standby version 2
  standby 1 ipv6 autoconfig
  standby 1 priority 150
  standby 1 preempt
  ipv6 address 2001:DB8:0:12::1/64
  ipv6 ospf 1 area 0
- no shutdown
 !
 interface Ethernet0/2
+ no shutdown
  ipv6 address 2001:DB8:0:123::1/64
  ipv6 ospf 1 area 0
- no shutdown
 !
 ipv6 router ospf 1
  router-id 1.1.1.1
