@@ -1,0 +1,33 @@
+hostname R1
+!
+ip cef
+!
+track 1 ip sla 1 reachability
+!
+interface Ethernet0/1
+ ip address 192.168.12.1 255.255.255.0
+ standby version 2
+ standby 1 ip 192.168.12.254
+ standby 1 priority 150
+ standby 1 preempt
+ standby 1 name HSRP_GATEWAY
+ standby 1 track 1 decrement 60
+ no shutdown
+!
+interface Ethernet0/2
+ ip address 192.168.123.1 255.255.255.0
+ no shutdown
+!
+router ospf 1
+ router-id 1.1.1.1
+ passive-interface Ethernet0/1
+ network 192.168.12.0 0.0.0.255 area 0
+ network 192.168.123.0 0.0.0.255 area 0
+!
+ip sla 1
+ icmp-echo 192.168.123.3 source-interface Ethernet0/2
+  frequency 5
+!
+ip sla schedule 1 life forever start-time now
+!
+end
