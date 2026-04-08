@@ -1,0 +1,26 @@
+hostname R1
+!
+key chain HSRP_KEYS
+ key 1
+  key-string MY_KEY
+!
+interface Ethernet0/1
+ ip address 192.168.12.1 255.255.255.0
+ standby version 2
+ standby 1 ip 192.168.12.254
+ standby 1 priority 150
+ standby 1 authentication md5 key-chain HSRP_KEYS
+ standby 1 name HSRP_GATEWAY
+ no shutdown
+!
+interface Ethernet0/2
+ ip address 192.168.123.1 255.255.255.0
+ no shutdown
+!
+router ospf 1
+ router-id 1.1.1.1
+ passive-interface Ethernet0/1
+ network 192.168.12.0 0.0.0.255 area 0
+ network 192.168.123.0 0.0.0.255 area 0
+!
+end
