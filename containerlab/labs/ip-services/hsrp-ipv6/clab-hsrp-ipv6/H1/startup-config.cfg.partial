@@ -1,0 +1,11 @@
+hostname H1
+!
+ipv6 unicast-routing
+ipv6 cef
+!
+interface Ethernet0/1
+ ipv6 address 2001:DB8:0:12::100/64
+!
+ipv6 route ::/0 Ethernet0/1 FE80::5:73FF:FEA0:1
+!
+end

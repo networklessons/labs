@@ -1,0 +1,22 @@
+hostname R3
+!
+ipv6 unicast-routing
+ipv6 cef
+!
+interface Loopback0
+ ipv6 address 2001:DB8::3/128
+ ipv6 ospf 1 area 0
+!
+interface Ethernet0/1
+ ipv6 address 2001:DB8:0:123::3/64
+ ipv6 ospf 1 area 0
+ no shutdown
+!
+router ospf 1
+ network 3.3.3.3 0.0.0.0 area 0
+ network 192.168.123.0 0.0.0.255 area 0
+!
+ipv6 router ospf 1
+ router-id 3.3.3.3
+!
+end
