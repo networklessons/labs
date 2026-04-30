@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-freeradius-accounting
+spec:
+  type: NodePort
+  ports:
+  - name: freeradius-accounting
+    protocol: UDP
+    port: 1813
+    targetPort: 1813
+  selector:
+    name: freeradius

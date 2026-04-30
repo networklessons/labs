@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-freeradius-authentication
+spec:
+  type: NodePort
+  ports:
+  - name: freeradius-authentication
+    protocol: UDP
+    port: 1812
+    targetPort: 1812
+  selector:
+    name: freeradius

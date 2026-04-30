@@ -1,0 +1,40 @@
+---
+name: Build and Push lab-node-ubuntu
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0" # Every Sunday at midnight UTC
+
+jobs:
+  build-and-push:
+    runs-on: forgejo-runner
+    container:
+      image: renedocker82/forgejo-runner:42
+      credentials:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Set up Docker Buildx
+        run: docker buildx create --use
+
+      - name: Log in to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+
+      - name: Extract metadata
+        id: meta
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+
+      - name: Build and push Docker image
+        run: |
+          docker buildx build \
+            --push \
+            -t networklessons/lab-node-ubuntu:latest \
+            -t networklessons/lab-node-ubuntu:${{ forgejo.run_number }} \
+            containers/lab-node-ubuntu/

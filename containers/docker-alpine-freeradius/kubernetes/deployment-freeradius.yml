@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: deployment-freeradius
+  namespace: "default"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: freeradius
+        phase: "production"
+    spec:
+      containers:
+      - name: freeradius
+        image: networklessons/docker-alpine-freeradius:latest
+        resources:
+          requests:
+            memory: 10Mi
+            cpu: 10m
+          limits:
+            memory: 2000Mi
+            cpu: 1000m
+        ports:
+        - containerPort: 1812
+          protocol: UDP
+        - containerPort: 1813
+          protocol: UDP
+        volumeMounts:
+        - name: freeradius-clients
+          mountPath: /etc/raddb/clients.conf
+          subPath: clients.conf
+        - name: freeradius-users
+          mountPath: /etc/raddb/users
+          subPath: users
+      volumes:
+      - name: freeradius-clients
+        configMap:
+          name: config-map-freeradius-clients
+          items:
+          - key: clients
+            path: clients.conf
+      - name: freeradius-users
+        configMap:
+          name: config-map-freeradius-users
+          items:
+          - key: users
+            path: users
