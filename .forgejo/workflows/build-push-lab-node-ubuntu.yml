@@ -12,8 +12,8 @@ jobs:
     container:
       image: renedocker82/forgejo-runner:42
       credentials:
-        username: ${{ secrets.DOCKER_HUB_USERNAME_RM82 }}
-        password: ${{ secrets.DOCKER_HUB_PASSWORD_RM82 }}
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -23,7 +23,7 @@ jobs:
 
       - name: Log in to Docker Hub
         run: |
-          echo "${{ secrets.DOCKER_HUB_PASSWORD_RM82 }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME_RM82 }}" --password-stdin
+          echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
       - name: Extract metadata
         id: meta
