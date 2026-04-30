@@ -2,6 +2,10 @@
 name: Build and Push docker-alpine-freeradius
 
 on:
+  push:
+    paths:
+      - 'containers/docker-alpine-freeradius/**'
+      - '.forgejo/workflows/build-push-freeradius.yml'
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * 0" # Every Sunday at midnight UTC

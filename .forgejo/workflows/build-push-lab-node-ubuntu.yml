@@ -2,6 +2,10 @@
 name: Build and Push lab-node-ubuntu
 
 on:
+  push:
+    paths:
+      - 'containers/lab-node-ubuntu/**'
+      - '.forgejo/workflows/build-push-lab-node-ubuntu.yml'
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * 0" # Every Sunday at midnight UTC
