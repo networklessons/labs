@@ -1,0 +1,54 @@
+---
+name: Update Docker Hub Descriptions
+
+on:
+  push:
+    paths:
+      - 'containers/**/README.md'
+      - '.forgejo/workflows/update-dockerhub-descriptions.yml'
+  workflow_dispatch:
+
+jobs:
+  get-containers:
+    runs-on: forgejo-runner
+    container:
+      image: renedocker82/forgejo-runner:42
+      credentials:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    outputs:
+      containers: ${{ steps.list.outputs.containers }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: List containers
+        id: list
+        run: |
+          containers=$(find containers -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "containers=$containers" >> $GITHUB_OUTPUT
+
+  update-descriptions:
+    needs: get-containers
+    runs-on: forgejo-runner
+    container:
+      image: renedocker82/forgejo-runner:42
+      credentials:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    strategy:
+      matrix:
+        container: ${{ fromJson(needs.get-containers.outputs.containers) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@1b9a80c056b620d92cedb9d9b5a223409c68ddfa # v5
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PAT }}
+          repository: networklessons/${{ matrix.container }}
+          readme-filepath: ./containers/${{ matrix.container }}/README.md
+          short-description: ${{ github.event.repository.description }}
+          enable-url-completion: true
