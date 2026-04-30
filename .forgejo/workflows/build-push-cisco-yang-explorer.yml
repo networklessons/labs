@@ -2,6 +2,10 @@
 name: Build and Push docker-alpine-cisco-yang-explorer
 
 on:
+  push:
+    paths:
+      - 'containers/docker-alpine-cisco-yang-explorer/**'
+      - '.forgejo/workflows/build-push-cisco-yang-explorer.yml'
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * 0" # Every Sunday at midnight UTC
