@@ -1,0 +1,11 @@
+version: '2'
+services:
+ freeradius:
+  image: networklessons/docker-alpine-freeradius
+  ports:
+   - 1812:1812/udp
+   - 1813:1813/udp
+  volumes:
+   - "./clients.conf:/etc/raddb/clients.conf"
+   - "./users:/etc/raddb/users"
+   - "./eap:/etc/raddb/mods-enabled/eap"

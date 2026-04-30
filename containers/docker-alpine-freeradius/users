@@ -1,0 +1,9 @@
+user1           Cleartext-Password := "user1password"
+                Tunnel-Type := "VLAN",
+                Tunnel-Medium-Type := "IEEE-802",
+                Tunnel-Private-Group-ID := "10"
+
+user2           Cleartext-Password := "user2password"
+                Tunnel-Type := "VLAN",
+                Tunnel-Medium-Type := "IEEE-802",
+                Tunnel-Private-Group-ID := "20"
