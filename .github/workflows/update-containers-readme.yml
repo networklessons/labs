@@ -1,0 +1,44 @@
+name: Update Containers README
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'containers/**'
+  workflow_dispatch:
+
+concurrency:
+  group: update-containers-readme
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Update containers README
+        run: python .github/scripts/update_containers_readme.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add containers/README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update containers README"
+            git push origin main
+          fi
