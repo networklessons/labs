@@ -1,10 +1,10 @@
 ---
-name: Build and Push docker-alpine-freeradius
+name: Build and Push freeradius
 
 on:
   push:
     paths:
-      - 'containers/docker-alpine-freeradius/**'
+      - 'containers/freeradius/**'
       - '.forgejo/workflows/build-push-freeradius.yml'
   workflow_dispatch:
   schedule:
@@ -39,6 +39,6 @@ jobs:
         run: |
           docker buildx build \
             --push \
-            -t networklessons/docker-alpine-freeradius:latest \
-            -t networklessons/docker-alpine-freeradius:${{ forgejo.run_number }} \
-            containers/docker-alpine-freeradius/
+            -t networklessons/freeradius:latest \
+            -t networklessons/freeradius:${{ forgejo.run_number }} \
+            containers/freeradius/

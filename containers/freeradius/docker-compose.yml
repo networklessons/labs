@@ -1,0 +1,11 @@
+version: '2'
+services:
+ freeradius:
+  image: networklessons/freeradius
+  ports:
+   - 1812:1812/udp
+   - 1813:1813/udp
+  volumes:
+   - "./clients.conf:/etc/freeradius/3.0/clients.conf"
+   - "./users:/etc/freeradius/3.0/users"
+   - "./eap:/etc/freeradius/3.0/mods-enabled/eap"
