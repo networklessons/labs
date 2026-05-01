@@ -48,7 +48,7 @@ jobs:
         run: |
           python3 .forgejo/scripts/update_dockerhub_readme.py \
             --username "${{ secrets.DOCKER_HUB_USERNAME }}" \
-            --password "${{ secrets.DOCKER_HUB_PAT }}" \
+            --password "${{ secrets.DOCKER_HUB_PASSWORD }}" \
             --repository "networklessons/${{ matrix.container }}" \
             --readme-filepath "containers/${{ matrix.container }}/README.md" \
             --short-description "${{ github.event.repository.description }}" \
