@@ -2,23 +2,27 @@
 """Update a Docker Hub repository's full description from a local README file."""
 
 import argparse
+import json
 import re
-import sys
-
-import requests
+import urllib.request
 
 DOCKERHUB_API = "https://hub.docker.com/v2"
 SHORT_DESC_MAX = 100
 
 
+def _json_request(method: str, url: str, payload: dict, token: str | None = None) -> dict:
+    data = json.dumps(payload).encode()
+    headers = {"Content-Type": "application/json"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read())
+
+
 def login(username: str, password: str) -> str:
-    resp = requests.post(
-        f"{DOCKERHUB_API}/users/login",
-        json={"username": username, "password": password},
-        timeout=30,
-    )
-    resp.raise_for_status()
-    return resp.json()["token"]
+    result = _json_request("POST", f"{DOCKERHUB_API}/users/login", {"username": username, "password": password})
+    return result["token"]
 
 
 def complete_urls(content: str, base_url: str) -> str:
@@ -31,54 +35,27 @@ def complete_urls(content: str, base_url: str) -> str:
             return match.group(0)
         return f"{prefix}{base_url}/{url.lstrip('/')}{suffix}"
 
-    # ![alt](url) and [text](url)
     content = re.sub(r"(!?\[[^\]]*\]\()([^)]+)(\))", make_absolute, content)
-    # <img src="url"> and <a href="url">
-    content = re.sub(
-        r'((?:src|href)=")([^"]+)(")',
-        make_absolute,
-        content,
-        flags=re.IGNORECASE,
-    )
+    content = re.sub(r'((?:src|href)=")([^"]+)(")', make_absolute, content, flags=re.IGNORECASE)
     return content
 
 
-def update_repo(
-    token: str,
-    repository: str,
-    full_description: str,
-    short_description: str | None,
-) -> None:
+def update_repo(token: str, repository: str, full_description: str, short_description: str | None) -> None:
     namespace, name = repository.split("/", 1)
     payload: dict = {"full_description": full_description}
     if short_description:
         payload["description"] = short_description[:SHORT_DESC_MAX]
-
-    resp = requests.patch(
-        f"{DOCKERHUB_API}/repositories/{namespace}/{name}/",
-        headers={"Authorization": f"Bearer {token}"},
-        json=payload,
-        timeout=30,
-    )
-    resp.raise_for_status()
+    _json_request("PATCH", f"{DOCKERHUB_API}/repositories/{namespace}/{name}/", payload, token)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Push a README file to a Docker Hub repository description."
-    )
-    parser.add_argument("--username", required=True, help="Docker Hub username")
-    parser.add_argument("--password", required=True, help="Docker Hub password or PAT")
-    parser.add_argument(
-        "--repository", required=True, help="Docker Hub repository (namespace/name)"
-    )
-    parser.add_argument("--readme-filepath", required=True, help="Path to README file")
-    parser.add_argument("--short-description", default=None, help="Short description (max 100 chars)")
-    parser.add_argument(
-        "--readme-base-url",
-        default=None,
-        help="Base URL for resolving relative links (e.g. https://github.com/owner/repo/raw/main)",
-    )
+    parser = argparse.ArgumentParser(description="Push a README file to a Docker Hub repository description.")
+    parser.add_argument("--username", required=True)
+    parser.add_argument("--password", required=True)
+    parser.add_argument("--repository", required=True, help="namespace/name")
+    parser.add_argument("--readme-filepath", required=True)
+    parser.add_argument("--short-description", default=None)
+    parser.add_argument("--readme-base-url", default=None)
     args = parser.parse_args()
 
     with open(args.readme_filepath, encoding="utf-8") as fh:

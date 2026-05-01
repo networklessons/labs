@@ -44,9 +44,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
-      - name: Install requests
-        run: pip install --quiet requests
-
       - name: Update Docker Hub description
         run: |
           python3 .forgejo/scripts/update_dockerhub_readme.py \
