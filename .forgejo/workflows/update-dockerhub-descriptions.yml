@@ -25,7 +25,7 @@ jobs:
       - name: List containers
         id: list
         run: |
-          containers=$(find containers -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          containers=$(find containers -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort | awk 'BEGIN{printf "["} NR>1{printf ","} {printf "\"%s\"",$0} END{printf "]"}')
           echo "containers=$containers" >> $GITHUB_OUTPUT
 
   update-descriptions:
