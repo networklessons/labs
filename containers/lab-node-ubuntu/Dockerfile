@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Add lab user for SSH.
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 lab && \
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1010 lab && \
     echo 'lab:lab' | chpasswd && \
     mkdir /var/run/sshd
 
