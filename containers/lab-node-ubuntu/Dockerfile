@@ -1,5 +1,5 @@
 # Use Ubuntu 24.04 as the base image
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 # Avoid prompts from apt
 ENV DEBIAN_FRONTEND=noninteractive
