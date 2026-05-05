@@ -1,0 +1,701 @@
+lab:
+  description: Imported from asa_nat_excemption.virl (startup)
+  notes: |-
+    ## Import Progress
+    - processing node /S1 (iosv)
+    - processing node /S3 (iosv)
+    - processing node /S2 (iosv)
+    - processing node /ASA1 (asav)
+    - processing node /ASA2 (asav)
+    - processing node /unmanagedswitch-1 (unmanaged_switch)
+    - link GigabitEthernet0/0.ASA1 -> port1.unmanagedswitch-1
+    - link GigabitEthernet0/0.ASA2 -> port2.unmanagedswitch-1
+    - link GigabitEthernet0/1.S3 -> port3.unmanagedswitch-1
+    - link GigabitEthernet0/1.S1 -> GigabitEthernet0/1.ASA1
+    - link GigabitEthernet0/1.S2 -> GigabitEthernet0/1.ASA2
+  timestamp: 1606291268.0651228
+  title: asa_nat_excemption_startup.virl
+  version: 0.0.4
+nodes:
+- id: n0
+  label: S1
+  node_definition: iosv
+  x: 50
+  y: 266
+  configuration: |-
+    !
+    ! Last configuration change at 11:25:51 UTC Wed Nov 18 2020
+    !
+    version 15.7
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname S1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    no ip routing
+    !
+    !
+    !
+    !
+    !
+    !
+    no ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.6.190 255.255.0.0
+     no ip route-cache
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.1.101 255.255.255.0
+     no ip route-cache
+     duplex auto
+     speed auto
+     media-type rj45
+      ! inserted by converter
+      no shutdown
+    !
+    ip default-gateway 192.168.1.254
+    ip forward-protocol nd
+    !
+    !
+    ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    line con 0
+    line aux 0
+    line vty 0 4
+     login
+     transport input none
+    !
+    no scheduler allocate
+    !
+    end
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+- id: n1
+  label: S3
+  node_definition: iosv
+  x: 459
+  y: 50
+  configuration: |-
+    !
+    ! Last configuration change at 11:26:19 UTC Wed Nov 18 2020
+    !
+    version 15.7
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname S3
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.6.192 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 10.10.10.3 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+      ! inserted by converter
+      no shutdown
+    !
+    ip forward-protocol nd
+    !
+    !
+    ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    line con 0
+    line aux 0
+    line vty 0 4
+     login
+     transport input none
+    !
+    no scheduler allocate
+    !
+    end
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+- id: n2
+  label: S2
+  node_definition: iosv
+  x: 881
+  y: 267
+  configuration: |-
+    !
+    ! Last configuration change at 11:25:28 UTC Wed Nov 18 2020
+    !
+    version 15.7
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname S2
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    no ip routing
+    !
+    !
+    !
+    !
+    !
+    !
+    no ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.6.191 255.255.0.0
+     no ip route-cache
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.2.102 255.255.255.0
+     no ip route-cache
+     duplex auto
+     speed auto
+     media-type rj45
+      ! inserted by converter
+      no shutdown
+    !
+    ip default-gateway 192.168.2.254
+    ip forward-protocol nd
+    !
+    !
+    ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    line con 0
+    line aux 0
+    line vty 0 4
+     login
+     transport input none
+    !
+    no scheduler allocate
+    !
+    end
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+- id: n3
+  label: ASA1
+  node_definition: asav
+  x: 283
+  y: 253
+  configuration: |-
+    !
+    ASA Version 9.9(2)
+    !
+    hostname ASA1
+    enable password $sha512$5000$HUMIyol6KWvg2IZRdAuELg==$3meDC0pd/JrkUtLBpFOLaA== pbkdf2
+    names
+
+    !
+    interface GigabitEthernet0/0
+     nameif OUTSIDE
+     security-level 0
+     ip address 10.10.10.1 255.255.255.0
+      ! inserted by converter
+      no shutdown
+    !
+    interface GigabitEthernet0/1
+     nameif INSIDE
+     security-level 100
+     ip address 192.168.1.254 255.255.255.0
+      ! inserted by converter
+      no shutdown
+    !
+    interface Management0/0
+     shutdown
+     no nameif
+     no security-level
+     ip address 10.255.6.188 255.255.0.0
+    !
+    ftp mode passive
+     subnet 192.168.1.0 255.255.255.0
+     subnet 192.168.2.0 255.255.255.0
+    pager lines 23
+    mtu OUTSIDE 1500
+    mtu INSIDE 1500
+    no failover
+    no monitor-interface service-module
+    icmp unreachable rate-limit 1 burst-size 1
+    no asdm history enable
+    arp timeout 14400
+    no arp permit-nonconnected
+    arp rate-limit 8192
+    !
+     nat (INSIDE,OUTSIDE) dynamic interface
+    route OUTSIDE 192.168.2.0 255.255.255.0 10.10.10.2 1
+    timeout xlate 3:00:00
+    timeout pat-xlate 0:00:30
+    timeout conn 1:00:00 half-closed 0:10:00 udp 0:02:00 sctp 0:02:00 icmp 0:00:02
+    timeout sunrpc 0:10:00 h323 0:05:00 h225 1:00:00 mgcp 0:05:00 mgcp-pat 0:05:00
+    timeout sip 0:30:00 sip_media 0:02:00 sip-invite 0:03:00 sip-disconnect 0:02:00
+    timeout sip-provisional-media 0:02:00 uauth 0:05:00 absolute
+    timeout tcp-proxy-reassembly 0:01:00
+    timeout floating-conn 0:00:00
+    timeout conn-holddown 0:00:15
+    timeout igp stale-route 0:01:10
+    user-identity default-domain LOCAL
+    no snmp-server location
+    no snmp-server contact
+     protocol esp encryption aes
+     protocol esp integrity sha-1
+     no validation-usage
+     crl configure
+     auto-import
+     encryption aes
+     integrity sha
+     group 2
+     prf sha
+     lifetime seconds 86400
+    telnet timeout 5
+    ssh stricthostkeycheck
+    ssh timeout 5
+    ssh version 2
+    ssh key-exchange group dh-group1-sha1
+    console timeout 0
+    console serial
+    no threat-detection statistics tcp-intercept
+     ikev2 remote-authentication pre-shared-key CISCO456
+     ikev2 local-authentication pre-shared-key CISCO123
+    !
+     match default-inspection-traffic
+    !
+    !
+     parameters
+      message-length maximum client auto
+      message-length maximum 512
+      no tcp-inspection
+     class inspection_default
+      inspect ip-options
+      inspect netbios
+      inspect rtsp
+      inspect sunrpc
+      inspect tftp
+      inspect xdmcp
+      inspect dns preset_dns_map
+      inspect ftp
+      inspect h323 h225
+      inspect h323 ras
+      inspect rsh
+      inspect esmtp
+      inspect sqlnet
+      inspect sip
+      inspect skinny
+     parameters
+      message-length maximum client auto
+      message-length maximum 512
+      no tcp-inspection
+     parameters
+      message-length maximum client auto
+      message-length maximum 512
+      no tcp-inspection
+    !
+    prompt hostname context
+    no call-home reporting anonymous
+    call-home
+     profile CiscoTAC-1
+      no active
+      destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+      destination address email callhome@cisco.com
+      destination transport-method http
+      subscribe-to-alert-group diagnostic
+      subscribe-to-alert-group environment
+      subscribe-to-alert-group inventory periodic monthly
+      subscribe-to-alert-group configuration periodic monthly
+      subscribe-to-alert-group telemetry periodic daily
+     profile License
+      destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+      destination transport-method http
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: Management0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/1
+    type: physical
+- id: n4
+  label: ASA2
+  node_definition: asav
+  x: 658
+  y: 254
+  configuration: |-
+    !
+    ASA Version 9.9(2)
+    !
+    hostname ASA2
+    enable password $sha512$5000$P7j5lb15A5sxcYBGORivuQ==$MivjfJFxhTiq/5JsB2F7Mw== pbkdf2
+    names
+
+    !
+    interface GigabitEthernet0/0
+     nameif OUTSIDE
+     security-level 0
+     ip address 10.10.10.2 255.255.255.0
+      ! inserted by converter
+      no shutdown
+    !
+    interface GigabitEthernet0/1
+     nameif INSIDE
+     security-level 100
+     ip address 192.168.2.254 255.255.255.0
+      ! inserted by converter
+      no shutdown
+    !
+    interface Management0/0
+     shutdown
+     no nameif
+     no security-level
+     ip address 10.255.6.189 255.255.0.0
+    !
+    ftp mode passive
+     subnet 192.168.2.0 255.255.255.0
+     subnet 192.168.1.0 255.255.255.0
+    pager lines 23
+    mtu OUTSIDE 1500
+    mtu INSIDE 1500
+    no failover
+    no monitor-interface service-module
+    icmp unreachable rate-limit 1 burst-size 1
+    no asdm history enable
+    arp timeout 14400
+    no arp permit-nonconnected
+    arp rate-limit 8192
+    !
+     nat (INSIDE,OUTSIDE) dynamic interface
+    route OUTSIDE 192.168.1.0 255.255.255.0 10.10.10.1 1
+    timeout xlate 3:00:00
+    timeout pat-xlate 0:00:30
+    timeout conn 1:00:00 half-closed 0:10:00 udp 0:02:00 sctp 0:02:00 icmp 0:00:02
+    timeout sunrpc 0:10:00 h323 0:05:00 h225 1:00:00 mgcp 0:05:00 mgcp-pat 0:05:00
+    timeout sip 0:30:00 sip_media 0:02:00 sip-invite 0:03:00 sip-disconnect 0:02:00
+    timeout sip-provisional-media 0:02:00 uauth 0:05:00 absolute
+    timeout tcp-proxy-reassembly 0:01:00
+    timeout floating-conn 0:00:00
+    timeout conn-holddown 0:00:15
+    timeout igp stale-route 0:01:10
+    user-identity default-domain LOCAL
+    no snmp-server location
+    no snmp-server contact
+     protocol esp encryption aes
+     protocol esp integrity sha-1
+     no validation-usage
+     crl configure
+     auto-import
+     encryption aes
+     integrity sha
+     group 2
+     prf sha
+     lifetime seconds 86400
+    telnet timeout 5
+    ssh stricthostkeycheck
+    ssh timeout 5
+    ssh version 2
+    ssh key-exchange group dh-group1-sha1
+    console timeout 0
+    console serial
+    no threat-detection statistics tcp-intercept
+     ikev2 remote-authentication pre-shared-key CISCO123
+     ikev2 local-authentication pre-shared-key CISCO456
+    !
+     match default-inspection-traffic
+    !
+    !
+     parameters
+      message-length maximum client auto
+      message-length maximum 512
+      no tcp-inspection
+     class inspection_default
+      inspect ip-options
+      inspect netbios
+      inspect rtsp
+      inspect sunrpc
+      inspect tftp
+      inspect xdmcp
+      inspect dns preset_dns_map
+      inspect ftp
+      inspect h323 h225
+      inspect h323 ras
+      inspect rsh
+      inspect esmtp
+      inspect sqlnet
+      inspect sip
+      inspect skinny
+     parameters
+      message-length maximum client auto
+      message-length maximum 512
+      no tcp-inspection
+     parameters
+      message-length maximum client auto
+      message-length maximum 512
+      no tcp-inspection
+    !
+    prompt hostname context
+    no call-home reporting anonymous
+    call-home
+     profile CiscoTAC-1
+      no active
+      destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+      destination address email callhome@cisco.com
+      destination transport-method http
+      subscribe-to-alert-group diagnostic
+      subscribe-to-alert-group environment
+      subscribe-to-alert-group inventory periodic monthly
+      subscribe-to-alert-group configuration periodic monthly
+      subscribe-to-alert-group telemetry periodic daily
+     profile License
+      destination address http https://tools.cisco.com/its/service/oddce/services/DDCEService
+      destination transport-method http
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: Management0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/1
+    type: physical
+- id: n5
+  label: unmanagedswitch-1
+  node_definition: unmanaged_switch
+  x: 453
+  y: 245
+  configuration: null
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 1
+    label: port1
+    type: physical
+  - id: i1
+    slot: 2
+    label: port2
+    type: physical
+  - id: i2
+    slot: 3
+    label: port3
+    type: physical
+links:
+- id: l0
+  i1: i1
+  n1: n3
+  i2: i0
+  n2: n5
+- id: l1
+  i1: i1
+  n1: n4
+  i2: i1
+  n2: n5
+- id: l2
+  i1: i1
+  n1: n1
+  i2: i2
+  n2: n5
+- id: l3
+  i1: i1
+  n1: n0
+  i2: i2
+  n2: n3
+- id: l4
+  i1: i1
+  n1: n2
+  i2: i2
+  n2: n4

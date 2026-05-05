@@ -1,0 +1,239 @@
+annotations: []
+nodes:
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 6110 bytes
+    !
+    ! Last configuration change at 11:33:42 UTC Tue Sep 24 2024
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    ! Call-home is enabled by Smart-Licensing.
+    service call-home
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname R1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 9YZC8IIUX2Y
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    username cisco privilege 15 secret 9 $9$SqAUQ908xWfGSU$aO/6Oj4sEcX0yCEeTiwPx2UGDNz02EqsM2pcRoYCkLs
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface GigabitEthernet1
+     ip address dhcp
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    restconf
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n0
+  image_definition: null
+  label: R1
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: -720
+  y: -80
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+- boot_disk_size: null
+  configuration: System Bridge
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n1
+  image_definition: null
+  label: ext-conn-0
+  node_definition: external_connector
+  ram: null
+  tags: []
+  x: -400
+  y: -80
+  interfaces:
+  - id: i0
+    label: port
+    slot: 0
+    type: physical
+links:
+- id: l0
+  n1: n0
+  n2: n1
+  i1: i1
+  i2: i0
+  conditioning: {}
+  label: R1-GigabitEthernet1<->ext-conn-0-port
+lab:
+  description: ''
+  notes: ''
+  title: terraform-cisco-ios-xe-router_startup
+  version: 0.2.1

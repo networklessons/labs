@@ -1,0 +1,10 @@
+annotations: []
+smart_annotations: []
+nodes: []
+links: []
+lab:
+  description: Imported from asa_pat.virl (startup)
+  notes: |
+    ## Notes from legacy topology import
+  title: asa_pat_startup.virl
+  version: 0.3.0

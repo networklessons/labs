@@ -1,0 +1,1148 @@
+lab:
+  description: Imported from bgp_pic.virl (startup)
+  notes: |-
+    ## Import Progress
+    - processing node /CE1 (iosv)
+    - processing node /PE1 (iosv)
+    - processing node /PE2 (iosv)
+    - processing node /P1 (iosv)
+    - processing node /P2 (iosv)
+    - processing node /PE3 (iosv)
+    - processing node /PE4 (iosv)
+    - processing node /CE2 (iosv)
+    - link GigabitEthernet0/1.P1 -> GigabitEthernet0/1.PE1
+    - link GigabitEthernet0/2.P1 -> GigabitEthernet0/1.PE3
+    - link GigabitEthernet0/1.P2 -> GigabitEthernet0/1.PE2
+    - link GigabitEthernet0/2.P2 -> GigabitEthernet0/1.PE4
+    - link GigabitEthernet0/2.PE1 -> GigabitEthernet0/3.P2
+    - link GigabitEthernet0/3.P1 -> GigabitEthernet0/2.PE2
+    - link GigabitEthernet0/2.PE3 -> GigabitEthernet0/4.P2
+    - link GigabitEthernet0/2.PE4 -> GigabitEthernet0/4.P1
+    - link GigabitEthernet0/3.PE1 -> GigabitEthernet0/1.CE1
+    - link GigabitEthernet0/3.PE2 -> GigabitEthernet0/2.CE1
+    - link GigabitEthernet0/3.PE3 -> GigabitEthernet0/1.CE2
+    - link GigabitEthernet0/3.PE4 -> GigabitEthernet0/2.CE2
+  timestamp: 1614346132.6195447
+  title: bgp_pic_startup.virl
+  version: 0.0.4
+nodes:
+- id: n0
+  label: CE1
+  node_definition: iosv
+  x: 50
+  y: 162
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 3049 bytes
+    !
+    ! Last configuration change at 14:00:27 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname CE1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.0.252 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.12.1 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.13.1 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+- id: n1
+  label: PE1
+  node_definition: iosv
+  x: 246
+  y: 64
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 3731 bytes
+    !
+    ! Last configuration change at 14:01:22 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    no service timestamps debug uptime
+    no service timestamps log uptime
+    no service password-encryption
+    !
+    hostname PE1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    cef table output-chain build favor memory-utilization
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 2.2.2.2 255.255.255.255
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.1.0 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.24.2 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.25.2 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/3
+     ip address 192.168.12.2 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    router ospf 1
+     network 2.2.2.2 0.0.0.0 area 0
+     network 192.168.24.0 0.0.0.255 area 0
+     network 192.168.25.0 0.0.0.255 area 0
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+  - id: i3
+    slot: 3
+    label: GigabitEthernet0/3
+    type: physical
+- id: n2
+  label: PE2
+  node_definition: iosv
+  x: 244
+  y: 252
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 3380 bytes
+    !
+    ! Last configuration change at 14:00:25 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname PE2
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 3.3.3.3 255.255.255.255
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.1.1 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.35.3 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.34.3 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/3
+     ip address 192.168.13.3 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    router ospf 1
+     network 3.3.3.3 0.0.0.0 area 0
+     network 192.168.34.0 0.0.0.255 area 0
+     network 192.168.35.0 0.0.0.255 area 0
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+  - id: i3
+    slot: 3
+    label: GigabitEthernet0/3
+    type: physical
+- id: n3
+  label: P1
+  node_definition: iosv
+  x: 450
+  y: 56
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 3536 bytes
+    !
+    ! Last configuration change at 14:00:24 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname P1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 4.4.4.4 255.255.255.255
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.0.254 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.24.4 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.46.4 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/3
+     ip address 192.168.34.4 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/4
+     ip address 192.168.47.4 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    router ospf 1
+     network 4.4.4.4 0.0.0.0 area 0
+     network 192.168.24.0 0.0.0.255 area 0
+     network 192.168.34.0 0.0.0.255 area 0
+     network 192.168.46.0 0.0.0.255 area 0
+     network 192.168.47.0 0.0.0.255 area 0
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+  - id: i3
+    slot: 3
+    label: GigabitEthernet0/3
+    type: physical
+  - id: i4
+    slot: 4
+    label: GigabitEthernet0/4
+    type: physical
+- id: n4
+  label: P2
+  node_definition: iosv
+  x: 454
+  y: 242
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 4408 bytes
+    !
+    ! Last configuration change at 14:00:25 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname P2
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 5.5.5.5 255.255.255.255
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.0.255 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.35.5 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.57.5 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/3
+     ip address 192.168.25.5 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/4
+     ip address 192.168.56.5 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    router ospf 1
+     network 5.5.5.5 0.0.0.0 area 0
+     network 192.168.25.0 0.0.0.255 area 0
+     network 192.168.35.0 0.0.0.255 area 0
+     network 192.168.56.0 0.0.0.255 area 0
+     network 192.168.57.0 0.0.0.255 area 0
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+  - id: i3
+    slot: 3
+    label: GigabitEthernet0/3
+    type: physical
+  - id: i4
+    slot: 4
+    label: GigabitEthernet0/4
+    type: physical
+- id: n5
+  label: PE3
+  node_definition: iosv
+  x: 654
+  y: 50
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 3412 bytes
+    !
+    ! Last configuration change at 14:00:27 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname PE3
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 6.6.6.6 255.255.255.255
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.1.2 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.46.6 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.56.6 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/3
+     ip address 192.168.68.6 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    router ospf 1
+     network 6.6.6.6 0.0.0.0 area 0
+     network 192.168.46.0 0.0.0.255 area 0
+     network 192.168.56.0 0.0.0.255 area 0
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+  - id: i3
+    slot: 3
+    label: GigabitEthernet0/3
+    type: physical
+- id: n6
+  label: PE4
+  node_definition: iosv
+  x: 656
+  y: 248
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 3412 bytes
+    !
+    ! Last configuration change at 14:00:27 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname PE4
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 7.7.7.7 255.255.255.255
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.1.3 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.57.7 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.47.7 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/3
+     ip address 192.168.78.7 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    router ospf 1
+     network 7.7.7.7 0.0.0.0 area 0
+     network 192.168.47.0 0.0.0.255 area 0
+     network 192.168.57.0 0.0.0.255 area 0
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+  - id: i3
+    slot: 3
+    label: GigabitEthernet0/3
+    type: physical
+- id: n7
+  label: CE2
+  node_definition: iosv
+  x: 862
+  y: 144
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 3249 bytes
+    !
+    ! Last configuration change at 14:00:28 UTC Fri Feb 26 2021
+    !
+    version 15.9
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname CE2
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    mmi polling-interval 60
+    no mmi auto-configure
+    no mmi pvc
+    mmi snmp-timeout 180
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    ip cef
+    no ipv6 cef
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 8.8.8.8 255.255.255.255
+    !
+    interface Loopback1
+     ip address 88.88.88.88 255.255.255.255
+    !
+    interface GigabitEthernet0/0
+     ip address 10.255.0.253 255.255.0.0
+     shutdown
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.68.8 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    interface GigabitEthernet0/2
+     ip address 192.168.78.8 255.255.255.0
+     duplex auto
+     speed auto
+     media-type rj45
+    !
+    !
+    ip forward-protocol nd
+    !
+    !
+    no ip http server
+    no ip http secure-server
+    !
+    ipv6 ioam timestamp
+    !
+    !
+    !
+    control-plane
+    !
+  tags: []
+  interfaces:
+  - id: i0
+    slot: 0
+    label: GigabitEthernet0/0
+    type: physical
+  - id: i1
+    slot: 1
+    label: GigabitEthernet0/1
+    type: physical
+  - id: i2
+    slot: 2
+    label: GigabitEthernet0/2
+    type: physical
+links:
+- id: l0
+  i1: i1
+  n1: n3
+  i2: i1
+  n2: n1
+- id: l1
+  i1: i2
+  n1: n3
+  i2: i1
+  n2: n5
+- id: l2
+  i1: i1
+  n1: n4
+  i2: i1
+  n2: n2
+- id: l3
+  i1: i2
+  n1: n4
+  i2: i1
+  n2: n6
+- id: l4
+  i1: i2
+  n1: n1
+  i2: i3
+  n2: n4
+- id: l5
+  i1: i3
+  n1: n3
+  i2: i2
+  n2: n2
+- id: l6
+  i1: i2
+  n1: n5
+  i2: i4
+  n2: n4
+- id: l7
+  i1: i2
+  n1: n6
+  i2: i4
+  n2: n3
+- id: l8
+  i1: i3
+  n1: n1
+  i2: i1
+  n2: n0
+- id: l9
+  i1: i3
+  n1: n2
+  i2: i2
+  n2: n0
+- id: l10
+  i1: i3
+  n1: n5
+  i2: i1
+  n2: n7
+- id: l11
+  i1: i3
+  n1: n6
+  i2: i2
+  n2: n7

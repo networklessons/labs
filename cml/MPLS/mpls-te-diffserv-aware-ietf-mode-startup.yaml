@@ -1,0 +1,1538 @@
+lab:
+  description: ''
+  notes: ''
+  title: mpls-te-diffserv-aware-ietf-mode_startup
+  version: 0.2.0
+links:
+- id: l0
+  n1: n0
+  n2: n2
+  i1: i1
+  i2: i1
+  label: CE1-GigabitEthernet1<->PE1-GigabitEthernet1
+- id: l1
+  n1: n1
+  n2: n3
+  i1: i1
+  i2: i1
+  label: CE2-GigabitEthernet1<->PE2-GigabitEthernet1
+- id: l2
+  n1: n2
+  n2: n4
+  i1: i2
+  i2: i1
+  label: PE1-GigabitEthernet2<->P1-GigabitEthernet1
+- id: l3
+  n1: n2
+  n2: n5
+  i1: i3
+  i2: i1
+  label: PE1-GigabitEthernet3<->P2-GigabitEthernet1
+- id: l4
+  n1: n3
+  n2: n4
+  i1: i2
+  i2: i2
+  label: PE2-GigabitEthernet2<->P1-GigabitEthernet2
+- id: l5
+  n1: n3
+  n2: n6
+  i1: i3
+  i2: i1
+  label: PE2-GigabitEthernet3<->P3-GigabitEthernet1
+- id: l6
+  n1: n6
+  n2: n5
+  i1: i2
+  i2: i2
+  label: P3-GigabitEthernet2<->P2-GigabitEthernet2
+nodes:
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 6396 bytes
+    !
+    ! Last configuration change at 17:40:32 UTC Wed Jun 14 2023
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    ! Call-home is enabled by Smart-Licensing.
+    service call-home
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname CE1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 93F37V6M1CG
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 1.1.1.1 255.255.255.255
+    !
+    interface GigabitEthernet1
+     ip address 192.168.12.1 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0
+     exec-timeout 0 0
+     login
+     transport input ssh
+    line vty 1
+     exec-timeout 0 0
+     login
+     length 0
+     transport input ssh
+    line vty 2 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n0
+  image_definition: null
+  label: CE1
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: -707
+  y: -5
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 4069 bytes
+    !
+    ! Last configuration change at 17:40:23 UTC Wed Jun 14 2023
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    ! Call-home is enabled by Smart-Licensing.
+    service call-home
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname CE2
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 9XJXKFX1KV2
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 7.7.7.7 255.255.255.255
+    !
+    interface GigabitEthernet1
+     ip address 192.168.67.7 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n1
+  image_definition: null
+  label: CE2
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: 196
+  y: 6
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 7671 bytes
+    !
+    ! Last configuration change at 17:40:32 UTC Wed Jun 14 2023
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname PE1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 95NB23ES4VS
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 2.2.2.2 255.255.255.255
+    !
+    !
+    !
+    !
+    interface GigabitEthernet1
+     ip address 192.168.12.2 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     ip address 192.168.23.2 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     ip address 192.168.24.2 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0
+     exec-timeout 0 0
+     login
+     transport input ssh
+    line vty 1
+     exec-timeout 0 0
+     login
+     length 0
+     transport input ssh
+    line vty 2 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n2
+  image_definition: null
+  label: PE1
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: -502
+  y: -4
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 4907 bytes
+    !
+    ! Last configuration change at 17:40:32 UTC Wed Jun 14 2023
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname PE2
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 9CSROJ0643J
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 6.6.6.6 255.255.255.255
+    !
+    interface GigabitEthernet1
+     ip address 192.168.67.6 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     ip address 192.168.36.6 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     ip address 192.168.56.6 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0
+     exec-timeout 0 0
+     login
+     transport input ssh
+    line vty 1
+     exec-timeout 0 0
+     login
+     length 0
+     transport input ssh
+    line vty 2 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n3
+  image_definition: null
+  label: PE2
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: 8
+  y: -7
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 6858 bytes
+    !
+    ! Last configuration change at 17:40:32 UTC Wed Jun 14 2023
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname P1
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 9076DFGNJGC
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 3.3.3.3 255.255.255.255
+    !
+    interface GigabitEthernet1
+     ip address 192.168.23.3 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     ip address 192.168.36.3 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0
+     exec-timeout 0 0
+     login
+     transport input ssh
+    line vty 1
+     exec-timeout 0 0
+     login
+     length 0
+     transport input ssh
+    line vty 2 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n4
+  image_definition: null
+  label: P1
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: -259
+  y: -154
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 4843 bytes
+    !
+    ! Last configuration change at 17:40:30 UTC Wed Jun 14 2023
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname P2
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 92RVT2589MO
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 4.4.4.4 255.255.255.255
+    !
+    interface GigabitEthernet1
+     ip address 192.168.24.4 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     ip address 192.168.45.4 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0
+     exec-timeout 0 0
+     login
+     transport input ssh
+    line vty 1
+     exec-timeout 0 0
+     login
+     length 0
+     transport input ssh
+    line vty 2 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n5
+  image_definition: null
+  label: P2
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: -369
+  y: 199
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+- boot_disk_size: null
+  configuration: |-
+    Building configuration...
+
+    Current configuration : 4843 bytes
+    !
+    ! Last configuration change at 17:40:32 UTC Wed Jun 14 2023
+    !
+    version 17.3
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    platform qfp utilization monitor load 80
+    platform punt-keepalive disable-kernel-core
+    platform console serial
+    !
+    hostname P3
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    !
+    no logging console
+    !
+    no aaa new-model
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    login on-success log
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    subscriber templating
+    !
+    !
+    !
+    !
+    !
+    !
+    multilink bundle-name authenticated
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    license udi pid CSR1000V sn 91F214I7MC5
+    diagnostic bootup level minimal
+    memory free low-watermark processor 71465
+    !
+    !
+    spanning-tree extend system-id
+    !
+    !
+    redundancy
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    interface Loopback0
+     ip address 5.5.5.5 255.255.255.255
+    !
+    interface GigabitEthernet1
+     ip address 192.168.56.5 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet2
+     ip address 192.168.45.5 255.255.255.0
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet3
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    interface GigabitEthernet4
+     no ip address
+     shutdown
+     negotiation auto
+     no mop enabled
+     no mop sysid
+    !
+    !
+    ip forward-protocol nd
+    no ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    !
+    control-plane
+    !
+    !
+    !
+    !
+    !
+    !
+    line con 0
+     exec-timeout 0 0
+     stopbits 1
+    line vty 0
+     exec-timeout 0 0
+     login
+     transport input ssh
+    line vty 1
+     exec-timeout 0 0
+     login
+     length 0
+     transport input ssh
+    line vty 2 4
+     exec-timeout 0 0
+     login
+     transport input ssh
+    !
+    call-home
+     ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+     ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+     contact-email-addr sch-smart-licensing@cisco.com
+     profile "CiscoTAC-1"
+      active
+      destination transport-method http
+    !
+    !
+    !
+    !
+    !
+    end
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n6
+  image_definition: null
+  label: P3
+  node_definition: csr1000v
+  ram: null
+  tags: []
+  x: -165
+  y: 203
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    slot: 0
+    type: physical
+  - id: i2
+    label: GigabitEthernet2
+    slot: 1
+    type: physical
+  - id: i3
+    label: GigabitEthernet3
+    slot: 2
+    type: physical
+  - id: i4
+    label: GigabitEthernet4
+    slot: 3
+    type: physical
+annotations: []
