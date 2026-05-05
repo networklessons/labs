@@ -5,6 +5,10 @@
   ],
   "packageRules": [
     {
+      "matchManagers": ["github-actions"],
+      "pinDigests": true
+    },
+    {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ubuntu"],
       "matchUpdateTypes": ["major"],
