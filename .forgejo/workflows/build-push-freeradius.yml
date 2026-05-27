@@ -44,5 +44,5 @@ jobs:
             containers/freeradius/
 
       - name: Cleanup Builder Container
-              if: always()   # This ensures the builder is deleted even if the 'build' step crashes
-              run: docker buildx rm builder-${{ forgejo.run_id }}
+        if: always()   # This ensures the builder is deleted even if the 'build' step crashes
+        run: docker buildx rm builder-${{ forgejo.run_id }}
