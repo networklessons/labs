@@ -24,7 +24,7 @@
 
 # Labs
 
-This repository contains topologies for emulators such as Cisco CML, EVE-NG, and Containerlab (CLAB). It also contains Ansible playbooks.
+This repository contains topologies for emulators such as Cisco CML, EVE-NG, and Containerlab. It also contains Ansible playbooks.
 
 ## Ansible
 
