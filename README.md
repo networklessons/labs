@@ -24,7 +24,7 @@
 
 # Labs
 
-This repository contains topologies for emulators such as Cisco CML, EVE-NG, and Containerlab. It also contains Ansible playbooks.
+This repository contains topologies for emulators such as Cisco CML, EVE-NG, and Containerlab (CLAB). It also contains Ansible playbooks.
 
 ## Ansible
 
@@ -35,7 +35,7 @@ Contains playbooks you can use to run against network devices.
 Contains topologies you can run in Containerlab.
 
 <!-- CONTAINERLAB_STATS_START -->
-**Total Containerlab Labs: 82**
+**Total Containerlab Labs: 78**
 
 | Category | Labs |
 |----------|------|
@@ -51,7 +51,7 @@ Contains topologies you can run in Containerlab.
 | sdn | 2 |
 | topologies | 3 |
 | vpc | 1 |
-| vxlan | 28 |
+| vxlan | 24 |
 <!-- CONTAINERLAB_STATS_END -->
 
 ## [CML](cml/)

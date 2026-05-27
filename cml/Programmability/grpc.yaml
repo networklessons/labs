@@ -1,0 +1,164 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: flat-1
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: 595
+    y: 171
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: iosxr_config.txt
+        content: |
+          !  IOS-XR9000v Config generated on 2019-03-07 14:28
+          ! by autonetkit_0.24.0
+          !
+          hostname R1
+          service timestamps log datetime msec
+          service timestamps debug datetime msec
+          telnet vrf default ipv4 server max-servers 10
+          telnet vrf Mgmt-intf ipv4 server max-servers 10
+          domain lookup disable
+          vrf Mgmt-intf
+           address-family ipv4 unicast
+           !
+           address-family ipv6 unicast
+           !
+          !
+          domain name virl.info
+          ssh server v2
+          ssh server vrf Mgmt-intf
+          !
+          line template vty
+          timestamp
+          exec-timeout 720 0
+          !
+          line console
+          exec-timeout 0 0
+          !
+          line default
+          exec-timeout 720 0
+          !
+          vty-pool default 0 50
+          control-plane
+           management-plane
+            inband
+             interface all
+              allow all
+             !
+            !
+           !
+          !
+          username cisco
+          group root-lr
+          group cisco-support
+          password cisco
+          !
+          username admin
+          group root-lr
+          group cisco-support
+          password admin
+          !
+          username lab
+          group root-lr
+          group cisco-support
+          password lab
+          !
+          !
+          interface Loopback0
+            description Loopback
+            ipv4 address 192.168.0.1 255.255.255.255
+          !
+          interface GigabitEthernet0/0/0/0
+            description to flat-1
+            no ipv4 address
+            no shutdown
+          !
+          interface MgmtEth0/RP0/CPU0/0
+            description OOB Management
+            ! Configured on launch
+            vrf Mgmt-intf
+            no ipv4 address
+            no shutdown
+          !
+          !
+          router ospf 1
+            log adjacency changes
+            area 0
+              interface Loopback0
+                passive enable
+              !
+            !
+          !
+          !
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R1
+    node_definition: iosxrv9000
+    parameters: {}
+    ram: null
+    tags: []
+    x: 50
+    y: 50
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: MgmtEth0/RP0/CPU0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: donotuse1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: donotuse2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/0/0/0
+        mac_address: null
+        type: physical
+        slot: 3
+links:
+  - id: l0
+    n1: n1
+    n2: n0
+    i1: i4
+    i2: i0
+    conditioning: {}
+    label: R1-GigabitEthernet0/0/0/0<->flat-1-port
+lab:
+  description: Imported from grpc.virl
+  notes: |-
+    ## Notes from legacy topology import
+    - processing node /flat-1 (external_connector)
+    - processing node /R1 (iosxrv9000)
+    - link i3 -> i0
+  title: grpc.virl
+  version: 0.3.0

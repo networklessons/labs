@@ -1,0 +1,249 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: flat-1
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: 50
+    y: 60
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |
+          !
+          ! Last configuration change at 08:48:25 UTC Thu Apr 11 2019
+          !
+          version 16.6
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          platform qfp utilization monitor load 80
+          no platform punt-keepalive disable-kernel-core
+          platform console serial
+          !
+          hostname R1
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          enable secret 5 $1$tMZI$llDSye9vvY2fr1zlu4/hb0
+          !
+          no aaa new-model
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip domain name NETWORKLESSONS.LOCAL
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          subscriber templating
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          crypto pki trustpoint TP-self-signed-645536877
+           enrollment selfsigned
+           subject-name cn=IOS-Self-Signed-Certificate-645536877
+           revocation-check none
+           rsakeypair TP-self-signed-645536877
+          !
+          !
+          crypto pki certificate chain TP-self-signed-645536877
+           certificate self-signed 01 nvram:IOS-Self-Sig#2.cer
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          license udi pid CSR1000V sn 9IB4BJTEJI0
+          diagnostic bootup level minimal
+          spanning-tree extend system-id
+          !
+          netconf-yang cisco-odm actions OSPF
+          netconf-yang cisco-odm actions IPRoute
+          netconf-yang cisco-odm actions Diffserv
+          netconf-yang cisco-odm actions BFDNeighbors
+          netconf-yang cisco-odm actions BridgeDomain
+          netconf-yang cisco-odm actions VirtualService
+          netconf-yang cisco-odm actions EthernetCFMStats
+          netconf-yang cisco-odm actions MPLSLDPNeighbors
+          netconf-yang cisco-odm actions MPLSStaticBinding
+          netconf-yang cisco-odm actions MPLSForwardingTable
+          netconf-yang
+          !
+          restconf
+          !
+          username cisco privilege 15 secret 5 $1$98Gq$BkhbBTr/tjMx9f84grUFW0
+          username admin privilege 15 password 0 cisco
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet1
+           ip address 10.255.1.209 255.255.0.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+          !
+          interface GigabitEthernet2
+           ip address 172.16.1.1 255.255.255.0
+           negotiation auto
+           no mop enabled
+           no mop sysid
+            ! inserted by converter
+            no shutdown
+          !
+          !
+          virtual-service csr_mgmt
+           ip shared host-interface GigabitEthernet2
+           activate
+          !
+          ip forward-protocol nd
+          no ip http server
+          ip http authentication local
+          ip http secure-server
+          ip tftp source-interface GigabitEthernet1
+          ip route 0.0.0.0 0.0.0.0 172.16.1.254
+          !
+          ip ssh version 2
+          ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+          !
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          !
+          !
+          !
+          !
+          !
+          line con 0
+           stopbits 1
+          line vty 0
+           login local
+           transport input ssh
+          line vty 1
+           login local
+           length 0
+           transport input ssh
+          line vty 2 4
+           login local
+           transport input ssh
+          !
+          !
+          !
+          !
+          !
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R1
+    node_definition: csr1000v
+    parameters: {}
+    ram: null
+    tags: []
+    x: 394
+    y: 50
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet1
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet2
+        mac_address: null
+        type: physical
+        slot: 1
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: flat-1-port<->R1-GigabitEthernet2
+lab:
+  description: Imported from ios_xe_netconf_restconf.virl
+  notes: |-
+    ## Notes from legacy topology import
+    - processing node /flat-1 (external_connector)
+    - processing node /R1 (csr1000v)
+    - link i0 -> i1
+  title: ios_xe_netconf_restconf.virl
+  version: 0.3.0

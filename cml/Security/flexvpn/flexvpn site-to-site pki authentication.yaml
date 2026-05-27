@@ -1,0 +1,237 @@
+lab:
+  description: ''
+  notes: ''
+  timestamp: 1608736382.5023954
+  title: flexvpn site-to-site pki authentication
+  version: 0.0.4
+nodes:
+  - id: n0
+    label: R1
+    node_definition: iosv
+    x: -550
+    y: -50
+    configuration: "Building configuration...\n\n\n\nCurrent configuration : 7635\
+      \ bytes\n!\n! Last configuration change at 16:16:01 UTC Wed Dec 23 2020\n!\n\
+      version 15.9\nservice timestamps debug datetime msec\nservice timestamps log\
+      \ datetime msec\nno service password-encryption\n!\nhostname R1\n!\nboot-start-marker\n\
+      boot-end-marker\n!\n!\nno logging console\n!\nno aaa new-model\n!\n!\n!\nmmi\
+      \ polling-interval 60\nno mmi auto-configure\nno mmi pvc\nmmi snmp-timeout 180\n\
+      !\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nip domain name NWL.LAB\nip cef\nno ipv6 cef\n\
+      !\nmultilink bundle-name authenticated\n!\n!\n!\ncrypto pki server R1-CA\n no\
+      \ database archive\n issuer-name cn=\"R1-CA\"\n grant auto\n!\ncrypto pki trustpoint\
+      \ R1-CA\n revocation-check crl\n rsakeypair R1-CA\n!\ncrypto pki trustpoint\
+      \ R1-CLIENT\n enrollment url http://192.168.12.1:80\n subject-name cn=R1-CLIENT.LAB.NWL\n\
+      \ subject-alt-name R1-CLIENT.LAB.NWL\n revocation-check crl\n!\n!\ncrypto pki\
+      \ certificate chain R1-CA\n certificate ca 01\n  308201F9 30820162 A0030201\
+      \ 02020101 300D0609 2A864886 F70D0101 04050030\n  10310E30 0C060355 04031305\
+      \ 52312D43 41301E17 0D323031 32323331 35313930\n  335A170D 32333132 32333135\
+      \ 31393033 5A301031 0E300C06 03550403 13055231\n  2D434130 819F300D 06092A86\
+      \ 4886F70D 01010105 0003818D 00308189 02818100\n  F4DC43C6 D4CF69E8 89B66E77\
+      \ 02BD03EB 8446D5AA 2F249C28 99AE992F 0060B242\n  97B702C2 5F74DF93 9780C56D\
+      \ C968651D 04DFBD49 BEE44DF8 9154C5EC 2DB2DD08\n  9A7673C2 2500745E F2E0AC3B\
+      \ 26C07EB5 DBE75854 6B9A6CEB AEFF74BE 094DF156\n  5A5912AE 31306F84 91775CCF\
+      \ ADF1FE7C 02E2B846 C70340E8 DDBBB136 A19CE933\n  02030100 01A36330 61300F06\
+      \ 03551D13 0101FF04 05300301 01FF300E 0603551D\n  0F0101FF 04040302 0186301F\
+      \ 0603551D 23041830 168014BF A5B53CED D072A2D6\n  CA557832 8676FFFE 24758230\
+      \ 1D060355 1D0E0416 0414BFA5 B53CEDD0 72A2D6CA\n  55783286 76FFFE24 7582300D\
+      \ 06092A86 4886F70D 01010405 00038181 0059620A\n  69DCC055 815A833A ECFA0B96\
+      \ 84185468 DCDC654E 133782DF 42538FE3 C3DB9F15\n  BD2A896C B1C031A0 63296F46\
+      \ D18AE8D0 B0FC1A93 9F4E0638 1C5DBCD0 741978F3\n  940A6AF9 F59DCBCD 82EF4DCF\
+      \ 4AFD0638 0821AE6D 67374813 BDCD8979 3DB7B805\n  6EEFF688 12F113C4 6FD3A51A\
+      \ 9AEF0FE9 191D2217 B8C96D2A 95F8287B FA\n  \tquit\ncrypto pki certificate chain\
+      \ R1-CLIENT\n certificate 02\n  3082020C 30820175 A0030201 02020102 300D0609\
+      \ 2A864886 F70D0101 05050030\n  10310E30 0C060355 04031305 52312D43 41301E17\
+      \ 0D323031 32323331 35323135\n  305A170D 32313132 32333135 32313530 5A303731\
+      \ 1A301806 03550403 13115231\n  2D434C49 454E542E 4C41422E 4E574C31 19301706\
+      \ 092A8648 86F70D01 0902160A\n  52312E4E 574C2E4C 41423081 9F300D06 092A8648\
+      \ 86F70D01 01010500 03818D00\n  30818902 81810093 56FD2F9C 5A45F7A5 C0F77D2B\
+      \ 08B693AA A86C55CD 3875D1A5\n  0647C61D 4ACF21B1 ABB5943F CC6EEC59 05F94AF7\
+      \ 64500F36 00E757E1 5382CBB0\n  2ED03B4F 90274ABC BAC55799 A981C2BE C53B27CE\
+      \ 1C262C09 53221612 D4128B08\n  53193979 5470F3CA 70E613B0 83598774 80EDB941\
+      \ 5DB856DC 7EB1ED4B 35AED7D8\n  70E8E845 E12EAD02 03010001 A34F304D 300B0603\
+      \ 551D0F04 04030205 A0301F06\n  03551D23 04183016 8014BFA5 B53CEDD0 72A2D6CA\
+      \ 55783286 76FFFE24 7582301D\n  0603551D 0E041604 14648C1B 44EA2274 44DD6726\
+      \ 9DC06AB5 FC52490C 0C300D06\n  092A8648 86F70D01 01050500 03818100 B1C91E40\
+      \ 14CE79E3 639D6510 7DCE131E\n  FAEA7CD2 EEECAA26 4E52530A 93448634 7A3481B0\
+      \ F90E7848 E71D391C 40B01213\n  14561CDD CD688E35 AD435249 27C6B8FD D68884D4\
+      \ CF6A24FF DEB3C330 1DD551C5\n  E001B092 9FD3B2B2 4726DE7A D579FFA2 853DB374\
+      \ 866E9CC2 D7495641 CE99D594\n  F8580D50 BF5B7230 6BD6C924 66FAD4BA\n  \tquit\n\
+      \ certificate ca 01\n  308201F9 30820162 A0030201 02020101 300D0609 2A864886\
+      \ F70D0101 04050030\n  10310E30 0C060355 04031305 52312D43 41301E17 0D323031\
+      \ 32323331 35313930\n  335A170D 32333132 32333135 31393033 5A301031 0E300C06\
+      \ 03550403 13055231\n  2D434130 819F300D 06092A86 4886F70D 01010105 0003818D\
+      \ 00308189 02818100\n  F4DC43C6 D4CF69E8 89B66E77 02BD03EB 8446D5AA 2F249C28\
+      \ 99AE992F 0060B242\n  97B702C2 5F74DF93 9780C56D C968651D 04DFBD49 BEE44DF8\
+      \ 9154C5EC 2DB2DD08\n  9A7673C2 2500745E F2E0AC3B 26C07EB5 DBE75854 6B9A6CEB\
+      \ AEFF74BE 094DF156\n  5A5912AE 31306F84 91775CCF ADF1FE7C 02E2B846 C70340E8\
+      \ DDBBB136 A19CE933\n  02030100 01A36330 61300F06 03551D13 0101FF04 05300301\
+      \ 01FF300E 0603551D\n  0F0101FF 04040302 0186301F 0603551D 23041830 168014BF\
+      \ A5B53CED D072A2D6\n  CA557832 8676FFFE 24758230 1D060355 1D0E0416 0414BFA5\
+      \ B53CEDD0 72A2D6CA\n  55783286 76FFFE24 7582300D 06092A86 4886F70D 01010405\
+      \ 00038181 0059620A\n  69DCC055 815A833A ECFA0B96 84185468 DCDC654E 133782DF\
+      \ 42538FE3 C3DB9F15\n  BD2A896C B1C031A0 63296F46 D18AE8D0 B0FC1A93 9F4E0638\
+      \ 1C5DBCD0 741978F3\n  940A6AF9 F59DCBCD 82EF4DCF 4AFD0638 0821AE6D 67374813\
+      \ BDCD8979 3DB7B805\n  6EEFF688 12F113C4 6FD3A51A 9AEF0FE9 191D2217 B8C96D2A\
+      \ 95F8287B FA\n  \tquit\n!\nredundancy\n!\n!\n!\n!\n!\n!\ncrypto ikev2 keyring\
+      \ KEYRING\n peer R2\n  address 192.168.12.2\n  pre-shared-key local CISCO\n\
+      \  pre-shared-key remote CISCO\n !\n!\n!\ncrypto ikev2 profile default\n match\
+      \ identity remote fqdn R2.NWL.LAB\n identity local dn\n authentication remote\
+      \ pre-share\n authentication local rsa-sig\n keyring local KEYRING\n pki trustpoint\
+      \ R1-CLIENT\n!\n!\n!\n!\ncrypto ipsec profile default\n set ikev2-profile default\n\
+      !\n!\n!\n!\n!\n!\ninterface Tunnel0\n ip address 172.16.12.1 255.255.255.0\n\
+      \ tunnel source GigabitEthernet0/0\n tunnel destination 192.168.12.2\n tunnel\
+      \ protection ipsec profile default\n!\ninterface GigabitEthernet0/0\n ip address\
+      \ 192.168.12.1 255.255.255.0\n duplex auto\n speed auto\n media-type rj45\n\
+      !\ninterface GigabitEthernet0/1\n no ip address\n duplex auto\n speed auto\n\
+      \ media-type rj45\n!\ninterface GigabitEthernet0/2\n no ip address\n shutdown\n\
+      \ duplex auto\n speed auto\n media-type rj45\n!\ninterface GigabitEthernet0/3\n\
+      \ no ip address\n shutdown\n duplex auto\n speed auto\n media-type rj45\n!\n\
+      ip forward-protocol nd\n!\n!\nip http server\nno ip http secure-server\n!\n\
+      ipv6 ioam timestamp\n!\n!\n!\ncontrol-plane\n!\nbanner exec ^CC\n**************************************************************************\n\
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n\
+      * education. IOSv is provided as-is and is not supported by Cisco's      *\n\
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *\n\
+      * of the IOSv Software or Documentation to any third party for any       *\n\
+      * purposes is expressly prohibited except as otherwise authorized by     *\n\
+      * Cisco in writing.                                                      *\n\
+      **************************************************************************^C\n\
+      banner incoming ^CC\n**************************************************************************\n\
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n\
+      * education. IOSv is provided as-is and is not supported by Cisco's      *\n\
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *\n\
+      * of the IOSv Software or Documentation to any third party for any       *\n\
+      * purposes is expressly prohibited except as otherwise authorized by     *\n\
+      * Cisco in writing.                                                      *\n\
+      **************************************************************************^C\n\
+      banner login ^CC\n**************************************************************************\n\
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n\
+      * education. IOSv is provided as-is and is not supported by Cisco's      *\n\
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *\n\
+      * of the IOSv Software or Documentation to any third party for any       *\n\
+      * purposes is expressly prohibited except as otherwise authorized by     *\n\
+      * Cisco in writing.                                                      *\n\
+      **************************************************************************^C\n\
+      !\nline con 0\n exec-timeout 0 0\nline aux 0\nline vty 0 4\n login\n transport\
+      \ input none\n!\nno scheduler allocate\n!\nend"
+    image_definition: iosv-159-3
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet0/2
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet0/3
+        type: physical
+  - id: n1
+    label: R2
+    node_definition: iosv
+    x: -50
+    y: -50
+    configuration: "Building configuration...\n\nCurrent configuration : 5002 bytes\n\
+      !\n! Last configuration change at 16:16:02 UTC Wed Dec 23 2020\n!\nversion 15.9\n\
+      service timestamps debug datetime msec\nservice timestamps log datetime msec\n\
+      no service password-encryption\n!\nhostname R2\n!\nboot-start-marker\nboot-end-marker\n\
+      !\n!\nno logging console\n!\nno aaa new-model\n!\n!\n!\nmmi polling-interval\
+      \ 60\nno mmi auto-configure\nno mmi pvc\nmmi snmp-timeout 180\n!\n!\n!\n!\n\
+      !\n!\n!\n!\n!\n!\n!\nip cef\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n\
+      !\n!\n!\ncrypto pki trustpoint R2-CLIENT\n enrollment url http://192.168.12.1:80\n\
+      \ revocation-check none\n!\n!\n!\ncrypto pki certificate map R2-CLIENT-MAP 10\n\
+      \ issuer-name eq cn = r1-ca\n!\ncrypto pki certificate chain R2-CLIENT\n certificate\
+      \ ca 01\n  308201F9 30820162 A0030201 02020101 300D0609 2A864886 F70D0101 04050030\n\
+      \  10310E30 0C060355 04031305 52312D43 41301E17 0D323031 32323331 35313930\n\
+      \  335A170D 32333132 32333135 31393033 5A301031 0E300C06 03550403 13055231\n\
+      \  2D434130 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100\n\
+      \  F4DC43C6 D4CF69E8 89B66E77 02BD03EB 8446D5AA 2F249C28 99AE992F 0060B242\n\
+      \  97B702C2 5F74DF93 9780C56D C968651D 04DFBD49 BEE44DF8 9154C5EC 2DB2DD08\n\
+      \  9A7673C2 2500745E F2E0AC3B 26C07EB5 DBE75854 6B9A6CEB AEFF74BE 094DF156\n\
+      \  5A5912AE 31306F84 91775CCF ADF1FE7C 02E2B846 C70340E8 DDBBB136 A19CE933\n\
+      \  02030100 01A36330 61300F06 03551D13 0101FF04 05300301 01FF300E 0603551D\n\
+      \  0F0101FF 04040302 0186301F 0603551D 23041830 168014BF A5B53CED D072A2D6\n\
+      \  CA557832 8676FFFE 24758230 1D060355 1D0E0416 0414BFA5 B53CEDD0 72A2D6CA\n\
+      \  55783286 76FFFE24 7582300D 06092A86 4886F70D 01010405 00038181 0059620A\n\
+      \  69DCC055 815A833A ECFA0B96 84185468 DCDC654E 133782DF 42538FE3 C3DB9F15\n\
+      \  BD2A896C B1C031A0 63296F46 D18AE8D0 B0FC1A93 9F4E0638 1C5DBCD0 741978F3\n\
+      \  940A6AF9 F59DCBCD 82EF4DCF 4AFD0638 0821AE6D 67374813 BDCD8979 3DB7B805\n\
+      \  6EEFF688 12F113C4 6FD3A51A 9AEF0FE9 191D2217 B8C96D2A 95F8287B FA\n  \tquit\n\
+      !\nredundancy\n!\n!\n!\n!\n!\n!\ncrypto ikev2 keyring KEYRING\n peer R1\n  address\
+      \ 192.168.12.1\n  pre-shared-key local CISCO\n  pre-shared-key remote CISCO\n\
+      \ !\n!\n!\ncrypto ikev2 profile default\n match identity remote fqdn R1.NWL.LAB\n\
+      \ match certificate R2-CLIENT-MAP\n identity local fqdn R2.NWL.LAB\n authentication\
+      \ remote pre-share\n authentication remote rsa-sig\n authentication local pre-share\n\
+      \ keyring local KEYRING\n!\n!\n!\n!\ncrypto ipsec profile default\n set ikev2-profile\
+      \ default\n!\n!\n!\n!\n!\n!\ninterface Tunnel0\n ip address 172.16.12.2 255.255.255.0\n\
+      \ tunnel source GigabitEthernet0/0\n tunnel destination 192.168.12.1\n tunnel\
+      \ protection ipsec profile default\n!\ninterface GigabitEthernet0/0\n ip address\
+      \ 192.168.12.2 255.255.255.0\n duplex auto\n speed auto\n media-type rj45\n\
+      !\ninterface GigabitEthernet0/1\n no ip address\n duplex auto\n speed auto\n\
+      \ media-type rj45\n!\ninterface GigabitEthernet0/2\n no ip address\n shutdown\n\
+      \ duplex auto\n speed auto\n media-type rj45\n!\ninterface GigabitEthernet0/3\n\
+      \ no ip address\n shutdown\n duplex auto\n speed auto\n media-type rj45\n!\n\
+      ip forward-protocol nd\n!\n!\nno ip http server\nno ip http secure-server\n\
+      !\nipv6 ioam timestamp\n!\n!\n!\ncontrol-plane\n!\nbanner exec ^CC\n**************************************************************************\n\
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n\
+      * education. IOSv is provided as-is and is not supported by Cisco's      *\n\
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *\n\
+      * of the IOSv Software or Documentation to any third party for any       *\n\
+      * purposes is expressly prohibited except as otherwise authorized by     *\n\
+      * Cisco in writing.                                                      *\n\
+      **************************************************************************^C\n\
+      banner incoming ^CC\n**************************************************************************\n\
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n\
+      * education. IOSv is provided as-is and is not supported by Cisco's      *\n\
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *\n\
+      * of the IOSv Software or Documentation to any third party for any       *\n\
+      * purposes is expressly prohibited except as otherwise authorized by     *\n\
+      * Cisco in writing.                                                      *\n\
+      **************************************************************************^C\n\
+      banner login ^CC\n**************************************************************************\n\
+      * IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n\
+      * education. IOSv is provided as-is and is not supported by Cisco's      *\n\
+      * Technical Advisory Center. Any use or disclosure, in whole or in part, *\n\
+      * of the IOSv Software or Documentation to any third party for any       *\n\
+      * purposes is expressly prohibited except as otherwise authorized by     *\n\
+      * Cisco in writing.                                                      *\n\
+      **************************************************************************^C\n\
+      !\nline con 0\n exec-timeout 0 0\nline aux 0\nline vty 0 4\n login\n transport\
+      \ input none\n!\nno scheduler allocate\n!\nend"
+    image_definition: iosv-159-3
+    tags: []
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i2
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+      - id: i3
+        slot: 2
+        label: GigabitEthernet0/2
+        type: physical
+      - id: i4
+        slot: 3
+        label: GigabitEthernet0/3
+        type: physical
+links:
+  - id: l0
+    i1: i1
+    n1: n0
+    i2: i1
+    n2: n1

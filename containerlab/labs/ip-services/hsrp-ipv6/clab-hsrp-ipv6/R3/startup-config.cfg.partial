@@ -1,42 +1,22 @@
 hostname R3
 !
- !
- address-family ipv4
- exit-address-family
- !
- address-family ipv6
- exit-address-family
-!
-no ip domain lookup
-ip domain name lab
-ip cef
 ipv6 unicast-routing
 ipv6 cef
 !
-spanning-tree mode rapid-pvst
-!
-username admin privilege 15 secret 9 $9$rOyXZ5NWkyN1Wk$4O.arw4yB/08zdxjGIccrGuDsNGkXKgEg5oVK1m.cXA
-!
 interface Loopback0
- no ip address
  ipv6 address 2001:DB8::3/128
-!
-interface Ethernet0/0
- ip address 10.65.97.63 255.255.255.0
+ ipv6 ospf 1 area 0
 !
 interface Ethernet0/1
- no ip address
+ no shutdown
  ipv6 address 2001:DB8:0:123::3/64
+ ipv6 ospf 1 area 0
 !
-interface Ethernet0/2
- no ip address
+router ospf 1
+ network 3.3.3.3 0.0.0.0 area 0
+ network 192.168.123.0 0.0.0.255 area 0
 !
-interface Ethernet0/3
- no ip address
-!
-ipv6 route 2001:DB8:0:12::/64 2001:DB8:0:123::1
-!
- logging synchronous
- transport input ssh
+ipv6 router ospf 1
+ router-id 3.3.3.3
 !
 end

@@ -1,0 +1,481 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          !
+          ! Last configuration change at 15:49:10 UTC Wed Dec 16 2015
+          !
+          version 15.5
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname C819-4G-12
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          aaa new-model
+          !
+          !
+          aaa authentication login default local
+          aaa authentication login scirocco local
+          aaa authorization exec default local
+          aaa authorization network EZVPNGROUP local
+          !
+          !
+          !
+          !
+          !
+          aaa session-id common
+          ethernet lmi ce
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip dhcp pool VLAN10
+           network 192.168.178.0 255.255.255.0
+           default-router 192.168.178.254
+           dns-server 8.8.8.8
+          !
+          !
+          !
+          ip domain name FIRESTORM.LOCAL
+          ip name-server 8.8.8.8
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          username scirocco password 0 scirocco
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          crypto isakmp policy 1
+           encr aes 256
+           authentication pre-share
+           group 2
+          !
+          crypto isakmp policy 2
+           encr aes
+           authentication pre-share
+           group 2
+          !
+          crypto isakmp client configuration group EZVPNGROUP
+           key SCIROCCO123
+           domain wr
+           pool VPNPOOL
+           max-users 10
+           netmask 255.255.255.0
+          !
+          crypto isakmp peer address 212.241.52.19
+           set aggressive-mode password XXXXXXXXXX
+           set aggressive-mode client-endpoint fqdn C819-4G-12
+          crypto isakmp profile ISAKMP_EZVPN
+             match identity group EZVPNGROUP
+             client authentication list scirocco
+             isakmp authorization list EZVPNGROUP
+             client configuration address respond
+             virtual-template 2
+          !
+          !
+          crypto ipsec transform-set TRANSFORMSET esp-aes esp-sha-hmac
+           mode tunnel
+          crypto ipsec transform-set EZVPN-set esp-aes esp-sha-hmac
+           mode tunnel
+          !
+          crypto ipsec profile EZVPN_PROFILE
+           set transform-set EZVPN-set
+           set isakmp-profile ISAKMP_EZVPN
+          !
+          !
+          !
+          crypto map FIRESTORM-CRYPTO-MAP 10 ipsec-isakmp
+           set peer 212.241.52.19
+           set transform-set TRANSFORMSET
+           match address FIRESTORM-VPN-TRAFFIC
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address dhcp
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          interface GigabitEthernet0/2
+           ip address 192.168.178.254 255.255.255.0
+           ip nat inside
+           ip virtual-reassembly in
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          interface Virtual-Template2 type tunnel
+           ip unnumbered GigabitEthernet0/2
+           tunnel mode ipsec ipv4
+           tunnel path-mtu-discovery
+           tunnel protection ipsec profile EZVPN_PROFILE
+          !
+          ip local pool VPNPOOL 192.168.2.100 192.168.2.200
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          ip route 0.0.0.0 0.0.0.0 172.16.1.1
+          ip route 172.16.41.0 255.255.255.0 212.241.52.19
+          ip route 172.16.44.0 255.255.255.0 212.241.52.19
+          ip route 172.16.90.0 255.255.255.0 212.241.52.19
+          ip route 172.30.252.0 255.255.252.0 212.241.52.19
+          ip route 172.31.255.0 255.255.255.0 212.241.52.19
+          !
+          ip access-list extended ALLOW_SSH
+           permit ip any any
+          ip access-list extended DENY_ALL_FROM_INTERNET
+           remark ### ALLOW SOME ICMP PACKETS ###
+           permit icmp any any echo-reply
+           permit icmp any any unreachable
+           permit icmp any any time-exceeded
+           remark ### ALLOW IPSEC FROM REMOTE PEERS ###
+           permit udp host 212.241.52.19 any eq isakmp
+           permit udp host 212.241.52.19 any eq non500-isakmp
+           permit esp host 212.241.52.19 any
+           permit ahp host 212.241.52.19 any
+           permit ip 172.16.90.0 0.0.0.255 any
+           permit ip host 172.16.41.2 any
+           permit ip 172.16.44.0 0.0.0.255 any
+           permit ip 172.31.255.0 0.0.0.255 any
+           permit ip 172.30.252.0 0.0.3.255 any
+           deny   ip any any
+          ip access-list extended FIRESTORM-VPN-TRAFFIC
+           permit ip 172.18.88.0 0.0.0.255 host 172.16.41.2
+           permit ip 172.18.88.0 0.0.0.255 172.16.90.0 0.0.0.255
+           permit ip 172.18.88.0 0.0.0.255 172.31.255.0 0.0.0.255
+           permit ip 172.18.88.0 0.0.0.255 172.30.252.0 0.0.3.255
+           permit ip 172.18.88.0 0.0.0.255 172.16.44.0 0.0.0.7
+          ip access-list extended NAT
+           permit ip 192.168.178.0 0.0.0.255 any
+          ip access-list extended VLAN10
+           deny   ip any 172.16.0.0 0.15.255.255
+           permit ip any any
+          !
+          !
+          !
+          access-list 120 deny   ip 192.168.178.0 0.0.0.255 192.168.2.0 0.0.0.255
+          access-list 120 permit ip 192.168.178.0 0.0.0.255 any
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner incoming `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner login `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          !
+          line con 0
+          line aux 0
+          line vty 0 4
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: 478
+    y: 50
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          !
+          ! Last configuration change at 15:49:14 UTC Wed Dec 16 2015
+          !
+          version 15.5
+          service timestamps debug datetime msec
+          service timestamps log datetime msec
+          no service password-encryption
+          !
+          hostname Host
+          !
+          boot-start-marker
+          boot-end-marker
+          !
+          !
+          !
+          no aaa new-model
+          ethernet lmi ce
+          !
+          !
+          !
+          mmi polling-interval 60
+          no mmi auto-configure
+          no mmi pvc
+          mmi snmp-timeout 180
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          ip cef
+          no ipv6 cef
+          !
+          multilink bundle-name authenticated
+          !
+          !
+          !
+          !
+          !
+          redundancy
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          !
+          interface GigabitEthernet0/0
+           no ip address
+           shutdown
+           duplex auto
+           speed auto
+           media-type rj45
+          !
+          interface GigabitEthernet0/1
+           ip address dhcp
+           duplex auto
+           speed auto
+           media-type rj45
+            ! inserted by converter
+            no shutdown
+          !
+          ip forward-protocol nd
+          !
+          !
+          no ip http server
+          no ip http secure-server
+          !
+          !
+          !
+          !
+          control-plane
+          !
+          banner exec `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner incoming `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          banner login `
+          **************************************************************************
+          * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+          * education. IOSv is provided as-is and is not supported by Cisco's      *
+          * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+          * of the IOSv Software or Documentation to any third party for any       *
+          * purposes is expressly prohibited except as otherwise authorized by     *
+          * Cisco in writing.                                                      *
+          **************************************************************************`
+          !
+          line con 0
+          line aux 0
+          line vty 0 4
+           login
+           transport input none
+          !
+          no scheduler allocate
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: Host
+    node_definition: iosv
+    parameters: {}
+    ram: null
+    tags: []
+    x: 831
+    y: 53
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: flat-1
+    node_definition: external_connector
+    parameters: {}
+    ram: null
+    tags: []
+    x: 50
+    y: 64
+    interfaces:
+      - id: i0
+        label: port
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n2
+    n2: n0
+    i1: i0
+    i2: i2
+    conditioning: {}
+    label: flat-1-port<->R1-GigabitEthernet0/1
+  - id: l1
+    n1: n1
+    n2: n0
+    i1: i2
+    i2: i3
+    conditioning: {}
+    label: Host-GigabitEthernet0/1<->R1-GigabitEthernet0/2
+lab:
+  description: Imported from ipsec_easy_vpn.virl
+  notes: |-
+    ## Notes from legacy topology import
+    - processing node /R1 (iosv)
+    - processing node /Host (iosv)
+    - processing node /flat-1 (external_connector)
+    - link i0 -> i1
+    - link i1 -> i2
+  title: ipsec_easy_vpn.virl
+  version: 0.3.0
