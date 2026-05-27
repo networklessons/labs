@@ -42,3 +42,7 @@ jobs:
             -t networklessons/docker-alpine-cisco-yang-explorer:latest \
             -t networklessons/docker-alpine-cisco-yang-explorer:${{ forgejo.run_number }} \
             containers/docker-alpine-cisco-yang-explorer/
+
+      - name: Cleanup Builder Container
+              if: always()   # This ensures the builder is deleted even if the 'build' step crashes
+              run: docker buildx rm builder-${{ forgejo.run_id }}
