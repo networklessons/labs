@@ -14,7 +14,7 @@ jobs:
   build-and-push:
     runs-on: forgejo-runner
     container:
-      image: renedocker82/forgejo-runner:42
+      image: renedocker82/forgejo-runner:250
       credentials:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
