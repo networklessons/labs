@@ -42,3 +42,7 @@ jobs:
             -t networklessons/lab-node-ubuntu:latest \
             -t networklessons/lab-node-ubuntu:${{ forgejo.run_number }} \
             containers/lab-node-ubuntu/
+
+      - name: Cleanup Builder Container
+              if: always()   # This ensures the builder is deleted even if the 'build' step crashes
+              run: docker buildx rm builder-${{ forgejo.run_id }}
