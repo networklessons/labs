@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "hostRules": [
+    {
+      "matchHost": "https://index.docker.io",
+      "hostType": "docker",
+      "username": "{{ secrets.DOCKER_HUB_NWL_USERNAME }}",
+      "password": "{{ secrets.DOCKER_HUB_NWL_PASSWORD }}"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "pinDigests": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ubuntu"],
+      "matchUpdateTypes": ["major"],
+      "minimumReleaseAge": "120 days"
+    }
+  ]
+}

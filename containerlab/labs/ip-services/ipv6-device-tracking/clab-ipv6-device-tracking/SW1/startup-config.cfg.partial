@@ -1,0 +1,18 @@
+hostname SW1
+!
+device-tracking policy MY_POLICY
+ security-level guard
+ device-role node
+ limit address-count 2
+ tracking enable reachable-lifetime 10
+!
+interface Ethernet0/1
+ device-tracking attach-policy MY_POLICY
+!
+interface Ethernet0/2
+ device-tracking attach-policy MY_POLICY
+!
+interface Ethernet0/3
+ device-tracking attach-policy MY_POLICY
+!
+end

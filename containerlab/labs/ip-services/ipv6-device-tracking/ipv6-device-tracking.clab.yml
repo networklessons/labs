@@ -1,0 +1,39 @@
+# IPv6 device tracking (First Hop Security) lab.
+# R1, R2 and R3 (Cisco 8000v) connect to the L2 switch SW1 (Cisco IOL).
+# SW1 runs a device-tracking policy on the interfaces facing the routers.
+
+name: ipv6-device-tracking
+
+mgmt:
+  network: mgmt-ipv4
+  ipv4-subnet: 10.65.97.0/24
+
+topology:
+  kinds:
+    cisco_c8000v:
+      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a
+    cisco_iol:
+      image: docker-registry.nwl.lab/cisco_iol:17.12.01
+  nodes:
+    R1:
+      kind: cisco_c8000v
+      mgmt-ipv4: 10.65.97.11
+      #startup-config: ./clab-ipv6-device-tracking/R1/config/startup-config.cfg
+    R2:
+      kind: cisco_c8000v
+      mgmt-ipv4: 10.65.97.12
+      #startup-config: ./clab-ipv6-device-tracking/R2/config/startup-config.cfg
+    R3:
+      kind: cisco_c8000v
+      mgmt-ipv4: 10.65.97.13
+      #startup-config: ./clab-ipv6-device-tracking/R3/config/startup-config.cfg
+    SW1:
+      kind: cisco_iol
+      image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
+      type: l2
+      mgmt-ipv4: 10.65.97.14
+      #startup-config: ./clab-ipv6-device-tracking/SW1/startup-config.cfg.partial
+  links:
+    - endpoints: ["R1:eth1", "SW1:Ethernet0/1"]
+    - endpoints: ["R2:eth1", "SW1:Ethernet0/2"]
+    - endpoints: ["R3:eth1", "SW1:Ethernet0/3"]

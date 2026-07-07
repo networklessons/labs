@@ -1,5 +1,5 @@
 # Use Ubuntu 24.04 as the base image
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 # Avoid prompts from apt
 ENV DEBIAN_FRONTEND=noninteractive
@@ -21,9 +21,9 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Add lab user for SSH.
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1010 lab && \
+RUN useradd -m -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1010 lab && \
     echo 'lab:lab' | chpasswd && \
-    mkdir /var/run/sshd
+    mkdir -p /var/run/sshd
 
 # Grant lab user passwordless sudo privileges
 RUN echo 'lab ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/lab
