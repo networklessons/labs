@@ -1,6 +1,6 @@
-# HSRP with two routers and one host.
-# R1, R2, H1 connected to SW1.
-# R1, R2, R3 connected to SW2.
+# HSRP with BFD peering.
+# R1, R2 and H1 (Cisco 8000v) connect to the L2 switch SW1 (Cisco IOL).
+# R1, R2 and R3 (Cisco 8000v) connect to the L2 switch SW2 (Cisco IOL).
 
 name: hsrp-bfd-peering
 mgmt:
@@ -8,25 +8,27 @@ mgmt:
   ipv4-subnet: 10.65.97.0/24
 topology:
   kinds:
+    cisco_c8000v:
+      image: docker-registry.nwl.lab/cisco_c8000v:17.13.01a
     cisco_iol:
       image: docker-registry.nwl.lab/cisco_iol:17.12.01
   nodes:
     R1:
-      kind: cisco_iol
+      kind: cisco_c8000v
       mgmt-ipv4: 10.65.97.11
-      startup-config: ./clab-hsrp-bfd-peering/R1/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-bfd-peering/R1/config/startup-config.cfg
     R2:
-      kind: cisco_iol
+      kind: cisco_c8000v
       mgmt-ipv4: 10.65.97.12
-      startup-config: ./clab-hsrp-bfd-peering/R2/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-bfd-peering/R2/config/startup-config.cfg
     R3:
-      kind: cisco_iol
+      kind: cisco_c8000v
       mgmt-ipv4: 10.65.97.13
-      startup-config: ./clab-hsrp-bfd-peering/R3/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-bfd-peering/R3/config/startup-config.cfg
     H1:
-      kind: cisco_iol
+      kind: cisco_c8000v
       mgmt-ipv4: 10.65.97.14
-      startup-config: ./clab-hsrp-bfd-peering/H1/startup-config.cfg.partial
+      startup-config: ./clab-hsrp-bfd-peering/H1/config/startup-config.cfg
     SW1:
       kind: cisco_iol
       image: docker-registry.nwl.lab/cisco_iol:l2-17.12.01
@@ -38,9 +40,9 @@ topology:
       type: l2
       mgmt-ipv4: 10.65.97.16
   links:
-    - endpoints: ["R1:Ethernet0/1", "SW1:Ethernet0/1"]
-    - endpoints: ["R2:Ethernet0/1", "SW1:Ethernet0/2"]
-    - endpoints: ["H1:Ethernet0/1", "SW1:Ethernet0/3"]
-    - endpoints: ["R1:Ethernet0/2", "SW2:Ethernet0/1"]
-    - endpoints: ["R2:Ethernet0/2", "SW2:Ethernet0/2"]
-    - endpoints: ["R3:Ethernet0/1", "SW2:Ethernet0/3"]
+    - endpoints: ["R1:eth1", "SW1:Ethernet0/1"]
+    - endpoints: ["R2:eth1", "SW1:Ethernet0/2"]
+    - endpoints: ["H1:eth1", "SW1:Ethernet0/3"]
+    - endpoints: ["R1:eth2", "SW2:Ethernet0/1"]
+    - endpoints: ["R2:eth2", "SW2:Ethernet0/2"]
+    - endpoints: ["R3:eth1", "SW2:Ethernet0/3"]

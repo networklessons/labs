@@ -1,0 +1,257 @@
+annotations: []
+smart_annotations: []
+nodes:
+- id: n0
+  label: R1
+  node_definition: iol-xe
+  x: 0
+  y: 0
+  configuration: |
+    hostname R1
+    !
+    interface Loopback0
+     ip address 11.11.11.11 255.255.255.255
+    !
+    interface Ethernet0/0
+     no shutdown
+     ip address 192.168.12.1 255.255.255.0
+     ip ospf network point-to-point
+    !
+    router ospf 1
+     router-id 1.1.1.1
+     network 11.11.11.11 0.0.0.0 area 1
+     network 192.168.12.0 0.0.0.255 area 1
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+  tags: &id001 []
+  hide_links: false
+  parameters: &id002 {}
+  boot_disk_size: null
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  ram: null
+  image_definition: null
+  priority: null
+  pyats: &id003
+    username: null
+    password: null
+    enable_password: null
+- id: n1
+  label: R2
+  node_definition: iol-xe
+  x: 150
+  y: 0
+  configuration: |
+    hostname R2
+    !
+    interface Ethernet0/0
+     no shutdown
+     ip address 192.168.12.2 255.255.255.0
+     ip ospf network point-to-point
+    !
+    interface Ethernet0/1
+     no shutdown
+     ip address 192.168.23.2 255.255.255.0
+     ip ospf network point-to-point
+    !
+    router ospf 1
+     router-id 2.2.2.2
+     network 192.168.12.0 0.0.0.255 area 1
+     network 192.168.23.0 0.0.0.255 area 0
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+  tags: *id001
+  hide_links: false
+  parameters: *id002
+  boot_disk_size: null
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  ram: null
+  image_definition: null
+  priority: null
+  pyats: *id003
+- id: n2
+  label: R3
+  node_definition: iol-xe
+  x: 300
+  y: 0
+  configuration: |
+    hostname R3
+    !
+    interface Ethernet0/0
+     no shutdown
+     ip address 192.168.23.3 255.255.255.0
+     ip ospf network point-to-point
+    !
+    interface Ethernet0/1
+     no shutdown
+     ip address 192.168.34.3 255.255.255.0
+     ip ospf network point-to-point
+    !
+    router ospf 1
+     router-id 3.3.3.3
+     network 192.168.23.0 0.0.0.255 area 0
+     network 192.168.34.0 0.0.0.255 area 2
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+  tags: *id001
+  hide_links: false
+  parameters: *id002
+  boot_disk_size: null
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  ram: null
+  image_definition: null
+  priority: null
+  pyats: *id003
+- id: n3
+  label: R4
+  node_definition: iol-xe
+  x: 450
+  y: 0
+  configuration: |
+    hostname R4
+    !
+    interface Ethernet0/0
+     no shutdown
+     ip address 192.168.34.4 255.255.255.0
+     ip ospf network point-to-point
+    !
+    router ospf 1
+     router-id 4.4.4.4
+     network 192.168.34.0 0.0.0.255 area 2
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+  tags: *id001
+  hide_links: false
+  parameters: *id002
+  boot_disk_size: null
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  ram: null
+  image_definition: null
+  priority: null
+  pyats: *id003
+links:
+- id: l0
+  n1: n0
+  n2: n1
+  i1: i1
+  i2: i1
+- id: l1
+  n1: n1
+  n2: n2
+  i1: i2
+  i2: i1
+- id: l2
+  n1: n2
+  n2: n3
+  i1: i2
+  i2: i1
+lab:
+  description: |-
+    Cisco IOL OSPF lab with multiple areas
+    R1 in area 1, R2 in area 1+0 (ABR), R3 in area 0+2 (ABR), R4 in area 2
+  notes: ''
+  title: ospf-area-0-1-2
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

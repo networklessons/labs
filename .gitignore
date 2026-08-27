@@ -9,3 +9,6 @@ boot_config.txt
 iouyap.ini
 NETMAP
 nvram_*
+# Python bytecode
+__pycache__/
+*.pyc

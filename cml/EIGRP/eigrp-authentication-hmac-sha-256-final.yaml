@@ -1,0 +1,105 @@
+annotations: []
+smart_annotations: []
+nodes:
+- id: n0
+  label: R1
+  node_definition: cat8000v
+  x: 0
+  y: 0
+  configuration: null
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet4
+    mac_address: null
+    type: physical
+    slot: 3
+  tags: &id001 []
+  hide_links: false
+  parameters: &id002 {}
+  boot_disk_size: null
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  ram: null
+  image_definition: null
+  priority: null
+  pyats: &id003
+    username: null
+    password: null
+    enable_password: null
+- id: n1
+  label: R2
+  node_definition: cat8000v
+  x: 150
+  y: 0
+  configuration: null
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet1
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet2
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet3
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet4
+    mac_address: null
+    type: physical
+    slot: 3
+  tags: *id001
+  hide_links: false
+  parameters: *id002
+  boot_disk_size: null
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  ram: null
+  image_definition: null
+  priority: null
+  pyats: *id003
+links:
+- id: l0
+  n1: n0
+  n2: n1
+  i1: i1
+  i2: i1
+lab:
+  description: EIGRP with hmac-sha-256 authentication
+  notes: ''
+  title: eigrp-authentication-hmac-sha-256
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
