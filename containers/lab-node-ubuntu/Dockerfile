@@ -1,21 +1,24 @@
-# Use Ubuntu 24.04 as the base image
+# Use Ubuntu 26.04 as the base image
 FROM ubuntu:26.04
 
 # Avoid prompts from apt
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update apt cache and install networking tools
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     vim \
     iputils-ping \
+    traceroute \
     iproute2 \
     curl \
+    ca-certificates \
     dnsutils \
     nmap \
     iperf3 \
     hping3 \
     tcpdump \
     socat \
+    netcat-openbsd \
     openssh-server \
     sudo \
     && rm -rf /var/lib/apt/lists/*

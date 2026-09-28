@@ -9,6 +9,7 @@ boot_config.txt
 iouyap.ini
 NETMAP
 nvram_*
+*.clab.yml.annotations.json
 # Python bytecode
 __pycache__/
 *.pyc

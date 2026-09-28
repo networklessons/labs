@@ -1,0 +1,12 @@
+hostname R1
+!
+ip dhcp excluded-address 192.168.12.1 192.168.12.10
+!
+ip dhcp pool MY_POOL
+ network 192.168.12.0 255.255.255.0
+ default-router 192.168.12.1
+ dns-server 1.1.1.1
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.12.1 255.255.255.0

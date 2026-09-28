@@ -7,5 +7,5 @@ This folder contains Docker container images maintained by [networklessons.com](
 |-----------|-------------|------------|
 | [docker-alpine-cisco-yang-explorer](docker-alpine-cisco-yang-explorer/) | Container image that runs Cisco Yang Explorer on Alpine Linux | [networklessons/docker-alpine-cisco-yang-explorer](https://hub.docker.com/r/networklessons/docker-alpine-cisco-yang-explorer) |
 | [freeradius](freeradius/) | A container image that runs FreeRADIUS on Ubuntu 24.04 | [networklessons/freeradius](https://hub.docker.com/r/networklessons/freeradius) |
-| [lab-node-ubuntu](lab-node-ubuntu/) | Ubuntu 24.04 base image pre-loaded with networking tools | [networklessons/lab-node-ubuntu](https://hub.docker.com/r/networklessons/lab-node-ubuntu) |
+| [lab-node-ubuntu](lab-node-ubuntu/) | Ubuntu 26.04 base image pre-loaded with networking tools | [networklessons/lab-node-ubuntu](https://hub.docker.com/r/networklessons/lab-node-ubuntu) |
 <!-- CONTAINERS_TABLE_END -->

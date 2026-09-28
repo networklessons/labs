@@ -1,0 +1,5 @@
+hostname R2
+!
+interface Ethernet0/1
+ no shutdown
+ ip address dhcp

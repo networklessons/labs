@@ -4,13 +4,14 @@
 
 > **Warning:** Do not use this container in production. It contains default usernames, passwords, and/or keys and is intended only for locally hosted labs.
 
-Ubuntu 24.04 base image pre-loaded with networking tools:
+Ubuntu 26.04 base image pre-loaded with networking tools:
 
 - vim
 - nmap
 - iperf3
 - hping3
 - tcpdump
+- traceroute
 - curl, netcat, dnsutils, socat
 - openssh-server
 - iproute2
@@ -19,7 +20,7 @@ Use this as a host, server, or node in emulators such as EVE-NG, Containerlab, G
 
 ## SSH
 
-The container runs an SSH server on port 22. A `lab` user (password: `lab`) is created at boot with passwordless sudo. To switch to root:
+The container runs an SSH server on port 22. A `lab` user (password: `lab`) has passwordless sudo. To switch to root:
 
 ```
 sudo su
