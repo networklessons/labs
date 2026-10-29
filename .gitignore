@@ -13,3 +13,4 @@ nvram_*
 # Python bytecode
 __pycache__/
 *.pyc
+.mcp.json
