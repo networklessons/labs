@@ -1,0 +1,179 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1
+          no ip domain-lookup
+          vtp domain NWL
+          vtp version 2
+          vtp mode server
+          vlan 100
+           name LAB100
+          vlan 200
+           name LAB200
+          vlan 300
+           name LAB300
+          vlan 400
+           name LAB400
+          vlan 500
+           name LAB500
+          interface GigabitEthernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          interface GigabitEthernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          line con 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: SW1
+    node_definition: iosvl2
+    parameters: {}
+    priority: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        type: physical
+        slot: 1
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW2
+          no ip domain-lookup
+          vtp domain NWL
+          vtp mode client
+          interface GigabitEthernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          line con 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: SW2
+    node_definition: iosvl2
+    parameters: {}
+    priority: null
+    ram: null
+    tags: []
+    x: 200
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW3
+          no ip domain-lookup
+          vtp domain NWL
+          vtp version 2
+          vtp mode transparent
+          vlan 100
+           name LAB100
+          vlan 200
+           name LAB200
+          vlan 300
+           name LAB300
+          vlan 400
+           name LAB400
+          vlan 500
+           name LAB500
+          interface GigabitEthernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          line con 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: SW3
+    node_definition: iosvl2
+    parameters: {}
+    priority: null
+    ram: null
+    tags: []
+    x: -200
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: SW1-GigabitEthernet0/0<->SW2-GigabitEthernet0/0
+  - id: l1
+    n1: n0
+    n2: n2
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: SW1-GigabitEthernet0/1<->SW3-GigabitEthernet0/0
+lab:
+  description: 'VTP Client Overwrites VTP Server: final configuration'
+  notes: |-
+    Lesson: https://networklessons.com/switching/vtp-client-overwrites-vtp-server
+
+    Final state of the lesson (IOSvL2, VTP version 2, domain NWL):
+    - SW1: VTP server. VLANs 100-500 (LAB100-LAB500) are the VLANs it learned from SW3.
+    - SW2: VTP client, learns the VLAN database (and VTP version 2) from SW1.
+      Its config has no "vtp version 2" on purpose: that command raises the
+      revision to 1 before the switch becomes a client, which would block the sync.
+    - SW3: VTP transparent mode (configuration revision 0), as at the end of "How to prevent this".
+
+    VTP server and client modes don't store VLANs in the configuration, so the
+    revision numbers after boot differ from the lesson output.
+  title: VTP Client Overwrites Server
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
