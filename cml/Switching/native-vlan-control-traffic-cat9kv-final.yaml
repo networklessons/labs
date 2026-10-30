@@ -1,0 +1,712 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SW1-S1
+          no ip domain lookup
+          service timestamps log uptime
+          logging buffered 100000
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode server
+          vlan 10
+           name TEN
+          vlan 99
+           name NATIVE
+          exit
+          interface GigabitEthernet1/0/1
+           switchport mode trunk
+           cdp enable
+           no shutdown
+          interface Port-channel1
+           switchport mode trunk
+          interface GigabitEthernet1/0/2
+           switchport mode trunk
+           channel-group 1 mode desirable
+           no shutdown
+          interface GigabitEthernet1/0/3
+           switchport mode trunk
+           channel-group 1 mode desirable
+           no shutdown
+          event manager applet STEP2
+           event timer countdown time 660
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW1-S2"
+           action 04 cli command "interface GigabitEthernet1/0/1"
+           action 05 cli command "switchport trunk native vlan 99"
+           action 06 cli command "interface Port-channel1"
+           action 07 cli command "switchport trunk native vlan 99"
+           action 08 cli command "end"
+           action 09 syslog msg "MARK STEP2 applied"
+          event manager applet VLAN20
+           event timer countdown time 685
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 40"
+           action 4 cli command "name S2V0"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP2 vlan 40 created"
+          event manager applet VLAN21
+           event timer countdown time 745
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 41"
+           action 4 cli command "name S2V1"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP2 vlan 41 created"
+          event manager applet STEP3
+           event timer countdown time 810
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW1-S3"
+           action 04 cli command "interface GigabitEthernet1/0/1"
+           action 05 cli command "switchport trunk allowed vlan remove 1"
+           action 06 cli command "interface Port-channel1"
+           action 07 cli command "switchport trunk allowed vlan remove 1"
+           action 08 cli command "end"
+           action 09 syslog msg "MARK STEP3 applied"
+          event manager applet VLAN30
+           event timer countdown time 835
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 50"
+           action 4 cli command "name S3V0"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP3 vlan 50 created"
+          event manager applet VLAN31
+           event timer countdown time 895
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 51"
+           action 4 cli command "name S3V1"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP3 vlan 51 created"
+          event manager applet STEP4
+           event timer countdown time 960
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW1-S4"
+           action 04 cli command "vlan dot1q tag native"
+           action 05 cli command "end"
+           action 06 syslog msg "MARK STEP4 applied"
+          event manager applet VLAN40
+           event timer countdown time 985
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 60"
+           action 4 cli command "name S4V0"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP4 vlan 60 created"
+          event manager applet VLAN41
+           event timer countdown time 1045
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 61"
+           action 4 cli command "name S4V1"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP4 vlan 61 created"
+          event manager applet STEP5
+           event timer countdown time 1110
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW1-S5"
+           action 04 cli command "no vlan dot1q tag native"
+           action 05 cli command "interface GigabitEthernet1/0/1"
+           action 06 cli command "switchport trunk allowed vlan all"
+           action 07 cli command "switchport mode dynamic desirable"
+           action 08 cli command "interface Port-channel1"
+           action 09 cli command "switchport trunk allowed vlan all"
+           action 10 cli command "end"
+           action 11 syslog msg "MARK STEP5 applied"
+          event manager applet VLAN50
+           event timer countdown time 1135
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 70"
+           action 4 cli command "name S5V0"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP5 vlan 70 created"
+          event manager applet VLAN51
+           event timer countdown time 1195
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 71"
+           action 4 cli command "name S5V1"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP5 vlan 71 created"
+          event manager applet STEP6
+           event timer countdown time 1260
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW1-S6"
+           action 04 cli command "vlan dot1q tag native"
+           action 05 cli command "end"
+           action 06 syslog msg "MARK STEP6 applied"
+          event manager applet VLAN60
+           event timer countdown time 1285
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 80"
+           action 4 cli command "name S6V0"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP6 vlan 80 created"
+          event manager applet VLAN61
+           event timer countdown time 1345
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 81"
+           action 4 cli command "name S6V1"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP6 vlan 81 created"
+          event manager applet VLAN10
+           event timer countdown time 510
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 11"
+           action 4 cli command "name S1V0"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP1 vlan 11 created"
+          event manager applet VLAN11
+           event timer countdown time 580
+           action 1 cli command "enable"
+           action 2 cli command "conf t"
+           action 3 cli command "vlan 12"
+           action 4 cli command "name S1V1"
+           action 5 cli command "end"
+           action 6 syslog msg "MARK STEP1 vlan 12 created"
+          event manager applet SHOW1
+           event timer countdown time 650
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW1 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW1 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW1 PO $_cli_result"
+          event manager applet SHOW2
+           event timer countdown time 800
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW2 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW2 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW2 PO $_cli_result"
+          event manager applet SHOW3
+           event timer countdown time 950
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW3 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW3 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW3 PO $_cli_result"
+          event manager applet SHOW4
+           event timer countdown time 1100
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW4 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW4 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW4 PO $_cli_result"
+          event manager applet SHOW5
+           event timer countdown time 1250
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW5 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW5 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW5 PO $_cli_result"
+          event manager applet SHOW6
+           event timer countdown time 1400
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW6 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW6 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW6 PO $_cli_result"
+          event manager applet VER
+           event timer countdown time 420
+           action 1 cli command "enable"
+           action 2 cli command "show version | i Version|bytes of memory|Model"
+           action 3 syslog msg "MARK VER $_cli_result"
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: SW1
+    node_definition: cat9000v-uadp
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 100
+    y: 100
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet1/0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet1/0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet1/0/3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet1/0/4
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i6
+        label: GigabitEthernet1/0/5
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i7
+        label: GigabitEthernet1/0/6
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i8
+        label: GigabitEthernet1/0/7
+        mac_address: null
+        type: physical
+        slot: 7
+      - id: i9
+        label: GigabitEthernet1/0/8
+        mac_address: null
+        type: physical
+        slot: 8
+      - id: i10
+        label: GigabitEthernet1/0/9
+        mac_address: null
+        type: physical
+        slot: 9
+      - id: i11
+        label: GigabitEthernet1/0/10
+        mac_address: null
+        type: physical
+        slot: 10
+      - id: i12
+        label: GigabitEthernet1/0/11
+        mac_address: null
+        type: physical
+        slot: 11
+      - id: i13
+        label: GigabitEthernet1/0/12
+        mac_address: null
+        type: physical
+        slot: 12
+      - id: i14
+        label: GigabitEthernet1/0/13
+        mac_address: null
+        type: physical
+        slot: 13
+      - id: i15
+        label: GigabitEthernet1/0/14
+        mac_address: null
+        type: physical
+        slot: 14
+      - id: i16
+        label: GigabitEthernet1/0/15
+        mac_address: null
+        type: physical
+        slot: 15
+      - id: i17
+        label: GigabitEthernet1/0/16
+        mac_address: null
+        type: physical
+        slot: 16
+      - id: i18
+        label: GigabitEthernet1/0/17
+        mac_address: null
+        type: physical
+        slot: 17
+      - id: i19
+        label: GigabitEthernet1/0/18
+        mac_address: null
+        type: physical
+        slot: 18
+      - id: i20
+        label: GigabitEthernet1/0/19
+        mac_address: null
+        type: physical
+        slot: 19
+      - id: i21
+        label: GigabitEthernet1/0/20
+        mac_address: null
+        type: physical
+        slot: 20
+      - id: i22
+        label: GigabitEthernet1/0/21
+        mac_address: null
+        type: physical
+        slot: 21
+      - id: i23
+        label: GigabitEthernet1/0/22
+        mac_address: null
+        type: physical
+        slot: 22
+      - id: i24
+        label: GigabitEthernet1/0/23
+        mac_address: null
+        type: physical
+        slot: 23
+      - id: i25
+        label: GigabitEthernet1/0/24
+        mac_address: null
+        type: physical
+        slot: 24
+  - boot_disk_size: null
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname SW2-S1
+          no ip domain lookup
+          service timestamps log uptime
+          logging buffered 100000
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode client
+          interface GigabitEthernet1/0/1
+           switchport mode trunk
+           cdp enable
+           no shutdown
+          interface Port-channel1
+           switchport mode trunk
+          interface GigabitEthernet1/0/2
+           switchport mode trunk
+           channel-group 1 mode desirable
+           no shutdown
+          interface GigabitEthernet1/0/3
+           switchport mode trunk
+           channel-group 1 mode desirable
+           no shutdown
+          event manager applet STEP2
+           event timer countdown time 660
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW2-S2"
+           action 04 cli command "interface GigabitEthernet1/0/1"
+           action 05 cli command "switchport trunk native vlan 99"
+           action 06 cli command "interface Port-channel1"
+           action 07 cli command "switchport trunk native vlan 99"
+           action 08 cli command "end"
+           action 09 syslog msg "MARK STEP2 applied"
+          event manager applet STEP3
+           event timer countdown time 810
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW2-S3"
+           action 04 cli command "interface GigabitEthernet1/0/1"
+           action 05 cli command "switchport trunk allowed vlan remove 1"
+           action 06 cli command "interface Port-channel1"
+           action 07 cli command "switchport trunk allowed vlan remove 1"
+           action 08 cli command "end"
+           action 09 syslog msg "MARK STEP3 applied"
+          event manager applet STEP4
+           event timer countdown time 960
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW2-S4"
+           action 04 cli command "vlan dot1q tag native"
+           action 05 cli command "end"
+           action 06 syslog msg "MARK STEP4 applied"
+          event manager applet STEP5
+           event timer countdown time 1110
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW2-S5"
+           action 04 cli command "no vlan dot1q tag native"
+           action 05 cli command "interface GigabitEthernet1/0/1"
+           action 06 cli command "switchport trunk allowed vlan all"
+           action 07 cli command "switchport mode dynamic desirable"
+           action 08 cli command "interface Port-channel1"
+           action 09 cli command "switchport trunk allowed vlan all"
+           action 10 cli command "end"
+           action 11 syslog msg "MARK STEP5 applied"
+          event manager applet STEP6
+           event timer countdown time 1260
+           action 01 cli command "enable"
+           action 02 cli command "conf t"
+           action 03 cli command "hostname SW2-S6"
+           action 04 cli command "vlan dot1q tag native"
+           action 05 cli command "end"
+           action 06 syslog msg "MARK STEP6 applied"
+          event manager applet SHOW1
+           event timer countdown time 650
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW1 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW1 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW1 PO $_cli_result"
+          event manager applet SHOW2
+           event timer countdown time 800
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW2 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW2 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW2 PO $_cli_result"
+          event manager applet SHOW3
+           event timer countdown time 950
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW3 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW3 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW3 PO $_cli_result"
+          event manager applet SHOW4
+           event timer countdown time 1100
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW4 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW4 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW4 PO $_cli_result"
+          event manager applet SHOW5
+           event timer countdown time 1250
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW5 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW5 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW5 PO $_cli_result"
+          event manager applet SHOW6
+           event timer countdown time 1400
+           action 1 cli command "enable"
+           action 2 cli command "show interfaces trunk"
+           action 3 syslog msg "MARK SHOW6 TRUNK $_cli_result"
+           action 4 cli command "show vtp status | i Revision|Mode|Domain"
+           action 5 syslog msg "MARK SHOW6 VTP $_cli_result"
+           action 6 cli command "show etherchannel summary | i Po1"
+           action 7 syslog msg "MARK SHOW6 PO $_cli_result"
+          event manager applet VER
+           event timer countdown time 420
+           action 1 cli command "enable"
+           action 2 cli command "show version | i Version|bytes of memory|Model"
+           action 3 syslog msg "MARK VER $_cli_result"
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: SW2
+    node_definition: cat9000v-uadp
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: 100
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet1/0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet1/0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet1/0/3
+        mac_address: null
+        type: physical
+        slot: 3
+      - id: i5
+        label: GigabitEthernet1/0/4
+        mac_address: null
+        type: physical
+        slot: 4
+      - id: i6
+        label: GigabitEthernet1/0/5
+        mac_address: null
+        type: physical
+        slot: 5
+      - id: i7
+        label: GigabitEthernet1/0/6
+        mac_address: null
+        type: physical
+        slot: 6
+      - id: i8
+        label: GigabitEthernet1/0/7
+        mac_address: null
+        type: physical
+        slot: 7
+      - id: i9
+        label: GigabitEthernet1/0/8
+        mac_address: null
+        type: physical
+        slot: 8
+      - id: i10
+        label: GigabitEthernet1/0/9
+        mac_address: null
+        type: physical
+        slot: 9
+      - id: i11
+        label: GigabitEthernet1/0/10
+        mac_address: null
+        type: physical
+        slot: 10
+      - id: i12
+        label: GigabitEthernet1/0/11
+        mac_address: null
+        type: physical
+        slot: 11
+      - id: i13
+        label: GigabitEthernet1/0/12
+        mac_address: null
+        type: physical
+        slot: 12
+      - id: i14
+        label: GigabitEthernet1/0/13
+        mac_address: null
+        type: physical
+        slot: 13
+      - id: i15
+        label: GigabitEthernet1/0/14
+        mac_address: null
+        type: physical
+        slot: 14
+      - id: i16
+        label: GigabitEthernet1/0/15
+        mac_address: null
+        type: physical
+        slot: 15
+      - id: i17
+        label: GigabitEthernet1/0/16
+        mac_address: null
+        type: physical
+        slot: 16
+      - id: i18
+        label: GigabitEthernet1/0/17
+        mac_address: null
+        type: physical
+        slot: 17
+      - id: i19
+        label: GigabitEthernet1/0/18
+        mac_address: null
+        type: physical
+        slot: 18
+      - id: i20
+        label: GigabitEthernet1/0/19
+        mac_address: null
+        type: physical
+        slot: 19
+      - id: i21
+        label: GigabitEthernet1/0/20
+        mac_address: null
+        type: physical
+        slot: 20
+      - id: i22
+        label: GigabitEthernet1/0/21
+        mac_address: null
+        type: physical
+        slot: 21
+      - id: i23
+        label: GigabitEthernet1/0/22
+        mac_address: null
+        type: physical
+        slot: 22
+      - id: i24
+        label: GigabitEthernet1/0/23
+        mac_address: null
+        type: physical
+        slot: 23
+      - id: i25
+        label: GigabitEthernet1/0/24
+        mac_address: null
+        type: physical
+        slot: 24
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: SW1-GigabitEthernet1/0/1<->SW2-GigabitEthernet1/0/1
+  - id: l1
+    n1: n0
+    n2: n1
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: SW1-GigabitEthernet1/0/2<->SW2-GigabitEthernet1/0/2
+  - id: l2
+    n1: n0
+    n2: n1
+    i1: i4
+    i2: i4
+    conditioning: {}
+    label: SW1-GigabitEthernet1/0/3<->SW2-GigabitEthernet1/0/3
+lab:
+  description: 'Rene: VTP/CDP/DTP/PAgP tagging with non-default native VLAN (cat9000v-uadp)'
+  notes: ''
+  title: vtp-native-vlan-test-cat9k
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
+

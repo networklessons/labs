@@ -1,0 +1,945 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1-S2
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode server
+          vlan 10
+           name TEN
+          vlan 99
+           name NATIVE
+          exit
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: S2-SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 100
+    y: 100
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW2-S2
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode client
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: S2-SW2
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: 100
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1-S3
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode server
+          vlan 10
+           name TEN
+          vlan 99
+           name NATIVE
+          exit
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: S3-SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 100
+    y: 250
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW2-S3
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode client
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: S3-SW2
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: 250
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1-S4
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode server
+          vlan dot1q tag native
+          vlan 10
+           name TEN
+          vlan 99
+           name NATIVE
+          exit
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n4
+    image_definition: null
+    label: S4-SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 100
+    y: 400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW2-S4
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode client
+          vlan dot1q tag native
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           switchport trunk allowed vlan 2-4094
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n5
+    image_definition: null
+    label: S4-SW2
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: 400
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1-S5
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode server
+          vlan 10
+           name TEN
+          vlan 99
+           name NATIVE
+          exit
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode dynamic desirable
+           switchport trunk native vlan 99
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n6
+    image_definition: null
+    label: S5-SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 100
+    y: 550
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW2-S5
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode client
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode dynamic desirable
+           switchport trunk native vlan 99
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n7
+    image_definition: null
+    label: S5-SW2
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: 550
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1-S6
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode server
+          vlan dot1q tag native
+          vlan 10
+           name TEN
+          vlan 99
+           name NATIVE
+          exit
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode dynamic desirable
+           switchport trunk native vlan 99
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n8
+    image_definition: null
+    label: S6-SW1
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 100
+    y: 700
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW2-S6
+          no ip domain lookup
+          cdp run
+          cdp timer 5
+          vtp domain NWL
+          vtp version 2
+          vtp mode client
+          vlan dot1q tag native
+          interface Ethernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode dynamic desirable
+           switchport trunk native vlan 99
+           no shutdown
+          interface Port-channel1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+          interface Ethernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          interface Ethernet0/2
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           switchport trunk native vlan 99
+           channel-group 1 mode desirable
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n9
+    image_definition: null
+    label: S6-SW2
+    node_definition: ioll2-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 400
+    y: 700
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: S2-SW1-Ethernet0/0<->S2-SW2-Ethernet0/0
+  - id: l1
+    n1: n0
+    n2: n1
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: S2-SW1-Ethernet0/1<->S2-SW2-Ethernet0/1
+  - id: l2
+    n1: n0
+    n2: n1
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: S2-SW1-Ethernet0/2<->S2-SW2-Ethernet0/2
+  - id: l3
+    n1: n2
+    n2: n3
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: S3-SW1-Ethernet0/0<->S3-SW2-Ethernet0/0
+  - id: l4
+    n1: n2
+    n2: n3
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: S3-SW1-Ethernet0/1<->S3-SW2-Ethernet0/1
+  - id: l5
+    n1: n2
+    n2: n3
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: S3-SW1-Ethernet0/2<->S3-SW2-Ethernet0/2
+  - id: l6
+    n1: n4
+    n2: n5
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: S4-SW1-Ethernet0/0<->S4-SW2-Ethernet0/0
+  - id: l7
+    n1: n4
+    n2: n5
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: S4-SW1-Ethernet0/1<->S4-SW2-Ethernet0/1
+  - id: l8
+    n1: n4
+    n2: n5
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: S4-SW1-Ethernet0/2<->S4-SW2-Ethernet0/2
+  - id: l9
+    n1: n6
+    n2: n7
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: S5-SW1-Ethernet0/0<->S5-SW2-Ethernet0/0
+  - id: l10
+    n1: n6
+    n2: n7
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: S5-SW1-Ethernet0/1<->S5-SW2-Ethernet0/1
+  - id: l11
+    n1: n6
+    n2: n7
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: S5-SW1-Ethernet0/2<->S5-SW2-Ethernet0/2
+  - id: l12
+    n1: n8
+    n2: n9
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: S6-SW1-Ethernet0/0<->S6-SW2-Ethernet0/0
+  - id: l13
+    n1: n8
+    n2: n9
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: S6-SW1-Ethernet0/1<->S6-SW2-Ethernet0/1
+  - id: l14
+    n1: n8
+    n2: n9
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: S6-SW1-Ethernet0/2<->S6-SW2-Ethernet0/2
+lab:
+  description: 'Rene: VTP/CDP/DTP/PAgP tagging with native VLAN, one switch pair per
+    test step'
+  notes: ''
+  title: vtp-native-vlan-test-iol-steps
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
+

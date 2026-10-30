@@ -60,7 +60,7 @@ Contains topologies you can run in Containerlab.
 Contains topologies you can run in Cisco CML.
 
 <!-- CML_STATS_START -->
-**Total CML Labs: 444**
+**Total CML Labs: 446**
 
 | Category | Labs |
 |----------|------|
@@ -87,7 +87,7 @@ Contains topologies you can run in Cisco CML.
 | RIP | 8 |
 | Redistribution | 3 |
 | Security | 23 |
-| Switching | 31 |
+| Switching | 33 |
 | Templates | 24 |
 | Troubleshooting | 4 |
 | VXLAN | 5 |
