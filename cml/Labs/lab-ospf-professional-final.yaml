@@ -910,7 +910,7 @@ nodes:
        media-type rj45
       !
       router ospf 1
-       router-id 1.0.0.1
+       router-id 5.5.5.5
        area 51 nssa
        summary-address 172.16.8.0 255.255.248.0
        redistribute connected subnets route-map Filter_Connected
