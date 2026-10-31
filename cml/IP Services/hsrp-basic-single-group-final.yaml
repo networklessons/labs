@@ -9,7 +9,7 @@ nodes:
   configuration: |
     hostname R1
     !
-    interface Ethernet0/0
+    interface Ethernet0/1
      ip address 192.168.12.1 255.255.255.0
      standby version 2
      standby 1 ip 192.168.12.254
@@ -17,13 +17,13 @@ nodes:
      standby 1 name HSRP_GATEWAY
      no shutdown
     !
-    interface Ethernet0/1
+    interface Ethernet0/2
      ip address 192.168.123.1 255.255.255.0
      no shutdown
     !
     router ospf 1
      router-id 1.1.1.1
-     passive-interface Ethernet0/0
+     passive-interface Ethernet0/1
      network 192.168.12.0 0.0.0.255 area 0
      network 192.168.123.0 0.0.0.255 area 0
     !
@@ -75,20 +75,20 @@ nodes:
   configuration: |
     hostname R2
     !
-    interface Ethernet0/0
+    interface Ethernet0/1
      ip address 192.168.12.2 255.255.255.0
      standby version 2
      standby 1 ip 192.168.12.254
      standby 1 name HSRP_GATEWAY
      no shutdown
     !
-    interface Ethernet0/1
+    interface Ethernet0/2
      ip address 192.168.123.2 255.255.255.0
      no shutdown
     !
     router ospf 1
      router-id 2.2.2.2
-     passive-interface Ethernet0/0
+     passive-interface Ethernet0/1
      network 192.168.12.0 0.0.0.255 area 0
      network 192.168.123.0 0.0.0.255 area 0
     !
@@ -140,7 +140,7 @@ nodes:
     interface Loopback0
      ip address 3.3.3.3 255.255.255.255
     !
-    interface Ethernet0/0
+    interface Ethernet0/1
      ip address 192.168.123.3 255.255.255.0
      no shutdown
     !
@@ -193,7 +193,7 @@ nodes:
   configuration: |
     hostname H1
     !
-    interface Ethernet0/0
+    interface Ethernet0/1
      ip address 192.168.12.100 255.255.255.0
      no shutdown
     !
@@ -237,7 +237,7 @@ nodes:
   pyats: *id003
 - id: n4
   label: SW1
-  node_definition: iol-xe
+  node_definition: ioll2-xe
   x: 600
   y: 0
   configuration: null
@@ -279,7 +279,7 @@ nodes:
   pyats: *id003
 - id: n5
   label: SW2
-  node_definition: iol-xe
+  node_definition: ioll2-xe
   x: 750
   y: 0
   configuration: null
@@ -323,32 +323,32 @@ links:
 - id: l0
   n1: n0
   n2: n4
-  i1: i1
+  i1: i2
   i2: i1
 - id: l1
   n1: n1
   n2: n4
-  i1: i1
+  i1: i2
   i2: i2
 - id: l2
   n1: n3
   n2: n4
-  i1: i1
+  i1: i2
   i2: i3
 - id: l3
   n1: n0
   n2: n5
-  i1: i2
+  i1: i3
   i2: i1
 - id: l4
   n1: n1
   n2: n5
-  i1: i2
+  i1: i3
   i2: i2
 - id: l5
   n1: n2
   n2: n5
-  i1: i1
+  i1: i2
   i2: i3
 lab:
   description: |-

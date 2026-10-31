@@ -1,0 +1,186 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname R1
+          !
+          no ip domain lookup
+          !
+          crypto isakmp policy 10
+           encr aes
+           hash sha
+           authentication pre-share
+           group 2
+          crypto isakmp key NWL address 192.168.12.2
+          !
+          crypto ipsec transform-set TS esp-aes esp-sha-hmac
+           mode tunnel
+          !
+          crypto map CM 10 ipsec-isakmp
+           set peer 192.168.12.2
+           set transform-set TS
+           match address 100
+          !
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.255
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.12.1 255.255.255.0
+           crypto map CM
+           no shutdown
+          !
+          ip route 2.2.2.2 255.255.255.255 192.168.12.2
+          !
+          access-list 100 permit ip host 1.1.1.1 host 2.2.2.2
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname R2
+          !
+          no ip domain lookup
+          !
+          crypto isakmp policy 10
+           encr aes
+           hash sha
+           authentication pre-share
+           group 2
+          crypto isakmp key NWL address 192.168.12.1
+          !
+          crypto ipsec transform-set TS esp-aes esp-sha-hmac
+           mode tunnel
+          !
+          crypto map CM 10 ipsec-isakmp
+           set peer 192.168.12.1
+           set transform-set TS
+           match address 100
+          !
+          interface Loopback0
+           ip address 2.2.2.2 255.255.255.255
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.12.2 255.255.255.0
+           crypto map CM
+           no shutdown
+          !
+          ip route 1.1.1.1 255.255.255.255 192.168.12.1
+          !
+          access-list 100 permit ip host 2.2.2.2 host 1.1.1.1
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R2
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 250
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: R1-GigabitEthernet0/0<->R2-GigabitEthernet0/0
+lab:
+  description: 'IPsec (Internet Protocol Security) (ipsec-internet-protocol-security): final configuration. R1-R2 IOSv, IKEv1 pre-shared key crypto map protecting traffic between Lo0 1.1.1.1 and 2.2.2.2.'
+  notes: ''
+  title: IPsec (Internet Protocol Security)
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

@@ -1,0 +1,260 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname R1
+          !
+          no ip domain lookup
+          !
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.0
+          !
+          interface Ethernet0/1
+           ip address 192.168.12.1 255.255.255.0
+           ip ospf authentication message-digest
+           ip ospf message-digest-key 1 md5 MY_KEY
+           ip ospf dead-interval 15
+           ip ospf hello-interval 5
+           no shutdown
+          !
+          interface Ethernet0/2
+           ip address 192.168.13.1 255.255.255.0
+           ip ospf cost 1
+           no shutdown
+          !
+          router ospf 1
+           router-id 1.1.1.1
+           network 1.1.1.1 0.0.0.0 area 0
+           network 192.168.12.0 0.0.0.255 area 0
+           network 192.168.13.0 0.0.0.255 area 0
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iol-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname R2
+          !
+          no ip domain lookup
+          !
+          interface Ethernet0/1
+           ip address 192.168.12.2 255.255.255.0
+           ip ospf authentication message-digest
+           ip ospf message-digest-key 1 md5 MY_KEY
+           ip ospf dead-interval 15
+           ip ospf hello-interval 5
+           ip ospf cost 100
+           no shutdown
+          !
+          interface Ethernet0/2
+           ip address 192.168.23.2 255.255.255.0
+           ip ospf authentication
+           ip ospf authentication-key MY_PASS
+           no shutdown
+          !
+          router ospf 1
+           router-id 2.2.2.2
+           network 192.168.12.0 0.0.0.255 area 0
+           network 192.168.23.0 0.0.0.255 area 0
+           default-information originate always
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R2
+    node_definition: iol-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -150
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname R3
+          !
+          no ip domain lookup
+          !
+          interface Ethernet0/1
+           ip address 192.168.13.3 255.255.255.0
+           no shutdown
+          !
+          interface Ethernet0/2
+           ip address 192.168.23.3 255.255.255.0
+           ip ospf authentication
+           ip ospf authentication-key MY_PASS
+           no shutdown
+          !
+          router ospf 1
+           router-id 3.3.3.3
+           network 192.168.13.0 0.0.0.255 area 0
+           network 192.168.23.0 0.0.0.255 area 0
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: R3
+    node_definition: iol-xe
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 150
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: Ethernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: Ethernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: R1-Ethernet0/1<->R2-Ethernet0/1
+  - id: l1
+    n1: n0
+    n2: n2
+    i1: i3
+    i2: i2
+    conditioning: {}
+    label: R1-Ethernet0/2<->R3-Ethernet0/1
+  - id: l2
+    n1: n1
+    n2: n2
+    i1: i3
+    i2: i3
+    conditioning: {}
+    label: R2-Ethernet0/2<->R3-Ethernet0/2
+lab:
+  description: 'Basic OSPF Configuration (basic-ospf-configuration): final configuration. R1-R2-R3 IOL XE, single area 0 with router IDs, cost, MD5/plain authentication, hello/dead timers and default-information originate.'
+  notes: ''
+  title: Basic OSPF Configuration
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

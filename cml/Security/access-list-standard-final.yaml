@@ -1,0 +1,130 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname R1
+          !
+          no ip domain lookup
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.12.1 255.255.255.0
+           no shutdown
+          !
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.0
+          !
+          ip route 2.2.2.0 255.255.255.0 192.168.12.2
+          !
+          access-list 3 permit 192.168.12.0 0.0.0.255
+          !
+          line vty 0 4
+           access-class 3 in
+           transport input telnet
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -200
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |
+          hostname R2
+          !
+          no ip domain lookup
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.12.2 255.255.255.0
+           ip access-group 2 in
+           no shutdown
+          !
+          interface Loopback0
+           ip address 2.2.2.2 255.255.255.0
+          !
+          ip route 1.1.1.0 255.255.255.0 192.168.12.1
+          !
+          access-list 1 permit 192.168.12.0 0.0.0.255
+          access-list 2 permit any
+          !
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R2
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 100
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: R1-GigabitEthernet0/0<->R2-GigabitEthernet0/0
+lab:
+  description: 'Standard access-list example on Cisco Router (standard-access-list-example-on-cisco-router): final configuration. R1-R2 IOSv; standard ACL 2 inbound on R2 Gi0/0 and ACL 3 as access-class on R1 vty lines.'
+  notes: ''
+  title: Standard access-list example on Cisco Router
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
