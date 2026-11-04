@@ -1,0 +1,79 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R1
+          no ip domain lookup
+          no logging console
+          no banner exec
+          no banner incoming
+          no banner login
+          interface GigabitEthernet0/0
+           ip address 192.168.1.1 255.255.255.0
+           no shutdown
+          interface GigabitEthernet0/1
+           ip address 192.168.2.1 255.255.255.0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          line vty 0 4
+           exec-timeout 0 0
+           length 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+links: []
+lab:
+  description: copy-to-running-configuration (post 39669) re-capture, single IOSv
+    15.9 router
+  notes: ''
+  title: Copy to running-config re-capture (rc-290)
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

@@ -1,0 +1,371 @@
+annotations: []
+smart_annotations: []
+nodes:
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "hostname SW1\nno ip domain lookup\nspanning-tree mode rapid-pvst\ninterface Ethernet0/1\n no shutdown\ninterface Ethernet0/3\n no shutdown\ninterface Ethernet0/0\n shutdown\ninterface Ethernet0/2\n shutdown\nline con 0\n exec-timeout 0 0\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n0
+  image_definition: null
+  label: SW1
+  node_definition: ioll2-xe
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 0
+  y: -200
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "hostname SW2\nno ip domain lookup\nspanning-tree mode pvst\ninterface Ethernet0/0\n no shutdown\n spanning-tree portfast\ninterface Ethernet0/1\n no shutdown\ninterface Ethernet0/2\n no shutdown\ninterface Ethernet0/3\n shutdown\nline con 0\n exec-timeout 0 0\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n1
+  image_definition: null
+  label: SW2
+  node_definition: ioll2-xe
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: -200
+  y: 100
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "hostname SW3\nno ip domain lookup\nspanning-tree mode rapid-pvst\ninterface Ethernet0/1\n no shutdown\ninterface Ethernet0/2\n no shutdown\ninterface Ethernet0/0\n shutdown\ninterface Ethernet0/3\n shutdown\nline con 0\n exec-timeout 0 0\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n2
+  image_definition: null
+  label: SW3
+  node_definition: ioll2-xe
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 200
+  y: 100
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "hostname H1\nno ip domain lookup\ninterface Ethernet0/0\n ip address 192.168.1.1 255.255.255.0\n no shutdown\nline con 0\n exec-timeout 0 0\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n3
+  image_definition: null
+  label: H1
+  node_definition: iol-xe
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: -450
+  y: 100
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: Ethernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: Ethernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: Ethernet0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: Ethernet0/3
+    mac_address: null
+    type: physical
+    slot: 3
+- boot_disk_size: null
+  configuration:
+  - name: default
+    content: 'mode: Hub'
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n4
+  image_definition: null
+  label: HUB1
+  node_definition: unmanaged_switch
+  parameters: {}
+  priority: null
+  ram: null
+  tags: []
+  x: -30
+  y: 120
+  interfaces:
+  - id: i0
+    label: port0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i1
+    label: port1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i2
+    label: port2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i3
+    label: port3
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i4
+    label: port4
+    mac_address: null
+    type: physical
+    slot: 4
+  - id: i5
+    label: port5
+    mac_address: null
+    type: physical
+    slot: 5
+  - id: i6
+    label: port6
+    mac_address: null
+    type: physical
+    slot: 6
+  - id: i7
+    label: port7
+    mac_address: null
+    type: physical
+    slot: 7
+- boot_disk_size: null
+  configuration:
+  - name: default
+    content: 'mode: Hub'
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n5
+  image_definition: null
+  label: HUB2
+  node_definition: unmanaged_switch
+  parameters: {}
+  priority: null
+  ram: null
+  tags: []
+  x: 30
+  y: 180
+  interfaces:
+  - id: i0
+    label: port0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i1
+    label: port1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i2
+    label: port2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i3
+    label: port3
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i4
+    label: port4
+    mac_address: null
+    type: physical
+    slot: 4
+  - id: i5
+    label: port5
+    mac_address: null
+    type: physical
+    slot: 5
+  - id: i6
+    label: port6
+    mac_address: null
+    type: physical
+    slot: 6
+  - id: i7
+    label: port7
+    mac_address: null
+    type: physical
+    slot: 7
+links:
+- id: l0
+  n1: n0
+  n2: n1
+  i1: i2
+  i2: i2
+  conditioning: {}
+  label: SW1-Ethernet0/1<->SW2-Ethernet0/1
+- id: l1
+  n1: n0
+  n2: n2
+  i1: i4
+  i2: i2
+  conditioning: {}
+  label: SW1-Ethernet0/3<->SW3-Ethernet0/1
+- id: l2
+  n1: n1
+  n2: n4
+  i1: i3
+  i2: i0
+  conditioning: {}
+  label: SW2-Ethernet0/2<->HUB1-port0
+- id: l3
+  n1: n2
+  n2: n4
+  i1: i3
+  i2: i1
+  conditioning: {}
+  label: SW3-Ethernet0/2<->HUB1-port1
+- id: l4
+  n1: n1
+  n2: n5
+  i1: i4
+  i2: i0
+  conditioning: {}
+  label: SW2-Ethernet0/3<->HUB2-port0
+- id: l5
+  n1: n2
+  n2: n5
+  i1: i4
+  i2: i1
+  conditioning: {}
+  label: SW3-Ethernet0/3<->HUB2-port1
+- id: l6
+  n1: n4
+  n2: n5
+  i1: i2
+  i2: i2
+  conditioning: {}
+  label: HUB1-port2<->HUB2-port2
+- id: l7
+  n1: n1
+  n2: n3
+  i1: i1
+  i2: i1
+  conditioning: {}
+  label: SW2-Ethernet0/0<->H1-Ethernet0/0
+lab:
+  description: 'Rapid Spanning Tree Configuration lesson (end state: SW2 in PVST mode, H1 port is portfast). All switches use priority 32768, so start SW1, then SW2, then SW3: IOL gets its MAC at start, and SW1 needs the lowest one to become root.'
+  notes: HUB1 and HUB2 are unmanaged switches in hub mode. With the HUB1-HUB2 link stopped, they act as two separate SW2-SW3 links. With it started and Et0/3 enabled on SW2 and SW3 (plus spanning-tree link-type shared), they form the shared segment of the hub section. IOL does not signal link loss to the other end, so shut both ends to simulate a failure.
+  title: rapid-spanning-tree-configuration
+  version: 0.3.0

@@ -9,7 +9,7 @@ terraform {
 provider "iosxe" {
   username = "cisco"
   password = "cisco"
-  url      = "https://10.65.90.202"
+  host     = "10.65.90.204"
 }
 
 resource "iosxe_interface_loopback" "example" {

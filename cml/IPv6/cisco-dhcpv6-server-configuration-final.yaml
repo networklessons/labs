@@ -1,0 +1,114 @@
+lab:
+  title: DHCPv6 final config (rc-292)
+  description: cisco-dhcpv6-server-configuration (post 4812) final lab state. DHCPV6 Gi0/0 to R1 Gi0/0 stateful with rapid-commit, DHCPV6 Gi0/1 to R2 Gi0/0 stateless. IOSv 15.9(3)M9.
+  notes: ''
+  version: 0.2.2
+nodes:
+  - id: n0
+    label: DHCPV6
+    node_definition: iosv
+    x: 0
+    y: 0
+    configuration: |-
+      hostname DHCPV6
+      !
+      no ip domain lookup
+      !
+      ipv6 unicast-routing
+      !
+      ipv6 dhcp pool STATEFUL
+       address prefix 2001:1111:1111:1111::/64
+       dns-server 2001:4860:4860::8888
+       domain-name NETWORKLESSONS.LOCAL
+      !
+      ipv6 dhcp pool STATELESS
+       dns-server 2001:4860:4860::8888
+       domain-name NETWORKLESSONS.LOCAL
+      !
+      interface GigabitEthernet0/0
+       ipv6 address 2001:1111:1111:1111::1/64
+       ipv6 nd prefix 2001:1111:1111:1111::/64 14400 14400 no-autoconfig
+       ipv6 nd managed-config-flag
+       ipv6 dhcp server STATEFUL rapid-commit
+       no shutdown
+      !
+      interface GigabitEthernet0/1
+       ipv6 address 2001:2222:2222:2222::2/64
+       ipv6 nd other-config-flag
+       ipv6 dhcp server STATELESS
+       no shutdown
+      !
+      line con 0
+       exec-timeout 0 0
+      !
+      end
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+      - id: i1
+        slot: 1
+        label: GigabitEthernet0/1
+        type: physical
+  - id: n1
+    label: R1
+    node_definition: iosv
+    x: -200
+    y: 200
+    configuration: |-
+      hostname R1
+      !
+      no ip domain lookup
+      !
+      interface GigabitEthernet0/0
+       ipv6 address dhcp rapid-commit
+       ipv6 enable
+       no shutdown
+      !
+      line con 0
+       exec-timeout 0 0
+      !
+      end
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+  - id: n2
+    label: R2
+    node_definition: iosv
+    x: 200
+    y: 200
+    configuration: |-
+      hostname R2
+      !
+      no ip domain lookup
+      !
+      interface GigabitEthernet0/0
+       ipv6 address autoconfig
+       ipv6 enable
+       no shutdown
+      !
+      line con 0
+       exec-timeout 0 0
+      !
+      end
+    interfaces:
+      - id: i0
+        slot: 0
+        label: GigabitEthernet0/0
+        type: physical
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i0
+    i2: i0
+    label: DHCPV6-Gi0/0<->R1-Gi0/0
+  - id: l1
+    n1: n0
+    n2: n2
+    i1: i1
+    i2: i0
+    label: DHCPV6-Gi0/1<->R2-Gi0/0

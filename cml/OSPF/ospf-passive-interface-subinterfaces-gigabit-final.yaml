@@ -1,0 +1,123 @@
+annotations: []
+smart_annotations: []
+nodes:
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "version 15.9\nno service timestamps debug uptime\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname R1\n!\nboot-start-marker\nboot-end-marker\n!\n!\n!\nno aaa new-model\n!\n!\n!\nmmi polling-interval 60\nno mmi auto-configure\nno mmi pvc\nmmi snmp-timeout 180\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nno ip domain lookup\nip cef\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\nredundancy\n!\n!\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface GigabitEthernet0/0\n ip address 192.168.12.1 255.255.255.0\n duplex auto\n speed auto\n media-type rj45\n!\ninterface GigabitEthernet0/1\n no ip address\n duplex auto\n speed auto\n media-type rj45\n!\ninterface GigabitEthernet0/1.10\n encapsulation dot1Q 10\n ip address 192.168.10.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.20\n encapsulation dot1Q 20\n ip address 192.168.20.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.30\n encapsulation dot1Q 30\n ip address 192.168.30.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.40\n encapsulation dot1Q 40\n ip address 192.168.40.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.50\n encapsulation dot1Q 50\n ip address 192.168.50.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.60\n encapsulation dot1Q 60\n ip address 192.168.60.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.70\n encapsulation dot1Q 70\n ip address 192.168.70.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.80\n encapsulation dot1Q 80\n ip address 192.168.80.254 255.255.255.0\n!\ninterface GigabitEthernet0/1.90\n encapsulation dot1Q 90\n ip address 192.168.90.254 255.255.255.0\n!\nrouter ospf 1\n passive-interface default\n no passive-interface GigabitEthernet0/0\n network 192.168.10.0 0.0.0.255 area 0\n network 192.168.12.0 0.0.0.255 area 0\n network 192.168.20.0 0.0.0.255 area 0\n network 192.168.30.0 0.0.0.255 area 0\n network 192.168.40.0 0.0.0.255 area 0\n network 192.168.50.0 0.0.0.255 area 0\n network 192.168.60.0 0.0.0.255 area 0\n network 192.168.70.0 0.0.0.255 area 0\n network 192.168.80.0 0.0.0.255 area 0\n network 192.168.90.0 0.0.0.255 area 0\n!\nip forward-protocol nd\n!\n!\nno ip http server\nno ip http secure-server\n!\nipv6 ioam timestamp\n!\n!\n!\ncontrol-plane\n!\nbanner exec ^C\n**************************************************************************\n* IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n* education. IOSv is provided as-is and is not supported by Cisco's      *\n* Technical Advisory Center. Any use or disclosure, in whole or in part, *\n* of the IOSv Software or Documentation to any third party for any       *\n* purposes is expressly prohibited except as otherwise authorized by     *\n* Cisco in writing.                                                      *\n**************************************************************************^C\nbanner incoming ^C\n**************************************************************************\n* IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n* education. IOSv is provided as-is and is not supported by Cisco's      *\n* Technical Advisory Center. Any use or disclosure, in whole or in part, *\n* of the IOSv Software or Documentation to any third party for any       *\n* purposes is expressly prohibited except as otherwise authorized by     *\n* Cisco in writing.                                                      *\n**************************************************************************^C\nbanner login ^C\n**************************************************************************\n* IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n* education. IOSv is provided as-is and is not supported by Cisco's      *\n* Technical Advisory Center. Any use or disclosure, in whole or in part, *\n* of the IOSv Software or Documentation to any third party for any       *\n* purposes is expressly prohibited except as otherwise authorized by     *\n* Cisco in writing.                                                      *\n**************************************************************************^C\n\
+      !\nline con 0\n exec-timeout 0 0\nline aux 0\nline vty 0 4\n exec-timeout 0 0\n login\n transport input none\n!\nno scheduler allocate\n!\nend"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n0
+  image_definition: null
+  label: R1
+  node_definition: iosv
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 200
+  y: 0
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    mac_address: null
+    type: physical
+    slot: 1
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "version 15.9\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nno service password-encryption\n!\nhostname R2\n!\nboot-start-marker\nboot-end-marker\n!\n!\n!\nno aaa new-model\n!\n!\n!\nmmi polling-interval 60\nno mmi auto-configure\nno mmi pvc\nmmi snmp-timeout 180\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nno ip domain lookup\nip cef\nno ipv6 cef\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\nredundancy\n!\n!\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface GigabitEthernet0/0\n ip address 192.168.12.2 255.255.255.0\n duplex auto\n speed auto\n media-type rj45\n!\nrouter ospf 1\n network 192.168.12.0 0.0.0.255 area 0\n!\nip forward-protocol nd\n!\n!\nno ip http server\nno ip http secure-server\n!\nipv6 ioam timestamp\n!\n!\n!\ncontrol-plane\n!\nbanner exec ^C\n**************************************************************************\n* IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n* education. IOSv is provided as-is and is not supported by Cisco's      *\n* Technical Advisory Center. Any use or disclosure, in whole or in part, *\n* of the IOSv Software or Documentation to any third party for any       *\n* purposes is expressly prohibited except as otherwise authorized by     *\n* Cisco in writing.                                                      *\n**************************************************************************^C\nbanner incoming ^C\n**************************************************************************\n\n* IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n* education. IOSv is provided as-is and is not supported by Cisco's      *\n* Technical Advisory Center. Any use or disclosure, in whole or in part, *\n* of the IOSv Software or Documentation to any third party for any       *\n\n* purposes is expressly prohibited except as otherwise authorized by     *\n* Cisco in writing.                                                      *\n**************************************************************************^C\nbanner login ^C\n**************************************************************************\n* IOSv is strictly limited to use for evaluation, demonstration and IOS  *\n* education. IOSv is provided as-is and is not supported by Cisco's      *\n* Technical Advisory Center. Any use or disclosure, in whole or in part, *\n* of the IOSv Software or Documentation to any third party for any       *\n* purposes is expressly prohibited except as otherwise authorized by     *\n* Cisco in writing.                                                      *\n**************************************************************************^C\n!\nline con 0\n exec-timeout 0 0\nline aux 0\nline vty 0 4\n exec-timeout 0 0\n login\n transport input none\n!\nno scheduler allocate\n!\nend"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n1
+  image_definition: null
+  label: R2
+  node_definition: iosv
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 400
+  y: 0
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+- boot_disk_size: null
+  configuration: []
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n2
+  image_definition: null
+  label: SW1
+  node_definition: unmanaged_switch
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 0
+  y: 0
+  interfaces:
+  - id: i0
+    label: port0
+    mac_address: null
+    type: physical
+    slot: 0
+links:
+- id: l0
+  n1: n0
+  n2: n1
+  i1: i1
+  i2: i1
+  conditioning: {}
+  label: R1-GigabitEthernet0/0<->R2-GigabitEthernet0/0
+- id: l1
+  n1: n0
+  n2: n2
+  i1: i2
+  i2: i0
+  conditioning: {}
+  label: R1-GigabitEthernet0/1<->SW1-port0
+lab:
+  description: Redo of ospf-passive-interface (post 7797) on IOSv with GigabitEthernet.
+  notes: ''
+  title: OSPF passive-interface default with sub-interfaces, IOSv Gigabit
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

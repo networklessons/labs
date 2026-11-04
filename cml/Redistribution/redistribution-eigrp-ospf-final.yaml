@@ -1,0 +1,112 @@
+lab:
+  title: redistribution-eigrp-ospf
+  description: Introduction to Redistribution (post 1177). R1 in EIGRP AS 12, R2 between EIGRP AS 12 and OSPF area 0 with mutual redistribution, R3 in OSPF area 0.
+  notes: IOSv 15.9(3)M9. Startup configs are the final lesson state. R2 redistributes EIGRP into OSPF (seed cost 20) and OSPF into EIGRP (default-metric 1500 100 255 1 1500). R1 Lo0 1.1.1.1/24, R3 Lo0 3.3.3.3/24.
+  version: 0.2.2
+nodes:
+- id: n0
+  label: R1
+  node_definition: iosv
+  x: -300
+  y: 0
+  configuration: |
+    hostname R1
+    no ip domain lookup
+    ip cef
+    !
+    interface Loopback0
+     ip address 1.1.1.1 255.255.255.0
+    !
+    interface GigabitEthernet0/0
+     ip address 192.168.12.1 255.255.255.0
+     no shutdown
+    !
+    router eigrp 12
+     network 1.1.1.0 0.0.0.255
+     network 192.168.12.0
+    !
+    line con 0
+     exec-timeout 0 0
+     logging synchronous
+    !
+    end
+  interfaces:
+  - {id: i0, label: Loopback0, type: loopback}
+  - {id: i1, label: GigabitEthernet0/0, slot: 0, type: physical}
+  - {id: i2, label: GigabitEthernet0/1, slot: 1, type: physical}
+  - {id: i3, label: GigabitEthernet0/2, slot: 2, type: physical}
+  - {id: i4, label: GigabitEthernet0/3, slot: 3, type: physical}
+- id: n1
+  label: R2
+  node_definition: iosv
+  x: 0
+  y: 0
+  configuration: |
+    hostname R2
+    no ip domain lookup
+    ip cef
+    !
+    interface GigabitEthernet0/0
+     ip address 192.168.12.2 255.255.255.0
+     no shutdown
+    !
+    interface GigabitEthernet0/1
+     ip address 192.168.23.2 255.255.255.0
+     no shutdown
+    !
+    router eigrp 12
+     default-metric 1500 100 255 1 1500
+     network 192.168.12.0
+     redistribute ospf 1
+    !
+    router ospf 1
+     redistribute eigrp 12 subnets
+     network 192.168.23.0 0.0.0.255 area 0
+    !
+    line con 0
+     exec-timeout 0 0
+     logging synchronous
+    !
+    end
+  interfaces:
+  - {id: i0, label: Loopback0, type: loopback}
+  - {id: i1, label: GigabitEthernet0/0, slot: 0, type: physical}
+  - {id: i2, label: GigabitEthernet0/1, slot: 1, type: physical}
+  - {id: i3, label: GigabitEthernet0/2, slot: 2, type: physical}
+  - {id: i4, label: GigabitEthernet0/3, slot: 3, type: physical}
+- id: n2
+  label: R3
+  node_definition: iosv
+  x: 300
+  y: 0
+  configuration: |
+    hostname R3
+    no ip domain lookup
+    ip cef
+    !
+    interface Loopback0
+     ip address 3.3.3.3 255.255.255.0
+    !
+    interface GigabitEthernet0/0
+     ip address 192.168.23.3 255.255.255.0
+     no shutdown
+    !
+    router ospf 1
+     network 3.3.3.0 0.0.0.255 area 0
+     network 192.168.23.0 0.0.0.255 area 0
+    !
+    line con 0
+     exec-timeout 0 0
+     logging synchronous
+    !
+    end
+  interfaces:
+  - {id: i0, label: Loopback0, type: loopback}
+  - {id: i1, label: GigabitEthernet0/0, slot: 0, type: physical}
+  - {id: i2, label: GigabitEthernet0/1, slot: 1, type: physical}
+  - {id: i3, label: GigabitEthernet0/2, slot: 2, type: physical}
+  - {id: i4, label: GigabitEthernet0/3, slot: 3, type: physical}
+links:
+- {id: l0, n1: n0, n2: n1, i1: i1, i2: i1, label: R1-R2}
+- {id: l1, n1: n1, n2: n2, i1: i2, i2: i1, label: R2-R3}
+annotations: []

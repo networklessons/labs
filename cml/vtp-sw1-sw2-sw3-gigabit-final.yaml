@@ -1,0 +1,264 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1
+          no ip domain-lookup
+          no service timestamps debug
+          no service timestamps log
+          vtp domain NETWORKLESSONS
+          vtp mode server
+          vlan 10
+           name Printers
+          vlan 20
+           name Servers
+          vlan 30
+           name Management
+          vlan 40
+           name Engineering
+          vlan 50
+           name Research
+          interface GigabitEthernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          interface GigabitEthernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           shutdown
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: SW1
+    node_definition: iosvl2
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW2
+          no ip domain-lookup
+          no service timestamps debug
+          no service timestamps log
+          vtp domain NETWORKLESSONS
+          vtp mode transparent
+          vlan 10
+           name Printers
+          vlan 20
+           name Servers
+          vlan 30
+           name Management
+          vlan 40
+           name Engineering
+          vlan 60
+           name Cameras
+          interface GigabitEthernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          interface GigabitEthernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: SW2
+    node_definition: iosvl2
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: -200
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW3
+          no ip domain-lookup
+          no service timestamps debug
+          no service timestamps log
+          vtp domain NETWORKLESSONS
+          vtp mode server
+          interface GigabitEthernet0/0
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           shutdown
+          interface GigabitEthernet0/1
+           switchport trunk encapsulation dot1q
+           switchport mode trunk
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
+    label: SW3
+    node_definition: iosvl2
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 200
+    y: 200
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        mac_address: null
+        type: physical
+        slot: 1
+      - id: i3
+        label: GigabitEthernet0/2
+        mac_address: null
+        type: physical
+        slot: 2
+      - id: i4
+        label: GigabitEthernet0/3
+        mac_address: null
+        type: physical
+        slot: 3
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: SW1-GigabitEthernet0/0<->SW2-GigabitEthernet0/0
+  - id: l1
+    n1: n0
+    n2: n2
+    i1: i2
+    i2: i1
+    conditioning: {}
+    label: SW1-GigabitEthernet0/1<->SW3-GigabitEthernet0/0
+  - id: l2
+    n1: n1
+    n2: n2
+    i1: i2
+    i2: i2
+    conditioning: {}
+    label: SW2-GigabitEthernet0/1<->SW3-GigabitEthernet0/1
+lab:
+  description: 'Introduction to VTP: final configuration (SW1, SW2, SW3 IOSvL2 triangle)'
+  notes: |-
+    Lesson: https://networklessons.com/switching/introduction-to-vtp-vlan-trunking-protocol
+
+    Links (all dot1q trunks):
+    - SW1 Gi0/0 - SW2 Gi0/0
+    - SW1 Gi0/1 - SW3 Gi0/0
+    - SW2 Gi0/1 - SW3 Gi0/1
+
+    Final state of the lesson (IOSvL2, VTP version 1, domain NETWORKLESSONS):
+    - SW1: VTP server with VLANs 10, 20, 30, 40 and 50.
+    - SW2: VTP transparent, with local VLANs 10, 20, 30, 40 and 60.
+    - SW3: VTP server, learns VLANs 10, 20, 30, 40 and 50 through SW2.
+
+    The lesson disconnects the SW1-SW3 link. Here SW1 Gi0/1 and SW3 Gi0/0 are shut down instead, so the lab boots in that state.
+
+    VTP server mode doesn't store VLANs in the configuration, so the revision number after boot is 1 instead of the lesson's 5.
+  title: Introduction to VTP
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
