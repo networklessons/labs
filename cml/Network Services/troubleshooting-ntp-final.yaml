@@ -1,0 +1,116 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R1
+          no ip domain lookup
+          ip access-list extended NO_TIME
+           deny udp any any eq ntp
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.255
+          interface GigabitEthernet0/0
+           ip address 192.168.12.1 255.255.255.0
+           no shutdown
+          ntp authentication-key 1 md5 MY_KEY
+          ntp trusted-key 1
+          ntp source Loopback0
+          ntp server 192.168.12.2 key 1
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R2
+          no ip domain lookup
+          interface GigabitEthernet0/0
+           ip address 192.168.12.2 255.255.255.0
+           no shutdown
+          ip route 1.1.1.1 255.255.255.255 192.168.12.1
+          access-list 1 permit 1.1.1.1
+          ntp authentication-key 1 md5 MY_KEY
+          ntp trusted-key 1
+          ntp access-group serve 1
+          ntp master 1
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R2
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 200
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: R1-GigabitEthernet0/0<->R2-GigabitEthernet0/0
+lab:
+  description: troubleshooting-ntp (post 7102) final configuration. R1 NTP client, R2 NTP server, Gi0/0 192.168.12.0/24. IOSv 15.9.
+  notes: ''
+  title: Troubleshooting NTP final (rc-309)
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

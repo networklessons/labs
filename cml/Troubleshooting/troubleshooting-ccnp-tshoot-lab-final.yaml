@@ -1,0 +1,1296 @@
+# CML lab id 388e1ebc-c82b-41da-a14e-3c1438f24310 (STARTED 2026-11-13, left running; R4 Tunnel34 fix applied in running-config only, startup config is the pre-fix state). This is the YAML imported into CML;
+# download_lab_topology returns the same configs/links (it adds a Loopback0 per node and renumbers interface ids).
+annotations: []
+nodes:
+- id: n0
+  label: R1
+  node_definition: iol-xe-serial-4eth
+  x: 600
+  y: -450
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname R1
+      !
+      no ip domain lookup
+      ipv6 unicast-routing
+      !
+      interface Serial1/0
+       description S0/0 in the lesson (frame-relay)
+       no ip address
+       encapsulation frame-relay
+       no shutdown
+      !
+      interface Serial1/0.12 point-to-point
+       description S0/0.12 in the lesson
+       ip address 10.1.1.1 255.255.255.252
+       ip nat inside
+       ipv6 address 2026::12:1/122
+       ipv6 ospf 6 area 12
+       frame-relay interface-dlci 102
+      !
+      interface Serial1/1
+       description S0/1 in the lesson, to ISP
+       ip address 209.65.200.225 255.255.255.252
+       ip nat outside
+       no shutdown
+      !
+      interface Ethernet0/0
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      interface Serial1/2
+       no ip address
+       shutdown
+      !
+      interface Serial1/3
+       no ip address
+       shutdown
+      !
+      router ospf 1
+       redistribute bgp 65001 subnets
+       passive-interface Serial1/1
+       network 10.1.1.1 0.0.0.0 area 12
+       network 209.65.200.224 0.0.0.3 area 12
+      !
+      router bgp 65001
+       neighbor 209.65.200.226 remote-as 65002
+      !
+      ipv6 router ospf 6
+      !
+      ip nat pool TSHOOT 209.65.200.225 209.65.200.225 netmask 255.255.255.252
+      ip nat inside source list 1 pool TSHOOT overload
+      !
+      ip access-list standard 1
+       10 permit 10.0.0.0 0.255.255.255
+       20 permit 192.168.0.0 0.0.255.255
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i4
+    label: Serial1/0
+    type: physical
+    slot: 4
+  - id: i5
+    label: Serial1/1
+    type: physical
+    slot: 5
+- id: n1
+  label: R2
+  node_definition: iol-xe-serial-4eth
+  x: 800
+  y: -300
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname R2
+      !
+      no ip domain lookup
+      ipv6 unicast-routing
+      !
+      interface Serial1/0
+       description S0/0 in the lesson (frame-relay)
+       no ip address
+       encapsulation frame-relay
+       no shutdown
+      !
+      interface Serial1/0.12 point-to-point
+       description S0/0.12 in the lesson
+       ip address 10.1.1.2 255.255.255.252
+       ipv6 address 2026::12:2/122
+       ipv6 ospf 6 area 12
+       frame-relay interface-dlci 201
+      !
+      interface Serial1/0.23 point-to-point
+       description S0/0.23 in the lesson
+       ip address 10.1.1.5 255.255.255.252
+       ipv6 address 2026::1:1/122
+       ipv6 ospf 6 area 0
+       frame-relay interface-dlci 203
+      !
+      interface Ethernet0/0
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      interface Serial1/1
+       no ip address
+       shutdown
+      !
+      interface Serial1/2
+       no ip address
+       shutdown
+      !
+      interface Serial1/3
+       no ip address
+       shutdown
+      !
+      router ospf 1
+       network 10.1.1.2 0.0.0.0 area 12
+       network 10.1.1.5 0.0.0.0 area 0
+      !
+      ipv6 router ospf 6
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i4
+    label: Serial1/0
+    type: physical
+    slot: 4
+- id: n2
+  label: R3
+  node_definition: iol-xe-serial-4eth
+  x: 800
+  y: -100
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname R3
+      !
+      no ip domain lookup
+      ipv6 unicast-routing
+      !
+      interface Serial1/0
+       description S0/0 in the lesson (frame-relay)
+       no ip address
+       encapsulation frame-relay
+       no shutdown
+      !
+      interface Serial1/0.23 point-to-point
+       description S0/0.23 in the lesson
+       ip address 10.1.1.6 255.255.255.252
+       ipv6 address 2026::1:2/122
+       ipv6 ospf 6 area 0
+       frame-relay interface-dlci 302
+      !
+      interface Serial1/0.34 point-to-point
+       description S0/0.34 in the lesson
+       ip address 10.1.1.9 255.255.255.252
+       frame-relay interface-dlci 304
+      !
+      interface Tunnel34
+       no ip address
+       ipv6 address 2026::34:1/122
+       ipv6 ospf 6 area 34
+       tunnel source Serial1/0.34
+       tunnel destination 10.1.1.10
+      !
+      interface Ethernet0/0
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      interface Serial1/1
+       no ip address
+       shutdown
+      !
+      interface Serial1/2
+       no ip address
+       shutdown
+      !
+      interface Serial1/3
+       no ip address
+       shutdown
+      !
+      router ospf 1
+       area 34 nssa no-summary default-information-originate
+       network 10.1.1.6 0.0.0.0 area 0
+       network 10.1.1.9 0.0.0.0 area 34
+      !
+      ipv6 router ospf 6
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i4
+    label: Serial1/0
+    type: physical
+    slot: 4
+- id: n3
+  label: R4
+  node_definition: iol-xe-serial-4eth
+  x: 600
+  y: 100
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname R4
+      !
+      no ip domain lookup
+      ipv6 unicast-routing
+      !
+      ip dhcp excluded-address 10.2.1.1 10.2.1.10
+      ip dhcp excluded-address 10.2.1.254
+      !
+      ip dhcp pool VLAN10
+       network 10.2.1.0 255.255.255.0
+       default-router 10.2.1.254
+      !
+      interface Serial1/0
+       description S0/0 in the lesson (frame-relay)
+       no ip address
+       encapsulation frame-relay
+       no shutdown
+      !
+      interface Serial1/0.34 point-to-point
+       description S0/0.34 in the lesson
+       ip address 10.1.1.10 255.255.255.252
+       frame-relay interface-dlci 403
+      !
+      interface Ethernet0/0
+       description Fa1/0 in the lesson, to DSW1 Fa0/0
+       ip address 10.1.4.5 255.255.255.252
+       ipv6 address 2026::2:1/122
+       ipv6 rip RIPNG enable
+       no shutdown
+      !
+      interface Ethernet0/1
+       description Fa2/0 in the lesson, to DSW2 Fa0/0
+       ip address 10.1.4.9 255.255.255.252
+       no shutdown
+      !
+      interface Tunnel34
+       no ip address
+       ipv6 address 2026::34:2/122
+       ipv6 ospf network non-broadcast
+       ipv6 ospf 6 area 34
+       tunnel source Serial1/0.34
+       tunnel destination 10.1.1.9
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      interface Serial1/1
+       no ip address
+       shutdown
+      !
+      interface Serial1/2
+       no ip address
+       shutdown
+      !
+      interface Serial1/3
+       no ip address
+       shutdown
+      !
+      router eigrp 10
+       redistribute ospf 1 metric 1500 1000 255 1 1500
+       network 10.1.4.4 0.0.0.3
+       network 10.1.4.8 0.0.0.3
+      !
+      router ospf 1
+       area 34 nssa
+       redistribute eigrp 10
+       network 10.1.1.10 0.0.0.0 area 34
+      !
+      ipv6 router ospf 6
+       redistribute connected metric 1
+       redistribute rip RIPNG metric 1
+      !
+      ipv6 router rip RIPNG
+       redistribute ospf 6 metric 1 include-connected
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+  - id: i1
+    label: Ethernet0/1
+    type: physical
+    slot: 1
+  - id: i4
+    label: Serial1/0
+    type: physical
+    slot: 4
+- id: n4
+  label: FRSW
+  node_definition: iol-xe-serial-4eth
+  x: 800
+  y: -200
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname FRSW
+      !
+      no ip domain lookup
+      frame-relay switching
+      !
+      interface Serial1/0
+       description to R1 S0/0 (lesson)
+       no ip address
+       encapsulation frame-relay
+       frame-relay intf-type dce
+       frame-relay route 102 interface Serial1/1 201
+       no shutdown
+      !
+      interface Serial1/1
+       description to R2 S0/0 (lesson)
+       no ip address
+       encapsulation frame-relay
+       frame-relay intf-type dce
+       frame-relay route 201 interface Serial1/0 102
+       frame-relay route 203 interface Serial1/2 302
+       no shutdown
+      !
+      interface Serial1/2
+       description to R3 S0/0 (lesson)
+       no ip address
+       encapsulation frame-relay
+       frame-relay intf-type dce
+       frame-relay route 302 interface Serial1/1 203
+       frame-relay route 304 interface Serial1/3 403
+       no shutdown
+      !
+      interface Serial1/3
+       description to R4 S0/0 (lesson)
+       no ip address
+       encapsulation frame-relay
+       frame-relay intf-type dce
+       frame-relay route 403 interface Serial1/2 304
+       no shutdown
+      !
+      interface Ethernet0/0
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i4
+    label: Serial1/0
+    type: physical
+    slot: 4
+  - id: i5
+    label: Serial1/1
+    type: physical
+    slot: 5
+  - id: i6
+    label: Serial1/2
+    type: physical
+    slot: 6
+  - id: i7
+    label: Serial1/3
+    type: physical
+    slot: 7
+- id: n5
+  label: ISP
+  node_definition: iol-xe-serial-4eth
+  x: 300
+  y: -450
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname ISP
+      !
+      no ip domain lookup
+      !
+      interface Serial1/0
+       description to R1 S0/1 (lesson)
+       ip address 209.65.200.226 255.255.255.252
+       no shutdown
+      !
+      interface Ethernet0/0
+       description to WEB
+       ip address 209.65.200.242 255.255.255.248
+       no shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      interface Serial1/1
+       no ip address
+       shutdown
+      !
+      interface Serial1/2
+       no ip address
+       shutdown
+      !
+      interface Serial1/3
+       no ip address
+       shutdown
+      !
+      router bgp 65002
+       network 209.65.200.240 mask 255.255.255.248
+       neighbor 209.65.200.225 remote-as 65001
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+  - id: i4
+    label: Serial1/0
+    type: physical
+    slot: 4
+- id: n6
+  label: WEB
+  node_definition: iol-xe
+  x: 100
+  y: -450
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname WEB
+      !
+      no ip domain lookup
+      no ip routing
+      ip http server
+      !
+      interface Ethernet0/0
+       ip address 209.65.200.241 255.255.255.248
+       no shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      ip default-gateway 209.65.200.242
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+- id: n7
+  label: DSW1
+  node_definition: ioll2-xe
+  x: 300
+  y: 250
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname DSW1
+      !
+      no ip domain lookup
+      vtp mode transparent
+      spanning-tree mode pvst
+      !
+      vlan 10
+      !
+      vlan 20
+      !
+      vlan 200
+      !
+      ipv6 unicast-routing
+      !
+      interface Ethernet0/0
+       description Fa0/0 in the lesson, to R4 Fa1/0
+       no switchport
+       ip address 10.1.4.6 255.255.255.252
+       ipv6 address 2026::2:2/122
+       ipv6 rip RIPNG enable
+       no shutdown
+      !
+      interface Port-channel1
+       description Po1 to ASW1
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet1/2
+       description Fa1/2 in the lesson (Po1 to ASW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 1 mode on
+       no shutdown
+      !
+      interface Ethernet1/3
+       description Fa1/3 in the lesson (Po1 to ASW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 1 mode on
+       no shutdown
+      !
+      interface Port-channel3
+       description Po3 to DSW2
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet2/0
+       description Fa1/4 in the lesson (Po3 to DSW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 3 mode on
+       no shutdown
+      !
+      interface Ethernet2/1
+       description Fa1/5 in the lesson (Po3 to DSW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 3 mode on
+       no shutdown
+      !
+      interface Port-channel5
+       description Po5 to ASW2
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet3/0
+       description Fa1/8 in the lesson (Po5 to ASW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 5 mode on
+       no shutdown
+      !
+      interface Ethernet3/1
+       description Fa1/9 in the lesson (Po5 to ASW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 5 mode on
+       no shutdown
+      !
+      interface Vlan10
+       ip address 10.2.1.1 255.255.255.0
+       ip helper-address 10.1.4.5
+       standby 10 ip 10.2.1.254
+       standby 10 priority 200
+       standby 10 preempt
+       ipv6 address 2026::3:1/122
+       ipv6 rip RIPNG enable
+       no shutdown
+      !
+      interface Vlan20
+       ip address 10.2.2.2 255.255.255.0
+       no shutdown
+      !
+      interface Vlan200
+       ip address 192.168.1.129 255.255.255.224
+       no shutdown
+      !
+      router eigrp 10
+       network 10.0.0.0
+       network 192.168.1.0
+       auto-summary
+      !
+      ipv6 router rip RIPNG
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+  - id: i6
+    label: Ethernet1/2
+    type: physical
+    slot: 6
+  - id: i7
+    label: Ethernet1/3
+    type: physical
+    slot: 7
+  - id: i8
+    label: Ethernet2/0
+    type: physical
+    slot: 8
+  - id: i9
+    label: Ethernet2/1
+    type: physical
+    slot: 9
+  - id: i12
+    label: Ethernet3/0
+    type: physical
+    slot: 12
+  - id: i13
+    label: Ethernet3/1
+    type: physical
+    slot: 13
+- id: n8
+  label: DSW2
+  node_definition: ioll2-xe
+  x: 600
+  y: 250
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname DSW2
+      !
+      no ip domain lookup
+      vtp mode transparent
+      spanning-tree mode pvst
+      !
+      vlan 10
+      !
+      vlan 20
+      !
+      vlan 200
+      !
+      ipv6 unicast-routing
+      !
+      interface Ethernet0/0
+       description Fa0/0 in the lesson, to R4 Fa2/0
+       no switchport
+       ip address 10.1.4.10 255.255.255.252
+       no shutdown
+      !
+      interface Port-channel2
+       description Po2 to ASW1
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet3/2
+       description Fa1/10 in the lesson (Po2 to ASW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 2 mode on
+       no shutdown
+      !
+      interface Ethernet3/3
+       description Fa1/11 in the lesson (Po2 to ASW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 2 mode on
+       no shutdown
+      !
+      interface Port-channel3
+       description Po3 to DSW1
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet2/0
+       description Fa1/4 in the lesson (Po3 to DSW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 3 mode on
+       no shutdown
+      !
+      interface Ethernet2/1
+       description Fa1/5 in the lesson (Po3 to DSW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 3 mode on
+       no shutdown
+      !
+      interface Port-channel4
+       description Po4 to ASW2
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet2/2
+       description Fa1/6 in the lesson (Po4 to ASW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 4 mode on
+       no shutdown
+      !
+      interface Ethernet2/3
+       description Fa1/7 in the lesson (Po4 to ASW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 4 mode on
+       no shutdown
+      !
+      interface Vlan10
+       ip address 10.2.1.2 255.255.255.0
+       ip helper-address 10.1.4.9
+       standby 10 ip 10.2.1.254
+       standby 10 priority 120
+       standby 10 preempt
+       ipv6 address 2026::3:2/122
+       ipv6 rip RIPNG enable
+       no shutdown
+      !
+      interface Vlan20
+       ip address 10.2.2.1 255.255.255.0
+       no shutdown
+      !
+      interface Vlan200
+       ip address 192.168.1.130 255.255.255.224
+       no shutdown
+      !
+      router eigrp 10
+       network 10.0.0.0
+       network 192.168.1.0
+       auto-summary
+      !
+      ipv6 router rip RIPNG
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+  - id: i8
+    label: Ethernet2/0
+    type: physical
+    slot: 8
+  - id: i9
+    label: Ethernet2/1
+    type: physical
+    slot: 9
+  - id: i10
+    label: Ethernet2/2
+    type: physical
+    slot: 10
+  - id: i11
+    label: Ethernet2/3
+    type: physical
+    slot: 11
+  - id: i14
+    label: Ethernet3/2
+    type: physical
+    slot: 14
+  - id: i15
+    label: Ethernet3/3
+    type: physical
+    slot: 15
+- id: n9
+  label: ASW1
+  node_definition: ioll2-xe
+  x: 300
+  y: 450
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname ASW1
+      !
+      no ip domain lookup
+      vtp mode transparent
+      spanning-tree mode pvst
+      !
+      vlan 10
+      !
+      vlan 20
+      !
+      vlan 200
+      !
+      interface Port-channel1
+       description Po1 to DSW1
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet1/2
+       description Fa1/2 in the lesson (Po1 to DSW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 1 mode on
+       no shutdown
+      !
+      interface Ethernet1/3
+       description Fa1/3 in the lesson (Po1 to DSW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 1 mode on
+       no shutdown
+      !
+      interface Port-channel2
+       description Po2 to DSW2
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet3/2
+       description Fa1/10 in the lesson (Po2 to DSW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 2 mode on
+       no shutdown
+      !
+      interface Ethernet3/3
+       description Fa1/11 in the lesson (Po2 to DSW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 2 mode on
+       no shutdown
+      !
+      interface Ethernet2/0
+       description Fa1/4 in the lesson, to Client1
+       switchport mode access
+       switchport access vlan 10
+       no shutdown
+      !
+      interface Ethernet2/1
+       description Fa1/5 in the lesson, to Client2
+       switchport mode access
+       switchport access vlan 10
+       no shutdown
+      !
+      interface Vlan200
+       ip address 192.168.1.131 255.255.255.224
+       no shutdown
+      !
+      ip default-gateway 192.168.1.129
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i6
+    label: Ethernet1/2
+    type: physical
+    slot: 6
+  - id: i7
+    label: Ethernet1/3
+    type: physical
+    slot: 7
+  - id: i8
+    label: Ethernet2/0
+    type: physical
+    slot: 8
+  - id: i9
+    label: Ethernet2/1
+    type: physical
+    slot: 9
+  - id: i14
+    label: Ethernet3/2
+    type: physical
+    slot: 14
+  - id: i15
+    label: Ethernet3/3
+    type: physical
+    slot: 15
+- id: n10
+  label: ASW2
+  node_definition: ioll2-xe
+  x: 600
+  y: 450
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname ASW2
+      !
+      no ip domain lookup
+      vtp mode transparent
+      spanning-tree mode pvst
+      !
+      vlan 10
+      !
+      vlan 20
+      !
+      vlan 200
+      !
+      interface Port-channel4
+       description Po4 to DSW2
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet2/2
+       description Fa1/6 in the lesson (Po4 to DSW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 4 mode on
+       no shutdown
+      !
+      interface Ethernet2/3
+       description Fa1/7 in the lesson (Po4 to DSW2)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 4 mode on
+       no shutdown
+      !
+      interface Port-channel5
+       description Po5 to DSW1
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+      !
+      interface Ethernet3/0
+       description Fa1/8 in the lesson (Po5 to DSW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 5 mode on
+       no shutdown
+      !
+      interface Ethernet3/1
+       description Fa1/9 in the lesson (Po5 to DSW1)
+       switchport trunk encapsulation dot1q
+       switchport mode trunk
+       channel-group 5 mode on
+       no shutdown
+      !
+      interface Ethernet1/0
+       description Fa1/0/1 in the lesson, to FTP
+       switchport mode access
+       switchport access vlan 20
+       no shutdown
+      !
+      interface Vlan200
+       ip address 192.168.1.132 255.255.255.224
+       no shutdown
+      !
+      ip default-gateway 192.168.1.130
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i4
+    label: Ethernet1/0
+    type: physical
+    slot: 4
+  - id: i10
+    label: Ethernet2/2
+    type: physical
+    slot: 10
+  - id: i11
+    label: Ethernet2/3
+    type: physical
+    slot: 11
+  - id: i12
+    label: Ethernet3/0
+    type: physical
+    slot: 12
+  - id: i13
+    label: Ethernet3/1
+    type: physical
+    slot: 13
+- id: n11
+  label: Client1
+  node_definition: iol-xe
+  x: 100
+  y: 400
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname Client1
+      !
+      no ip domain lookup
+      no ip routing
+      !
+      interface Ethernet0/0
+       ip address dhcp
+       no shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+- id: n12
+  label: Client2
+  node_definition: iol-xe
+  x: 100
+  y: 520
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname Client2
+      !
+      no ip domain lookup
+      no ip routing
+      !
+      interface Ethernet0/0
+       ip address dhcp
+       no shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+- id: n13
+  label: FTP
+  node_definition: iol-xe
+  x: 800
+  y: 520
+  configuration:
+  - name: ios_config.txt
+    content: |-
+      hostname FTP
+      !
+      no ip domain lookup
+      no ip routing
+      !
+      interface Ethernet0/0
+       ip address 10.2.2.10 255.255.255.0
+       no shutdown
+      !
+      interface Ethernet0/1
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/2
+       no ip address
+       shutdown
+      !
+      interface Ethernet0/3
+       no ip address
+       shutdown
+      !
+      ip default-gateway 10.2.2.1
+      !
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      !
+      end
+  interfaces:
+  - id: i0
+    label: Ethernet0/0
+    type: physical
+    slot: 0
+links:
+- id: l0
+  n1: n0
+  i1: i4
+  n2: n4
+  i2: i4
+  label: R1-Serial1/0<->FRSW-Serial1/0
+- id: l1
+  n1: n1
+  i1: i4
+  n2: n4
+  i2: i5
+  label: R2-Serial1/0<->FRSW-Serial1/1
+- id: l2
+  n1: n2
+  i1: i4
+  n2: n4
+  i2: i6
+  label: R3-Serial1/0<->FRSW-Serial1/2
+- id: l3
+  n1: n3
+  i1: i4
+  n2: n4
+  i2: i7
+  label: R4-Serial1/0<->FRSW-Serial1/3
+- id: l4
+  n1: n0
+  i1: i5
+  n2: n5
+  i2: i4
+  label: R1-Serial1/1<->ISP-Serial1/0
+- id: l5
+  n1: n5
+  i1: i0
+  n2: n6
+  i2: i0
+  label: ISP-Ethernet0/0<->WEB-Ethernet0/0
+- id: l6
+  n1: n3
+  i1: i0
+  n2: n7
+  i2: i0
+  label: R4-Ethernet0/0<->DSW1-Ethernet0/0
+- id: l7
+  n1: n3
+  i1: i1
+  n2: n8
+  i2: i0
+  label: R4-Ethernet0/1<->DSW2-Ethernet0/0
+- id: l8
+  n1: n7
+  i1: i6
+  n2: n9
+  i2: i6
+  label: DSW1-Ethernet1/2<->ASW1-Ethernet1/2
+- id: l9
+  n1: n7
+  i1: i7
+  n2: n9
+  i2: i7
+  label: DSW1-Ethernet1/3<->ASW1-Ethernet1/3
+- id: l10
+  n1: n7
+  i1: i8
+  n2: n8
+  i2: i8
+  label: DSW1-Ethernet2/0<->DSW2-Ethernet2/0
+- id: l11
+  n1: n7
+  i1: i9
+  n2: n8
+  i2: i9
+  label: DSW1-Ethernet2/1<->DSW2-Ethernet2/1
+- id: l12
+  n1: n7
+  i1: i12
+  n2: n10
+  i2: i12
+  label: DSW1-Ethernet3/0<->ASW2-Ethernet3/0
+- id: l13
+  n1: n7
+  i1: i13
+  n2: n10
+  i2: i13
+  label: DSW1-Ethernet3/1<->ASW2-Ethernet3/1
+- id: l14
+  n1: n8
+  i1: i14
+  n2: n9
+  i2: i14
+  label: DSW2-Ethernet3/2<->ASW1-Ethernet3/2
+- id: l15
+  n1: n8
+  i1: i15
+  n2: n9
+  i2: i15
+  label: DSW2-Ethernet3/3<->ASW1-Ethernet3/3
+- id: l16
+  n1: n8
+  i1: i10
+  n2: n10
+  i2: i10
+  label: DSW2-Ethernet2/2<->ASW2-Ethernet2/2
+- id: l17
+  n1: n8
+  i1: i11
+  n2: n10
+  i2: i11
+  label: DSW2-Ethernet2/3<->ASW2-Ethernet2/3
+- id: l18
+  n1: n9
+  i1: i8
+  n2: n11
+  i2: i0
+  label: ASW1-Ethernet2/0<->Client1-Ethernet0/0
+- id: l19
+  n1: n9
+  i1: i9
+  n2: n12
+  i2: i0
+  label: ASW1-Ethernet2/1<->Client2-Ethernet0/0
+- id: l20
+  n1: n10
+  i1: i4
+  n2: n13
+  i2: i0
+  label: ASW2-Ethernet1/0<->FTP-Ethernet0/0
+lab:
+  title: Troubleshooting CCNP TSHOOT lab full (lab-347)
+  description: 'troubleshooting-ccnp-tshoot-lab (post 7133), full topology incl. serial/frame-relay (FRSW). State: tickets 1-3 fixed, ticket 4 (R4 Tunnel34 OSPFv3 non-broadcast) still broken. IOL XE 17.18 (routers, serial variant), IOL-L2 (switches), IOL XE hosts. 14 licensed nodes.'
+  notes: Lesson Fa1/n on switches = Ethernet(1+n//4)/(n%4); router S0/0 = Serial1/0, S0/1 = Serial1/1; R4 Fa1/0 = Et0/0, Fa2/0 = Et0/1; ASW2 Fa1/0/1 = Et1/0. FR DLCIs 102/201, 203/302, 304/403 are assumptions.
+  version: 0.3.1

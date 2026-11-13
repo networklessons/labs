@@ -1,0 +1,256 @@
+annotations: []
+smart_annotations: []
+nodes:
+- boot_disk_size: null
+  configuration:
+  - name: iosxe_config.txt
+    content: "hostname SW1\nno service timestamps debug uptime\nno ip domain lookup\n\
+      !\ninterface GigabitEthernet1/0/3\n switchport mode access\n spanning-tree portfast\n\
+      !\ninterface GigabitEthernet1/0/8\n switchport mode access\n!\ninterface Vlan1\n\
+      \ ip address 192.168.1.253 255.255.255.0\n no shutdown\n!\nline con 0\n exec-timeout\
+      \ 0 0\n logging synchronous\n!\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n0
+  image_definition: null
+  label: SW1
+  node_definition: cat9000v-uadp
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 0
+  y: 0
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet1/0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet1/0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet1/0/3
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i5
+    label: GigabitEthernet1/0/4
+    mac_address: null
+    type: physical
+    slot: 4
+  - id: i6
+    label: GigabitEthernet1/0/5
+    mac_address: null
+    type: physical
+    slot: 5
+  - id: i7
+    label: GigabitEthernet1/0/6
+    mac_address: null
+    type: physical
+    slot: 6
+  - id: i8
+    label: GigabitEthernet1/0/7
+    mac_address: null
+    type: physical
+    slot: 7
+  - id: i9
+    label: GigabitEthernet1/0/8
+    mac_address: null
+    type: physical
+    slot: 8
+- boot_disk_size: null
+  configuration:
+  - name: iosxe_config.txt
+    content: "hostname SW2\nno service timestamps debug uptime\nno ip domain lookup\n\
+      !\ninterface GigabitEthernet1/0/4\n switchport mode access\n spanning-tree portfast\n\
+      !\ninterface GigabitEthernet1/0/8\n switchport mode access\n!\nip igmp snooping\
+      \ vlan 1 mrouter interface GigabitEthernet1/0/8\n!\nline con 0\n exec-timeout\
+      \ 0 0\n logging synchronous\n!\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n1
+  image_definition: null
+  label: SW2
+  node_definition: cat9000v-uadp
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 300
+  y: 0
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet1/0/1
+    mac_address: null
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet1/0/2
+    mac_address: null
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet1/0/3
+    mac_address: null
+    type: physical
+    slot: 3
+  - id: i5
+    label: GigabitEthernet1/0/4
+    mac_address: null
+    type: physical
+    slot: 4
+  - id: i6
+    label: GigabitEthernet1/0/5
+    mac_address: null
+    type: physical
+    slot: 5
+  - id: i7
+    label: GigabitEthernet1/0/6
+    mac_address: null
+    type: physical
+    slot: 6
+  - id: i8
+    label: GigabitEthernet1/0/7
+    mac_address: null
+    type: physical
+    slot: 7
+  - id: i9
+    label: GigabitEthernet1/0/8
+    mac_address: null
+    type: physical
+    slot: 8
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "hostname H1\nno service timestamps debug uptime\nno ip domain lookup\n\
+      !\ninterface GigabitEthernet0/0\n ip address 192.168.1.1 255.255.255.0\n no\
+      \ shutdown\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n!\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n2
+  image_definition: null
+  label: H1
+  node_definition: iosv
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: -200
+  y: 200
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+- boot_disk_size: null
+  configuration:
+  - name: ios_config.txt
+    content: "hostname H2\nno service timestamps debug uptime\nno ip domain lookup\n\
+      !\ninterface GigabitEthernet0/0\n ip address 192.168.1.2 255.255.255.0\n no\
+      \ shutdown\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n!\nend\n"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n3
+  image_definition: null
+  label: H2
+  node_definition: iosv
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 500
+  y: 200
+  interfaces:
+  - id: i0
+    label: Loopback0
+    mac_address: null
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 0
+links:
+- id: l0
+  n1: n2
+  n2: n0
+  i1: i1
+  i2: i4
+  conditioning: {}
+  label: H1-GigabitEthernet0/0<->SW1-GigabitEthernet1/0/3
+- id: l1
+  n1: n0
+  n2: n1
+  i1: i9
+  i2: i9
+  conditioning: {}
+  label: SW1-GigabitEthernet1/0/8<->SW2-GigabitEthernet1/0/8
+- id: l2
+  n1: n3
+  n2: n1
+  i1: i1
+  i2: i5
+  conditioning: {}
+  label: H2-GigabitEthernet0/0<->SW2-GigabitEthernet1/0/4
+lab:
+  description: 'igmp-snooping-without-router (post 24487), Solution 3 end state: SW1/SW2
+    Cat9000v 17.18.2, H1/H2 IOSv 15.9, no multicast router, SW2 static mrouter Gi1/0/8
+    (to SW1).'
+  notes: ''
+  title: lab-344 igmp-snooping-without-router
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

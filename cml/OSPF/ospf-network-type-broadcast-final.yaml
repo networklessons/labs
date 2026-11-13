@@ -1,0 +1,161 @@
+lab:
+  title: OSPF network type broadcast re-capture (lab-349)
+  description: 'ospf-network-type-broadcast (post 82906): R1/R2/R3 IOL XE Et0/1 on SW1, 192.168.123.0/24, OSPF area 0'
+  notes: ''
+  version: 0.3.1
+nodes:
+  - id: n0
+    label: SW1
+    node_definition: unmanaged_switch
+    x: 0
+    y: 100
+    interfaces:
+      - id: i0
+        label: port0
+        type: physical
+        slot: 0
+      - id: i1
+        label: port1
+        type: physical
+        slot: 1
+      - id: i2
+        label: port2
+        type: physical
+        slot: 2
+  - id: n1
+    label: R1
+    node_definition: iol-xe
+    x: -200
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R1
+          !
+          no ip domain lookup
+          !
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.255
+          !
+          interface Ethernet0/1
+           ip address 192.168.123.1 255.255.255.0
+           no shutdown
+          !
+          router ospf 1
+           router-id 1.1.1.1
+           network 1.1.1.1 0.0.0.0 area 0
+           network 192.168.123.0 0.0.0.255 area 0
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        type: physical
+        slot: 1
+  - id: n2
+    label: R2
+    node_definition: iol-xe
+    x: 0
+    y: -150
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R2
+          !
+          no ip domain lookup
+          !
+          interface Loopback0
+           ip address 2.2.2.2 255.255.255.255
+          !
+          interface Ethernet0/1
+           ip address 192.168.123.2 255.255.255.0
+           no shutdown
+          !
+          router ospf 1
+           router-id 2.2.2.2
+           network 2.2.2.2 0.0.0.0 area 0
+           network 192.168.123.0 0.0.0.255 area 0
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        type: physical
+        slot: 1
+  - id: n3
+    label: R3
+    node_definition: iol-xe
+    x: 200
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R3
+          !
+          no ip domain lookup
+          !
+          interface Loopback0
+           ip address 3.3.3.3 255.255.255.255
+          !
+          interface Ethernet0/1
+           ip address 192.168.123.3 255.255.255.0
+           no shutdown
+          !
+          router ospf 1
+           router-id 3.3.3.3
+           network 3.3.3.3 0.0.0.0 area 0
+           network 192.168.123.0 0.0.0.255 area 0
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: Ethernet0/0
+        type: physical
+        slot: 0
+      - id: i2
+        label: Ethernet0/1
+        type: physical
+        slot: 1
+links:
+  - id: l1
+    n1: n1
+    i1: i2
+    n2: n0
+    i2: i0
+  - id: l2
+    n1: n2
+    i1: i2
+    n2: n0
+    i2: i1
+  - id: l3
+    n1: n3
+    i1: i2
+    n2: n0
+    i2: i2
+annotations: []

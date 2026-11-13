@@ -1,0 +1,232 @@
+lab:
+  title: RPKI origin validation iBGP announce rpki state (lab-341)
+  description: "bgp-prefix-origin-as-validation-with-rpki (post 70466): R1 RPKI client of StayRTR (static ROAs 4.128.0.0/12 AS8075, 5.0.0.0/19 AS29256) on RTR node, R2 iBGP without own RPKI session. R1/R2 CSR1000v, R4/R5 IOL XE."
+  notes: ""
+  version: 0.2.2
+nodes:
+  - id: n1
+    label: R1
+    node_definition: csr1000v
+    x: 0
+    y: 0
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname R1
+          no ip domain lookup
+          !
+          interface GigabitEthernet1
+           ip address 192.168.1.1 255.255.255.0
+           no shutdown
+          !
+          interface GigabitEthernet2
+           ip address 192.168.12.1 255.255.255.0
+           no shutdown
+          !
+          router bgp 12
+           bgp rpki server tcp 10.65.90.50 port 3323 refresh 300
+           bgp bestpath prefix-validate allow-invalid
+           neighbor 192.168.1.4 remote-as 8075
+           neighbor 192.168.1.4 route-map RPKI in
+           neighbor 192.168.1.5 remote-as 29256
+           neighbor 192.168.1.5 route-map RPKI in
+           neighbor 192.168.12.2 remote-as 12
+           neighbor 192.168.12.2 next-hop-self
+           neighbor 192.168.12.2 send-community extended
+           neighbor 192.168.12.2 announce rpki state
+          !
+          ip route 10.65.90.0 255.255.255.0 192.168.1.3
+          !
+          route-map RPKI permit 10
+           match rpki valid
+           set local-preference 200
+          !
+          route-map RPKI permit 20
+           match rpki not-found
+           set local-preference 100
+          !
+          route-map RPKI permit 30
+           match rpki invalid
+           set local-preference 50
+          !
+          route-map RPKI permit 40
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    interfaces:
+      - {id: i0, label: Loopback0, type: loopback}
+      - {id: i1, label: GigabitEthernet1, type: physical, slot: 0}
+      - {id: i2, label: GigabitEthernet2, type: physical, slot: 1}
+  - id: n2
+    label: R2
+    node_definition: csr1000v
+    x: 0
+    y: 200
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname R2
+          no ip domain lookup
+          !
+          interface GigabitEthernet1
+           ip address 192.168.12.2 255.255.255.0
+           no shutdown
+          !
+          router bgp 12
+           neighbor 192.168.12.1 remote-as 12
+           neighbor 192.168.12.1 send-community extended
+           neighbor 192.168.12.1 announce rpki state
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    interfaces:
+      - {id: i0, label: Loopback0, type: loopback}
+      - {id: i1, label: GigabitEthernet1, type: physical, slot: 0}
+  - id: n4
+    label: R4
+    node_definition: iol-xe
+    x: -200
+    y: -200
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R4
+          no ip domain lookup
+          !
+          interface Loopback0
+           ip address 4.128.0.4 255.240.0.0
+          !
+          interface Loopback1
+           ip address 5.0.0.5 255.255.224.0
+          !
+          interface Loopback2
+           ip address 44.44.44.44 255.255.255.255
+          !
+          interface Ethernet0/0
+           ip address 192.168.1.4 255.255.255.0
+           no shutdown
+          !
+          router bgp 8075
+           network 4.128.0.0 mask 255.240.0.0
+           network 5.0.0.0 mask 255.255.224.0
+           network 44.44.44.44 mask 255.255.255.255
+           neighbor 192.168.1.1 remote-as 12
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    interfaces:
+      - {id: i0, label: Ethernet0/0, type: physical, slot: 0}
+  - id: n5
+    label: R5
+    node_definition: iol-xe
+    x: 0
+    y: -300
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R5
+          no ip domain lookup
+          !
+          interface Loopback0
+           ip address 5.0.0.5 255.255.224.0
+          !
+          interface Ethernet0/0
+           ip address 192.168.1.5 255.255.255.0
+           no shutdown
+          !
+          router bgp 29256
+           network 5.0.0.0 mask 255.255.224.0
+           neighbor 192.168.1.1 remote-as 12
+           neighbor 192.168.1.1 route-map AS_PATH_PREPEND out
+          !
+          route-map AS_PATH_PREPEND permit 10
+           set as-path prepend 29256 29256
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    interfaces:
+      - {id: i0, label: Ethernet0/0, type: physical, slot: 0}
+  - id: n6
+    label: RTR
+    node_definition: ubuntu
+    x: 200
+    y: -200
+    configuration:
+      - name: user-data
+        content: |-
+          #cloud-config
+          hostname: rtr
+          manage_etc_hosts: True
+          system_info:
+            default_user:
+              name: cisco
+          password: cisco
+          chpasswd: { expire: False }
+          ssh_pwauth: True
+          write_files:
+            - path: /opt/rtr/roas.json
+              content: |
+                {"roas":[{"prefix":"4.128.0.0/12","maxLength":12,"asn":"AS8075","ta":"lab"},{"prefix":"5.0.0.0/19","maxLength":19,"asn":"AS29256","ta":"lab"}]}
+            - path: /etc/systemd/system/stayrtr.service
+              content: |
+                [Unit]
+                Description=StayRTR
+                After=network-online.target
+                [Service]
+                ExecStart=/opt/rtr/stayrtr -cache /opt/rtr/roas.json -checktime=false -bind :3323
+                Restart=always
+                RestartSec=5
+                [Install]
+                WantedBy=multi-user.target
+          runcmd:
+            - [sh, -c, "for i in 1 2 3 4 5 6 7 8 9 10; do curl -sfL -o /opt/rtr/stayrtr https://github.com/bgp/stayrtr/releases/download/v0.6.4/stayrtr-v0.6.4-linux-x86_64 && break; sleep 10; done; chmod +x /opt/rtr/stayrtr; systemctl daemon-reload; systemctl enable --now stayrtr; echo STAYRTR_SETUP_DONE; systemctl --no-pager status stayrtr > /dev/console 2>&1"]
+      - name: network-config
+        content: |-
+          #network-config
+          network:
+            version: 2
+            ethernets:
+              ens2:
+                dhcp4: true
+                optional: true
+              ens3:
+                addresses: [192.168.1.3/24, 10.65.90.50/24]
+                optional: true
+    interfaces:
+      - {id: i0, label: ens2, type: physical, slot: 0}
+      - {id: i1, label: ens3, type: physical, slot: 1}
+  - id: n7
+    label: SW1
+    node_definition: unmanaged_switch
+    x: 0
+    y: -150
+    interfaces:
+      - {id: i0, label: port0, type: physical, slot: 0}
+      - {id: i1, label: port1, type: physical, slot: 1}
+      - {id: i2, label: port2, type: physical, slot: 2}
+      - {id: i3, label: port3, type: physical, slot: 3}
+  - id: n8
+    label: ext-conn-0
+    node_definition: external_connector
+    x: 400
+    y: -200
+    configuration:
+      - name: default
+        content: System Bridge
+    interfaces:
+      - {id: i0, label: port, type: physical, slot: 0}
+links:
+  - {id: l0, n1: n1, i1: i1, n2: n7, i2: i0}
+  - {id: l1, n1: n4, i1: i0, n2: n7, i2: i1}
+  - {id: l2, n1: n5, i1: i0, n2: n7, i2: i2}
+  - {id: l3, n1: n6, i1: i1, n2: n7, i2: i3}
+  - {id: l4, n1: n1, i1: i2, n2: n2, i2: i1}
+  - {id: l5, n1: n6, i1: i0, n2: n8, i2: i0}

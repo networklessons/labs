@@ -60,15 +60,15 @@ Contains topologies you can run in Containerlab.
 Contains topologies you can run in Cisco CML.
 
 <!-- CML_STATS_START -->
-**Total CML Labs: 472**
+**Total CML Labs: 489**
 
 | Category | Labs |
 |----------|------|
-| ASA | 26 |
-| BGP | 42 |
+| ASA | 28 |
+| BGP | 43 |
 | CEF | 1 |
 | DMVPN | 24 |
-| EIGRP | 22 |
+| EIGRP | 25 |
 | Etherchannel | 3 |
 | IP Routing | 11 |
 | IP Services | 5 |
@@ -77,19 +77,19 @@ Contains topologies you can run in Cisco CML.
 | IS-IS | 10 |
 | LISP | 1 |
 | Labs | 7 |
-| MPLS | 49 |
-| Multicast | 26 |
+| MPLS | 50 |
+| Multicast | 28 |
 | Network Management | 3 |
-| Network Services | 40 |
-| OSPF | 48 |
+| Network Services | 42 |
+| OSPF | 51 |
 | Programmability | 7 |
-| Quality of Service | 7 |
+| Quality of Service | 8 |
 | RIP | 11 |
 | Redistribution | 5 |
 | Security | 24 |
-| Switching | 34 |
+| Switching | 35 |
 | Templates | 24 |
-| Troubleshooting | 5 |
+| Troubleshooting | 6 |
 | VXLAN | 5 |
 <!-- CML_STATS_END -->
 

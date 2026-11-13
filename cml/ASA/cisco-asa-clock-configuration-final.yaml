@@ -1,0 +1,36 @@
+annotations: []
+nodes:
+  - id: n0
+    label: ASA1
+    node_definition: asav
+    x: 0
+    y: 0
+    configuration:
+      - name: day0-config
+        content: |-
+          hostname ASA1
+          interface GigabitEthernet0/0
+           nameif INSIDE
+           security-level 100
+           ip address 192.168.1.254 255.255.255.0
+           no shutdown
+          clock timezone CET 1
+          clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00
+          ntp authentication-key 1 md5 MY_PASSWORD
+          ntp authenticate
+          ntp trusted-key 1
+          ntp server 192.168.1.1 key 1 source INSIDE
+    interfaces:
+      - id: i0
+        label: Management0/0
+        type: physical
+        slot: 0
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 1
+links: []
+lab:
+  title: ASA clock configuration (lab-351)
+  description: 'cisco-asa-clock-configuration (post 6440): single ASAv with the lesson clock and NTP config.'
+  version: 0.3.1

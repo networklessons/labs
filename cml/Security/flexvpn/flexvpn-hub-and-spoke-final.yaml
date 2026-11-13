@@ -1,623 +1,316 @@
-lab:
-  description: ''
-  notes: ''
-  timestamp: 1610720613.6312296
-  title: flexvpn-hub-and-spoke_final
-  version: 0.0.4
+annotations: []
+smart_annotations: []
 nodes:
-  - id: n0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Hub1
+          !
+          aaa new-model
+          !
+          aaa authorization network FLEXVPN_LOCAL local
+          !
+          ip cef
+          !
+          crypto ikev2 authorization policy IKEV2_AUTHORIZATION
+           route set interface
+           route set access-list FLEXVPN_ROUTES
+          !
+          crypto ikev2 keyring IKEV2_KEYRING
+           peer SPOKE_ROUTERS
+            address 0.0.0.0 0.0.0.0
+            pre-shared-key local CISCO
+            pre-shared-key remote CISCO
+          !
+          crypto ikev2 profile IKEV2_PROFILE
+           match identity remote fqdn domain FLEXVPN.LAB
+           identity local fqdn HUB.FLEXVPN.LAB
+           authentication remote pre-share
+           authentication local pre-share
+           keyring local IKEV2_KEYRING
+           aaa authorization group psk list FLEXVPN_LOCAL IKEV2_AUTHORIZATION
+           virtual-template 1
+          !
+          crypto ipsec profile IPSEC_PROFILE
+           set ikev2-profile IKEV2_PROFILE
+          !
+          interface Loopback1
+           ip address 172.16.1.254 255.255.255.255
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.1.254 255.255.255.0
+          !
+          interface Virtual-Template1 type tunnel
+           ip unnumbered Loopback1
+           tunnel protection ipsec profile IPSEC_PROFILE
+          !
+          ip access-list standard FLEXVPN_ROUTES
+           permit any
+          !
+          no logging console
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
     label: Hub1
     node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
     x: -450
     y: -50
-    configuration: |-
-      Building configuration...
-
-      Current configuration : 2122 bytes
-      !
-      ! Last configuration change at 18:46:01 UTC Fri Jan 15 2021
-      !
-      version 15.9
-      service timestamps debug datetime msec
-      service timestamps log datetime msec
-      no service password-encryption
-      !
-      hostname Hub1
-      !
-      boot-start-marker
-      boot-end-marker
-      !
-      !
-      no logging console
-      !
-      aaa new-model
-      !
-      !
-      aaa authorization network FLEXVPN_LOCAL local
-      !
-      !
-      !
-      !
-      !
-      aaa session-id common
-      !
-      !
-      !
-      mmi polling-interval 60
-      no mmi auto-configure
-      no mmi pvc
-      mmi snmp-timeout 180
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      ip cef
-      no ipv6 cef
-      !
-      multilink bundle-name authenticated
-      !
-      !
-      !
-      !
-      !
-      redundancy
-      !
-      !
-      !
-      crypto ikev2 authorization policy IKEV2_AUTHORIZATION
-       route set interface
-       route set access-list FLEXVPN_ROUTES
-      !
-      !
-      !
-      !
-      crypto ikev2 keyring KEYRING
-       peer SPOKE_ROUTERS
-        address 0.0.0.0 0.0.0.0
-        pre-shared-key local CISCO
-        pre-shared-key remote CISCO
-       !
-      !
-      !
-      crypto ikev2 profile IKEV2_PROFILE
-       match identity remote fqdn domain FLEXVPN.LAB
-       identity local fqdn HUB.FLEXVPN.LAB
-       authentication remote pre-share
-       authentication local pre-share
-       keyring local KEYRING
-       aaa authorization group psk list FLEXVPN_LOCAL IKEV2_AUTHORIZATION
-       virtual-template 1
-      !
-      !
-      !
-      !
-      crypto ipsec profile IPSEC_PROFILE
-       set ikev2-profile IKEV2_PROFILE
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      interface Loopback0
-       ip address 10.10.10.10 255.255.255.255
-      !
-      interface Loopback1
-       ip address 172.16.1.254 255.255.255.255
-      !
-      interface GigabitEthernet0/0
-       ip address 192.168.1.254 255.255.255.0
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/1
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/2
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/3
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface Virtual-Template1 type tunnel
-       ip unnumbered Loopback1
-       tunnel protection ipsec profile IPSEC_PROFILE
-      !
-      ip forward-protocol nd
-      !
-      !
-      no ip http server
-      no ip http secure-server
-      !
-      ip access-list standard FLEXVPN_ROUTES
-       permit any
-      !
-      ipv6 ioam timestamp
-      !
-      !
-      !
-      !
-      !
-      control-plane
-      !
-      !
-      line con 0
-       exec-timeout 0 0
-      line aux 0
-      line vty 0 4
-       transport input none
-      !
-      no scheduler allocate
-      !
-      end
-    image_definition: iosv-159-3
-    tags: []
     interfaces:
       - id: i0
         label: Loopback0
+        mac_address: null
         type: loopback
       - id: i1
-        slot: 0
         label: GigabitEthernet0/0
+        mac_address: null
         type: physical
-      - id: i2
-        slot: 1
-        label: GigabitEthernet0/1
-        type: physical
-      - id: i3
-        slot: 2
-        label: GigabitEthernet0/2
-        type: physical
-      - id: i4
-        slot: 3
-        label: GigabitEthernet0/3
-        type: physical
-  - id: n1
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Spoke1
+          !
+          aaa new-model
+          !
+          aaa authorization network FLEXVPN_LOCAL local
+          !
+          ip cef
+          !
+          crypto ikev2 authorization policy IKEV2_AUTHORIZATION
+           route set interface
+           route set access-list FLEXVPN_ROUTES
+          !
+          crypto ikev2 keyring IKEV2_KEYRING
+           peer HUB1
+            address 192.168.1.254
+            pre-shared-key local CISCO
+            pre-shared-key remote CISCO
+          !
+          crypto ikev2 profile IKEV2_PROFILE
+           match identity remote fqdn HUB.FLEXVPN.LAB
+           identity local fqdn SPOKE1.FLEXVPN.LAB
+           authentication remote pre-share
+           authentication local pre-share
+           keyring local IKEV2_KEYRING
+           aaa authorization group psk list FLEXVPN_LOCAL IKEV2_AUTHORIZATION
+          !
+          crypto ipsec profile IPSEC_PROFILE
+           set ikev2-profile IKEV2_PROFILE
+          !
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.255
+          !
+          interface Tunnel0
+           ip address 172.16.1.1 255.255.255.0
+           tunnel source GigabitEthernet0/0
+           tunnel destination 192.168.1.254
+           tunnel protection ipsec profile IPSEC_PROFILE
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.1.1 255.255.255.0
+          !
+          ip access-list standard FLEXVPN_ROUTES
+           permit 1.1.1.1
+          !
+          no logging console
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
     label: Spoke1
     node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
     x: 100
     y: -200
-    configuration: |-
-      Building configuration...
-
-      Current configuration : 2086 bytes
-      !
-      ! Last configuration change at 18:45:58 UTC Fri Jan 15 2021
-      !
-      version 15.9
-      service timestamps debug datetime msec
-      service timestamps log datetime msec
-      no service password-encryption
-      !
-      hostname Spoke1
-      !
-      boot-start-marker
-      boot-end-marker
-      !
-      !
-      no logging console
-      !
-      aaa new-model
-      !
-      !
-      aaa authorization network FLEXVPN_LOCAL local
-      !
-      !
-      !
-      !
-      !
-      aaa session-id common
-      !
-      !
-      !
-      mmi polling-interval 60
-      no mmi auto-configure
-      no mmi pvc
-      mmi snmp-timeout 180
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      ip cef
-      no ipv6 cef
-      !
-      multilink bundle-name authenticated
-      !
-      !
-      !
-      !
-      !
-      redundancy
-      !
-      !
-      !
-      crypto ikev2 authorization policy IKEV2_AUTHORIZATION
-       route set interface
-       route set access-list FLEXVPN_ROUTES
-      !
-      !
-      !
-      !
-      crypto ikev2 keyring KEYRING
-       peer HUB1
-        address 192.168.1.254
-        pre-shared-key local CISCO
-        pre-shared-key remote CISCO
-       !
-      !
-      !
-      crypto ikev2 profile IKEV2_PROFILE
-       match identity remote fqdn HUB.FLEXVPN.LAB
-       identity local fqdn SPOKE1.FLEXVPN.LAB
-       authentication remote pre-share
-       authentication local pre-share
-       keyring local KEYRING
-       aaa authorization group psk list FLEXVPN_LOCAL IKEV2_AUTHORIZATION
-      !
-      !
-      !
-      !
-      crypto ipsec profile IPSEC_PROFILE
-       set ikev2-profile IKEV2_PROFILE
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      interface Loopback0
-       ip address 1.1.1.1 255.255.255.255
-      !
-      interface Tunnel0
-       ip address 172.16.1.1 255.255.255.0
-       tunnel source GigabitEthernet0/0
-       tunnel destination 192.168.1.254
-       tunnel protection ipsec profile IPSEC_PROFILE
-      !
-      interface GigabitEthernet0/0
-       ip address 192.168.1.1 255.255.255.0
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/1
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/2
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/3
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      ip forward-protocol nd
-      !
-      !
-      no ip http server
-      no ip http secure-server
-      !
-      ip access-list standard FLEXVPN_ROUTES
-       permit 1.1.1.1
-      !
-      ipv6 ioam timestamp
-      !
-      !
-      !
-      !
-      !
-      control-plane
-      !
-      !
-      line con 0
-       exec-timeout 0 0
-      line aux 0
-      line vty 0 4
-       transport input none
-      !
-      no scheduler allocate
-      !
-      end
-    image_definition: iosv-159-3
-    tags: []
     interfaces:
       - id: i0
         label: Loopback0
+        mac_address: null
         type: loopback
       - id: i1
-        slot: 0
         label: GigabitEthernet0/0
+        mac_address: null
         type: physical
-      - id: i2
-        slot: 1
-        label: GigabitEthernet0/1
-        type: physical
-      - id: i3
-        slot: 2
-        label: GigabitEthernet0/2
-        type: physical
-      - id: i4
-        slot: 3
-        label: GigabitEthernet0/3
-        type: physical
-  - id: n2
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname Spoke2
+          !
+          aaa new-model
+          !
+          aaa authorization network FLEXVPN_LOCAL local
+          !
+          ip cef
+          !
+          crypto ikev2 authorization policy IKEV2_AUTHORIZATION
+           route set interface
+           route set access-list FLEXVPN_ROUTES
+          !
+          crypto ikev2 keyring IKEV2_KEYRING
+           peer HUB1
+            address 192.168.1.254
+            pre-shared-key local CISCO
+            pre-shared-key remote CISCO
+          !
+          crypto ikev2 profile IKEV2_PROFILE
+           match identity remote fqdn HUB.FLEXVPN.LAB
+           identity local fqdn SPOKE2.FLEXVPN.LAB
+           authentication remote pre-share
+           authentication local pre-share
+           keyring local IKEV2_KEYRING
+           aaa authorization group psk list FLEXVPN_LOCAL IKEV2_AUTHORIZATION
+          !
+          crypto ipsec profile IPSEC_PROFILE
+           set ikev2-profile IKEV2_PROFILE
+          !
+          interface Loopback0
+           ip address 2.2.2.2 255.255.255.255
+          !
+          interface Tunnel0
+           ip address 172.16.1.2 255.255.255.0
+           tunnel source GigabitEthernet0/0
+           tunnel destination 192.168.1.254
+           tunnel protection ipsec profile IPSEC_PROFILE
+          !
+          interface GigabitEthernet0/0
+           ip address 192.168.1.2 255.255.255.0
+          !
+          ip access-list standard FLEXVPN_ROUTES
+           permit 2.2.2.2
+          !
+          no logging console
+          !
+          line con 0
+           exec-timeout 0 0
+          !
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n2
+    image_definition: null
     label: Spoke2
     node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
     x: 100
     y: 150
-    configuration: |-
-      Building configuration...
-
-      Current configuration : 2086 bytes
-      !
-      ! Last configuration change at 18:46:00 UTC Fri Jan 15 2021
-      !
-      version 15.9
-      service timestamps debug datetime msec
-      service timestamps log datetime msec
-      no service password-encryption
-      !
-      hostname Spoke2
-      !
-      boot-start-marker
-      boot-end-marker
-      !
-      !
-      no logging console
-      !
-      aaa new-model
-      !
-      !
-      aaa authorization network FLEXVPN_LOCAL local
-      !
-      !
-      !
-      !
-      !
-      aaa session-id common
-      !
-      !
-      !
-      mmi polling-interval 60
-      no mmi auto-configure
-      no mmi pvc
-      mmi snmp-timeout 180
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      ip cef
-      no ipv6 cef
-      !
-      multilink bundle-name authenticated
-      !
-      !
-      !
-      !
-      !
-      redundancy
-      !
-      !
-      !
-      !
-      crypto ikev2 authorization policy IKEV2_AUTHORIZATION
-       route set interface
-       route set access-list FLEXVPN_ROUTES
-      !
-      !
-      !
-      crypto ikev2 keyring KEYRING
-       peer HUB1
-        address 192.168.1.254
-        pre-shared-key local CISCO
-        pre-shared-key remote CISCO
-       !
-      !
-      !
-      crypto ikev2 profile IKEV2_PROFILE
-       match identity remote fqdn HUB.FLEXVPN.LAB
-       identity local fqdn SPOKE2.FLEXVPN.LAB
-       authentication remote pre-share
-       authentication local pre-share
-       keyring local KEYRING
-       aaa authorization group psk list FLEXVPN_LOCAL IKEV2_AUTHORIZATION
-      !
-      !
-      !
-      !
-      crypto ipsec profile IPSEC_PROFILE
-       set ikev2-profile IKEV2_PROFILE
-      !
-      !
-      !
-      !
-      !
-      !
-      !
-      interface Loopback0
-       ip address 2.2.2.2 255.255.255.255
-      !
-      interface Tunnel0
-       ip address 172.16.1.2 255.255.255.0
-       tunnel source GigabitEthernet0/0
-       tunnel destination 192.168.1.254
-       tunnel protection ipsec profile IPSEC_PROFILE
-      !
-      interface GigabitEthernet0/0
-       ip address 192.168.1.2 255.255.255.0
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/1
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/2
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      interface GigabitEthernet0/3
-       no ip address
-       shutdown
-       duplex auto
-       speed auto
-       media-type rj45
-      !
-      ip forward-protocol nd
-      !
-      !
-      no ip http server
-      no ip http secure-server
-      !
-      ip access-list standard FLEXVPN_ROUTES
-       permit 2.2.2.2
-      !
-      ipv6 ioam timestamp
-      !
-      !
-      !
-      !
-      !
-      control-plane
-      !
-      !
-      line con 0
-       exec-timeout 0 0
-      line aux 0
-      line vty 0 4
-       transport input none
-      !
-      no scheduler allocate
-      !
-      end
-    image_definition: iosv-159-3
-    tags: []
     interfaces:
       - id: i0
         label: Loopback0
+        mac_address: null
         type: loopback
       - id: i1
-        slot: 0
         label: GigabitEthernet0/0
+        mac_address: null
         type: physical
-      - id: i2
-        slot: 1
-        label: GigabitEthernet0/1
-        type: physical
-      - id: i3
-        slot: 2
-        label: GigabitEthernet0/2
-        type: physical
-      - id: i4
-        slot: 3
-        label: GigabitEthernet0/3
-        type: physical
-  - id: n3
-    label: unmanaged-switch-0
+        slot: 0
+  - boot_disk_size: null
+    configuration: []
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n3
+    image_definition: null
+    label: SW1
     node_definition: unmanaged_switch
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
     x: -150
     y: -50
-    configuration: ''
-    tags: []
     interfaces:
       - id: i0
-        slot: 0
         label: port0
+        mac_address: null
         type: physical
+        slot: 0
       - id: i1
-        slot: 1
         label: port1
+        mac_address: null
         type: physical
+        slot: 1
       - id: i2
-        slot: 2
         label: port2
+        mac_address: null
         type: physical
-      - id: i3
-        slot: 3
-        label: port3
-        type: physical
-      - id: i4
-        slot: 4
-        label: port4
-        type: physical
-      - id: i5
-        slot: 5
-        label: port5
-        type: physical
-      - id: i6
-        slot: 6
-        label: port6
-        type: physical
-      - id: i7
-        slot: 7
-        label: port7
-        type: physical
+        slot: 2
 links:
   - id: l0
-    i1: i1
     n1: n0
+    n2: n3
+    i1: i1
     i2: i0
-    n2: n3
+    conditioning: {}
+    label: Hub1-GigabitEthernet0/0<->SW1-port0
   - id: l1
-    i1: i1
-    n1: n3
-    i2: i1
-    n2: n1
-  - id: l2
-    i1: i1
-    n1: n2
-    i2: i2
+    n1: n1
     n2: n3
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: Spoke1-GigabitEthernet0/0<->SW1-port1
+  - id: l2
+    n1: n2
+    n2: n3
+    i1: i1
+    i2: i2
+    conditioning: {}
+    label: Spoke2-GigabitEthernet0/0<->SW1-port2
+lab:
+  description: FlexVPN hub and spoke (post 64681) recapture without Hub1 Loopback0.
+    IOSv 15.9.
+  notes: ''
+  title: flexvpn-hub-and-spoke recapture (redraw batch21, post 64681)
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
