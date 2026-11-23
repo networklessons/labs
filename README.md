@@ -26,9 +26,13 @@
 
 This repository contains topologies for emulators such as Cisco CML, EVE-NG, and Containerlab. It also contains Ansible playbooks.
 
-## Ansible
+## [Ansible](ansible/)
 
 Contains playbooks you can use to run against network devices.
+
+## [Automation](automation/)
+
+Contains NETCONF, gRPC, REST API, and Kubernetes examples from the network automation and programmability lessons.
 
 ## [Containerlab](containerlab/)
 
@@ -60,37 +64,38 @@ Contains topologies you can run in Containerlab.
 Contains topologies you can run in Cisco CML.
 
 <!-- CML_STATS_START -->
-**Total CML Labs: 489**
+**Total CML Labs: 535**
 
 | Category | Labs |
 |----------|------|
-| ASA | 28 |
-| BGP | 43 |
+| ASA | 32 |
+| BGP | 46 |
 | CEF | 1 |
-| DMVPN | 24 |
-| EIGRP | 25 |
+| DMVPN | 27 |
+| EIGRP | 32 |
 | Etherchannel | 3 |
-| IP Routing | 11 |
+| IP Routing | 13 |
 | IP Services | 5 |
 | IPSec | 8 |
-| IPv6 | 23 |
-| IS-IS | 10 |
+| IPv6 | 27 |
+| IS-IS | 12 |
 | LISP | 1 |
 | Labs | 7 |
-| MPLS | 50 |
-| Multicast | 28 |
-| Network Management | 3 |
-| Network Services | 42 |
-| OSPF | 51 |
-| Programmability | 7 |
+| MPLS | 51 |
+| Multicast | 29 |
+| Network Management | 4 |
+| Network Services | 45 |
+| OSPF | 55 |
+| Programmability | 10 |
 | Quality of Service | 8 |
 | RIP | 11 |
 | Redistribution | 5 |
-| Security | 24 |
-| Switching | 35 |
+| SD-WAN | 1 |
+| Security | 26 |
+| Switching | 38 |
 | Templates | 24 |
 | Troubleshooting | 6 |
-| VXLAN | 5 |
+| VXLAN | 7 |
 <!-- CML_STATS_END -->
 
 ## VIRL

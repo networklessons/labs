@@ -1,0 +1,56 @@
+lab:
+  title: BGP locally originated re-capture (lab-393)
+  description: 'bgp-attribute-locally-originated (post 70331): R1 AS1, R2 AS2, Gi0/0
+    192.168.12.0/24, both Lo0 12.12.12.12/32. Lesson startup configs. IOSv 15.9.'
+  notes: 'Startup configs = lesson startup tabs (+ no shutdown on Gi0/0). Steps: network
+    12.12.12.12/32 on R1, then ACL R2_L0 + route-map SET_WEIGHT_INBOUND in, clear
+    ip bgp *, wait ~60 s for the network statement to come back. A1 test (not in lesson):
+    R2 Lo1 22.22.22.22/32 + Lo2 23.23.23.23/32 in OSPF 1 on Gi0/0 (router-id 1.1.1.1/2.2.2.2);
+    R1 ip route 33.33.33.33/32 192.168.12.2 and 44.44.44.44/32 Null0; BGP: network
+    23.23.23.23/32, redistribute ospf 1 route-map (22.22.22.22/32 only), redistribute
+    static, aggregate-address 22.0.0.0/8.'
+  version: 0.2.2
+nodes:
+- id: n0
+  label: R1
+  node_definition: iosv
+  x: 0
+  y: 0
+  configuration: "hostname R1\n!\nip cef\n!\ninterface Loopback0\n ip address 12.12.12.12\
+    \ 255.255.255.255\n!\ninterface GigabitEthernet0/0\n ip address 192.168.12.1 255.255.255.0\n\
+    \ no shutdown\n!\nrouter bgp 1\n bgp router-id 1.1.1.1\n neighbor 192.168.12.2\
+    \ remote-as 2\n!\nend"
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+    slot: 0
+  - id: i1
+    label: GigabitEthernet0/0
+    type: physical
+    slot: 0
+- id: n1
+  label: R2
+  node_definition: iosv
+  x: 300
+  y: 0
+  configuration: "hostname R2\n!\nip cef\n!\ninterface Loopback0\n ip address 12.12.12.12\
+    \ 255.255.255.255\n!\ninterface GigabitEthernet0/0\n ip address 192.168.12.2 255.255.255.0\n\
+    \ no shutdown\n!\nrouter bgp 2\n bgp router-id 2.2.2.2\n network 12.12.12.12 mask\
+    \ 255.255.255.255\n neighbor 192.168.12.1 remote-as 1\n!\nend"
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+    slot: 0
+  - id: i1
+    label: GigabitEthernet0/0
+    type: physical
+    slot: 0
+links:
+- id: l0
+  n1: n0
+  n2: n1
+  i1: i1
+  i2: i1
+  label: R1-GigabitEthernet0/0<->R2-GigabitEthernet0/0

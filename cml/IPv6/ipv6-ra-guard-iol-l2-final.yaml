@@ -1,0 +1,87 @@
+lab:
+  title: IPv6 RA guard RS forwarding test (lab-363)
+  description: "ipv6-ra-guard (post 55728): does SW1 (IOL-L2) forward H1's RS to R1 when H1's port has device-role host and R1's port has no policy vs device-role router? R1/H1 IOSv Gi0/1, SW1 Et0/1 = H1, Et0/3 = R1, VLAN 123."
+  version: 0.2.2
+  notes: ""
+annotations: []
+nodes:
+  - id: n0
+    label: SW1
+    node_definition: ioll2-xe
+    x: 0
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname SW1
+          no ip domain lookup
+          no logging console
+          logging buffered 64000 debugging
+          no service timestamps debug
+          vlan 123
+          interface range Ethernet0/0 - 3
+           switchport mode access
+           switchport access vlan 123
+           spanning-tree portfast edge
+           no shutdown
+          ipv6 nd raguard policy HOSTS
+           device-role host
+          interface Ethernet0/1
+           ipv6 nd raguard attach-policy HOSTS
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    interfaces:
+      - {id: i0, label: Ethernet0/0, type: physical, slot: 0}
+      - {id: i1, label: Ethernet0/1, type: physical, slot: 1}
+      - {id: i2, label: Ethernet0/2, type: physical, slot: 2}
+      - {id: i3, label: Ethernet0/3, type: physical, slot: 3}
+  - id: n1
+    label: R1
+    node_definition: iosv
+    x: 200
+    y: -100
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R1
+          no ip domain lookup
+          no logging console
+          logging buffered 64000 debugging
+          no service timestamps debug
+          ipv6 unicast-routing
+          interface GigabitEthernet0/1
+           ipv6 address 2001:DB8:0:1::1/64
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - {id: i0, label: GigabitEthernet0/0, type: physical, slot: 0}
+      - {id: i1, label: GigabitEthernet0/1, type: physical, slot: 1}
+  - id: n2
+    label: H1
+    node_definition: iosv
+    x: -200
+    y: -100
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname H1
+          no ip domain lookup
+          no logging console
+          logging buffered 64000 debugging
+          no service timestamps debug
+          interface GigabitEthernet0/1
+           ipv6 address autoconfig default
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - {id: i0, label: GigabitEthernet0/0, type: physical, slot: 0}
+      - {id: i1, label: GigabitEthernet0/1, type: physical, slot: 1}
+links:
+  - {id: l0, n1: n0, i1: i3, n2: n1, i2: i1}
+  - {id: l1, n1: n0, i1: i1, n2: n2, i2: i1}

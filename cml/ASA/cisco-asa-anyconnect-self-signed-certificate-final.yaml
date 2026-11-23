@@ -1,0 +1,54 @@
+annotations: []
+smart_annotations: []
+nodes:
+- boot_disk_size: null
+  configuration:
+  - name: day0-config
+    content: "hostname ASA1\ndomain-name NETWORKLESSONS.LOCAL\ninterface GigabitEthernet0/0\n\
+      \ nameif outside\n security-level 0\n ip address 10.10.10.1 255.255.255.0\n\
+      \ no shutdown\ncrypto ca trustpoint SELF_TRUSTPOINT\n enrollment self\n fqdn\
+      \ ASA1.NETWORKLESSONS.LOCAL\n subject-name CN=ASA1.NETWORKLESSONS.LOCAL\n keypair\
+      \ MY_RSA_KEY\nssl trust-point SELF_TRUSTPOINT outside\nhttp server enable\n\
+      http 10.10.10.0 255.255.255.0 outside\nend"
+  cpu_limit: null
+  cpus: null
+  data_volume: null
+  hide_links: false
+  id: n0
+  image_definition: null
+  label: ASA1
+  node_definition: asav
+  parameters: {}
+  priority: null
+  pyats:
+    username: null
+    password: null
+    enable_password: null
+  ram: null
+  tags: []
+  x: 0
+  y: 0
+  interfaces:
+  - id: i0
+    label: Management0/0
+    mac_address: null
+    type: physical
+    slot: 0
+  - id: i1
+    label: GigabitEthernet0/0
+    mac_address: null
+    type: physical
+    slot: 1
+links: []
+lab:
+  description: 'cisco-asa-anyconnect-self-signed-certificate (post 6372) final config.
+    ASA1 ASAv 9.24(1), Gi0/0 outside 10.10.10.1/24. The RSA key and certificate are
+    not in the startup config: run ''crypto key generate rsa label MY_RSA_KEY modulus
+    2048'' and ''crypto ca enroll SELF_TRUSTPOINT noconfirm'' after boot.'
+  notes: ''
+  title: cisco-asa-anyconnect-self-signed-certificate final (lab-424)
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1

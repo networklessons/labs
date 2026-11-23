@@ -1,0 +1,80 @@
+lab:
+  title: cisco-asa-firewall-active-standby-failover (lab-440)
+  description: 'cisco-asa-firewall-active-standby-failover (post 6435): ASAv 9.24(1). ASA1 primary, ASA2 secondary, Gi0/2 LAN failover + state link 192.168.12.0/24, Gi0/0 INSIDE on SW1, Gi0/1 OUTSIDE on SW2.'
+  notes: ''
+  version: 0.3.1
+nodes:
+  - id: n0
+    label: ASA1
+    node_definition: asav
+    x: 0
+    y: 0
+    configuration:
+      - name: day0-config
+        content: |-
+          hostname ASA1
+          interface GigabitEthernet0/2
+           no shutdown
+          failover lan unit primary
+          failover lan interface FAILOVER GigabitEthernet0/2
+          failover link FAILOVER GigabitEthernet0/2
+          failover interface ip FAILOVER 192.168.12.1 255.255.255.0 standby 192.168.12.2
+          failover
+          interface GigabitEthernet0/0
+           no shutdown
+           nameif INSIDE
+           ip address 192.168.1.254 255.255.255.0 standby 192.168.1.253
+          interface GigabitEthernet0/1
+           no shutdown
+           nameif OUTSIDE
+           ip address 192.168.2.254 255.255.255.0 standby 192.168.2.253
+          monitor-interface INSIDE
+          monitor-interface OUTSIDE
+    interfaces:
+      - {id: i0, label: Management0/0, type: physical, slot: 0}
+      - {id: i1, label: GigabitEthernet0/0, type: physical, slot: 1}
+      - {id: i2, label: GigabitEthernet0/1, type: physical, slot: 2}
+      - {id: i3, label: GigabitEthernet0/2, type: physical, slot: 3}
+  - id: n1
+    label: ASA2
+    node_definition: asav
+    x: 300
+    y: 0
+    configuration:
+      - name: day0-config
+        content: |-
+          hostname ASA2
+          failover lan unit secondary
+          failover lan interface FAILOVER GigabitEthernet0/2
+          failover link FAILOVER GigabitEthernet0/2
+          failover interface ip FAILOVER 192.168.12.1 255.255.255.0 standby 192.168.12.2
+          failover
+          interface GigabitEthernet0/2
+           no shutdown
+    interfaces:
+      - {id: i0, label: Management0/0, type: physical, slot: 0}
+      - {id: i1, label: GigabitEthernet0/0, type: physical, slot: 1}
+      - {id: i2, label: GigabitEthernet0/1, type: physical, slot: 2}
+      - {id: i3, label: GigabitEthernet0/2, type: physical, slot: 3}
+  - id: n2
+    label: SW1
+    node_definition: unmanaged_switch
+    x: 150
+    y: -150
+    interfaces:
+      - {id: i0, label: port0, type: physical, slot: 0}
+      - {id: i1, label: port1, type: physical, slot: 1}
+  - id: n3
+    label: SW2
+    node_definition: unmanaged_switch
+    x: 150
+    y: 150
+    interfaces:
+      - {id: i0, label: port0, type: physical, slot: 0}
+      - {id: i1, label: port1, type: physical, slot: 1}
+links:
+  - {id: l0, n1: n0, i1: i1, n2: n2, i2: i0, label: ASA1-Gi0/0-SW1}
+  - {id: l1, n1: n1, i1: i1, n2: n2, i2: i1, label: ASA2-Gi0/0-SW1}
+  - {id: l2, n1: n0, i1: i2, n2: n3, i2: i0, label: ASA1-Gi0/1-SW2}
+  - {id: l3, n1: n1, i1: i2, n2: n3, i2: i1, label: ASA2-Gi0/1-SW2}
+  - {id: l4, n1: n0, i1: i3, n2: n1, i2: i3, label: ASA1-ASA2-failover}

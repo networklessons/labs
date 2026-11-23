@@ -1,0 +1,13 @@
+---
+# Copy index.html
+- hosts: ubuntu-servers
+  become: yes
+  tasks:
+  - name: Copy index.html to /var/www/html
+    copy:
+      src: html/index.html
+      dest: /var/www/html/index.html
+      owner: www-data
+      group: www-data
+      mode: u=rw,g=r,o=r
+

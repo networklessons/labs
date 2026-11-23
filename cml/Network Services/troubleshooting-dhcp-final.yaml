@@ -1,0 +1,103 @@
+lab:
+  title: Troubleshooting DHCP relay re-capture (lab-357)
+  description: "troubleshooting-dhcp (post 7091) relay scenario: DHCPClient Gi0/0 - Gi0/0 DHCPRelay Gi0/1 - Gi0/0 DHCPServer. IOSv 15.9(3)M9. Starting state: server has no route back to 192.168.12.0/24."
+  notes: ''
+  version: 0.3.1
+annotations: []
+nodes:
+  - id: n0
+    label: DHCPClient
+    node_definition: iosv
+    x: 0
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname DHCPClient
+          no ip domain lookup
+          interface GigabitEthernet0/0
+           ip address dhcp
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+  - id: n1
+    label: DHCPRelay
+    node_definition: iosv
+    x: 200
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname DHCPRelay
+          no ip domain lookup
+          interface GigabitEthernet0/0
+           ip address 192.168.12.2 255.255.255.0
+           ip helper-address 192.168.23.3
+           no shutdown
+          interface GigabitEthernet0/1
+           ip address 192.168.23.2 255.255.255.0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+      - id: i2
+        label: GigabitEthernet0/1
+        type: physical
+        slot: 1
+  - id: n2
+    label: DHCPServer
+    node_definition: iosv
+    x: 400
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname DHCPServer
+          no ip domain lookup
+          ip dhcp pool MYPOOL
+           network 192.168.12.0 255.255.255.0
+          interface GigabitEthernet0/0
+           ip address 192.168.23.3 255.255.255.0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+           logging synchronous
+          end
+    interfaces:
+      - id: i0
+        label: Loopback0
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n0
+    i1: i1
+    n2: n1
+    i2: i1
+  - id: l1
+    n1: n1
+    i1: i2
+    n2: n2
+    i2: i1

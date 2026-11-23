@@ -1,0 +1,373 @@
+lab:
+  title: DMVPN dual hub dual cloud delay test (lab-418 v2)
+  description: 'dmvpn-dual-hub-dual-cloud (post 21255): R1, Hub1, Hub2, Spoke1, Spoke2
+    IOSv 15.9, ISP1/ISP2 replaced by unmanaged switches. Fact-check 418.A1: Hub2 Tunnel2
+    delay vs path through Hub1.'
+  notes: 'Run order: boot with these startup configs, then Hub2: interface Tunnel 2 / delay 6000. Captured R1 + Hub2 show ip route eigrp | begin Gateway and Hub2 show ip eigrp topology 3.3.3.3/32 within ~1 min after the change.'
+  version: 0.3.1
+nodes:
+- id: n0
+  label: R1
+  node_definition: iosv
+  x: 0
+  y: -300
+  configuration:
+  - name: ios_config.txt
+    content: "hostname R1\nno ip domain-lookup\nline con 0\n exec-timeout 0 0\n logging\
+      \ synchronous\ninterface Loopback0\n ip address 1.1.1.1 255.255.255.255\n!\n\
+      interface GigabitEthernet0/1\n ip address 10.10.10.1 255.255.255.0\n no shutdown\n\
+      !\nrouter eigrp 1\n no auto-summary\n network 1.1.1.1 0.0.0.0\n network 10.10.10.0\
+      \ 0.0.0.255\n!\nend"
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet0/2
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/3
+    type: physical
+    slot: 3
+  tags: []
+- id: n1
+  label: Hub1
+  node_definition: iosv
+  x: -150
+  y: -150
+  configuration:
+  - name: ios_config.txt
+    content: "hostname Hub1\nno ip domain-lookup\nline con 0\n exec-timeout 0 0\n\
+      \ logging synchronous\ninterface Tunnel1\n ip address 172.16.1.1 255.255.255.0\n\
+      \ no ip redirects\n no ip split-horizon eigrp 1\n ip nhrp authentication DMVPN\n\
+      \ ip nhrp map multicast dynamic\n ip nhrp network-id 1\n tunnel source GigabitEthernet0/1\n\
+      \ tunnel mode gre multipoint\n tunnel key 1\n!\ninterface GigabitEthernet0/1\n\
+      \ ip address 192.168.1.1 255.255.255.0\n no shutdown\n!\ninterface GigabitEthernet0/3\n\
+      \ ip address 10.10.10.254 255.255.255.0\n no shutdown\n!\nrouter eigrp 1\n no\
+      \ auto-summary\n network 10.10.10.0 0.0.0.255\n network 172.16.1.0 0.0.0.255\n\
+      !\nend"
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet0/2
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/3
+    type: physical
+    slot: 3
+  tags: []
+- id: n2
+  label: Hub2
+  node_definition: iosv
+  x: 150
+  y: -150
+  configuration:
+  - name: ios_config.txt
+    content: "hostname Hub2\nno ip domain-lookup\nline con 0\n exec-timeout 0 0\n\
+      \ logging synchronous\ninterface Tunnel2\n ip address 172.16.2.2 255.255.255.0\n\
+      \ no ip redirects\n no ip split-horizon eigrp 1\n ip nhrp authentication DMVPN\n\
+      \ ip nhrp map multicast dynamic\n ip nhrp network-id 2\n tunnel source GigabitEthernet0/1\n\
+      \ tunnel mode gre multipoint\n tunnel key 2\n!\ninterface GigabitEthernet0/1\n\
+      \ ip address 192.168.2.2 255.255.255.0\n no shutdown\n!\ninterface GigabitEthernet0/3\n\
+      \ ip address 10.10.10.253 255.255.255.0\n no shutdown\n!\nrouter eigrp 1\n no\
+      \ auto-summary\n network 10.10.10.0 0.0.0.255\n network 172.16.2.0 0.0.0.255\n\
+      !\nend"
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet0/2
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/3
+    type: physical
+    slot: 3
+  tags: []
+- id: n3
+  label: Spoke1
+  node_definition: iosv
+  x: -150
+  y: 150
+  configuration:
+  - name: ios_config.txt
+    content: "hostname Spoke1\nno ip domain-lookup\nline con 0\n exec-timeout 0 0\n\
+      \ logging synchronous\ninterface Loopback0\n ip address 3.3.3.3 255.255.255.255\n\
+      !\ninterface Tunnel1\n ip address 172.16.1.3 255.255.255.0\n no ip redirects\n\
+      \ ip nhrp authentication DMVPN\n ip nhrp map 172.16.1.1 192.168.1.1\n ip nhrp\
+      \ map multicast 192.168.1.1\n ip nhrp network-id 1\n ip nhrp nhs 172.16.1.1\n\
+      \ tunnel source GigabitEthernet0/1\n tunnel mode gre multipoint\n tunnel key\
+      \ 1\n!\ninterface Tunnel2\n ip address 172.16.2.3 255.255.255.0\n no ip redirects\n\
+      \ ip nhrp authentication DMVPN\n ip nhrp map 172.16.2.2 192.168.2.2\n ip nhrp\
+      \ map multicast 192.168.2.2\n ip nhrp network-id 2\n ip nhrp nhs 172.16.2.2\n\
+      \ tunnel source GigabitEthernet0/2\n tunnel mode gre multipoint\n tunnel key\
+      \ 2\n!\ninterface GigabitEthernet0/1\n ip address 192.168.1.3 255.255.255.0\n\
+      \ no shutdown\n!\ninterface GigabitEthernet0/2\n ip address 192.168.2.3 255.255.255.0\n\
+      \ no shutdown\n!\nrouter eigrp 1\n no auto-summary\n network 3.3.3.3 0.0.0.0\n\
+      \ network 172.16.1.0 0.0.0.255\n network 172.16.2.0 0.0.0.255\n!\nend"
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet0/2
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/3
+    type: physical
+    slot: 3
+  tags: []
+- id: n4
+  label: Spoke2
+  node_definition: iosv
+  x: 150
+  y: 150
+  configuration:
+  - name: ios_config.txt
+    content: "hostname Spoke2\nno ip domain-lookup\nline con 0\n exec-timeout 0 0\n\
+      \ logging synchronous\ninterface Loopback0\n ip address 4.4.4.4 255.255.255.255\n\
+      !\ninterface Tunnel1\n ip address 172.16.1.4 255.255.255.0\n no ip redirects\n\
+      \ ip nhrp authentication DMVPN\n ip nhrp map 172.16.1.1 192.168.1.1\n ip nhrp\
+      \ map multicast 192.168.1.1\n ip nhrp network-id 1\n ip nhrp nhs 172.16.1.1\n\
+      \ tunnel source GigabitEthernet0/1\n tunnel mode gre multipoint\n tunnel key\
+      \ 1\n!\ninterface Tunnel2\n ip address 172.16.2.4 255.255.255.0\n no ip redirects\n\
+      \ ip nhrp authentication DMVPN\n ip nhrp map 172.16.2.2 192.168.2.2\n ip nhrp\
+      \ map multicast 192.168.2.2\n ip nhrp network-id 2\n ip nhrp nhs 172.16.2.2\n\
+      \ tunnel source GigabitEthernet0/2\n tunnel mode gre multipoint\n tunnel key\
+      \ 2\n!\ninterface GigabitEthernet0/1\n ip address 192.168.1.4 255.255.255.0\n\
+      \ no shutdown\n!\ninterface GigabitEthernet0/2\n ip address 192.168.2.4 255.255.255.0\n\
+      \ no shutdown\n!\nrouter eigrp 1\n no auto-summary\n network 4.4.4.4 0.0.0.0\n\
+      \ network 172.16.1.0 0.0.0.255\n network 172.16.2.0 0.0.0.255\n!\nend"
+  interfaces:
+  - id: i0
+    label: Loopback0
+    type: loopback
+  - id: i1
+    label: GigabitEthernet0/0
+    type: physical
+    slot: 0
+  - id: i2
+    label: GigabitEthernet0/1
+    type: physical
+    slot: 1
+  - id: i3
+    label: GigabitEthernet0/2
+    type: physical
+    slot: 2
+  - id: i4
+    label: GigabitEthernet0/3
+    type: physical
+    slot: 3
+  tags: []
+- id: n5
+  label: LAN
+  node_definition: unmanaged_switch
+  x: 0
+  y: -225
+  interfaces:
+  - id: i0
+    label: port0
+    type: physical
+    slot: 0
+  - id: i1
+    label: port1
+    type: physical
+    slot: 1
+  - id: i2
+    label: port2
+    type: physical
+    slot: 2
+  - id: i3
+    label: port3
+    type: physical
+    slot: 3
+  - id: i4
+    label: port4
+    type: physical
+    slot: 4
+  - id: i5
+    label: port5
+    type: physical
+    slot: 5
+  - id: i6
+    label: port6
+    type: physical
+    slot: 6
+  - id: i7
+    label: port7
+    type: physical
+    slot: 7
+  tags: []
+- id: n6
+  label: ISP1
+  node_definition: unmanaged_switch
+  x: -150
+  y: 0
+  interfaces:
+  - id: i0
+    label: port0
+    type: physical
+    slot: 0
+  - id: i1
+    label: port1
+    type: physical
+    slot: 1
+  - id: i2
+    label: port2
+    type: physical
+    slot: 2
+  - id: i3
+    label: port3
+    type: physical
+    slot: 3
+  - id: i4
+    label: port4
+    type: physical
+    slot: 4
+  - id: i5
+    label: port5
+    type: physical
+    slot: 5
+  - id: i6
+    label: port6
+    type: physical
+    slot: 6
+  - id: i7
+    label: port7
+    type: physical
+    slot: 7
+  tags: []
+- id: n7
+  label: ISP2
+  node_definition: unmanaged_switch
+  x: 150
+  y: 0
+  interfaces:
+  - id: i0
+    label: port0
+    type: physical
+    slot: 0
+  - id: i1
+    label: port1
+    type: physical
+    slot: 1
+  - id: i2
+    label: port2
+    type: physical
+    slot: 2
+  - id: i3
+    label: port3
+    type: physical
+    slot: 3
+  - id: i4
+    label: port4
+    type: physical
+    slot: 4
+  - id: i5
+    label: port5
+    type: physical
+    slot: 5
+  - id: i6
+    label: port6
+    type: physical
+    slot: 6
+  - id: i7
+    label: port7
+    type: physical
+    slot: 7
+  tags: []
+links:
+- id: l0
+  n1: n0
+  i1: i2
+  n2: n5
+  i2: i0
+  label: R1-Gi0/1<->LAN-port0
+- id: l1
+  n1: n1
+  i1: i4
+  n2: n5
+  i2: i1
+  label: Hub1-Gi0/3<->LAN-port1
+- id: l2
+  n1: n2
+  i1: i4
+  n2: n5
+  i2: i2
+  label: Hub2-Gi0/3<->LAN-port2
+- id: l3
+  n1: n1
+  i1: i2
+  n2: n6
+  i2: i0
+  label: Hub1-Gi0/1<->ISP1-port0
+- id: l4
+  n1: n3
+  i1: i2
+  n2: n6
+  i2: i1
+  label: Spoke1-Gi0/1<->ISP1-port1
+- id: l5
+  n1: n4
+  i1: i2
+  n2: n6
+  i2: i2
+  label: Spoke2-Gi0/1<->ISP1-port2
+- id: l6
+  n1: n2
+  i1: i2
+  n2: n7
+  i2: i0
+  label: Hub2-Gi0/1<->ISP2-port0
+- id: l7
+  n1: n3
+  i1: i3
+  n2: n7
+  i2: i1
+  label: Spoke1-Gi0/2<->ISP2-port1
+- id: l8
+  n1: n4
+  i1: i3
+  n2: n7
+  i2: i2
+  label: Spoke2-Gi0/2<->ISP2-port2
+annotations: []
+

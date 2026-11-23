@@ -1,0 +1,31 @@
+---
+- hosts: campus
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+  - name: Configure credentials
+    set_fact:
+      provider:
+        host: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+
+  - name: Backup Configuration
+    ios_config:
+      provider: "{{ provider }}"
+      backup: yes
+
+  - name: RUN 'Set DNS'
+    ios_config:
+      provider: "{{ provider }}"
+      lines:
+        - ip name-server 8.8.8.8
+        - ip name-server 8.8.4.4
+
+  - name: RUN 'Set NTP'
+    ios_config:
+      provider: "{{ provider }}"
+      lines:
+        - ntp server nl.pool.ntp.org

@@ -1,0 +1,86 @@
+lab:
+  title: EIGRP route-map filtering final config (lab-426 v2)
+  description: "eigrp-route-map-filtering (post 7779): R1 six loopbacks, R1 Gi0/0 - Gi0/0 R2, 192.168.12.0/24, EIGRP 1. IOSv 15.9."
+  notes: ""
+  version: 0.2.2
+nodes:
+  - id: n0
+    label: R1
+    node_definition: iosv
+    x: 0
+    y: 0
+    configuration: |-
+      hostname R1
+      no ip domain lookup
+      interface Loopback0
+       ip address 1.1.1.1 255.255.255.0
+      interface Loopback1
+       ip address 172.16.0.1 255.255.255.0
+      interface Loopback2
+       ip address 172.16.1.1 255.255.255.128
+      interface Loopback3
+       ip address 172.16.2.1 255.255.255.192
+      interface Loopback4
+       ip address 172.16.3.1 255.255.255.224
+      interface Loopback5
+       ip address 192.168.1.1 255.255.255.0
+      interface GigabitEthernet0/0
+       ip address 192.168.12.1 255.255.255.0
+       no shutdown
+      router eigrp 1
+       network 1.0.0.0
+       network 172.16.0.0 0.0.3.255
+       network 192.168.1.0
+       network 192.168.12.0
+       distribute-list route-map FILTER_OUT out
+      ip access-list standard NET_192
+       permit 192.168.1.0 0.0.0.255
+      ip prefix-list SMALL_PREFIXES seq 5 permit 172.16.0.0/16 ge 26
+      route-map FILTER_OUT deny 10
+       match ip address NET_192
+      route-map FILTER_OUT deny 20
+       match ip address prefix-list SMALL_PREFIXES
+      route-map FILTER_OUT permit 30
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      end
+    interfaces:
+      - id: i0
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+  - id: n1
+    label: R2
+    node_definition: iosv
+    x: 200
+    y: 0
+    configuration: |-
+      hostname R2
+      no ip domain lookup
+      interface GigabitEthernet0/0
+       ip address 192.168.12.2 255.255.255.0
+       no shutdown
+      router eigrp 1
+       network 192.168.12.0
+       distribute-list route-map FILTER_IN in
+      ip access-list standard NET_1
+       deny 1.1.1.0 0.0.0.255
+       permit any
+      route-map FILTER_IN permit 10
+       match ip address NET_1
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      end
+    interfaces:
+      - id: i0
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    i1: i0
+    n1: n0
+    i2: i0
+    n2: n1

@@ -1,0 +1,143 @@
+lab:
+  title: ASA NAT exemption object-prompt test (lab-427)
+  description: 'cisco-asa-nat-exemption (post 64418): ASA1/ASA2 ASAv IKEv2 L2L with PAT; final state, NAT exemption on both ASAs, IKEv2 DH group 14. S1/S2 IOL XE hosts with a static default route; with no ip routing plus ip default-gateway, S1 ARPed for 192.168.2.102 in my tests.'
+  notes: ''
+  version: 0.3.1
+nodes:
+  - id: n0
+    label: ASA1
+    node_definition: asav
+    x: 0
+    y: 0
+    configuration:
+      - name: day0-config
+        content: |-
+          hostname ASA1
+          interface GigabitEthernet0/0
+           nameif OUTSIDE
+           security-level 0
+           ip address 10.10.10.1 255.255.255.0
+           no shutdown
+          interface GigabitEthernet0/1
+           nameif INSIDE
+           security-level 100
+           ip address 192.168.1.254 255.255.255.0
+           no shutdown
+          object network INSIDE
+           subnet 192.168.1.0 255.255.255.0
+          object network LAN2
+           subnet 192.168.2.0 255.255.255.0
+          nat (INSIDE,OUTSIDE) source static INSIDE INSIDE destination static LAN2 LAN2
+          object network INSIDE
+           nat (INSIDE,OUTSIDE) dynamic interface
+          crypto ikev2 policy 10
+           encryption aes
+           group 14
+           prf sha
+           lifetime seconds 86400
+          crypto ipsec ikev2 ipsec-proposal MY_PROPOSAL
+           protocol esp encryption aes
+           protocol esp integrity sha-1
+          access-list LAN1_LAN2 extended permit ip 192.168.1.0 255.255.255.0 192.168.2.0 255.255.255.0
+          crypto map MY_CRYPTO_MAP 1 match address LAN1_LAN2
+          crypto map MY_CRYPTO_MAP 1 set peer 10.10.10.2
+          crypto map MY_CRYPTO_MAP 1 set ikev2 ipsec-proposal MY_PROPOSAL
+          crypto map MY_CRYPTO_MAP interface OUTSIDE
+          tunnel-group 10.10.10.2 type ipsec-l2l
+          tunnel-group 10.10.10.2 ipsec-attributes
+           ikev2 local-authentication pre-shared-key CISCO123
+           ikev2 remote-authentication pre-shared-key CISCO456
+          crypto ikev2 enable OUTSIDE
+          route OUTSIDE 192.168.2.0 255.255.255.0 10.10.10.2
+    interfaces:
+      - {id: i0, label: Management0/0, slot: 0, type: physical}
+      - {id: i1, label: GigabitEthernet0/0, slot: 1, type: physical}
+      - {id: i2, label: GigabitEthernet0/1, slot: 2, type: physical}
+  - id: n1
+    label: ASA2
+    node_definition: asav
+    x: 300
+    y: 0
+    configuration:
+      - name: day0-config
+        content: |-
+          hostname ASA2
+          interface GigabitEthernet0/0
+           nameif OUTSIDE
+           security-level 0
+           ip address 10.10.10.2 255.255.255.0
+           no shutdown
+          interface GigabitEthernet0/1
+           nameif INSIDE
+           security-level 100
+           ip address 192.168.2.254 255.255.255.0
+           no shutdown
+          object network INSIDE
+           subnet 192.168.2.0 255.255.255.0
+           nat (INSIDE,OUTSIDE) dynamic interface
+          object network LAN1
+           subnet 192.168.1.0 255.255.255.0
+          nat (INSIDE,OUTSIDE) source static INSIDE INSIDE destination static LAN1 LAN1
+          crypto ikev2 policy 10
+           encryption aes
+           group 14
+           prf sha
+           lifetime seconds 86400
+          crypto ipsec ikev2 ipsec-proposal MY_PROPOSAL
+           protocol esp encryption aes
+           protocol esp integrity sha-1
+          access-list LAN2_LAN1 extended permit ip 192.168.2.0 255.255.255.0 192.168.1.0 255.255.255.0
+          crypto map MY_CRYPTO_MAP 1 match address LAN2_LAN1
+          crypto map MY_CRYPTO_MAP 1 set peer 10.10.10.1
+          crypto map MY_CRYPTO_MAP 1 set ikev2 ipsec-proposal MY_PROPOSAL
+          crypto map MY_CRYPTO_MAP interface OUTSIDE
+          tunnel-group 10.10.10.1 type ipsec-l2l
+          tunnel-group 10.10.10.1 ipsec-attributes
+           ikev2 local-authentication pre-shared-key CISCO456
+           ikev2 remote-authentication pre-shared-key CISCO123
+          crypto ikev2 enable OUTSIDE
+          route OUTSIDE 192.168.1.0 255.255.255.0 10.10.10.1
+    interfaces:
+      - {id: i0, label: Management0/0, slot: 0, type: physical}
+      - {id: i1, label: GigabitEthernet0/0, slot: 1, type: physical}
+      - {id: i2, label: GigabitEthernet0/1, slot: 2, type: physical}
+  - id: n2
+    label: S1
+    node_definition: iol-xe
+    x: 0
+    y: 200
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname S1
+          ip routing
+          interface Ethernet0/0
+           ip address 192.168.1.101 255.255.255.0
+           no shutdown
+          ip route 0.0.0.0 0.0.0.0 192.168.1.254
+          ip http server
+          end
+    interfaces:
+      - {id: i0, label: Ethernet0/0, slot: 0, type: physical}
+  - id: n3
+    label: S2
+    node_definition: iol-xe
+    x: 300
+    y: 200
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname S2
+          ip routing
+          interface Ethernet0/0
+           ip address 192.168.2.102 255.255.255.0
+           no shutdown
+          ip route 0.0.0.0 0.0.0.0 192.168.2.254
+          ip http server
+          end
+    interfaces:
+      - {id: i0, label: Ethernet0/0, slot: 0, type: physical}
+links:
+  - {id: l0, n1: n0, i1: i1, n2: n1, i2: i1}
+  - {id: l1, n1: n0, i1: i2, n2: n2, i2: i0}
+  - {id: l2, n1: n1, i1: i2, n2: n3, i2: i0}

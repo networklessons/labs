@@ -1,0 +1,15 @@
+[distribution]
+DSW1 ansible_host=172.16.1.101
+DSW2 ansible_host=172.16.1.102
+
+[access]
+ASW1 ansible_host=172.16.1.103
+ASW2 ansible_host=172.16.1.104
+
+[campus:children]
+distribution
+access
+
+[all:vars]
+ansible_user=admin
+ansible_password=cisco

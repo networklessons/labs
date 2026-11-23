@@ -1,0 +1,88 @@
+lab:
+  title: Device programmability NETCONF re-capture (lab-417)
+  description: 'device-programmability (post 58367): manual NETCONF over SSH port 830 to R1 CSR1000v (netconf-yang only) from H1 Ubuntu. H1 ens2 to System Bridge for management.'
+  notes: ''
+  version: 0.3.1
+nodes:
+  - id: n0
+    label: R1
+    node_definition: csr1000v
+    x: -200
+    y: 0
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          platform console serial
+          hostname R1
+          no ip domain lookup
+          !
+          username cisco privilege 15 secret cisco
+          !
+          interface GigabitEthernet2
+           ip address 172.16.1.1 255.255.255.0
+           no shutdown
+          !
+          netconf-yang
+          !
+          line con 0
+           exec-timeout 0 0
+          line vty 0 4
+           login local
+           transport input ssh
+          !
+          end
+    interfaces:
+      - {id: i0, label: Loopback0, type: loopback}
+      - {id: i1, label: GigabitEthernet1, type: physical, slot: 0}
+      - {id: i2, label: GigabitEthernet2, type: physical, slot: 1}
+  - id: n1
+    label: H1
+    node_definition: ubuntu
+    x: 100
+    y: 0
+    configuration:
+      - name: user-data
+        content: |-
+          #cloud-config
+          hostname: h1
+          manage_etc_hosts: True
+          system_info:
+            default_user:
+              name: cisco
+          password: cisco
+          chpasswd: { expire: False }
+          ssh_pwauth: True
+          write_files:
+            - path: /usr/local/bin/askpass
+              permissions: '0755'
+              content: |
+                #!/bin/sh
+                echo cisco
+      - name: network-config
+        content: |-
+          #network-config
+          network:
+            version: 2
+            ethernets:
+              ens2:
+                dhcp4: true
+                optional: true
+              ens3:
+                addresses: [172.16.1.2/24]
+                optional: true
+    interfaces:
+      - {id: i0, label: ens2, type: physical, slot: 0}
+      - {id: i1, label: ens3, type: physical, slot: 1}
+  - id: n2
+    label: ext-conn-0
+    node_definition: external_connector
+    x: 400
+    y: 0
+    configuration:
+      - name: default
+        content: System Bridge
+    interfaces:
+      - {id: i0, label: port, type: physical, slot: 0}
+links:
+  - {id: l0, n1: n0, i1: i2, n2: n1, i2: i1}
+  - {id: l1, n1: n1, i1: i0, n2: n2, i2: i0}

@@ -1,0 +1,109 @@
+annotations: []
+smart_annotations: []
+nodes:
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R1
+          no ip domain-lookup
+          no service timestamps debug
+          no service timestamps log
+          logging discriminator NOCFG mnemonics drops CONFIG_I
+          logging buffered discriminator NOCFG 512000 debugging
+          no logging console
+          interface GigabitEthernet0/0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n0
+    image_definition: null
+    label: R1
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 0
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+  - boot_disk_size: null
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R2
+          no ip domain-lookup
+          no service timestamps debug
+          no service timestamps log
+          logging discriminator NOCFG mnemonics drops CONFIG_I
+          logging buffered discriminator NOCFG 512000 debugging
+          no logging console
+          interface GigabitEthernet0/0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    cpu_limit: null
+    cpus: null
+    data_volume: null
+    hide_links: false
+    id: n1
+    image_definition: null
+    label: R2
+    node_definition: iosv
+    parameters: {}
+    priority: null
+    pyats:
+      username: null
+      password: null
+      enable_password: null
+    ram: null
+    tags: []
+    x: 200
+    y: 0
+    interfaces:
+      - id: i0
+        label: Loopback0
+        mac_address: null
+        type: loopback
+      - id: i1
+        label: GigabitEthernet0/0
+        mac_address: null
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1
+    conditioning: {}
+    label: R1-GigabitEthernet0/0<->R2-GigabitEthernet0/0
+lab:
+  description: 'troubleshooting-eigrp-neighbor-adjacency (post 7019) full re-capture, R1-R2 IOSv 15.9(3)M9 Gi0/0. Startup = base only; scenarios configured from the CLI in order: 1 uncommon subnet (R1 192.168.12.1/24, R2 192.168.21.2/24, EIGRP 12; fix R2 to 192.168.12.2 + network 192.168.12.0); 2 K-values (R1 metric weights 0 1 1 1 1 0; fix same on R2; then no metric weights on both); 3 AS mismatch (R2 router eigrp 21; fix no router eigrp 21 + router eigrp 12); 4 passive (R2 passive-interface Gi0/0; fix no passive-interface); 5 multicast filter: see lab-421 first run (R2 ACL BLOCKMULTICAST inbound). Frame relay not possible on IOSv.'
+  notes: ''
+  title: EIGRP neighbor adjacency full re-capture (lab-421 v2)
+  node_staging:
+    enabled: false
+    start_remaining: true
+    abort_on_failure: false
+  version: 0.3.1
+

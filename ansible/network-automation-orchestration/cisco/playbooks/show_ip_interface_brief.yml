@@ -1,0 +1,21 @@
+---
+- hosts: campus
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: Configure credentials
+    set_fact:
+      provider:
+        host: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+
+  - name: RUN 'show ip interface brief'
+    ios_command:
+      provider: "{{ provider }}"
+      commands:
+        - show ip interface brief
+    register: ip_interfaces
+    
+  - debug: var=ip_interfaces.stdout_lines

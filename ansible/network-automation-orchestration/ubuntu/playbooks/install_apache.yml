@@ -1,0 +1,9 @@
+---
+# Install Apache Webserver
+- hosts: ubuntu-servers
+  become: yes
+  tasks:
+  - name: Install Apache
+    package:
+      name: apache2
+      state: present

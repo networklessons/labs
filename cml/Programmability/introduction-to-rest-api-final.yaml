@@ -1,0 +1,27 @@
+annotations: []
+nodes:
+  - id: n0
+    label: R1
+    node_definition: csr1000v
+    image_definition: null   # default = CSR1000v 17.3.8a, the only CSR1000v image on this CML
+    configuration:
+      - name: iosxe_config.txt
+        content: |-
+          hostname R1
+          username admin privilege 15 secret cisco
+          interface Loopback0
+           ip address 1.1.1.1 255.255.255.255
+          interface GigabitEthernet2
+           ip address 172.16.1.1 255.255.255.0
+           no shutdown
+          end
+    x: 0
+    y: 0
+    interfaces:
+      - {id: i0, label: Loopback0, type: loopback}
+      - {id: i1, label: GigabitEthernet1, type: physical, slot: 0}
+      - {id: i2, label: GigabitEthernet2, type: physical, slot: 1}
+links: []
+lab:
+  title: REST API remote-management test (lab-446)
+  version: 0.3.1

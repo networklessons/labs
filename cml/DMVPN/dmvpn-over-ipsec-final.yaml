@@ -1,0 +1,156 @@
+lab:
+  title: DMVPN over IPsec order test (lab-382)
+  description: 'dmvpn-over-ipsec (post 19467): Hub, Spoke1, Spoke2 IOSv with the lesson
+    final configs (IKEv1, transport mode, tunnel protection, RIP). Order of ISAKMP/IPsec
+    vs NHRP registration on Spoke1 no shutdown Tunnel0.'
+  notes: ''
+  version: 0.2.2
+nodes:
+- id: n0
+  label: Hub
+  node_definition: iosv
+  x: 0
+  y: 0
+  configuration: "hostname Hub\n!\nno ip domain lookup\n!\ncrypto isakmp policy 10\n\
+    \ encr aes\n hash sha256\n authentication pre-share\n group 5\ncrypto isakmp key\
+    \ DMVPN_KEY address 0.0.0.0        \n!\ncrypto ipsec transform-set DMVPN_TRANSFORM\
+    \ esp-aes esp-sha-hmac \n mode transport\n!\ncrypto ipsec profile DMVPN_PROFILE\n\
+    \ set transform-set DMVPN_TRANSFORM \n!\ninterface Loopback0\n ip address 1.1.1.1\
+    \ 255.255.255.255\n!\ninterface Tunnel0\n ip address 172.16.123.1 255.255.255.0\n\
+    \ no ip redirects\n ip nhrp authentication DMVPN\n ip nhrp map multicast dynamic\n\
+    \ ip nhrp network-id 1\n no ip split-horizon\n tunnel source GigabitEthernet0/1\n\
+    \ tunnel mode gre multipoint\n tunnel protection ipsec profile DMVPN_PROFILE\n\
+    !\ninterface GigabitEthernet0/1\n ip address 192.168.123.1 255.255.255.0\n no\
+    \ shutdown\n!\nrouter rip\n version 2\n network 1.0.0.0\n network 172.16.0.0\n\
+    \ no auto-summary\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n!\n\
+    end"
+  interfaces:
+  - id: n0i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: n0i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: n0i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: n0i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+- id: n1
+  label: Spoke1
+  node_definition: iosv
+  x: -200
+  y: 200
+  configuration: "hostname Spoke1\n!\nno ip domain lookup\n!\ncrypto isakmp policy\
+    \ 10\n encr aes\n hash sha256\n authentication pre-share\n group 5\ncrypto isakmp\
+    \ key DMVPN_KEY address 0.0.0.0        \n!\ncrypto ipsec transform-set DMVPN_TRANSFORM\
+    \ esp-aes esp-sha-hmac \n mode transport\n!\ncrypto ipsec profile DMVPN_PROFILE\n\
+    \ set transform-set DMVPN_TRANSFORM \n!\ninterface Loopback0\n ip address 2.2.2.2\
+    \ 255.255.255.255\n!\ninterface Tunnel0\n ip address 172.16.123.2 255.255.255.0\n\
+    \ no ip redirects\n ip nhrp authentication DMVPN\n ip nhrp map 172.16.123.1 192.168.123.1\n\
+    \ ip nhrp map multicast 192.168.123.1\n ip nhrp network-id 1\n ip nhrp nhs 172.16.123.1\n\
+    \ tunnel source GigabitEthernet0/1\n tunnel mode gre multipoint\n tunnel protection\
+    \ ipsec profile DMVPN_PROFILE\n!\ninterface GigabitEthernet0/1\n ip address 192.168.123.2\
+    \ 255.255.255.0\n no shutdown\n!\nrouter rip\n version 2\n network 2.0.0.0\n network\
+    \ 172.16.0.0\n no auto-summary\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n\
+    !\nend"
+  interfaces:
+  - id: n1i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: n1i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: n1i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: n1i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+- id: n2
+  label: Spoke2
+  node_definition: iosv
+  x: 200
+  y: 200
+  configuration: "hostname Spoke2\n!\nno ip domain lookup\n!\ncrypto isakmp policy\
+    \ 10\n encr aes\n hash sha256\n authentication pre-share\n group 5\ncrypto isakmp\
+    \ key DMVPN_KEY address 0.0.0.0        \n!\ncrypto ipsec transform-set DMVPN_TRANSFORM\
+    \ esp-aes esp-sha-hmac \n mode transport\n!\ncrypto ipsec profile DMVPN_PROFILE\n\
+    \ set transform-set DMVPN_TRANSFORM \n!\ninterface Loopback0\n ip address 3.3.3.3\
+    \ 255.255.255.255\n!\ninterface Tunnel0\n ip address 172.16.123.3 255.255.255.0\n\
+    \ no ip redirects\n ip nhrp authentication DMVPN\n ip nhrp map 172.16.123.1 192.168.123.1\n\
+    \ ip nhrp map multicast 192.168.123.1\n ip nhrp network-id 1\n ip nhrp nhs 172.16.123.1\n\
+    \ tunnel source GigabitEthernet0/1\n tunnel mode gre multipoint\n tunnel protection\
+    \ ipsec profile DMVPN_PROFILE\n!\ninterface GigabitEthernet0/1\n ip address 192.168.123.3\
+    \ 255.255.255.0\n no shutdown\n!\nrouter rip\n version 2\n network 3.0.0.0\n network\
+    \ 172.16.0.0\n no auto-summary\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n\
+    !\nend"
+  interfaces:
+  - id: n2i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: n2i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: n2i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: n2i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+- id: n3
+  label: SW1
+  node_definition: unmanaged_switch
+  x: 0
+  y: 100
+  configuration: ''
+  interfaces:
+  - id: n3i0
+    label: port0
+    slot: 0
+    type: physical
+  - id: n3i1
+    label: port1
+    slot: 1
+    type: physical
+  - id: n3i2
+    label: port2
+    slot: 2
+    type: physical
+  - id: n3i3
+    label: port3
+    slot: 3
+    type: physical
+links:
+- id: l0
+  n1: n0
+  i1: n0i1
+  n2: n3
+  i2: n3i0
+  label: Hub-Gi0/1<->SW1-port0
+- id: l1
+  n1: n1
+  i1: n1i1
+  n2: n3
+  i2: n3i1
+  label: Spoke1-Gi0/1<->SW1-port1
+- id: l2
+  n1: n2
+  i1: n2i1
+  n2: n3
+  i2: n3i2
+  label: Spoke2-Gi0/1<->SW1-port2
+annotations: []

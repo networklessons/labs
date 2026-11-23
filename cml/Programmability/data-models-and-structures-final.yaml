@@ -1,0 +1,84 @@
+lab:
+  title: XML-PI show arp format (lab-436)
+  description: "data-models-and-structures (post 58326). IOSv 15.9(3)M9. After boot on R1: 'event manager run WRITESPEC' (writes flash0:spec.odm with a show arp entry), then 'configure terminal' / 'format global flash0:spec.odm'. Then ping 192.168.1.2 and 'show arp | format'. Without the spec file, show arp | format fails (built-in spec has no show arp)."
+  notes: ''
+  version: 0.3.1
+nodes:
+  - id: n0
+    label: R1
+    node_definition: iosv
+    x: 0
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R1
+          no ip domain lookup
+          interface GigabitEthernet0/0
+           ip address 192.168.1.1 255.255.255.0
+           no shutdown
+          event manager applet WRITESPEC
+           event none
+           action 1.0 cli command "enable"
+           action 1.1 cli command "tclsh"
+           action 1.2 cli command "set q [format %c 34]"
+           action 1.3 cli command "set z [format %c 63]"
+           action 1.4 cli command "set f [open flash0:spec.odm w]"
+           action 2.10 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {###}]"
+           action 2.11 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {show arp}]"
+           action 2.12 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {<Zxml version=Q1.0Q encoding=QUTF-8QZ>}]"
+           action 2.13 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {<ODMSpec>}]"
+           action 2.14 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {  <Command>}]"
+           action 2.15 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {    <Name>show arp</Name>}]"
+           action 2.16 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {  </Command>}]"
+           action 2.17 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {  <OS>ios</OS>}]"
+           action 2.18 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {  <DataModel>}]"
+           action 2.19 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {    <Container name=QShowArpQ >}]"
+           action 2.20 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {      <Table name=QARPTableQ>}]"
+           action 2.21 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {        <Header name = QProtocolQ start = Q0Q end = Q9Q type = QStringQ/>}]"
+           action 2.22 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {        <Header name = QAddressQ start = Q10Q end = Q25Q type = QIpAddressQ/>}]"
+           action 2.23 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {        <Header name = QAge (min)Q alias = QAgeQ start = Q26Q end = Q35Q type = QIntegerQ/>}]"
+           action 2.24 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {        <Header name = QHardware AddrQ alias=QMACQ start = Q36Q end = Q52Q type = QStringQ/>}]"
+           action 2.25 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {        <Header name = QTypeQ start = Q53Q end = Q58Q type = QStringQ/>}]"
+           action 2.26 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {        <Header name = QInterfaceQ start = Q59Q end = Q-1Q nullable = QtrueQ type = QStringQ/>}]"
+           action 2.27 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {      </Table>}]"
+           action 2.28 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {    </Container>}]"
+           action 2.29 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {  </DataModel>}]"
+           action 2.30 cli command "puts [set f] [string map [list Q [set q] Z [set z]] {</ODMSpec>}]"
+           action 3.0 cli command "close [set f]"
+           action 3.1 cli command "tclquit"
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+  - id: n1
+    label: R2
+    node_definition: iosv
+    x: 200
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R2
+          no ip domain lookup
+          interface GigabitEthernet0/0
+           ip address 192.168.1.2 255.255.255.0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - id: i1
+        label: GigabitEthernet0/0
+        type: physical
+        slot: 0
+links:
+  - id: l0
+    n1: n0
+    n2: n1
+    i1: i1
+    i2: i1

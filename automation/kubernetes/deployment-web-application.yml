@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-application
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-application
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.15-alpine
+        ports:
+        - containerPort: 80
+      - name: php-fpm
+        image: php:7-fpm-alpine3.8

@@ -1,0 +1,106 @@
+annotations: []
+nodes:
+  - id: n0
+    label: S1
+    node_definition: iosv
+    x: 0
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname S1
+          no ip domain lookup
+          no ip routing
+          no ip cef
+          interface GigabitEthernet0/1
+           ip address 192.168.1.1 255.255.255.0
+           no shutdown
+          ip default-gateway 192.168.1.254
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - {id: i1, label: GigabitEthernet0/0, type: physical, slot: 0}
+      - {id: i2, label: GigabitEthernet0/1, type: physical, slot: 1}
+  - id: n1
+    label: R1
+    node_definition: iosv
+    x: 200
+    y: 0
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname R1
+          no ip domain lookup
+          no service timestamps debug
+          logging buffered 512000 debugging
+          no logging console
+          interface GigabitEthernet0/1
+           ip address 192.168.1.254 255.255.255.0
+           ip nat inside
+           no shutdown
+          interface GigabitEthernet0/2
+           ip address 192.168.12.1 255.255.255.0
+           ip nat outside
+           no shutdown
+          interface GigabitEthernet0/3
+           ip address 192.168.13.1 255.255.255.0
+           ip nat outside
+           no shutdown
+          ip nat inside source static 192.168.1.1 192.168.12.100 extendable
+          ip nat inside source static 192.168.1.1 192.168.13.100 extendable
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - {id: i1, label: GigabitEthernet0/0, type: physical, slot: 0}
+      - {id: i2, label: GigabitEthernet0/1, type: physical, slot: 1}
+      - {id: i3, label: GigabitEthernet0/2, type: physical, slot: 2}
+      - {id: i4, label: GigabitEthernet0/3, type: physical, slot: 3}
+  - id: n2
+    label: ISP1
+    node_definition: iosv
+    x: 400
+    y: -100
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname ISP1
+          no ip domain lookup
+          interface GigabitEthernet0/1
+           ip address 192.168.12.2 255.255.255.0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - {id: i1, label: GigabitEthernet0/0, type: physical, slot: 0}
+      - {id: i2, label: GigabitEthernet0/1, type: physical, slot: 1}
+  - id: n3
+    label: ISP2
+    node_definition: iosv
+    x: 400
+    y: 100
+    configuration:
+      - name: ios_config.txt
+        content: |-
+          hostname ISP2
+          no ip domain lookup
+          interface GigabitEthernet0/1
+           ip address 192.168.13.3 255.255.255.0
+           no shutdown
+          line con 0
+           exec-timeout 0 0
+          end
+    interfaces:
+      - {id: i1, label: GigabitEthernet0/0, type: physical, slot: 0}
+      - {id: i2, label: GigabitEthernet0/1, type: physical, slot: 1}
+links:
+  - {id: l0, n1: n0, n2: n1, i1: i2, i2: i2, label: S1-GigabitEthernet0/1<->R1-GigabitEthernet0/1}
+  - {id: l1, n1: n1, n2: n2, i1: i3, i2: i2, label: R1-GigabitEthernet0/2<->ISP1-GigabitEthernet0/1}
+  - {id: l2, n1: n1, n2: n3, i1: i4, i2: i2, label: R1-GigabitEthernet0/3<->ISP2-GigabitEthernet0/1}
+lab:
+  title: NAT extendable rule order test (lab-375)
+  description: 'nat-extendable-on-cisco-ios (post 38949), lesson final config. IOSv 15.9(3)M9.'
+  notes: ''
+  version: 0.3.1

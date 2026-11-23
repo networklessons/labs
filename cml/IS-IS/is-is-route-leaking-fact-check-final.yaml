@@ -1,0 +1,185 @@
+lab:
+  title: 'IS-IS Route Leaking (final, reduced: R1 R2 R4 R7 R8)'
+  description: 'is-is-route-leaking (post 45761): R1-R2-R4 area 1234 L1 (R4 L1-L2),
+    R7 L1-L2 + R8 L1 area 5678. R3/R5/R6 left out. IOSv 15.9. R4 Gi0/1 MAC 5254.00ff.0004
+    so R4 is DIS on the R2-R4 LAN, as in the lesson (R4.01).'
+  version: 0.2.2
+  notes: ''
+nodes:
+- id: n0
+  label: R1
+  node_definition: iosv
+  x: 0
+  y: 0
+  configuration:
+  - name: ios_config.txt
+    content: "hostname R1\nno ip domain lookup\nip cef\n!\ninterface GigabitEthernet0/1\n\
+      \ ip address 192.168.12.1 255.255.255.0\n ip router isis\n no shutdown\n!\n\
+      interface GigabitEthernet0/2\n ip address 192.168.13.1 255.255.255.0\n ip router\
+      \ isis\n no shutdown\n!\nrouter isis\n net 49.1234.0000.0000.0001.00\n is-type\
+      \ level-1\n log-adjacency-changes\n!\nline con 0\n exec-timeout 0 0\n logging\
+      \ synchronous\n!\nend\n"
+  interfaces:
+  - id: i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+- id: n1
+  label: R2
+  node_definition: iosv
+  x: 150
+  y: 0
+  configuration:
+  - name: ios_config.txt
+    content: "hostname R2\nno ip domain lookup\nip cef\n!\ninterface GigabitEthernet0/1\n\
+      \ ip address 192.168.12.2 255.255.255.0\n ip router isis\n no shutdown\n!\n\
+      interface GigabitEthernet0/2\n ip address 192.168.24.2 255.255.255.0\n ip router\
+      \ isis\n no shutdown\n!\nrouter isis\n net 49.1234.0000.0000.0002.00\n is-type\
+      \ level-1\n log-adjacency-changes\n!\nline con 0\n exec-timeout 0 0\n logging\
+      \ synchronous\n!\nend\n"
+  interfaces:
+  - id: i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+- id: n2
+  label: R4
+  node_definition: iosv
+  x: 300
+  y: 0
+  configuration:
+  - name: ios_config.txt
+    content: "hostname R4\nno ip domain lookup\nip cef\n!\ninterface GigabitEthernet0/1\n\
+      \ ip address 192.168.24.4 255.255.255.0\n ip router isis\n no shutdown\n!\n\
+      interface GigabitEthernet0/2\n ip address 192.168.47.4 255.255.255.0\n ip router\
+      \ isis\n no shutdown\n!\nrouter isis\n net 49.1234.0000.0000.0004.00\n log-adjacency-changes\n\
+      \ redistribute isis ip level-2 into level-1 route-map ROUTE_LEAKING\n!\nip access-list\
+      \ extended R8_L0\n permit ip host 8.8.8.8 any\n!\nroute-map ROUTE_LEAKING permit\
+      \ 10\n match ip address R8_L0\n!\nline con 0\n exec-timeout 0 0\n logging synchronous\n\
+      !\nend\n"
+  interfaces:
+  - id: i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+    mac_address: 52:54:00:ff:00:04
+  - id: i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+- id: n3
+  label: R7
+  node_definition: iosv
+  x: 450
+  y: 0
+  configuration:
+  - name: ios_config.txt
+    content: "hostname R7\nno ip domain lookup\nip cef\n!\ninterface GigabitEthernet0/1\n\
+      \ ip address 192.168.47.7 255.255.255.0\n ip router isis\n no shutdown\n!\n\
+      interface GigabitEthernet0/3\n ip address 192.168.78.7 255.255.255.0\n ip router\
+      \ isis\n no shutdown\n!\nrouter isis\n net 49.5678.0000.0000.0007.00\n log-adjacency-changes\n\
+      !\nline con 0\n exec-timeout 0 0\n logging synchronous\n!\nend\n"
+  interfaces:
+  - id: i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+- id: n4
+  label: R8
+  node_definition: iosv
+  x: 600
+  y: 0
+  configuration:
+  - name: ios_config.txt
+    content: "hostname R8\nno ip domain lookup\nip cef\n!\ninterface Loopback0\n ip\
+      \ address 8.8.8.8 255.255.255.255\n ip router isis\n!\ninterface GigabitEthernet0/1\n\
+      \ ip address 192.168.78.8 255.255.255.0\n ip router isis\n no shutdown\n!\n\
+      router isis\n net 49.5678.0000.0000.0008.00\n is-type level-1\n log-adjacency-changes\n\
+      !\nline con 0\n exec-timeout 0 0\n logging synchronous\n!\nend\n"
+  interfaces:
+  - id: i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+links:
+- id: l0
+  n1: n0
+  i1: i1
+  n2: n1
+  i2: i1
+  label: R1-R2
+- id: l1
+  n1: n1
+  i1: i2
+  n2: n2
+  i2: i1
+  label: R2-R4
+- id: l2
+  n1: n2
+  i1: i2
+  n2: n3
+  i2: i1
+  label: R4-R7
+- id: l3
+  n1: n3
+  i1: i3
+  n2: n4
+  i2: i1
+  label: R7-R8
+annotations: []

@@ -1,0 +1,8 @@
+[ubuntu-servers]
+ubuntu-test-server ansible_host=10.56.101.21
+
+[all:vars]
+ansible_connection=ssh 
+ansible_user=vmware
+ansible_password=vmware
+ansible_sudo_pass=vmware

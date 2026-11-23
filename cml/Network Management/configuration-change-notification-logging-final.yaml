@@ -1,0 +1,31 @@
+lab:
+  title: Config change logging re-capture (lab-359)
+  description: 'configuration-change-notification-logging (post 3559): single IOSv 15.9 router, lesson steps, final running-config.'
+  notes: ''
+  version: 0.2.2
+nodes:
+- id: n0
+  label: Router
+  node_definition: iosv
+  x: 0
+  y: 0
+  configuration: "hostname Router\nno ip domain-lookup\nip cef\n!\nline con 0\n exec-timeout 0 0\n!\nend\n"
+  interfaces:
+  - id: n0i0
+    label: GigabitEthernet0/0
+    slot: 0
+    type: physical
+  - id: n0i1
+    label: GigabitEthernet0/1
+    slot: 1
+    type: physical
+  - id: n0i2
+    label: GigabitEthernet0/2
+    slot: 2
+    type: physical
+  - id: n0i3
+    label: GigabitEthernet0/3
+    slot: 3
+    type: physical
+links: []
+annotations: []

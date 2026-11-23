@@ -1,0 +1,93 @@
+lab:
+  title: EIGRP static-to-interface default route test (lab-400)
+  description: "eigrp-default-network-route (post 7737): is ip route 0.0.0.0 0.0.0.0 <interface> + network 0.0.0.0 advertised as internal? interface vs next-hop static, with/without network statement. R1-R2-ISP IOSv 15.9."
+  version: 0.2.2
+nodes:
+  - id: n0
+    label: R1
+    node_definition: iosv
+    x: 0
+    y: 0
+    configuration: |
+      hostname R1
+      no ip domain lookup
+      interface GigabitEthernet0/0
+       ip address 192.168.12.1 255.255.255.0
+       no shutdown
+      router eigrp 12
+       network 192.168.12.0
+       no auto-summary
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      end
+    interfaces:
+      - id: i0
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+  - id: n1
+    label: R2
+    node_definition: iosv
+    x: 200
+    y: 0
+    configuration: |
+      hostname R2
+      no ip domain lookup
+      interface GigabitEthernet0/0
+       ip address 192.168.12.2 255.255.255.0
+       no shutdown
+      interface GigabitEthernet0/1
+       ip address 192.168.23.2 255.255.255.0
+       no shutdown
+      ip route 0.0.0.0 0.0.0.0 GigabitEthernet0/1
+      router eigrp 12
+       network 192.168.12.0
+       network 0.0.0.0
+       no auto-summary
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      end
+    interfaces:
+      - id: i0
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+      - id: i1
+        label: GigabitEthernet0/1
+        slot: 1
+        type: physical
+  - id: n2
+    label: ISP
+    node_definition: iosv
+    x: 400
+    y: 0
+    configuration: |
+      hostname ISP
+      no ip domain lookup
+      interface GigabitEthernet0/0
+       ip address 192.168.23.3 255.255.255.0
+       no shutdown
+      interface Loopback0
+       ip address 3.3.3.3 255.255.255.0
+      line con 0
+       exec-timeout 0 0
+       logging synchronous
+      end
+    interfaces:
+      - id: i0
+        label: GigabitEthernet0/0
+        slot: 0
+        type: physical
+links:
+  - id: l0
+    i1: i0
+    n1: n0
+    i2: i0
+    n2: n1
+  - id: l1
+    i1: i1
+    n1: n1
+    i2: i0
+    n2: n2
